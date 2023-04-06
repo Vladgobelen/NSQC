@@ -28,10 +28,13 @@ if string.find (message, myName) and string.find (message, "покажи мне"
         msg1 = all_trim(msg1)
         msg1 = tonumber(msg1)
         id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
-        print (completed)
-        count1=date("%d")
-        count2=date("%M")
+        hours, minutes = GetGameTime()
+        count1=hours
+        print (count1)
+        count2=minutes
+        print (count2)
         count3=count1/count2
+        print (count3)
         count3=string.sub(count3, 3, 5)
         count3=string.format("%03d",count3)
         if completed == true then
@@ -60,8 +63,9 @@ if string.find (message, myName) and string.find (message, "покажи") and s
                 end
                 i=i+1
         end
-        count1=date("%d")
-        count2=date("%M")
+        hours, minutes = GetGameTime()
+        count1=hours
+        count2=minutes
         count3=count1/count2
         count3=string.sub(count3, 3, 5)
         count3=string.format("%03d",count3)
@@ -69,6 +73,6 @@ if string.find (message, myName) and string.find (message, "покажи") and s
 
 end
 
-end
+
 end
 )
