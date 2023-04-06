@@ -1,0 +1,15 @@
+## interface: 30300
+## Title: NSQuestClient
+## Notes: NSQuestClient
+## Author: Vladgobelen
+## SavedVariables:
+
+lib\lib_hook.lua
+lib\lib_math.lua
+lib\lib_string.lua
+lib\lib_table.lua
+
+#################
+core.lua
+achiv.lua
+
