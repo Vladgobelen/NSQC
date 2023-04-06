@@ -30,11 +30,8 @@ if string.find (message, myName) and string.find (message, "покажи мне"
         id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
         hours, minutes = GetGameTime()
         count1=hours
-        print (count1)
         count2=minutes
-        print (count2)
         count3=count1/count2
-        print (count3)
         count3=string.sub(count3, 3, 5)
         count3=string.format("%03d",count3)
         if completed == true then
