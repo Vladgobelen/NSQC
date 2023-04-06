@@ -45,6 +45,19 @@ end
 if string.find (message, myName) and string.find (message, "покажи мне") and string.find (message, "ачивку") and nachalo~="*" then
         msg1 = all_trim(message)
         print (msg1)
+        msg1 = (msg1):gsub(myName, "");
+        print (msg1)
+        msg1 = all_trim(msg1)
+        print (msg1)
+        msg1 = (msg1):gsub(", покажи мне ачивку ", "");
+        print (msg1)
+        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
+
+        if completed == true then
+                SendChatMessage("*ВОЖДЬ, уже сделана: " .. GetAchievementLink(msg1), "guild", nil, 1)
+        else
+                SendChatMessage("*ВОЖДЬ, можно сделать: " .. GetAchievementLink(msg1), "guild", nil, 1)
+        end
 
 end
 if string.find (message, "*ВОЖДЬ") and string.find (message, "из") then
