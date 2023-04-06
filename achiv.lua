@@ -20,6 +20,27 @@ end
 local nachalo = string.sub(message, 1, 1)
 local myName = GetUnitName("player")
 
+if string.find (message, myName) and string.find (message, "покажи мне") and string.find (message, "ачивку") and nachalo~="*" then
+        msg1 = all_trim(message)
+        msg1 = (msg1):gsub(myName, "");
+        msg1 = all_trim(msg1)
+        msg1 = (msg1):gsub(", покажи мне ачивку ", "");
+        msg1 = all_trim(msg1)
+        msg1 = tonumber(msg1)
+        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
+        print (completed)
+        count1=date("%d")
+        count2=date("%M")
+        count3=count1/count2
+        count3=string.sub(count3, 3, 5)
+        count3=string.format("%03d",count3)
+        if completed == true then
+                SendChatMessage("*" .. count3 .." ВОЖДЬ, уже сделана: " .. GetAchievementLink(msg1), "guild", nil, 1)
+        else
+                SendChatMessage("*" .. count3 .." ВОЖДЬ, можно сделать: " .. GetAchievementLink(msg1), "guild", nil, 1)
+        end
+
+end
 if string.find (message, myName) and string.find (message, "покажи") and string.find (message, "ачивку") and nachalo~="*" then
         msg = all_trim(message)
         msg = (msg):gsub(myName, "");
@@ -39,30 +60,15 @@ if string.find (message, myName) and string.find (message, "покажи") and s
                 end
                 i=i+1
         end
-        SendChatMessage("*ВОЖДЬ, " .. k .. " из " .. count .. " осталось: " .. GetAchievementLink(msg), "guild", nil, 1)
+        count1=date("%d")
+        count2=date("%M")
+        count3=count1/count2
+        count3=string.sub(count3, 3, 5)
+        count3=string.format("%03d",count3)
+        SendChatMessage("*" .. count3 .." ВОЖДЬ, " .. k .. " из " .. count .. " осталось: " .. GetAchievementLink(msg), "guild", nil, 1)
 
 end
-if string.find (message, myName) and string.find (message, "покажи мне") and string.find (message, "ачивку") and nachalo~="*" then
-        msg1 = all_trim(message)
-        print (msg1)
-        msg1 = (msg1):gsub(myName, "");
-        print (msg1)
-        msg1 = all_trim(msg1)
-        print (msg1)
-        msg1 = (msg1):gsub(", покажи мне ачивку ", "");
-        print (msg1)
-        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 
-        if completed == true then
-                SendChatMessage("*ВОЖДЬ, уже сделана: " .. GetAchievementLink(msg1), "guild", nil, 1)
-        else
-                SendChatMessage("*ВОЖДЬ, можно сделать: " .. GetAchievementLink(msg1), "guild", nil, 1)
-        end
-
-end
-if string.find (message, "*ВОЖДЬ") and string.find (message, "из") then
-        msgRez = mysplit(message)
-        print (msgRez[2] .. "f" .. msgRez[4])
 end
 end
 )
