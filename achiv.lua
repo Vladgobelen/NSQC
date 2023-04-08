@@ -97,7 +97,9 @@ if string.find (message, myName) and string.find (message, "а сделал ли
         end
 else
 end
-
+if string.find (message, myName) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "123456780")  and nachalo~="*" then
+        SendChatMessage(hsh .." текущая версия " .. versAdd, "guild", nil, 1)
+end
 
 end
 )
