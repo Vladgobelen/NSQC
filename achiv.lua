@@ -3,6 +3,7 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 --команды для управления квестами
 local nik=sender
+local versAdd=2
 local str = string.gsub(message, "%s+", "")
 function all_trim(s)
         return s:match( "^%s*(.-)%s*$" )
@@ -54,7 +55,7 @@ if string.find (message, myName) and nachalo~="*" then
                 if completed == true then
                         SendChatMessage("*" .. hsh .." ВОЖДЬ, уже сделана: " .. GetAchievementLink(msg1), "guild", nil, 1)
                 else
-                        SendChatMessage("*" .. hsh .." ВОЖДЬ, можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "guild", nil, 1)
+                        SendChatMessage(hsh .." ВОЖДЬ, можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "guild", nil, 1)
                 end
         end
 end
@@ -96,6 +97,7 @@ if string.find (message, myName) and string.find (message, "а сделал ли
         end
 else
 end
+
 
 end
 )
