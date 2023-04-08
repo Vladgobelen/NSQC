@@ -51,9 +51,9 @@ if string.find (message, myName) and nachalo~="*" then
                 msg1 = tonumber(msg1)
                 id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
                 hsh=0
-                hsh=hashStr(sender)
+                hsh=hashStr(myName)
                 if completed == true then
-                        SendChatMessage("*" .. hsh .." ВОЖДЬ, уже сделана: " .. GetAchievementLink(msg1), "guild", nil, 1)
+                        SendChatMessage(hsh .." ВОЖДЬ, эта уже готова " .. GetAchievementLink(msg1), "guild", nil, 1)
                 else
                         SendChatMessage(hsh .." ВОЖДЬ, можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "guild", nil, 1)
                 end
@@ -79,7 +79,7 @@ if string.find (message, myName) and string.find (message, "покажи") and s
                 i=i+1
         end
         hsh=0
-        hsh=hashStr(sender)
+        hsh=hashStr(myName)
         SendChatMessage("*" .. hsh .." ВОЖДЬ, " .. k .. " из " .. count .. " осталось: " .. GetAchievementLink(msg), "guild", nil, 1)
 
 end
@@ -89,7 +89,7 @@ if string.find (message, myName) and string.find (message, "а сделал ли
         msg1 = tonumber(msg1)
         id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
         hsh=0
-        hsh=hashStr(sender)
+        hsh=hashStr(myName)
         if completed == true then
                 SendChatMessage("*" .. hsh .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "guild", nil, 1)
         else
