@@ -53,7 +53,7 @@ if string.find (message, myName) and nachalo~="*" then
                 hsh=0
                 hsh=hashStr(myName)
                 if completed == true then
-                        SendChatMessage(hsh .." ВОЖДЬ, эта уже готова " .. GetAchievementLink(msg1), "guild", nil, 1)
+                        SendChatMessage(hsh .." ВОЖДЬ, эта уже готова " .. msg1 .. GetAchievementLink(msg1), "guild", nil, 1)
                 else
                         SendChatMessage(hsh .." ВОЖДЬ, можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "guild", nil, 1)
                 end
