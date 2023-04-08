@@ -17,29 +17,46 @@ function mysplit (inputstr, sep)
         end
         return t
 end
+
+function hashStr (nome)
+        hours, minutes = GetGameTime()
+        count1=hours* 3,1415926535
+        count2=minutes* 3,1415926535
+        count3=count1*count2
+        count3=string.sub(count3, 1, 3)
+        count3=string.format("%03d",count3)
+        hNik=string.byte(nome,1)
+        hNik2=string.byte(nome,2)
+        hNome=hNik*hNik2
+        hNome=string.sub(hNome, 1, 3)
+        hNome=string.format("%03d",hNome)
+        r1=string.sub(count3, 1, 1)
+        r2=string.sub(hNome, 1, 1)
+        r3=string.sub(count3, 2, 2)
+        r4=string.sub(hNome, 2, 2)
+        r5=string.sub(count3, 3, 3)
+        r6=string.sub(hNome, 3, 3)
+        r=r1 .. r2 .. r3 .. r4 .. r5 .. r6
+        return r
+end
+
 local nachalo = string.sub(message, 1, 1)
 local myName = GetUnitName("player")
 
-if string.find (message, myName) and string.find (message, "покажи мне") and string.find (message, "ачивку") and nachalo~="*" then
-        msg1 = all_trim(message)
-        msg1 = (msg1):gsub(myName, "");
-        msg1 = all_trim(msg1)
-        msg1 = (msg1):gsub(", покажи мне ачивку ", "");
-        msg1 = all_trim(msg1)
-        msg1 = tonumber(msg1)
-        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
-        hours, minutes = GetGameTime()
-        count1=hours
-        count2=minutes
-        count3=count1/count2
-        count3=string.sub(count3, 3, 5)
-        count3=string.format("%03d",count3)
-        if completed == true then
-                SendChatMessage("*" .. count3 .." ВОЖДЬ, уже сделана: " .. GetAchievementLink(msg1), "guild", nil, 1)
-        else
-                SendChatMessage("*" .. count3 .." ВОЖДЬ, можно сделать: " .. GetAchievementLink(msg1), "guild", nil, 1)
+if string.find (message, myName) and nachalo~="*" then
+        proverka_komandy=mysplit(message)
+        if proverka_komandy[2]=="покажи" and proverka_komandy[3]=="мне" and proverka_komandy[4]=="ачивку" then
+                msg1=proverka_komandy[5]
+                msg1 = tonumber(msg1)
+                id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
+                hsh=0
+                hsh=hashStr(sender)
+                if completed == true then
+                        SendChatMessage("*" .. hsh .." ВОЖДЬ, уже сделана: " .. GetAchievementLink(msg1), "guild", nil, 1)
+                else
+                        SendChatMessage("*" .. hsh .." ВОЖДЬ, можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "guild", nil, 1)
+                end
         end
-
 end
 if string.find (message, myName) and string.find (message, "покажи") and string.find (message, "ачивку") and nachalo~="*" then
         msg = all_trim(message)
@@ -60,16 +77,25 @@ if string.find (message, myName) and string.find (message, "покажи") and s
                 end
                 i=i+1
         end
-        hours, minutes = GetGameTime()
-        count1=hours
-        count2=minutes
-        count3=count1/count2
-        count3=string.sub(count3, 3, 5)
-        count3=string.format("%03d",count3)
-        SendChatMessage("*" .. count3 .." ВОЖДЬ, " .. k .. " из " .. count .. " осталось: " .. GetAchievementLink(msg), "guild", nil, 1)
+        hsh=0
+        hsh=hashStr(sender)
+        SendChatMessage("*" .. hsh .." ВОЖДЬ, " .. k .. " из " .. count .. " осталось: " .. GetAchievementLink(msg), "guild", nil, 1)
 
 end
-
+if string.find (message, myName) and string.find (message, "а сделал ли ты") and nachalo~="*" then
+        proverka_komandy=mysplit(message)
+        msg1=proverka_komandy[6]
+        msg1 = tonumber(msg1)
+        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
+        hsh=0
+        hsh=hashStr(sender)
+        if completed == true then
+                SendChatMessage("*" .. hsh .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "guild", nil, 1)
+        else
+                SendChatMessage("*" .. hsh .." поторопился...", "guild", nil, 1)
+        end
+else
+end
 
 end
 )
