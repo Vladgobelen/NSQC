@@ -46,7 +46,7 @@ hshStraniero=hashStr(sender)
 local nachalo = string.sub(message, 1, 1)
 
 if sender == "Витинари" or sender == "Детрит" or sender == "Железобетонс" or sender == "Двацветок" then
-	if string.find (message, "#aaa") and string.find(message, hshStraniero) and nachalo~="*" then
+	if string.find (message, "#aaa") and string.find(message, hsh) and nachalo~="*" then
 		msg1 = mysplit(message)
 		msg1 = msg1[7]
 		msg1 = tonumber(msg1)
