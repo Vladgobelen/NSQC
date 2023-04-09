@@ -57,7 +57,7 @@ if sender == "Витинари" or sender == "Детрит" or sender == "Жел
         	SendChatMessage(hsh .. " #aac " .. "можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 		end
 	end
-if string.find (message, hshStraniero) and string.find (message, "#aaf") then
+if string.find (message, hsh) and string.find (message, "#aaf") then
 	proverka_komandy=mysplit(message)
 	msg1=proverka_komandy[8]
 	msg1 = tonumber(msg1)
