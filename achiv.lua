@@ -45,80 +45,33 @@ hsh=hashStr(myNome)
 hshStraniero=hashStr(sender)
 local nachalo = string.sub(message, 1, 1)
 
-if string.find (message, "001") and string.find(message, hshStraniero) and nachalo~="*" then
-	msg1 = mysplit(message)
-	msg1 = msg1[7]
-	msg1 = tonumber(msg1)
-	id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
-	if completed == true then
-		SendChatMessage(hsh .. " 002 " .. "эта уже выполнена " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
-	else
-        SendChatMessage(hsh .. " 003 " .. "можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+if sender == "Витинари" or sender == "Детрит" or sender == "Железобетонс" or sender == "Двацветок" then
+	if string.find (message, "#aaa") and string.find(message, hshStraniero) and nachalo~="*" then
+		msg1 = mysplit(message)
+		msg1 = msg1[7]
+		msg1 = tonumber(msg1)
+		id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
+		if completed == true then
+			SendChatMessage(hsh .. " #aab " .. "эта уже выполнена " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+		else
+        	SendChatMessage(hsh .. " #aac " .. "можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+		end
 	end
-end
-
-if string.find (message, hshStraniero) and string.find (message, "006") then
+if string.find (message, hshStraniero) and string.find (message, "#aaf") then
 	proverka_komandy=mysplit(message)
 	msg1=proverka_komandy[8]
 	msg1 = tonumber(msg1)
 	id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 	if completed == true then
-		SendChatMessage(hsh .. " 007 " .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+		SendChatMessage(hsh .. " #aag " .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 	else
 		SendChatMessage("*я забыл...скоро сделаю, вернусь позже.", "OFFICER", nil, 1)
 	end
 	else
 end
 
-if string.find (message, "покажи мне ачивку") and nachalo~="*" then
-	msg1 = mysplit(message)
-	msg1 = msg1[5]
-	msg1 = tonumber(msg1)
-	id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
-	if completed == true then
-		SendChatMessage("*" .. sender .. ", эта уже выполнена: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
-	else
-		SendChatMessage("*" .. sender .. ", эту еще не делал: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
-	end
-end
-
-
-
-
-
-
-
-
-
-
-if string.find (message, myNome) and string.find (message, "покажи") and string.find (message, "ачивку") and nachalo~="*" then
-        msg = all_trim(message)
-        msg = (msg):gsub(myName, "");
-        msg = all_trim(msg)
-        msg = (msg):gsub(", покажи ачивку ", "");
-
-        j=0
-        k=0
-        count = GetAchievementNumCriteria(msg)
-        for i=1, count do
-                local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msg, i);
-                prov=completed
-                if prov == true then
-                        j=j+1
-                else
-                        k=k+1
-                end
-                i=i+1
-        end
-
-        SendChatMessage("*" .. hsh .." ВОЖДЬ, " .. k .. " из " .. count .. " осталось: " .. GetAchievementLink(msg), "OFFICER", nil, 1)
 
 end
-
-if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
-        SendChatMessage(hsh .." текущая версия " .. versAdd, "OFFICER", nil, 1)
-end
-
 
 end
 )
