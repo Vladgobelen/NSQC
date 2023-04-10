@@ -48,11 +48,7 @@ function hashStr (nome)
 	r=r1 .. r2 .. r3 .. r4 .. r5 .. r6
 	return r
 end
---
-local myNome1 = GetUnitName("player")
-testNome=hashStr(myNome1)
-print (myNome1 .. " " .. testNome)
---
+
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
 hshStraniero=hashStr(sender)
