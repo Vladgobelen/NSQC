@@ -4,6 +4,7 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 --команды для управления квестами
 local nik=sender
 local versAdd=3
+local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 function all_trim(s)
 	return s:match( "^%s*(.-)%s*$" )
@@ -48,15 +49,13 @@ function hashStr (nome)
 	r=r1 .. r2 .. r3 .. r4 .. r5 .. r6
 	return r
 end
-
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
 hshStraniero=hashStr(sender)
 local nachalo = string.sub(message, 1, 1)
 
 msg3=mysplit(message)
-if string.find (message, "покажи мне ачивку") and msg3[2]~="#aaa" and nachalo~="*" then
-	print ("fdsfdsaf")
+if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
 	msg1 = mysplit(message)
 	msg1 = msg1[5]
 	msg1 = tonumber(msg1)
@@ -68,29 +67,32 @@ if string.find (message, "покажи мне ачивку") and msg3[2]~="#aaa"
 	end
 end
 
-if string.find (message, myNome) and string.find (message, "покажи") and string.find (message, "ачивку") and nachalo~="*" then
-        msg = all_trim(message)
-        msg = (msg):gsub(myName, "");
-        msg = all_trim(msg)
-        msg = (msg):gsub(", покажи ачивку ", "");
+if string.find (message, "покажи ачивку") and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
+	msg2 = mysplit(message)
+	msg2 = msg2[4]
+	msg2 = tonumber(msg2)
+	j=0
+	k=0
+	count = GetAchievementNumCriteria(msg2)
+	for i=1, count do
+		local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msg2, i);
+		prov=completed
+		if prov == true then
+			j=j+1
+		else
+			k=k+1
+		end
+		i=i+1
+	end
+	if k==0 then
+		SendChatMessage(hsh .. " #aai " .. "уже выполнена полностью: " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+	else
+		SendChatMessage("*" .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+	end
 
-        j=0
-        k=0
-        count = GetAchievementNumCriteria(msg)
-        for i=1, count do
-                local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msg, i);
-                prov=completed
-                if prov == true then
-                        j=j+1
-                else
-                        k=k+1
-                end
-                i=i+1
-        end
-
-        SendChatMessage("*" .. hsh .." ВОЖДЬ, " .. k .. " из " .. count .. " осталось: " .. GetAchievementLink(msg), "OFFICER", nil, 1)
 
 end
+
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
         SendChatMessage(hsh .." текущая версия " .. versAdd, "OFFICER", nil, 1)
 end

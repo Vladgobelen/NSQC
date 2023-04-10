@@ -48,6 +48,7 @@ function hashStr (nome)
 	r=r1 .. r2 .. r3 .. r4 .. r5 .. r6
 	return r
 end
+
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
 hshStraniero=hashStr(sender)
@@ -75,9 +76,33 @@ if string.find (message, hsh) and string.find (message, "#aaf") then
 	else
 		SendChatMessage("*я забыл...скоро сделаю, вернусь позже.", "OFFICER", nil, 1)
 	end
-	else
+else
 end
 
+if string.find (message, hsh) and string.find (message, "#aah") then
+	msg2 = mysplit(message)
+	msg2 = msg2[13]
+	msg2 = tonumber(msg2)
+	j=0
+	k=0
+	count = GetAchievementNumCriteria(msg2)
+	for i=1, count do
+		local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msg2, i);
+		prov=completed
+		if prov == true then
+			j=j+1
+		else
+			k=k+1
+		end
+		i=i+1
+	end
+	if k==0 then
+		SendChatMessage(hsh .. " #aai " .. "уже выполнена полностью: " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+	else
+		SendChatMessage(hsh .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+	end
+
+end
 
 
 
