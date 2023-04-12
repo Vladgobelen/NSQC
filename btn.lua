@@ -1,52 +1,22 @@
-btn={}
-for ii=0,4 do
-    btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-    if ii==0 then
-        btn[ii]:SetPoint("CENTER",0, 400)
-        btn[ii]:SetSize(300, 30)
-        btn[ii]:SetText("Взять квест")
-        btn[ii]:Hide();
-        btn[ii]:SetScript("OnClick", function(self, button)
-	SendChatMessage("#zzs", "GUILD", nil, 1)
-        end)
-    end
-    if ii==1 then
-        btn[ii]:SetPoint("CENTER",0, 370)
-        btn[ii]:SetSize(300, 30)
-        btn[ii]:SetText("Сдать квест")
-        btn[ii]:Hide();
-        btn[ii]:SetScript("OnClick", function(self, button)
-	SendChatMessage("#zzr", "GUILD", nil, 1)
-        end)
-    end
-    if ii==2 then
-        btn[ii]:SetPoint("CENTER",0,340)
-        btn[ii]:SetSize(300, 30)
-        btn[ii]:SetText("Взять бонусный квест вне лимита")
-        btn[ii]:Hide();
-        btn[ii]:SetScript("OnClick", function(self, button)
-	SendChatMessage("#zzz", "GUILD", nil, 1)
-        end)
-    end
-    if ii==3 then
-        btn[ii]:SetPoint("CENTER",0,310)
-        btn[ii]:SetSize(300, 30)
-        btn[ii]:SetText("Сдать бонусный квест вне лимита")
-        btn[ii]:Hide();
-        btn[ii]:SetScript("OnClick", function(self, button)
-        SendChatMessage("#zzy", "GUILD", nil, 1)
-        end)
-    end
-    if ii==4 then
-        btn[ii]:SetPoint("CENTER",0,280)
-        btn[ii]:SetSize(300, 30)
-        btn[ii]:SetText("Узнать свой гильдлвл")
-        btn[ii]:Hide();
-        btn[ii]:SetScript("OnClick", function(self, button)
-	SendChatMessage("#zzt", "GUILD", nil, 1)
-        end)
-    end
+local btn = {};
+function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
+    self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+    self[id]:SetPoint("CENTER",posex, posey)
+    self[id]:SetSize(sizex, sizey)
+    self[id]:SetText(message)
+    self[id]:Hide();
+    self[id]:SetScript("OnClick",function(self, button)
+           SendChatMessage(zzid, "GUILD", nil, 1) end)
 end
+
+-- вместо цикла явная индексация, так как у тебя один фиг ifы
+-- видимо я так понял имеет значение порядок создания кнопок
+btn:configure(1,0,400,300,30,"#zzs","Взять квест");
+btn:configure(2,0,370,300,30,"#zzr","Сдать квест");
+btn:configure(3,0,340,300,30,"#zzz","Взять бонусный квест вне лимита");
+btn:configure(4,0,310,300,30,"#zzy","Сдать бонусный квест вне лимита");
+btn:configure(5,0,280,300,30,"#zzt","Узнать свой гилдлвл");
+
 
 local minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetFrameLevel(8)
@@ -88,14 +58,14 @@ minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 *
 pokazat=0
 minibtn:SetScript("OnClick", function()
     if pokazat~=1 then
-        ii=5
+        ii=6
         btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
         btn[ii]:SetPoint("CENTER",0,250)
         btn[ii]:SetSize(300, 30)
         btn[ii]:SetText("Закрыть")
         btn[ii]:Hide();
         btn[ii]:SetScript("OnClick", function(self, button)
-        for ii=0,5 do
+        for ii=1,6 do
             btn[ii]:Hide();
         end
         pokazat=0
@@ -103,7 +73,7 @@ minibtn:SetScript("OnClick", function()
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
         end)
-        for ii=0,5 do
+        for ii=1,6 do
             btn[ii]:Show();
         end
         pokazat=1
@@ -111,7 +81,7 @@ minibtn:SetScript("OnClick", function()
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
     else
-        for ii=0,5 do
+        for ii=1,6 do
             btn[ii]:Hide();
         end
         minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
