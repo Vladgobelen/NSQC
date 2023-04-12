@@ -1,47 +1,52 @@
-btn0 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-btn0:SetPoint("CENTER",0, 400)
-btn0:SetSize(300, 30)
-btn0:SetText("Взять квест")
-btn0:Hide();
-btn0:SetScript("OnClick", function(self, button)
+btn={}
+for ii=0,4 do
+    btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+    if ii==0 then
+        btn[ii]:SetPoint("CENTER",0, 400)
+        btn[ii]:SetSize(300, 30)
+        btn[ii]:SetText("Взять квест")
+        btn[ii]:Hide();
+        btn[ii]:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzs", "GUILD", nil, 1)
-end)
-
-local btn1 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-btn1:SetPoint("CENTER",0, 370)
-btn1:SetSize(300, 30)
-btn1:SetText("Сдать квест")
-btn1:Hide();
-btn1:SetScript("OnClick", function(self, button)
+        end)
+    end
+    if ii==1 then
+        btn[ii]:SetPoint("CENTER",0, 370)
+        btn[ii]:SetSize(300, 30)
+        btn[ii]:SetText("Сдать квест")
+        btn[ii]:Hide();
+        btn[ii]:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzr", "GUILD", nil, 1)
-end)
-
-local btn2 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-btn2:SetPoint("CENTER",0,340)
-btn2:SetSize(300, 30)
-btn2:SetText("Взять бонусный квест вне лимита")
-btn2:Hide();
-btn2:SetScript("OnClick", function(self, button)
+        end)
+    end
+    if ii==2 then
+        btn[ii]:SetPoint("CENTER",0,340)
+        btn[ii]:SetSize(300, 30)
+        btn[ii]:SetText("Взять бонусный квест вне лимита")
+        btn[ii]:Hide();
+        btn[ii]:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzz", "GUILD", nil, 1)
-end)
-
-local btn3 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-btn3:SetPoint("CENTER",0,310)
-btn3:SetSize(300, 30)
-btn3:SetText("Сдать бонусный квест вне лимита")
-btn3:Hide();
-btn3:SetScript("OnClick", function(self, button)
-	SendChatMessage("#zzy", "GUILD", nil, 1)
-end)
-
-local btn4 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-btn4:SetPoint("CENTER",0,280)
-btn4:SetSize(300, 30)
-btn4:SetText("Узнать свой гильдлвл")
-btn4:Hide();
-btn4:SetScript("OnClick", function(self, button)
+        end)
+    end
+    if ii==3 then
+        btn[ii]:SetPoint("CENTER",0,310)
+        btn[ii]:SetSize(300, 30)
+        btn[ii]:SetText("Сдать бонусный квест вне лимита")
+        btn[ii]:Hide();
+        btn[ii]:SetScript("OnClick", function(self, button)
+        SendChatMessage("#zzy", "GUILD", nil, 1)
+        end)
+    end
+    if ii==4 then
+        btn[ii]:SetPoint("CENTER",0,280)
+        btn[ii]:SetSize(300, 30)
+        btn[ii]:SetText("Узнать свой гильдлвл")
+        btn[ii]:Hide();
+        btn[ii]:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzt", "GUILD", nil, 1)
-end)
+        end)
+    end
+end
 
 local minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetFrameLevel(8)
@@ -66,67 +71,49 @@ local function UpdateMapBtn()
     myIconPos = math.deg(math.atan2(Ypoa, Xpoa))
     minibtn:ClearAllPoints()
     minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)), (80 * sin(myIconPos)) - 52)
-
 end
-
 minibtn:RegisterForDrag("LeftButton")
 minibtn:SetScript("OnDragStart", function()
     minibtn:StartMoving()
     minibtn:SetScript("OnUpdate", UpdateMapBtn)
 end)
-
 minibtn:SetScript("OnDragStop", function()
     minibtn:StopMovingOrSizing();
     minibtn:SetScript("OnUpdate", nil)
     UpdateMapBtn();
 end)
-
 -- Set position
 minibtn:ClearAllPoints();
 minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
-
 pokazat=0
 minibtn:SetScript("OnClick", function()
-
     if pokazat~=1 then
-
-        btn5 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-        btn5:SetPoint("CENTER",0,250)
-        btn5:SetSize(300, 30)
-        btn5:SetText("Закрыть")
-        btn5:SetScript("OnClick", function(self, button)
-
-        btn0:Hide();
-        btn1:Hide();
-        btn2:Hide();
-        btn3:Hide();
-        btn4:Hide();
-        btn5:Hide();
+        ii=5
+        btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+        btn[ii]:SetPoint("CENTER",0,250)
+        btn[ii]:SetSize(300, 30)
+        btn[ii]:SetText("Закрыть")
+        btn[ii]:Hide();
+        btn[ii]:SetScript("OnClick", function(self, button)
+        for ii=0,5 do
+            btn[ii]:Hide();
+        end
         pokazat=0
         minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
-
         end)
-
-        btn0:Show();
-        btn1:Show();
-        btn2:Show();
-        btn3:Show();
-        btn4:Show();
-        btn5:Show();
+        for ii=0,5 do
+            btn[ii]:Show();
+        end
         pokazat=1
         minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
-
-        else
-        btn0:Hide();
-        btn1:Hide();
-        btn2:Hide();
-        btn3:Hide();
-        btn4:Hide();
-        btn5:Hide();
+    else
+        for ii=0,5 do
+            btn[ii]:Hide();
+        end
         minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
