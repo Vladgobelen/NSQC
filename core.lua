@@ -3,7 +3,7 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 --команды для управления квестами
 local nik=sender
-local versAdd=5
+local versAdd=6
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 function all_trim(s)
@@ -47,25 +47,24 @@ function hashStr (nome)
 end
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
-testMes=mysplit(message)
-
-if testMes[1]=="#" then
-	hshStraniero1=string.sub(testMes[2],1,1)
-	hshStraniero2=string.sub(testMes[2],3,3)
-	hshStraniero3=string.sub(testMes[2],5,5)
+nachaloStr = string.sub(message, 1, 1)
+testN=string.sub(message, 5, 5)
+if nachaloStr=="#" and testN~="" then
+	nachaloHsh = string.sub(message, 2, 7)
+	hshStraniero1=string.sub(nachaloHsh,1,1)
+	hshStraniero2=string.sub(nachaloHsh,3,3)
+	hshStraniero3=string.sub(nachaloHsh,5,5)
 	hshStraniero=hshStraniero1 .. hshStraniero2 .. hshStraniero3
-end
-
-hsh1=string.sub(hsh,1,1)
-hsh2=string.sub(hsh,3,3)
-hsh3=string.sub(hsh,5,5)
-hsh4=hsh1 .. hsh2 .. hsh3
-hshC=(math.abs(hsh4-hshStraniero)
-
-if hshC<10 then
-	hshCMD="maodzedun"
-else
-	hshCMD="0"
+	hsh1=string.sub(hsh,1,1)
+	hsh2=string.sub(hsh,3,3)
+	hsh3=string.sub(hsh,5,5)
+	hsh4=hsh1 .. hsh2 .. hsh3
+	hshC=math.abs(hsh4-hshStraniero)
+	if hshC<10 then
+		hshCMD="maodzedun"
+	else
+		hshCMD="0"
+	end
 end
 local nachalo = string.sub(message, 1, 1)
 

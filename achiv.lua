@@ -47,27 +47,26 @@ end
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
 
-local nachaloStr = string.sub(message, 1, 1)
-local nachaloHsh = string.sub(message, 2, 7)
-
-if nachaloStr=="#" then
+nachaloStr = string.sub(message, 1, 1)
+testN=string.sub(message, 5, 5)
+if nachaloStr=="#" and testN~="" then
+	nachaloHsh = string.sub(message, 2, 7)
 	hshStraniero1=string.sub(nachaloHsh,1,1)
 	hshStraniero2=string.sub(nachaloHsh,3,3)
 	hshStraniero3=string.sub(nachaloHsh,5,5)
 	hshStraniero=hshStraniero1 .. hshStraniero2 .. hshStraniero3
+	hsh1=string.sub(hsh,1,1)
+	hsh2=string.sub(hsh,3,3)
+	hsh3=string.sub(hsh,5,5)
+	hsh4=hsh1 .. hsh2 .. hsh3
+	hshC=math.abs(hsh4-hshStraniero)
+	if hshC<10 then
+		hshCMD="maodzedun"
+	else
+		hshCMD="0"
+	end
 end
 
-hsh1=string.sub(hsh,1,1)
-hsh2=string.sub(hsh,3,3)
-hsh3=string.sub(hsh,5,5)
-hsh4=hsh1 .. hsh2 .. hsh3
-hshC=(math.abs(hsh4-hshStraniero)
-
-if hshC<10 then
-	hshCMD="maodzedun"
-else
-	hshCMD="0"
-end
 
 
 local nachalo = string.sub(message, 1, 1)
