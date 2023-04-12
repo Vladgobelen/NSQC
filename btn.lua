@@ -85,12 +85,12 @@ end)
 minibtn:ClearAllPoints();
 minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
 
-local pokazat=0
+pokazat=0
 minibtn:SetScript("OnClick", function()
 
     if pokazat~=1 then
 
-        local btn5 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+        btn5 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
         btn5:SetPoint("CENTER",0,250)
         btn5:SetSize(300, 30)
         btn5:SetText("Закрыть")
@@ -119,7 +119,16 @@ minibtn:SetScript("OnClick", function()
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
 
         else
-
+        btn:Hide();
+        btn1:Hide();
+        btn2:Hide();
+        btn3:Hide();
+        btn4:Hide();
+        btn5:Hide();
+        minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+        minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+        minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+        pokazat=0
 
     end
 end)
