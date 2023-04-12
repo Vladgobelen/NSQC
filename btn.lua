@@ -6,6 +6,7 @@ btn:Hide();
 btn:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzs", "GUILD", nil, 1)
 end)
+
 local btn1 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
 btn1:SetPoint("CENTER",0, 370)
 btn1:SetSize(300, 30)
@@ -42,13 +43,6 @@ btn4:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzt", "GUILD", nil, 1)
 end)
 
-
-
-
-
-
-
-
 local minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetFrameLevel(8)
 minibtn:SetSize(32,32)
@@ -57,10 +51,9 @@ minibtn:SetMovable(true)
 --minibtn:SetNormalTexture("Interface/AddOns/NSQuestClient/icon.tga")
 --minibtn:SetPushedTexture("Interface/AddOns/NSQuestClient/icon.tga")
 --minibtn:SetHighlightTexture("Interface/AddOns/NSQuestClient/icon.tga")
-
-minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+    minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+    minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+    minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
 
 local myIconPos = 0
 
@@ -73,6 +66,7 @@ local function UpdateMapBtn()
     myIconPos = math.deg(math.atan2(Ypoa, Xpoa))
     minibtn:ClearAllPoints()
     minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)), (80 * sin(myIconPos)) - 52)
+
 end
 
 minibtn:RegisterForDrag("LeftButton")
@@ -93,28 +87,43 @@ minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 *
 
 local pokazat=0
 minibtn:SetScript("OnClick", function()
-    if pokazat==1 then
+
+    if pokazat~=1 then
+
+        local btn5 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+        btn5:SetPoint("CENTER",0,250)
+        btn5:SetSize(300, 30)
+        btn5:SetText("Закрыть")
+        btn5:SetScript("OnClick", function(self, button)
         btn:Hide();
         btn1:Hide();
         btn2:Hide();
         btn3:Hide();
         btn4:Hide();
+        btn5:Hide();
         pokazat=0
         minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
-    else
+        end)
+
         btn:Show();
         btn1:Show();
         btn2:Show();
         btn3:Show();
         btn4:Show();
+        btn5:Show();
         pokazat=1
         minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
+
+        else
+
+
     end
 end)
+
 
 
 
