@@ -1,9 +1,9 @@
-local btn = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-btn:SetPoint("CENTER",0, 400)
-btn:SetSize(300, 30)
-btn:SetText("Взять квест")
-btn:Hide();
-btn:SetScript("OnClick", function(self, button)
+btn0 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+btn0:SetPoint("CENTER",0, 400)
+btn0:SetSize(300, 30)
+btn0:SetText("Взять квест")
+btn0:Hide();
+btn0:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzs", "GUILD", nil, 1)
 end)
 
@@ -95,7 +95,8 @@ minibtn:SetScript("OnClick", function()
         btn5:SetSize(300, 30)
         btn5:SetText("Закрыть")
         btn5:SetScript("OnClick", function(self, button)
-        btn:Hide();
+
+        btn0:Hide();
         btn1:Hide();
         btn2:Hide();
         btn3:Hide();
@@ -108,7 +109,7 @@ minibtn:SetScript("OnClick", function()
 
         end)
 
-        btn:Show();
+        btn0:Show();
         btn1:Show();
         btn2:Show();
         btn3:Show();
@@ -120,7 +121,7 @@ minibtn:SetScript("OnClick", function()
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
 
         else
-        btn:Hide();
+        btn0:Hide();
         btn1:Hide();
         btn2:Hide();
         btn3:Hide();
