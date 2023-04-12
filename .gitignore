@@ -1,0 +1,10 @@
+# Ignore everything:
+*
+
+# Do not ignore these files:
+!achiv.lua
+!core.lua
+!NSQuestClient.toc
+!btn.lua
+!LICENSE
+!.gitignore
