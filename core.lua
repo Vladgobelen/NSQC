@@ -3,7 +3,7 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 --команды для управления квестами
 local nik=sender
-local versAdd=7
+local versAdd=8
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 function all_trim(s)
@@ -61,7 +61,19 @@ if nachaloStr=="#" and testN~="" then
 	hsh4=hsh1 .. hsh2 .. hsh3
 	hshC=math.abs(hsh4-hshStraniero)
 	if hshC<10 then
-		hshCMD="maodzedun"
+		hshNome1=string.sub(nachaloHsh,2,2)
+		hshNome2=string.sub(nachaloHsh,4,4)
+		hshNome3=string.sub(nachaloHsh,6,6)
+		hshNome=hshNome1 .. hshNome2 .. hshNome3
+		hshNome=string.format("%03d",hshNome)
+		hshMyNome1=string.sub(hsh,2,2)
+		hshMyNome2=string.sub(hsh,4,4)
+		hshMyNome3=string.sub(hsh,6,6)
+		hshMyNome=hshMyNome1 .. hshMyNome2 .. hshMyNome3
+		hshMyNome=string.format("%03d",hshMyNome)
+		if hshMyNome==hshNome then
+			hshCMD="maodzedun"
+		end
 	else
 		hshCMD="0"
 	end

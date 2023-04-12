@@ -32,7 +32,7 @@ function hashStr (nome)
 	nome2=string.sub(nome, 2, 2)
 	nome1=alfabet(nome1)
 	nome2=alfabet(nome2)
-	hNome=nome1*nome2
+	hNome=nome1 .. nome2
 	hNome=string.sub(hNome, 1, 3)
 	hNome=string.format("%03d",hNome)
 	r1=string.sub(i, 1, 1)
@@ -61,7 +61,19 @@ if nachaloStr=="#" and testN~="" then
 	hsh4=hsh1 .. hsh2 .. hsh3
 	hshC=math.abs(hsh4-hshStraniero)
 	if hshC<10 then
-		hshCMD="maodzedun"
+		hshNome1=string.sub(nachaloHsh,2,2)
+		hshNome2=string.sub(nachaloHsh,4,4)
+		hshNome3=string.sub(nachaloHsh,6,6)
+		hshNome=hshNome1 .. hshNome2 .. hshNome3
+		hshNome=string.format("%03d",hshNome)
+		hshMyNome1=string.sub(hsh,2,2)
+		hshMyNome2=string.sub(hsh,4,4)
+		hshMyNome3=string.sub(hsh,6,6)
+		hshMyNome=hshMyNome1 .. hshMyNome2 .. hshMyNome3
+		hshMyNome=string.format("%03d",hshMyNome)
+		if hshMyNome==hshNome then
+			hshCMD="maodzedun"
+		end
 	else
 		hshCMD="0"
 	end
