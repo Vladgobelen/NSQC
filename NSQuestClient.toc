@@ -2,7 +2,7 @@
 ## Title: NSQuestClient
 ## Notes: NSQuestClient
 ## Author: Vladgobelen
-## SavedVariables:
+## SavedVariables: clsNS
 
 lib\lib_hook.lua
 lib\lib_math.lua

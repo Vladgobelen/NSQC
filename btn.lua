@@ -19,7 +19,7 @@ end)
 local btn2 = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
 btn2:SetPoint("CENTER",0,340)
 btn2:SetSize(300, 30)
-btn2:SetText("Взять бонусный квст вне лимита")
+btn2:SetText("Взять бонусный квест вне лимита")
 btn2:Hide();
 btn2:SetScript("OnClick", function(self, button)
 	SendChatMessage("#zzz", "GUILD", nil, 1)
