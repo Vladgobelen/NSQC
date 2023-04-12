@@ -105,6 +105,7 @@ minibtn:SetScript("OnClick", function()
         minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+
         end)
 
         btn:Show();
