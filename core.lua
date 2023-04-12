@@ -3,7 +3,7 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 --команды для управления квестами
 local nik=sender
-local versAdd=4
+local versAdd=5
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 function all_trim(s)
@@ -27,12 +27,8 @@ shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБ�
 end
 
 function hashStr (nome)
-	i = time()
-	i = string.sub(i, 8, 9)
-	i = i * i
-	i = i * 3.1415926535
-	i = string.sub(i, 3, 5)
-	i = string.format("%03d",i)
+	local i = time()
+	i = i % 1000
 	nome1=string.sub(nome, 1, 1)
 	nome2=string.sub(nome, 2, 2)
 	nome1=alfabet(nome1)
@@ -51,7 +47,26 @@ function hashStr (nome)
 end
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
-hshStraniero=hashStr(sender)
+testMes=mysplit(message)
+
+if testMes[1]=="#" then
+	hshStraniero1=string.sub(testMes[2],1,1)
+	hshStraniero2=string.sub(testMes[2],3,3)
+	hshStraniero3=string.sub(testMes[2],5,5)
+	hshStraniero=hshStraniero1 .. hshStraniero2 .. hshStraniero3
+end
+
+hsh1=string.sub(hsh,1,1)
+hsh2=string.sub(hsh,3,3)
+hsh3=string.sub(hsh,5,5)
+hsh4=hsh1 .. hsh2 .. hsh3
+hshC=(math.abs(hsh4-hshStraniero)
+
+if hshC<10 then
+	hshCMD="maodzedun"
+else
+	hshCMD="0"
+end
 local nachalo = string.sub(message, 1, 1)
 
 msg3=mysplit(message)
@@ -85,7 +100,7 @@ if string.find (message, "покажи ачивку") and string.find(message, m
 		i=i+1
 	end
 	if k==0 then
-		SendChatMessage(hsh .. " #aai " .. "уже выполнена полностью: " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+		SendChatMessage("#" .. hsh .. " #aai " .. "уже выполнена полностью: " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
 	else
 		SendChatMessage("*" .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
 	end
@@ -94,10 +109,10 @@ if string.find (message, "покажи ачивку") and string.find(message, m
 end
 
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
-        SendChatMessage(hsh .." текущая версия " .. versAdd, "OFFICER", nil, 1)
+        SendChatMessage("#" .. hsh .." текущая версия " .. versAdd, "OFFICER", nil, 1)
 end
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "покажимне") then
-	SendChatMessage(hsh .." " .. hshStraniero, "OFFICER", nil, 1)
+	SendChatMessage("#" .. hsh .." " .. hshStraniero, "OFFICER", nil, 1)
 end
 end
 )
