@@ -156,8 +156,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             mioCel1=sqrt((nXres-posmioXN)^2+(nYres-posmioYN)^2)
             if mioCel > mioCel1 then
                 btn[8]:SetText("тепло")
+                btn[8]:Enable()
             else
                 btn[8]:SetText("холодно")
+                btn[8]:Disable()
             end
             mioTime=1
         end
