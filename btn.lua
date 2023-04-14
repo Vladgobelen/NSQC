@@ -21,7 +21,7 @@ btn:configure(2,0,370,300,30,"#zzr","Сдать квест");
 btn:configure(3,0,340,300,30,"#zzz","Взять бонусный квест вне лимита");
 btn:configure(4,0,310,300,30,"#zzy","Сдать бонусный квест вне лимита");
 btn:configure(5,0,280,300,30,"#zzt","Узнать свой гилдлвл");
-btn:configure(8,0,120,100,30,"","тест");
+btn:configure(8,-400,400,100,30,"","тест");
 btn:configure(7,0,250,300,30,"#zzp","Отказаться от квеста");
 
 
@@ -107,67 +107,63 @@ end
 btn[8]:SetScript("OnClick",function(self, button)
 if setPos==1 or setPos==nil then
     setPos=0
-    print (setPos)
+
     framePos[1]=setPos
 else
     setPos=1
-    print (setPos)
+
     framePos[1]=setPos
 end
 
 end)
 
 
-local frame1 = CreateFrame("FRAME")
-local timeElapsed = 0
-frame1:HookScript("OnUpdate", function(self, elapsed)
-  timeElapsed = timeElapsed + elapsed
-  while (timeElapsed > 1) do
-        timeElapsed = timeElapsed - 0.1
-            if framePos[1]==1 then
 
-            local x, y = GetCursorPosition()
-            ij=1
-            btn[8]:SetPoint("CENTER",x-500-ij, y-340-ij)
-            framePos["X"]=x
-            framePos["Y"]=y
-            ij=ij+10
-            else
-            end
-
-  end
-end)
-local GC_Sniffer = CreateFrame("Frame")
-GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
-GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+local GC_Sniffer111 = CreateFrame("Frame")
+GC_Sniffer111:RegisterEvent("CHAT_MSG_GUILD")
+GC_Sniffer111:SetScript("OnEvent", function (self, event, message, sender)
 local myNome = GetUnitName("player")
 if sender==myNome and message=="stop" then
-framePos[1]=0
-btn[8]:Disable()
+    framePos[1]=0
+    btn[8]:Disable()
 elseif sender==myNome and message=="start" then
-framePos[1]=1
-btn[8]:Enable()
+    framePos[1]=1
+    btn[8]:Enable()
 elseif sender==myNome and message=="скрыть" then
-btn[8]:Hide()
+    btn[8]:Hide()
 elseif sender==myNome and message=="показать" then
-btn[8]:Show()
+    btn[8]:Show()
+    btn[8]:Disable()
 end
+
+
 end
 )
 
 
-
-
-
-local frame = CreateFrame("FRAME")
+local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
-frame:HookScript("OnUpdate", function(self, elapsed)
-  timeElapsed = timeElapsed + elapsed
-  while (timeElapsed > 1) do
-        timeElapsed = timeElapsed - 0.5
-        n=time()
-        btn[8]:SetText(n)
-
-  end
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 1 then
+		timeElapsed = 0
+		if mioTime < 2 then
+            mioTime=mioTime+1
+            posmioX, posmioY = GetPlayerMapPosition("player");
+            mioCel=sqrt((nXres-posmioX)^2+(nYres-posmioY)^2)
+        elseif mioTime >= 2 then
+            posmioXN, posmioYN = GetPlayerMapPosition("player");
+            mioCel1=sqrt((nXres-posmioXN)^2+(nYres-posmioYN)^2)
+            if mioCel > mioCel1 then
+                btn[8]:SetText("тепло")
+            else
+                btn[8]:SetText("холодно")
+            end
+            mioTime=1
+        end
+   end
 end)
+
+
+
 
