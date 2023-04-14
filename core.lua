@@ -3,13 +3,12 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 --команды для управления квестами
 local nik=sender
-local versAdd=10
+local versAdd=11
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
 msg3=mysplit(message)
-
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
 	msg1 = mysplit(message)
 	msg1 = msg1[5]
@@ -50,6 +49,7 @@ end
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
         SendChatMessage(hsh .." текущая версия " .. versAdd, "OFFICER", nil, 1)
 end
+
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "покажимне") then
 	SendChatMessage(hsh, "OFFICER", nil, 1)
 end

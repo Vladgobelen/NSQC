@@ -17,7 +17,6 @@ function kirTest(b,n1)
 test1=b:sub(n1,n1)
 testN=b:byte(7)
 testN=tonumber(testN)
-print (testN)
 if testN == 208 then
 	r=b:sub(n1*2-1,n1*2)
 else
@@ -33,9 +32,11 @@ shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБ�
 end
 
 function hashStr (nome)
-	test123=string.utf8sub(nome,1,3)
 	local i = time()
-	i = i % 1000
+	i = i % 10000
+	i=tostring(i)
+	i=string.utf8sub(i,2,3)
+	i=string.format("%03d", i)
 	nomeLen=string.utf8len(nome)
 	nome1={}
 	for startLen=1,nomeLen do
