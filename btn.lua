@@ -5,7 +5,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id]:SetSize(sizex, sizey)
     self[id]:SetText(message)
     self[id]:Hide();
-    if id==7 then
+    if id==7 or id==1 or id==2 then
     self[id]:SetScript("OnClick",function(self, button)
            SendChatMessage(zzid, "OFFICER", nil, 1) end)
     else
