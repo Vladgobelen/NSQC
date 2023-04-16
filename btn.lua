@@ -16,9 +16,16 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
     else
     self[id]:SetScript("OnClick",function(self, button)
-           SendChatMessage(zzid, "GUILD", nil, 1) end)
+        SendChatMessage(zzid, "GUILD", nil, 1) end)
+        if id==4 then
+            self[id]:SetScript("OnClick",function(self, button)
+            SendChatMessage(zzid, "GUILD", nil, 1)
+            testQ["бонусный_квест"]=9999
+            end)
+        end
     end
 end
+
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
 -- видимо я так понял имеет значение порядок создания кнопок
@@ -160,11 +167,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         btn[2]:SetText("Нет взятых квестов")
         btn[7]:Disable()
         btn[7]:SetText("Нет взятых квестов")
+        btn[1]:Enable()
+        btn[1]:SetText("Взять квест")
 	elseif testQ["взятый_квест"]~=nil or testQ["взятый_квест"]~="9999" then
         testComplit=testQ["взятый_квест"]
         id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
         btn[7]:Enable()
         btn[7]:SetText("Отказаться от квеста")
+        btn[1]:Disable()
+        btn[1]:SetText("Уже взят квест" .. " " .. testQ["взятый_квест"])
         if completed ~= true then
             btn[2]:Disable()
             btn[2]:SetText("Ачивка не выполнена")
@@ -174,6 +185,30 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             btn[2]:SetText("Сдать квест")
         end
     end
+
+    if testQ["бонусный_квест"]==nil or testQ["бонусный_квест"]==9999 then
+        btn[3]:Enable()
+        btn[3]:SetText("Взять бонусный квест")
+        btn[4]:Disable()
+        btn[4]:SetText("Бонусный квест не взят")
+    elseif testQ["бонусный_квест"]~=nil or testQ["бонусный_квест"]~=9999 then
+        local kol=0
+        for guokZ=1,GetNumGuildMembers(true) do
+			local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(guokZ)
+			kol=kol+1
+		end
+        btn[3]:Disable()
+        btn[3]:SetText("Квест уже взят")
+        btn[4]:Disable()
+        btn[4]:SetText("В гильдии " .. kol .. " игроков из " .. testQ["бонусный_квест"])
+
+		if kol>=testQ["бонусный_квест"] then
+            btn[4]:Enable()
+            btn[4]:SetText("Сдать квест")
+		end
+    end
+
+
 	if nXres ~= nil then
 	if timeElapsed > 1 then
 		timeElapsed = 0
