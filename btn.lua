@@ -159,38 +159,11 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
-	if testQ==nil then
-        testQ={}
-    end
-    if testQ[myNome]==nil then
-        testQ[myNome]={}
-    end
-	if testQ[myNome]["взятый_квест"]==nil or testQ[myNome]["взятый_квест"]=="9999" then
-        btn[2]:Disable()
-        btn[2]:SetText("Нет взятых квестов")
-        btn[7]:Disable()
-        btn[7]:SetText("Нет взятых квестов")
-        btn[8]:Disable()
-        btn[8]:SetText("Нет взятых квестов")
-	elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
-        testComplit=testQ[myNome]["взятый_квест"]
-        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
-        btn[7]:Enable()
-        btn[7]:SetText("Отказаться от квеста")
-        btn[8]:Enable()
-        btn[8]:SetText("Узнать текущий квест")
-        if completed ~= true then
-            btn[2]:Disable()
-            btn[2]:SetText("Ачивка не выполнена")
 
-        else
-            btn[2]:Enable()
-            btn[2]:SetText("Сдать квест")
-        end
-    end
-	if nXres ~= nil then
+
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if nXres ~= nil then
 		if mioTime < 2 then
             mioTime=mioTime+1
             posmioX, posmioY = GetPlayerMapPosition("player");
@@ -221,8 +194,40 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             end
             mioTime=1
         end
+        end
+
+        if testQ==nil then
+        testQ={}
+    end
+    if testQ[myNome]==nil then
+        testQ[myNome]={}
+    end
+	if testQ[myNome]["взятый_квест"]==nil or testQ[myNome]["взятый_квест"]=="9999" then
+        btn[2]:Disable()
+        btn[2]:SetText("Нет взятых квестов")
+        btn[7]:Disable()
+        btn[7]:SetText("Нет взятых квестов")
+        btn[8]:Disable()
+        btn[8]:SetText("Нет взятых квестов")
+	elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
+        testComplit=testQ[myNome]["взятый_квест"]
+        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+        btn[7]:Enable()
+        btn[7]:SetText("Отказаться от квеста")
+        btn[8]:Enable()
+        btn[8]:SetText("Узнать текущий квест")
+        if completed ~= true then
+            btn[2]:Disable()
+            btn[2]:SetText("Ачивка не выполнена")
+
+        else
+            btn[2]:Enable()
+            btn[2]:SetText("Сдать квест")
+        end
+    end
+
    end
-   end
+
 end)
 
 
