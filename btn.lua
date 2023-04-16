@@ -195,7 +195,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
     if testQ["взятый_квест"]==nil or testQ["взятый_квест"]=="9999" then
                 btn[8]:Disable();
-                btn[9]:SetText("Нет взятых квестов")
+                btn[8]:SetText("Нет взятых квестов")
             else
                 btn[8]:SetText("Узнать текущий квест")
                 btn[8]:Enable()
