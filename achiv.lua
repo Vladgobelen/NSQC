@@ -7,7 +7,9 @@ local versAdd=3
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
-
+if testQ==nil then
+	testQ={}
+end
 local nachalo = string.sub(message, 1, 1)
 
 if string.find (message, "#aaa") and string.find (message, hsh) and nachalo~="*" then
@@ -60,6 +62,12 @@ if string.find (message, hsh) and string.find (message, "#aah") then
 
 end
 
+if string.find (message, hsh) and string.find (message, "#aae") then
+	msg3 = mysplit(message)
+	msg3 = msg3[6]
+	msg3 = tonumber(msg3)
+	testQ["взятый_квест"]=msg3
+end
 if sender == "Витинари" or sender == "Двацветок" or sender == "Хэвлок" or sender == "Железобетонс" or sender == "Детрит" then
 local testXY
 testXY=mysplit(message)
@@ -90,6 +98,7 @@ if testXY[1]=="#zzn" then
 	nXres="0."..nXres
 	nYres="0."..nYres
 	mioTime=1
+	testRasstoyanie=0
 end
 end
 

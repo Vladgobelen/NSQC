@@ -5,9 +5,15 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id]:SetSize(sizex, sizey)
     self[id]:SetText(message)
     self[id]:Hide();
+
     if id==7 or id==1 or id==2 then
     self[id]:SetScript("OnClick",function(self, button)
-           SendChatMessage(zzid, "OFFICER", nil, 1) end)
+        SendChatMessage(zzid, "OFFICER", nil, 1)
+        if id==2 or id==7 then
+            testQ["взятый_квест"]="9999"
+        end
+    end)
+
     else
     self[id]:SetScript("OnClick",function(self, button)
            SendChatMessage(zzid, "GUILD", nil, 1) end)
@@ -65,6 +71,7 @@ minibtn:ClearAllPoints();
 minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
 pokazat=0
 minibtn:SetScript("OnClick", function()
+
     if pokazat~=1 then
         ii=6
         btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
@@ -145,12 +152,45 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
+	if testQ==nil then
+        testQ={}
+    end
+	if testQ["взятый_квест"]==nil or testQ["взятый_квест"]=="9999" then
+        btn[2]:Disable()
+        btn[2]:SetText("Нет взятых квестов")
+	elseif testQ["взятый_квест"]~=nil or testQ["взятый_квест"]~="9999" then
+        testComplit=testQ["взятый_квест"]
+        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+        if completed ~= true then
+            btn[2]:Disable()
+            btn[2]:SetText("Ачивка не выполнена")
+
+        else
+            btn[2]:Enable()
+            btn[2]:SetText("Сдать квест")
+        end
+    end
+	if nXres ~= nil then
 	if timeElapsed > 1 then
 		timeElapsed = 0
 		if mioTime < 2 then
             mioTime=mioTime+1
             posmioX, posmioY = GetPlayerMapPosition("player");
             mioCel=sqrt((nXres-posmioX)^2+(nYres-posmioY)^2)
+            if mioCel>0.01 then
+                if testRasstoyanie~=1 then
+                    SendChatMessage("Я сбежал с маршрута", "GUILD", nil, 1)
+                    testRasstoyanie=1
+                else
+                end
+            else
+                if testRasstoyanie~=0 then
+                    SendChatMessage("Я вернулся на маршрут", "GUILD", nil, 1)
+                    testRasstoyanie=0
+                else
+                end
+            end
+
         elseif mioTime >= 2 then
             posmioXN, posmioYN = GetPlayerMapPosition("player");
             mioCel1=sqrt((nXres-posmioXN)^2+(nYres-posmioYN)^2)
@@ -163,6 +203,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             end
             mioTime=1
         end
+   end
    end
 end)
 
