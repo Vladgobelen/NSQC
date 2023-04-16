@@ -61,19 +61,14 @@ if string.find (message, hsh) and string.find (message, "#aah") then
 	end
 
 end
-
+local myNome = GetUnitName("player")
 if string.find (message, hsh) and string.find (message, "#aae") then
 	msg3 = mysplit(message)
 	msg3 = msg3[6]
 	msg3 = tonumber(msg3)
-	testQ["взятый_квест"]=msg3
+	testQ[myNome]["взятый_квест"]=msg3
 end
-msg4 = mysplit(message)
-msg4 = msg4[11]
-if msg4~=nil and string.find (message, "#zzl") then
-	msg4 = tonumber(msg4)
-	testQ["бонусный_квест"]=msg4
-end
+
 
 if sender == "Витинари" or sender == "Двацветок" or sender == "Хэвлок" or sender == "Железобетонс" or sender == "Детрит" then
 local testXY
