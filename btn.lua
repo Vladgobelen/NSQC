@@ -198,7 +198,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			kol=kol+1
 		end
         btn[3]:Disable()
-        btn[3]:SetText("Квест уже взят")
+        btn[3]:SetText("Бонусный квест уже взят")
         btn[4]:Disable()
         btn[4]:SetText("В гильдии " .. kol .. " игроков из " .. testQ["бонусный_квест"])
 
