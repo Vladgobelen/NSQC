@@ -158,9 +158,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if testQ["взятый_квест"]==nil or testQ["взятый_квест"]=="9999" then
         btn[2]:Disable()
         btn[2]:SetText("Нет взятых квестов")
+        btn[7]:Disable()
+        btn[7]:SetText("Нет взятых квестов")
 	elseif testQ["взятый_квест"]~=nil or testQ["взятый_квест"]~="9999" then
         testComplit=testQ["взятый_квест"]
         id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+        btn[7]:Enable()
+        btn[7]:SetText("Отказаться от квеста")
         if completed ~= true then
             btn[2]:Disable()
             btn[2]:SetText("Ачивка не выполнена")
