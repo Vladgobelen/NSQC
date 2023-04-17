@@ -15,6 +15,7 @@
 !libs/UTF8/UTF8.toc
 !libs/UTF8/utf8data.lua
 !minimap.lua
+!libs/Astrolabe/
 !libs/Astrolabe/Astrolabe.lua
 !libs/Astrolabe/AstrolabeMapMonitor.lua
 !libs/Astrolabe/DongleStub.lua
