@@ -1,3 +1,6 @@
+Astrolabe = DongleStub("Astrolabe-0.4")
+Astrolabe.MinimapUpdateTime = 0.1
+
 local myNome = GetUnitName("player")
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
@@ -153,6 +156,12 @@ end
 
 end
 )
+
+
+
+
+
+
 
 
 local frameTime = CreateFrame("FRAME")
