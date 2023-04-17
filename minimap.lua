@@ -34,13 +34,13 @@ end)--]]
 
 
 
-local UpdateSpeed = 1
+local UpdateSpeed = 0.01
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
 local xmove = 0.5 -- move this much each update
 local f = CreateFrame("Frame")
 f.Text1 = f:CreateFontString()
 f.Text1:SetFontObject(GameFontNormal)
-f.Text1:SetText("желтые глюки ползут по экрану медленно медленно, плавно плавно..")
+f.Text1:SetText("")
 f.Text1:SetPoint("LEFT", UIParent)
 
 local xos = -f.Text1:GetWidth() -- Set to start offscreen by the width ofm the text
@@ -58,9 +58,11 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if nXres~=nil or nYres~=nil then
 	xxx,yyy=GetCursorPosition();
 
-YYY=1-nYres
-YYY1=GetScreenWidth()
-iconFrame:SetPoint("BOTTOMLEFT", 566-7, 395-45)
+XXX=10+(1004*nXres)-7
+
+YYY=(768 - (70 + (667 * nYres)))-5
+---YYY=768-(112 + (386 * nYres))
+iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
 end
 
 	f.Text1:SetPoint("LEFT", UIParent, xos, 0) -- reposition the text to its new location
