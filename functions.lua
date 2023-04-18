@@ -66,3 +66,50 @@ function tablelength(T)
 	for _ in pairs(T) do count = count + 1 end
 	return count
 end
+
+function getPOS(x,y)
+	local current = GetCurrentResolution()
+	if current then
+		width, height = string.match(select(current, GetScreenResolutions()), "(%d+)x(%d+)")
+	end
+	width=tonumber(width)
+	height=tonumber(height)
+	local XXX
+	local YYY
+	local par1=10
+	local par2=1004
+	local par3=7
+	local par4=768
+	local par5=70
+	local par6=667
+	local par7=5
+	local par8=386
+	local par9=575
+	local par10=0
+	local par11=0
+
+	testResolution=width/height
+	testResolution=string.sub(testResolution,1,3)
+	testResolution=tonumber(testResolution)
+	if testResolution==1.7 then
+		par10=par10+170
+	elseif testResolution==1.6 then
+		par10=par10+103
+	elseif testResolution==2.4 then
+		par10=par10+410
+	elseif testResolution==1.5 and width==1440 then
+		par10=par10+65
+	elseif testResolution==1.2 then
+		par11=par11+25
+	elseif testResolution==1.5 and width~=1440 then
+		par10=par10+85
+	end
+	if WorldMapFrameSizeUpButton:IsVisible()==nil then
+		XXX=(par1+(par2*x)-par3)+par10
+		YYY=(((par4 - (par5 + (par6 * y)))-par7))+par11
+	else
+		YYY=((1-y)*par8)+10
+		XXX=(x*par9)+15
+	end
+	return XXX,YYY
+end

@@ -1,7 +1,4 @@
-local current = GetCurrentResolution()
-if current then
-	width, height = string.match(select(current, GetScreenResolutions()), "(%d+)x(%d+)")
-end
+
 
 -- Создание фрейма, который будет содержать текстуру иконки
 iconFrame = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
@@ -20,21 +17,22 @@ iconFrame:SetWidth(12)
 -- Показ фрейма на карте/миникарте
 iconFrame:Show()
 
-
---[[local myButton = CreateFrame("Button", "MyButtonName", Minimap, "UIPanelButtonTemplate")
+--[[
+myButton = CreateFrame("Button", "MyButtonName", Minimap, "UIPanelButtonTemplate")
 myButton:SetSize(16, 16)
-myButton:SetPoint("CENTER", Minimap, 10, -10)
 myButton:SetText("")
+		myButton:SetPoint("BOTTOMLEFT", Minimap, XXX, YYY)
+
 myButton:SetNormalFontObject("GameFontNormal")
 myButton:SetHighlightFontObject("GameFontHighlight")
 myButton:SetScript("OnClick", function()
 --Ваш код
-end)--]]
+end)
+--]]
 
 
 
-
-local UpdateSpeed = 0.01
+local UpdateSpeed = 1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
 local xmove = 0.5 -- move this much each update
 local f = CreateFrame("Frame")
@@ -55,15 +53,19 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if xos > ScrollMax then -- we're offscreen to the right so...
 		xos =  -self.Text1:GetWidth() -- reset to the left again
 	end
-	if nXres~=nil or nYres~=nil then
+
 	xxx,yyy=GetCursorPosition();
+	if nXres~=nil or nYres~=nil then
+		XXX,YYY=getPOS(nXres,nYres)
+		iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
 
-XXX=10+(1004*nXres)-7
+	end
+--posX, posY = GetPlayerMapPosition("player");(posX*575)+15, ((1-posY)*386)+10)
 
-YYY=(768 - (70 + (667 * nYres)))-5
----YYY=768-(112 + (386 * nYres))
-iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
-end
+
+
+
+
 
 	f.Text1:SetPoint("LEFT", UIParent, xos, 0) -- reposition the text to its new location
 end)
