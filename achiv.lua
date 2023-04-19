@@ -101,6 +101,8 @@ if testXY[1]=="#zzn" then
 	nYres="0."..nYres
 	mioTime=1
 	testRasstoyanie=0
+	nKont=testXY[3]
+	nLok=testXY[4]
 end
 end
 

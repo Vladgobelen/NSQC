@@ -172,38 +172,47 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 1 then
 		timeElapsed = 0
-		if nXres ~= nil then
-		if mioTime < 2 then
-            mioTime=mioTime+1
-            posmioX, posmioY = GetPlayerMapPosition("player");
-            mioCel=sqrt((nXres-posmioX)^2+(nYres-posmioY)^2)
-            if mioCel>0.01 then
-                if testRasstoyanie~=1 then
-                    SendChatMessage("Я сбежал с маршрута", "GUILD", nil, 1)
-                    testRasstoyanie=1
-                else
-                end
-            else
-                if testRasstoyanie~=0 then
-                    SendChatMessage(hsh .. " Я вернулся на маршрут", "GUILD", nil, 1)
-                    testRasstoyanie=0
-                else
-                end
-            end
+		mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
+		mioKont=tonumber(mioKont)
+		nKont=tonumber(nKont)
+		mioLok=tonumber(mioLok)
+		nLok=tonumber(nLok)
+		if mioKont==nKont then
+            if mioLok==nLok then
+                if nXres ~= nil then
+                    if mioTime < 2 then
+                        mioTime=mioTime+1
+                        posmioX, posmioY = GetPlayerMapPosition("player");
+                        mioCel=sqrt((nXres-posmioX)^2+(nYres-posmioY)^2)
+                        if mioCel>0.01 then
+                            if testRasstoyanie~=1 then
+                                SendChatMessage("Я сбежал с маршрута", "GUILD", nil, 1)
+                                testRasstoyanie=1
+                            else
+                            end
+                        else
+                            if testRasstoyanie~=0 then
+                                SendChatMessage(hsh .. " Я вернулся на маршрут", "GUILD", nil, 1)
+                                testRasstoyanie=0
+                            else
+                            end
+                        end
 
-        elseif mioTime >= 2 then
-            posmioXN, posmioYN = GetPlayerMapPosition("player");
-            mioCel1=sqrt((nXres-posmioXN)^2+(nYres-posmioYN)^2)
-            if mioCel > mioCel1 then
-                btn[9]:SetText("тепло")
-                btn[9]:Enable()
-            else
-                btn[9]:SetText("холодно")
-                btn[9]:Disable()
+                    elseif mioTime >= 2 then
+                        posmioXN, posmioYN = GetPlayerMapPosition("player");
+                        mioCel1=sqrt((nXres-posmioXN)^2+(nYres-posmioYN)^2)
+                        if mioCel > mioCel1 then
+                            btn[9]:SetText("тепло")
+                            btn[9]:Enable()
+                        else
+                            btn[9]:SetText("холодно")
+                            btn[9]:Disable()
+                        end
+                        mioTime=1
+                    end
+                    end
+                end
             end
-            mioTime=1
-        end
-        end
 
         if testQ==nil then
         testQ={}

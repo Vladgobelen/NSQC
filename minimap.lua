@@ -55,10 +55,24 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	end
 
 	xxx,yyy=GetCursorPosition();
-	if nXres~=nil or nYres~=nil then
-		XXX,YYY=getPOS(nXres,nYres)
-		iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
+	mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
+	mioKont=tonumber(mioKont)
+	nKont=tonumber(nKont)
+	mioLok=tonumber(mioLok)
+	nLok=tonumber(nLok)
+	if mioKont==nKont then
+		if mioLok==nLok then
+			if nXres~=nil or nYres~=nil then
+				XXX,YYY=getPOS(nXres,nYres)
+				iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
+				iconFrame:Show()
+			end
 
+		else
+			iconFrame:Hide()
+		end
+	else
+		iconFrame:Hide()
 	end
 --posX, posY = GetPlayerMapPosition("player");(posX*575)+15, ((1-posY)*386)+10)
 
