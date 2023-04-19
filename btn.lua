@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-
+versAdd=25
 local myNome = GetUnitName("player")
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
@@ -87,7 +87,10 @@ minibtn:SetScript("OnClick", function()
         btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
         btn[ii]:SetPoint("CENTER",0,140)
         btn[ii]:SetSize(300, 30)
-        btn[ii]:SetText("Закрыть")
+        local textVersia="Версия:"
+        local textZakryt=" Закрыть"
+        local verText=textVersia .. versAdd .. textZakryt
+        btn[ii]:SetText(verText)
         btn[ii]:Hide();
         btn[ii]:SetScript("OnClick", function(self, button)
         for ii=1,8 do
