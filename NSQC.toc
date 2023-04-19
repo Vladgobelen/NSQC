@@ -1,0 +1,22 @@
+## interface: 30300
+## Title: NSQC
+## Notes: NSQC
+## Author: Vladgobelen
+## SavedVariables: clsNS, framePos, testQ
+
+lib\lib_hook.lua
+lib\lib_math.lua
+lib\lib_string.lua
+lib\lib_table.lua
+libs\UTF8\utf8.lua
+libs\Astrolabe\Load.xml
+#################
+core.lua
+achiv.lua
+btn.lua
+functions.lua
+Astrolabe.lua
+AstrolabeMapMonitor.lua
+DongleStub.lua
+Load.xml
+minimap.lua
