@@ -59,7 +59,11 @@ if string.find (message, "покажи предмет") and string.find(message,
 	itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType,
 itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice =
     GetItemInfo(predmet)
-	SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
+    if itemLink~=nil then
+		SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
+	else
+		SendChatMessage("* предмет " .. predmet .. " не существует", "OFFICER", nil, 1)
+	end
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then

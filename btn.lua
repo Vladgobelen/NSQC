@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=28
+versAdd=29
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -17,18 +17,15 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
         if id==2 then
             if testQ[myNome]["лвл_квестов"]~=2 then
                 SendChatMessage(zzid, "OFFICER", nil, 1)
-                btn[1]:Enable()
-                btn[1]:SetText("Взять квест")
+
             elseif testQ[myNome]["лвл_квестов"]==2 then
-                SendChatMessage(#aam, "OFFICER", nil, 1)
-                btn[1]:Enable()
-                btn[1]:SetText("Взять квест")
+                SendChatMessage("#aam", "OFFICER", nil, 1)
+
             end
         else
             SendChatMessage(zzid, "OFFICER", nil, 1)
         end
-        if id==2 or id==7 then
-            testQ[myNome]["взятый_квест"]="9999"
+        if id==7 then
             btn[1]:Enable()
             btn[1]:SetText("Взять квест")
         end
