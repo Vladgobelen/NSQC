@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=25
+versAdd=26
 local myNome = GetUnitName("player")
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
@@ -81,42 +81,44 @@ minibtn:ClearAllPoints();
 minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
 pokazat=0
 minibtn:SetScript("OnClick", function()
-
-    if pokazat~=1 then
-        ii=6
-        btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-        btn[ii]:SetPoint("CENTER",0,140)
-        btn[ii]:SetSize(300, 30)
-        local textVersia="Версия:"
-        local textZakryt=" Закрыть"
-        local verText=textVersia .. versAdd .. textZakryt
-        btn[ii]:SetText(verText)
-        btn[ii]:Hide();
-        btn[ii]:SetScript("OnClick", function(self, button)
-        for ii=1,8 do
+    minibtn:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+    if arg1=="LeftButton" then
+        if pokazat~=1 then
+            ii=6
+            btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+            btn[ii]:SetPoint("CENTER",0,140)
+            btn[ii]:SetSize(300, 30)
+            btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
+            btn[ii]:SetScript("OnClick", function(self, button)
+            for ii=1,8 do
+                btn[ii]:Hide();
+            end
+            pokazat=0
+            minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+            minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+            minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+            end)
+            for ii=1,8 do
+                btn[ii]:Show();
+            end
+            pokazat=1
+            minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
+            minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
+            minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
+        else
+            for ii=1,8 do
+                btn[ii]:Hide();
+            end
+            minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+            minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+            minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+            pokazat=0
         end
-        pokazat=0
-        minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-        minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-        minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
-        end)
-        for ii=1,8 do
-            btn[ii]:Show();
-        end
-        pokazat=1
-        minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
-        minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
-        minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
-    else
-        for ii=1,8 do
-            btn[ii]:Hide();
-        end
-        minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-        minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-        minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
-        pokazat=0
-
+    elseif arg1=="RightButton" then
+        print ("Информация:")
+        print ("Версия NSQC: " .. versAdd)
+        print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
     end
 end)
 
@@ -175,6 +177,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 1 then
 		timeElapsed = 0
+
+
+
 		mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
 		mioKont=tonumber(mioKont)
 		nKont=tonumber(nKont)
