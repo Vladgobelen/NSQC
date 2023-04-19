@@ -1,7 +1,9 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=26
+versAdd=27
 local myNome = GetUnitName("player")
+print("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон")
+print("NSQC: Клик правой кнопкой: показать информацию")
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
