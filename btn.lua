@@ -32,14 +32,14 @@ end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
 -- видимо я так понял имеет значение порядок создания кнопок
-btn:configure(1,0,400,300,30,"#zzs","Взять квест");
-btn:configure(2,0,370,300,30,"#zzr","Сдать квест");
-btn:configure(3,0,340,300,30,"#zzz","Взять бонусный квест вне лимита");
-btn:configure(4,0,310,300,30,"#zzy","Сдать бонусный квест вне лимита");
-btn:configure(5,0,280,300,30,"#zzt","Узнать свой гилдлвл");
+btn:configure(1,0,350,300,30,"#zzs","Взять квест");
+btn:configure(2,0,320,300,30,"#zzr","Сдать квест");
+btn:configure(3,0,290,300,30,"#zzz","Взять бонусный квест вне лимита");
+btn:configure(4,0,260,300,30,"#zzy","Сдать бонусный квест вне лимита");
+btn:configure(5,0,230,300,30,"#zzt","Узнать свой гилдлвл");
 btn:configure(9,-400,400,100,30,"","тест");
-btn:configure(7,0,250,300,30,"#zzp","Отказаться от квеста");
-btn:configure(8,0,220,300,30,"","Узнать текущий квест");
+btn:configure(7,0,200,300,30,"#zzp","Отказаться от квеста");
+btn:configure(8,0,170,300,30,"","Узнать текущий квест");
 
 
 local minibtn = CreateFrame("Button", nil, Minimap)
@@ -85,7 +85,7 @@ minibtn:SetScript("OnClick", function()
     if pokazat~=1 then
         ii=6
         btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-        btn[ii]:SetPoint("CENTER",0,190)
+        btn[ii]:SetPoint("CENTER",0,140)
         btn[ii]:SetSize(300, 30)
         btn[ii]:SetText("Закрыть")
         btn[ii]:Hide();
