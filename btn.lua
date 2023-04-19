@@ -185,7 +185,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 end
             else
                 if testRasstoyanie~=0 then
-                    SendChatMessage("Я вернулся на маршрут", "GUILD", nil, 1)
+                    SendChatMessage(hsh .. " Я вернулся на маршрут", "GUILD", nil, 1)
                     testRasstoyanie=0
                 else
                 end

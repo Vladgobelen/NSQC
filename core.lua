@@ -46,6 +46,13 @@ if string.find (message, "покажи ачивку") and string.find(message, m
 
 
 end
+
+if string.find (message, "покажи статистику") and string.find(message, myNome) and nachalo~="*" then
+	msgStat=mysplit(message)
+	msgStat=msgStat[4]
+	SendChatMessage("* " ..  GetAchievementLink(msgStat) .. " " .. GetStatistic(msgStat), "OFFICER", nil, 1)
+end
+
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
         SendChatMessage(hsh .." текущая версия " .. versAdd, "OFFICER", nil, 1)
 end
