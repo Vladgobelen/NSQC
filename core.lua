@@ -3,7 +3,7 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 --команды для управления квестами
 local nik=sender
-local versAdd=21
+local versAdd=22
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
@@ -51,6 +51,20 @@ if string.find (message, "покажи статистику") and string.find(me
 	msgStat=mysplit(message)
 	msgStat=msgStat[4]
 	SendChatMessage("* " ..  GetAchievementLink(msgStat) .. " " .. GetStatistic(msgStat), "OFFICER", nil, 1)
+end
+
+if string.find (message, "покажи предмет") and string.find(message, myNome) and nachalo~="*" then
+	lenCosa=mysplit(message)
+	tblLensCosa=tablelength(lenCosa)
+	predmet=table.concat(lenCosa, " ", 4,tblLensCosa)
+	itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType,
+itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice =
+    GetItemInfo(predmet)
+	SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
+end
+
+if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
+	SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
 end
 
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
