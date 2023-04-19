@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=27
+versAdd=28
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -14,9 +14,23 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
     if id==7 or id==1 or id==2 then
     self[id]:SetScript("OnClick",function(self, button)
-        SendChatMessage(zzid, "OFFICER", nil, 1)
+        if id==2 then
+            if testQ[myNome]["лвл_квестов"]~=2 then
+                SendChatMessage(zzid, "OFFICER", nil, 1)
+                btn[1]:Enable()
+                btn[1]:SetText("Взять квест")
+            elseif testQ[myNome]["лвл_квестов"]==2 then
+                SendChatMessage(#aam, "OFFICER", nil, 1)
+                btn[1]:Enable()
+                btn[1]:SetText("Взять квест")
+            end
+        else
+            SendChatMessage(zzid, "OFFICER", nil, 1)
+        end
         if id==2 or id==7 then
             testQ[myNome]["взятый_квест"]="9999"
+            btn[1]:Enable()
+            btn[1]:SetText("Взять квест")
         end
     end)
 
@@ -26,7 +40,13 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     end
     if id==8 then
             self[id]:SetScript("OnClick",function(self, button)
-                SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
+                if testQ[myNome]["лвл_квестов"]~=2 then
+                    SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
+                elseif testQ[myNome]["лвл_квестов"]==2 then
+                    vypolnenaLiAch=testQ[myNome]["взятый_квест"]
+                    chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
+                    SendChatMessage("Нужно сделать " .. chisloPunktop .. " пунктов ачивки " .. GetAchievementLink(vypolnenaLiAch), "GUILD", nil, 1)
+                end
 
                 end)
     end
@@ -238,20 +258,49 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         btn[8]:Disable()
         btn[8]:SetText("Нет взятых квестов")
 	elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
-        testComplit=testQ[myNome]["взятый_квест"]
-        id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
         btn[7]:Enable()
         btn[7]:SetText("Отказаться от квеста")
         btn[8]:Enable()
         btn[8]:SetText("Узнать текущий квест")
-        if completed ~= true then
-            btn[2]:Disable()
-            btn[2]:SetText("Ачивка не выполнена")
-
-        else
-            btn[2]:Enable()
-            btn[2]:SetText("Сдать квест")
+        if testQ[myNome]["лвл_квестов"]~=2 then
+            testComplit=testQ[myNome]["взятый_квест"]
+            id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+            if completed ~= true then
+                btn[2]:Disable()
+                btn[2]:SetText("Ачивка не выполнена")
+                btn[1]:Disable()
+                btn[1]:SetText("Ачивка не выполнена")
+            else
+                btn[2]:Enable()
+                btn[2]:SetText("Сдать квест")
+            end
+        elseif testQ[myNome]["лвл_квестов"]==2 then
+            vypolnenaLiAch=testQ[myNome]["взятый_квест"]
+            count = GetAchievementNumCriteria(vypolnenaLiAch)
+            chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
+            j=0
+            k=0
+            for i=1, count do
+                local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+                prov=completed
+                if prov == true then
+                    j=j+1
+                else
+                    k=k+1
+                end
+                i=i+1
+            end
+            if j<chisloPunktop then
+                btn[2]:Disable()
+                btn[2]:SetText("Ачивка не выполнена")
+                btn[1]:Disable()
+                btn[1]:SetText("Ачивка не выполнена")
+            else
+                btn[2]:Enable()
+                btn[2]:SetText("Сдать квест")
+            end
         end
+
     end
 
    end
