@@ -7,6 +7,9 @@ ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показа�
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+
+
+
     self[id]:SetPoint("CENTER",posex, posey)
     self[id]:SetSize(sizex, sizey)
     self[id]:SetText(message)
@@ -59,6 +62,9 @@ btn:configure(7,0,200,300,30,"#zzp","Отказаться от квеста");
 btn:configure(8,0,170,300,30,"","Узнать текущий квест");
 
 
+
+
+
 local minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetFrameLevel(8)
 minibtn:SetSize(32,32)
@@ -97,6 +103,20 @@ end)
 minibtn:ClearAllPoints();
 minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
 pokazat=0
+
+btn[1]:EnableKeyboard(1);
+btn[1]:SetScript("OnKeyDown",function(self,key)
+	if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
+		for ii=1,8 do
+            btn[ii]:Hide();
+        end
+        pokazat=0
+        minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+        minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+        minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+	end
+end);
+
 minibtn:SetScript("OnClick", function()
     minibtn:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     if arg1=="LeftButton" then
@@ -203,7 +223,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 1 then
 		timeElapsed = 0
-
 
 
 		mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
