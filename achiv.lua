@@ -33,7 +33,7 @@ if string.find (message, hsh) and string.find (message, "#aaf") then
 		if completed == true then
 			SendChatMessage(hsh .. " #aag " .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 			btn[1]:Enable()
-			btn[1]:SetText("Взять квест: #zzs")
+			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
 		else
 			SendChatMessage("*я забыл...скоро сделаю, вернусь позже.", "OFFICER", nil, 1)
@@ -60,7 +60,7 @@ if string.find (message, hsh) and string.find (message, "#aaf") then
 		if j>=mozhnoLiSdatChislo then
 			SendChatMessage(hsh .. " #zzk " .. " Я сделал " .. j .. " пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 			btn[1]:Enable()
-			btn[1]:SetText("Взять квест: #zzs")
+			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
 		else
 		end
@@ -111,7 +111,7 @@ end
 
 if string.find (message, "#xxx") and string.find (message, myNome) then
 	btn[1]:Enable()
-	btn[1]:SetText("Взять квест: #zzs")
+	btn[1]:SetText("Взять квест")
 	testQ[myNome]["взятый_квест"]="9999"
 end
 

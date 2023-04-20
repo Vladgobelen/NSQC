@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=33
+versAdd=34
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -49,13 +49,13 @@ end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
 -- видимо я так понял имеет значение порядок создания кнопок
-btn:configure(1,0,350,300,30,"#zzs","Взять квест: #zzs");
-btn:configure(2,0,320,300,30,"#zzr","Сдать квест: #zzr");
-btn:configure(3,0,290,300,30,"#zzz","Взять бонусный квест вне лимита: #zzz");
-btn:configure(4,0,260,300,30,"#zzy","Сдать бонусный квест вне лимита: #zzy");
-btn:configure(5,0,230,300,30,"#zzt","Узнать свой гилдлвл: #zzt");
+btn:configure(1,0,350,300,30,"#zzs","Взять квест");
+btn:configure(2,0,320,300,30,"#zzr","Сдать квест");
+btn:configure(3,0,290,300,30,"#zzz","Взять бонусный квест вне лимита");
+btn:configure(4,0,260,300,30,"#zzy","Сдать бонусный квест вне лимита");
+btn:configure(5,0,230,300,30,"#zzt","Узнать свой гилдлвл");
 btn:configure(9,-400,400,100,30,"","тест");
-btn:configure(7,0,200,300,30,"#zzp","Отказаться от квеста: #zzp");
+btn:configure(7,0,200,300,30,"#zzp","Отказаться от квеста");
 btn:configure(8,0,170,300,30,"","Узнать текущий квест");
 
 
@@ -135,6 +135,14 @@ minibtn:SetScript("OnClick", function()
     elseif arg1=="RightButton" then
         print ("Информация:")
         print ("Версия NSQC: " .. versAdd)
+        print ("#zzs - взять квест")
+        print ("#zzr - сдать квест")
+        print ("#zzz - взять бонусный квест")
+        print ("#zzy - сдать бонусный квест")
+        print ("#zzt - узнать свой гильдлвл")
+        print ("#zzp - отказаться от квеста")
+        print ("!заметка [текст заметки] - добавть информацию о себе")
+        print ("!заметка+ [текст заметки] - дополнить информацию о себе")
         print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
         for ii=1,8 do
                 btn[ii]:Show();
@@ -257,7 +265,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         btn[8]:SetText("Нет взятых квестов")
 	elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
         btn[7]:Enable()
-        btn[7]:SetText("Отказаться от квеста: #zzp")
+        btn[7]:SetText("Отказаться от квеста")
         btn[8]:Enable()
         btn[8]:SetText("Узнать текущий квест")
         if testQ[myNome]["лвл_квестов"]~=2 then
@@ -270,7 +278,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
-                btn[2]:SetText("Сдать квест: #zzr")
+                btn[2]:SetText("Сдать квест")
             end
         elseif testQ[myNome]["лвл_квестов"]==2 then
             vypolnenaLiAch=testQ[myNome]["взятый_квест"]
@@ -295,7 +303,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
-                btn[2]:SetText("Сдать квест: #zzr")
+                btn[2]:SetText("Сдать квест")
             end
         end
 
