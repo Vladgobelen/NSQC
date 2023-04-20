@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=31
+versAdd=32
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -257,7 +257,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         btn[8]:SetText("Нет взятых квестов")
 	elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
         btn[7]:Enable()
-        btn[7]:SetText("Отказаться от квеста")
+        btn[7]:SetText("Отказаться от квеста: #zzp")
         btn[8]:Enable()
         btn[8]:SetText("Узнать текущий квест")
         if testQ[myNome]["лвл_квестов"]~=2 then
@@ -270,7 +270,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
-                btn[2]:SetText("Сдать квест")
+                btn[2]:SetText("Сдать квест: #zzr")
             end
         elseif testQ[myNome]["лвл_квестов"]==2 then
             vypolnenaLiAch=testQ[myNome]["взятый_квест"]
@@ -295,7 +295,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
-                btn[2]:SetText("Сдать квест")
+                btn[2]:SetText("Сдать квест: #zzr")
             end
         end
 
