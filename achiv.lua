@@ -109,6 +109,12 @@ if string.find (message, hsh) and string.find (message, "#aae") then
 	testQ[myNome]["взятый_квест"]=msg13
 end
 
+if string.find (message, "#xxx") and string.find (message, myNome) then
+	btn[1]:Enable()
+	btn[1]:SetText("Взять квест")
+	testQ[myNome]["взятый_квест"]="9999"
+end
+
 if string.find (message, hsh) and string.find (message, "#aak") then
 	msgVzyalQ2=mysplit(message)
 	msgVzyalQ2=msgVzyalQ2[7]

@@ -14,11 +14,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
     if id==7 or id==1 or id==2 then
     self[id]:SetScript("OnClick",function(self, button)
-        if id==7 then
-            btn[1]:Enable()
-            btn[1]:SetText("Взять квест")
-            testQ[myNome]["взятый_квест"]="9999"
-        end
+
         if id==2 then
             if testQ[myNome]["лвл_квестов"]~=2 then
                 SendChatMessage(zzid, "OFFICER", nil, 1)
@@ -140,6 +136,9 @@ minibtn:SetScript("OnClick", function()
         print ("Информация:")
         print ("Версия NSQC: " .. versAdd)
         print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
+        for ii=1,8 do
+                btn[ii]:Show();
+        end
     end
 end)
 
