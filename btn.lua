@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=38
+versAdd=39
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -253,7 +253,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                                 local hshXY4 = math.random(0, 9)
                                 local hshXY5 = math.random(0, 9)
                                 local hshXY6 = math.random(0, 9)
-                                hshSend=myHSH1 .. hshXY4 .. myHSH2 .. hshXY5 .. myHSH3 .. hshXY6
+                                hshSend=myHSH2 .. hshXY4 .. myHSH1 .. hshXY5 .. myHSH3 .. hshXY6
                                 SendChatMessage(hshSend .. " Я вернулся на маршрут", "GUILD", nil, 1)
                                 testRasstoyanie=0
                             else
