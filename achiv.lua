@@ -7,6 +7,8 @@ local versAdd=3
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
 hsh=hashStr(myNome)
+
+
 if testQ==nil then
 	testQ={}
 end
