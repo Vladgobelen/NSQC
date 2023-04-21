@@ -6,8 +6,13 @@ local nik=sender
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
-hsh=hashStr(myNome)
-
+hshStanMsg=mysplit(message)
+hshStranMsg2=string.sub(message,7,7)
+if hshStanMsg2==" " then
+	hshStranMsg1=hshStranMsg[1]
+hshStran1,hshStran2,hshStran3=hshStrNuovo(hshStranMsg1,myNome)
+end
+hshStran3=hshSenderNome(myNome)
 msg3=mysplit(message)
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
 
@@ -43,7 +48,7 @@ if string.find (message, "покажи ачивку") and string.find(message, m
 		i=i+1
 	end
 	if k==0 then
-		SendChatMessage(hsh .. " #aai " .. "уже выполнена полностью: " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+		SendChatMessage(hshStran3 .. " #aai " .. "уже выполнена полностью: " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
 	else
 		SendChatMessage("*" .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
 	end
@@ -76,11 +81,11 @@ if string.find (message, "покажи сиськи") and string.find(message, m
 end
 
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
-        SendChatMessage(hsh .." текущая версия " .. versAdd, "OFFICER", nil, 1)
+        SendChatMessage(hshStran3 .." текущая версия " .. versAdd, "OFFICER", nil, 1)
 end
 
 if string.find (message, myNome) and sender=="Витинари" and string.find (message, "покажимне") then
-	SendChatMessage(hsh, "OFFICER", nil, 1)
+	SendChatMessage(hshStran3, "OFFICER", nil, 1)
 end
 end
 )

@@ -6,34 +6,38 @@ local nik=sender
 local versAdd=3
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
-hsh=hashStr(myNome)
-
-
+hshStanMsg=mysplit(message)
+hshStranMsg2=string.sub(message,7,7)
+if hshStanMsg2==" " then
+	hshStranMsg1=hshStranMsg[1]
+	hshStran1,hshStran2,hshStran3=hshStrNuovo(hshStranMsg1,myNome)
+end
+hshStran3=hshSenderNome(myNome)
 if testQ==nil then
 	testQ={}
 end
 local nachalo = string.sub(message, 1, 1)
 
-if string.find (message, "#aaa") and string.find (message, hsh) and nachalo~="*" then
+if string.find (message, "#aaa") and hshStran1==hshStran2 and nachalo~="*" then
 	msg1 = mysplit(message)
 	msg1 = msg1[7]
 	msg1 = tonumber(msg1)
 	id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 	if completed == true then
-		SendChatMessage(hsh .. " #aab " .. "эта уже выполнена " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+		SendChatMessage(hshStran3 .. " #aab " .. "эта уже выполнена " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 	else
-       	SendChatMessage(hsh .. " #aac " .. "можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+       	SendChatMessage(hshStran3 .. " #aac " .. "можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 	end
 end
 local myNome = GetUnitName("player")
-if string.find (message, hsh) and string.find (message, "#aaf") then
+if hshStran1==hshStran2 and string.find (message, "#aaf") then
 	if testQ[myNome]["лвл_квестов"]~=2 then
 		proverka_komandy=mysplit(message)
 		msg1=proverka_komandy[8]
 		msg1 = tonumber(msg1)
 		id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 		if completed == true then
-			SendChatMessage(hsh .. " #aag " .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+			SendChatMessage(hshStran3 .. " #aag " .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
@@ -60,7 +64,7 @@ if string.find (message, hsh) and string.find (message, "#aaf") then
 			i=i+1
 		end
 		if j>=mozhnoLiSdatChislo then
-			SendChatMessage(hsh .. " #zzk " .. " Я сделал " .. j .. " пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
+			SendChatMessage(hshStran3 .. " #zzk " .. " Я сделал " .. j .. " пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
@@ -77,7 +81,7 @@ if string.find (message, hsh) and string.find (message, "#aaf") then
 	end
 end
 
-if string.find (message, hsh) and string.find (message, "#aah") then
+if hshStran1==hshStran2 and string.find (message, "#aah") then
 	testQ[myNome]["лвл_квестов"]=2
 	msgQLVL2 = mysplit(message)
 	msgQLVL2 = msgQLVL2[6]
@@ -96,15 +100,15 @@ if string.find (message, hsh) and string.find (message, "#aah") then
 		i=i+1
 	end
 	if k==0 then
-		SendChatMessage(hsh .. " #aai " .. "уже выполнена полностью: " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+		SendChatMessage(hshStran3 .. " #aai " .. "уже выполнена полностью: " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
 	else
-		SendChatMessage(hsh .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+		SendChatMessage(hshStran3 .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
 	end
 
 end
 
 local myNome = GetUnitName("player")
-if string.find (message, hsh) and string.find (message, "#aae") then
+if hshStran1==hshStran2 and string.find (message, "#aae") then
 	msg13 = mysplit(message)
 	msg13 = msg13[6]
 	msg13 = tonumber(msg13)
@@ -117,7 +121,7 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["взятый_квест"]="9999"
 end
 
-if string.find (message, hsh) and string.find (message, "#aak") then
+if hshStran1==hshStran2 and string.find (message, "#aak") then
 	msgVzyalQ2=mysplit(message)
 	msgVzyalQ2=msgVzyalQ2[7]
 	msgVzyalQ2=tonumber(msgVzyalQ2)
@@ -133,7 +137,7 @@ if string.find (message, hsh) and string.find (message, "#aak") then
 	testQ[myNome]["взятый_квест"]=msgVzyalQ2
 end
 
-if string.find (message, hsh) and string.find (message, "#aal") then
+if hshStran1==hshStran2 and string.find (message, "#aal") then
 	if testQ[myNome]==nil then
 		testQ[myNome]={}
 	end

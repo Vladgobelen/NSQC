@@ -113,3 +113,144 @@ function getPOS(x,y)
 	end
 	return XXX,YYY
 end
+
+function hshStrNuovo(hshRar,mioNome)
+	nomeLen=string.utf8len(mioNome)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(mioNome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	local hshRarMsh1=string.sub(hshRar,2,2)
+	local hshRarMsh2=string.sub(hshRar,4,4)
+	local hshRarMsh3=string.sub(hshRar,6,6)
+	local hshNuovo1 = math.random(0, 9)
+    local hshNuovo2 = math.random(0, 9)
+	local hshNuovo3 = math.random(0, 9)
+	local hshRarMshRezult=hshRarMsh1 .. hshRarMsh2 .. hshRarMsh3
+	local hshMioNome=hashStr(mioNome)
+	local hshMioNome1=string.utf8sub(nome11,2,2)
+	local hshMioNome2=string.utf8sub(nome11,4,4)
+	local hshMioNome3=string.utf8sub(nome11,6,6)
+	local hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
+	local hshNuovoRezult=hshNuovo1 .. hshMioNome2 .. hshNuovo2 .. hshMioNome1 .. hshNuovo3 .. hshMioNome3
+	return hshRarMshRezult, hshMioNomeRezult, hshNuovoRezult
+end
+
+function hshStrNuovo(hshRar,mioNome)
+	nomeLen=string.utf8len(mioNome)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(mioNome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	local hshMioNome1=string.sub(hNome,1,1)
+	local hshMioNome2=string.sub(hNome,2,2)
+	local hshMioNome3=string.sub(hNome,3,3)
+	qio=string.sub(hshRar,2,2)
+	if qio==0 then
+		hshRar1=string.sub(hshRar, 3,3)
+		hshRar2=string.sub(hshRar, 4,4)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qio==1 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 3,3)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qio==2 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qio==3 then
+		hshRar1=string.sub(hshRar, 3,3)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 4,4)
+	elseif qio==4 then
+		hshRar1=string.sub(hshRar, 1,1)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 4,4)
+	elseif qio==5 then
+		hshRar1=string.sub(hshRar, 1,1)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qio==6 then
+		hshRar1=string.sub(hshRar, 6,6)
+		hshRar2=string.sub(hshRar, 1,1)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qio==7 then
+		hshRar1=string.sub(hshRar, 6,6)
+		hshRar2=string.sub(hshRar, 3,3)
+		hshRar3=string.sub(hshRar, 1,1)
+	elseif qio==8 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 5,5)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qio==9 then
+		hshRar1=string.sub(hshRar, 5,5)
+		hshRar2=string.sub(hshRar, 1,1)
+		hshRar3=string.sub(hshRar, 3,3)
+	end
+	local hshRarMshRezult=hshRar1 .. hshRar2 .. hshRar3
+	local hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
+	return hshRarMshRezult, hshMioNomeRezult
+end
+
+function hshSenderNome(senderNome)
+	nomeLen=string.utf8len(senderNome)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(senderNome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	local hshSenderR1 = math.random(0, 9)
+	local hshSenderR2 = math.random(0, 9)
+	local hshSenderR3 = math.random(0, 9)
+	local hsSenderNome1=string.utf8sub(hNome,1,1)
+	local hsSenderNome2=string.utf8sub(hNome,2,2)
+	local hsSenderNome3=string.utf8sub(hNome,3,3)
+	local hsSenderNomeRezult
+	if hshSenderR2==0 then
+	hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome1 .. hsSenderNome2 .. hshSenderR3 .. hsSenderNome3
+	elseif hshSenderR2==1 then
+		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome2 .. hsSenderNome1 .. hshSenderR3 .. hsSenderNome3
+	elseif hshSenderR2==2 then
+		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome3 .. hsSenderNome1 .. hshSenderR3 .. hsSenderNome2
+	elseif hshSenderR2==3 then
+		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome1 .. hsSenderNome3 .. hshSenderR3 .. hsSenderNome2
+	elseif hshSenderR2==4 then
+		hsSenderNomeRezult=hsSenderNome1 .. hshSenderR2 .. hshSenderR1 .. hsSenderNome3 .. hshSenderR3 .. hsSenderNome2
+	elseif hshSenderR2==5 then
+		hsSenderNomeRezult=hsSenderNome1 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hshSenderR3 .. hsSenderNome2
+	elseif hshSenderR2==6 then
+		hsSenderNomeRezult=hsSenderNome2 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hshSenderR3 .. hsSenderNome1
+	elseif hshSenderR2==7 then
+		hsSenderNomeRezult=hsSenderNome3 .. hshSenderR2 .. hsSenderNome2 .. hshSenderR3 .. hshSenderR1 .. hsSenderNome1
+	elseif hshSenderR2==8 then
+		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hshSenderR3 .. hsSenderNome1 .. hsSenderNome2 .. hsSenderNome3
+	elseif hshSenderR2==8 then
+		hsSenderNomeRezult=hsSenderNome1 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hsSenderNome2 .. hshSenderR3
+	elseif hshSenderR2==9 then
+		hsSenderNomeRezult=hsSenderNome2 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hsSenderNome1 .. hshSenderR3
+	end
+	return hsSenderNomeRezult
+end
