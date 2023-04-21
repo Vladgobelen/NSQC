@@ -164,36 +164,37 @@ end
 if sender == "Витинари" or sender == "Двацветок" or sender == "Хэвлок" or sender == "Железобетонс" or sender == "Детрит" then
 local testXY
 testXY=mysplit(message)
-if testXY[1]=="#zzn" then
+if testXY[2]=="#zzn" then
+	framePos["hshXY"]=testXY[1]
 
 
     nX={}
     nY={}
 
-    nX[1]=string.sub(testXY[2],1,1)
-    nY[1]=string.sub(testXY[2],2,2)
-    nX[2]=string.sub(testXY[2],3,3)
-    nY[2]=string.sub(testXY[2],4,4)
-    nX[3]=string.sub(testXY[2],5,5)
-    nY[3]=string.sub(testXY[2],6,6)
-    nX[4]=string.sub(testXY[2],7,7)
-    nY[4]=string.sub(testXY[2],8,8)
-    nX[5]=string.sub(testXY[2],9,9)
-    nY[5]=string.sub(testXY[2],10,10)
-    nX[6]=string.sub(testXY[2],11,11)
-    nY[6]=string.sub(testXY[2],12,12)
-    nX[7]=string.sub(testXY[2],13,13)
-    nY[7]=string.sub(testXY[2],14,14)
-    nX[8]=string.sub(testXY[2],15,15)
-    nY[8]=string.sub(testXY[2],16,16)
+    nX[1]=string.sub(testXY[3],1,1)
+    nY[1]=string.sub(testXY[3],2,2)
+    nX[2]=string.sub(testXY[3],3,3)
+    nY[2]=string.sub(testXY[3],4,4)
+    nX[3]=string.sub(testXY[3],5,5)
+    nY[3]=string.sub(testXY[3],6,6)
+    nX[4]=string.sub(testXY[3],7,7)
+    nY[4]=string.sub(testXY[3],8,8)
+    nX[5]=string.sub(testXY[3],9,9)
+    nY[5]=string.sub(testXY[3],10,10)
+    nX[6]=string.sub(testXY[3],11,11)
+    nY[6]=string.sub(testXY[3],12,12)
+    nX[7]=string.sub(testXY[3],13,13)
+    nY[7]=string.sub(testXY[3],14,14)
+    nX[8]=string.sub(testXY[3],15,15)
+    nY[8]=string.sub(testXY[3],16,16)
     nXres=nX[1]..nX[2]..nX[3]..nX[4]..nX[5]..nX[6]..nX[7]..nX[8]
     nYres=nY[1]..nY[2]..nY[3]..nY[4]..nY[5]..nY[6]..nY[7]..nY[8]
 	nXres="0."..nXres
 	nYres="0."..nYres
 	mioTime=1
 	testRasstoyanie=0
-	nKont=testXY[3]
-	nLok=testXY[4]
+	nKont=testXY[4]
+	nLok=testXY[5]
 end
 end
 

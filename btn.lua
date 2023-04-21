@@ -245,7 +245,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                             end
                         else
                             if testRasstoyanie~=0 then
-                                SendChatMessage(hsh .. " Я вернулся на маршрут", "GUILD", nil, 1)
+                                hshXY=time()
+                                myHSH=framePos["hshXY"]
+                                myHSH1=string.sub(myHSH, 1,1)
+                                myHSH2=string.sub(myHSH, 3,3)
+                                myHSH3=string.sub(myHSH, 5,5)
+                                local hshXY4 = math.random(0, 9)
+                                local hshXY5 = math.random(0, 9)
+                                local hshXY6 = math.random(0, 9)
+                                hshSend=myHSH1 .. hshXY4 .. myHSH2 .. hshXY5 .. myHSH3 .. hshXY6
+                                SendChatMessage(hshSend .. " Я вернулся на маршрут", "GUILD", nil, 1)
                                 testRasstoyanie=0
                             else
                             end
