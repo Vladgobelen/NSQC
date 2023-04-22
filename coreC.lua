@@ -7,6 +7,7 @@ local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
 local hshStran3
+testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
 msg3=mysplit(message)
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
@@ -75,11 +76,11 @@ if string.find (message, "покажи сиськи") and string.find(message, m
 	SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
 end
 
-if string.find (message, myNome) and sender=="Витинари" and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
+if string.find (message, myNome) and testGM~=nil and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
         SendChatMessage(hshStran3 .." текущая версия " .. versAdd, "OFFICER", nil, 1)
 end
 
-if string.find (message, myNome) and sender=="Витинари" and string.find (message, "покажимне") then
+if string.find (message, myNome) and testGM~=nil and string.find (message, "покажимне") then
 	SendChatMessage(hshStran3, "OFFICER", nil, 1)
 end
 end

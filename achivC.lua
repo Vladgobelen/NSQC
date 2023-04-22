@@ -12,6 +12,7 @@ local hshStranMsg2
 local hshStanMsgC1
 local hshStanC1
 local hshStanC1
+testGM=gmTest(sender)
 hshStanMsgC=mysplit(message)
 hshStranMsg2=string.sub(message,7,7)
 if hshStanMsgC2==" " then
@@ -171,7 +172,7 @@ if hshStanC1==hshStanC2 and string.find (message, "#aal") and string.find (messa
 	testQ[myNome]["взятый_квест"]=msgVzyalQ2
 end
 
-if sender == "Витинари" or sender == "Двацветок" or sender == "Хэвлок" or sender == "Железобетонс" or sender == "Детрит" then
+if testGM~=nil then
 local testXY
 testXY=mysplit(message)
 if testXY[2]=="#zzn" then
