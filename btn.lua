@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=41
+versAdd=42
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -43,7 +43,20 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
                 elseif testQ[myNome]["лвл_квестов"]==2 then
                     vypolnenaLiAch=testQ[myNome]["взятый_квест"]
                     chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
-                    SendChatMessage("Нужно сделать " .. chisloPunktop .. " пунктов ачивки " .. GetAchievementLink(vypolnenaLiAch), "GUILD", nil, 1)
+                    j=0
+                    k=0
+                    for i=1, count do
+                    local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+                    prov=completed
+                    if prov == true then
+                        j=j+1
+                    else
+                        k=k+1
+                    end
+                    i=i+1
+                    end
+                    pokazatRezult=chisloPunktop-j
+                    SendChatMessage("Осталось выполнить " .. pokazatRezult .. " пунктов ачивки " .. vypolnenaLiAch .. " " .. GetAchievementLink(vypolnenaLiAch) .. " из " .. chisloPunktop, "GUILD", nil, 1)
                 end
 
                 end)
