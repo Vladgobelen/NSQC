@@ -7,7 +7,7 @@ local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
 local hshStran3
-hshStran3=hshSenderNome(myNome)
+hshStran3=hshSenderNomeC(myNome)
 msg3=mysplit(message)
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
 
