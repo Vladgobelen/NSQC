@@ -244,6 +244,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		nKont=tonumber(nKont)
 		mioLok=tonumber(mioLok)
 		nLok=tonumber(nLok)
+		testBtnviz1=framePos["mapViz"]
+        testBtnviz1=tonumber(testBtnviz1)
+        testBtnviz2=GetCurrentMapAreaID()
+        testBtnviz2=tonumber(testBtnviz2)
+        if testBtnviz1~=testBtnviz2 then
+            btn[9]:SetText("не тут")
+            btn[9]:Disable()
+        else
+            btn[9]:SetText("тут")
+            btn[9]:Enable()
+        end
 		if mioKont==nKont then
             if mioLok==nLok then
                 if nXres ~= nil then
@@ -277,14 +288,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                     elseif mioTime >= 2 then
                         posmioXN, posmioYN = GetPlayerMapPosition("player");
                         mioCel1=sqrt((nXres-posmioXN)^2+(nYres-posmioYN)^2)
-                        if mioCel > mioCel1 then
-                            btn[9]:SetText("тепло")
-                            btn[9]:Enable()
-                        else
-                            btn[9]:SetText("холодно")
+
+                        testBtnviz1=framePos["mapViz"]
+                        testBtnviz1=tonumber(testBtnviz1)
+                        testBtnviz2=GetCurrentMapAreaID()
+                        testBtnviz2=tonumber(testBtnviz2)
+                        if testBtnviz1==testBtnviz2 then
+
+                            if mioCel > mioCel1 then
+                                btn[9]:SetText("тепло")
+                                btn[9]:Enable()
+                            else
+                                btn[9]:SetText("холодно")
+                                btn[9]:Disable()
+                            end
+                            mioTime=1
+                        elseif testBtnviz1~=testBtnviz2 then
+                            btn[9]:SetText("не тут")
                             btn[9]:Disable()
                         end
-                        mioTime=1
                     end
                     end
                 end
