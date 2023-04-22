@@ -6,12 +6,7 @@ local nik=sender
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
-hshStanMsg=mysplit(message)
-hshStranMsg2=string.sub(message,7,7)
-if hshStanMsg2==" " then
-	hshStranMsg1=hshStranMsg[1]
-hshStran1,hshStran2,hshStran3=hshStrNuovo(hshStranMsg1,myNome)
-end
+local hshStran3
 hshStran3=hshSenderNome(myNome)
 msg3=mysplit(message)
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then

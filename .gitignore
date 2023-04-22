@@ -2,13 +2,13 @@
 *
 
 # Do not ignore these files:
-!achiv.lua
-!core.lua
+!achivC.lua
+!coreC.lua
 !NSQC.toc
 !btn.lua
 !LICENSE
 !.gitignore
-!functions.lua
+!functionsC.lua
 !libs/
 !libs/UTF8/
 !libs/UTF8/utf8.lua

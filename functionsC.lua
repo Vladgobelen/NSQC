@@ -145,8 +145,21 @@ function hshStrNuovo(hshRar,mioNome)
 end
 
 function hshStrNuovo(hshRar,mioNome)
+	local nomeLen
+	local tmNome
+	local nome11
+	local hNome
+	local hshMioNome1
+	local hshMioNome2
+	local hshMioNome3
+	local qioC
+	local hshRar1
+	local hshRar2
+	local hshRar3
+	local hshRarMshRezult
+	local hshMioNomeRezult
 	nomeLen=string.utf8len(mioNome)
-	nome1={}
+	local nome1={}
 	for startLen=1,nomeLen do
 		nome1[startLen]=string.utf8sub(mioNome, startLen, startLen)
 		tmNome=nome1[startLen]
@@ -158,61 +171,74 @@ function hshStrNuovo(hshRar,mioNome)
 	end
 	nome11=nome11 % 1000
 	hNome=string.format("%03d",nome11)
-	local hshMioNome1=string.sub(hNome,1,1)
-	local hshMioNome2=string.sub(hNome,2,2)
-	local hshMioNome3=string.sub(hNome,3,3)
-	qio=string.sub(hshRar,2,2)
-	if qio==0 then
+	hshMioNome1=string.sub(hNome,1,1)
+	hshMioNome2=string.sub(hNome,2,2)
+	hshMioNome3=string.sub(hNome,3,3)
+	qioC=string.sub(hshRar,2,2)
+	qioC=tonumber(qioC)
+	if qioC==0 then
 		hshRar1=string.sub(hshRar, 3,3)
 		hshRar2=string.sub(hshRar, 4,4)
 		hshRar3=string.sub(hshRar, 6,6)
-	elseif qio==1 then
+	elseif qioC==1 then
 		hshRar1=string.sub(hshRar, 4,4)
 		hshRar2=string.sub(hshRar, 3,3)
 		hshRar3=string.sub(hshRar, 6,6)
-	elseif qio==2 then
+	elseif qioC==2 then
 		hshRar1=string.sub(hshRar, 4,4)
 		hshRar2=string.sub(hshRar, 6,6)
 		hshRar3=string.sub(hshRar, 3,3)
-	elseif qio==3 then
+	elseif qioC==3 then
 		hshRar1=string.sub(hshRar, 3,3)
 		hshRar2=string.sub(hshRar, 6,6)
 		hshRar3=string.sub(hshRar, 4,4)
-	elseif qio==4 then
+	elseif qioC==4 then
 		hshRar1=string.sub(hshRar, 1,1)
 		hshRar2=string.sub(hshRar, 6,6)
 		hshRar3=string.sub(hshRar, 4,4)
-	elseif qio==5 then
+	elseif qioC==5 then
 		hshRar1=string.sub(hshRar, 1,1)
 		hshRar2=string.sub(hshRar, 6,6)
 		hshRar3=string.sub(hshRar, 3,3)
-	elseif qio==6 then
+	elseif qioC==6 then
 		hshRar1=string.sub(hshRar, 6,6)
 		hshRar2=string.sub(hshRar, 1,1)
 		hshRar3=string.sub(hshRar, 3,3)
-	elseif qio==7 then
+	elseif qioC==7 then
 		hshRar1=string.sub(hshRar, 6,6)
 		hshRar2=string.sub(hshRar, 3,3)
 		hshRar3=string.sub(hshRar, 1,1)
-	elseif qio==8 then
+	elseif qioC==8 then
 		hshRar1=string.sub(hshRar, 4,4)
 		hshRar2=string.sub(hshRar, 5,5)
 		hshRar3=string.sub(hshRar, 6,6)
-	elseif qio==9 then
+	elseif qioC==9 then
 		hshRar1=string.sub(hshRar, 5,5)
 		hshRar2=string.sub(hshRar, 1,1)
 		hshRar3=string.sub(hshRar, 3,3)
 	end
-	local hshRarMshRezult=hshRar1 .. hshRar2 .. hshRar3
-	local hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
+	hshRarMshRezult=hshRar1 .. hshRar2 .. hshRar3
+	hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
 	return hshRarMshRezult, hshMioNomeRezult
 end
 
-function hshSenderNome(senderNome)
-	nomeLen=string.utf8len(senderNome)
+
+function hshSenderNomeC(senderNomeC)
+	local nomeLen
+	local nome1
+	local nome11
+	local hNomeC
+	local hsSenderNomeC1
+	local hsSenderNomeC2
+	local hsSenderNomeC3
+	local hshSenderRC1
+	local hshSenderRC2
+	local hshSenderRC3
+	local hsSenderNomeCRezult
+	nomeLen=string.utf8len(senderNomeC)
 	nome1={}
 	for startLen=1,nomeLen do
-		nome1[startLen]=string.utf8sub(senderNome, startLen, startLen)
+		nome1[startLen]=string.utf8sub(senderNomeC, startLen, startLen)
 		tmNome=nome1[startLen]
 		nome1[startLen]=alfabet(tmNome)
 	end
@@ -221,36 +247,35 @@ function hshSenderNome(senderNome)
 		nome11=nome11+nome1[startLen]
 	end
 	nome11=nome11 % 1000
-	hNome=string.format("%03d",nome11)
-	local hshSenderR1 = math.random(0, 9)
-	local hshSenderR2 = math.random(0, 9)
-	local hshSenderR3 = math.random(0, 9)
-	local hsSenderNome1=string.utf8sub(hNome,1,1)
-	local hsSenderNome2=string.utf8sub(hNome,2,2)
-	local hsSenderNome3=string.utf8sub(hNome,3,3)
-	local hsSenderNomeRezult
-	if hshSenderR2==0 then
-	hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome1 .. hsSenderNome2 .. hshSenderR3 .. hsSenderNome3
-	elseif hshSenderR2==1 then
-		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome2 .. hsSenderNome1 .. hshSenderR3 .. hsSenderNome3
-	elseif hshSenderR2==2 then
-		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome3 .. hsSenderNome1 .. hshSenderR3 .. hsSenderNome2
-	elseif hshSenderR2==3 then
-		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hsSenderNome1 .. hsSenderNome3 .. hshSenderR3 .. hsSenderNome2
-	elseif hshSenderR2==4 then
-		hsSenderNomeRezult=hsSenderNome1 .. hshSenderR2 .. hshSenderR1 .. hsSenderNome3 .. hshSenderR3 .. hsSenderNome2
-	elseif hshSenderR2==5 then
-		hsSenderNomeRezult=hsSenderNome1 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hshSenderR3 .. hsSenderNome2
-	elseif hshSenderR2==6 then
-		hsSenderNomeRezult=hsSenderNome2 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hshSenderR3 .. hsSenderNome1
-	elseif hshSenderR2==7 then
-		hsSenderNomeRezult=hsSenderNome3 .. hshSenderR2 .. hsSenderNome2 .. hshSenderR3 .. hshSenderR1 .. hsSenderNome1
-	elseif hshSenderR2==8 then
-		hsSenderNomeRezult=hshSenderR1 .. hshSenderR2 .. hshSenderR3 .. hsSenderNome1 .. hsSenderNome2 .. hsSenderNome3
-	elseif hshSenderR2==8 then
-		hsSenderNomeRezult=hsSenderNome1 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hsSenderNome2 .. hshSenderR3
-	elseif hshSenderR2==9 then
-		hsSenderNomeRezult=hsSenderNome2 .. hshSenderR2 .. hsSenderNome3 .. hshSenderR1 .. hsSenderNome1 .. hshSenderR3
+	hNomeC=string.format("%03d",nome11)
+	hsSenderNomeC1=string.sub(hNomeC,1,1)
+	hsSenderNomeC2=string.sub(hNomeC,2,2)
+	hsSenderNomeC3=string.sub(hNomeC,3,3)
+	hshSenderRC1 = math.random(0, 9)
+	hshSenderRC2 = math.random(0, 9)
+	hshSenderRC3 = math.random(0, 9)
+	if hshSenderRC2==0 then
+	hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC1 .. hsSenderNomeC2 .. hshSenderRC3 .. hsSenderNomeC3
+	elseif hshSenderRC2==1 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC2 .. hsSenderNomeC1 .. hshSenderRC3 .. hsSenderNomeC3
+	elseif hshSenderRC2==2 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hsSenderNomeC1 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==3 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC1 .. hsSenderNomeC3 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==4 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hshSenderRC1 .. hsSenderNomeC3 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==5 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==6 then
+		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hshSenderRC3 .. hsSenderNomeC1
+	elseif hshSenderRC2==7 then
+		hsSenderNomeCRezult=hsSenderNomeC3 .. hshSenderRC2 .. hsSenderNomeC2 .. hshSenderRC3 .. hshSenderRC1 .. hsSenderNomeC1
+	elseif hshSenderRC2==8 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hshSenderRC3 .. hsSenderNomeC1 .. hsSenderNomeC2 .. hsSenderNomeC3
+	elseif hshSenderRC2==8 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC2 .. hshSenderRC3
+	elseif hshSenderRC2==9 then
+		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC1 .. hshSenderRC3
 	end
-	return hsSenderNomeRezult
+	return hsSenderNomeCRezult
 end

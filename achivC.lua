@@ -6,38 +6,44 @@ local nik=sender
 local versAdd=3
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
-hshStanMsg=mysplit(message)
+local hshStran3C
+local hshStanMsgC
+local hshStranMsg2
+local hshStanMsgC1
+local hshStanC1
+local hshStanC1
+hshStanMsgC=mysplit(message)
 hshStranMsg2=string.sub(message,7,7)
-if hshStanMsg2==" " then
-	hshStranMsg1=hshStranMsg[1]
-	hshStran1,hshStran2,hshStran3=hshStrNuovo(hshStranMsg1,myNome)
+if hshStanMsgC2==" " then
+	hshStanMsgC1=hshStanMsgC[1]
+	hshStanC1,hshStanC1=hshStrNuovo(hshStanMsgC1,myNome)
 end
-hshStran3=hshSenderNome(myNome)
+hshStran3C=hshSenderNomeC(myNome)
 if testQ==nil then
 	testQ={}
 end
 local nachalo = string.sub(message, 1, 1)
 
-if string.find (message, "#aaa") and hshStran1==hshStran2 and nachalo~="*" then
+if string.find (message, "#aaa") and hshStanC1==hshStanC2 and nachalo~="*" and string.find (message, myNome) then
 	msg1 = mysplit(message)
 	msg1 = msg1[7]
 	msg1 = tonumber(msg1)
 	id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 	if completed == true then
-		SendChatMessage(hshStran3 .. " #aab " .. "эта уже выполнена " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+		SendChatMessage(hshStran3C .. " #aab " .. "эта уже выполнена " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 	else
-       	SendChatMessage(hshStran3 .. " #aac " .. "можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+       	SendChatMessage(hshStran3C .. " #aac " .. "можно сделать: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 	end
 end
 local myNome = GetUnitName("player")
-if hshStran1==hshStran2 and string.find (message, "#aaf") then
+if hshStanC1==hshStanC2 and string.find (message, "#aaf") and string.find (message, myNome) then
 	if testQ[myNome]["лвл_квестов"]~=2 then
 		proverka_komandy=mysplit(message)
 		msg1=proverka_komandy[8]
 		msg1 = tonumber(msg1)
 		id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 		if completed == true then
-			SendChatMessage(hshStran3 .. " #aag " .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+			SendChatMessage(hshStran3C .. " #aag " .." ага: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
@@ -64,7 +70,7 @@ if hshStran1==hshStran2 and string.find (message, "#aaf") then
 			i=i+1
 		end
 		if j>=mozhnoLiSdatChislo then
-			SendChatMessage(hshStran3 .. " #zzk " .. " Я сделал " .. j .. " пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
+			SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. " пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
@@ -81,7 +87,7 @@ if hshStran1==hshStran2 and string.find (message, "#aaf") then
 	end
 end
 
-if hshStran1==hshStran2 and string.find (message, "#aah") then
+if hshStanC1==hshStanC2 and string.find (message, "#aah") and string.find (message, myNome) then
 	testQ[myNome]["лвл_квестов"]=2
 	msgQLVL2 = mysplit(message)
 	msgQLVL2 = msgQLVL2[6]
@@ -100,15 +106,15 @@ if hshStran1==hshStran2 and string.find (message, "#aah") then
 		i=i+1
 	end
 	if k==0 then
-		SendChatMessage(hshStran3 .. " #aai " .. "уже выполнена полностью: " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+		SendChatMessage(hshStran3C .. " #aai " .. "уже выполнена полностью: " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
 	else
-		SendChatMessage(hshStran3 .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+		SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
 	end
 
 end
 
 local myNome = GetUnitName("player")
-if hshStran1==hshStran2 and string.find (message, "#aae") then
+if hshStanC1==hshStanC2 and string.find (message, "#aae") and string.find (message, myNome) then
 	msg13 = mysplit(message)
 	msg13 = msg13[6]
 	msg13 = tonumber(msg13)
@@ -121,7 +127,7 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["взятый_квест"]="9999"
 end
 
-if hshStran1==hshStran2 and string.find (message, "#aak") then
+if hshStanC1==hshStanC2 and string.find (message, "#aak") and string.find (message, myNome) then
 	msgVzyalQ2=mysplit(message)
 	msgVzyalQ2=msgVzyalQ2[7]
 	msgVzyalQ2=tonumber(msgVzyalQ2)
@@ -137,7 +143,7 @@ if hshStran1==hshStran2 and string.find (message, "#aak") then
 	testQ[myNome]["взятый_квест"]=msgVzyalQ2
 end
 
-if hshStran1==hshStran2 and string.find (message, "#aal") then
+if hshStanC1==hshStanC2 and string.find (message, "#aal") and string.find (message, myNome) then
 	if testQ[myNome]==nil then
 		testQ[myNome]={}
 	end

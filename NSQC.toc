@@ -11,12 +11,11 @@ lib\lib_table.lua
 libs\UTF8\utf8.lua
 libs\Astrolabe\Load.xml
 #################
-core.lua
-achiv.lua
+coreC.lua
+achivC.lua
 btn.lua
-functions.lua
 Astrolabe.lua
 AstrolabeMapMonitor.lua
 DongleStub.lua
 Load.xml
-minimap.lua
+functionsC.lua
