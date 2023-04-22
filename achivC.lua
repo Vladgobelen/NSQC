@@ -206,6 +206,11 @@ if testXY[2]=="#zzn" then
 	testRasstoyanie=0
 	nKont=testXY[4]
 	nLok=testXY[5]
+	framePos["X"]=nXres
+	framePos["Y"]=nYres
+	framePos["kont"]=nKont
+	framePos["lok"]=nLok
+	framePos["mapViz"]=testXY[6]
 end
 end
 

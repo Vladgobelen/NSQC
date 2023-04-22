@@ -53,24 +53,22 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if xos > ScrollMax then -- we're offscreen to the right so...
 		xos =  -self.Text1:GetWidth() -- reset to the left again
 	end
-
-	xxx,yyy=GetCursorPosition();
+	if framePos["X"]~=nil then
+		XXX,YYY=getPOS(framePos["X"],framePos["Y"])
+		--xxx,yyy=GetCursorPosition();
+	end
+	iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
 	mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
 	mioKont=tonumber(mioKont)
-	nKont=tonumber(nKont)
+	nKont=tonumber(framePos["kont"])
 	mioLok=tonumber(mioLok)
-	nLok=tonumber(nLok)
-	if mioKont==nKont then
-		if mioLok==nLok then
-			if nXres~=nil or nYres~=nil then
-				XXX,YYY=getPOS(nXres,nYres)
-				iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
-				iconFrame:Show()
-			end
-
-		else
-			iconFrame:Hide()
-		end
+	nLok=tonumber(framePos["lok"])
+	testMapviz1=framePos["mapViz"]
+	testMapviz1=tonumber(testMapviz1)
+	testMapviz2=GetCurrentMapAreaID()
+	testMapviz2=tonumber(testMapviz2)
+	if testMapviz1==testMapviz2 then
+		iconFrame:Show()
 	else
 		iconFrame:Hide()
 	end

@@ -134,7 +134,6 @@ minibtn:SetScript("OnClick", function()
     minibtn:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     if arg1=="LeftButton" then
         if pokazat~=1 then
-        print (pokazat)
             ii=6
             btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
             btn[ii]:SetPoint("CENTER",0,140)

@@ -20,5 +20,5 @@ DongleStub.lua
 Load.xml
 functionsC.lua
 gmList.lua
-
+minimap.lua
 
