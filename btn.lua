@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=42
+versAdd=43
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -134,6 +134,7 @@ minibtn:SetScript("OnClick", function()
     minibtn:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     if arg1=="LeftButton" then
         if pokazat~=1 then
+        print (pokazat)
             ii=6
             btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
             btn[ii]:SetPoint("CENTER",0,140)
@@ -157,6 +158,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
+        print (pokazat)
             for ii=1,8 do
                 btn[ii]:Hide();
             end
