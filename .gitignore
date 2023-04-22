@@ -20,3 +20,4 @@
 !libs/Astrolabe/AstrolabeMapMonitor.lua
 !libs/Astrolabe/DongleStub.lua
 !libs/Astrolabe/Load.xml
+!gmList.lua
