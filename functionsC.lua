@@ -254,6 +254,7 @@ function hshSenderNomeC(senderNomeC)
 	hshSenderRC1 = math.random(0, 9)
 	hshSenderRC2 = math.random(0, 9)
 	hshSenderRC3 = math.random(0, 9)
+
 	if hshSenderRC2==0 then
 	hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC1 .. hsSenderNomeC2 .. hshSenderRC3 .. hsSenderNomeC3
 	elseif hshSenderRC2==1 then
@@ -277,6 +278,13 @@ function hshSenderNomeC(senderNomeC)
 	elseif hshSenderRC2==9 then
 		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC1 .. hshSenderRC3
 	end
+	if testQ[senderNomeC]["rarHSH"]==nil then
+		testQ[senderNomeC]["rarHSH"]={}
+	end
+	if hsSenderNomeCRezult==testQ[senderNomeC]["rarHSH"] then
+		hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
+	end
+	table.insert(testQ[senderNomeC]["rarHSH"], hsSenderNomeCRezult)
 	return hsSenderNomeCRezult
 end
 
