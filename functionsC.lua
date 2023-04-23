@@ -287,17 +287,17 @@ function hshSenderNomeC(senderNomeC)
 	testDate=date("%d")
 	testDate=tonumber(testDate)
 	if (testDate % 2 == 0) then
-		tableHSH=rarHSH
-		testQ[senderNomeC]["rarHSH1"]={}
+		tableHSH="rarHSH"
+		testQ[senderNomeC]["rarHSH1"]=nil
 	else
-		tableHSH=rarHSH1
-		testQ[senderNomeC]["rarHSH"]={}
+		tableHSH="rarHSH1"
+		testQ[senderNomeC]["rarHSH"]=nil
 	end
 
 	if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
 		hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
 	end
-	table.insert(testQ[senderNomeC]["rarHSH"], hsSenderNomeCRezult)
+	table.insert(testQ[senderNomeC][tableHSH], hsSenderNomeCRezult)
 	return hsSenderNomeCRezult
 end
 
