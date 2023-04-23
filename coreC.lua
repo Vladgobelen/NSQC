@@ -81,8 +81,31 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 		achShow=table.concat(lenShow, " ", 3,tblLensShow)
 		for i=1,10000 do
 			IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText, isGuildAch = GetAchievementInfo(i)
+
 			if Name==achShow then
-				SendChatMessage(GetAchievementLink(i), "OFFICER", nil, 1)
+
+			j=0
+			k=0
+			countShow = GetAchievementNumCriteria(i)
+			for shoCount=1,countShow do
+				local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount);
+				prov=completed
+			if prov == true then
+				j=j+1
+			else
+				k=k+1
+			end
+			end
+			if Completed~=true and countShow~=1 then
+				cmpltd1=j
+				cmpltd2=" пунктов ачивки выполненно: "
+				cmpltd=cmpltd2 .. cmpltd1
+			elseif Completed==true then
+				cmpltd=" выполнена"
+			elseif Completed~=true and countShow==1 then
+				cmpltd=""
+			end
+				SendChatMessage(GetAchievementLink(i)..cmpltd, "OFFICER", nil, 1)
 				break
 			end
 
