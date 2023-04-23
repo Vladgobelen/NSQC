@@ -87,44 +87,51 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 			j=0
 			k=0
 			countShow = GetAchievementNumCriteria(i)
+			
 			for shoCount=1,countShow do
 				local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount);
-				prov=completed
+
+				provShow=completed
 				quantityShow=quantity
 				reqQuantityShow=reqQuantity
 				quantityShow=tonumber(quantityShow)
 				reqQuantityShow=tonumber(reqQuantityShow)
-			if prov == true then
+			if provShow == true then
 				j=j+1
 			else
 				k=k+1
 			end
 			end
-
-			if prov~=true and countShow~=1 and countShow~=0 then
+			if provShow~=true and countShow~=1 and countShow~=0 then
 				cmpltd1=j
 				cmpltd2=" пунктов ачивки выполненно: "
 				cmpltd=cmpltd2 .. cmpltd1
-			elseif prov==true or prov1==true then
+			elseif provShow==true or prov1==true then
 				cmpltd=" выполнена"
-			elseif prov~=true then
-				cmpltd=""
+			elseif provShow~=true then
+				cmpltd1=" "
+				cmpltd=cmpltd1 .. GetStatistic(i)
 			end
 
-			if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil then
+			if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil and provShow~=true then
 				cmpltd1=" выполненно пунктов ачивки "
 				cmpltd2=quantityShow
 				cmpltd3=" из "
 				cmpltd4=reqQuantityShow
 				cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
 			end
-			if quantityShow~=0 and reqQuantityShow==0 then
+			if quantityShow~=0 and reqQuantityShow==0 and quantityShow~=nil then
 				cmpltd1=" выполненно пунктов ачивки "
 				cmpltd2=quantityShow
 				cmpltd=cmpltd1 .. cmpltd2
 			end
 
 				SendChatMessage(GetAchievementLink(i)..cmpltd, "OFFICER", nil, 1)
+				quantityShow=nil
+				reqQuantityShow=nil
+				quantityShow=nil
+				cmpltd=nil
+				provShow=nil
 				break
 			end
 
