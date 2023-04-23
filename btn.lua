@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=47
+versAdd=48
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -178,6 +178,7 @@ minibtn:SetScript("OnClick", function()
         print ("!заметка [текст заметки] - добавть информацию о себе")
         print ("!заметка+ [текст заметки] - дополнить информацию о себе")
         print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
+        print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки]")
 
     end
 end)

@@ -58,6 +58,8 @@ if string.find (message, "покажи статистику") and string.find(me
 	SendChatMessage("* " ..  GetAchievementLink(msgStat) .. " " .. GetStatistic(msgStat), "OFFICER", nil, 1)
 end
 
+
+
 if string.find (message, "покажи предмет") and string.find(message, myNome) and nachalo~="*" then
 	lenCosa=mysplit(message)
 	tblLensCosa=tablelength(lenCosa)
@@ -69,6 +71,22 @@ itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice =
 		SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
 	else
 		SendChatMessage("* предмет " .. predmet .. " не существует", "OFFICER", nil, 1)
+	end
+end
+
+if string.find (message, "!ачивка") and nachalo~="*" then
+	lenShow=mysplit(message)
+	if lenShow[1]==myNome then
+		tblLensShow=tablelength(lenShow)
+		achShow=table.concat(lenShow, " ", 3,tblLensShow)
+		for i=1,10000 do
+			IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText, isGuildAch = GetAchievementInfo(i)
+			if Name==achShow then
+				SendChatMessage(GetAchievementLink(i), "OFFICER", nil, 1)
+				break
+			end
+
+		end
 	end
 end
 
