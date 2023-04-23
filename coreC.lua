@@ -87,10 +87,12 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 			j=0
 			k=0
 			countShow = GetAchievementNumCriteria(i)
-			
+			testShow=1
 			for shoCount=1,countShow do
 				local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount);
-
+				if completed~=true then
+					testShow="000"
+				end
 				provShow=completed
 				quantityShow=quantity
 				reqQuantityShow=reqQuantity
@@ -102,18 +104,28 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 				k=k+1
 			end
 			end
+
+			print (quantityShow)
 			if provShow~=true and countShow~=1 and countShow~=0 then
 				cmpltd1=j
 				cmpltd2=" пунктов ачивки выполненно: "
-				cmpltd=cmpltd2 .. cmpltd1
-			elseif provShow==true or prov1==true then
+				cmpltd22=" из "
+				cmpltd=cmpltd2 .. cmpltd1 .. cmpltd22 .. countShow
+			elseif provShow==true or prov1==true and testShow~="000" then
 				cmpltd=" выполнена"
 			elseif provShow~=true then
 				cmpltd1=" "
 				cmpltd=cmpltd1 .. GetStatistic(i)
 			end
 
-			if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil and provShow~=true then
+			if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
+				cmpltd1=" выполненно пунктов ачивки "
+				cmpltd2=j
+				cmpltd3=" из "
+				cmpltd4=countShow
+				cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
+			end
+			if quantityShow~=0 and quantityShow~=1 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
 				cmpltd1=" выполненно пунктов ачивки "
 				cmpltd2=quantityShow
 				cmpltd3=" из "
@@ -132,6 +144,9 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 				quantityShow=nil
 				cmpltd=nil
 				provShow=nil
+				prov1=nil
+				Completed=nil
+				completed=nil
 				break
 			end
 
