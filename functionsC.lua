@@ -278,10 +278,23 @@ function hshSenderNomeC(senderNomeC)
 	elseif hshSenderRC2==9 then
 		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC1 .. hshSenderRC3
 	end
+	if testQ[senderNomeC]["rarHSH1"]==nil then
+		testQ[senderNomeC]["rarHSH1"]={}
+	end
 	if testQ[senderNomeC]["rarHSH"]==nil then
 		testQ[senderNomeC]["rarHSH"]={}
 	end
-	if hsSenderNomeCRezult==testQ[senderNomeC]["rarHSH"] then
+	testDate=date("%d")
+	testDate=tonumber(testDate)
+	if (testDate % 2 == 0) then
+		tableHSH=rarHSH
+		testQ[senderNomeC]["rarHSH1"]={}
+	else
+		tableHSH=rarHSH1
+		testQ[senderNomeC]["rarHSH"]={}
+	end
+
+	if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
 		hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
 	end
 	table.insert(testQ[senderNomeC]["rarHSH"], hsSenderNomeCRezult)
