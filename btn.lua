@@ -286,7 +286,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 
 
-	if timeElapsed > 1 then
+	if timeElapsed > 0.5 then
 		timeElapsed = 0
 		if pokazatChk==0 then
                 myCheckButton1:Hide()
