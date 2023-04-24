@@ -21,4 +21,5 @@ Load.xml
 functionsC.lua
 gmList.lua
 minimap.lua
+roll.lua
 
