@@ -16,21 +16,18 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id]:Hide();
     if id==9 then
         self[id]:SetScript("OnClick",function(self, button)
-            print ("fdsa")
             RandomRoll(1, 100)
         end)
     end
 
     if id==10 then
         self[id]:SetScript("OnClick",function(self, button)
-            print ("fdsa")
             RandomRoll(1, 333)
         end)
     end
 
     if id==11 then
         self[id]:SetScript("OnClick",function(self, button)
-            print ("fdsa")
             RandomRoll(1, 111)
         end)
     end
@@ -178,7 +175,6 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
-        print (pokazat)
             for ii=1,11 do
                 btn[ii]:Hide();
             end
