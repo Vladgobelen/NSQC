@@ -256,12 +256,14 @@ local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 
-    testModLtr=testQ[myNome]["лотерея"]
-    testModLtr=tonumber(testModLtr)
-    testModLtr=testModLtr%3
 
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if testQ[myNome]["лотерея"]~=nil then
+            testModLtr=testQ[myNome]["лотерея"]
+            testModLtr=tonumber(testModLtr)
+            testModLtr=testModLtr%3
+        end
         if testQ[myNome]["лотерея"]~=nil then
             if testQ[myNome]["лотерея"]>=1 then
                 btn[11]:Enable()
