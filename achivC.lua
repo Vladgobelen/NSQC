@@ -172,6 +172,21 @@ if hshStanC1==hshStanC2 and string.find (message, "#aal") and string.find (messa
 	testQ[myNome]["взятый_квест"]=msgVzyalQ2
 end
 
+if string.find (message, "#ltr111") and testGM~=nil then
+	minusLrt=testQ[ltrNikC]["лотерея"]
+	minusLrt=tonumber(minusLrt)
+	minusLrt=minusLrt-1
+	testQ[ltrNikC]["лотерея"]=minusLrt
+end
+
+if string.find (message, "#ltr333") and testGM~=nil then
+	minusLrt=testQ[ltrNikC]["лотерея"]
+	minusLrt=tonumber(minusLrt)
+	minusLrt=minusLrt-3
+	testQ[ltrNikC]["лотерея"]=minusLrt
+end
+
+
 if testGM~=nil then
 local testXY
 testXY=mysplit(message)
