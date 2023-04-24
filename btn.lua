@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=59
+versAdd=60
 local myNome = GetUnitName("player")
 if testQ[myNome]==nil then
 	testQ[myNome]={}
