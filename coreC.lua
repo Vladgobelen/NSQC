@@ -154,6 +154,20 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 	end
 end
 
+ltrC=mysplit(message)
+if string.find (message, "получает лотерейный билет") and ltrC[1]==myNome then
+	ltrNikC=ltrC[1]
+	print (ltrNikC)
+	if testQ[ltrNikC]["лотерея"]==nil then
+		testQ[ltrNikC]["лотерея"]=3
+	else
+		lotereyaC=testQ[ltrNikC]["лотерея"]
+		lotereyaC=lotereyaC+3
+		testQ[ltrNikC]["лотерея"]=lotereyaC
+	end
+	print (testQ[ltrNikC]["лотерея"])
+end
+
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
 	SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
 end

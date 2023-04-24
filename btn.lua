@@ -14,7 +14,26 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id]:SetSize(sizex, sizey)
     self[id]:SetText(message)
     self[id]:Hide();
+    if id==9 then
+        self[id]:SetScript("OnClick",function(self, button)
+            print ("fdsa")
+            RandomRoll(1, 100)
+        end)
+    end
 
+    if id==10 then
+        self[id]:SetScript("OnClick",function(self, button)
+            print ("fdsa")
+            RandomRoll(1, 333)
+        end)
+    end
+
+    if id==11 then
+        self[id]:SetScript("OnClick",function(self, button)
+            print ("fdsa")
+            RandomRoll(1, 111)
+        end)
+    end
     if id==7 or id==1 or id==2 then
     self[id]:SetScript("OnClick",function(self, button)
 
@@ -32,7 +51,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
     end)
 
-    else
+    elseif id==3 or id==4 or id==5 or id==6 then
     self[id]:SetScript("OnClick",function(self, button)
            SendChatMessage(zzid, "GUILD", nil, 1) end)
     end
@@ -70,10 +89,12 @@ btn:configure(2,0,320,300,30,"#zzr","Сдать квест");
 btn:configure(3,0,290,300,30,"#zzz","Взять бонусный квест вне лимита");
 btn:configure(4,0,260,300,30,"#zzy","Сдать бонусный квест вне лимита");
 btn:configure(5,0,230,300,30,"#zzt","Узнать свой гилдлвл");
-btn:configure(9,-400,400,100,30,"","тест");
+btn:configure(99,-400,400,100,30,"","тест");
 btn:configure(7,0,200,300,30,"#zzp","Отказаться от квеста");
 btn:configure(8,0,170,300,30,"","Узнать текущий квест");
-
+btn:configure(9,250,350,200,30,"","Ролл");
+btn:configure(10,250,320,200,30,"#ltr 1","Лотерея одним куском");
+btn:configure(11,250,290,200,30,"#ltr 3","Лотерея тремя кусками");
 
 
 
@@ -117,10 +138,10 @@ minibtn:ClearAllPoints();
 minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
 pokazat=0
 
-btn[1]:EnableKeyboard(1);
+--[[btn[1]:EnableKeyboard(1);
 btn[1]:SetScript("OnKeyDown",function(self,key)
 	if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-		for ii=1,8 do
+		for ii=1,11 do
             btn[ii]:Hide();
         end
         pokazat=0
@@ -129,7 +150,7 @@ btn[1]:SetScript("OnKeyDown",function(self,key)
         minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
 	end
 end);
-
+--]]
 minibtn:SetScript("OnClick", function()
     minibtn:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     if arg1=="LeftButton" then
@@ -141,7 +162,7 @@ minibtn:SetScript("OnClick", function()
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
             btn[ii]:SetScript("OnClick", function(self, button)
-            for ii=1,8 do
+            for ii=1,11 do
                 btn[ii]:Hide();
             end
             pokazat=0
@@ -149,7 +170,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
             end)
-            for ii=1,8 do
+            for ii=1,11 do
                 btn[ii]:Show();
             end
             pokazat=1
@@ -158,7 +179,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
         print (pokazat)
-            for ii=1,8 do
+            for ii=1,11 do
                 btn[ii]:Hide();
             end
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
@@ -187,7 +208,7 @@ end)
 if framePos==nil then
     framePos={}
 end
-btn[9]:SetScript("OnClick",function(self, button)
+btn[99]:SetScript("OnClick",function(self, button)
 if setPos==1 or setPos==nil then
     setPos=0
 
@@ -208,15 +229,15 @@ GC_Sniffer111:SetScript("OnEvent", function (self, event, message, sender)
 local myNome = GetUnitName("player")
 if sender==myNome and message=="stop" then
     framePos[1]=0
-    btn[9]:Disable()
+    btn[99]:Disable()
 elseif sender==myNome and message=="start" then
     framePos[1]=1
-    btn[9]:Enable()
+    btn[99]:Enable()
 elseif sender==myNome and message=="скрыть" then
-    btn[9]:Hide()
+    btn[99]:Hide()
 elseif sender==myNome and message=="показать" then
-    btn[9]:Show()
-    btn[9]:Disable()
+    btn[99]:Show()
+    btn[99]:Disable()
 end
 
 
@@ -238,8 +259,30 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 1 then
 		timeElapsed = 0
-
-
+        if testQ[myNome]["лотерея"]~=nil then
+            if testQ[myNome]["лотерея"]>=1 then
+                btn[11]:Enable()
+                btn[11]:SetText("Лотерея тремя кусками")
+            end
+        end
+        if testQ[myNome]["лотерея"]~=nil then
+            if testQ[myNome]["лотерея"]>=3 then
+                btn[10]:Enable()
+                btn[10]:SetText("Лотерея одним куском")
+            end
+        end
+        if testQ[myNome]["лотерея"]==nil or testQ[myNome]["лотерея"]<1 then
+            btn[11]:Disable()
+            btn[10]:SetText("Нет билетов")
+            btn[10]:Disable()
+            btn[11]:SetText("Нет билетов")
+        end
+        if testQ[myNome]["лотерея"]~=nil then
+            if testQ[myNome]["лотерея"]>=1 and testQ[myNome]["лотерея"]<3 then
+                btn[10]:SetText("Нет билетов")
+                btn[10]:Disable()
+            end
+        end
 		mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
 		mioKont=tonumber(mioKont)
 		nKont=tonumber(nKont)
@@ -250,11 +293,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         testBtnviz2=GetCurrentMapAreaID()
         testBtnviz2=tonumber(testBtnviz2)
         if testBtnviz1~=testBtnviz2 then
-            btn[9]:SetText("не тут")
-            btn[9]:Disable()
+            btn[99]:SetText("не тут")
+            btn[99]:Disable()
         else
-            btn[9]:SetText("тут")
-            btn[9]:Enable()
+            btn[99]:SetText("тут")
+            btn[99]:Enable()
         end
 		if mioKont==nKont then
             if mioLok==nLok then
@@ -297,16 +340,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                         if testBtnviz1==testBtnviz2 then
 
                             if mioCel > mioCel1 then
-                                btn[9]:SetText("тепло")
-                                btn[9]:Enable()
+                                btn[99]:SetText("тепло")
+                                btn[99]:Enable()
                             else
-                                btn[9]:SetText("холодно")
-                                btn[9]:Disable()
+                                btn[99]:SetText("холодно")
+                                btn[99]:Disable()
                             end
                             mioTime=1
                         elseif testBtnviz1~=testBtnviz2 then
-                            btn[9]:SetText("не тут")
-                            btn[9]:Disable()
+                            btn[99]:SetText("не тут")
+                            btn[99]:Disable()
                         end
                     end
                     end
