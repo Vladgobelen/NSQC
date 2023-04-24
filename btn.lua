@@ -2,6 +2,9 @@ Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
 versAdd=59
 local myNome = GetUnitName("player")
+if testQ[myNome]==nil then
+	testQ[myNome]={}
+end
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
 btn = {};
@@ -255,6 +258,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if testQ==nil then
+            testQ={}
+        end
 		if testQ[myNome]["лотерея"]~=nil then
             testModLtr=testQ[myNome]["лотерея"]
             testModLtr=tonumber(testModLtr)
@@ -362,8 +368,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             end
 
         if testQ==nil then
-        testQ={}
-    end
+            testQ={}
+        end
     if testQ[myNome]==nil then
         testQ[myNome]={}
     end

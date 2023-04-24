@@ -6,6 +6,9 @@ local nik=sender
 local versAdd=3
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
+if testQ[myNome]==nil then
+	testQ[myNome]={}
+end
 local hshStran3C
 local hshStanMsgC
 local hshStranMsg2

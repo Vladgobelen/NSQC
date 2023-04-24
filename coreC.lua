@@ -1,17 +1,20 @@
 local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+
 --команды для управления квестами
 local nik=sender
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
+if testQ[myNome]==nil then
+	testQ[myNome]={}
+end
 local hshStran3
 testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
 msg3=mysplit(message)
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
-
 	msg1 = mysplit(message)
 	if msg1[2]=="покажи" then
 		msg1 = msg1[5]
