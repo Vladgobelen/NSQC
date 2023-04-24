@@ -1,6 +1,6 @@
 Astrolabe = DongleStub("Astrolabe-0.4")
 Astrolabe.MinimapUpdateTime = 0.1
-versAdd=63
+versAdd=64
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -92,7 +92,7 @@ btn:configure(8,0,170,300,30,"","Узнать текущий квест");
 btn:configure(9,250,350,200,30,"","Ролл");
 btn:configure(10,250,320,200,30,"#ltr 1","Лотерея одним куском");
 btn:configure(11,250,290,200,30,"#ltr 3","Лотерея тремя кусками");
-btn:configure(12,-165,350,30,30,"","*");
+
 
 
 
@@ -170,7 +170,7 @@ minibtn:SetScript("OnClick", function()
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
             btn[ii]:SetScript("OnClick", function(self, button)
-            for ii=1,12 do
+            for ii=1,11 do
                 btn[ii]:Hide();
             end
             pokazat=0
@@ -178,7 +178,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
             end)
-            for ii=1,12 do
+            for ii=1,11 do
                 btn[ii]:Show();
             end
             pokazat=1
@@ -189,7 +189,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
-            for ii=1,12 do
+            for ii=1,11 do
                 btn[ii]:Hide();
             end
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
@@ -214,7 +214,7 @@ minibtn:SetScript("OnClick", function()
             print ("!заметка+ [текст заметки] - дополнить информацию о себе")
             print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
             print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки ИЛИ статистики]")
-            for ii=1,12 do
+            for ii=1,11 do
                 btn[ii]:Hide();
             end
             myCheckButton1:Show()
@@ -222,7 +222,7 @@ minibtn:SetScript("OnClick", function()
             pokazat=0
             pokazatChk=1
         elseif pokazat==0 then
-            for ii=1,12 do
+            for ii=1,11 do
                 btn[ii]:Show();
             end
             myCheckButton1:Hide()
@@ -308,7 +308,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             myCheckButton1:EnableKeyboard(1);
             btn[1]:SetScript("OnKeyDown",function(self,key)
             if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-                for ii=1,12 do
+                for ii=1,11 do
                     btn[ii]:Hide();
                 end
                 myCheckButton1:Hide()
@@ -322,7 +322,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             end);
             myCheckButton1:SetScript("OnKeyDown",function(self,key)
                 if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-                for ii=1,12 do
+                for ii=1,11 do
                     btn[ii]:Hide();
                 end
                 myCheckButton1:Hide()
