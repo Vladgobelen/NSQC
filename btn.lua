@@ -92,14 +92,31 @@ btn:configure(8,0,170,300,30,"","Узнать текущий квест");
 btn:configure(9,250,350,200,30,"","Ролл");
 btn:configure(10,250,320,200,30,"#ltr 1","Лотерея одним куском");
 btn:configure(11,250,290,200,30,"#ltr 3","Лотерея тремя кусками");
+btn:configure(12,-165,350,30,30,"","*");
 
 
 
 
 local minibtn = CreateFrame("Button", nil, Minimap)
+if testQ==nil then
+    testQ={}
+end
+if testQ[myNome]==nil then
+    testQ[myNome]={}
+end
+if testQ[myNome]["настройки"]==nil then
+    testQ[myNome]["настройки"]={}
+end
+
 minibtn:SetFrameLevel(8)
 minibtn:SetSize(32,32)
 minibtn:SetMovable(true)
+
+
+
+
+
+
 
 --minibtn:SetNormalTexture("Interface/AddOns/NSQuestClient/icon.tga")
 --minibtn:SetPushedTexture("Interface/AddOns/NSQuestClient/icon.tga")
@@ -134,20 +151,14 @@ end)
 minibtn:ClearAllPoints();
 minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
 pokazat=0
+pokazatChk=0
 
---[[btn[1]:EnableKeyboard(1);
-btn[1]:SetScript("OnKeyDown",function(self,key)
-	if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-		for ii=1,11 do
-            btn[ii]:Hide();
-        end
-        pokazat=0
-        minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-        minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-        minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
-	end
-end);
---]]
+
+
+
+
+
+
 minibtn:SetScript("OnClick", function()
     minibtn:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     if arg1=="LeftButton" then
@@ -159,7 +170,7 @@ minibtn:SetScript("OnClick", function()
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
             btn[ii]:SetScript("OnClick", function(self, button)
-            for ii=1,11 do
+            for ii=1,12 do
                 btn[ii]:Hide();
             end
             pokazat=0
@@ -167,36 +178,58 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
             end)
-            for ii=1,11 do
+            for ii=1,12 do
                 btn[ii]:Show();
             end
             pokazat=1
+            myCheckButton1:Hide()
+            myCheckButton2:Hide()
+            pokazatChk=0
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
-            for ii=1,11 do
+            for ii=1,12 do
                 btn[ii]:Hide();
             end
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
             pokazat=0
+            myCheckButton1:Hide()
+            myCheckButton2:Hide()
+            pokazatChk=0
         end
     elseif arg1=="RightButton" then
-        print ("Информация:")
-        print ("Версия NSQC: " .. versAdd)
-        print ("#zzs - взять квест")
-        print ("#zzr - сдать квест")
-        print ("#zzz - взять бонусный квест")
-        print ("#zzy - сдать бонусный квест")
-        print ("#zzt - узнать свой гильдлвл")
-        print ("#zzp - отказаться от квеста")
-        print ("!заметка [текст заметки] - добавть информацию о себе")
-        print ("!заметка+ [текст заметки] - дополнить информацию о себе")
-        print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
-        print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки ИЛИ статистики]")
-
+        if pokazat==1 then
+            print ("Информация:")
+            print ("Версия NSQC: " .. versAdd)
+            print ("#zzs - взять квест")
+            print ("#zzr - сдать квест")
+            print ("#zzz - взять бонусный квест")
+            print ("#zzy - сдать бонусный квест")
+            print ("#zzt - узнать свой гильдлвл")
+            print ("#zzp - отказаться от квеста")
+            print ("!заметка [текст заметки] - добавть информацию о себе")
+            print ("!заметка+ [текст заметки] - дополнить информацию о себе")
+            print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
+            print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки ИЛИ статистики]")
+            for ii=1,12 do
+                btn[ii]:Hide();
+            end
+            myCheckButton1:Show()
+            myCheckButton2:Show()
+            pokazat=0
+            pokazatChk=1
+        elseif pokazat==0 then
+            for ii=1,12 do
+                btn[ii]:Show();
+            end
+            myCheckButton1:Hide()
+            myCheckButton2:Hide()
+            pokazat=1
+            pokazatChk=0
+        end
     end
 end)
 
@@ -255,8 +288,36 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 1 then
 		timeElapsed = 0
-		if testQ==nil then
-            testQ={}
+		if pokazatChk==0 then
+                myCheckButton1:Hide()
+                myCheckButton2:Hide()
+		end
+		if testQ[myNome]["настройки"]["roll"]==nil or testQ[myNome]["настройки"]["roll"]=="Disable" then
+            myCheckButton2:SetChecked(false)
+        end
+        if testQ[myNome]["настройки"]["roll"]=="Enable" then
+            myCheckButton2:SetChecked(true)
+        end
+        if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
+            btn[1]:EnableKeyboard(0);
+            myCheckButton1:SetChecked(false)
+        elseif testQ[myNome]["настройки"]["esc"]=="Enable" then
+            myCheckButton1:SetChecked(true)
+            btn[1]:EnableKeyboard(1);
+            btn[1]:SetScript("OnKeyDown",function(self,key)
+            if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
+                for ii=1,12 do
+                    btn[ii]:Hide();
+                end
+                myCheckButton1:Hide()
+                myCheckButton2:Hide()
+                pokazatChk=0
+                pokazat=0
+                minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+                minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+                minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+            end
+            end);
         end
 		if testQ[myNome]["лотерея"]~=nil then
             testModLtr=testQ[myNome]["лотерея"]
@@ -428,5 +489,43 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 end)
 
 
+local uniquealyzer = 1;
+function createCheckbutton(parent, x_loc, y_loc, displayname)
+	uniquealyzer = uniquealyzer + 1;
 
+	local checkbutton = CreateFrame("CheckButton", "my_addon_checkbutton_0" .. uniquealyzer, parent, "ChatConfigCheckButtonTemplate");
+	checkbutton:SetPoint("CENTER", x_loc, y_loc);
+	getglobal(checkbutton:GetName() .. 'Text'):SetText(displayname);
 
+	return checkbutton;
+end
+
+myCheckButton1 = createCheckbutton(UIParent, -100, 350, "Выключение по Esc");
+myCheckButton1.tooltip = "Скрывать ли аддон при нажатии на Esc - он будет перехватывать управление, пока включен";
+myCheckButton1:SetScript("OnClick",
+    function()
+
+        if testQ[myNome]["настройки"]["esc"]=="Disable" or testQ[myNome]["настройки"]["esc"]==nil then
+            testQ[myNome]["настройки"]["esc"]="Enable"
+            myCheckButton1:SetChecked(true)
+        elseif testQ[myNome]["настройки"]["esc"]=="Enable" then
+            testQ[myNome]["настройки"]["esc"]="Disable"
+            myCheckButton1:SetChecked(false)
+        end
+    end
+);
+
+myCheckButton2 = createCheckbutton(UIParent, -100, 330, "Отображение ролла");
+myCheckButton2.tooltip = "Отображать ли ролл в офицерском чате";
+myCheckButton2:SetScript("OnClick",
+    function()
+        if testQ[myNome]["настройки"]["roll"]=="Disable" or testQ[myNome]["настройки"]["roll"]==nil then
+            testQ[myNome]["настройки"]["roll"]="Enable"
+            myCheckButton2:SetChecked(true)
+        elseif testQ[myNome]["настройки"]["roll"]=="Enable" then
+            testQ[myNome]["настройки"]["roll"]="Disable"
+            myCheckButton2:SetChecked(false)
+        end
+
+    end
+);
