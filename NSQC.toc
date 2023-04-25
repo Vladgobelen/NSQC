@@ -22,4 +22,5 @@ functionsC.lua
 gmList.lua
 minimap.lua
 roll.lua
-
+2.tga
+risIcon.lua

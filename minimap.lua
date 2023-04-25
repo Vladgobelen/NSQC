@@ -32,6 +32,20 @@ end)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 local UpdateSpeed = 1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
 local xmove = 0.5 -- move this much each update
@@ -73,6 +87,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		iconFrame:Hide()
 	end
 --posX, posY = GetPlayerMapPosition("player");(posX*575)+15, ((1-posY)*386)+10)
+
 
 
 
