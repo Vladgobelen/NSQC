@@ -1,37 +1,30 @@
 --[[ Создание фрейма, который будет содержать текстуру иконки
 iconFrame1 = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
 iconFrame1:SetSize(12, 12)
-iconFrame1.iconTexture = iconTexture1
-iconFrame1:SetScript("OnMouseUp", function() print("Clicked on myAddon icon!") end)
-
+iconFrame1:SetPoint("BOTTOMLEFT")
 -- Создание текстуры иконки
-iconTexture1 = iconFrame:CreateTexture("myAddonIcon", "OVERLAY")
+iconTexture1 = iconFrame1:CreateTexture("myAddonIcon", "OVERLAY")
 iconTexture1:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark")
 iconTexture1:SetSize(12, 12)
-iconTexture1:SetPoint("CENTER", 110, 110)
--- Установка позиции фрейма на карте/миникарте
-iconFrame1:SetHeight(12)
-iconFrame1:SetWidth(12)
--- Показ фрейма на карте/миникарте
-iconFrame1:Show()
---]]
+iconTexture1:SetPoint("BOTTOMLEFT", 0, 0)
+
+
 iconRis={}
 iconRisText={}
-function iconRis:configure(idI,razmerXI,razmerYI,iconTextI)
-	self[idI] = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
-	self[idI]:SetSize(razmerXI, razmerYI)
-	self[idI].iconTexture = iconTextI
-	self[idI]:Show()
+
+function iconRis:configure(id,Rx,Ry)
+	self[id] = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("BOTTOMLEFT")
 end
 
-function iconRisText:configure(idT,razmerXT,razmerYT,XT,YT)
-	self[idT] = iconFrame:CreateTexture("myAddonIcon", "OVERLAY")
-	self[idT]:SetTexture("Interface\\AddOns\\NSQC\\2.tga")
-	self[idT]:SetSize(razmerXT, razmerYT)
-	self[idT]:SetPoint("CENTER", 0, 0)
-	self[idT]:SetHeight(razmerXT)
-	self[idT]:SetWidth(razmerYT)
+function iconRisText:configure(id,Rx,Ry,x,y)
+	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark")
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("BOTTOMLEFT", x, y)
 end
+
 
 
 iRis=1
@@ -47,18 +40,13 @@ fRis:SetScript("OnUpdate", function(self, elapsed)
 	end
 
 	self.UpdateSpeed = UpdateSpeed
-	mioXRis, mioYRis = GetPlayerMapPosition("player");
+	mioKontRis,mioLokRis,mioXRis,mioYRis=Astrolabe:GetCurrentPlayerPosition()
 	XXXRis,YYYRis=getPOS(mioXRis,mioYRis)
-	iconRis:configure(iRis,12,12,iconRisText[iRis])
-	iconRisText:configure(iRis,12,12,XXXRis,YYYRis)
-	iconRisText[iRis]:SetPoint("BOTTOMLEFT", XXXRis, YYYRis)
-	print (XXXRis)
-	print (XXX)
+
+	iconRis:configure(iRis,12,12)
+	iconRisText:configure(iRis,12,12,0,0)
+	iconRis[iRis]:SetPoint("BOTTOMLEFT", XXXRis, YYYRis)
 	iconRis[iRis]:Show()
-	iconRisText[iRis]:Show()
 	iRis=iRis+1
 
-
-
-
-end)
+end)--]]
