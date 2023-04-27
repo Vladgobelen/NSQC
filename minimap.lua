@@ -72,8 +72,9 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		--xxx,yyy=GetCursorPosition();
 	end
 	iconFrame:SetPoint("BOTTOMLEFT", XXX, YYY)
-	mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
+	mioKont=GetCurrentMapContinent();
 	mioKont=tonumber(mioKont)
+	mioLok=GetNumMapLandmarks();
 	nKont=tonumber(framePos["kont"])
 	mioLok=tonumber(mioLok)
 	nLok=tonumber(framePos["lok"])

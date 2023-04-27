@@ -1,6 +1,4 @@
-Astrolabe = DongleStub("Astrolabe-0.4")
-Astrolabe.MinimapUpdateTime = 0.1
-versAdd=64
+versAdd=65
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -36,21 +34,19 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
         if id==2 then
             if testQ[myNome]["лвл_квестов"]~=2 then
-                SendChatMessage(zzid, "OFFICER", nil, 1)
-
+                SendAddonMessage("NSGadd", zzid, "guild")
             elseif testQ[myNome]["лвл_квестов"]==2 then
-                SendChatMessage("#aam", "OFFICER", nil, 1)
-
+                SendAddonMessage("NSGadd", "#aam", "guild")
             end
         else
-            SendChatMessage(zzid, "OFFICER", nil, 1)
+            SendAddonMessage("NSGadd", zzid, "guild")
         end
 
     end)
 
     elseif id==3 or id==4 or id==5 or id==6 then
     self[id]:SetScript("OnClick",function(self, button)
-           SendChatMessage(zzid, "GUILD", nil, 1) end)
+           SendAddonMessage("NSGadd", zzid, "guild") end)
     end
     if id==8 then
             self[id]:SetScript("OnClick",function(self, button)
@@ -203,7 +199,7 @@ minibtn:SetScript("OnClick", function()
     elseif arg1=="RightButton" then
         if pokazat==1 then
             print ("Информация:")
-            print ("Версия NSQC: " .. versAdd)
+            print ("NSQC-" .. versAdd)
             print ("#zzs - взять квест")
             print ("#zzr - сдать квест")
             print ("#zzz - взять бонусный квест")
@@ -368,9 +364,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 btn[10]:Disable()
             end
         end
-		mioKont,mioLok,mioX,mioY=Astrolabe:GetCurrentPlayerPosition()
+		mioX,mioY = GetPlayerMapPosition("player");
+		mioKont=GetCurrentMapContinent();
 		mioKont=tonumber(mioKont)
 		nKont=tonumber(nKont)
+		mioLok=GetNumMapLandmarks();
 		mioLok=tonumber(mioLok)
 		nLok=tonumber(nLok)
 		testBtnviz1=framePos["mapViz"]
