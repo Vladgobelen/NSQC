@@ -12,26 +12,28 @@ if testQ[myNome]==nil then
 end
 testGM=gmTest(sender)
 if kod=="NSGadd" then
-if string.find (message, "#aaa") or string.find (message, "#aao") and string.find (message, myNome) then
-	msg1 = mysplit(message)
-	msg1TestLvl=msg1[1]
-	if msg1TestLvl=="#aaa" then
-		msg1 = msg1[3]
-		msg1 = tonumber(msg1)
-		id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
-		if completed == true then
-			SendAddonMessage("NSGadd", "#aab " .. msg1, "guild")
-		else
-			SendAddonMessage("NSGadd", "#aac " .. msg1, "guild")
-		end
-	elseif msg1TestLvl=="#aao" then
-		msg1 = msg1[3]
-		msg1 = tonumber(msg1)
-		id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
-		if completed == true then
-			SendAddonMessage("NSGadd", "#aap " .. msg1, "guild")
-		else
-			SendAddonMessage("NSGadd", "#aaq " .. msg1, "guild")
+if string.find (message, "#aaa") or string.find (message, "#aao") then
+	if string.find (message, myNome) then
+		msg1 = mysplit(message)
+		msg1TestLvl=msg1[1]
+		if msg1TestLvl=="#aaa" then
+			msg1 = msg1[3]
+			msg1 = tonumber(msg1)
+			id, name, points, completed, month, day, year, description, flags, icon, rewardText, 	isGuildAch = GetAchievementInfo(msg1)
+			if completed == true then
+				SendAddonMessage("NSGadd", "#aab " .. msg1, "guild")
+			else
+				SendAddonMessage("NSGadd", "#aac " .. msg1, "guild")
+			end
+		elseif msg1TestLvl=="#aao" then
+			msg1 = msg1[3]
+			msg1 = tonumber(msg1)
+			id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
+			if completed == true then
+				SendAddonMessage("NSGadd", "#aap " .. msg1, "guild")
+			else
+				SendAddonMessage("NSGadd", "#aaq " .. msg1, "guild")
+			end
 		end
 	end
 end
@@ -125,71 +127,74 @@ if string.find (message, "#aa3") and string.find (message, myNome) then
 	testQ[myNome]["лвл_квестов"]=3
 end
 
-if string.find (message, "#aah") or string.find (message, "#aan") and string.find (message, myNome) then
-
-	msgQLVL2 = mysplit(message)
-	if msgQLVL2[1] == "#aah" then
-		testQ[myNome]["лвл_квестов"]=2
-		msgQLVL2 = msgQLVL2[3]
-		msgQLVL2 = tonumber(msgQLVL2)
-		j=0
-		k=0
-		count = GetAchievementNumCriteria(msgQLVL2)
-		for i=1, count do
-			local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msgQLVL2, i);
-			prov=completed
-			if prov == true then
-				j=j+1
-			else
-				k=k+1
+if string.find (message, "#aah") or string.find (message, "#aan") then
+	if string.find (message, myNome) then
+		msgQLVL2 = mysplit(message)
+		if msgQLVL2[1] == "#aah" then
+			testQ[myNome]["лвл_квестов"]=2
+			msgQLVL2 = msgQLVL2[3]
+			msgQLVL2 = tonumber(msgQLVL2)
+			j=0
+			k=0
+			count = GetAchievementNumCriteria(msgQLVL2)
+			for i=1, count do
+				local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msgQLVL2, i);
+				prov=completed
+				if prov == true then
+					j=j+1
+				else
+					k=k+1
+				end
+				i=i+1
 			end
-			i=i+1
-		end
-		if k==0 then
-			SendAddonMessage("NSGadd", "#aai " .. msgQLVL2, "guild")
-		else
-			SendAddonMessage("NSGadd", "#aaj " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
-		--SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
-		end
-	elseif msgQLVL2[1] == "#aan" then
-		testQ[myNome]["лвл_квестов"]=3
-		msgQLVL2 = msgQLVL2[3]
-		msgQLVL2 = tonumber(msgQLVL2)
-		j=0
-		k=0
-		count = GetAchievementNumCriteria(msgQLVL2)
-		for i=1, count do
-			local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msgQLVL2, i);
-			prov=completed
-			if prov == true then
-				j=j+1
+			if k==0 then
+				SendAddonMessage("NSGadd", "#aai " .. msgQLVL2, "guild")
 			else
-				k=k+1
+				SendAddonMessage("NSGadd", "#aaj " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
+			--SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
 			end
-			i=i+1
-		end
-		if k==0 then
-			SendAddonMessage("NSGadd", "#aar " .. msgQLVL2, "guild")
-		else
-			SendAddonMessage("NSGadd", "#aas " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
-		--SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+		elseif msgQLVL2[1] == "#aan" then
+			testQ[myNome]["лвл_квестов"]=3
+			msgQLVL2 = msgQLVL2[3]
+			msgQLVL2 = tonumber(msgQLVL2)
+			j=0
+			k=0
+			count = GetAchievementNumCriteria(msgQLVL2)
+			for i=1, count do
+				local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msgQLVL2, i);
+				prov=completed
+				if prov == true then
+					j=j+1
+				else
+					k=k+1
+				end
+				i=i+1
+			end
+			if k==0 then
+				SendAddonMessage("NSGadd", "#aar " .. msgQLVL2, "guild")
+			else
+				SendAddonMessage("NSGadd", "#aas " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
+				--SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+			end
 		end
 	end
 end
 
 local myNome = GetUnitName("player")
-if string.find (message, "#aae") or string.find (message, "#aaq") and string.find (message, myNome) then
-	msg13 = mysplit(message)
-	if msg13[1] == "#aae" then
-		msg13 = msg13[3]
-		msg13 = tonumber(msg13)
-		testQ[myNome]["взятый_квест"]=msg13
-	elseif msg13[1] == "#aaq" then
-		msg13 = msg13[3]
-		msg13 = tonumber(msg13)
-		testQ[myNome]["взятый_квест"]=msg13
-		testQ[myNome]["взятый_квест3_1"]="vzyat"
-		testQ[myNome]["взятый_квест3_2"]="nevzyat"
+if string.find (message, "#aae") or string.find (message, "#aaq") then
+	if string.find (message, myNome) then
+		msg13 = mysplit(message)
+		if msg13[1] == "#aae" then
+			msg13 = msg13[3]
+			msg13 = tonumber(msg13)
+			testQ[myNome]["взятый_квест"]=msg13
+		elseif msg13[1] == "#aaq" then
+			msg13 = msg13[3]
+			msg13 = tonumber(msg13)
+			testQ[myNome]["взятый_квест"]=msg13
+			testQ[myNome]["взятый_квест3_1"]="vzyat"
+			testQ[myNome]["взятый_квест3_2"]="nevzyat"
+		end
 	end
 end
 
