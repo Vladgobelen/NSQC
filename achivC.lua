@@ -78,7 +78,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		else
 		end
 	elseif testQ[myNome]["лвл_квестов"]==3 then
-		if testQ[myNome]["взятый_квест3_1"] == "vzyat"
+		if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 			proverka_komandy=mysplit(message)
 			msg1=proverka_komandy[3]
 			msg1 = tonumber(msg1)
@@ -104,7 +104,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 				testQ[myNome]["взятый_квест"]="9999"
 			else
 			end
-		elseif testQ[myNome]["взятый_квест3_2"] == "vzyat"
+		elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 			proverka_komandy=mysplit(message)
 			msg1=proverka_komandy[3]
 			msg1 = tonumber(msg1)
