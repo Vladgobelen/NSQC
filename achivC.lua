@@ -95,7 +95,6 @@ if string.find (message, "#aah") and string.find (message, myNome) then
 	end
 	if k==0 then
 		SendAddonMessage("NSGadd", "#aai " .. msgQLVL2, "guild")
-		SendChatMessage("уже выполнена полностью: " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
 	else
 		SendAddonMessage("NSGadd", "#aaj " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
 		--SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)

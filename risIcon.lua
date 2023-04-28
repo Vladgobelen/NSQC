@@ -76,9 +76,12 @@ end
 
 
 
+function testXY(x,y)
+iconRis:configure(1,545,350)
+iconRisText:configure(1,89.1,86,0,0,1)
 
-
-
+iconRis[1]:SetPoint("BOTTOMLEFT", x, y)
+end
 
 
 
