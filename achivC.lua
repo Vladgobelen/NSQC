@@ -80,7 +80,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		else
 		end
 	elseif testQ[myNome]["лвл_квестов"]==3 then
-		if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+		if testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 			proverka_komandy=mysplit(message)
 			msg1=proverka_komandy[3]
 			msg1 = tonumber(msg1)
@@ -106,7 +106,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 				testQ[myNome]["взятый_квест"]="9999"
 			else
 			end
-		elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
+		elseif testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 			proverka_komandy=mysplit(message)
 			msg1=proverka_komandy[3]
 			msg1 = tonumber(msg1)
@@ -185,15 +185,23 @@ if string.find (message, "#aae") or string.find (message, "#aaq") then
 	if string.find (message, myNome) then
 		msg13 = mysplit(message)
 		if msg13[1] == "#aae" then
+			if testQ[myNome]["квест_лвл3"] == nil then
+				testQ[myNome]["квест_лвл3"] = {}
+			end
 			msg13 = msg13[3]
-			msg13 = tonumber(msg13)
 			testQ[myNome]["взятый_квест"]=msg13
-		elseif msg13[1] == "#aaq" then
-			msg13 = msg13[3]
-			msg13 = tonumber(msg13)
-			testQ[myNome]["взятый_квест"]=msg13
+			table.insert(testQ[myNome]["квест_лвл3"],msg13)
 			testQ[myNome]["взятый_квест3_1"]="vzyat"
 			testQ[myNome]["взятый_квест3_2"]="nevzyat"
+		elseif msg13[1] == "#aaq" then
+			if testQ[myNome]["квест_лвл3"] == nil then
+				testQ[myNome]["квест_лвл3"] = {}
+			end
+			msg13 = msg13[3]
+			testQ[myNome]["взятый_квест"]=msg13
+			table.insert(testQ[myNome]["квест_лвл3"],msg13)
+			testQ[myNome]["взятый_квест3_2"]="vzyat"
+			testQ[myNome]["взятый_квест3_1"]="nevzyat"
 		end
 	end
 end
@@ -219,7 +227,7 @@ if string.find (message, "#aak") and string.find (message, myNome) then
 	end
 	if testQ[myNome]["лвл_квестов"] == 2 then
 		count = GetAchievementNumCriteria(msgVzyalQ2)
-		count =tonumber(count)
+		count = tonumber(count)
 		testQ[myNome]["квест_лвл2"][msgVzyalQ2]=count
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
 	elseif testQ[myNome]["лвл_квестов"] == 3 then
@@ -277,6 +285,8 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 			i=i+1
 		end
 		j=j+3
+		print (myNome)
+		print( testQ[myNome])
 		testQ[myNome]["квест_лвл3"][msgVzyalQ2]=j
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
 		testQ[myNome]["взятый_квест3_2"]="vzyat"

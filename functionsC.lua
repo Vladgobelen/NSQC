@@ -311,3 +311,29 @@ function gmTest (gmTestNome)
 	end
 	return gmTestRez
 end
+
+function proverkaVypolneniyaKvestySachivkoj(mNome,qlvl)
+	local vypolnenaLiAch=testQ[mNome]["взятый_квест"]
+	if qlvl == 2 then
+		qlvl = "квест_лвл2"
+	elseif qlvl == 3 then
+		qlvl = "квест_лвл3"
+	end
+	local chisloPunktop=testQ[mNome][qlvl][vypolnenaLiAch]
+	chisloPunktop=tonumber(chisloPunktop)
+	local count = GetAchievementNumCriteria (vypolnenaLiAch)
+	j=0
+	k=0
+	for i=1, count do
+		local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+		prov=completed
+		if prov == true then
+			j=j+1
+		else
+			k=k+1
+		end
+		i=i+1
+		end
+		local pokazatRezult=chisloPunktop-j
+		SendChatMessage("Осталось выполнить " .. pokazatRezult .. " пунктов ачивки " .. vypolnenaLiAch .. " " .. GetAchievementLink(vypolnenaLiAch) .. " из " .. chisloPunktop, "GUILD", nil, 1)
+end

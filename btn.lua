@@ -33,7 +33,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id]:SetScript("OnClick",function(self, button)
 
         if id==2 then
-            if testQ[myNome]["лвл_квестов"]~=2 then
+            if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
                 SendAddonMessage("NSGadd", zzid, "guild")
             elseif testQ[myNome]["лвл_квестов"]==2 then
                 SendAddonMessage("NSGadd", "#aam", "guild")
@@ -55,24 +55,12 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
                 if testQ[myNome]["лвл_квестов"]~=2 then
                     SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
                 elseif testQ[myNome]["лвл_квестов"]==2 then
-                    vypolnenaLiAch=testQ[myNome]["взятый_квест"]
-                    chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
-                    j=0
-                    k=0
-                    for i=1, count do
-                    local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
-                    prov=completed
-                    if prov == true then
-                        j=j+1
-                    else
-                        k=k+1
-                    end
-                    i=i+1
-                    end
-                    pokazatRezult=chisloPunktop-j
-                    SendChatMessage("Осталось выполнить " .. pokazatRezult .. " пунктов ачивки " .. vypolnenaLiAch .. " " .. GetAchievementLink(vypolnenaLiAch) .. " из " .. chisloPunktop, "GUILD", nil, 1)
+                    proverkaVypolneniyaKvestySachivkoj(myNome,2)
+                elseif testQ[myNome]["лвл_квестов"]==3 and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+                     SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
+                elseif testQ[myNome]["лвл_квестов"]==3 and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
                 end
-
+                    proverkaVypolneniyaKvestySachivkoj(myNome,3)
                 end)
     end
 end
@@ -290,12 +278,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 myCheckButton1:Hide()
                 myCheckButton2:Hide()
 		end
+		if testQ[myNome]["настройки"] == nil then
+            testQ[myNome]["настройки"] = {}
+            testQ[myNome]["настройки"]["esc"]="Disable"
+            testQ[myNome]["настройки"]["roll"]="Enable"
+        end
 		if testQ[myNome]["настройки"]["roll"]==nil or testQ[myNome]["настройки"]["roll"]=="Disable" then
             myCheckButton2:SetChecked(false)
         end
         if testQ[myNome]["настройки"]["roll"]=="Enable" then
             myCheckButton2:SetChecked(true)
         end
+
         if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
             btn[1]:EnableKeyboard(0);
             myCheckButton1:EnableKeyboard(0);
@@ -459,7 +453,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         btn[7]:SetText("Отказаться от квеста")
         btn[8]:Enable()
         btn[8]:SetText("Узнать текущий квест")
-        if testQ[myNome]["лвл_квестов"]~=2 then
+        if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
             testComplit=testQ[myNome]["взятый_квест"]
             id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
             if completed ~= true then
@@ -496,7 +490,83 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 btn[2]:Enable()
                 btn[2]:SetText("Сдать квест")
             end
+        elseif testQ[myNome]["лвл_квестов"]==3 then
+            if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+                testComplit=testQ[myNome]["взятый_квест"]
+                testComplit=tonumber(testComplit)
+                id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+                if completed ~= true then
+                    btn[2]:Disable()
+                    btn[2]:SetText("Ачивка не выполнена")
+                    btn[1]:Disable()
+                    btn[1]:SetText("Ачивка не выполнена")
+                else
+                    btn[2]:Enable()
+                    btn[2]:SetText("Сдать квест")
+                end
+            elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
+                vypolnenaLiAch=testQ[myNome]["взятый_квест"]
+                count = GetAchievementNumCriteria(vypolnenaLiAch)
+                chisloPunktop=testQ[myNome]["квест_лвл3"][vypolnenaLiAch]
+                j=0
+                k=0
+                for i=1, count do
+                    local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+                    prov=completed
+                    if prov == true then
+                        j=j+1
+                    else
+                        k=k+1
+                    end
+                    i=i+1
+                end
+                if j<chisloPunktop then
+                    btn[2]:Disable()
+                    btn[2]:SetText("Ачивка не выполнена")
+                    btn[1]:Disable()
+                    btn[1]:SetText("Ачивка не выполнена")
+                else
+                    btn[2]:Enable()
+                    btn[2]:SetText("Сдать квест")
+                end
+            end
         end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     end
 
