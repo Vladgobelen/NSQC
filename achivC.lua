@@ -243,7 +243,6 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 	if testQ[myNome]["лвл_квестов"] == 2 then
 		msgVzyalQ2=mysplit(message)
 		msgVzyalQ2=msgVzyalQ2[3]
-		msgVzyalQ2=tonumber(msgVzyalQ2)
 		j=0
 		k=0
 		count = GetAchievementNumCriteria(msgVzyalQ2)
