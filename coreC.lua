@@ -107,6 +107,7 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 				k=k+1
 			end
 			end
+			print(i)
 
 			if provShow~=true and countShow~=1 and countShow~=0 then
 				cmpltd1=j

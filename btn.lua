@@ -1,4 +1,4 @@
-versAdd=68
+versAdd=69
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -455,6 +455,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         btn[8]:SetText("Узнать текущий квест")
         if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
             testComplit=testQ[myNome]["взятый_квест"]
+            testComplit=tonumber(testComplit)
             id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
             if completed ~= true then
                 btn[2]:Disable()
