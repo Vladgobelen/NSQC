@@ -170,8 +170,26 @@ if string.find (message, "получает лотерейный билет") and
 end
 
 if string.find (message, "!следить") and string.find(message, myNome) then
+	print("fsfdsafdsfdsfdsafdsa")
+	local unitNome=UnitName("target")
+	if unitNome ~= nil then
+		npcPX, npcPY = GetPlayerMapPosition("player")
+		npcSK=GetCurrentMapContinent()
+		npcSL=GetNumMapLandmarks()
+		print (unitNome)
+		if npcScan[unitNome] == nil then
+			npcScan[unitNome] = {}
+			npcScan[unitNome]["x"] = npcPX
+			npcScan[unitNome]["y"] = npcPY
+			npcScan[unitNome]["kont"] = npcSK
+			npcScan[unitNome]["lok"] = npcSL
 
+		else
+			print (unitNome .. " уже есть в базе")
+		end
+	end
 end
+
 lotTest=mysplit(message)
 
 if string.find (message, "#ltr111") and testGM~=nil and lotTest[3]==myNome then
