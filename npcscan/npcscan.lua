@@ -15,12 +15,12 @@ function npc_scan_Text:configure(id,Rx,Ry,x,y)
 end
 
 
-function testXY(x,y,text)
-npc_scan:configure(1,545,350)
-npc_scan_Text:configure(1,12,12,0,0)
-npc_scan[1]:SetPoint("BOTTOMLEFT", x, y)
-npc_scan[1]:Show()
-npc_scan_Text[1]:Show()
+function testXY(id,x,y)
+npc_scan:configure(id,545,350)
+npc_scan_Text:configure(id,12,12,0,0)
+npc_scan[id]:SetPoint("BOTTOMLEFT", x, y)
+npc_scan[id]:Show()
+npc_scan_Text[id]:Show()
 end
 
 local UpdateSpeed = 1
@@ -44,11 +44,56 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if xos > ScrollMax then -- we're offscreen to the right so...
 		xos =  -self.Text1:GetWidth() -- reset to the left again
 	end
-	npcPX, npcPY = GetPlayerMapPosition("player")
-	npcSK=GetCurrentMapContinent()
-	npcSL=GetNumMapLandmarks()
 
+	npcOX, npcOY = GetPlayerMapPosition("player")
+	npcOK=GetCurrentMapContinent()
+	npcOK=tostring(npcOK)
+	npcOL=GetNumMapLandmarks()
+	npcOL=tostring(npcOL)
+	if WorldMapFrameSizeUpButton:IsVisible() ~= nil then
+		npcTime=1
+		i=0
+		nomeRar={}
+		kolicToch=0
+		for key, val in pairs(npcScan[npcOK][npcOL]) do
+			i=i+1
+			nomeRar[i] = key
+		end
 
+		for j=1, #nomeRar do
+			for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[j]]) do
+				for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[j]][key]) do
+					if key == "x" then
+						xRar = val
+
+					end
+					if key == "y" then
+						yRar = val
+					end
+				end
+
+				xRar = tonumber(xRar)
+				yRar = tonumber(yRar)
+				npcRisX,npcRisY=getPOS(xRar,yRar)
+				kolicToch=kolicToch+1
+
+				testXY(kolicToch,npcRisX,npcRisY)
+
+			end
+			j=j+1
+		end
+		kolicToch=0
+		if npcTime > 1 then
+		print(kolicToch)
+			for i=1, kolicToch do
+				npc_scan[i]:Hide()
+				npc_scan_Text[i]:Hide()
+			end
+			npcTime=0
+		end
+		npcTime=npcTime+1
+
+	end
 
 
 
