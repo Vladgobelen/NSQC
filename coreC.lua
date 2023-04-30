@@ -169,6 +169,25 @@ if string.find (message, "получает лотерейный билет") and
 	end
 end
 
+if string.find (message, "!следить") and string.find(message, myNome) then
+
+end
+lotTest=mysplit(message)
+
+if string.find (message, "#ltr111") and testGM~=nil and lotTest[3]==myNome then
+	minusLrt=testQ[myNome]["лотерея"]
+	minusLrt=tonumber(minusLrt)
+	minusLrt=minusLrt-1
+	testQ[myNome]["лотерея"]=minusLrt
+end
+
+if string.find (message, "#ltr333") and testGM~=nil and lotTest[3]==myNome then
+	minusLrt=testQ[myNome]["лотерея"]
+	minusLrt=tonumber(minusLrt)
+	minusLrt=minusLrt-3
+	testQ[myNome]["лотерея"]=minusLrt
+end
+
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
 	SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
 end

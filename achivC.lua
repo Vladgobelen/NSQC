@@ -293,20 +293,6 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 		testQ[myNome]["взятый_квест3_1"]="nevzyat"
 	end
 end
-lotTest=mysplit(message)
-if string.find (message, "#ltr111") and testGM~=nil and lotTest[3]==myNome then
-	minusLrt=testQ[ltrNikC]["лотерея"]
-	minusLrt=tonumber(minusLrt)
-	minusLrt=minusLrt-1
-	testQ[ltrNikC]["лотерея"]=minusLrt
-end
-
-if string.find (message, "#ltr333") and testGM~=nil and lotTest[3]==myNome then
-	minusLrt=testQ[ltrNikC]["лотерея"]
-	minusLrt=tonumber(minusLrt)
-	minusLrt=minusLrt-3
-	testQ[ltrNikC]["лотерея"]=minusLrt
-end
 
 if testGM~=nil then
 local testXY

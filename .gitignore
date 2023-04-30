@@ -21,3 +21,9 @@
 !risIcon.lua
 !test/
 !test/*.tga
+!npcscan/
+!npcscan/1.tga
+!npcscan/2.tga
+!npcscan/3.tga
+!npcscan/npcscan.lua
+

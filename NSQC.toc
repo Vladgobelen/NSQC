@@ -2,7 +2,7 @@
 ## Title: NSQC
 ## Notes: NSQC
 ## Author: Vladgobelen
-## SavedVariables: clsNS, framePos, testQ
+## SavedVariables: clsNS, framePos, testQ, npcScan
 
 lib\lib_hook.lua
 lib\lib_math.lua
@@ -19,6 +19,10 @@ minimap.lua
 roll.lua
 risIcon.lua
 test1.lua
+npcscan\1.tga
+npcscan\2.tga
+npcscan\3.tga
+npcscan\npcscan.lua
 test\rez-1.tga
 test\rez-2.tga
 test\rez-3.tga
