@@ -104,12 +104,25 @@ function getPOS(x,y)
 	elseif testResolution==1.5 and width~=1440 then
 		par10=par10+85
 	end
+	local wmfX,wmfY=WorldMapFrame:GetSize()
+	wmfX=strint.sub(wmfX,1,3)
+	wmfX=tonumber(wmfX)
 	if WorldMapFrameSizeUpButton:IsVisible()==nil then
-		XXX=(par1+(par2*x)-par3)+par10
-		YYY=(((par4 - (par5 + (par6 * y)))-par7))+par11
+		if wmfX == 622 then
+			XXX=(par1+(par2*x)-par3)+par10
+			YYY=(((par4 - (par5 + (par6 * y)))-par7))+par11
+		elseif wmfX == 593 then
+			XXX=((par1+(par2*x)-par3)+par10)-15
+			YYY=((((par4 - (par5 + (par6 * y)))-par7))+par11)-15
+		end
 	else
-		YYY=((1-y)*par8)+10
-		XXX=(x*par9)+15
+		if wmfX == 622 then
+			YYY=((1-y)*par8)+10
+			XXX=(x*par9)+15
+		elseif wmfX == 593 then
+			YYY=(((1-y)*par8)+10)-15
+			XXX=((x*par9)+15)-15
+		end
 	end
 	return XXX,YYY
 end

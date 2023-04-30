@@ -72,12 +72,12 @@ f:SetScript("OnUpdate", function(self, elapsed)
 					end
 				end
 
-				xRar = tonumber(xRar)
-				yRar = tonumber(yRar)
-				npcRisX,npcRisY=getPOS(xRar,yRar)
-				kolicToch=kolicToch+1
+				--xRar = tonumber(xRar)
+				--yRar = tonumber(yRar)
+				--npcRisX,npcRisY=getPOS(xRar,yRar)
+				--kolicToch=kolicToch+1
 
-				testXY(kolicToch,npcRisX,npcRisY)
+				--testXY(kolicToch,npcRisX,npcRisY)
 
 			end
 			j=j+1
