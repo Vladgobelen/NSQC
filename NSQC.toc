@@ -18,6 +18,7 @@ gmList.lua
 minimap.lua
 roll.lua
 risIcon.lua
+test1.lua
 test\rez-1.tga
 test\rez-2.tga
 test\rez-3.tga

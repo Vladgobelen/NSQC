@@ -67,6 +67,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if xos > ScrollMax then -- we're offscreen to the right so...
 		xos =  -self.Text1:GetWidth() -- reset to the left again
 	end
+
 	if framePos["X"]~=nil then
 		XXX,YYY=getPOS(framePos["X"],framePos["Y"])
 		--xxx,yyy=GetCursorPosition();

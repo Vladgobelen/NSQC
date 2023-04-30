@@ -76,19 +76,34 @@ end
 
 
 
-function testXY(x,y)
-iconRis:configure(1,545,350)
-iconRisText:configure(1,89.1,86,0,0,1)
 
-iconRis[1]:SetPoint("BOTTOMLEFT", x, y)
+
+
+
+---------------------------------------
+npc_scan={}
+npc_scan_Text={}
+
+function npc_scan:configure(id,Rx,Ry)
+	self[id] = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("BOTTOMLEFT")
+end
+
+function npc_scan_Text:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture()
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("BOTTOMLEFT", x, y)
 end
 
 
+function testXY(x,y,text)
+npc_scan:configure(1,545,350)
+npc_scan_Text:configure(1,89.1,86,0,0,text)
 
-
-
-
-
+iconRis[1]:SetPoint("BOTTOMLEFT", x, y)
+end
 
 
 

@@ -1,7 +1,8 @@
-versAdd=69
+versAdd=70
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
+
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
@@ -274,6 +275,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+
+
 		if pokazatChk==0 then
                 myCheckButton1:Hide()
                 myCheckButton2:Hide()
