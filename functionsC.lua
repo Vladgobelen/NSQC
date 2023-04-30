@@ -110,7 +110,8 @@ function getPOS(x,y)
 	if WorldMapFrameSizeUpButton:IsVisible()==nil then
 			YYY=((1-y)*768)
 			XXX=x*1002
-	elseif WorldMapFrameSizeDownButton:IsVisible()==nil then
+	end
+	if WorldMapFrameSizeDownButton:IsVisible()==nil then
 
 			YYY=((1-y)*par8)
 			XXX=(x*par9)

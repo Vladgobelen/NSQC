@@ -15,7 +15,7 @@ end
 function npc_scan:configure(id,Rx,Ry)
 	self[id] = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
 	self[id]:SetSize(Rx, Ry)
-	self[id]:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, y)
+	self[id]:SetPoint("CENTER", WorldMapFrame, "BOTTOMLEFT", x, y)
 end
 
 function npc_scan_Text:configure(id,Rx,Ry,x,y)
@@ -88,10 +88,13 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 				xRar = tonumber(xRar)
 				yRar = tonumber(yRar)
-				npcRisX,npcRisY=getPOS(xRar,yRar)
-				kolicToch=kolicToch+1
 
+				npcRisX,npcRisY=getPOS(xRar,yRar)
+
+
+				kolicToch=kolicToch+1
 				testXY(kolicToch,npcRisX,npcRisY)
+
 
 			end
 			j=j+1
@@ -102,6 +105,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			for i=1, kk do
 				npc_scan[i]:Hide()
 				npc_scan_Text[i]:Hide()
+				npc_scan[i]:ClearAllPoints()
+				npc_scan_Text[i]:ClearAllPoints()
 			end
 			npcTime=0
 		end
@@ -111,10 +116,10 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	end
 
 
-	if framePos["X"]~=nil then
-		XXX,YYY=getPOS(framePos["X"],framePos["Y"])
+	--if framePos["X"]~=nil then
+		--XXX,YYY=getPOS(framePos["X"],framePos["Y"])
 		--xxx,yyy=GetCursorPosition();
-	end
+	--end
 
 
 
