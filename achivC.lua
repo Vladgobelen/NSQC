@@ -57,7 +57,6 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		msg1=proverka_komandy[3]
 		mozhnoLiSdatChislo=testQ[myNome]["квест_лвл2"][msg1]
 		mozhnoLiSdatChislo=tonumber(mozhnoLiSdatChislo)
-		pri
 		j=0
 		k=0
 		count = GetAchievementNumCriteria(msg1)
