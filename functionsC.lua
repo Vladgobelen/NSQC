@@ -114,6 +114,9 @@ function getPOS(x,y)
 		elseif wmfX == 593 then
 			XXX=((par1+(par2*x)-par3)+par10)-15
 			YYY=((((par4 - (par5 + (par6 * y)))-par7))+par11)-15
+		else
+			XXX=(par1+(par2*x)-par3)+par10
+			YYY=(((par4 - (par5 + (par6 * y)))-par7))+par11
 		end
 	else
 		if wmfX == 622 then
@@ -122,8 +125,13 @@ function getPOS(x,y)
 		elseif wmfX == 593 then
 			YYY=(((1-y)*par8)+10)-15
 			XXX=((x*par9)+15)-15
+		else
+			YYY=((1-y)*par8)+10
+			XXX=(x*par9)+15
 		end
 	end
+	print (XXX)
+	print (YYY)
 	return XXX,YYY
 end
 
