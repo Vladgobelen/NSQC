@@ -76,13 +76,13 @@ function getPOS(x,y)
 	height=tonumber(height)
 	local XXX
 	local YYY
-	local par1=10
-	local par2=1004
-	local par3=7
+	local par1=0
+	local par2=1002
+	local par3=0
 	local par4=768
 	local par5=70
-	local par6=667
-	local par7=5
+	local par6=668
+	local par7=0
 	local par8=386
 	local par9=575
 	local par10=0
@@ -108,27 +108,15 @@ function getPOS(x,y)
 	wmfX=string.sub(wmfX,1,3)
 	wmfX=tonumber(wmfX)
 	if WorldMapFrameSizeUpButton:IsVisible()==nil then
-		if wmfX == 622 then
-			XXX=(par1+(par2*x)-par3)+par10
-			YYY=(((par4 - (par5 + (par6 * y)))-par7))+par11
-		elseif wmfX == 593 then
-			XXX=((par1+(par2*x)-par3)+par10)-15
-			YYY=((((par4 - (par5 + (par6 * y)))-par7))+par11)-15
-		else
-			XXX=(par1+(par2*x)-par3)+par10
-			YYY=(((par4 - (par5 + (par6 * y)))-par7))+par11
-		end
-	else
-		if wmfX == 622 then
-			YYY=((1-y)*par8)+10
-			XXX=(x*par9)+15
-		elseif wmfX == 593 then
-			YYY=(((1-y)*par8)+10)-15
-			XXX=((x*par9)+15)-15
-		else
-			YYY=((1-y)*par8)+10
-			XXX=(x*par9)+15
-		end
+			print("fdsa")
+			YYY=((1-y)*par4)
+			XXX=(x*par2)
+
+	elseif WorldMapFrameSizeDownButton:IsVisible()==nil then
+
+			YYY=((1-y)*par8)
+			XXX=(x*par9)
+
 	end
 	return XXX,YYY
 end

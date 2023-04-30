@@ -1,26 +1,38 @@
 npc_scan={}
 npc_scan_Text={}
 
+--[[function createMark(id,x,y)
+    local mark = _G["myAddonIconFrame"..id] or CreateFrame("FRAME", "myAddonIconFrame"..id, WorldMapFrame)
+    mark:SetSize(40, 40)
+    mark:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, -y)
+    mark.texture = mark.texture or mark:CreateTexture("myAddonIcon", "OVERLAY")
+    mark.texture:SetTexture("Interface\\AddOns\\NSQC\\npcscan\\2.tga")
+    mark.texture:SetAllPoints()
+    mark:Show()
+    mark.texture:Show()
+end
+--]]
 function npc_scan:configure(id,Rx,Ry)
 	self[id] = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
 	self[id]:SetSize(Rx, Ry)
-	self[id]:SetPoint("BOTTOMLEFT")
+	self[id]:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, y)
 end
 
 function npc_scan_Text:configure(id,Rx,Ry,x,y)
 	self[id] = npc_scan[id]:CreateTexture("myAddonIcon", "OVERLAY")
 	self[id]:SetTexture("Interface\\AddOns\\NSQC\\npcscan\\2.tga")
 	self[id]:SetSize(Rx, Ry)
-	self[id]:SetPoint("BOTTOMLEFT", x, y)
+	self[id]:ClearAllPoints();
+	self[id]:SetAllPoints();
+	self[id]:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, y)
 end
 
 
 function testXY(id,x,y)
-npc_scan:configure(id,545,350)
-npc_scan_Text:configure(id,12,12,0,0)
-npc_scan[id]:SetPoint("BOTTOMLEFT", x, y)
-npc_scan[id]:Show()
-npc_scan_Text[id]:Show()
+	npc_scan:configure(id,12,12)
+	npc_scan_Text:configure(id,12,12,0,0)
+	npc_scan[id]:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, y)
+
 end
 
 local UpdateSpeed = 1
@@ -31,7 +43,7 @@ f.Text1 = f:CreateFontString()
 f.Text1:SetFontObject(GameFontNormal)
 f.Text1:SetText("")
 f.Text1:SetPoint("LEFT", UIParent)
-
+npcTime=0
 local xos = -f.Text1:GetWidth() -- Set to start offscreen by the width ofm the text
 f.UpdateSpeed = UpdateSpeed
 f:SetScript("OnUpdate", function(self, elapsed)
@@ -50,8 +62,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	npcOK=tostring(npcOK)
 	npcOL=GetNumMapLandmarks()
 	npcOL=tostring(npcOL)
-	if WorldMapFrameSizeUpButton:IsVisible() ~= nil then
-		npcTime=1
+
+	if WorldMapFrame:IsVisible()~=nil then
 		i=0
 		nomeRar={}
 		kolicToch=0
@@ -71,28 +83,39 @@ f:SetScript("OnUpdate", function(self, elapsed)
 						yRar = val
 					end
 				end
-
 				xRar = tonumber(xRar)
 				yRar = tonumber(yRar)
-				npcRisX,npcRisY=getPOS(xRar,yRar)
+
+
+					npcRisX,npcRisY=getPOS(xRar,yRar)
+					testXY(kolicToch,npcRisX,npcRisY)
+
+
+
 				kolicToch=kolicToch+1
-
-				testXY(kolicToch,npcRisX,npcRisY)
-
 			end
 			j=j+1
+			kk=kolicToch
 		end
-		kolicToch=0
-		if npcTime > 1 then
-		print(kolicToch)
-			for i=1, kolicToch do
+		npcTime=tonumber(npcTime)
+		if npcTime >= 1 then
+			for i=1, kk do
+				if npc_scan[i] ~= nil then
 				npc_scan[i]:Hide()
 				npc_scan_Text[i]:Hide()
+				npc_scan[i]:ClearAllPoints();
+				npc_scan_Text[i]:ClearAllPoints();
+				i=i+1
+				end
 			end
+
 			npcTime=0
+
+
 		end
 		npcTime=npcTime+1
 
+		kolicToch=0
 	end
 	end
 

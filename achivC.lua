@@ -55,8 +55,8 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 	elseif testQ[myNome]["лвл_квестов"]==2 then
 		proverka_komandy=mysplit(message)
 		msg1=proverka_komandy[3]
-		mozhnoLiSdatChislo=testQ[myNome]["квест_лвл2"][msg1]
-		mozhnoLiSdatChislo=tonumber(mozhnoLiSdatChislo)
+		mozhnoLiSdatChislo11=testQ[myNome]["квест_лвл2"][msg1]
+		mozhnoLiSdatChislo11=tonumber(mozhnoLiSdatChislo11)
 		j=0
 		k=0
 		count = GetAchievementNumCriteria(msg1)
@@ -70,9 +70,8 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			end
 			i=i+1
 		end
-		print (j .. " " .. mozhnoLiSdatChislo)
-		if j>=mozhnoLiSdatChislo then
-			SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo, "guild")
+		if j>=mozhnoLiSdatChislo11 then
+			SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo11, "guild")
 			--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:SetText("Взять квест")
