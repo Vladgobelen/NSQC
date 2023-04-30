@@ -68,53 +68,16 @@ function tablelength(T)
 end
 
 function getPOS(x,y)
-	local current = GetCurrentResolution()
-	if current then
-		width, height = string.match(select(current, GetScreenResolutions()), "(%d+)x(%d+)")
-	end
-	width=tonumber(width)
-	height=tonumber(height)
 	local XXX
 	local YYY
-	local par1=0
-	local par2=1002
-	local par3=0
-	local par4=768
-	local par5=70
-	local par6=668
-	local par7=0
-	local par8=386
-	local par9=575
-	local par10=0
-	local par11=0
-
-	testResolution=width/height
-	testResolution=string.sub(testResolution,1,3)
-	testResolution=tonumber(testResolution)
-	if testResolution==1.7 then
-		par10=par10+170
-	elseif testResolution==1.6 then
-		par10=par10+103
-	elseif testResolution==2.4 then
-		par10=par10+410
-	elseif testResolution==1.5 and width==1440 then
-		par10=par10+65
-	elseif testResolution==1.2 then
-		par11=par11+25
-	elseif testResolution==1.5 and width~=1440 then
-		par10=par10+85
-	end
-	local wmfX,wmfY=WorldMapFrame:GetSize()
-	wmfX=string.sub(wmfX,1,3)
-	wmfX=tonumber(wmfX)
 	if WorldMapFrameSizeUpButton:IsVisible()==nil then
-			YYY=((1-y)*768)
+			YYY=((1-y)*668)
 			XXX=x*1002
 	end
 	if WorldMapFrameSizeDownButton:IsVisible()==nil then
 
-			YYY=((1-y)*par8)
-			XXX=(x*par9)
+			YYY=((1-y)*382)
+			XXX=(x*574)
 	end
 	return XXX,YYY
 end

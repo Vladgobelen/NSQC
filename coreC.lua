@@ -177,7 +177,7 @@ if string.find (message, "!следить") and sender == myNome then
 		testNpcScanDal = nil
 		npcSK=GetCurrentMapContinent()
 		npcSK=tostring(npcSK)
-		npcSL=GetNumMapLandmarks()
+		npcSL=GetCurrentMapZone()
 		npcSL=tostring(npcSL)
 		if npcScan[npcSK] == nil then
 			npcScan[npcSK] = {}

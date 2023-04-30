@@ -12,8 +12,8 @@ function createMark(id,x,y)
     mark.texture:Show()
 end
 --]]
-function npc_scan:configure(id,Rx,Ry)
-	self[id] = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
+function npc_scan:configure(id,Rx,Ry,x,y)
+	self[id] =  self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("CENTER", WorldMapFrame, "BOTTOMLEFT", x, y)
 end
@@ -61,17 +61,17 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	npcOX, npcOY = GetPlayerMapPosition("player")
 	npcOK=GetCurrentMapContinent()
 	npcOK=tostring(npcOK)
-	npcOL=GetNumMapLandmarks()
+	npcOL=GetCurrentMapZone()
 	npcOL=tostring(npcOL)
 
 	if WorldMapFrame:IsVisible() ~= nil then
 
-		i=0
+		iNpc=0
 		nomeRar={}
 
 		for key, val in pairs(npcScan[npcOK][npcOL]) do
-			i=i+1
-			nomeRar[i] = key
+			iNpc=iNpc+1
+			nomeRar[iNpc] = key
 		end
 
 		for j=1, #nomeRar do
@@ -94,6 +94,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 				kolicToch=kolicToch+1
 				testXY(kolicToch,npcRisX,npcRisY)
+				npc_scan[kolicToch]:Show()
+				npc_scan_Text[kolicToch]:Show()
 
 
 			end
@@ -110,7 +112,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			end
 			npcTime=0
 		end
-		npcTime=npcTime+2
+		npcTime=npcTime+1
 
 	end
 	end
