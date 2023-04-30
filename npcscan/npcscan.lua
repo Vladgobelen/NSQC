@@ -44,7 +44,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if xos > ScrollMax then -- we're offscreen to the right so...
 		xos =  -self.Text1:GetWidth() -- reset to the left again
 	end
-
+	if npcScan ~= nil then
 	npcOX, npcOY = GetPlayerMapPosition("player")
 	npcOK=GetCurrentMapContinent()
 	npcOK=tostring(npcOK)
@@ -94,7 +94,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		npcTime=npcTime+1
 
 	end
-
+	end
 
 
 	if framePos["X"]~=nil then
