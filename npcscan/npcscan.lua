@@ -1,12 +1,12 @@
 npc_scan={}
 npc_scan_Text={}
-
---[[function createMark(id,x,y)
+--[[
+function createMark(id,x,y)
     local mark = _G["myAddonIconFrame"..id] or CreateFrame("FRAME", "myAddonIconFrame"..id, WorldMapFrame)
     mark:SetSize(40, 40)
-    mark:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, -y)
+    mark:SetPoint("CENTER", WorldMapDetailFrame, "TOPLEFT", x, -y)
     mark.texture = mark.texture or mark:CreateTexture("myAddonIcon", "OVERLAY")
-    mark.texture:SetTexture("Interface\\AddOns\\NSQC\\npcscan\\2.tga")
+    mark.texture:SetTexture("Interface\AddOns\NSQC\npcscan\2.tga")
     mark.texture:SetAllPoints()
     mark:Show()
     mark.texture:Show()
@@ -24,7 +24,7 @@ function npc_scan_Text:configure(id,Rx,Ry,x,y)
 	self[id]:SetSize(Rx, Ry)
 	self[id]:ClearAllPoints();
 	self[id]:SetAllPoints();
-	self[id]:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, y)
+	self[id]:SetPoint("CENTER", WorldMapFrame, "BOTTOMLEFT", x, y)
 end
 
 
@@ -34,7 +34,7 @@ function testXY(id,x,y)
 	npc_scan[id]:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, y)
 
 end
-
+npcTime=1
 local UpdateSpeed = 1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
 local xmove = 0.5 -- move this much each update
@@ -43,7 +43,8 @@ f.Text1 = f:CreateFontString()
 f.Text1:SetFontObject(GameFontNormal)
 f.Text1:SetText("")
 f.Text1:SetPoint("LEFT", UIParent)
-npcTime=0
+kolicToch=0
+
 local xos = -f.Text1:GetWidth() -- Set to start offscreen by the width ofm the text
 f.UpdateSpeed = UpdateSpeed
 f:SetScript("OnUpdate", function(self, elapsed)
@@ -63,10 +64,11 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	npcOL=GetNumMapLandmarks()
 	npcOL=tostring(npcOL)
 
-	if WorldMapFrame:IsVisible()~=nil then
+	if WorldMapFrame:IsVisible() ~= nil then
+
 		i=0
 		nomeRar={}
-		kolicToch=0
+
 		for key, val in pairs(npcScan[npcOK][npcOL]) do
 			i=i+1
 			nomeRar[i] = key
@@ -83,39 +85,28 @@ f:SetScript("OnUpdate", function(self, elapsed)
 						yRar = val
 					end
 				end
+
 				xRar = tonumber(xRar)
 				yRar = tonumber(yRar)
-
-
-					npcRisX,npcRisY=getPOS(xRar,yRar)
-					testXY(kolicToch,npcRisX,npcRisY)
-
-
-
+				npcRisX,npcRisY=getPOS(xRar,yRar)
 				kolicToch=kolicToch+1
+
+				testXY(kolicToch,npcRisX,npcRisY)
+
 			end
 			j=j+1
-			kk=kolicToch
 		end
-		npcTime=tonumber(npcTime)
-		if npcTime >= 1 then
+		kk=kolicToch
+		kolicToch=0
+		if npcTime > 1 then
 			for i=1, kk do
-				if npc_scan[i] ~= nil then
 				npc_scan[i]:Hide()
 				npc_scan_Text[i]:Hide()
-				npc_scan[i]:ClearAllPoints();
-				npc_scan_Text[i]:ClearAllPoints();
-				i=i+1
-				end
 			end
-
 			npcTime=0
-
-
 		end
-		npcTime=npcTime+1
+		npcTime=npcTime+2
 
-		kolicToch=0
 	end
 	end
 

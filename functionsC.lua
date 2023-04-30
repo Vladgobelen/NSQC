@@ -108,15 +108,12 @@ function getPOS(x,y)
 	wmfX=string.sub(wmfX,1,3)
 	wmfX=tonumber(wmfX)
 	if WorldMapFrameSizeUpButton:IsVisible()==nil then
-			print("fdsa")
-			YYY=((1-y)*par4)
-			XXX=(x*par2)
-
+			YYY=((1-y)*768)
+			XXX=x*1002
 	elseif WorldMapFrameSizeDownButton:IsVisible()==nil then
 
 			YYY=((1-y)*par8)
 			XXX=(x*par9)
-
 	end
 	return XXX,YYY
 end
