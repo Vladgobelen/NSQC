@@ -130,8 +130,6 @@ function getPOS(x,y)
 			XXX=(x*par9)+15
 		end
 	end
-	print (XXX)
-	print (YYY)
 	return XXX,YYY
 end
 
