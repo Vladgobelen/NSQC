@@ -105,7 +105,7 @@ function getPOS(x,y)
 		par10=par10+85
 	end
 	local wmfX,wmfY=WorldMapFrame:GetSize()
-	wmfX=strint.sub(wmfX,1,3)
+	wmfX=string.sub(wmfX,1,3)
 	wmfX=tonumber(wmfX)
 	if WorldMapFrameSizeUpButton:IsVisible()==nil then
 		if wmfX == 622 then
