@@ -203,7 +203,7 @@ minibtn:SetScript("OnClick", function()
             print ("!заметка+ [текст заметки] - дополнить информацию о себе")
             print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
             print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки ИЛИ статистики]")
-            for ii=1,11 do
+            for ii=1,13 do
                 btn[ii]:Hide();
             end
             myCheckButton1:Show()

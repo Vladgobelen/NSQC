@@ -35,6 +35,7 @@ function testXY(id,x,y)
 
 end
 npcTime=1
+testText=0
 local UpdateSpeed = 1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
 local xmove = 105 -- move this much each update
@@ -167,7 +168,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		btn[12]:Disable()
 		btn[12]:SetText("Поиск включен")
 	end
-	if WorldMapFrame:IsVisible() == nil then
+
+	if WorldMapFrame:IsVisible() == nil  then
 		f.Text1:SetText("")
 	end
 	--if framePos["X"]~=nil then
