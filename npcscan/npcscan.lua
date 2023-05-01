@@ -65,9 +65,16 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	npcOX, npcOY = GetPlayerMapPosition("player")
 	npcOK=GetCurrentMapContinent()
 	npcOK=tostring(npcOK)
+	if npcScan[npcOK] == nil then
+		npcScan[npcOK] = {}
+	end
 	npcOL=GetCurrentMapZone()
 	npcOL=tostring(npcOL)
-	if npcScan[npcOK]~=nil then
+	if npcScan[npcOK][npcOL] == nil then
+		npcScan[npcOK][npcOL] = {}
+	end
+
+
 	if WorldMapFrame:IsVisible() ~= nil then
 
 		iNpc=0
@@ -145,7 +152,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		npcTime=npcTime+1
 
 	end
-	end
+
 	end
 	else
 		btn[999]:Hide()
