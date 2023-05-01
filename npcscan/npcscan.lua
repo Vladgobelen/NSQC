@@ -35,7 +35,7 @@ function testXY(id,x,y)
 
 end
 
-local UpdateSpeed = 1
+local UpdateSpeed = 0.1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
 local xmove = 105 -- move this much each update
 local f = CreateFrame("Frame")
