@@ -77,10 +77,10 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			iNpc=iNpc+1
 			nomeRar[iNpc] = key
 		end
-
-		for j=1, #nomeRar do
-			for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[j]]) do
-				for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[j]][key]) do
+		jNpc=0
+		for jNpc=1, #nomeRar do
+			for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[jNpc]]) do
+				for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[jNpc]][key]) do
 					if key == "x" then
 						xRar = val
 
@@ -99,20 +99,20 @@ f:SetScript("OnUpdate", function(self, elapsed)
 						if testMacro~=nil then
 							testMacro=mysplit(testMacro)
 							if testMacro[1] == "NSQC" then
-								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[j] )
+								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[jNpc] )
 							end
 						end
 					end
-					f.Text1:SetText("Возможно рядом " .. nomeRar[j])
+					f.Text1:SetText("Возможно рядом " .. nomeRar[jNpc])
 				end
-				if UnitName("Target")==nomeRar[j] then
+				if UnitName("Target")==nomeRar[jNpc] then
 						PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
 						for i=1,36 do
 						testMacro=GetMacroInfo(i)
 						if testMacro~=nil then
 							testMacro=mysplit(testMacro)
 							if testMacro[1] == "NSQC" then
-								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[j])
+								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[jNpc])
 
 								btn[999]:Show()
 							end
@@ -129,7 +129,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 
 			end
-			j=j+1
+			jNpc=jNpc+1
 		end
 		kk=kolicToch
 		kolicToch=0
@@ -152,6 +152,14 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		f.Text1:SetText("")
 	end
 
+	if testQ[myNome]["отключить_поиск"] == "тру" then
+		btn[12]:Enable()
+		btn[12]:SetText("Включить поиск")
+	end
+	if testQ[myNome]["отключить_поиск"] ~= "тру" then
+		btn[12]:Disable()
+		btn[12]:SetText("Поиск включен")
+	end
 
 	--if framePos["X"]~=nil then
 		--XXX,YYY=getPOS(framePos["X"],framePos["Y"])
