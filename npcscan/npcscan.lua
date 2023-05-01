@@ -188,10 +188,25 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if testQ[myNome]["отключить_поиск"] == "тру" then
 		btn[12]:Enable()
 		btn[12]:SetText("Включить поиск")
+		chisloIconok=tablelength(npc_scan)
+		chisloIconok=tonumber(chisloIconok)
+		if npc_scan[1] ~= nil then
+
+			for i=1, chisloIconok do
+					if npc_scan[i] ~= nil then
+						npc_scan[i]:Hide()
+						npc_scan_Text[i]:Hide()
+						npc_scan[i]:ClearAllPoints()
+						npc_scan_Text[i]:ClearAllPoints()
+					end
+				i=i+1
+			end
+		end
 	end
 	if testQ[myNome]["отключить_поиск"] ~= "тру" then
 		btn[12]:Disable()
 		btn[12]:SetText("Поиск включен")
+
 	end
 
 	if WorldMapFrame:IsVisible() == nil  then
