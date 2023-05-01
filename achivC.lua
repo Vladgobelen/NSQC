@@ -239,6 +239,7 @@ end
 
 if string.find (message, "#cls") and sender == myNome then
 	testQ[myNome]["отключить_поиск"]="тру"
+	testQ[myNome]["старт_поиска_нпц"] = time()
 
 end
 

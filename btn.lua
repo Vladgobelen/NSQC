@@ -277,7 +277,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
-
+        local startNpvScan=time()
+        startNpvScan=tonumber(startNpvScan)
+        local startNpvScanRar = testQ[myNome]["старт_поиска_нпц"]
+        startNpvScanRar = tonumber(startNpvScanRar)
+        if testQ[myNome]["старт_поиска_нпц"] ~= nil and startNpvScanRar ~= nil and startNpvScan > startNpvScanRar+100 then
+            testQ[myNome]["старт_поиска_нпц"] = nil
+            testQ[myNome]["отключить_поиск"]=nil
+            print ("Поиск включен")
+        end
 
 		if pokazatChk==0 then
                 myCheckButton1:Hide()
