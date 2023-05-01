@@ -34,8 +34,7 @@ function testXY(id,x,y)
 	npc_scan[id]:SetPoint("CENTER", WorldMapDetailFrame, "BOTTOMLEFT", x, y)
 
 end
-npcTime=1
-testText=0
+
 local UpdateSpeed = 1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
 local xmove = 105 -- move this much each update
@@ -44,7 +43,7 @@ f.Text1 = f:CreateFontString()
 f.Text1:SetFontObject(GameFontNormal)
 f.Text1:SetText("")
 f.Text1:SetPoint("LEFT", UIParent)
-kolicToch=0
+
 
 local xos = -f.Text1:GetWidth() -- Set to start offscreen by the width ofm the text
 f.UpdateSpeed = UpdateSpeed
@@ -58,6 +57,9 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if xos > ScrollMax then -- we're offscreen to the right so...
 		xos =  -self.Text1:GetWidth() -- reset to the left again
 	end
+	npcTime=1
+	testText=0
+	kolicToch=0
 	local myNome = GetUnitName("player")
 
 	if testQ[myNome]["отключить_поиск"] ~= "тру" then
@@ -74,86 +76,109 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if npcScan[npcOK][npcOL] == nil then
 		npcScan[npcOK][npcOL] = {}
 	end
+	testl=tablelength(npcScan[npcOK][npcOL])
+	testl=tonumber(testl)
 
+	if testl~=0 then
 
-	if WorldMapFrame:IsVisible() ~= nil then
+		if WorldMapFrame:IsVisible() ~= nil then
 
-		iNpc=0
-		nomeRar={}
+			iNpc=0
+			nomeRar={}
 
-		for key, val in pairs(npcScan[npcOK][npcOL]) do
-			iNpc=iNpc+1
-			nomeRar[iNpc] = key
-		end
-		jNpc=0
-		for jNpc=1, #nomeRar do
-			for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[jNpc]]) do
-				for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[jNpc]][key]) do
-					if key == "x" then
-						xRar = val
+			for key, val in pairs(npcScan[npcOK][npcOL]) do
+				iNpc=iNpc+1
+				nomeRar[iNpc] = key
+			end
+			jNpc=0
+			for jNpc=1, #nomeRar do
+				for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[jNpc]]) do
+					for key, val in pairs(npcScan[npcOK][npcOL][nomeRar[jNpc]][key]) do
+						if key == "x" then
+							xRar = val
 
-					end
-					if key == "y" then
-						yRar = val
-					end
-				end
-				x,y=GetPlayerMapPosition("player")
-				npcRasstoyanieSch=sqrt((xRar-x)^2+(yRar-y)^2)
-
-				if npcRasstoyanieSch <= 0.04 then
-
-					for i=1,36 do
-						testMacro=GetMacroInfo(i)
-						if testMacro~=nil then
-							testMacro=mysplit(testMacro)
-							if testMacro[1] == "NSQC" then
-								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[jNpc] )
-							end
+						end
+						if key == "y" then
+							yRar = val
 						end
 					end
-					f.Text1:SetText("Возможно рядом " .. nomeRar[jNpc])
-				end
-				if UnitName("Target")==nomeRar[jNpc] then
-						PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+					x,y=GetPlayerMapPosition("player")
+					npcRasstoyanieSch=sqrt((xRar-x)^2+(yRar-y)^2)
+
+					if npcRasstoyanieSch <= 0.04 then
+
 						for i=1,36 do
-						testMacro=GetMacroInfo(i)
-						if testMacro~=nil then
-							testMacro=mysplit(testMacro)
-							if testMacro[1] == "NSQC" then
-								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[jNpc])
+							testMacro=GetMacroInfo(i)
+							if testMacro~=nil then
+								testMacro=mysplit(testMacro)
+								if testMacro[1] == "NSQC" then
+									EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[jNpc] )
+								end
+							end
+						end
+						f.Text1:SetText("Возможно рядом " .. nomeRar[jNpc])
+					end
+					if UnitName("Target")==nomeRar[jNpc] then
+							PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+							for i=1,36 do
+							testMacro=GetMacroInfo(i)
+							if testMacro~=nil then
+								testMacro=mysplit(testMacro)
+								if testMacro[1] == "NSQC" then
+									EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[jNpc])
 
-								btn[999]:Show()
+									btn[999]:Show()
+								end
 							end
 						end
 					end
+					xRar = tonumber(xRar)
+					yRar = tonumber(yRar)
+					npcRisX,npcRisY=getPOS(xRar,yRar)
+					kolicToch=kolicToch+1
+					local testPlk=GetCurrentMapContinent()
+					local testPll=GetCurrentMapZone()
+						testXY(kolicToch,npcRisX,npcRisY)
+
+						npc_scan[kolicToch]:Show()
+						npc_scan_Text[kolicToch]:Show()
+
+
+
+
 				end
-				xRar = tonumber(xRar)
-				yRar = tonumber(yRar)
-				npcRisX,npcRisY=getPOS(xRar,yRar)
-				kolicToch=kolicToch+1
-				testXY(kolicToch,npcRisX,npcRisY)
-				npc_scan[kolicToch]:Show()
-				npc_scan_Text[kolicToch]:Show()
-
-
+				jNpc=jNpc+1
 			end
-			jNpc=jNpc+1
-		end
-		kk=kolicToch
-		kolicToch=0
-		if npcTime > 1 then
-			for i=1, kk do
-				npc_scan[i]:Hide()
-				npc_scan_Text[i]:Hide()
-				npc_scan[i]:ClearAllPoints()
-				npc_scan_Text[i]:ClearAllPoints()
+			kk=kolicToch
+			kolicToch=0
+			if npcTime > 1 then
+				for i=1, kk do
+					npc_scan[i]:Hide()
+					npc_scan_Text[i]:Hide()
+					npc_scan[i]:ClearAllPoints()
+					npc_scan_Text[i]:ClearAllPoints()
+				end
+				npcTime=0
 			end
-			npcTime=0
-		end
-		npcTime=npcTime+1
+			npcTime=npcTime+1
 
+		end
+	else
+		chisloIconok=tablelength(npc_scan)
+		chisloIconok=tonumber(chisloIconok)
+		if npc_scan[1] ~= nil then
+
+			for i=1, chisloIconok do
+					if npc_scan[i] ~= nil then
+						npc_scan[i]:Hide()
+						npc_scan_Text[i]:Hide()
+						npc_scan[i]:ClearAllPoints()
+						npc_scan_Text[i]:ClearAllPoints()
+					end
+				i=i+1
+			end
+		end
 	end
-
 	end
 	else
 		btn[999]:Hide()

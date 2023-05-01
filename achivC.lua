@@ -251,6 +251,8 @@ if string.find (message, "#crtPoint") and sender == myNome then
 end
 
 if string.find (message, "#nuovoPoint") and sender ~= myNome then
+print(sender)
+print(myNome)
 nPoint=mysplit(message)
 npcXY(nPoint[2],nPoint[3],nPoint[4],nPoint[5],nPoint[6])
 print ("Приняты координаты " .. nPoint[6] .. " от " .. sender)
