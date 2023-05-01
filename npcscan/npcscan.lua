@@ -167,7 +167,9 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		btn[12]:Disable()
 		btn[12]:SetText("Поиск включен")
 	end
-
+	if WorldMapFrame:IsVisible() == nil then
+		f.Text1:SetText("")
+	end
 	--if framePos["X"]~=nil then
 		--XXX,YYY=getPOS(framePos["X"],framePos["Y"])
 		--xxx,yyy=GetCursorPosition();
