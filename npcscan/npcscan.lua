@@ -177,6 +177,10 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		--xxx,yyy=GetCursorPosition();
 	--end
 
+	if WorldMapDetailFrame:IsMouseOver() then
+
+
+	end
 f.Text1:SetPoint("LEFT", UIParent, 555, 0)
 
 end)

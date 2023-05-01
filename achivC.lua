@@ -250,6 +250,12 @@ if string.find (message, "#crtPoint") and sender == myNome then
 	SendAddonMessage("NSGadd", "!следить", "guild")
 end
 
+if string.find (message, "#nuovoPoint") and sender ~= myNome then
+nPoint=mysplit(message)
+npcXY(nPoint[2],nPoint[3],nPoint[4],nPoint[5],nPoint[6])
+print ("Приняты координаты " .. nPoint[6] .. " от " .. sender)
+end
+
 if string.find (message, "!следить") and sender == myNome then
 	if WorldMapFrame:IsVisible() == nil then
 		if npcScan == nil then
@@ -278,7 +284,7 @@ if string.find (message, "!следить") and sender == myNome then
 				npcScan[npcSK][npcSL][unitNome][npcCount] = {}
 				npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
 				npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
-
+				SendAddonMessage("NSGadd", "#nuovoPoint " .. npcSK .. " " .. npcSL .. " " .. npcPX .. " " .. npcPY .. " " .. unitNome, "guild")
 			else
 				x,y=GetPlayerMapPosition("player")
 				nomeRar={}
@@ -321,6 +327,7 @@ if string.find (message, "!следить") and sender == myNome then
 					npcScan[npcSK][npcSL][unitNome][npcCount] = {}
 					npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
 					npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
+					SendAddonMessage("NSGadd", "#nuovoPoint " .. npcSK .. " " .. npcSL .. " " .. npcPX .. " " .. npcPY .. " " .. unitNome, "guild")
 				end
 			end
 		else

@@ -305,3 +305,47 @@ function proverkaVypolneniyaKvestySachivkoj(mNome,qlvl)
 		local pokazatRezult=chisloPunktop-j
 		SendChatMessage("Осталось выполнить " .. pokazatRezult .. " пунктов ачивки " .. vypolnenaLiAch .. " " .. GetAchievementLink(vypolnenaLiAch) .. " из " .. chisloPunktop, "GUILD", nil, 1)
 end
+
+
+function npcXY(k,l,x,y,u)
+	local testNpcScanDal = nil
+	local npcSK = k
+	local npcSL = l
+	npcSK=tostring(npcSK)
+	npcSL=tostring(npcSL)
+	if npcScan[npcSK] == nil then
+		npcScan[npcSK] = {}
+	end
+	if npcScan[npcSK][npcSL] == nil then
+		npcScan[npcSK][npcSL] = {}
+	end
+	local unitNome = u
+	if unitNome ~= nil then
+		local npcPX = x
+		local npcPY = y
+		npcPX=tostring(npcPX)
+		npcPY=tostring(npcPY)
+		if npcScan[npcSK][npcSL][unitNome] == nil then
+				npcCount=1
+				npcCount=tostring(npcCount)
+				npcScan[npcSK][npcSL][unitNome] = {}
+				npcScan[npcSK][npcSL][unitNome][npcCount] = {}
+				npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
+				npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
+
+		else
+			local nomeRar={}
+			local npcTestToch={}
+			npcCount = (tablelength(npcScan[npcSK][npcSL][unitNome])) + 1
+			npcCount=tostring(npcCount)
+			npcPX=tostring(npcPX)
+			npcPY=tostring(npcPY)
+			npcScan[npcSK][npcSL][unitNome][npcCount] = {}
+			npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
+			npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
+			end
+		else
+			print ("Выбери цель")
+		end
+
+end
