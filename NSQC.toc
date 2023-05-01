@@ -19,6 +19,7 @@ minimap.lua
 roll.lua
 risIcon.lua
 test1.lua
+gob.ogg
 npcscan\1.tga
 npcscan\2.tga
 npcscan\3.tga

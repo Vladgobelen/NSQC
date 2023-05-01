@@ -1,4 +1,4 @@
-versAdd=74
+versAdd=75
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -47,7 +47,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
     end)
 
-    elseif id==3 or id==4 or id==5 or id==6 then
+    elseif id==3 or id==4 or id==5 or id==6 or id==999 or id==12 or id==13 then
     self[id]:SetScript("OnClick",function(self, button)
            SendAddonMessage("NSGadd", zzid, "guild") end)
     end
@@ -64,6 +64,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
                 end
                 end)
     end
+
 end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
@@ -79,8 +80,9 @@ btn:configure(8,0,170,300,30,"","Узнать текущий квест");
 btn:configure(9,250,350,200,30,"","Ролл");
 btn:configure(10,250,320,200,30,"#ltr 1","Лотерея одним куском");
 btn:configure(11,250,290,200,30,"#ltr 3","Лотерея тремя кусками");
-
-
+btn:configure(999,0,0,80,50,"#cls","Закрыть");
+btn:configure(12,-225,350,150,30,"#opn","Включить поиск");
+btn:configure(13,-225,320,150,30,"#crtPoint","Создать точку");
 
 
 
@@ -157,7 +159,7 @@ minibtn:SetScript("OnClick", function()
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
             btn[ii]:SetScript("OnClick", function(self, button)
-            for ii=1,11 do
+            for ii=1,13 do
                 btn[ii]:Hide();
             end
             pokazat=0
@@ -165,7 +167,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
             end)
-            for ii=1,11 do
+            for ii=1,13 do
                 btn[ii]:Show();
             end
             pokazat=1
@@ -176,7 +178,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
-            for ii=1,11 do
+            for ii=1,13 do
                 btn[ii]:Hide();
             end
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
@@ -209,7 +211,7 @@ minibtn:SetScript("OnClick", function()
             pokazat=0
             pokazatChk=1
         elseif pokazat==0 then
-            for ii=1,11 do
+            for ii=1,13 do
                 btn[ii]:Show();
             end
             myCheckButton1:Hide()

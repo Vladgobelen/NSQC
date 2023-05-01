@@ -37,7 +37,7 @@ end
 npcTime=1
 local UpdateSpeed = 1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
-local xmove = 0.5 -- move this much each update
+local xmove = 105 -- move this much each update
 local f = CreateFrame("Frame")
 f.Text1 = f:CreateFontString()
 f.Text1:SetFontObject(GameFontNormal)
@@ -57,13 +57,17 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if xos > ScrollMax then -- we're offscreen to the right so...
 		xos =  -self.Text1:GetWidth() -- reset to the left again
 	end
+	local myNome = GetUnitName("player")
+
+	if testQ[myNome]["отключить_поиск"] ~= "тру" then
 	if npcScan ~= nil then
+
 	npcOX, npcOY = GetPlayerMapPosition("player")
 	npcOK=GetCurrentMapContinent()
 	npcOK=tostring(npcOK)
 	npcOL=GetCurrentMapZone()
 	npcOL=tostring(npcOL)
-
+	if npcScan[npcOK]~=nil then
 	if WorldMapFrame:IsVisible() ~= nil then
 
 		iNpc=0
@@ -85,13 +89,39 @@ f:SetScript("OnUpdate", function(self, elapsed)
 						yRar = val
 					end
 				end
+				x,y=GetPlayerMapPosition("player")
+				npcRasstoyanieSch=sqrt((xRar-x)^2+(yRar-y)^2)
 
+				if npcRasstoyanieSch <= 0.04 then
+
+					for i=1,36 do
+						testMacro=GetMacroInfo(i)
+						if testMacro~=nil then
+							testMacro=mysplit(testMacro)
+							if testMacro[1] == "NSQC" then
+								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[j] )
+							end
+						end
+					end
+					f.Text1:SetText("Возможно рядом " .. nomeRar[j])
+				end
+				if UnitName("Target")==nomeRar[j] then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+						for i=1,36 do
+						testMacro=GetMacroInfo(i)
+						if testMacro~=nil then
+							testMacro=mysplit(testMacro)
+							if testMacro[1] == "NSQC" then
+								EditMacro(i, "NSQC", 134414, "/target " .. nomeRar[j])
+
+								btn[999]:Show()
+							end
+						end
+					end
+				end
 				xRar = tonumber(xRar)
 				yRar = tonumber(yRar)
-
 				npcRisX,npcRisY=getPOS(xRar,yRar)
-
-
 				kolicToch=kolicToch+1
 				testXY(kolicToch,npcRisX,npcRisY)
 				npc_scan[kolicToch]:Show()
@@ -116,6 +146,11 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 	end
 	end
+	end
+	else
+		btn[999]:Hide()
+		f.Text1:SetText("")
+	end
 
 
 	--if framePos["X"]~=nil then
@@ -123,6 +158,6 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		--xxx,yyy=GetCursorPosition();
 	--end
 
-
+f.Text1:SetPoint("LEFT", UIParent, 555, 0)
 
 end)
