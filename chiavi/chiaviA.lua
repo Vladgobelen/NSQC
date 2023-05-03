@@ -57,12 +57,12 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
     end)
 end
 
-btnMM:configure(1,0,300,200,30,"#zzs","");
-btnMM:configure(2,0,270,200,30,"#zzs","");
-btnMM:configure(3,0,240,200,30,"#zzs","");
-btnMM:configure(4,0,210,200,30,"#zzs","");
-btnMM:configure(5,0,180,200,30,"#zzs","");
-btnMM:configure(6,0,150,200,30,"#zzs","");
+btnMM:configure(1,-50,200,200,30,"#zzs","");
+btnMM:configure(2,-50,170,200,30,"#zzs","");
+btnMM:configure(3,-50,140,200,30,"#zzs","");
+btnMM:configure(4,-50,110,200,30,"#zzs","");
+btnMM:configure(5,-50,80,200,30,"#zzs","");
+btnMM:configure(6,-50,50,200,30,"#zzs","");
 btnMM:configure(99,0,0,100,50,"#zzs","СТАРТ");
 
 local UpdateSpeed = 0.1
