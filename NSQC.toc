@@ -21,7 +21,11 @@ risIcon.lua
 test1.lua
 gob.ogg
 lvlUp.ogg
+chiavi\mmList.lua
 officerSnifC.lua
+chiavi\chiaviA.lua
+chiavi\chiaviG.lua
+chiavi\chiaviO.lua
 npcscan\1.tga
 npcscan\2.tga
 npcscan\3.tga

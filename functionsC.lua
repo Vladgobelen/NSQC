@@ -367,12 +367,18 @@ local function EnumerateTooltipLines_helper(...)
         if region and region:GetObjectType() == "FontString" then
             local text = region:GetText() -- string or nil
             if text ~= nil then
-            print (text)
-                if string.find (text, "Уровень") or string.find (text, "уровня")then
+                if string.find (text, "Уровень") then
 					testLvlNpc=mysplit(text)
-					if (testLvlNpc[3]) == nil then
-						print ("Моб тут")
 
+				end
+				if string.find (text, "уровня") then
+					testLvlNpc=mysplit(text)
+					if string.find(testLvlNpc[2], "%?%?") then
+						SendAddonMessage("NSGadd", "#npcOff", "guild")
+					end
+
+					if string.find(testLvlNpc[1], "Труп") then
+						SendAddonMessage("NSGadd", "#npcDie", "guild")
 					end
 				end
             end
