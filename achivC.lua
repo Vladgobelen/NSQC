@@ -57,7 +57,6 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		msg1=proverka_komandy[3]
 		mozhnoLiSdatChislo11=testQ[myNome]["квест_лвл2"][msg1]
 		mozhnoLiSdatChislo11=tonumber(mozhnoLiSdatChislo11)
-		print (mozhnoLiSdatChislo11)
 		j=0
 		k=0
 		count = GetAchievementNumCriteria(msg1)
@@ -71,8 +70,6 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			end
 			i=i+1
 		end
-		print(j)
-		print (mozhnoLiSdatChislo11)
 		if j>=mozhnoLiSdatChislo11 then
 			SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo11, "guild")
 			--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
