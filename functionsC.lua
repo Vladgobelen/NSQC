@@ -349,3 +349,37 @@ function npcXY(k,l,x,y,u)
 		end
 
 end
+function testNpc ( NpcID )
+	CreateFrame( "GameTooltip", "MyScanningTooltip", nil, "GameTooltipTemplate" );
+	MyScanningTooltip:SetOwner( WorldFrame, "ANCHOR_NONE" );
+	MyScanningTooltip:AddFontStrings(
+    MyScanningTooltip:CreateFontString( "$parentTextLeft1", nil, "GameTooltipText" ),
+    MyScanningTooltip:CreateFontString( "$parentTextRight1", nil, "GameTooltipText" ) );
+    MyScanningTooltip:SetHyperlink("unit:" .. NpcID)
+    --GameTooltip:Show()
+    EnumerateTooltipLines(MyScanningTooltip)
+end
+
+
+local function EnumerateTooltipLines_helper(...)
+    for i = 1, select("#", ...) do
+        local region = select(i, ...)
+        if region and region:GetObjectType() == "FontString" then
+            local text = region:GetText() -- string or nil
+            if text ~= nil then
+            print (text)
+                if string.find (text, "Уровень") or string.find (text, "уровня")then
+					testLvlNpc=mysplit(text)
+					if (testLvlNpc[3]) == nil then
+						print ("Моб тут")
+
+					end
+				end
+            end
+        end
+    end
+end
+
+function EnumerateTooltipLines(tooltip) -- good for script handlers that pass the tooltip as the first argument.
+    EnumerateTooltipLines_helper(tooltip:GetRegions())
+end

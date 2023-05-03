@@ -29,6 +29,17 @@ if string.find (message, "покажи мне ачивку")  and string.find(me
 	end
 end
 
+if string.find (message, "testGroup") then
+
+
+memberCount = 0
+for groupindex = 1,MAX_PARTY_MEMBERS do
+ if (GetPartyMember(groupindex)) then
+  memberCount = memberCount + 1
+ end
+end
+print (memberCount)
+end
 if string.find (message, "покажи ачивку") and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
 	msg2 = mysplit(message)
 	msg2 = msg2[4]

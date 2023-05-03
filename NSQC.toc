@@ -20,6 +20,8 @@ roll.lua
 risIcon.lua
 test1.lua
 gob.ogg
+lvlUp.ogg
+officerSnifC.lua
 npcscan\1.tga
 npcscan\2.tga
 npcscan\3.tga

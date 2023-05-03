@@ -141,8 +141,12 @@ f:SetScript("OnUpdate", function(self, elapsed)
 						testXY(kolicToch,npcRisX,npcRisY)
 
 						npc_scan[kolicToch]:Show()
+						npcIc = {}
+						npcIc[kolicToch] = nomeRar[kolicToch]
 						npc_scan_Text[kolicToch]:Show()
-
+						if MouseIsOver(npc_scan[kolicToch]) then
+							print (npcIc[kolicToch])
+						end
 
 
 

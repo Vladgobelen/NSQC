@@ -1,4 +1,4 @@
-versAdd=79
+versAdd=80
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -277,7 +277,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
-        local startNpvScan=time()
+
+        --testNpc("0xF1300040FE000778")
+		local startNpvScan=time()
         startNpvScan=tonumber(startNpvScan)
         local startNpvScanRar = testQ[myNome]["старт_поиска_нпц"]
         startNpvScanRar = tonumber(startNpvScanRar)
