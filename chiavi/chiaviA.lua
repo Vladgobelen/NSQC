@@ -33,7 +33,6 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 					btnMM[1]:SetText(inst)
 					bossNum = mmList[inst]["количество_боссов"]
 					testNpc(mmList[inst]["testNpc"])
-					btnMM[2]:SetText("100")
 					btnMM[2]:Show()
 					for i = 3, bossNum+2 do
 						j=i-2
@@ -53,6 +52,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 		if id == 99 then
 			testQ[myNome]["инст_начат"] = 1
+			mobKNum = 0
 		end
     end)
 end
