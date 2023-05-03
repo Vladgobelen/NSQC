@@ -104,7 +104,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	else
 		testQ[myNome]["chiavi"] = nil
 		testQ[myNome]["groupNum"] = nil
-		testQ["Витинари"]["инст_начат"]=nil
+		testQ[myNome]["инст_начат"]=nil
 		testQ[myNome]["нельзя_стартовать"]=nil
 		btnMM[1]:Hide()
 	end
