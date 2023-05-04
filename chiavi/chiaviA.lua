@@ -27,7 +27,7 @@ if string.find (message, "#dNm") then
 	end
 end
 
-end
+
 end)
 testInf=0
 btnMM = {}
