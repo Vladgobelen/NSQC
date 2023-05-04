@@ -10,6 +10,15 @@ if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcDi
 	testQ[myNome]["нельзя_стартовать"] = 1
 
 end
+if string.find (message, "#fail") then
+	testQ[myNome]["chiavi"] = nil
+	testQ[myNome]["groupNum"] = nil
+	testQ[myNome]["инст_начат"]=nil
+	testQ[myNome]["нельзя_стартовать"]=nil
+	testQ[myNome]["время_кнопки"] = nil
+	partyStart = nil
+
+end
 if string.find (message, "#dNm") then
 	if pM(sender) == 1 or sender == myNome then
 		dnStart=dnStart + 1
@@ -128,6 +137,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		else
 			testQ[myNome]["зона_старта"] = nil
 			btnMM[1]:Hide()
+			SendAddonMessage("NSGadd", "#fail", "guild")
+
 		end
 
 	else
@@ -148,6 +159,13 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			btnMM[i]:Hide()
 			testInf=0
 		end
+		partyStart = nil
+		testQ[myNome]["chiavi"] = nil
+		testQ[myNome]["groupNum"] = nil
+		testQ[myNome]["инст_начат"]=nil
+		testQ[myNome]["нельзя_стартовать"]=nil
+		testQ[myNome]["время_кнопки"] = nil
+		partyStart = nil
 	end
 
 	if btnMM[2]:IsVisible() and testQ[myNome]["нельзя_стартовать"] == nil and partyStart ~=1 then
