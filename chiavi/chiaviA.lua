@@ -10,20 +10,12 @@ if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcDi
 	testQ[myNome]["нельзя_стартовать"] = 1
 
 end
-if string.find (message, "#fail") then
-	testQ[myNome]["chiavi"] = nil
-	testQ[myNome]["groupNum"] = nil
-	testQ[myNome]["инст_начат"]=nil
-	testQ[myNome]["нельзя_стартовать"]=nil
-	testQ[myNome]["время_кнопки"] = nil
-	partyStart = nil
 
-end
 if string.find (message, "#dNm") then
 	if pM(sender) == 1 or sender == myNome then
 		dnStart=dnStart + 1
 		pMnum = GetNumPartyMembers()
-		if dnStart == (pMnum + 1) then
+		if dnStart >= (pMnum + 1) then
 			testQ[myNome]["инст_начат"] = 1
 			numMobI = GetInstanceInfo()
 			mobKNum = mmList[numMobI]["количество_мобов"]
@@ -137,7 +129,6 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		else
 			testQ[myNome]["зона_старта"] = nil
 			btnMM[1]:Hide()
-			SendAddonMessage("NSGadd", "#fail", "guild")
 
 		end
 
@@ -149,6 +140,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		testQ[myNome]["время_кнопки"] = nil
 		btnMM[1]:Hide()
 		partyStart = nil
+		dnStart = 0
 	end
 
 	if btnMM[1]:IsVisible() and testQ[myNome]["инст_начат"] ~= nil then
@@ -166,6 +158,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		testQ[myNome]["нельзя_стартовать"]=nil
 		testQ[myNome]["время_кнопки"] = nil
 		partyStart = nil
+		dnStart = 0
 	end
 
 	if btnMM[2]:IsVisible() and testQ[myNome]["нельзя_стартовать"] == nil and partyStart ~=1 then
@@ -230,6 +223,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			btnTime = 999999
 			testQ[myNome]["проверка_завершения"] = nil
 			partyStart = nil
+			dnStart = 0
 		else
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
@@ -240,6 +234,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			btnTime = 999999
 			testQ[myNome]["проверка_завершения"] = nil
 			partyStart = nil
+			dnStart = 0
 			SendChatMessage(testMM .. ": попытка провалилась", "guild", nil, 1);
 		end
 
@@ -256,6 +251,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			btnTime = 999999
 			testQ[myNome]["проверка_завершения"] = nil
 			partyStart = nil
+			dnStart = 0
 		else
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
@@ -266,6 +262,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			btnTime = 999999
 			testQ[myNome]["проверка_завершения"] = nil
 			partyStart = nil
+			dnStart = 0
 			SendChatMessage(testMM .. ": попытка провалилась", "guild", nil, 1);
 		end
 	end
