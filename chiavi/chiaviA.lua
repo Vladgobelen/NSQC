@@ -52,7 +52,12 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 		if id == 99 then
 			testQ[myNome]["инст_начат"] = 1
-			mobKNum = 0
+			numMobI = GetInstanceInfo()
+			mobKNum = mmList[numMobI]["количество_мобов"]
+			WatchFrame:Hide()
+			testQ[myNome]["проверка_завершения"] = 0
+			btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
+
 		end
     end)
 end
@@ -94,6 +99,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 				testQ[myNome]["зона_старта"] = mmList[testMM]["название"]
 				btnMM[1]:Show()
 				btnMM[1]:SetText(testQ[myNome]["зона_старта"])
+
 			else
 				testQ[myNome]["зона_старта"] = nil
 				btnMM[1]:Hide()
@@ -106,11 +112,12 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		testQ[myNome]["groupNum"] = nil
 		testQ[myNome]["инст_начат"]=nil
 		testQ[myNome]["нельзя_стартовать"]=nil
+		testQ[myNome]["время_кнопки"] = nil
 		btnMM[1]:Hide()
 	end
 
 	if btnMM[1]:IsVisible() and testQ[myNome]["инст_начат"] ~= nil then
-
+		WatchFrame:Hide()
 	elseif btnMM[1]:IsVisible() == nil and testQ[myNome]["инст_начат"] == nil then
 		btnMM[99]:Hide()
 		for i=2,6 do
@@ -124,19 +131,100 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		btnMM[99]:SetText("СТАРТ")
 	else
 		btnMM[99]:Hide()
+
 	end
+
+
+	if btnMM[1]:GetText() ~= testMM and btnMM[2]:IsVisible() == nil then
+			if testQ[myNome]["нельзя_стартовать"] == nil then
+				testQ[myNome]["chiavi"] = nil
+				testQ[myNome]["groupNum"] = nil
+				testQ[myNome]["инст_начат"]=nil
+				testQ[myNome]["нельзя_стартовать"]=nil
+				testQ[myNome]["время_кнопки"] = nil
+				btnMM[1]:Hide()
+			end
+
+	end
+
 	if testQ[myNome]["инст_начат"] == 1 then
 		btnMM[99]:Hide()
 		testInf=1
 		btnMM[1]:Show()
 		if testQ[myNome]["инст_время"] == nil then
 			testQ[myNome]["инст_время"] = time()
+			timeMMtestI = GetInstanceInfo()
+			testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
 		end
 		curTime = time()
 		curTime = curTime - testQ[myNome]["инст_время"]
-		btnMM[1]:SetText(curTime)
+		btnTime = testQ[myNome]["время_кнопки"] - curTime
+
+		btnMM[1]:SetText(btnTime)
 	elseif testQ[myNome]["инст_начат"] == nil then
 		testQ[myNome]["инст_время"] = nil
 	end
 
+	if mobKNum ~= nil then
+		if mobKNum <= 0 then
+			btnMM[2]:Disable()
+			if testQ[myNome]["проверка_завершения"] ~= nil then
+				testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
+			end
+		end
+	end
+
+
+
+	if btnTime == 0 then
+
+		if testQ[myNome]["проверка_завершения"] == 5  then
+			testQ[myNome]["chiavi"] = nil
+			testQ[myNome]["groupNum"] = nil
+			testQ[myNome]["инст_начат"]=nil
+			testQ[myNome]["нельзя_стартовать"]=nil
+			testQ[myNome]["время_кнопки"] = nil
+			btnMM[1]:Hide()
+			btnTime = 999999
+			testQ[myNome]["проверка_завершения"] = nil
+			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
+		else
+			testQ[myNome]["chiavi"] = nil
+			testQ[myNome]["groupNum"] = nil
+			testQ[myNome]["инст_начат"]=nil
+			testQ[myNome]["нельзя_стартовать"]=nil
+			testQ[myNome]["время_кнопки"] = nil
+			btnMM[1]:Hide()
+			btnTime = 999999
+			testQ[myNome]["проверка_завершения"] = nil
+			SendChatMessage(testMM .. ": попытка провалилась", "guild", nil, 1);
+		end
+
+	end
+	if testQ[myNome]["проверка_завершения"] == 5 then
+	print("тут")
+	print (testQ[myNome]["проверка_завершения"])
+		if btnTime > 0 then
+		print (testQ[myNome]["проверка_завершения"])
+			testQ[myNome]["chiavi"] = nil
+			testQ[myNome]["groupNum"] = nil
+			testQ[myNome]["инст_начат"]=nil
+			testQ[myNome]["нельзя_стартовать"]=nil
+			testQ[myNome]["время_кнопки"] = nil
+			btnMM[1]:Hide()
+			btnTime = 999999
+			testQ[myNome]["проверка_завершения"] = nil
+			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
+		else
+			testQ[myNome]["chiavi"] = nil
+			testQ[myNome]["groupNum"] = nil
+			testQ[myNome]["инст_начат"]=nil
+			testQ[myNome]["нельзя_стартовать"]=nil
+			testQ[myNome]["время_кнопки"] = nil
+			btnMM[1]:Hide()
+			btnTime = 999999
+			testQ[myNome]["проверка_завершения"] = nil
+			SendChatMessage(testMM .. ": попытка провалилась", "guild", nil, 1);
+		end
+	end
 end)
