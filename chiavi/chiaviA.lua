@@ -15,7 +15,9 @@ if string.find (message, "#dNm") then
 	myNome = GetUnitName("player")
 	if pM(sender) == 1 or sender == myNome then
 	print ("fdsafdas")
-		dnStart = dnStart + 1
+		if dnStart ~= nil then
+			dnStart = dnStart + 1
+		end
 		if pMnum ~=nil then
 			if dnStart >= pMnum then
 				testQ[myNome]["инст_начат"] = 1
