@@ -179,6 +179,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if btnTime == 0 then
 
 		if testQ[myNome]["проверка_завершения"] == 5  then
+			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
 			testQ[myNome]["инст_начат"]=nil
@@ -187,7 +188,6 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			btnMM[1]:Hide()
 			btnTime = 999999
 			testQ[myNome]["проверка_завершения"] = nil
-			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 		else
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
@@ -202,10 +202,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 	end
 	if testQ[myNome]["проверка_завершения"] == 5 then
-	print("тут")
-	print (testQ[myNome]["проверка_завершения"])
 		if btnTime > 0 then
-		print (testQ[myNome]["проверка_завершения"])
+			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
 			testQ[myNome]["инст_начат"]=nil
@@ -214,7 +212,6 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			btnMM[1]:Hide()
 			btnTime = 999999
 			testQ[myNome]["проверка_завершения"] = nil
-			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 		else
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
