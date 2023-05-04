@@ -18,7 +18,7 @@ local myNome = GetUnitName("player")
 function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
     if id ~= 99 then
-		self[id]:SetPoint("RIGHT",posex, posey)
+		self[id]:SetPoint("TOPLEFT", WatchFrame, "TOPLEFT",posex, posey)
     else
 		self[id]:SetPoint("CENTER",posex, posey)
     end
@@ -57,13 +57,13 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
     end)
 end
 
-btnMM:configure(1,-50,200,200,30,"#zzs","");
-btnMM:configure(2,-50,170,200,30,"#zzs","");
-btnMM:configure(3,-50,140,200,30,"#zzs","");
-btnMM:configure(4,-50,110,200,30,"#zzs","");
-btnMM:configure(5,-50,80,200,30,"#zzs","");
-btnMM:configure(6,-50,50,200,30,"#zzs","");
-btnMM:configure(99,0,0,100,50,"#zzs","СТАРТ");
+btnMM:configure(1,0,0,200,30,"#zzs","");
+btnMM:configure(2,0,-30,200,30,"#zzs","");
+btnMM:configure(3,0,-60,200,30,"#zzs","");
+btnMM:configure(4,0,-90,200,30,"#zzs","");
+btnMM:configure(5,0,-120,200,30,"#zzs","");
+btnMM:configure(6,0,-150,200,30,"#zzs","");
+btnMM:configure(99,0,100,100,50,"#zzs","СТАРТ");
 
 local UpdateSpeed = 0.1
 local f = CreateFrame("Frame")
