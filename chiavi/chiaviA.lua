@@ -2,6 +2,8 @@ local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
 GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, sender, hernya, name, instanceID)
 local myNome = GetUnitName("player")
+local hshStran3
+hshStran3=hshSenderNomeC(myNome)
 if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcOff") then
 	testQ[myNome]["нельзя_стартовать"] = 1
 
@@ -179,7 +181,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	if btnTime == 0 then
 
 		if testQ[myNome]["проверка_завершения"] == 5  then
-			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
+			SendChatMessage(hshStran3 .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
 			testQ[myNome]["инст_начат"]=nil
@@ -203,7 +205,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	end
 	if testQ[myNome]["проверка_завершения"] == 5 then
 		if btnTime > 0 then
-			SendChatMessage(testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
+			SendChatMessage(hshStran3 .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
 			testQ[myNome]["инст_начат"]=nil
