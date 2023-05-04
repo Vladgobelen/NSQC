@@ -11,10 +11,10 @@ if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcDi
 
 end
 if string.find (message, "#dNm") then
-	if pm(sender) == 1 or sender == myNome then
+	if pM(sender) == 1 or sender == myNome then
 		dnStart=dnStart + 1
 		pMnum = GetNumPartyMembers()
-		if dnStart == pMnum then
+		if dnStart == pMnum + 1 then
 			testQ[myNome]["инст_начат"] = 1
 			numMobI = GetInstanceInfo()
 			mobKNum = mmList[numMobI]["количество_мобов"]
