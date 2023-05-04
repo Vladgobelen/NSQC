@@ -10,7 +10,24 @@ if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcDi
 	testQ[myNome]["нельзя_стартовать"] = 1
 
 end
+if string.find (message, "#dNm") then
+	if pm(sender) == 1 or sender == myNome then
+		dnStart=dnStart + 1
+		pMnum = GetNumPartyMembers()
+		if dnStart == pMnum then
+			testQ[myNome]["инст_начат"] = 1
+			numMobI = GetInstanceInfo()
+			mobKNum = mmList[numMobI]["количество_мобов"]
+			WatchFrame:Hide()
+			testQ[myNome]["проверка_завершения"] = 0
+			btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
+			local myNome = GetUnitName("player")
+			hshChiavi=hshSenderNomeC(myNome)
+		end
+	end
+end
 
+end
 end)
 testInf=0
 btnMM = {}
@@ -51,14 +68,21 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if id == 99 then
-			testQ[myNome]["инст_начат"] = 1
-			numMobI = GetInstanceInfo()
-			mobKNum = mmList[numMobI]["количество_мобов"]
-			WatchFrame:Hide()
-			testQ[myNome]["проверка_завершения"] = 0
-			btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
-			local myNome = GetUnitName("player")
-			hshChiavi=hshSenderNomeC(myNome)
+			testGroupNum = GetNumPartyMembers()
+			if testGroupNum == 0 then
+				testQ[myNome]["инст_начат"] = 1
+				numMobI = GetInstanceInfo()
+				mobKNum = mmList[numMobI]["количество_мобов"]
+				WatchFrame:Hide()
+				testQ[myNome]["проверка_завершения"] = 0
+				btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
+				local myNome = GetUnitName("player")
+				hshChiavi=hshSenderNomeC(myNome)
+			else
+				SendAddonMessage("NSGadd", "#dNm", "guild")
+				dnStart=0
+				btn[99]:Hide()
+			end
 		end
     end)
 end
@@ -88,26 +112,23 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 		testQ[myNome]["chiavi"] = testMM
 		testQ[myNome]["groupNum"] = testGroupNum
-		if testGroupNum == 0 then
 
-			local x,y = GetPlayerMapPosition("player")
-			local mioX = mmList[testMM]["x"]
-			mioX = tonumber(mioX)
-			local mioY = mmList[testMM]["y"]
-			mioY = tonumber(mioY)
-			local rasstoyanieSch=sqrt((mioX-x)^2+(mioY-y)^2)
-			if rasstoyanieSch < 0.01 and testQ[myNome]["инст_начат"] == nil then
-				testQ[myNome]["зона_старта"] = mmList[testMM]["название"]
-				btnMM[1]:Show()
-				btnMM[1]:SetText(testQ[myNome]["зона_старта"])
+		local x,y = GetPlayerMapPosition("player")
+		local mioX = mmList[testMM]["x"]
+		mioX = tonumber(mioX)
+		local mioY = mmList[testMM]["y"]
+		mioY = tonumber(mioY)
+		local rasstoyanieSch=sqrt((mioX-x)^2+(mioY-y)^2)
+		if rasstoyanieSch < 0.01 and testQ[myNome]["инст_начат"] == nil then
+			testQ[myNome]["зона_старта"] = mmList[testMM]["название"]
+			btnMM[1]:Show()
+			btnMM[1]:SetText(testQ[myNome]["зона_старта"])
 
-			else
-				testQ[myNome]["зона_старта"] = nil
-				btnMM[1]:Hide()
-			end
 		else
-
+			testQ[myNome]["зона_старта"] = nil
+			btnMM[1]:Hide()
 		end
+
 	else
 		testQ[myNome]["chiavi"] = nil
 		testQ[myNome]["groupNum"] = nil
@@ -223,4 +244,5 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			SendChatMessage(testMM .. ": попытка провалилась", "guild", nil, 1);
 		end
 	end
+
 end)

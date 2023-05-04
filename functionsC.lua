@@ -389,3 +389,32 @@ end
 function EnumerateTooltipLines(tooltip) -- good for script handlers that pass the tooltip as the first argument.
     EnumerateTooltipLines_helper(tooltip:GetRegions())
 end
+
+function pLid ()
+	if UnitIsPartyLeader("party1") then
+		pL = 1
+	elseif UnitIsPartyLeader("party2") then
+		pL = 2
+	elseif UnitIsPartyLeader("party3") then
+		pL = 3
+	elseif UnitIsPartyLeader("party4") then
+		pL = 4
+	else
+		pL = 0
+	end
+	return pL
+end
+function pM(nik)
+		if nik == UnitName("party1") then
+			r = 1
+		elseif nik == UnitName("party2") then
+			r = 1
+		elseif nik == UnitName("party3") then
+			r = 1
+		elseif nik == UnitName("party4") then
+			r = 1
+		else
+			r = 0
+		end
+		return r
+	end
