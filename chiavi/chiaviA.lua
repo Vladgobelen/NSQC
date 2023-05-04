@@ -12,18 +12,21 @@ if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcDi
 end
 
 if string.find (message, "#dNm") then
+	myNome = GetUnitName("player")
 	if pM(sender) == 1 or sender == myNome then
-		dnStart=dnStart + 1
-		pMnum = GetNumPartyMembers()
-		if dnStart >= (pMnum + 1) then
-			testQ[myNome]["инст_начат"] = 1
-			numMobI = GetInstanceInfo()
-			mobKNum = mmList[numMobI]["количество_мобов"]
-			WatchFrame:Hide()
-			testQ[myNome]["проверка_завершения"] = 0
-			btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
-			local myNome = GetUnitName("player")
-			hshChiavi=hshSenderNomeC(myNome)
+	print ("fdsafdas")
+		dnStart = dnStart + 1
+		if pMnum ~=nil then
+			if dnStart >= pMnum then
+				testQ[myNome]["инст_начат"] = 1
+				numMobI = GetInstanceInfo()
+				mobKNum = mmList[numMobI]["количество_мобов"]
+				WatchFrame:Hide()
+				testQ[myNome]["проверка_завершения"] = 0
+				btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
+				local myNome = GetUnitName("player")
+				hshChiavi=hshSenderNomeC(myNome)
+			end
 		end
 	end
 end
@@ -81,8 +84,12 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				hshChiavi=hshSenderNomeC(myNome)
 			else
 				SendAddonMessage("NSGadd", "#dNm", "guild")
-				dnStart=0
+				if dnStart == nil then
+					dnStart = 0
+				end
 				partyStart = 1
+				pMnum = GetNumPartyMembers()
+				pMnum = pMnum+1
 				btn[99]:Hide()
 			end
 		end
@@ -161,7 +168,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		dnStart = 0
 	end
 
-	if btnMM[2]:IsVisible() and testQ[myNome]["нельзя_стартовать"] == nil and partyStart ~=1 then
+	if btnMM[2]:IsVisible() and testQ[myNome]["нельзя_стартовать"] == nil and partyStart ~= 1 then
 		btnMM[99]:Show()
 		btnMM[99]:SetText("СТАРТ")
 	else
