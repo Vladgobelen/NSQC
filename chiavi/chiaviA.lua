@@ -242,11 +242,15 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			testQ[myNome]["инст_время"] = time()
 			timeMMtestI = GetInstanceInfo()
 			mioLv = UnitLevel("Player")
-			if testQ[myNome][testMM][mioLv]["время"] == nil then
-				testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
-			elseif testQ[myNome][testMM][mioLv]["время"] ~= nil then
-				testQ[myNome]["время_кнопки"] = testQ[myNome][testMM][mioLv]["время"]
-			end
+				if testQ[myNome][testMM] == nil then
+					testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
+				else
+					if testQ[myNome][testMM][mioLv]["время"] == nil then
+						testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
+					elseif testQ[myNome][testMM][mioLv]["время"] ~= nil then
+						testQ[myNome]["время_кнопки"] = testQ[myNome][testMM][mioLv]["время"]
+					end
+				end
 		end
 		curTime = time()
 		curTime = curTime - testQ[myNome]["инст_время"]
