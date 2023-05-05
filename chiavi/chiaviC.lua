@@ -8,8 +8,16 @@ if arg2 == "UNIT_DIED" then
 	if testMM == "Огненная пропасть" then
 		if arg7 ~= "Огглфлинт" and arg7 ~= "Тарагаман Ненасытный" and arg7 ~= "Баззалан" and arg7 ~= "Жергош Призыватель Духов" then
 			if mobKNum ~= nil then
-				mobKNum = mobKNum - 1
-				btnMM[2]:SetText(mobKNum)
+				if btnMM[2]:IsEnabled() then
+					mobKNum = mobKNum - 1
+					btnMM[2]:SetText(mobKNum)
+					if mobKNum <= 0 then
+						btnMM[2]:Disable()
+						if testQ[myNome]["проверка_завершения"] ~= nil then
+							testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
+						end
+					end
+				end
 			end
 		end
 		if arg7 == "Огглфлинт" then
@@ -41,8 +49,16 @@ if arg2 == "UNIT_DIED" then
 	if testMM == "Пещеры Стенаний" then
 		if arg7 ~= "Леди Анакондра" and arg7 ~= "Лорд Питонас" and arg7 ~= "Лорд Кобран" and arg7 ~= "Криг" and arg7 ~= "Шкам" and arg7 ~= "Лорд Серпентис" and arg7 ~= "Вердан Вечноживущий" and arg7 ~= "Мутанус Пожиратель" then
 			if mobKNum ~= nil then
-				mobKNum = mobKNum - 1
-				btnMM[2]:SetText(mobKNum)
+				if btnMM[2]:IsEnabled() then
+					mobKNum = mobKNum - 1
+					btnMM[2]:SetText(mobKNum)
+					if mobKNum <= 0 then
+						btnMM[2]:Disable()
+						if testQ[myNome]["проверка_завершения"] ~= nil then
+							testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
+						end
+					end
+				end
 			end
 		end
 		if arg7 == "Леди Анакондра" then

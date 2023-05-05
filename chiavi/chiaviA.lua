@@ -260,14 +260,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		testQ[myNome]["инст_время"] = nil
 	end
 
-	if mobKNum ~= nil then
-		if mobKNum <= 0 then
-			btnMM[2]:Disable()
-			if testQ[myNome]["проверка_завершения"] ~= nil then
-				testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
-			end
-		end
-	end
+
 
 	if btnTime == 0 then
 		testMM = GetInstanceInfo()
