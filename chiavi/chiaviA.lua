@@ -44,6 +44,10 @@ if kod=="NSGadd" then
 			testQ[myNome][testMM][mioLv] = {}
 		end
 		if testQ[myNome][testMM][mioLv]["название"] == nil then
+			print (mmOk[1])
+			print (mmOk[2])
+			print (mmOk[3])
+			print (mmOk[4])
 			testQ[myNome][testMM][mioLv]["название"] = mmOk[2]
 			testQ[myNome][testMM][mioLv]["время"] = mmOk[3]
 			testQ[myNome][testMM][mioLv]["лвл"] = mmOk[4]
