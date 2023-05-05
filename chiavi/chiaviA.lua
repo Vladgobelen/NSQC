@@ -144,7 +144,7 @@ btnMM:configure(9,0,-240,200,30,"#zzs","");
 btnMM:configure(10,0,-270,200,30,"#zzs","");
 btnMM:configure(99,0,100,100,50,"#zzs","СТАРТ");
 
-local UpdateSpeed = 3
+local UpdateSpeed = 0.01
 local f = CreateFrame("Frame")
 
 f.UpdateSpeed = UpdateSpeed
