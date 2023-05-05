@@ -113,6 +113,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
 				local myNome = GetUnitName("player")
 				hshChiavi=hshSenderNomeC(myNome)
+				btnMM[2]:Enable()
 			else
 				SendAddonMessage("NSGadd", "#dNm", "guild")
 				if dnStart == nil then
@@ -122,6 +123,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				pMnum = GetNumPartyMembers()
 				pMnum = pMnum+1
 				btn[99]:Hide()
+				btnMM[2]:Enable()
 			end
 		end
     end)
