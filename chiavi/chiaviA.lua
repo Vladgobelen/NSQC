@@ -32,7 +32,37 @@ if string.find (message, "#dNm") then
 	end
 end
 
+if kod=="NSGadd" then
+	mmOk=mysplit(message)
+	mioLv = UnitLevel("Player")
+	if mmOk[1] == "#mmOk" then
+		local testMM = GetInstanceInfo()
+		if testQ[myNome][testMM] == nil then
+			testQ[myNome][testMM] = {}
+		end
+		if testQ[myNome][testMM][mioLv] == nil then
+			testQ[myNome][testMM][mioLv] = {}
+		end
+		if testQ[myNome][testMM][mioLv]["название"] == nil then
+			testQ[myNome][testMM][mioLv]["название"] = mmOk[2]
+			testQ[myNome][testMM][mioLv]["время"] = mmOk[3]
+			testQ[myNome][testMM][mioLv]["лвл"] = mmOk[4]
+			testQ[myNome][testMM][mioLv]["имя"] = sender
+		end
 
+		if testQ[myNome][testMM][mioLv]["время"] ~= nil then
+			if testQ[myNome][testMM][mioLv]["время"] > mmOk[3] then
+				testQ[myNome][testMM][mioLv]["время"] = mmOk[3]
+				testQ[myNome][testMM][mioLv]["имя"] = sender
+			end
+		end
+
+
+	end
+
+SendAddonMessage("NSGadd", "#mmOk ".. testMM .. " " .. curTime .. " " .. mioLv, "guild")
+
+end
 end)
 testInf=0
 btnMM = {}
@@ -51,7 +81,6 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if testInf == 0 then
 				if testQ[myNome]["зона_старта"] ~= nil then
 					local inst = testQ[myNome]["зона_старта"]
-					print (inst .. " fdsa")
 					btnMM[1]:SetText(inst)
 					bossNum = mmList[inst]["количество_боссов"]
 					testNpc(mmList[inst]["testNpc"])
@@ -212,7 +241,12 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["инст_время"] == nil then
 			testQ[myNome]["инст_время"] = time()
 			timeMMtestI = GetInstanceInfo()
-			testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
+			mioLv = UnitLevel("Player")
+			if testQ[myNome][testMM][mioLv]["время"] == nil then
+				testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
+			elseif testQ[myNome][testMM][mioLv]["время"] ~= nil then
+				testQ[myNome]["время_кнопки"] = testQ[myNome][testMM][mioLv]["время"]
+			end
 		end
 		curTime = time()
 		curTime = curTime - testQ[myNome]["инст_время"]
@@ -236,6 +270,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		testMM = GetInstanceInfo()
 		if testQ[myNome]["проверка_завершения"] == mmList[testMM]["успешно"] then
 			SendChatMessage(hshChiavi .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
+			mioLv = UnitLevel("Player")
+			SendAddonMessage("NSGadd", "#mmOk ".. testMM .. " " .. curTime .. " " .. mioLv, "guild")
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
 			testQ[myNome]["инст_начат"]=nil
@@ -266,6 +302,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["проверка_завершения"] == mmList[testMM]["успешно"] then
 			if btnTime > 0 then
 				SendChatMessage(hshChiavi .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
+				mioLv = UnitLevel("Player")
+				SendAddonMessage("NSGadd", "#mmOk ".. testMM .. " " .. curTime .. " " .. mioLv, "guild")
 				testQ[myNome]["chiavi"] = nil
 				testQ[myNome]["groupNum"] = nil
 				testQ[myNome]["инст_начат"]=nil
