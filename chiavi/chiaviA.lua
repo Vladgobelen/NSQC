@@ -78,6 +78,13 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id]:Hide();
     self[id]:SetScript("OnClick",function(self, button)
 		if id == 1 then
+			local myNome = GetUnitName("player")
+			mioLv = UnitLevel("Player")
+			numMobI = GetInstanceInfo()
+			if testQ[myNome][numMobI] ~= nil then
+				sendTime = testQ[myNome][numMobI][mioLv]["время"]
+				SendAddonMessage("NSGadd", "#mmOk ".. sendTime .. " " .. mioLv .. " " .. numMobI, "guild")
+			end
 			if testInf == 0 then
 				if testQ[myNome]["зона_старта"] ~= nil then
 					local inst = testQ[myNome]["зона_старта"]
@@ -115,10 +122,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				WatchFrame:Hide()
 				testQ[myNome]["проверка_завершения"] = 0
 				btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
-				if testQ[myNome][numMobI] ~= nil then
-					sendTime = testQ[myNome][numMobI][mioLv]["время"]
-					SendAddonMessage("NSGadd", "#mmOk ".. sendTime .. " " .. mioLv .. " " .. numMobI, "guild")
-				end
+
 
 				hshChiavi=hshSenderNomeC(myNome)
 
