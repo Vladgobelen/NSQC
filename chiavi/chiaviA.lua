@@ -14,7 +14,6 @@ end
 if string.find (message, "#dNm") then
 	myNome = GetUnitName("player")
 	if pM(sender) == 1 or sender == myNome then
-	print ("fdsafdas")
 		if dnStart ~= nil then
 			dnStart = dnStart + 1
 		end
@@ -67,8 +66,10 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 				testInf=1
 			else
-				for i=2,6 do
-					btnMM[i]:Hide()
+				for i=2,10 do
+					if btnMM[i] ~= nil then
+						btnMM[i]:Hide()
+					end
 				end
 				testInf=0
 			end
@@ -104,9 +105,13 @@ btnMM:configure(3,0,-60,200,30,"#zzs","");
 btnMM:configure(4,0,-90,200,30,"#zzs","");
 btnMM:configure(5,0,-120,200,30,"#zzs","");
 btnMM:configure(6,0,-150,200,30,"#zzs","");
+btnMM:configure(7,0,-180,200,30,"#zzs","");
+btnMM:configure(8,0,-210,200,30,"#zzs","");
+btnMM:configure(9,0,-240,200,30,"#zzs","");
+btnMM:configure(10,0,-270,200,30,"#zzs","");
 btnMM:configure(99,0,100,100,50,"#zzs","СТАРТ");
 
-local UpdateSpeed = 0.1
+local UpdateSpeed = 0.01
 local f = CreateFrame("Frame")
 
 f.UpdateSpeed = UpdateSpeed
@@ -152,34 +157,42 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		dnStart = 0
 	end
 
-	if btnMM[1]:IsVisible() and testQ[myNome]["инст_начат"] ~= nil then
-		WatchFrame:Hide()
-	elseif btnMM[1]:IsVisible() == nil and testQ[myNome]["инст_начат"] == nil then
-		btnMM[99]:Hide()
-		for i=2,6 do
-			btnMM[i]:Hide()
-			testInf=0
-		end
-		partyStart = nil
-		testQ[myNome]["chiavi"] = nil
-		testQ[myNome]["groupNum"] = nil
-		testQ[myNome]["инст_начат"]=nil
-		testQ[myNome]["нельзя_стартовать"]=nil
-		testQ[myNome]["время_кнопки"] = nil
-		partyStart = nil
-		dnStart = 0
-	end
-
-	if btnMM[2]:IsVisible() and testQ[myNome]["нельзя_стартовать"] == nil and partyStart ~= 1 then
-		btnMM[99]:Show()
-		btnMM[99]:SetText("СТАРТ")
+	if WorldMapFrameSizeDownButton:IsVisible() then
 	else
-		btnMM[99]:Hide()
-
+		if btnMM[1]:IsVisible() and testQ[myNome]["инст_начат"] ~= nil then
+			WatchFrame:Hide()
+		elseif btnMM[1]:IsVisible() == nil and testQ[myNome]["инст_начат"] == nil then
+			btnMM[99]:Hide()
+			for i=2,10 do
+				if btnMM[i] ~= nil then
+					btnMM[i]:Hide()
+				end
+				testInf=0
+			end
+			partyStart = nil
+			testQ[myNome]["chiavi"] = nil
+			testQ[myNome]["groupNum"] = nil
+			testQ[myNome]["инст_начат"]=nil
+			testQ[myNome]["нельзя_стартовать"]=nil
+			testQ[myNome]["время_кнопки"] = nil
+			partyStart = nil
+			dnStart = 0
+		end
 	end
 
+	if WorldMapFrameSizeDownButton:IsVisible() then
+	else
+		if btnMM[2]:IsVisible() and testQ[myNome]["нельзя_стартовать"] == nil and partyStart ~= 1 then
+			btnMM[99]:Show()
+			btnMM[99]:SetText("СТАРТ")
+		else
+			btnMM[99]:Hide()
+		end
+	end
 
-	if btnMM[1]:GetText() ~= testMM and btnMM[2]:IsVisible() == nil then
+	if WorldMapFrameSizeDownButton:IsVisible() then
+	else
+		if btnMM[1]:GetText() ~= testMM and btnMM[2]:IsVisible() == nil then
 			if testQ[myNome]["нельзя_стартовать"] == nil then
 				testQ[myNome]["chiavi"] = nil
 				testQ[myNome]["groupNum"] = nil
@@ -189,7 +202,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 				btnMM[1]:Hide()
 				partyStart = nil
 			end
-
+		end
 	end
 
 	if testQ[myNome]["инст_начат"] == 1 then
@@ -220,8 +233,8 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	end
 
 	if btnTime == 0 then
-
-		if testQ[myNome]["проверка_завершения"] == 5  then
+		testMM = GetInstanceInfo()
+		if testQ[myNome]["проверка_завершения"] == mmList[testMM]["успешно"] then
 			SendChatMessage(hshChiavi .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
@@ -248,31 +261,34 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		end
 
 	end
-	if testQ[myNome]["проверка_завершения"] == 5 then
-		if btnTime > 0 then
-			SendChatMessage(hshChiavi .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
-			testQ[myNome]["chiavi"] = nil
-			testQ[myNome]["groupNum"] = nil
-			testQ[myNome]["инст_начат"]=nil
-			testQ[myNome]["нельзя_стартовать"]=nil
-			testQ[myNome]["время_кнопки"] = nil
-			btnMM[1]:Hide()
-			btnTime = 999999
-			testQ[myNome]["проверка_завершения"] = nil
-			partyStart = nil
-			dnStart = 0
-		else
-			testQ[myNome]["chiavi"] = nil
-			testQ[myNome]["groupNum"] = nil
-			testQ[myNome]["инст_начат"]=nil
-			testQ[myNome]["нельзя_стартовать"]=nil
-			testQ[myNome]["время_кнопки"] = nil
-			btnMM[1]:Hide()
-			btnTime = 999999
-			testQ[myNome]["проверка_завершения"] = nil
-			partyStart = nil
-			dnStart = 0
-			SendChatMessage(testMM .. ": попытка провалилась", "guild", nil, 1);
+	testMM = GetInstanceInfo()
+	if mmList[testMM] ~= nil then
+		if testQ[myNome]["проверка_завершения"] == mmList[testMM]["успешно"] then
+			if btnTime > 0 then
+				SendChatMessage(hshChiavi .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
+				testQ[myNome]["chiavi"] = nil
+				testQ[myNome]["groupNum"] = nil
+				testQ[myNome]["инст_начат"]=nil
+				testQ[myNome]["нельзя_стартовать"]=nil
+				testQ[myNome]["время_кнопки"] = nil
+				btnMM[1]:Hide()
+				btnTime = 999999
+				testQ[myNome]["проверка_завершения"] = nil
+				partyStart = nil
+				dnStart = 0
+			else
+				testQ[myNome]["chiavi"] = nil
+				testQ[myNome]["groupNum"] = nil
+				testQ[myNome]["инст_начат"]=nil
+				testQ[myNome]["нельзя_стартовать"]=nil
+				testQ[myNome]["время_кнопки"] = nil
+				btnMM[1]:Hide()
+				btnTime = 999999
+				testQ[myNome]["проверка_завершения"] = nil
+				partyStart = nil
+				dnStart = 0
+				SendChatMessage(testMM .. ": попытка провалилась", "guild", nil, 1);
+			end
 		end
 	end
 
