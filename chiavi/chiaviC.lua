@@ -15,6 +15,7 @@ if arg2 == "UNIT_DIED" then
 						btnMM[2]:Disable()
 						if testQ[myNome]["проверка_завершения"] ~= nil then
 							if mobKNum == 0 then
+								btnMM[2]:SetText("0")
 								testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
 							end
 						end
