@@ -44,19 +44,17 @@ if kod=="NSGadd" then
 			testQ[myNome][testMM][mioLv] = {}
 		end
 		if testQ[myNome][testMM][mioLv]["название"] == nil then
-			print (mmOk[1])
-			print (mmOk[2])
-			print (mmOk[3])
-			print (mmOk[4])
-			testQ[myNome][testMM][mioLv]["название"] = mmOk[2]
-			testQ[myNome][testMM][mioLv]["время"] = mmOk[3]
-			testQ[myNome][testMM][mioLv]["лвл"] = mmOk[4]
+		("NSGadd", "#mmOk ".. curTime .. " " .. mioLv .. " " .. testMM, "guild")
+			testQ[myNome][testMM][mioLv]["время"] = mmOk[2]
+			testQ[myNome][testMM][mioLv]["лвл"] = mmOk[3]
 			testQ[myNome][testMM][mioLv]["имя"] = sender
+			mmOkRez = table.concat(mmOk, " ", 4, #mmOk)
+			testQ[myNome][testMM][mioLv]["название"] = mmOkRez
 		end
 
 		if testQ[myNome][testMM][mioLv]["время"] ~= nil then
-			if testQ[myNome][testMM][mioLv]["время"] > mmOk[3] then
-				testQ[myNome][testMM][mioLv]["время"] = mmOk[3]
+			if testQ[myNome][testMM][mioLv]["время"] > mmOk[2] then
+				testQ[myNome][testMM][mioLv]["время"] = mmOk[2]
 				testQ[myNome][testMM][mioLv]["имя"] = sender
 			end
 		end
@@ -275,7 +273,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["проверка_завершения"] == mmList[testMM]["успешно"] then
 			SendChatMessage(hshChiavi .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 			mioLv = UnitLevel("Player")
-			SendAddonMessage("NSGadd", "#mmOk ".. testMM .. " " .. curTime .. " " .. mioLv, "guild")
+			SendAddonMessage("NSGadd", "#mmOk ".. curTime .. " " .. mioLv .. " " .. testMM, "guild")
 			testQ[myNome]["chiavi"] = nil
 			testQ[myNome]["groupNum"] = nil
 			testQ[myNome]["инст_начат"]=nil
@@ -307,7 +305,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			if btnTime > 0 then
 				SendChatMessage(hshChiavi .. " " .. testMM .. ": пройдено за " .. curTime .. " секунд", "guild", nil, 1);
 				mioLv = UnitLevel("Player")
-				SendAddonMessage("NSGadd", "#mmOk ".. testMM .. " " .. curTime .. " " .. mioLv, "guild")
+				SendAddonMessage("NSGadd", "#mmOk ".. curTime .. " " .. mioLv .. " " .. testMM, "guild")
 				testQ[myNome]["chiavi"] = nil
 				testQ[myNome]["groupNum"] = nil
 				testQ[myNome]["инст_начат"]=nil
