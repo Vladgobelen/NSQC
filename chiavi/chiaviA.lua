@@ -60,7 +60,6 @@ if kod=="NSGadd" then
 
 	end
 
-SendAddonMessage("NSGadd", "#mmOk ".. testMM .. " " .. curTime .. " " .. mioLv, "guild")
 
 end
 end)
