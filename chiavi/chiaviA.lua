@@ -70,7 +70,7 @@ local myNome = GetUnitName("player")
 function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
     if id ~= 99 then
-		self[id]:SetPoint("TOPLEFT", WatchFrame, "TOPLEFT",posex, posey)
+		self[id]:SetPoint("TOPRIGHT", WatchFrame, "TOPRIGHT",posex, posey)
     else
 		self[id]:SetPoint("CENTER",posex, posey)
     end
@@ -102,7 +102,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 				testInf=1
 			else
-				for i=2,10 do
+				for i=2,20 do
 					if btnMM[i] ~= nil then
 						btnMM[i]:Hide()
 					end
@@ -152,6 +152,17 @@ btnMM:configure(7,0,-180,200,30,"#zzs","");
 btnMM:configure(8,0,-210,200,30,"#zzs","");
 btnMM:configure(9,0,-240,200,30,"#zzs","");
 btnMM:configure(10,0,-270,200,30,"#zzs","");
+btnMM:configure(11,0,-300,200,30,"#zzs","");
+btnMM:configure(12,0,-330,200,30,"#zzs","");
+btnMM:configure(13,0,-360,200,30,"#zzs","");
+btnMM:configure(14,0,-390,200,30,"#zzs","");
+btnMM:configure(15,0,-420,200,30,"#zzs","");
+btnMM:configure(16,0,-450,200,30,"#zzs","");
+btnMM:configure(17,0,-480,200,30,"#zzs","");
+btnMM:configure(18,0,-510,200,30,"#zzs","");
+btnMM:configure(19,0,-540,200,30,"#zzs","");
+btnMM:configure(20,0,-570,200,30,"#zzs","");
+
 btnMM:configure(99,0,100,100,50,"#zzs","СТАРТ");
 
 local UpdateSpeed = 0.01
@@ -206,7 +217,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			WatchFrame:Hide()
 		elseif btnMM[1]:IsVisible() == nil and testQ[myNome]["инст_начат"] == nil then
 			btnMM[99]:Hide()
-			for i=2,10 do
+			for i=2,20 do
 				if btnMM[i] ~= nil then
 					btnMM[i]:Hide()
 				end

@@ -418,3 +418,17 @@ function pM(nik)
 		end
 		return r
 	end
+
+function tblAllFail(mm,nik)
+	if mmList[mm] ~= nil then
+		for i=1, mmList[mm]["количество_боссов"] do
+			if nik == mmList[mm][i] then
+				r = i
+				break
+			else
+				r = 0
+			end
+		end
+	end
+	return r
+end
