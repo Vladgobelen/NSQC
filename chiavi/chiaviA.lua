@@ -106,6 +106,8 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if id == 99 then
 			testGroupNum = GetNumPartyMembers()
 			if testGroupNum == 0 then
+				local myNome = GetUnitName("player")
+				mioLv = UnitLevel("Player")
 				btnMM[2]:Enable()
 				testQ[myNome]["инст_начат"] = 1
 				numMobI = GetInstanceInfo()
@@ -113,7 +115,11 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				WatchFrame:Hide()
 				testQ[myNome]["проверка_завершения"] = 0
 				btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
-				local myNome = GetUnitName("player")
+				if testQ[myNome][numMobI] ~= nil then
+					sendTime = testQ[myNome][numMobI][mioLv]["время"]
+					SendAddonMessage("NSGadd", "#mmOk ".. sendTime .. " " .. mioLv .. " " .. numMobI, "guild")
+				end
+
 				hshChiavi=hshSenderNomeC(myNome)
 
 			else
