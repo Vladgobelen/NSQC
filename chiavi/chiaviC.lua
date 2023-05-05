@@ -14,9 +14,8 @@ if arg2 == "UNIT_DIED" then
 					if mobKNum <= 0 then
 						btnMM[2]:Disable()
 						if testQ[myNome]["проверка_завершения"] ~= nil then
-							testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
-							if mmList[testMM]["успешно"] < testQ[myNome]["проверка_завершения"] then
-								testQ[myNome]["проверка_завершения"] = mmList[testMM]["успешно"]
+							if mobKNum == 0 then
+								testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
 							end
 						end
 					end
@@ -58,9 +57,8 @@ if arg2 == "UNIT_DIED" then
 					if mobKNum <= 0 then
 						btnMM[2]:Disable()
 						if testQ[myNome]["проверка_завершения"] ~= nil then
-							testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
-							if mmList[testMM]["успешно"] < testQ[myNome]["проверка_завершения"] then
-								testQ[myNome]["проверка_завершения"] = mmList[testMM]["успешно"]
+							if mobKNum == 0 then
+								testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
 							end
 						end
 					end
