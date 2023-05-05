@@ -82,7 +82,6 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		if testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 			proverka_komandy=mysplit(message)
 			msg1=proverka_komandy[3]
-			msg1 = tonumber(msg1)
 			mozhnoLiSdatChislo=testQ[myNome]["квест_лвл3"][msg1]
 			mozhnoLiSdatChislo=tonumber(mozhnoLiSdatChislo)
 			j=0
@@ -98,6 +97,9 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 				end
 				i=i+1
 			end
+			print (mozhnoLiSdatChislo)
+			print (j)
+			print (msg1)
 			if j>=mozhnoLiSdatChislo then
 				SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo, "guild")
 				--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
