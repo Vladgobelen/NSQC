@@ -44,7 +44,6 @@ if kod=="NSGadd" then
 			testQ[myNome][testMM][mioLv] = {}
 		end
 		if testQ[myNome][testMM][mioLv]["название"] == nil then
-		("NSGadd", "#mmOk ".. curTime .. " " .. mioLv .. " " .. testMM, "guild")
 			testQ[myNome][testMM][mioLv]["время"] = mmOk[2]
 			testQ[myNome][testMM][mioLv]["лвл"] = mmOk[3]
 			testQ[myNome][testMM][mioLv]["имя"] = sender
