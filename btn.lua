@@ -1,4 +1,4 @@
-versAdd=96
+versAdd=97
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -497,7 +497,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 end
                 i=i+1
             end
-            if j<chisloPunktop then
+            temvChislo = tonumber(chisloPunktop)
+            if j<temvChislo then
                 btn[2]:Disable()
                 btn[2]:SetText("Ачивка не выполнена")
                 btn[1]:Disable()
