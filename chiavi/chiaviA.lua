@@ -33,28 +33,27 @@ if string.find (message, "#dNm") then
 end
 
 if kod=="NSGadd" then
-	mmOk=mysplit(message)
-	mioLv = UnitLevel("Player")
 	if mmOk[1] == "#mmOk" then
-		local testMM = GetInstanceInfo()
-		if testQ[myNome][testMM] == nil then
-			testQ[myNome][testMM] = {}
+		local mmOk=mysplit(message)
+		local mmOkRez = table.concat(mmOk, " ", 4, #mmOk)
+		local mioLv = UnitLevel("Player")
+		if testQ[myNome][mmOkRez] == nil then
+			testQ[myNome][mmOkRez] = {}
 		end
-		if testQ[myNome][testMM][mioLv] == nil then
-			testQ[myNome][testMM][mioLv] = {}
+		if testQ[myNome][mmOkRez][mioLv] == nil then
+			testQ[myNome][mmOkRez][mioLv] = {}
 		end
-		if testQ[myNome][testMM][mioLv]["название"] == nil then
-			testQ[myNome][testMM][mioLv]["время"] = mmOk[2]
-			testQ[myNome][testMM][mioLv]["лвл"] = mmOk[3]
-			testQ[myNome][testMM][mioLv]["имя"] = sender
-			mmOkRez = table.concat(mmOk, " ", 4, #mmOk)
-			testQ[myNome][testMM][mioLv]["название"] = mmOkRez
+		if testQ[myNome][mmOkRez][mioLv]["название"] == nil then
+			testQ[myNome][mmOkRez][mioLv]["время"] = mmOk[2]
+			testQ[myNome][mmOkRez][mioLv]["лвл"] = mmOk[3]
+			testQ[myNome][mmOkRez][mioLv]["имя"] = sender
+			testQ[myNome][mmOkRez][mioLv]["название"] = mmOkRez
 		end
 
-		if testQ[myNome][testMM][mioLv]["время"] ~= nil then
-			if testQ[myNome][testMM][mioLv]["время"] > mmOk[2] then
-				testQ[myNome][testMM][mioLv]["время"] = mmOk[2]
-				testQ[myNome][testMM][mioLv]["имя"] = sender
+		if testQ[myNome][mmOkRez][mioLv]["время"] ~= nil then
+			if testQ[myNome][mmOkRez][mioLv]["время"] > mmOk[2] then
+				testQ[myNome][mmOkRez][mioLv]["время"] = mmOk[2]
+				testQ[myNome][mmOkRez][mioLv]["имя"] = sender
 			end
 		end
 
@@ -114,6 +113,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 			testGroupNum = GetNumPartyMembers()
 			if testGroupNum == 0 then
 				local myNome = GetUnitName("player")
+				testQ[myNome]["время_кнопки"] =nil
 				mioLv = UnitLevel("Player")
 				btnMM[2]:Enable()
 				testQ[myNome]["инст_начат"] = 1
@@ -267,13 +267,16 @@ f:SetScript("OnUpdate", function(self, elapsed)
 			testQ[myNome]["инст_время"] = time()
 			timeMMtestI = GetInstanceInfo()
 			mioLv = UnitLevel("Player")
-				if testQ[myNome][testMM] == nil then
+				if testQ[myNome][timeMMtestI] == nil then
 					testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
+					print ("1")
 				else
-					if testQ[myNome][testMM][mioLv]["время"] == nil then
+					if testQ[myNome][timeMMtestI][mioLv]["время"] == nil then
 						testQ[myNome]["время_кнопки"] = mmList[timeMMtestI]["время_прохождения_1"]
-					elseif testQ[myNome][testMM][mioLv]["время"] ~= nil then
-						testQ[myNome]["время_кнопки"] = testQ[myNome][testMM][mioLv]["время"]
+						print ("2")
+					elseif testQ[myNome][timeMMtestI][mioLv]["время"] ~= nil then
+						testQ[myNome]["время_кнопки"] = testQ[myNome][timeMMtestI][mioLv]["время"]
+						print ("3")
 					end
 				end
 		end
