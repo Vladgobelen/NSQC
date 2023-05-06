@@ -278,8 +278,12 @@ f:SetScript("OnUpdate", function(self, elapsed)
 				end
 		end
 		curTime = time()
-		curTime = curTime - testQ[myNome]["инст_время"]
-		btnTime = testQ[myNome]["время_кнопки"] - curTime
+		local tempTime = testQ[myNome]["время_кнопки"]
+		tempTime = tonumber(tempTime)
+		local tempTimeInst = testQ[myNome]["инст_время"]
+		tempTimeInst = tonumber(tempTimeInst)
+		curTime = curTime - tempTimeInst
+		btnTime = tempTime - curTime
 
 		btnMM[1]:SetText(btnTime)
 	elseif testQ[myNome]["инст_начат"] == nil then
