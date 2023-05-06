@@ -303,6 +303,9 @@ function proverkaVypolneniyaKvestySachivkoj(mNome,qlvl)
 		i=i+1
 		end
 		local pokazatRezult=chisloPunktop-j
+		if pokazatRezult < 0 then
+			pokazatRezult = 0
+		end
 		SendChatMessage("Осталось выполнить " .. pokazatRezult .. " пунктов ачивки " .. vypolnenaLiAch .. " " .. GetAchievementLink(vypolnenaLiAch) .. " из " .. chisloPunktop, "GUILD", nil, 1)
 end
 
