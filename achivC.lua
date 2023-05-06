@@ -56,7 +56,13 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		proverka_komandy=mysplit(message)
 		msg1=proverka_komandy[3]
 		msg1=tonumber(msg1)
-		mozhnoLiSdatChislo11=testQ[myNome]["квест_лвл2"][msg1]
+		if testQ[myNome]["квест_лвл2"][msg1] ~= nil then
+			mozhnoLiSdatChislo11=testQ[myNome]["квест_лвл2"][msg1]
+		else
+			msg1=tostring(msg1)
+			mozhnoLiSdatChislo11=testQ[myNome]["квест_лвл2"][msg1]
+		end
+		msg1=tonumber(msg1)
 		mozhnoLiSdatChislo11=tonumber(mozhnoLiSdatChislo11)
 		j=0
 		k=0
