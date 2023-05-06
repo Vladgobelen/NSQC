@@ -1,4 +1,4 @@
-versAdd=97
+versAdd=98
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -485,10 +485,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             vypolnenaLiAch=testQ[myNome]["взятый_квест"]
             count = GetAchievementNumCriteria(vypolnenaLiAch)
             chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
+            chisloToNum=tonumber(vypolnenaLiAch)
             j=0
             k=0
             for i=1, count do
-                local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+                local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(chisloToNum, i);
                 prov=completed
                 if prov == true then
                     j=j+1
