@@ -272,8 +272,10 @@ end
 function gmTest (gmTestNome)
 	for i=1,#gmList do
 		if gmTestNome==gmList[i] then
-			gmTestRez=true
+			gmTestRez = "гм"
 			break
+		else
+			gmTestNome = nil
 		end
 		i=i+1
 	end
