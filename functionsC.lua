@@ -270,12 +270,11 @@ function hshSenderNomeC(senderNomeC)
 end
 
 function gmTest (gmTestNome)
+	local gmTestRez
 	for i=1,#gmList do
 		if gmTestNome==gmList[i] then
 			gmTestRez = "гм"
 			break
-		else
-			gmTestNome = nil
 		end
 		i=i+1
 	end
