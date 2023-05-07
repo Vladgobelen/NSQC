@@ -373,7 +373,6 @@ local function EnumerateTooltipLines_helper(...)
             if text ~= nil then
                 if string.find (text, "Уровень") then
 					testLvlNpc=mysplit(text)
-
 				end
 				if string.find (text, "уровня") then
 					testLvlNpc=mysplit(text)

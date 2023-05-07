@@ -33,6 +33,7 @@ if string.find (message, "#dNm") then
 end
 
 if kod=="NSGadd" then
+	if mmOk ~= nil then
 	if mmOk[1] == "#mmOk" then
 		local mmOk=mysplit(message)
 		local mmOkRez = table.concat(mmOk, " ", 4, #mmOk)
@@ -58,6 +59,7 @@ if kod=="NSGadd" then
 		end
 
 
+	end
 	end
 
 
