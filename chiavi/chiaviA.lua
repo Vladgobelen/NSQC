@@ -97,6 +97,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 						j=i-2
 						j = tostring(j)
 						btnMM[i]:SetText(mmList[inst][j])
+						btnMM[i]:Enable()
 						btnMM[i]:Show()
 
 					end
@@ -124,10 +125,7 @@ function btnMM:configure(id,posex,posey,sizex,sizey,zzid,message)
 				WatchFrame:Hide()
 				testQ[myNome]["проверка_завершения"] = 0
 				btnMM[2]:SetText(mmList[numMobI]["количество_мобов"])
-
-
 				hshChiavi=hshSenderNomeC(myNome)
-
 			else
 				btnMM[2]:Enable()
 				SendAddonMessage("NSGadd", "#dNm", "guild")
@@ -181,7 +179,6 @@ f:SetScript("OnUpdate", function(self, elapsed)
 	testGroupNum = GetNumPartyMembers()
 	testMM = GetInstanceInfo()
 	if mmList[testMM] ~= nil then
-
 		testQ[myNome]["chiavi"] = testMM
 		testQ[myNome]["groupNum"] = testGroupNum
 
@@ -190,9 +187,11 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		mioX = tonumber(mioX)
 		local mioY = mmList[testMM]["y"]
 		mioY = tonumber(mioY)
+
 		local rasstoyanieSch=sqrt((mioX-x)^2+(mioY-y)^2)
 		if rasstoyanieSch < 0.01 and testQ[myNome]["инст_начат"] == nil then
 			testQ[myNome]["зона_старта"] = mmList[testMM]["название"]
+
 			btnMM[1]:Show()
 			btnMM[1]:SetText(testQ[myNome]["зона_старта"])
 
