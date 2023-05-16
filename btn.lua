@@ -1,4 +1,4 @@
-versAdd=109
+versAdd=111
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -69,6 +69,11 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
             SendAddonMessage("NSGadd", "#ver", "guild")
         end)
     end
+    if id == 15 then
+        self[id]:SetScript("OnClick",function(self, button)
+            SendAddonMessage("NSGadd", "#u", "guild")
+        end)
+    end
 end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
@@ -88,6 +93,7 @@ btn:configure(999,0,0,80,50,"#cls","Закрыть");
 btn:configure(12,-225,350,150,30,"#opn","Включить поиск");
 btn:configure(13,-225,320,150,30,"#crtPoint","Создать точку");
 btn:configure(14,-133,382,32,32,"#ver","*");
+btn:configure(15,-101,382,32,32,"#u","У");
 
 
 local minibtn = CreateFrame("Button", nil, Minimap)
@@ -163,7 +169,7 @@ minibtn:SetScript("OnClick", function()
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
             btn[ii]:SetScript("OnClick", function(self, button)
-            for ii=1,14 do
+            for ii=1,15 do
                 btn[ii]:Hide();
             end
             pokazat=0
@@ -171,7 +177,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
             end)
-            for ii=1,14 do
+            for ii=1,15 do
                 btn[ii]:Show();
             end
             pokazat=1
@@ -182,7 +188,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
-            for ii=1,14 do
+            for ii=1,15 do
                 btn[ii]:Hide();
             end
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
@@ -207,7 +213,7 @@ minibtn:SetScript("OnClick", function()
             print ("!заметка+ [текст заметки] - дополнить информацию о себе")
             print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
             print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки ИЛИ статистики]")
-            for ii=1,14 do
+            for ii=1,15 do
                 btn[ii]:Hide();
             end
             myCheckButton1:Show()
@@ -215,7 +221,7 @@ minibtn:SetScript("OnClick", function()
             pokazat=0
             pokazatChk=1
         elseif pokazat==0 then
-            for ii=1,14 do
+            for ii=1,15 do
                 btn[ii]:Show();
             end
             myCheckButton1:Hide()
