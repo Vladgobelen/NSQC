@@ -262,6 +262,21 @@ if string.find (message, "#crtPoint") and sender == myNome then
 	SendAddonMessage("NSGadd", "!следить", "guild")
 end
 
+if string.find (message, "#ver") and sender ~= "Витинари" then
+	if myNome == "Витинари" then
+		SendAddonMessage("NSGadd", "#verS " .. versAdd, "guild")
+	end
+end
+
+if string.find (message, "#verS") and sender == "Витинари" then
+	local versA = mysplit(message)
+	if versA[2] ~= nil then
+		print ("Актуальная версия аддона: " .. versA[2] .. ". Текущая версия аддона: " .. versAdd)
+	else
+		print ("Вождь ушел кормить коз")
+	end
+end
+
 if string.find (message, "#nuovoPoint") and sender ~= myNome then
 print(sender)
 print(myNome)
