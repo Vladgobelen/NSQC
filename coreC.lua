@@ -169,7 +169,7 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 end
 
 ltrC=mysplit(message)
-if string.find (message, "получает лотерейный билет") and ltrC[1]==myNome then
+if string.find (message, "получает лотерейный билет") and ltrC[1]==myNome and testGM~=nil then
 	ltrNikC=ltrC[1]
 	if testQ[ltrNikC]["лотерея"]==nil then
 		testQ[ltrNikC]["лотерея"]=3
