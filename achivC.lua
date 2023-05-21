@@ -92,7 +92,14 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		if testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 			proverka_komandy=mysplit(message)
 			msg1=proverka_komandy[3]
-			mozhnoLiSdatChislo=testQ[myNome]["квест_лвл3"][msg1]
+			msg1 = tonumber(msg1)
+			if testQ[myNome]["квест_лвл3"][msg1] ~= nil then
+				mozhnoLiSdatChislo=testQ[myNome]["квест_лвл3"][msg1]
+			else
+				msg1 = tostring(msg1)
+				mozhnoLiSdatChislo=testQ[myNome]["квест_лвл3"][msg1]
+			end
+			msg1 = tonumber(msg1)
 			mozhnoLiSdatChislo=tonumber(mozhnoLiSdatChislo)
 			j=0
 			k=0
