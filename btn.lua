@@ -1,4 +1,4 @@
-versAdd=114
+versAdd=115
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -74,6 +74,16 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
             SendAddonMessage("NSGadd", "#u", "guild")
         end)
     end
+    if id == 998 then
+        self[id]:SetScript("OnClick",function(self, button)
+            SendAddonMessage("NSGadd", "#ahtng", "guild")
+        end)
+    end
+    if id == 997 then
+        self[id]:SetScript("OnClick",function(self, button)
+            SendAddonMessage("NSGadd", "#zzp", "guild")
+        end)
+    end
 end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
@@ -94,7 +104,8 @@ btn:configure(12,-225,350,150,30,"#opn","Включить поиск");
 btn:configure(13,-225,320,150,30,"#crtPoint","Создать точку");
 btn:configure(14,-133,382,32,32,"#ver","*");
 btn:configure(15,-101,382,32,32,"#u","У");
-
+btn:configure(998,-83,250,70,32,"#ahtng","СБРОС");
+btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
 
 local minibtn = CreateFrame("Button", nil, Minimap)
 if testQ==nil then
@@ -183,6 +194,8 @@ minibtn:SetScript("OnClick", function()
             pokazat=1
             myCheckButton1:Hide()
             myCheckButton2:Hide()
+            btn[998]:Hide()
+            btn[997]:Hide()
             pokazatChk=0
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
@@ -197,18 +210,14 @@ minibtn:SetScript("OnClick", function()
             pokazat=0
             myCheckButton1:Hide()
             myCheckButton2:Hide()
+            btn[998]:Hide()
+            btn[997]:Hide()
             pokazatChk=0
         end
     elseif arg1=="RightButton" then
         if pokazat==1 then
             print ("Информация:")
             print ("NSQC-" .. versAdd)
-            print ("#zzs - взять квест")
-            print ("#zzr - сдать квест")
-            print ("#zzz - взять бонусный квест")
-            print ("#zzy - сдать бонусный квест")
-            print ("#zzt - узнать свой гильдлвл")
-            print ("#zzp - отказаться от квеста")
             print ("!заметка [текст заметки] - добавть информацию о себе")
             print ("!заметка+ [текст заметки] - дополнить информацию о себе")
             print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
@@ -218,6 +227,8 @@ minibtn:SetScript("OnClick", function()
             end
             myCheckButton1:Show()
             myCheckButton2:Show()
+            btn[998]:Show()
+            btn[997]:Show()
             pokazat=0
             pokazatChk=1
         elseif pokazat==0 then
@@ -226,6 +237,8 @@ minibtn:SetScript("OnClick", function()
             end
             myCheckButton1:Hide()
             myCheckButton2:Hide()
+            btn[998]:Hide()
+            btn[997]:Hide()
             pokazat=1
             pokazatChk=0
         end
@@ -302,6 +315,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if pokazatChk==0 then
                 myCheckButton1:Hide()
                 myCheckButton2:Hide()
+                btn[998]:Hide()
+                btn[997]:Hide()
 		end
 		if testQ[myNome]["настройки"] == nil then
             testQ[myNome]["настройки"] = {}
@@ -330,6 +345,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 end
                 myCheckButton1:Hide()
                 myCheckButton2:Hide()
+                btn[998]:Hide()
+                btn[997]:Hide()
                 pokazatChk=0
                 pokazat=0
                 minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
@@ -344,6 +361,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 end
                 myCheckButton1:Hide()
                 myCheckButton2:Hide()
+                btn[998]:Hide()
+                btn[997]:Hide()
                 pokazatChk=0
                 pokazat=0
                 minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")

@@ -2,13 +2,16 @@ local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
 GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, sender, hernya, name, instanceID)
 local myNome = GetUnitName("player")
-if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcOff") then
-	testQ[myNome]["нельзя_стартовать"] = 1
+if testQ ~= nil then
+	if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcOff") then
+		testQ[myNome]["нельзя_стартовать"] = 1
 
-end
-if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcDie") then
-	testQ[myNome]["нельзя_стартовать"] = 1
+	end
 
+	if testQ[myNome]["инст_начат"] == nil and string.find (message, "#npcDie") then
+		testQ[myNome]["нельзя_стартовать"] = 1
+
+	end
 end
 
 if string.find (message, "#dNm") then
@@ -202,6 +205,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		end
 
 	else
+	if testQ ~= nil then
 		testQ[myNome]["chiavi"] = nil
 		testQ[myNome]["groupNum"] = nil
 		testQ[myNome]["инст_начат"]=nil
@@ -210,6 +214,7 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		btnMM[1]:Hide()
 		partyStart = nil
 		dnStart = 0
+	end
 	end
 
 	if WorldMapFrameSizeDownButton:IsVisible() then

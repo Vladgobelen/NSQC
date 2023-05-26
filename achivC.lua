@@ -275,6 +275,10 @@ if string.find (message, "#ver") and sender ~= "Витинари" then
 	end
 end
 
+if string.find (message, "#ahtng") and sender == myNome then
+	testQ=nil
+end
+
 if string.find (message, "#verS") and sender == "Витинари" then
 	local versA = mysplit(message)
 	if versA[2] ~= nil then

@@ -246,11 +246,15 @@ function hshSenderNomeC(senderNomeC)
 	elseif hshSenderRC2==9 then
 		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC1 .. hshSenderRC3
 	end
-	if testQ[senderNomeC]["rarHSH1"]==nil then
-		testQ[senderNomeC]["rarHSH1"]={}
-	end
-	if testQ[senderNomeC]["rarHSH"]==nil then
-		testQ[senderNomeC]["rarHSH"]={}
+	if testQ ~= nil then
+		if testQ[senderNomeC] ~= nil then
+			if testQ[senderNomeC]["rarHSH1"]==nil then
+				testQ[senderNomeC]["rarHSH1"]={}
+			end
+			if testQ[senderNomeC]["rarHSH"]==nil then
+				testQ[senderNomeC]["rarHSH"]={}
+			end
+		end
 	end
 	testDate=date("%d")
 	testDate=tonumber(testDate)
