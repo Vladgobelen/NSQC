@@ -265,10 +265,12 @@ function hshSenderNomeC(senderNomeC)
 				tableHSH="rarHSH1"
 				testQ[senderNomeC]["rarHSH"]=nil
 			end
+
+
+			if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
+				hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
+			end
 		end
-	end
-	if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
-		hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
 	end
 	table.insert(testQ[senderNomeC][tableHSH], hsSenderNomeCRezult)
 	return hsSenderNomeCRezult
