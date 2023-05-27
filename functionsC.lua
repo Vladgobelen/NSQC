@@ -270,10 +270,12 @@ function hshSenderNomeC(senderNomeC)
 			if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
 				hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
 			end
+
+
+			table.insert(testQ[senderNomeC][tableHSH], hsSenderNomeCRezult)
+			return hsSenderNomeCRezult
 		end
 	end
-	table.insert(testQ[senderNomeC][tableHSH], hsSenderNomeCRezult)
-	return hsSenderNomeCRezult
 end
 
 function gmTest (gmTestNome)
