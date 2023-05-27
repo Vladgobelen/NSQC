@@ -254,16 +254,17 @@ function hshSenderNomeC(senderNomeC)
 			if testQ[senderNomeC]["rarHSH"]==nil then
 				testQ[senderNomeC]["rarHSH"]={}
 			end
-		end
 
-		testDate=date("%d")
-		testDate=tonumber(testDate)
-		if (testDate % 2 == 0) then
-			tableHSH="rarHSH"
-			testQ[senderNomeC]["rarHSH1"]=nil
-		else
-			tableHSH="rarHSH1"
-			testQ[senderNomeC]["rarHSH"]=nil
+
+			testDate=date("%d")
+			testDate=tonumber(testDate)
+			if (testDate % 2 == 0) then
+				tableHSH="rarHSH"
+				testQ[senderNomeC]["rarHSH1"]=nil
+			else
+				tableHSH="rarHSH1"
+				testQ[senderNomeC]["rarHSH"]=nil
+			end
 		end
 	end
 	if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
