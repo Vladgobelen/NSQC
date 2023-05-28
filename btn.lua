@@ -1,4 +1,4 @@
-versAdd=116
+versAdd=117
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -437,16 +437,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                             end
                         else
                             if testRasstoyanie~=0 then
-                                hshXY=time()
-                                myHSH=framePos["hshXY"]
-                                myHSH1=string.sub(myHSH, 1,1)
-                                myHSH2=string.sub(myHSH, 3,3)
-                                myHSH3=string.sub(myHSH, 5,5)
-                                local hshXY4 = math.random(0, 9)
-                                local hshXY5 = math.random(0, 9)
-                                local hshXY6 = math.random(0, 9)
-                                hshSend=myHSH2 .. hshXY4 .. myHSH1 .. hshXY5 .. myHSH3 .. hshXY6
-                                SendChatMessage(hshSend .. " Я вернулся на маршрут", "GUILD", nil, 1)
+                                local hshStran3
+                                hshStran3=hshSenderNomeC(myNome)
+                                SendChatMessage(hshStran3 .. " Я вернулся на маршрут", "GUILD", nil, 1)
                                 testRasstoyanie=0
                             else
                             end
