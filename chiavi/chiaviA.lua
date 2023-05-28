@@ -206,14 +206,16 @@ f:SetScript("OnUpdate", function(self, elapsed)
 
 	else
 	if testQ ~= nil then
-		testQ[myNome]["chiavi"] = nil
-		testQ[myNome]["groupNum"] = nil
-		testQ[myNome]["инст_начат"]=nil
-		testQ[myNome]["нельзя_стартовать"]=nil
-		testQ[myNome]["время_кнопки"] = nil
-		btnMM[1]:Hide()
-		partyStart = nil
-		dnStart = 0
+		if testQ[myNome] ~= nil then
+			testQ[myNome]["chiavi"] = nil
+			testQ[myNome]["groupNum"] = nil
+			testQ[myNome]["инст_начат"]=nil
+			testQ[myNome]["нельзя_стартовать"]=nil
+			testQ[myNome]["время_кнопки"] = nil
+			btnMM[1]:Hide()
+			partyStart = nil
+			dnStart = 0
+		end
 	end
 	end
 

@@ -4,7 +4,6 @@ GC_Sniffer:SetScript("OnEvent", function (timestamp, event, sourceGUID, sourceNa
 local myNome = GetUnitName("player")
 if arg2 == "UNIT_DIED" then
 	---Огненная пропасть
-	print (arg7)
 	local testMM = GetInstanceInfo()
 	if mmList[testMM] ~= nil then
 		if testMM == mmList[testMM]["название"] then
@@ -26,11 +25,9 @@ if arg2 == "UNIT_DIED" then
 				end
 			end
 			if tblAllFail(testMM,arg7) ~= 0 then
-			print (tblAllFail(testMM,arg7))
 				bossNum = tblAllFail(testMM,arg7)
 				bossNum = tonumber(bossNum)
 				bossNum = bossNum + 2
-				print (bossNum)
 				btnMM[bossNum]:Disable()
 				if testQ[myNome]["проверка_завершения"] ~= nil then
 					testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
