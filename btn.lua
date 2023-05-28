@@ -1,4 +1,4 @@
-versAdd=117
+versAdd=118
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -440,6 +440,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                                 local hshStran3
                                 hshStran3=hshSenderNomeC(myNome)
                                 SendChatMessage(hshStran3 .. " Я вернулся на маршрут", "GUILD", nil, 1)
+                                nXres=nil
                                 testRasstoyanie=0
                             else
                             end
