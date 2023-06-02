@@ -1,4 +1,4 @@
-versAdd=118
+versAdd=119
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -298,7 +298,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 
 
-	if timeElapsed > 0.5 then
+	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
         --testNpc("0xF1300040FE000778")
