@@ -644,7 +644,7 @@ myCheckButton1:SetScript("OnClick",
 );
 
 myCheckButton2 = createCheckbutton(UIParent, -100, 330, "Отображение ролла");
-myCheckButton2.tooltip = "Отображать ли ролл в офицерском чате";
+myCheckButton2.tooltip = "Скрывать ли ролл в офицерском чате";
 myCheckButton2:SetScript("OnClick",
     function()
         if testQ[myNome]["настройки"]["roll"]=="Disable" or testQ[myNome]["настройки"]["roll"]==nil then
