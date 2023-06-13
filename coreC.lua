@@ -205,7 +205,22 @@ if string.find (message, "#ltr333") and testGM~=nil and lotTest[3]==myNome then
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
-	SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
+	local x = math.random(1, 3)
+	if x == 1 then
+		SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
+	elseif x == 2 then
+		SendChatMessage("[  .   Y   .  ]" , "OFFICER", nil, 1)
+	elseif x == 3 then
+		SendChatMessage("[__o__]" , "OFFICER", nil, 1)
+	elseif x == 4 then
+		SendChatMessage("[__*__]" , "OFFICER", nil, 1)
+	elseif x == 5 then
+		SendChatMessage("(__o__)" , "OFFICER", nil, 1)
+	elseif x == 6 then
+		SendChatMessage("(__*__)" , "OFFICER", nil, 1)
+	elseif x == 7 then
+		SendChatMessage("( >  Y  <  )" , "OFFICER", nil, 1)
+	end
 end
 
 if string.find (message, myNome) and testGM~=nil and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
