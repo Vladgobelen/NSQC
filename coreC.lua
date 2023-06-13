@@ -219,7 +219,7 @@ if string.find (message, "покажи сиськи") and string.find(message, m
 	elseif x == 6 then
 		SendChatMessage("(__*__)" , "OFFICER", nil, 1)
 	elseif x == 7 then
-		SendChatMessage("( >  Y  <  )" , "OFFICER", nil, 1)
+		SendChatMessage("( >  ) (  <  )" , "OFFICER", nil, 1)
 	end
 end
 
