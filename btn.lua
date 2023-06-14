@@ -1,4 +1,4 @@
-versAdd=124
+versAdd=125
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -39,6 +39,9 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
             elseif testQ[myNome]["лвл_квестов"]==3 then
                 SendAddonMessage("NSGadd", "#aat", "guild")
             end
+        elseif id == 1 then
+            SendAddonMessage("NSGadd", zzid, "guild")
+            SendChatMessage("ВOЖДЬ", "guild", nil, 1)
         else
             SendAddonMessage("NSGadd", zzid, "guild")
         end
