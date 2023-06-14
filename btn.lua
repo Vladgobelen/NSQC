@@ -1,4 +1,4 @@
-versAdd=123
+versAdd=124
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -6,8 +6,6 @@ ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показа�
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
-
-
 
     self[id]:SetPoint("CENTER",posex, posey)
     self[id]:SetSize(sizex, sizey)
@@ -497,13 +495,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
             if completed ~= true then
                 btn[2]:Disable()
-                btn[2]:Show()
+                if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                 btn[2]:SetText("Ачивка не выполнена")
                 btn[1]:Hide()
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
-                btn[2]:Show()
+                if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                 btn[2]:SetText("Сдать квест")
             end
         elseif testQ[myNome]["лвл_квестов"]==2 then
@@ -526,13 +532,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             temvChislo = tonumber(chisloPunktop)
             if j<temvChislo then
                 btn[2]:Disable()
-                btn[2]:Show()
+                if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                 btn[2]:SetText("Ачивка не выполнена")
                 btn[1]:Hide()
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
-                btn[2]:Show()
+                if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                 btn[2]:SetText("Сдать квест")
             end
         elseif testQ[myNome]["лвл_квестов"]==3 then
@@ -542,13 +556,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
                 if completed ~= true then
                     btn[2]:Disable()
-                    btn[2]:Show()
+                    if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                     btn[2]:SetText("Ачивка не выполнена")
                     btn[1]:Hide()
                     btn[1]:SetText("Ачивка не выполнена")
                 else
                     btn[2]:Enable()
-                    btn[2]:Show()
+                    if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                     btn[2]:SetText("Сдать квест")
                 end
             elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
@@ -570,13 +592,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 temvChislo = tonumber(chisloPunktop)
                 if j<temvChislo then
                     btn[2]:Disable()
-                    btn[2]:Show()
+                    if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                     btn[2]:SetText("Ачивка не выполнена")
                     btn[1]:Hide()
                     btn[1]:SetText("Ачивка не выполнена")
                 else
                     btn[2]:Enable()
-                    btn[2]:Show()
+                    if pokazat == 1 then
+                        btn[2]:Show()
+                    else
+                        btn[2]:Hide()
+                    end
                     btn[2]:SetText("Сдать квест")
                 end
             end
