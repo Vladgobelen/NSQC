@@ -1,4 +1,4 @@
-versAdd=121
+versAdd=122
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -100,8 +100,8 @@ btn:configure(9,250,350,200,30,"","Ролл");
 btn:configure(10,250,320,200,30,"#ltr 1","Лотерея одним куском");
 btn:configure(11,250,290,200,30,"#ltr 3","Лотерея тремя кусками");
 btn:configure(999,0,0,80,50,"#cls","Закрыть");
-btn:configure(12,-225,350,150,30,"#opn","Включить поиск");
-btn:configure(13,-225,320,150,30,"#crtPoint","Создать точку");
+btn:configure(12,-22225,350,150,30,"#opn","Включить поиск");
+btn:configure(13,-22225,320,150,30,"#crtPoint","Создать точку");
 btn:configure(14,-133,382,32,32,"#ver","*");
 btn:configure(15,-101,382,32,32,"#u","У");
 btn:configure(998,-83,250,70,32,"#ahtng","СБРОС");
