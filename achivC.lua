@@ -47,6 +47,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		if completed == true then
 			SendAddonMessage("NSGadd", "#aag " .. msg1, "guild")
 			btn[1]:Enable()
+			btn[1]:Show()
 			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
 		else
@@ -84,6 +85,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo11, "guild")
 			--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 			btn[1]:Enable()
+			btn[1]:Show()
 			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
 		else
@@ -119,6 +121,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 				SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo, "guild")
 				--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 				btn[1]:Enable()
+				btn[1]:Show()
 				btn[1]:SetText("Взять квест")
 				testQ[myNome]["взятый_квест"]="9999"
 			else
@@ -131,6 +134,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			if completed == true then
 				SendAddonMessage("NSGadd", "#aag " .. msg1, "guild")
 				btn[1]:Enable()
+				btn[1]:Show()
 				btn[1]:SetText("Взять квест")
 				testQ[myNome]["взятый_квест"]="9999"
 			else
@@ -225,6 +229,7 @@ end
 
 if string.find (message, "#xxx") and string.find (message, myNome) then
 	btn[1]:Enable()
+	btn[1]:Show()
 	btn[1]:SetText("Взять квест")
 	testQ[myNome]["взятый_квест"]="9999"
 end

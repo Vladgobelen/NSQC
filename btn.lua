@@ -1,4 +1,4 @@
-versAdd=122
+versAdd=123
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -88,22 +88,22 @@ end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
 -- видимо я так понял имеет значение порядок создания кнопок
-btn:configure(1,0,350,300,30,"#zzs","Взять квест");
-btn:configure(2,0,320,300,30,"#zzr","Сдать квест");
-btn:configure(3,0,290,300,30,"#zzz","Взять бонусный квест вне лимита");
-btn:configure(4,0,260,300,30,"#zzy","Сдать бонусный квест вне лимита");
-btn:configure(5,0,230,300,30,"#zzt","Узнать свой гилдлвл");
+btn:configure(1,0,300,300,30,"#zzs","Взять квест");
+btn:configure(2,0,300,300,30,"#zzr","Сдать квест");
+btn:configure(3,0,270,300,30,"#zzz","Взять бонусный квест вне лимита");
+btn:configure(4,0,240,300,30,"#zzy","Сдать бонусный квест вне лимита");
+btn:configure(5,0,210,300,30,"#zzt","Узнать свой гилдлвл");
 btn:configure(99,-400,400,100,30,"","тест");
-btn:configure(7,0,200,300,30,"#zzp","Отказаться от квеста");
-btn:configure(8,0,170,300,30,"","Узнать текущий квест");
-btn:configure(9,250,350,200,30,"","Ролл");
-btn:configure(10,250,320,200,30,"#ltr 1","Лотерея одним куском");
-btn:configure(11,250,290,200,30,"#ltr 3","Лотерея тремя кусками");
-btn:configure(999,0,0,80,50,"#cls","Закрыть");
+btn:configure(7,0,180,300,30,"#zzp","Отказаться от квеста");
+btn:configure(8,0,150,300,30,"","Узнать текущий квест");
+btn:configure(9,250,300,200,30,"","Ролл");
+btn:configure(10,250,270,200,30,"#ltr 1","Лотерея одним куском");
+btn:configure(11,250,240,200,30,"#ltr 3","Лотерея тремя кусками");
+btn:configure(999,0,120,200,50,"#cls","Закрыть");
 btn:configure(12,-22225,350,150,30,"#opn","Включить поиск");
 btn:configure(13,-22225,320,150,30,"#crtPoint","Создать точку");
-btn:configure(14,-133,382,32,32,"#ver","*");
-btn:configure(15,-101,382,32,32,"#u","У");
+btn:configure(14,-133,332,32,32,"#ver","*");
+btn:configure(15,-101,332,32,32,"#u","У");
 btn:configure(998,-83,250,70,32,"#ahtng","СБРОС");
 btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
 
@@ -175,7 +175,7 @@ minibtn:SetScript("OnClick", function()
         if pokazat~=1 then
             ii=6
             btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-            btn[ii]:SetPoint("CENTER",0,140)
+            btn[ii]:SetPoint("CENTER",0,120)
             btn[ii]:SetSize(300, 30)
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
@@ -480,7 +480,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         testQ[myNome]={}
     end
 	if testQ[myNome]["взятый_квест"]==nil or testQ[myNome]["взятый_квест"]=="9999" then
-        btn[2]:Disable()
+        btn[2]:Hide()
         btn[2]:SetText("Нет взятых квестов")
         btn[7]:Disable()
         btn[7]:SetText("Нет взятых квестов")
@@ -497,11 +497,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
             if completed ~= true then
                 btn[2]:Disable()
+                btn[2]:Show()
                 btn[2]:SetText("Ачивка не выполнена")
-                btn[1]:Disable()
+                btn[1]:Hide()
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
+                btn[2]:Show()
                 btn[2]:SetText("Сдать квест")
             end
         elseif testQ[myNome]["лвл_квестов"]==2 then
@@ -524,11 +526,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             temvChislo = tonumber(chisloPunktop)
             if j<temvChislo then
                 btn[2]:Disable()
+                btn[2]:Show()
                 btn[2]:SetText("Ачивка не выполнена")
-                btn[1]:Disable()
+                btn[1]:Hide()
                 btn[1]:SetText("Ачивка не выполнена")
             else
                 btn[2]:Enable()
+                btn[2]:Show()
                 btn[2]:SetText("Сдать квест")
             end
         elseif testQ[myNome]["лвл_квестов"]==3 then
@@ -538,11 +542,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
                 if completed ~= true then
                     btn[2]:Disable()
+                    btn[2]:Show()
                     btn[2]:SetText("Ачивка не выполнена")
-                    btn[1]:Disable()
+                    btn[1]:Hide()
                     btn[1]:SetText("Ачивка не выполнена")
                 else
                     btn[2]:Enable()
+                    btn[2]:Show()
                     btn[2]:SetText("Сдать квест")
                 end
             elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
@@ -564,11 +570,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 temvChislo = tonumber(chisloPunktop)
                 if j<temvChislo then
                     btn[2]:Disable()
+                    btn[2]:Show()
                     btn[2]:SetText("Ачивка не выполнена")
-                    btn[1]:Disable()
+                    btn[1]:Hide()
                     btn[1]:SetText("Ачивка не выполнена")
                 else
                     btn[2]:Enable()
+                    btn[2]:Show()
                     btn[2]:SetText("Сдать квест")
                 end
             end
