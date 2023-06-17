@@ -1,4 +1,4 @@
-versAdd=126
+versAdd=127
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -614,6 +614,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                     btn[2]:Enable()
                     if pokazat == 1 then
                         btn[2]:Show()
+                        btn[1]:Hide()
                     else
                         btn[2]:Hide()
                     end
