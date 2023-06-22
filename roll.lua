@@ -12,12 +12,10 @@ hshStran3=hshSenderNomeC(myNome)
             end
             rollSender=mysplit(message)
             rollSender=rollSender[1]
-            if testQ[myNome]["настройки"]["roll"]=="Disable" then
                 if string.find (message, "выбрасывает") and rollSender==myNome then
                     SendChatMessage(hshStran3 .. " #rll " .. message, "OFFICER", nil, 1);
                 else
                 end
-            end
         end
     end
 
