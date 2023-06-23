@@ -180,6 +180,23 @@ if string.find (message, "получает лотерейный билет") and
 	end
 end
 
+if string.find (message, "!сброс") and string.find (message, myNome) and testGM~=nil then
+	if testQ[myNome]["сброс"] == nil then
+		testQ[myNome]["сброс"] = 1
+	else
+		testQ[myNome]["сброс"] = nil
+	end
+end
+
+if string.find (message, "!отмена") and string.find (message, myNome) and testGM~=nil then
+	if testQ[myNome]["отмена"] == nil then
+		testQ[myNome]["отмена"] = 1
+	else
+		testQ[myNome]["отмена"] = nil
+	end
+end
+
+
 
 
 --for key, val in pairs(npcScan[npcSK][npcSL]["Борто"]["1"]) do

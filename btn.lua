@@ -1,4 +1,4 @@
-versAdd=128
+versAdd=129
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -301,6 +301,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if testQ[myNome]["сброс"] ==  nil then
+            btn[998]:Disable()
+        else
+            btn[998]:Enable()
+        end
+
+        if testQ[myNome]["отмена"] ==  nil then
+            btn[997]:Disable()
+        else
+            btn[997]:Enable()
+        end
 
         --testNpc("0xF1300040FE000778")
 		local startNpvScan=time()
@@ -691,6 +703,8 @@ myCheckButton1:SetScript("OnClick",
         end
     end
 );
+
+
 
 myCheckButton2 = createCheckbutton(UIParent, -100, 330, "Отображение ролла");
 myCheckButton2.tooltip = "Скрывать ли ролл в офицерском чате";
