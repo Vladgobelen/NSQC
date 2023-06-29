@@ -266,6 +266,80 @@ if string.find (message, "#cls") and sender == myNome then
 
 end
 
+if string.find (message, "#krt") and sender == myNome then
+	if krt == nil then
+		krt = {}
+	else
+		if krt[99] == nil then
+			krt[99] = true
+			mostraKrtM111x111("Show")
+			if krt[1] == true then
+				mostraKrtM1x1("Show")
+			end
+			if krt[2] == true then
+				mostraKrtM1x2("Show")
+			end
+			if krt[3] == true then
+				mostraKrtM1x3("Show")
+			end
+			if krt[4] == true then
+				mostraKrtM2x1("Show")
+			end
+			if krt[5] == true then
+				mostraKrtM2x2("Show")
+			end
+			if krt[6] == true then
+				mostraKrtM2x3("Show")
+				end
+			if krt[7] == true then
+				mostraKrtM3x1("Show")
+			end
+			if krt[8] == true then
+				mostraKrtM3x2("Show")
+			end
+			if krt[9] == true then
+				mostraKrtM3x3("Show")
+			end
+			if krt[10] == true then
+				mostraKrtM4x1("Show")
+			end
+			if krt[11] == true then
+				mostraKrtM4x2("Show")
+			end
+			if krt[12] == true then
+				mostraKrtM4x3("Show")
+			end
+			if krt[13] == true then
+				mostraKrtM5x1("Show")
+			end
+			if krt[14] == true then
+				mostraKrtM5x2("Show")
+			end
+			if krt[15] == true then
+				mostraKrtM5x3("Show")
+			end
+		else
+			krt[99] = nil
+			mostraKrtM1x1("Hide")
+			mostraKrtM1x2("Hide")
+			mostraKrtM1x3("Hide")
+			mostraKrtM2x1("Hide")
+			mostraKrtM2x2("Hide")
+			mostraKrtM2x3("Hide")
+			mostraKrtM3x1("Hide")
+			mostraKrtM3x2("Hide")
+			mostraKrtM3x3("Hide")
+			mostraKrtM4x1("Hide")
+			mostraKrtM4x2("Hide")
+			mostraKrtM4x3("Hide")
+			mostraKrtM5x1("Hide")
+			mostraKrtM5x2("Hide")
+			mostraKrtM5x3("Hide")
+			mostraKrtM111x111("Hide")
+		end
+	end
+end
+
 if string.find (message, "#opn") and sender == myNome then
 	testQ[myNome]["отключить_поиск"]=nil
 end

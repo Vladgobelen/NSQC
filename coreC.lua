@@ -180,6 +180,76 @@ if string.find (message, "получает лотерейный билет") and
 	end
 end
 
+krtKus=mysplit(message)
+if string.find (message, "получает кусок карты") and krtKus[1]==myNome and testGM~=nil then
+	krtKusNikC=krtKus[1]
+	if krt == nil then
+		krt = {}
+		x = math.random(1, 15)
+		krt[x] = true
+	else
+		for i = 1, 15 do
+			x = math.random(1, 15)
+			if krt[x] == nil or krt[x] ~= true then
+				krt[x] = true
+				break
+			else
+
+			end
+		end
+	end
+
+end
+
+if string.find (message, "!карта") and krtKus[1]==myNome and testGM~=nil then
+	krtKus[3] = tonumber(krtKus[3])
+	if krtKus[3] == 1 then
+		krt[1] = true
+	end
+	if krtKus[3] == 2 then
+		krt[2] = true
+	end
+	if krtKus[3] == 3 then
+		krt[3] = true
+	end
+	if krtKus[3] == 4 then
+		krt[4] = true
+	end
+	if krtKus[3] == 5 then
+		krt[5] = true
+	end
+	if krtKus[3] == 6 then
+		krt[6] = true
+	end
+	if krtKus[3] == 7 then
+		krt[7] = true
+	end
+	if krtKus[3] == 8 then
+		krt[8] = true
+	end
+	if krtKus[3] == 9 then
+		krt[9] = true
+	end
+	if krtKus[3] == 10 then
+		krt[10] = true
+	end
+	if krtKus[3] == 11 then
+		krt[11] = true
+	end
+	if krtKus[3] == 12 then
+		krt[12] = true
+	end
+	if krtKus[3] == 13 then
+		krt[13] = true
+	end
+	if krtKus[3] == 14 then
+		krt[14] = true
+	end
+	if krtKus[3] == 15 then
+		krt[15] = true
+	end
+end
+
 if string.find (message, "!сброс") and string.find (message, myNome) and testGM~=nil then
 	if testQ[myNome]["сброс"] == nil then
 		testQ[myNome]["сброс"] = 1
