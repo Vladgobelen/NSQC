@@ -450,7 +450,7 @@ function mostraKrtM5x2(signalKrt)
 			j=j-12
 		end
 	else
-		ranges = {{3351,3372},{3415,3436},{3479,3500},{3543,3564},{3607,3628},{3671,3692},{3735,3756},{3799,3820},{3863,3884},{3927,3848},{3991,4012},{4055,4076},{4119,4140}}
+		ranges = {{3351,3372},{3415,3436},{3479,3500},{3543,3564},{3607,3628},{3671,3692},{3735,3756},{3799,3820},{3863,3884},{3927,3948},{3991,4012},{4055,4076},{4119,4140}}
 		--ranges = {{2305,2368}}
 		for range,value in pairs(ranges) do
 			for rangeT=value[1],value[2] do
@@ -504,44 +504,92 @@ function mostraKrtM111x111(signalKrt)
 		end
 	end
 end
+--/run mostraKrtl1("Show",425,387,520,367,100,8)
+--/run mostraKrtl1("Show",609,355,609,273,100,8)
+--for i=1,100000 do if iconRisText[i] ~= nil then iconRisText[i]:Hide() end end
+function mostraKrtl1(signalKrt,X0,Y0,X1,Y1,S,S1)
+    if signalKrt=="Show" then
+        icN = 1
+        iconRis:configure(icN,545,350)
+        iconRisText:configure(icN,8,8,1,1,121212)
+        iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", 425, 387)
+        local x0 = X0
+        local y0 = Y0
+        local x1 = X1
+        local y1 = Y1
 
-function mostraKrtl1(signalKrt)
-	if signalKrt=="Show" then
-		icN = 121212
-		iconRis:configure(icN,545,350)
-		iconRisText:configure(icN,8,8,1,1,121212)
-		iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", 425, 387)
-		local x0 = 425
-		local y0 = 387
-		local x1 = 520
-		local y1 = 367
-
-		local dx = x1 - x0
-		local dy = y1 - y0
-
-		local l = sqrt(dx * dx + dy * dy)
+        local dx = x1 - x0
+        local dy = y1 - y0
 
 
-		local dirX = dx / l
-		local dirY = dy / l
+        local i0 = 1
+        local i1 = S
+        local step = S1
+        local stepCount = (i1 - i0) / step
 
-		for i=1,3,0.1 do
-			dirX = dirX*i
-			dirY = dirY*i
-			local resX = dirX + x0
-			local resY = dirY + y0
-			icN = icN+i
-			iconRis:configure(icN,resX,resY)
-			iconRisText:configure(icN,8,8,1,1,121212)
-			iconRis[icN]:SetFrameLevel(85)
-			iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", resX, resY)
+
+        dirX = dx / stepCount
+        dirY = dy / stepCount
+
+
+        local resX = x0
+        local resY = y0
+        for i=i0,i1*1.8,step do
+            icN = icN+i
+            resX = resX + dirX
+            resY = resY + dirY
+            iconRis:configure(icN,resX,resY)
+            iconRisText:configure(icN,8,8,1,1,121212)
+            iconRis[icN]:SetFrameLevel(85)
+            iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", resX, resY)
+
 		end
-	else
-		iconRisText[icN][signalKrt](iconRisText[icN])
-	end
+    else
+        iconRisText[icN][signalKrt](iconRisText[icN])
+    end
 end
 
+function mostraKrtl2(signalKrt)
+    if signalKrt=="Show" then
+        icN = 1
+        iconRis:configure(icN,545,350)
+        iconRisText:configure(icN,8,8,1,1,121212)
+        iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", 425, 387)
+        local x0 = 400
+        local y0 = 100
+        local x1 = 525
+        local y1 = 367
 
+        local dx = x1 - x0
+        local dy = y1 - y0
+
+
+        local i0 = 1
+        local i1 = x1 - x0
+        local step = 8
+        local stepCount = (i1 - i0) / step
+
+
+        dirX = dx / stepCount
+        dirY = dy / stepCount
+
+
+        local resX = x0
+        local resY = y0
+        for i=i0,i1*1.8,step do
+            icN = icN+i
+            resX = resX + dirX
+            resY = resY + dirY
+            iconRis:configure(icN,resX,resY)
+            iconRisText:configure(icN,8,8,1,1,121212)
+            iconRis[icN]:SetFrameLevel(85)
+            iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", resX, resY)
+
+		end
+    else
+        iconRisText[icN][signalKrt](iconRisText[icN])
+    end
+end
 
 
 
