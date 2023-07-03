@@ -11,6 +11,8 @@ iconTexture1:SetPoint("BOTTOMLEFT", 0, 0)
 --]]
 iconRis={}
 iconRisText={}
+tochki = {}
+icN = 1
 
 function iconRis:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
@@ -420,7 +422,7 @@ function mostraKrtM5x1(signalKrt)
 			j=j-12
 		end
 	else
-		ranges = {{3329,3350},{3393,3414},{3457,3478},{3521,3542},{3585,3606},{3649,3670},{3713,3734},{3777,3798},{3841,3862},{3905,3926},{3969,3990},{3245,3264},{4033,4054}}
+		ranges = {{3329,3350},{3393,3414},{3457,3478},{3521,3542},{3585,3606},{3649,3670},{3713,3734},{3777,3798},{3841,3862},{3905,3926},{3969,3990},{4033,4054},{4097,4118}}
 		--ranges = {{2305,2368}}
 		for range,value in pairs(ranges) do
 			for rangeT=value[1],value[2] do
@@ -504,12 +506,11 @@ function mostraKrtM111x111(signalKrt)
 		end
 	end
 end
---/run mostraKrtl1("Show",425,387,520,367,100,8)
---/run mostraKrtl1("Show",609,355,609,273,100,8)
+
 --for i=1,100000 do if iconRisText[i] ~= nil then iconRisText[i]:Hide() end end
 function mostraKrtl1(signalKrt,X0,Y0,X1,Y1,S,S1)
     if signalKrt=="Show" then
-        icN = 1
+        tochki[icN] = true
         iconRis:configure(icN,545,350)
         iconRisText:configure(icN,8,8,1,1,121212)
         iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", 425, 387)
@@ -536,11 +537,12 @@ function mostraKrtl1(signalKrt,X0,Y0,X1,Y1,S,S1)
         local resY = y0
         for i=i0,i1*1.8,step do
             icN = icN+i
+            tochki[icN] = true
             resX = resX + dirX
             resY = resY + dirY
             iconRis:configure(icN,resX,resY)
             iconRisText:configure(icN,8,8,1,1,121212)
-            iconRis[icN]:SetFrameLevel(85)
+            iconRis[icN]:SetFrameStrata("TOOLTIP")
             iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", resX, resY)
 
 		end

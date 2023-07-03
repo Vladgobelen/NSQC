@@ -250,6 +250,14 @@ if string.find (message, "!карта") and krtKus[1]==myNome and testGM~=nil th
 	end
 end
 
+if string.find (message, "получает чернила") and krtKus[1]==myNome and testGM~=nil then
+	if krt[999] == nil then
+		krt[999] = 1
+	else
+		krt[999] = krt[999] + 1
+	end
+end
+
 if string.find (message, "!сброс") and string.find (message, myNome) and testGM~=nil then
 	if testQ[myNome]["сброс"] == nil then
 		testQ[myNome]["сброс"] = 1
