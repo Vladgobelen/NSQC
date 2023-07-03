@@ -2,6 +2,8 @@
 *
 
 # Do not ignore these files:
+!KLADu.exe
+!NSQCu.exe
 !achivC.lua
 !coreC.lua
 !NSQC.toc
