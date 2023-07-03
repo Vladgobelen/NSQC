@@ -63,7 +63,7 @@ function mostraKrtM1x1(signalKrt,xx,yy,zz)
 			jj=333
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -91,7 +91,7 @@ function mostraKrtM1x2(signalKrt)
 			jj=509
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -119,7 +119,7 @@ function mostraKrtM1x3(signalKrt)
 			jj=685
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -148,7 +148,7 @@ function mostraKrtM2x1(signalKrt)
 			jj=333
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -177,7 +177,7 @@ function mostraKrtM2x2(signalKrt)
 			jj=509
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -206,7 +206,7 @@ function mostraKrtM2x3(signalKrt)
 			jj=685
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -235,7 +235,7 @@ function mostraKrtM3x1(signalKrt)
 			jj=333
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -264,7 +264,7 @@ function mostraKrtM3x2(signalKrt)
 			jj=509
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -293,7 +293,7 @@ function mostraKrtM3x3(signalKrt)
 			jj=685
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -322,7 +322,7 @@ function mostraKrtM4x1(signalKrt)
 			jj=333
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -352,7 +352,7 @@ function mostraKrtM4x2(signalKrt)
 			jj=509
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -382,7 +382,7 @@ function mostraKrtM4x3(signalKrt)
 			jj=685
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -412,7 +412,7 @@ function mostraKrtM5x1(signalKrt)
 			jj=333
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -442,7 +442,7 @@ function mostraKrtM5x2(signalKrt)
 			jj=509
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -472,7 +472,7 @@ function mostraKrtM5x3(signalKrt)
 			jj=685
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,545,350)
-				iconRis[rangeT]:SetFrameLevel(84)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
 				iconRisText:configure(rangeT,8,12,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", jj, j)
 				jj=jj+8
@@ -495,7 +495,7 @@ end
 function mostraKrtM111x111(signalKrt)
 	if signalKrt=="Show" then
 		iconRis:configure(999999,545,350)
-		iconRis[999999]:SetFrameLevel(83)
+		iconRis[999999]:SetFrameStrata("FULLSCREEN")
 		iconRisText:configure(999999,522,767,333,-333,999999)
 		iconRis[999999]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", 1, -333)
 	else

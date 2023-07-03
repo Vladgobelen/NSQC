@@ -1,4 +1,4 @@
-versAdd=131
+versAdd=132
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -6,8 +6,12 @@ ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показа�
 btn = {};
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
-    self[id]:SetFrameLevel(256)
-    self[id]:SetPoint("CENTER",posex, posey)
+    self[id]:SetFrameStrata("TOOLTIP")
+    if id == 996 then
+        self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",posex, posey)
+    else
+        self[id]:SetPoint("CENTER",posex, posey)
+    end
     self[id]:SetSize(sizex, sizey)
     self[id]:SetText(message)
     self[id]:Hide();
@@ -85,7 +89,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
             SendAddonMessage("NSGadd", "#zzp", "guild")
         end)
     end
-    if id == 16 then
+    if id == 996 then
         self[id]:SetScript("OnClick",function(self, button)
             SendAddonMessage("NSGadd", "#krt", "guild")
         end)
@@ -112,7 +116,7 @@ btn:configure(14,-133,332,32,32,"#ver","*");
 btn:configure(15,-101,332,32,32,"#u","У");
 btn:configure(998,-83,250,70,32,"#ahtng","СБРОС");
 btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
-btn:configure(16,-69,332,32,32,"#krt","К");
+btn:configure(996,-5,19,32,32,"#krt","К");
 
 local minibtn = CreateFrame("Button", nil, Minimap)
 if testQ==nil then
@@ -182,13 +186,13 @@ minibtn:SetScript("OnClick", function()
         if pokazat~=1 then
             ii=6
             btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-            btn[ii]:SetFrameLevel(256)
+            btn[ii]:SetFrameStrata("TOOLTIP")
             btn[ii]:SetPoint("CENTER",0,120)
             btn[ii]:SetSize(300, 30)
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
             btn[ii]:SetScript("OnClick", function(self, button)
-            for ii=1,16 do
+            for ii=1,15 do
                 btn[ii]:Hide();
             end
             pokazat=0
@@ -196,7 +200,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
             end)
-            for ii=1,16 do
+            for ii=1,15 do
                 btn[ii]:Show();
             end
             pokazat=1
@@ -209,7 +213,7 @@ minibtn:SetScript("OnClick", function()
             minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
             minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
         else
-            for ii=1,16 do
+            for ii=1,15 do
                 btn[ii]:Hide();
             end
             minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
@@ -230,7 +234,7 @@ minibtn:SetScript("OnClick", function()
             print ("!заметка+ [текст заметки] - дополнить информацию о себе")
             print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
             print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки ИЛИ статистики]")
-            for ii=1,16 do
+            for ii=1,15 do
                 btn[ii]:Hide();
             end
             myCheckButton1:Show()
@@ -240,7 +244,7 @@ minibtn:SetScript("OnClick", function()
             pokazat=0
             pokazatChk=1
         elseif pokazat==0 then
-            for ii=1,16 do
+            for ii=1,15 do
                 btn[ii]:Show();
             end
             myCheckButton1:Hide()
@@ -308,6 +312,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+        if WorldMapFrameSizeUpButton:IsVisible()~=nil then
+            btn[996]:Show()
+        else
+            btn[996]:Hide()
+        end
 
 		if testQ[myNome]["сброс"] ==  nil then
             btn[998]:Disable()
