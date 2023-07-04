@@ -248,6 +248,57 @@ if string.find (message, "!карта") and krtKus[1]==myNome and testGM~=nil th
 	if krtKus[3] == 15 then
 		krt[15] = true
 	end
+	if krtKus[3] == 21 then
+		krt[21] = true
+	end
+	if krtKus[3] == 22 then
+		krt[22] = true
+	end
+	if krtKus[3] == 23 then
+		krt[23] = true
+	end
+	if krtKus[3] == 24 then
+		krt[24] = true
+	end
+	if krtKus[3] == 25 then
+		krt[25] = true
+	end
+	if krtKus[3] == 26 then
+		krt[26] = true
+	end
+	if krtKus[3] == 27 then
+		krt[27] = true
+	end
+	if krtKus[3] == 28 then
+		krt[28] = true
+	end
+	if krtKus[3] == 29 then
+		krt[29] = true
+	end
+	if krtKus[3] == 30 then
+		krt[30] = true
+	end
+	if krtKus[3] == 30 then
+		krt[30] = true
+	end
+	if krtKus[3] == 31 then
+		krt[31] = true
+	end
+	if krtKus[3] == 32 then
+		krt[32] = true
+	end
+	if krtKus[3] == 33 then
+		krt[33] = true
+	end
+	if krtKus[3] == 34 then
+		krt[34] = true
+	end
+	if krtKus[3] == 35 then
+		krt[35] = true
+	end
+	if krtKus[3] == 36 then
+		krt[36] = true
+	end
 end
 
 if string.find (message, "получает чернила") and krtKus[1]==myNome and testGM~=nil then

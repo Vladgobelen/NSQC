@@ -270,150 +270,315 @@ if string.find (message, "#krt") and sender == myNome then
 	if krt == nil then
 		krt = {}
 	else
-		if krt[99] == nil then
-			krt[99] = true
-			mostraKrtM111x111("Show")
-			if krt[1] == true then
-				mostraKrtM1x1("Show")
-			end
-			if krt[2] == true then
-				mostraKrtM1x2("Show")
-			end
-			if krt[3] == true then
-				mostraKrtM1x3("Show")
-			end
-			if krt[4] == true then
-				mostraKrtM2x1("Show")
-			end
-			if krt[5] == true then
-				mostraKrtM2x2("Show")
-			end
-			if krt[6] == true then
-				mostraKrtM2x3("Show")
+		if krt[777] == nil then
+			if krt[99] == nil then
+				krt[99] = true
+				mostraKrtM111x111("Show")
+				if krt[1] == true then
+					mostraKrtM1x1("Show")
 				end
-			if krt[7] == true then
-				mostraKrtM3x1("Show")
-			end
-			if krt[8] == true then
-				mostraKrtM3x2("Show")
-			end
-			if krt[9] == true then
-				mostraKrtM3x3("Show")
-			end
-			if krt[10] == true then
-				mostraKrtM4x1("Show")
-			end
-			if krt[11] == true then
-				mostraKrtM4x2("Show")
-			end
-			if krt[12] == true then
-				mostraKrtM4x3("Show")
-			end
-			if krt[13] == true then
-				mostraKrtM5x1("Show")
-			end
-			if krt[14] == true then
-				mostraKrtM5x2("Show")
-			end
-			if krt[15] == true then
-				mostraKrtM5x3("Show")
-			end
+				if krt[2] == true then
+					mostraKrtM1x2("Show")
+				end
+				if krt[3] == true then
+					mostraKrtM1x3("Show")
+				end
+				if krt[4] == true then
+					mostraKrtM2x1("Show")
+				end
+				if krt[5] == true then
+					mostraKrtM2x2("Show")
+				end
+				if krt[6] == true then
+					mostraKrtM2x3("Show")
+				end
+				if krt[7] == true then
+					mostraKrtM3x1("Show")
+				end
+				if krt[8] == true then
+					mostraKrtM3x2("Show")
+				end
+				if krt[9] == true then
+					mostraKrtM3x3("Show")
+				end
+				if krt[10] == true then
+					mostraKrtM4x1("Show")
+				end
+				if krt[11] == true then
+					mostraKrtM4x2("Show")
+				end
+				if krt[12] == true then
+					mostraKrtM4x3("Show")
+				end
+				if krt[13] == true then
+					mostraKrtM5x1("Show")
+				end
+				if krt[14] == true then
+					mostraKrtM5x2("Show")
+				end
+				if krt[15] == true then
+					mostraKrtM5x3("Show")
+				end
 
-			if krt[999] ~= nil then
-		local chern = krt[999]
-		for i = 1, krt[999] do
-			if chern >=1 then
-				if krt[1] == true and krt[2] == true and chern >= 1 then
-					mostraKrtl1("Show",425,387,520,367,100,8)
-					chern = chern - 1
-					print (chern)
-				end
-				if krt[2] == true and krt[5] == true and chern >= 1 then
-					mostraKrtl1("Show",609,355,609,273,100,8)
-					chern = chern - 1
-					print (chern)
-				end
-				if krt[5] == true and krt[3] == true and chern >= 1 then
-					mostraKrtl1("Show",608,200,700,288,100,8)
-					chern = chern - 1
-					print (chern)
-				end
-				if krt[3] == true and krt[6] == true and chern >= 1 then
-					mostraKrtl1("Show",781,369,783,283,100,8)
-					chern = chern - 1
-				end
-				if krt[6] == true and krt[12] == true and chern >= 1 then
-					mostraKrtl1("Show",783,215,766,67,200,8)
-					chern = chern - 1
-				end
-				if krt[12] == true and krt[10] == true and chern >= 1 then
-					mostraKrtl1("Show",765,-59,565,-97,200,8)
-					chern = chern - 1
-				end
-				if krt[10] == true and krt[4] == true and chern >= 1 then
-					mostraKrtl1("Show",395,-132,408,45,200,8)
-					chern = chern - 1
-				end
-				if krt[4] == true and krt[7] == true and chern >= 1 then
-					mostraKrtl1("Show",418,203,426,125,100,8)
-					chern = chern - 1
-				end
-				if krt[7] == true and krt[14] == true and chern >= 1 then
-					mostraKrtl1("Show",428,62,515,-121,200,8)
-					chern = chern - 1
-				end
-				if krt[14] == true and krt[15] == true and chern >= 1 then
-					mostraKrtl1("Show",590,-279,683,-289,100,8)
-					chern = chern - 1
-				end
-				if krt[15] == true and krt[1] == true and chern >= 1 then
-					mostraKrtl1("Show",770,-313,579,73,400,8)
-					chern = chern - 1
-				end
-				if krt[8] == true and chern >= 1 then
-					mostraKrtl1("Show",597,75,757,110,200,8)
-					chern = chern - 1
-				end
-				if krt[9] == true and chern >= 1 then
-					mostraKrtl1("Show",840,95,457,120,300,8)
-					chern = chern - 1
-				end
-				if krt[11] == true and chern >= 1 then
-					mostraKrtl1("Show",607,-44,773,140,200,8)
-					chern = chern - 1
-				end
-				if krt[13] == true and chern >= 1 then
-					mostraKrtl1("Show",490,-210,757,-130,200,8)
-					chern = chern - 1
+				if krt[999] ~= nil then
+					local chern = krt[999]
+					for i = 1, krt[999] do
+						if chern >=1 then
+							if krt[1] == true and krt[2] == true and chern >= 1 then
+								mostraKrtl1("Show",425,387,520,367,100,8)
+								chern = chern - 1
+							end
+							if krt[2] == true and krt[5] == true and chern >= 1 then
+								mostraKrtl1("Show",609,355,609,273,100,8)
+								chern = chern - 1
+							end
+							if krt[5] == true and krt[3] == true and chern >= 1 then
+								mostraKrtl1("Show",608,200,700,288,100,8)
+								chern = chern - 1
+							end
+							if krt[3] == true and krt[6] == true and chern >= 1 then
+								mostraKrtl1("Show",781,369,783,283,100,8)
+								chern = chern - 1
+							end
+							if krt[6] == true and krt[12] == true and chern >= 1 then
+								mostraKrtl1("Show",783,215,766,67,200,8)
+								chern = chern - 1
+							end
+							if krt[12] == true and krt[10] == true and chern >= 1 then
+								mostraKrtl1("Show",765,-59,565,-97,200,8)
+								chern = chern - 1
+							end
+							if krt[10] == true and krt[4] == true and chern >= 1 then
+								mostraKrtl1("Show",395,-132,408,45,200,8)
+								chern = chern - 1
+							end
+							if krt[4] == true and krt[7] == true and chern >= 1 then
+								mostraKrtl1("Show",418,203,426,125,100,8)
+								chern = chern - 1
+							end
+							if krt[7] == true and krt[14] == true and chern >= 1 then
+								mostraKrtl1("Show",428,62,515,-121,200,8)
+								chern = chern - 1
+							end
+							if krt[14] == true and krt[15] == true and chern >= 1 then
+								mostraKrtl1("Show",590,-279,683,-289,100,8)
+								chern = chern - 1
+							end
+							if krt[15] == true and krt[1] == true and chern >= 1 then
+								mostraKrtl1("Show",770,-313,579,73,400,8)
+								chern = chern - 1
+							end
+							if krt[8] == true and chern >= 1 then
+								mostraKrtl1("Show",597,75,757,110,200,8)
+								chern = chern - 1
+							end
+							if krt[9] == true and chern >= 1 then
+								mostraKrtl1("Show",840,95,457,120,300,8)
+								chern = chern - 1
+							end
+							if krt[11] == true and chern >= 1 then
+								mostraKrtl1("Show",607,-44,773,140,200,8)
+								chern = chern - 1
+							end
+							if krt[13] == true and chern >= 1 then
+								mostraKrtl1("Show",490,-210,757,-130,200,8)
+								chern = chern - 1
+							end
+						else
+							break
+						end
+					end
 				end
 			else
-				break
-			end
-		end
-	end
-		else
-			krt[99] = nil
-			mostraKrtM1x1("Hide")
-			mostraKrtM1x2("Hide")
-			mostraKrtM1x3("Hide")
-			mostraKrtM2x1("Hide")
-			mostraKrtM2x2("Hide")
-			mostraKrtM2x3("Hide")
-			mostraKrtM3x1("Hide")
-			mostraKrtM3x2("Hide")
-			mostraKrtM3x3("Hide")
-			mostraKrtM4x1("Hide")
-			mostraKrtM4x2("Hide")
-			mostraKrtM4x3("Hide")
-			mostraKrtM5x1("Hide")
-			mostraKrtM5x2("Hide")
-			mostraKrtM5x3("Hide")
-			mostraKrtM111x111("Hide")
+				krt[99] = nil
+				mostraKrtM1x1("Hide")
+				mostraKrtM1x2("Hide")
+				mostraKrtM1x3("Hide")
+				mostraKrtM2x1("Hide")
+				mostraKrtM2x2("Hide")
+				mostraKrtM2x3("Hide")
+				mostraKrtM3x1("Hide")
+				mostraKrtM3x2("Hide")
+				mostraKrtM3x3("Hide")
+				mostraKrtM4x1("Hide")
+				mostraKrtM4x2("Hide")
+				mostraKrtM4x3("Hide")
+				mostraKrtM5x1("Hide")
+				mostraKrtM5x2("Hide")
+				mostraKrtM5x3("Hide")
+				mostraKrtM111x111("Hide")
 
-			if #tochki ~= nil then
-				for key, val in pairs(tochki) do
-					if tochki[key] == true then
-						iconRis[key]["Hide"](iconRis[key])
+				if #tochki ~= nil then
+					for key, val in pairs(tochki) do
+						if tochki[key] == true then
+							iconRis[key]["Hide"](iconRis[key])
+						end
+					end
+				end
+			end
+		else
+			if krt[777] == 2 then
+				if WorldMapFrameSizeUpButton:IsVisible()~=nil then
+					if krt[99] == nil then
+						krt[99] = true
+						if krt[21] == true then
+							mostraKrtM("Show",regRange(1),0,0)
+						end
+						if krt[22] == true then
+							mostraKrtM("Show",regRange(17),144,0)
+						end
+						if krt[23] == true then
+							mostraKrtM("Show",regRange(33),288,0)
+						end
+						if krt[24] == true then
+							mostraKrtM("Show",regRange(49),432,0)
+						end
+						if krt[25] == true then
+							mostraKrtM("Show",regRange(1025),0,-96)
+						end
+						if krt[26] == true then
+							mostraKrtM("Show",regRange(1041),144,-96)
+						end
+						if krt[27] == true then
+							mostraKrtM("Show",regRange(1057),288,-96)
+						end
+						if krt[28] == true then
+							mostraKrtM("Show",regRange(1073),432,-96)
+						end
+						if krt[29] == true then
+							mostraKrtM("Show",regRange(2049),0,-192)
+						end
+						if krt[30] == true then
+							mostraKrtM("Show",regRange(2065),144,-192)
+						end
+						if krt[31] == true then
+							mostraKrtM("Show",regRange(2081),288,-192)
+						end
+						if krt[32] == true then
+							mostraKrtM("Show",regRange(2097),432,-192)
+						end
+						if krt[33] == true then
+							mostraKrtM("Show",regRange(3073),0,-288)
+						end
+						if krt[34] == true then
+							mostraKrtM("Show",regRange(3089),144,-288)
+						end
+						if krt[35] == true then
+							mostraKrtM("Show",regRange(3105),288,-288)
+						end
+						if krt[36] == true then
+							mostraKrtM("Show",regRange(3121),432,-288)
+						end
+
+						if krt[999] ~= nil then
+							--чернила
+						end
+					else
+						krt[99] = nil
+						mostraKrtM("Hide",regRange(1),0,0)
+						mostraKrtM("Hide",regRange(17),144,0)
+						mostraKrtM("Hide",regRange(33),288,0)
+						mostraKrtM("Hide",regRange(49),432,0)
+						mostraKrtM("Hide",regRange(1025),0,-96)
+						mostraKrtM("Hide",regRange(1041),144,-96)
+						mostraKrtM("Hide",regRange(1057),288,-96)
+						mostraKrtM("Hide",regRange(1073),432,-96)
+						mostraKrtM("Hide",regRange(2049),0,-192)
+						mostraKrtM("Hide",regRange(2065),144,-192)
+						mostraKrtM("Hide",regRange(2081),288,-192)
+						mostraKrtM("Hide",regRange(2097),432,-192)
+						mostraKrtM("Hide",regRange(3073),0,-288)
+						mostraKrtM("Hide",regRange(3089),144,-288)
+						mostraKrtM("Hide",regRange(3105),288,-288)
+						mostraKrtM("Hide",regRange(3121),432,-288)
+					end
+					if #tochki ~= nil then
+						for key, val in pairs(tochki) do
+							if tochki[key] == true then
+								iconRis[key]["Hide"](iconRis[key])
+							end
+						end
+					end
+				else
+					if krt[99] == nil then
+						krt[99] = true
+						if krt[21] == true then
+							mostraKrtMF("Show",regRange(1),0,0)
+						end
+						if krt[22] == true then
+							mostraKrtMF("Show",regRange(17),144,0)
+						end
+						if krt[23] == true then
+							mostraKrtMF("Show",regRange(33),288,0)
+						end
+						if krt[24] == true then
+							mostraKrtMF("Show",regRange(49),432,0)
+						end
+						if krt[25] == true then
+							mostraKrtMF("Show",regRange(1025),0,-96)
+						end
+						if krt[26] == true then
+							mostraKrtMF("Show",regRange(1041),144,-96)
+						end
+						if krt[27] == true then
+							mostraKrtMF("Show",regRange(1057),288,-96)
+						end
+						if krt[28] == true then
+							mostraKrtMF("Show",regRange(1073),432,-96)
+						end
+						if krt[29] == true then
+							mostraKrtMF("Show",regRange(2049),0,-192)
+						end
+						if krt[30] == true then
+							mostraKrtMF("Show",regRange(2065),144,-192)
+						end
+						if krt[31] == true then
+							mostraKrtMF("Show",regRange(2081),288,-192)
+						end
+						if krt[32] == true then
+							mostraKrtMF("Show",regRange(2097),432,-192)
+						end
+						if krt[33] == true then
+							mostraKrtMF("Show",regRange(3073),0,-288)
+						end
+						if krt[34] == true then
+							mostraKrtMF("Show",regRange(3089),144,-288)
+						end
+						if krt[35] == true then
+							mostraKrtMF("Show",regRange(3105),288,-288)
+						end
+						if krt[36] == true then
+							mostraKrtMF("Show",regRange(3121),432,-288)
+						end
+
+						if krt[999] ~= nil then
+							--чернила
+						end
+					else
+						krt[99] = nil
+						mostraKrtMF("Hide",regRange(1),0,0)
+						mostraKrtMF("Hide",regRange(17),144,0)
+						mostraKrtMF("Hide",regRange(33),288,0)
+						mostraKrtMF("Hide",regRange(49),432,0)
+						mostraKrtMF("Hide",regRange(1025),0,-96)
+						mostraKrtMF("Hide",regRange(1041),144,-96)
+						mostraKrtMF("Hide",regRange(1057),288,-96)
+						mostraKrtMF("Hide",regRange(1073),432,-96)
+						mostraKrtMF("Hide",regRange(2049),0,-192)
+						mostraKrtMF("Hide",regRange(2065),144,-192)
+						mostraKrtMF("Hide",regRange(2081),288,-192)
+						mostraKrtMF("Hide",regRange(2097),432,-192)
+						mostraKrtMF("Hide",regRange(3073),0,-288)
+						mostraKrtMF("Hide",regRange(3089),144,-288)
+						mostraKrtMF("Hide",regRange(3105),288,-288)
+						mostraKrtMF("Hide",regRange(3121),432,-288)
+					end
+					if #tochki ~= nil then
+						for key, val in pairs(tochki) do
+							if tochki[key] == true then
+								iconRis[key]["Hide"](iconRis[key])
+							end
+						end
 					end
 				end
 			end

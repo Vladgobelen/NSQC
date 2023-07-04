@@ -313,8 +313,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-        if WorldMapFrameSizeUpButton:IsVisible()~=nil then
-            btn[996]:Show()
+        if WorldMapFrame:IsVisible()~=nil then
+            if WorldMapFrameSizeUpButton:IsVisible()~=nil then
+                btn[996]:Show()
+            else
+            end
+            if WorldMapFrameSizeDownButton:IsVisible()~=nil then
+                btn[996]:Show()
+            else
+            end
         else
             btn[996]:Hide()
         end

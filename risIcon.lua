@@ -11,13 +11,14 @@ iconTexture1:SetPoint("BOTTOMLEFT", 0, 0)
 --]]
 iconRis={}
 iconRisText={}
+iconRisText2={}
 tochki = {}
 icN = 1
-
+--1-16   17-32   33-48 49-64
 function iconRis:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
 	self[id]:SetSize(Rx, Ry)
-	self[id]:SetPoint("BOTTOMLEFT")
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
 end
 
 function iconRisText:configure(id,Rx,Ry,x,y,nRis)
@@ -25,6 +26,13 @@ function iconRisText:configure(id,Rx,Ry,x,y,nRis)
 	self[id]:SetTexture("Interface\\AddOns\\NSQC\\test\\" .. nRis ..".tga")
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+
+function iconRisText2:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\test\\test2\\" .. nRis ..".tga")
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("TOPLEFT", WorldMapDetailFrame,"TOPLEFT", x, y)
 end
 
 --[[function mostraKrtM1x1(signalKrt)
@@ -494,6 +502,88 @@ function mostraKrtM5x3(signalKrt)
 	end
 end
 
+--/run mostraKrtMF("Show",regRange(1),0,0)
+--/run mostraKrtMF("Show",regRange(17),251.2,0)
+--/run mostraKrtMF("Show",regRange(33),502.4,0)
+--/run mostraKrtMF("Show",regRange(49),753.6,0)
+--/run mostraKrtMF("Show",regRange(1025),0,-167.2)
+--/run mostraKrtMF("Show",regRange(1041),251.2,-167.2)
+--/run mostraKrtMF("Show",regRange(1057),502.4,-167.2)
+--/run mostraKrtMF("Show",regRange(1073),753.6,-167.2)
+--/run mostraKrtMF("Show",regRange(2049),0,-334.4)
+--/run mostraKrtMF("Show",regRange(2065),251.2,-334.4)
+--/run mostraKrtMF("Show",regRange(2081),502.4,-334.4)
+--/run mostraKrtMF("Show",regRange(2097),753.6,-334.4)
+--/run mostraKrtMF("Show",regRange(3073),0,-501.6)
+--/run mostraKrtMF("Show",regRange(3089),251.2,-501.6)
+--/run mostraKrtMF("Show",regRange(3105),502.4,-501.6)
+--/run mostraKrtMF("Show",regRange(3121),753.6,-501.6)
+
+
+ranges1 = {{1, 16}, {65, 80},{129,144},{193,208},{257,272},{321,336},{385,400},{449,464},{513,528},{577,592},{641,656},{705,720},{769,784},{833,848},{897,912},{961,976}}
+ranges2 = {{17, 32}, {81, 96},{145,160},{209,224},{273,288},{337,352},{401,416},{465,480},{529,544},{593,608},{657,672},{721,736},{785,800},{849,864},{913,928},{977,992}}
+ranges3 = {{33, 48}, {97, 112},{161,176},{225,240},{289,304},{353,368},{417,432},{481,496},{545,560},{609,624},{673,688},{737,752},{801,816},{865,880},{929,944},{993,1008}}
+ranges4 = {{49, 64}, {113, 128},{177,192},{241,256},{305,320},{369,384},{433,448},{497,512},{561,576},{625,640},{689,704},{753,768},{817,832},{881,896},{945,960},{1009,1024}}
+
+function mostraKrtM(signalKrt,R,Xm,Ym)
+	if signalKrt=="Show" then
+		j=Ym
+		for range,value in pairs(R) do
+			jj=Xm
+			for rangeT=value[1],value[2] do
+				iconRis:configure(rangeT,576,384)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
+				iconRisText2:configure(rangeT,9,6,jj,j,rangeT)
+				iconRis[rangeT]:SetPoint("TOPLEFT", WorldMapDetailFrame,"TOPLEFT", jj, j)
+				jj=jj+9
+			end
+			j=j-6
+		end
+	else
+		for range,value in pairs(R) do
+			for rangeT=value[1],value[2] do
+				if iconRisText2[rangeT] ~= nil then
+					iconRisText2[rangeT][signalKrt](iconRisText2[rangeT])
+				end
+			end
+		end
+	end
+end
+function mostraKrtMF(signalKrt,R,Xm,Ym)
+	if signalKrt=="Show" then
+		j=Ym
+		for range,value in pairs(R) do
+			jj=Xm
+			for rangeT=value[1],value[2] do
+				iconRis:configure(rangeT,576,384)
+				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
+				iconRisText2:configure(rangeT,15.7,10.45,jj,j,rangeT)
+				iconRis[rangeT]:SetPoint("TOPLEFT", WorldMapDetailFrame,"TOPLEFT", jj, j)
+				jj=jj+15.7
+			end
+			j=j-10.45
+		end
+	else
+		for range,value in pairs(R) do
+			for rangeT=value[1],value[2] do
+				if iconRisText2[rangeT] ~= nil then
+					iconRisText2[rangeT][signalKrt](iconRisText2[rangeT])
+				end
+			end
+		end
+	end
+end
+
+function regRange(R)
+	rangeGen = {}
+	for i = 1, 16 do
+		R2 = R + 15
+		table.insert(rangeGen, {R, R2})
+		R = R + 64
+	end
+	return rangeGen
+end
+
 function mostraKrtM111x111(signalKrt)
 	if signalKrt=="Show" then
 		iconRis:configure(999999,545,350)
@@ -507,6 +597,19 @@ function mostraKrtM111x111(signalKrt)
 	end
 end
 
+function mostraKrtM222x222(signalKrt)
+	if signalKrt=="Show" then
+		iconRis:configure(999999,545,350)
+		iconRis[999999]:SetFrameStrata("FULLSCREEN")
+		iconRisText2:configure(999999,576,384,0,0,999999)
+		iconRis[999999]:SetPoint("TOPLEFT", WorldMapFrame,"TOPLEFT", 1, -333)
+	else
+		if iconRisText[999999] ~= nil then
+			iconRisText[999999][signalKrt](iconRisText[999999])
+		end
+	end
+end
+--/run mostraKrtl2("Show",1,1,574,384,400,8)
 --for i=1,100000 do if iconRisText[i] ~= nil then iconRisText[i]:Hide() end end
 function mostraKrtl1(signalKrt,X0,Y0,X1,Y1,S,S1)
     if signalKrt=="Show" then
@@ -550,25 +653,24 @@ function mostraKrtl1(signalKrt,X0,Y0,X1,Y1,S,S1)
         iconRisText[icN][signalKrt](iconRisText[icN])
     end
 end
-
-function mostraKrtl2(signalKrt)
+--/run mostraKrtl2("Show",1,1,111,111,400,8)
+function mostraKrtl2(signalKrt,X0,Y0,X1,Y1,S,S1)
     if signalKrt=="Show" then
-        icN = 1
+        tochki[icN] = true
         iconRis:configure(icN,545,350)
         iconRisText:configure(icN,8,8,1,1,121212)
-        iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", 425, 387)
-        local x0 = 400
-        local y0 = 100
-        local x1 = 525
-        local y1 = 367
+        local x0 = X0
+        local y0 = Y0
+        local x1 = X1
+        local y1 = Y1
 
         local dx = x1 - x0
         local dy = y1 - y0
 
 
         local i0 = 1
-        local i1 = x1 - x0
-        local step = 8
+        local i1 = S
+        local step = S1
         local stepCount = (i1 - i0) / step
 
 
@@ -578,14 +680,15 @@ function mostraKrtl2(signalKrt)
 
         local resX = x0
         local resY = y0
-        for i=i0,i1*1.8,step do
+        for i=i0,i1,step do
             icN = icN+i
+            tochki[icN] = true
             resX = resX + dirX
             resY = resY + dirY
             iconRis:configure(icN,resX,resY)
             iconRisText:configure(icN,8,8,1,1,121212)
-            iconRis[icN]:SetFrameLevel(85)
-            iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", resX, resY)
+            iconRis[icN]:SetFrameStrata("TOOLTIP")
+            iconRisText[icN]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", resX, resY)
 
 		end
     else
