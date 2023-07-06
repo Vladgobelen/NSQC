@@ -532,7 +532,7 @@ function mostraKrtM(signalKrt,R,Xm,Ym)
 			jj=Xm
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,576,384)
-				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
+				iconRis[rangeT]:SetFrameStrata("MEDIUM")
 				iconRisText2:configure(rangeT,9,6,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("TOPLEFT", WorldMapDetailFrame,"TOPLEFT", jj, j)
 				jj=jj+9
@@ -556,7 +556,7 @@ function mostraKrtMF(signalKrt,R,Xm,Ym)
 			jj=Xm
 			for rangeT=value[1],value[2] do
 				iconRis:configure(rangeT,576,384)
-				iconRis[rangeT]:SetFrameStrata("FULLSCREEN_DIALOG")
+				iconRis[rangeT]:SetFrameStrata("MEDIUM")
 				iconRisText2:configure(rangeT,15.7,10.45,jj,j,rangeT)
 				iconRis[rangeT]:SetPoint("TOPLEFT", WorldMapDetailFrame,"TOPLEFT", jj, j)
 				jj=jj+15.7
@@ -653,11 +653,46 @@ function mostraKrtl1(signalKrt,X0,Y0,X1,Y1,S,S1)
         iconRisText[icN][signalKrt](iconRisText[icN])
     end
 end
---/run mostraKrtl2("Show",1,1,111,111,400,8)
+--/run mostraKrtl2("Show",73,349,122,228,300,8)
+--/run mostraKrtl2("Show",118,221,280,324,300,8)
+--/run mostraKrtl2("Show",285,324,344,269,200,8)
+--/run mostraKrtl2("Show",342,262,400,327,200,8)
+--/run mostraKrtl2("Show",410,338,485,333,200,8)
+--/run mostraKrtl2("Show",485,333,390,60,400,8)
+--/run mostraKrtl2("Show",384,53,490,82,200,8)
+--/run mostraKrtl2("Show",505,85,64,79,600,8)
+--/run mostraKrtl2("Show",54,80,240,44,300,8)
+--/run mostraKrtl2("Show",247,40,72,151,300,8)
+--/run mostraKrtl2("Show",72,153,586,120,600,8)
+
+--/run mostraKrtl2("Show",543,155,22,282,600,8)
+--/run mostraKrtl2("Show",187,226,586,169,600,8)
+--/run mostraKrtl2("Show",235,184,586,279,600,8)
+
+
+-------------
+--/run mostraKrtl2("Show",102,610,188,400,500,8)
+--/run mostraKrtl2("Show",188,395,460,570,500,8)
+--/run mostraKrtl2("Show",470,570,580,470,300,8)
+--/run mostraKrtl2("Show",580,470,690,590,300,8)
+--/run mostraKrtl2("Show",690,594,820,586,300,8)
+--/run mostraKrtl2("Show",825,586,652,105,600,8)
+--/run mostraKrtl2("Show",652,100,845,155,300,8)
+--/run mostraKrtl2("Show",850,155,76,143,600,8)
+--/run mostraKrtl2("Show",76,143,400,82,400,8)
+--/run mostraKrtl2("Show",400,82,105,269,400,8)
+--/run mostraKrtl2("Show",105,270,1111,212,800,8)
+--/run mostraKrtl2("Show",922,274,1,494,800,8)
+--/run mostraKrtl2("Show",310,397,1011,305,800,8)
+--/run mostraKrtl2("Show",390,325,1011,510,800,8)
+
+
+
 function mostraKrtl2(signalKrt,X0,Y0,X1,Y1,S,S1)
     if signalKrt=="Show" then
+		icN = icN+9999999
         tochki[icN] = true
-        iconRis:configure(icN,545,350)
+        iconRis:configure(icN,576,384)
         iconRisText:configure(icN,8,8,1,1,121212)
         local x0 = X0
         local y0 = Y0
@@ -686,16 +721,15 @@ function mostraKrtl2(signalKrt,X0,Y0,X1,Y1,S,S1)
             resX = resX + dirX
             resY = resY + dirY
             iconRis:configure(icN,resX,resY)
-            iconRisText:configure(icN,8,8,1,1,121212)
+            iconRisText:configure(icN,4,4,1,1,121212)
             iconRis[icN]:SetFrameStrata("TOOLTIP")
-            iconRisText[icN]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", resX, resY)
+            iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", resX, resY)
 
 		end
     else
         iconRisText[icN][signalKrt](iconRisText[icN])
     end
 end
-
 
 
 

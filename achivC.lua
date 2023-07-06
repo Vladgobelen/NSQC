@@ -470,8 +470,17 @@ if string.find (message, "#krt") and sender == myNome then
 							mostraKrtM("Show",regRange(3121),432,-288)
 						end
 
-						if krt[999] ~= nil then
-							--чернила
+						if krt[9990] ~= nil then
+							local chern = krt[999]
+							for i = 1, krt[999] do
+								if chern >=1 then
+									if krt[1] == true and krt[2] == true and chern >= 1 then
+										mostraKrtl1("Show",425,387,520,367,100,8)
+										chern = chern - 1
+									end
+
+								end
+							end
 						end
 					else
 						krt[99] = nil
@@ -506,49 +515,49 @@ if string.find (message, "#krt") and sender == myNome then
 							mostraKrtMF("Show",regRange(1),0,0)
 						end
 						if krt[22] == true then
-							mostraKrtMF("Show",regRange(17),144,0)
+							mostraKrtMF("Show",regRange(17),251.2,0)
 						end
 						if krt[23] == true then
-							mostraKrtMF("Show",regRange(33),288,0)
+							mostraKrtMF("Show",regRange(33),502.4,0)
 						end
 						if krt[24] == true then
-							mostraKrtMF("Show",regRange(49),432,0)
+							mostraKrtMF("Show",regRange(49),753.6,0)
 						end
 						if krt[25] == true then
-							mostraKrtMF("Show",regRange(1025),0,-96)
+							mostraKrtMF("Show",regRange(1025),0,-167.2)
 						end
 						if krt[26] == true then
-							mostraKrtMF("Show",regRange(1041),144,-96)
+							mostraKrtMF("Show",regRange(1041),251.2,-167.2)
 						end
 						if krt[27] == true then
-							mostraKrtMF("Show",regRange(1057),288,-96)
+							mostraKrtMF("Show",regRange(1057),502.4,-167.2)
 						end
 						if krt[28] == true then
-							mostraKrtMF("Show",regRange(1073),432,-96)
+							mostraKrtMF("Show",regRange(1073),753.6,-167.2)
 						end
 						if krt[29] == true then
-							mostraKrtMF("Show",regRange(2049),0,-192)
+							mostraKrtMF("Show",regRange(2049),0,-334.4)
 						end
 						if krt[30] == true then
-							mostraKrtMF("Show",regRange(2065),144,-192)
+							mostraKrtMF("Show",regRange(2065),251.2,-334.4)
 						end
 						if krt[31] == true then
-							mostraKrtMF("Show",regRange(2081),288,-192)
+							mostraKrtMF("Show",regRange(2081),502.4,-334.4)
 						end
 						if krt[32] == true then
-							mostraKrtMF("Show",regRange(2097),432,-192)
+							mostraKrtMF("Show",regRange(2097),753.6,-334.4)
 						end
 						if krt[33] == true then
-							mostraKrtMF("Show",regRange(3073),0,-288)
+							mostraKrtMF("Show",regRange(3073),0,-501.6)
 						end
 						if krt[34] == true then
-							mostraKrtMF("Show",regRange(3089),144,-288)
+							mostraKrtMF("Show",regRange(3089),251.2,-501.6)
 						end
 						if krt[35] == true then
-							mostraKrtMF("Show",regRange(3105),288,-288)
+							mostraKrtMF("Show",regRange(3105),502.4,-501.6)
 						end
 						if krt[36] == true then
-							mostraKrtMF("Show",regRange(3121),432,-288)
+							mostraKrtMF("Show",regRange(3121),753.6,-501.6)
 						end
 
 						if krt[999] ~= nil then

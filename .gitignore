@@ -2,6 +2,7 @@
 *
 
 # Do not ignore these files:
+!ver-134
 !KLADu.exe
 !NSQCu-2.exe
 !achivC.lua

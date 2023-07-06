@@ -118,6 +118,18 @@ btn:configure(998,-83,250,70,32,"#ahtng","СБРОС");
 btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
 btn:configure(996,-5,19,32,32,"#krt","К");
 
+
+
+btnF = CreateFrame("CheckButton", "myCheckButton_GlobalName", parentFrame, "ChatConfigCheckButtonTemplate");
+btnF:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",-5,-18)
+btnF:SetText("CheckBox Name");
+btnF:SetFrameStrata("TOOLTIP")
+btnF:SetScript("OnClick",
+  function()
+    SendAddonMessage("NSGadd", "#krt", "guild")
+  end)
+
+
 local minibtn = CreateFrame("Button", nil, Minimap)
 if testQ==nil then
     testQ={}
@@ -316,14 +328,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         if WorldMapFrame:IsVisible()~=nil then
             if WorldMapFrameSizeUpButton:IsVisible()~=nil then
                 btn[996]:Show()
+                btnF:Hide()
             else
             end
             if WorldMapFrameSizeDownButton:IsVisible()~=nil then
-                btn[996]:Show()
+                btn[996]:Hide()
+                btnF:Show()
             else
             end
         else
             btn[996]:Hide()
+            btnF:Hide()
         end
 
 		if testQ[myNome]["сброс"] ==  nil then
