@@ -502,22 +502,7 @@ function mostraKrtM5x3(signalKrt)
 	end
 end
 
---/run mostraKrtMF("Show",regRange(1),0,0)
---/run mostraKrtMF("Show",regRange(17),251.2,0)
---/run mostraKrtMF("Show",regRange(33),502.4,0)
---/run mostraKrtMF("Show",regRange(49),753.6,0)
---/run mostraKrtMF("Show",regRange(1025),0,-167.2)
---/run mostraKrtMF("Show",regRange(1041),251.2,-167.2)
---/run mostraKrtMF("Show",regRange(1057),502.4,-167.2)
---/run mostraKrtMF("Show",regRange(1073),753.6,-167.2)
---/run mostraKrtMF("Show",regRange(2049),0,-334.4)
---/run mostraKrtMF("Show",regRange(2065),251.2,-334.4)
---/run mostraKrtMF("Show",regRange(2081),502.4,-334.4)
---/run mostraKrtMF("Show",regRange(2097),753.6,-334.4)
---/run mostraKrtMF("Show",regRange(3073),0,-501.6)
---/run mostraKrtMF("Show",regRange(3089),251.2,-501.6)
---/run mostraKrtMF("Show",regRange(3105),502.4,-501.6)
---/run mostraKrtMF("Show",regRange(3121),753.6,-501.6)
+
 
 
 ranges1 = {{1, 16}, {65, 80},{129,144},{193,208},{257,272},{321,336},{385,400},{449,464},{513,528},{577,592},{641,656},{705,720},{769,784},{833,848},{897,912},{961,976}}
@@ -653,38 +638,7 @@ function mostraKrtl1(signalKrt,X0,Y0,X1,Y1,S,S1)
         iconRisText[icN][signalKrt](iconRisText[icN])
     end
 end
---/run mostraKrtl2("Show",73,349,122,228,300,8)
---/run mostraKrtl2("Show",118,221,280,324,300,8)
---/run mostraKrtl2("Show",285,324,344,269,200,8)
---/run mostraKrtl2("Show",342,262,400,327,200,8)
---/run mostraKrtl2("Show",410,338,485,333,200,8)
---/run mostraKrtl2("Show",485,333,390,60,400,8)
---/run mostraKrtl2("Show",384,53,490,82,200,8)
---/run mostraKrtl2("Show",505,85,64,79,600,8)
---/run mostraKrtl2("Show",54,80,240,44,300,8)
---/run mostraKrtl2("Show",247,40,72,151,300,8)
---/run mostraKrtl2("Show",72,153,586,120,600,8)
 
---/run mostraKrtl2("Show",543,155,22,282,600,8)
---/run mostraKrtl2("Show",187,226,586,169,600,8)
---/run mostraKrtl2("Show",235,184,586,279,600,8)
-
-
--------------
---/run mostraKrtl2("Show",102,610,188,400,500,8)
---/run mostraKrtl2("Show",188,395,460,570,500,8)
---/run mostraKrtl2("Show",470,570,580,470,300,8)
---/run mostraKrtl2("Show",580,470,690,590,300,8)
---/run mostraKrtl2("Show",690,594,820,586,300,8)
---/run mostraKrtl2("Show",825,586,652,105,600,8)
---/run mostraKrtl2("Show",652,100,845,155,300,8)
---/run mostraKrtl2("Show",850,155,76,143,600,8)
---/run mostraKrtl2("Show",76,143,400,82,400,8)
---/run mostraKrtl2("Show",400,82,105,269,400,8)
---/run mostraKrtl2("Show",105,270,1111,212,800,8)
---/run mostraKrtl2("Show",922,274,1,494,800,8)
---/run mostraKrtl2("Show",310,397,1011,305,800,8)
---/run mostraKrtl2("Show",390,325,1011,510,800,8)
 
 
 
