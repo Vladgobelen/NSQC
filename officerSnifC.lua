@@ -10,14 +10,12 @@ end
 
 if string.find (message, "#zzl") and testGM ~= nil then
 	local versA = mysplit(message)
-	testQ[myNome]["zzl"] = versA[11]
-	if testQ[myNome]["zzlf"] ~= nil then
-		testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] - 20
-	else
-		testQ[myNome]["zzlf"] = 0
+	if testQ[myNome]["zzl"] == nil then
+		testQ[myNome]["zzl"] = 1
+
+		testQ[myNome]["btn3"] = 0
+		testQ[myNome]["btn4"] = 0
 	end
-	testQ[myNome]["btn3"] = 0
-	testQ[myNome]["btn4"] = 0
 end
 end
 )

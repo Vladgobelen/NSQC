@@ -330,11 +330,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-		if testQ[myNome]["btn3"] == 0 then
-            btn[3]:Disable()
-		else
+		if testQ[myNome]["zzl"] ~= nil then
+            if testQ[myNome]["btn3"] == 0 then
+                btn[3]:Disable()
+            else
+                btn[3]:Enable()
+            end
+        end
+        if testQ[myNome]["btn3"] == 1 then
             btn[3]:Enable()
-		end
+        end
 		if testQ[myNome]["btn4"] == 0 then
             btn[4]:Disable()
 		else
@@ -342,12 +347,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
         if testQ[myNome]["zzlf"] ~= nil then
             if testQ[myNome]["zzlf"] >= 20 then
-                testQ[myNome]["btn3"] = 1
                 testQ[myNome]["btn4"] = 1
                 btn[3]:SetText("Взять бонусный квест вне лимита")
                 btn[4]:SetText("Сдать бонусный квест вне лимита")
             else
-                testQ[myNome]["btn3"] = 0
                 testQ[myNome]["btn4"] = 0
                 btn[4]:SetText("Принято игроков: " .. testQ[myNome]["zzlf"])
             end

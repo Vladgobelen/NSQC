@@ -622,6 +622,16 @@ if string.find (message, "#verS") and sender == "Витинари" then
 	end
 end
 
+if string.find (message, "#zz_x") and testGM~=nil then
+	testQ[myNome]["zzl"] = nil
+	testQ[myNome]["btn3"] = 1
+	if testQ[myNome]["zzlf"] ~= nil then
+		testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] - 20
+	else
+		testQ[myNome]["zzlf"] = 0
+	end
+end
+
 
 
 if string.find (message, "#u") and sender == myNome then
