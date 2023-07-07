@@ -53,7 +53,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
     end)
 
-    elseif id==3 or id==5 or id==6 or id==999 or id==12 or id==13 then
+    elseif id==5 or id==6 or id==999 or id==12 or id==13 then
     self[id]:SetScript("OnClick",function(self, button)
            SendAddonMessage("NSGadd", zzid, "guild") end)
     end
@@ -100,22 +100,31 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
             SendAddonMessage("NSGadd", "#zzy " .. testQ[myNome]["zzlf"], "guild")
         end)
     end
+    if id == 3 then
+        self[id]:SetScript("OnClick",function(self, button)
+            SendChatMessage("Нужно принять в гильдию 20 новых игроков", "GUILD", nil, 1)
+            print ("Нажми \"Щ\". Затем выбери внизу вкладку \"Кто\"")
+            print ("В строке поиска снизу напиши диапазон лвлов (лучше всего по 5). например: 1-5, 6-10, 11-15 итд")
+            print ("Затем пиши в чате: /ginvite ник")
+            print ("Для удобства команду /ginvite лучше скопировать в буфер обмена с тремя пробелами в конце и вставлять.")
+        end)
+    end
 end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
 -- видимо я так понял имеет значение порядок создания кнопок
 btn:configure(1,0,300,300,30,"#zzs","Взять квест");
 btn:configure(2,0,300,300,30,"#zzr","Сдать квест");
-btn:configure(3,0,270,300,30,"#zzz","Взять бонусный квест вне лимита");
-btn:configure(4,0,240,300,30,"#zzy","Сдать бонусный квест вне лимита");
-btn:configure(5,0,210,300,30,"#zzt","Узнать свой гилдлвл");
+btn:configure(3,-135,270,30,30,"#zzz","?");
+btn:configure(4,15,270,270,30,"#zzy","Сдать бонусный квест вне лимита");
+btn:configure(5,0,240,300,30,"#zzt","Узнать свой гилдлвл");
 btn:configure(99,-400,400,100,30,"","тест");
-btn:configure(7,0,180,300,30,"#zzp","Отказаться от квеста");
-btn:configure(8,0,150,300,30,"","Узнать текущий квест");
+btn:configure(7,0,210,300,30,"#zzp","Отказаться от квеста");
+btn:configure(8,0,180,300,30,"","Узнать текущий квест");
 btn:configure(9,250,300,200,30,"","Ролл");
 btn:configure(10,250,270,200,30,"#ltr 1","Лотерея одним куском");
 btn:configure(11,250,240,200,30,"#ltr 3","Лотерея тремя кусками");
-btn:configure(999,0,120,200,50,"#cls","Закрыть");
+btn:configure(999,0,150,200,50,"#cls","Закрыть");
 btn:configure(12,-22225,350,150,30,"#opn","Включить поиск");
 btn:configure(13,-22225,320,150,30,"#crtPoint","Создать точку");
 btn:configure(14,-133,332,32,32,"#ver","*");
@@ -205,7 +214,7 @@ minibtn:SetScript("OnClick", function()
             ii=6
             btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
             btn[ii]:SetFrameStrata("TOOLTIP")
-            btn[ii]:SetPoint("CENTER",0,120)
+            btn[ii]:SetPoint("CENTER",0,150)
             btn[ii]:SetSize(300, 30)
             btn[ii]:SetText("Закрыть")
             btn[ii]:Hide();
@@ -333,7 +342,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		if testQ[myNome]["zzl"] ~= nil then
             if testQ[myNome]["btn3"] == 0 then
-                btn[3]:Disable()
+                btn[3]:Enable()
             else
                 btn[3]:Enable()
             end
@@ -349,7 +358,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
         if testQ[myNome]["zzlf"] ~= nil then
             if testQ[myNome]["zzlf"] >= bonusQuestF then
                 testQ[myNome]["btn4"] = 1
-                btn[3]:SetText("Взять бонусный квест вне лимита")
+                btn[3]:SetText("?")
                 btn[4]:SetText("Сдать бонусный квест вне лимита")
             else
                 testQ[myNome]["btn4"] = 0
