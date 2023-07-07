@@ -1,4 +1,4 @@
-versAdd=136
+versAdd=137
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -144,8 +144,7 @@ btnF:SetScript("OnClick",
     SendAddonMessage("NSGadd", "#krt", "guild")
   end)
 
-
-local minibtn = CreateFrame("Button", nil, Minimap)
+minibtn = CreateFrame("Button", nil, Minimap)
 if testQ==nil then
     testQ={}
 end
@@ -156,9 +155,11 @@ if testQ[myNome]["настройки"]==nil then
     testQ[myNome]["настройки"]={}
 end
 
+
 minibtn:SetFrameLevel(8)
 minibtn:SetSize(32,32)
 minibtn:SetMovable(true)
+
 
 
 
@@ -172,35 +173,50 @@ minibtn:SetMovable(true)
     minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
     minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
     minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
-
-local myIconPos = 0
+if testQ ~= nil then
+    if testQ["miniMapConf"] == nil then
+        myIconPos = 0
+        testQ["miniMapConf"] = 0
+    end
 
 -- Control movement
-local function UpdateMapBtn()
-    local Xpoa, Ypoa = GetCursorPosition()
-    local Xmin, Ymin = Minimap:GetLeft(), Minimap:GetBottom()
-    Xpoa = Xmin - Xpoa / Minimap:GetEffectiveScale() + 70
-    Ypoa = Ypoa / Minimap:GetEffectiveScale() - Ymin - 70
-    myIconPos = math.deg(math.atan2(Ypoa, Xpoa))
-    minibtn:ClearAllPoints()
-    minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)), (80 * sin(myIconPos)) - 52)
-end
-minibtn:RegisterForDrag("LeftButton")
-minibtn:SetScript("OnDragStart", function()
-    minibtn:StartMoving()
-    minibtn:SetScript("OnUpdate", UpdateMapBtn)
-end)
-minibtn:SetScript("OnDragStop", function()
-    minibtn:StopMovingOrSizing();
-    minibtn:SetScript("OnUpdate", nil)
-    UpdateMapBtn();
-end)
--- Set position
-minibtn:ClearAllPoints();
-minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
-pokazat=0
-pokazatChk=0
+        local function UpdateMapBtn()
+        local Xpoa, Ypoa = GetCursorPosition()
+        local Xmin, Ymin = Minimap:GetLeft(), Minimap:GetBottom()
+        Xpoa = Xmin - Xpoa / Minimap:GetEffectiveScale() + 70
+        Ypoa = Ypoa / Minimap:GetEffectiveScale() - Ymin - 70
 
+        myIconPos = math.deg(math.atan2(Ypoa, Xpoa))
+
+        minibtn:ClearAllPoints()
+
+        minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)), (80 * sin(myIconPos)) - 52)
+        end
+
+        minibtn:RegisterForDrag("LeftButton")
+        minibtn:SetScript("OnDragStart", function()
+        minibtn:StartMoving()
+        minibtn:SetScript("OnUpdate", UpdateMapBtn)
+        end)
+
+        minibtn:SetScript("OnDragStop", function()
+        minibtn:StopMovingOrSizing();
+        minibtn:SetScript("OnUpdate", nil)
+        testQ["miniMapConf"] = myIconPos
+        local test1,test2,test3,test4,test5=minibtn:GetPoint(1)
+        testQ["mbX"] = test4
+        testQ["mbY"] = test5
+        UpdateMapBtn();
+        end)
+
+-- Set position
+        minibtn:ClearAllPoints();
+        myIconPos = testQ["miniMapConf"]
+        minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
+
+        pokazat=0
+        pokazatChk=0
+end
 
 
 
@@ -208,7 +224,7 @@ pokazatChk=0
 
 
 minibtn:SetScript("OnClick", function()
-    minibtn:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+    minibtn:RegisterForClicks("LeftButtonUp", "RightButtonDown")
     if arg1=="LeftButton" then
         if pokazat~=1 then
             ii=6
@@ -568,7 +584,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             myCheckButton1:EnableKeyboard(1);
             btn[1]:SetScript("OnKeyDown",function(self,key)
             if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-                for ii=1,11 do
+                for ii=1,15 do
                     btn[ii]:Hide();
                 end
                 myCheckButton1:Hide()
@@ -584,7 +600,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             end);
             myCheckButton1:SetScript("OnKeyDown",function(self,key)
                 if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-                for ii=1,11 do
+                for ii=1,15 do
                     btn[ii]:Hide();
                 end
                 myCheckButton1:Hide()
