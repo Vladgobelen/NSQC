@@ -1,4 +1,5 @@
 versAdd=135
+bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -346,13 +347,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
             btn[4]:Enable()
 		end
         if testQ[myNome]["zzlf"] ~= nil then
-            if testQ[myNome]["zzlf"] >= 20 then
+            if testQ[myNome]["zzlf"] >= bonusQuestF then
                 testQ[myNome]["btn4"] = 1
                 btn[3]:SetText("Взять бонусный квест вне лимита")
                 btn[4]:SetText("Сдать бонусный квест вне лимита")
             else
                 testQ[myNome]["btn4"] = 0
-                btn[4]:SetText("Принято игроков: " .. testQ[myNome]["zzlf"])
+                btn[4]:SetText("Принято игроков: " .. testQ[myNome]["zzlf"] .. " из " .. bonusQuestF)
             end
         else
             testQ[myNome]["zzlf"] = 0
