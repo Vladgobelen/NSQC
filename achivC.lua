@@ -622,7 +622,7 @@ if string.find (message, "#verS") and sender == "Витинари" then
 	end
 end
 
-if string.find (message, "#zz_x") and testGM~=nil then
+if string.find (message, "#zz_x") and string.find (message, myNome) and testGM~=nil then
 	testQ[myNome]["zzl"] = nil
 	testQ[myNome]["btn3"] = 1
 	if testQ[myNome]["zzlf"] ~= nil then
