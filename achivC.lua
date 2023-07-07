@@ -622,6 +622,8 @@ if string.find (message, "#verS") and sender == "Витинари" then
 	end
 end
 
+
+
 if string.find (message, "#u") and sender == myNome then
 	print ("1. Управление гильдией осуществляется путем прямой демократии: 1 игрок - 1 голос*.")
 	print ("*глава гильдии - тот самый игрок, который имеет единственный голос.")

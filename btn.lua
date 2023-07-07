@@ -1,4 +1,4 @@
-versAdd=134
+versAdd=135
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
@@ -52,7 +52,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
     end)
 
-    elseif id==3 or id==4 or id==5 or id==6 or id==999 or id==12 or id==13 then
+    elseif id==3 or id==5 or id==6 or id==999 or id==12 or id==13 then
     self[id]:SetScript("OnClick",function(self, button)
            SendAddonMessage("NSGadd", zzid, "guild") end)
     end
@@ -92,6 +92,11 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     if id == 996 then
         self[id]:SetScript("OnClick",function(self, button)
             SendAddonMessage("NSGadd", "#krt", "guild")
+        end)
+    end
+    if id == 4 then
+        self[id]:SetScript("OnClick",function(self, button)
+            SendAddonMessage("NSGadd", "#zzy " .. testQ[myNome]["zzlf"], "guild")
         end)
     end
 end
@@ -324,6 +329,161 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if testQ[myNome]["btn3"] == 0 then
+            btn[3]:Disable()
+		else
+            btn[3]:Enable()
+		end
+		if testQ[myNome]["btn3"] == 0 then
+            btn[4]:Disable()
+		else
+            btn[4]:Enable()
+		end
+
+        if testQ[myNome]["zzlf"] >= 20 then
+            testQ[myNome]["btn3"] = 1
+            testQ[myNome]["btn4"] = 1
+            btn[3]:SetText("Взять бонусный квест вне лимита")
+            btn[4]:SetText("Сдать бонусный квест вне лимита")
+        else
+            testQ[myNome]["btn3"] = 0
+            testQ[myNome]["btn4"] = 0
+            btn[4]:SetText("Принято игроков: " .. testQ[myNome]["zzlf"])
+        end
+
+		if krt ~= nil then
+            if krt[777] ~= nil and krt[777] == 2 then
+                if krt[7770105] == nil then
+                    krt[7770105] = 0
+                end
+                if krt[7770502] == nil then
+                    krt[7770502] = 0
+                end
+                if krt[7770207] == nil then
+                    krt[7770207] = 0
+                end
+                if krt[7770703] == nil then
+                    krt[7770703] = 0
+                end
+                if krt[7770304] == nil then
+                    krt[7770304] = 0
+                end
+                if krt[7770415] == nil then
+                    krt[7770415] = 0
+                end
+                if krt[7771516] == nil then
+                    krt[7771516] = 0
+                end
+                if krt[7771613] == nil then
+                    krt[7771613] = 0
+                end
+                if krt[7771314] == nil then
+                    krt[7771314] = 0
+                end
+                if krt[7771409] == nil then
+                    krt[7771409] = 0
+                end
+                if krt[77709] == nil then
+                    krt[77709] = 0
+                end
+                if krt[77712] == nil then
+                    krt[77712] = 0
+                end
+                if krt[77706] == nil then
+                    krt[77706] = 0
+                end
+                if krt[77710] == nil then
+                    krt[77710] = 0
+                end
+
+
+                if krt[20105] == nil then
+                    if krt[21] == true and krt[25] == true then
+                        krt[7770105] = krt[7770105] + 1
+                        krt[20105] = 1
+                    end
+                end
+                if krt[20502] == nil then
+                    if krt[25] == true and krt[22] == true then
+                        krt[7770502] = krt[7770502] + 1
+                        krt[20502] = 1
+                    end
+                end
+                if krt[20207] == nil then
+                    if krt[22] == true and krt[27] == true then
+                        krt[7770207] = krt[7770207] + 1
+                        krt[20207] = 1
+                    end
+                end
+                if krt[20703] == nil then
+                    if krt[27] == true and krt[23] == true then
+                        krt[7770703] = krt[7770703] + 1
+                        krt[20703] = 1
+                    end
+                end
+                if krt[20304] == nil then
+                    if krt[23] == true and krt[24] == true then
+                        krt[7770304] = krt[7770304] + 1
+                        krt[20304] = 1
+                    end
+                end
+                if krt[20415] == nil then
+                    if krt[24] == true and krt[35] == true then
+                        krt[7770415] = krt[7770415] + 1
+                        krt[20415] = 1
+                    end
+                end
+                if krt[21516] == nil then
+                    if krt[35] == true and krt[36] == true then
+                        krt[7771516] = krt[7771516] + 1
+                        krt[21516] = 1
+                    end
+                end
+                if krt[21613] == nil then
+                    if krt[36] == true and krt[33] == true then
+                        krt[7771613] = krt[7771613] + 1
+                        krt[21613] = 1
+                    end
+                end
+                if krt[21314] == nil then
+                    if krt[33] == true and krt[34] == true then
+                        krt[7771314] = krt[7771314] + 1
+                        krt[21314] = 1
+                    end
+                end
+                if krt[21409] == nil then
+                    if krt[34] == true and krt[29] == true then
+                        krt[7771409] = krt[7771409] + 1
+                        krt[21409] = 1
+                    end
+                end
+                if krt[209] == nil then
+                    if krt[29] == true then
+                        krt[77709] = krt[77709] + 1
+                        krt[209] = 1
+                    end
+                end
+                if krt[212] == nil then
+                    if krt[32] == true then
+                        krt[77712] = krt[77712] + 1
+                        krt[212] = 1
+                    end
+                end
+                if krt[206] == nil then
+                    if krt[32] == true then
+                        krt[77706] = krt[77706] + 1
+                        krt[206] = 1
+                    end
+                end
+                if krt[210] == nil then
+                    if krt[32] == true then
+                        krt[77710] = krt[77710] + 1
+                        krt[210] = 1
+                    end
+                end
+            end
+        end
 
         if WorldMapFrame:IsVisible()~=nil then
             if WorldMapFrameSizeUpButton:IsVisible()~=nil then
