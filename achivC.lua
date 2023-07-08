@@ -632,8 +632,6 @@ if string.find (message, "#zz_x") and string.find (message, myNome) and testGM~=
 	end
 end
 
-
-
 if string.find (message, "#u") and sender == myNome then
 	print ("1. Управление гильдией осуществляется путем прямой демократии: 1 игрок - 1 голос*.")
 	print ("*глава гильдии - тот самый игрок, который имеет единственный голос.")

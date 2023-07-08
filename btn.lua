@@ -1,4 +1,4 @@
-versAdd=139
+versAdd=140
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -37,12 +37,16 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
     self[id]:SetScript("OnClick",function(self, button)
 
         if id==2 then
-            if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
-                SendAddonMessage("NSGadd", zzid, "guild")
-            elseif testQ[myNome]["лвл_квестов"]==2 then
-                SendAddonMessage("NSGadd", "#aam", "guild")
-            elseif testQ[myNome]["лвл_квестов"]==3 then
-                SendAddonMessage("NSGadd", "#aat", "guild")
+            if testQ[myNome]["взятый_квест"] ~= "q33" then
+                if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
+                    SendAddonMessage("NSGadd", zzid, "guild")
+                elseif testQ[myNome]["лвл_квестов"]==2 then
+                    SendAddonMessage("NSGadd", "#aam", "guild")
+                elseif testQ[myNome]["лвл_квестов"]==3 then
+                    SendAddonMessage("NSGadd", "#aat", "guild")
+                end
+            else
+                SendAddonMessage("NSGadd", "#q33x", "guild")
             end
         elseif id == 1 then
             SendAddonMessage("NSGadd", zzid, "guild")
@@ -800,11 +804,73 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                 btn[2]:SetText("Сдать квест")
             end
         elseif testQ[myNome]["лвл_квестов"]==3 then
-            if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
-                testComplit=testQ[myNome]["взятый_квест"]
-                testComplit=tonumber(testComplit)
-                id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
-                if completed ~= true then
+            if testQ[myNome]["взятый_квест"] ~= "q33" then
+                if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+                    testComplit=testQ[myNome]["взятый_квест"]
+                    testComplit=tonumber(testComplit)
+                    id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+                    if completed ~= true then
+                        btn[2]:Disable()
+                        if pokazat == 1 then
+                            btn[2]:Show()
+                            btn[1]:Hide()
+                        else
+                            btn[2]:Hide()
+                        end
+                        btn[2]:SetText("Ачивка не выполнена")
+                        btn[1]:Hide()
+                        btn[1]:SetText("Ачивка не выполнена")
+                    else
+                        btn[2]:Enable()
+                        if pokazat == 1 then
+                            btn[2]:Show()
+                            btn[1]:Hide()
+                        else
+                            btn[2]:Hide()
+                        end
+                        btn[2]:SetText("Сдать квест")
+                    end
+                elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
+                    vypolnenaLiAch=testQ[myNome]["взятый_квест"]
+                    count = GetAchievementNumCriteria(vypolnenaLiAch)
+                    chisloPunktop=testQ[myNome]["квест_лвл3"][vypolnenaLiAch]
+                    j=0
+                    k=0
+                    for i=1, count do
+                        local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+                        prov=completed
+                        if prov == true then
+                            j=j+1
+                        else
+                            k=k+1
+                        end
+                        i=i+1
+                    end
+                    temvChislo = tonumber(chisloPunktop)
+                    if j<temvChislo then
+                        btn[2]:Disable()
+                        if pokazat == 1 then
+                            btn[2]:Show()
+                            btn[1]:Hide()
+                        else
+                            btn[2]:Hide()
+                        end
+                        btn[2]:SetText("Ачивка не выполнена")
+                        btn[1]:Hide()
+                        btn[1]:SetText("Ачивка не выполнена")
+                    else
+                        btn[2]:Enable()
+                        if pokazat == 1 then
+                            btn[2]:Show()
+                            btn[1]:Hide()
+                        else
+                            btn[2]:Hide()
+                        end
+                        btn[2]:SetText("Сдать квест")
+                    end
+                end
+            else
+                if testQ[myNome]["q33nik1"] ~= 1 or testQ[myNome]["q33nik2"] ~= 1 or testQ[myNome]["q33nik3"] ~= 1 then
                     btn[2]:Disable()
                     if pokazat == 1 then
                         btn[2]:Show()
@@ -823,85 +889,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
                     else
                         btn[2]:Hide()
                     end
-                    btn[2]:SetText("Сдать квест")
+                        btn[2]:SetText("Сдать квест")
                 end
-            elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
-                vypolnenaLiAch=testQ[myNome]["взятый_квест"]
-                count = GetAchievementNumCriteria(vypolnenaLiAch)
-                chisloPunktop=testQ[myNome]["квест_лвл3"][vypolnenaLiAch]
-                j=0
-                k=0
-                for i=1, count do
-                    local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
-                    prov=completed
-                    if prov == true then
-                        j=j+1
-                    else
-                        k=k+1
-                    end
-                    i=i+1
-                end
-                temvChislo = tonumber(chisloPunktop)
-                if j<temvChislo then
-                    btn[2]:Disable()
-                    if pokazat == 1 then
-                        btn[2]:Show()
-                        btn[1]:Hide()
-                    else
-                        btn[2]:Hide()
-                    end
-                    btn[2]:SetText("Ачивка не выполнена")
-                    btn[1]:Hide()
-                    btn[1]:SetText("Ачивка не выполнена")
-                else
-                    btn[2]:Enable()
-                    if pokazat == 1 then
-                        btn[2]:Show()
-                        btn[1]:Hide()
-                    else
-                        btn[2]:Hide()
-                    end
-                    btn[2]:SetText("Сдать квест")
-                end
+
             end
         end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     end
 
    end

@@ -642,12 +642,12 @@ end
 
 
 
-function mostraKrtl2(signalKrt,X0,Y0,X1,Y1,S,S1)
+function mostraKrtl2(signalKrt,X0,Y0,X1,Y1,S,S1,diametr)
     if signalKrt=="Show" then
 		icN = icN+9999999
         tochki[icN] = true
         iconRis:configure(icN,576,384)
-        iconRisText:configure(icN,8,8,1,1,121212)
+        iconRisText:configure(icN,diametr,diametr,X0,Y0,121212)
         local x0 = X0
         local y0 = Y0
         local x1 = X1
@@ -675,7 +675,7 @@ function mostraKrtl2(signalKrt,X0,Y0,X1,Y1,S,S1)
             resX = resX + dirX
             resY = resY + dirY
             iconRis:configure(icN,resX,resY)
-            iconRisText:configure(icN,4,4,1,1,121212)
+            iconRisText:configure(icN,diametr,diametr,1,1,121212)
             iconRis[icN]:SetFrameStrata("TOOLTIP")
             iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapFrame,"BOTTOMLEFT", resX, resY)
 
