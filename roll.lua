@@ -340,7 +340,7 @@ if testQ[myNome]["q33q"] == "тепло" then
         end
     end
 end
-if testQ[myNome]["q33q"] = "смотри" then
+if testQ[myNome]["q33q"] == "смотри" then
     q3nik1 = testQ[myNome]["q33nik1"]:sub(1, -2)
     q3nik2 = testQ[myNome]["q33nik2"]:sub(1, -2)
     if string.find (message, "Вы смотрите на") then
