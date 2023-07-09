@@ -271,142 +271,146 @@ if string.find (message, "#krt") and sender == myNome then
 		krt = {}
 	else
 		if krt[777] == nil then
-			if krt[99] == nil then
-				krt[99] = true
-				if krt[1] == true then
-					mostraKrtl2("Show",316,576,316,576,1,1,12)
-					mostraKrtl2("Show",316,576,316,576,1,1,12)
-					mostraKrtl2("Show",320,580,410,569,50,1,3)
-				end
-				if krt[2] == true then
-					mostraKrtl2("Show",496,554,496,554,1,1,12)
-					mostraKrtl2("Show",500,558,490,508,50,1,3)
-				end
-				if krt[3] == true then
-					mostraKrtl2("Show",616,561,616,561,1,1,12)
-					mostraKrtl2("Show",620,565,617,510,100,1,3)
-				end
-				if krt[4] == true then
-					mostraKrtl2("Show",316,421,316,421,1,1,12)
-					mostraKrtl2("Show",320,425,325,370,100,1,3)
-				end
-				if krt[5] == true then
-					mostraKrtl2("Show",471,426,471,426,1,1,12)
-					mostraKrtl2("Show",471,426,550,500,100,1,3)
-				end
-				if krt[6] == true then
-					mostraKrtl2("Show",611,436,611,436,1,1,12)
-					mostraKrtl2("Show",615,440,610,390,100,1,3)
-				end
-				if krt[7] == true then
-					mostraKrtl2("Show",326,311,326,311,1,1,12)
-					mostraKrtl2("Show",330,315,362,250,50,1,3)
-				end
-				if krt[8] == true then
-					mostraKrtl2("Show",421,321,676,371,1,1,12)
-					mostraKrtl2("Show",425,325,525,344,100,1,3)
-				end
-				if krt[9] == true then
-					mostraKrtl2("Show",660,346,660,346,1,1,12)
-					mostraKrtl2("Show",664,350,534,360,200,1,3)
-				end
-				if krt[10] == true then
-					mostraKrtl2("Show",296,151,296,151,1,1,12)
-					mostraKrtl2("Show",300,155,307,250,50,1,3)
-				end
-				if krt[11] == true then
-					mostraKrtl2("Show",471,246,676,451,1,1,12)
-					mostraKrtl2("Show",475,250,500,275,50,1,3)
-				end
-				if krt[12] == true then
-					mostraKrtl2("Show",586,226,586,226,1,1,12)
-					mostraKrtl2("Show",590,230,540,217,100,1,3)
-				end
-				if krt[13] == true then
-					mostraKrtl2("Show",381,106,381,106,1,1,12)
-					mostraKrtl2("Show",385,110,410,118,50,1,3)
-				end
-				if krt[14] == true then
-					mostraKrtl2("Show",456,46,456,46,1,1,12)
-					mostraKrtl2("Show",460,50,550,43,50,1,3)
-				end
-				if krt[15] == true then
-					mostraKrtl2("Show",596,36,596,36,1,1,12)
-					mostraKrtl2("Show",600,40,548,140,50,1,3)
-				end
+			local testKont = GetCurrentMapContinent()
+			testKont = tonumber(testKont)
+			if testKont == 1 then
+				if krt[99] == nil then
+					krt[99] = true
+					if krt[1] == true then
+						mostraKrtl2("Show",316,576,316,576,1,1,12)
+						mostraKrtl2("Show",316,576,316,576,1,1,12)
+						mostraKrtl2("Show",320,580,410,569,50,1,3)
+					end
+					if krt[2] == true then
+						mostraKrtl2("Show",496,554,496,554,1,1,12)
+						mostraKrtl2("Show",500,558,490,508,50,1,3)
+					end
+					if krt[3] == true then
+						mostraKrtl2("Show",616,561,616,561,1,1,12)
+						mostraKrtl2("Show",620,565,617,510,100,1,3)
+					end
+					if krt[4] == true then
+						mostraKrtl2("Show",316,421,316,421,1,1,12)
+						mostraKrtl2("Show",320,425,325,370,100,1,3)
+					end
+					if krt[5] == true then
+						mostraKrtl2("Show",471,426,471,426,1,1,12)
+						mostraKrtl2("Show",471,426,550,500,100,1,3)
+					end
+					if krt[6] == true then
+						mostraKrtl2("Show",611,436,611,436,1,1,12)
+						mostraKrtl2("Show",615,440,610,390,100,1,3)
+					end
+					if krt[7] == true then
+						mostraKrtl2("Show",326,311,326,311,1,1,12)
+						mostraKrtl2("Show",330,315,362,250,50,1,3)
+					end
+					if krt[8] == true then
+						mostraKrtl2("Show",421,321,676,371,1,1,12)
+						mostraKrtl2("Show",425,325,525,344,100,1,3)
+					end
+					if krt[9] == true then
+						mostraKrtl2("Show",660,346,660,346,1,1,12)
+						mostraKrtl2("Show",664,350,534,360,200,1,3)
+					end
+					if krt[10] == true then
+						mostraKrtl2("Show",296,151,296,151,1,1,12)
+						mostraKrtl2("Show",300,155,307,250,50,1,3)
+					end
+					if krt[11] == true then
+						mostraKrtl2("Show",471,246,676,451,1,1,12)
+						mostraKrtl2("Show",475,250,500,275,50,1,3)
+					end
+					if krt[12] == true then
+						mostraKrtl2("Show",586,226,586,226,1,1,12)
+						mostraKrtl2("Show",590,230,540,217,100,1,3)
+					end
+					if krt[13] == true then
+						mostraKrtl2("Show",381,106,381,106,1,1,12)
+						mostraKrtl2("Show",385,110,410,118,50,1,3)
+					end
+					if krt[14] == true then
+						mostraKrtl2("Show",456,46,456,46,1,1,12)
+						mostraKrtl2("Show",460,50,550,43,50,1,3)
+					end
+					if krt[15] == true then
+						mostraKrtl2("Show",596,36,596,36,1,1,12)
+						mostraKrtl2("Show",600,40,548,140,50,1,3)
+					end
 
-				if krt[999] ~= nil then
-					local chern = krt[999]
-					for i = 1, krt[999] do
-						if chern >=1 then
-							if krt[1] == true and krt[2] == true and chern >= 1 then
-								mostraKrtl2("Show",320,580,500,558,150,1,3)
-								chern = chern - 1
+					if krt[999] ~= nil then
+						local chern = krt[999]
+						for i = 1, krt[999] do
+							if chern >=1 then
+								if krt[1] == true and krt[2] == true and chern >= 1 then
+									mostraKrtl2("Show",320,580,500,558,150,1,3)
+									chern = chern - 1
+								end
+								if krt[2] == true and krt[5] == true and chern >= 1 then
+									mostraKrtl2("Show",500,558,475,430,150,1,3)
+									chern = chern - 1
+								end
+								if krt[5] == true and krt[3] == true and chern >= 1 then
+									mostraKrtl2("Show",471,426,620,565,100,1,3)
+									chern = chern - 1
+								end
+								if krt[3] == true and krt[6] == true and chern >= 1 then
+									mostraKrtl2("Show",620,565,615,440,100,1,3)
+									chern = chern - 1
+								end
+								if krt[6] == true and krt[12] == true and chern >= 1 then
+									mostraKrtl2("Show",615,440,590,230,100,1,3)
+									chern = chern - 1
+								end
+								if krt[12] == true and krt[10] == true and chern >= 1 then
+									mostraKrtl2("Show",590,230,300,155,150,1,3)
+									chern = chern - 1
+								end
+								if krt[10] == true and krt[4] == true and chern >= 1 then
+									mostraKrtl2("Show",300,155,320,425,150,1,3)
+									chern = chern - 1
+								end
+								if krt[4] == true and krt[7] == true and chern >= 1 then
+									mostraKrtl2("Show",320,425,330,315,100,1,3)
+									chern = chern - 1
+								end
+								if krt[7] == true and krt[14] == true and chern >= 1 then
+									mostraKrtl2("Show",330,315,460,50,150,1,3)
+									chern = chern - 1
+								end
+								if krt[14] == true and krt[15] == true and chern >= 1 then
+									mostraKrtl2("Show",460,50,600,40,150,1,3)
+									chern = chern - 1
+								end
+								if krt[15] == true and krt[1] == true and chern >= 1 then
+									mostraKrtl2("Show",600,40,320,580,300,1,3)
+									chern = chern - 1
+								end
+								if krt[8] == true and chern >= 1 then
+									mostraKrtl2("Show",425,325,680,375,200,1,3)
+									chern = chern - 1
+								end
+								if krt[9] == true and chern >= 1 then
+									mostraKrtl2("Show",664,350,250,381,200,1,3)
+									chern = chern - 1
+								end
+								if krt[11] == true and chern >= 1 then
+									mostraKrtl2("Show",475,250,680,455,200,1,3)
+									chern = chern - 1
+								end
+								if krt[13] == true and chern >= 1 then
+									mostraKrtl2("Show",385,110,700,210,200,1,3)
+									chern = chern - 1
+								end
+							else
+								break
 							end
-							if krt[2] == true and krt[5] == true and chern >= 1 then
-								mostraKrtl2("Show",500,558,475,430,150,1,3)
-								chern = chern - 1
-							end
-							if krt[5] == true and krt[3] == true and chern >= 1 then
-								mostraKrtl2("Show",471,426,620,565,100,1,3)
-								chern = chern - 1
-							end
-							if krt[3] == true and krt[6] == true and chern >= 1 then
-								mostraKrtl2("Show",620,565,615,440,100,1,3)
-								chern = chern - 1
-							end
-							if krt[6] == true and krt[12] == true and chern >= 1 then
-								mostraKrtl2("Show",615,440,590,230,100,1,3)
-								chern = chern - 1
-							end
-							if krt[12] == true and krt[10] == true and chern >= 1 then
-								mostraKrtl2("Show",590,230,300,155,150,1,3)
-								chern = chern - 1
-							end
-							if krt[10] == true and krt[4] == true and chern >= 1 then
-								mostraKrtl2("Show",300,155,320,425,150,1,3)
-								chern = chern - 1
-							end
-							if krt[4] == true and krt[7] == true and chern >= 1 then
-								mostraKrtl2("Show",320,425,330,315,100,1,3)
-								chern = chern - 1
-							end
-							if krt[7] == true and krt[14] == true and chern >= 1 then
-								mostraKrtl2("Show",330,315,460,50,150,1,3)
-								chern = chern - 1
-							end
-							if krt[14] == true and krt[15] == true and chern >= 1 then
-								mostraKrtl2("Show",460,50,600,40,150,1,3)
-								chern = chern - 1
-							end
-							if krt[15] == true and krt[1] == true and chern >= 1 then
-								mostraKrtl2("Show",600,40,320,580,300,1,3)
-								chern = chern - 1
-							end
-							if krt[8] == true and chern >= 1 then
-								mostraKrtl2("Show",425,325,680,375,200,1,3)
-								chern = chern - 1
-							end
-							if krt[9] == true and chern >= 1 then
-								mostraKrtl2("Show",664,350,250,381,200,1,3)
-								chern = chern - 1
-							end
-							if krt[11] == true and chern >= 1 then
-								mostraKrtl2("Show",475,250,680,455,200,1,3)
-								chern = chern - 1
-							end
-							if krt[13] == true and chern >= 1 then
-								mostraKrtl2("Show",385,110,700,210,200,1,3)
-								chern = chern - 1
-							end
-						else
-							break
 						end
 					end
+				else
+					krt[99] = nil
+					krtHide("Hide")
 				end
-			else
-				krt[99] = nil
-				krtHide("Hide")
 			end
 		else
 			if krt[777] == 2 then
