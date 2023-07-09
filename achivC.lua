@@ -273,51 +273,66 @@ if string.find (message, "#krt") and sender == myNome then
 		if krt[777] == nil then
 			if krt[99] == nil then
 				krt[99] = true
-				mostraKrtM111x111("Show")
 				if krt[1] == true then
-					mostraKrtM1x1("Show")
+					mostraKrtl2("Show",316,576,316,576,1,1,12)
+					mostraKrtl2("Show",316,576,316,576,1,1,12)
+					mostraKrtl2("Show",320,580,410,569,50,1,3)
 				end
 				if krt[2] == true then
-					mostraKrtM1x2("Show")
+					mostraKrtl2("Show",496,554,496,554,1,1,12)
+					mostraKrtl2("Show",500,558,490,508,50,1,3)
 				end
 				if krt[3] == true then
-					mostraKrtM1x3("Show")
+					mostraKrtl2("Show",616,561,616,561,1,1,12)
+					mostraKrtl2("Show",620,565,617,510,100,1,3)
 				end
 				if krt[4] == true then
-					mostraKrtM2x1("Show")
+					mostraKrtl2("Show",316,421,316,421,1,1,12)
+					mostraKrtl2("Show",320,425,325,370,100,1,3)
 				end
 				if krt[5] == true then
-					mostraKrtM2x2("Show")
+					mostraKrtl2("Show",471,426,471,426,1,1,12)
+					mostraKrtl2("Show",471,426,550,500,100,1,3)
 				end
 				if krt[6] == true then
-					mostraKrtM2x3("Show")
+					mostraKrtl2("Show",611,436,611,436,1,1,12)
+					mostraKrtl2("Show",615,440,610,390,100,1,3)
 				end
 				if krt[7] == true then
-					mostraKrtM3x1("Show")
+					mostraKrtl2("Show",326,311,326,311,1,1,12)
+					mostraKrtl2("Show",330,315,362,250,50,1,3)
 				end
 				if krt[8] == true then
-					mostraKrtM3x2("Show")
+					mostraKrtl2("Show",421,321,676,371,1,1,12)
+					mostraKrtl2("Show",425,325,525,344,100,1,3)
 				end
 				if krt[9] == true then
-					mostraKrtM3x3("Show")
+					mostraKrtl2("Show",660,346,660,346,1,1,12)
+					mostraKrtl2("Show",664,350,534,360,200,1,3)
 				end
 				if krt[10] == true then
-					mostraKrtM4x1("Show")
+					mostraKrtl2("Show",296,151,296,151,1,1,12)
+					mostraKrtl2("Show",300,155,307,250,50,1,3)
 				end
 				if krt[11] == true then
-					mostraKrtM4x2("Show")
+					mostraKrtl2("Show",471,246,676,451,1,1,12)
+					mostraKrtl2("Show",475,250,500,275,50,1,3)
 				end
 				if krt[12] == true then
-					mostraKrtM4x3("Show")
+					mostraKrtl2("Show",586,226,586,226,1,1,12)
+					mostraKrtl2("Show",590,230,540,217,100,1,3)
 				end
 				if krt[13] == true then
-					mostraKrtM5x1("Show")
+					mostraKrtl2("Show",381,106,381,106,1,1,12)
+					mostraKrtl2("Show",385,110,410,118,50,1,3)
 				end
 				if krt[14] == true then
-					mostraKrtM5x2("Show")
+					mostraKrtl2("Show",456,46,456,46,1,1,12)
+					mostraKrtl2("Show",460,50,550,43,50,1,3)
 				end
 				if krt[15] == true then
-					mostraKrtM5x3("Show")
+					mostraKrtl2("Show",596,36,596,36,1,1,12)
+					mostraKrtl2("Show",600,40,548,140,50,1,3)
 				end
 
 				if krt[999] ~= nil then
@@ -325,63 +340,63 @@ if string.find (message, "#krt") and sender == myNome then
 					for i = 1, krt[999] do
 						if chern >=1 then
 							if krt[1] == true and krt[2] == true and chern >= 1 then
-								mostraKrtl1("Show",425,387,520,367,100,8)
+								mostraKrtl2("Show",320,580,500,558,150,1,3)
 								chern = chern - 1
 							end
 							if krt[2] == true and krt[5] == true and chern >= 1 then
-								mostraKrtl1("Show",609,355,609,273,100,8)
+								mostraKrtl2("Show",500,558,475,430,150,1,3)
 								chern = chern - 1
 							end
 							if krt[5] == true and krt[3] == true and chern >= 1 then
-								mostraKrtl1("Show",608,200,700,288,100,8)
+								mostraKrtl2("Show",471,426,620,565,100,1,3)
 								chern = chern - 1
 							end
 							if krt[3] == true and krt[6] == true and chern >= 1 then
-								mostraKrtl1("Show",781,369,783,283,100,8)
+								mostraKrtl2("Show",620,565,615,440,100,1,3)
 								chern = chern - 1
 							end
 							if krt[6] == true and krt[12] == true and chern >= 1 then
-								mostraKrtl1("Show",783,215,766,67,200,8)
+								mostraKrtl2("Show",615,440,590,230,100,1,3)
 								chern = chern - 1
 							end
 							if krt[12] == true and krt[10] == true and chern >= 1 then
-								mostraKrtl1("Show",765,-59,565,-97,200,8)
+								mostraKrtl2("Show",590,230,300,155,150,1,3)
 								chern = chern - 1
 							end
 							if krt[10] == true and krt[4] == true and chern >= 1 then
-								mostraKrtl1("Show",395,-132,408,45,200,8)
+								mostraKrtl2("Show",300,155,320,425,150,1,3)
 								chern = chern - 1
 							end
 							if krt[4] == true and krt[7] == true and chern >= 1 then
-								mostraKrtl1("Show",418,203,426,125,100,8)
+								mostraKrtl2("Show",320,425,330,315,100,1,3)
 								chern = chern - 1
 							end
 							if krt[7] == true and krt[14] == true and chern >= 1 then
-								mostraKrtl1("Show",428,62,515,-121,200,8)
+								mostraKrtl2("Show",330,315,460,50,150,1,3)
 								chern = chern - 1
 							end
 							if krt[14] == true and krt[15] == true and chern >= 1 then
-								mostraKrtl1("Show",590,-279,683,-289,100,8)
+								mostraKrtl2("Show",460,50,600,40,150,1,3)
 								chern = chern - 1
 							end
 							if krt[15] == true and krt[1] == true and chern >= 1 then
-								mostraKrtl1("Show",770,-313,579,73,400,8)
+								mostraKrtl2("Show",600,40,320,580,300,1,3)
 								chern = chern - 1
 							end
 							if krt[8] == true and chern >= 1 then
-								mostraKrtl1("Show",597,75,757,110,200,8)
+								mostraKrtl2("Show",425,325,680,375,200,1,3)
 								chern = chern - 1
 							end
 							if krt[9] == true and chern >= 1 then
-								mostraKrtl1("Show",840,95,457,120,300,8)
+								mostraKrtl2("Show",664,350,250,381,200,1,3)
 								chern = chern - 1
 							end
 							if krt[11] == true and chern >= 1 then
-								mostraKrtl1("Show",607,-44,773,140,200,8)
+								mostraKrtl2("Show",475,250,680,455,200,1,3)
 								chern = chern - 1
 							end
 							if krt[13] == true and chern >= 1 then
-								mostraKrtl1("Show",490,-210,757,-130,200,8)
+								mostraKrtl2("Show",385,110,700,210,200,1,3)
 								chern = chern - 1
 							end
 						else
@@ -391,30 +406,7 @@ if string.find (message, "#krt") and sender == myNome then
 				end
 			else
 				krt[99] = nil
-				mostraKrtM1x1("Hide")
-				mostraKrtM1x2("Hide")
-				mostraKrtM1x3("Hide")
-				mostraKrtM2x1("Hide")
-				mostraKrtM2x2("Hide")
-				mostraKrtM2x3("Hide")
-				mostraKrtM3x1("Hide")
-				mostraKrtM3x2("Hide")
-				mostraKrtM3x3("Hide")
-				mostraKrtM4x1("Hide")
-				mostraKrtM4x2("Hide")
-				mostraKrtM4x3("Hide")
-				mostraKrtM5x1("Hide")
-				mostraKrtM5x2("Hide")
-				mostraKrtM5x3("Hide")
-				mostraKrtM111x111("Hide")
-
-				if #tochki ~= nil then
-					for key, val in pairs(tochki) do
-						if tochki[key] == true then
-							iconRis[key]["Hide"](iconRis[key])
-						end
-					end
-				end
+				krtHide("Hide")
 			end
 		else
 			if krt[777] == 2 then
