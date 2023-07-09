@@ -1,4 +1,4 @@
-versAdd=141
+versAdd=142
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -359,7 +359,20 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-
+		local testKont = GetCurrentMapContinent()
+		testKont = tonumber(testKont)
+		if WorldMapFrame:IsVisible() ~= nil then
+			if testKont ~= 1 then
+                krt[5551] = nil
+				if krt[5551] == nil then
+					krtHide("Hide")
+					krt[5551] = 1
+					krt[99] = nil
+				end
+			else
+				krt[5551] = 1
+			end
+		end
 		if testQ[myNome]["zzl"] ~= nil then
             if testQ[myNome]["btn3"] == 0 then
                 btn[3]:Enable()
