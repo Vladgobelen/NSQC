@@ -444,3 +444,78 @@ function tblAllFail(mm,nik)
 	end
 	return r
 end
+
+function trovMarsh(tabella,diam)
+	local testKont = GetCurrentMapContinent()
+	local lok = GetCurrentMapZone()
+	local x,y = GetPlayerMapPosition("player")
+	testKont = tostring(testKont)
+	lok = tostring(lok)
+	if tabella ~= nil then
+		if tabella[testKont] ~= nil then
+			if tabella[testKont][lok] ~= nil then
+				if testKont == tabella[testKont]["testKont"] then
+					local tablen = tablelength(tabella[testKont][lok])
+					testQ["schet"] = {}
+					for i = 1, tablen - 1 do
+						j = tostring(i)
+						local mioCel=sqrt((x-tabella[testKont][lok][j]["x"])^2+(y-tabella[testKont][lok][j]["y"])^2)
+						if mioCel < 0.010 then
+							testQ["schet"][i] = 1
+						else
+							testQ["schet"][i] = 0
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+function testMarsh(tabella,diam)
+	trovMarsh(tabella,diam)
+		local rez = 0
+		if testQ["schet"] ~= nil then
+			for i = 1, #testQ["schet"] do
+				if testQ["schet"][i] ~= nil then
+					rez = rez + testQ["schet"][i]
+				end
+			end
+		end
+		return rez
+end
+function testQuest(tabella)
+	local testKont = GetCurrentMapContinent()
+	local lok = GetCurrentMapZone()
+	local x,y = GetPlayerMapPosition("player")
+	testKont = tostring(testKont)
+	lok = tostring(lok)
+	if tabella ~= nil then
+		if tabella[testKont] ~= nil then
+			if tabella[testKont][lok] ~= nil then
+				if testKont == tabella[testKont]["testKont"] then
+					if tabella[testKont][lok]["testLok"] == lok then
+						local mioCel=sqrt((x-tabella[testKont][lok]["1"]["x"])^2+(y-tabella[testKont][lok]["1"]["y"])^2)
+						if mioCel < 0.01 then
+							testQ["старт"] = 1
+							SendChatMessage("Старт маршрута", "guild", nil, 1)
+						end
+					end
+				end
+			end
+		end
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+end

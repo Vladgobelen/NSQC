@@ -2,7 +2,7 @@
 ## Title: NSQC
 ## Notes: NSQC
 ## Author: Vladgobelen
-## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv
+## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh
 
 lib\lib_hook.lua
 lib\lib_math.lua

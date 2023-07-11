@@ -202,11 +202,11 @@ if string.find (message, "получает кусок карты") and krtKus[1]
 	if krt[777] == 2 then
 		if krt == nil then
 			krt = {}
-			x = math.random(21, 36)
+			x = math.random(21, 34)
 			krt[x] = true
 		else
-			for i = 21, 36 do
-				x = math.random(21, 36)
+			for i = 21, 34 do
+				x = math.random(21, 34)
 				if krt[x] == nil or krt[x] ~= true then
 					krt[x] = true
 					break
@@ -357,6 +357,15 @@ if string.find (message, "#ltr111") and testGM~=nil and lotTest[3]==myNome then
 	minusLrt=tonumber(minusLrt)
 	minusLrt=minusLrt-1
 	testQ[myNome]["лотерея"]=minusLrt
+end
+
+if string.find (message, "#marsh") and testGM~=nil and sender == myNome then
+	print ("1")
+	if testQ["marsh"] == nil then
+		testQ["marsh"] = 1
+	else
+		testQ["marsh"] = nil
+	end
 end
 
 if string.find (message, "#ltr333") and testGM~=nil and lotTest[3]==myNome then
