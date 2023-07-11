@@ -1,4 +1,4 @@
-versAdd=144
+versAdd=145
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -391,6 +391,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["старт"] = 0
 			end
 		end
+		if testQ["старт"] == 0 then
+			testQuest(marsh1)
+		end
+		if testQ["старт"] ~= nil and testQ["старт"] == 1 then
+			local xxx = (testMarsh(marsh1,1))
+			if xxx == 0 then
+				SendChatMessage("Я проиграл", "guild", nil, 1)
+				testQ["старт"] = 0
+			end
+		end
 	end
 end)
 
@@ -403,16 +413,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-		if testQ["старт"] == 0 then
-			testQuest(marsh1)
-		end
-		if testQ["старт"] ~= nil and testQ["старт"] == 1 then
-			local xxx = (testMarsh(marsh1,1))
-			if xxx == 0 then
-				SendChatMessage("Я проиграл", "guild", nil, 1)
-				testQ["старт"] = 0
-			end
-		end
+
 		if testQ["marsh"] == 1 then
 			btn[777]:Show()
 		else
