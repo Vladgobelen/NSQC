@@ -394,6 +394,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			local xxx = (testMarsh(mapTables[testQ["start"]],0.010))
 			if xxx < 1 then
 				SendChatMessage("Я проиграл", "guild", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
 				testQ["старт"] = 0
 				testQ["num"] = nil
 				testQ["marshF"] = nil
