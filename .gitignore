@@ -3,6 +3,9 @@
 
 # Do not ignore these files:
 !121212.tga
+!punto.ogg
+!start.ogg
+!fin.ogg
 !NSQCu-5.exe
 !achivC.lua
 !coreC.lua

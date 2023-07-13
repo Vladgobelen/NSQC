@@ -21,6 +21,9 @@ risIcon.lua
 test1.lua
 gob.ogg
 lvlUp.ogg
+punto.ogg
+start.ogg
+fin.ogg
 chiavi\mmList.lua
 officerSnifC.lua
 chiavi\chiaviA.lua

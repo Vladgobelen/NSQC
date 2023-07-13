@@ -383,6 +383,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 		if testQ["старт"] == 0 then
 			local par1 = testQ["start"]
+			PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
 			testQuest(mapTables[testQ["start"]],0.010)
 			testQ["marshF"] = {}
 			testQ["marshF"][1] = 1

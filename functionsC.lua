@@ -483,16 +483,20 @@ function trovMarsh(tabella,diam)
 									testQ["marshF"][i] = i
 									if testQ["marshF"][i] == math.modf(tablen/4) then
 										SendChatMessage("Я прошел четверть маршрута", "guild", nil, 1)
+										PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
 									end
 									if testQ["marshF"][i] == math.modf(tablen/2) then
 										SendChatMessage("Я прошел половину маршрута", "guild", nil, 1)
+										PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
 									end
 									if testQ["marshF"][i] == math.modf(tablen/4*3) then
 										SendChatMessage("Я прошел три четверти маршрута", "guild", nil, 1)
+										PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
 									end
 
 									if tablen - 1 - #testQ["marshF"] < 1 then
 										SendChatMessage("Маршрут завершен", "guild", nil, 1)
+										PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
 										testQ["старт"] = nil
 										testQ["num"] = nil
 										testQ["marshF"] = nil
