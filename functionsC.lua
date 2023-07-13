@@ -449,6 +449,9 @@ function trovMarsh(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
 	local x,y = GetPlayerMapPosition("player")
+	local mioCel
+	local mioCel1
+	testQ["schet1"] = nil
 	testKont = tostring(testKont)
 	lok = tostring(lok)
 	if tabella ~= nil then
@@ -457,13 +460,47 @@ function trovMarsh(tabella,diam)
 				if testKont == tabella[testKont]["testKont"] then
 					local tablen = tablelength(tabella[testKont][lok])
 					testQ["schet"] = {}
-					for i = 1, tablen - 1 do
+					testQ["numPunti"] = {}
+					if testQ["num"] == nil then
+						mioCel=sqrt((x-tabella[testKont][lok]["1"]["x"])^2+(y-tabella[testKont][lok]["1"]["y"])^2)
+						if mioCel < diam then
+							testQ["num"] = 1
+							testQ["schet1"] = 1
+						end
+					end
+					for i = testQ["num"]-10, testQ["num"]+10 do
+						testQ["schet1"] = i
 						j = tostring(i)
-						local mioCel=sqrt((x-tabella[testKont][lok][j]["x"])^2+(y-tabella[testKont][lok][j]["y"])^2)
-						if mioCel < 0.010 then
-							testQ["schet"][i] = 1
-						else
-							testQ["schet"][i] = 0
+						if tabella[testKont][lok][j] ~= nil then
+							mioCel=sqrt((x-tabella[testKont][lok][j]["x"])^2+(y-tabella[testKont][lok][j]["y"])^2)
+							if mioCel < diam then
+								testQ["schet"][i] = 1
+								j = testQ["num"]
+								j = tostring(j)
+								mioCel1=sqrt((x-tabella[testKont][lok][j]["x"])^2+(y-tabella[testKont][lok][j]["y"])^2)
+								if mioCel1 > mioCel then
+									testQ["num"] = i
+									testQ["marshF"][i] = i
+									if testQ["marshF"][i] == math.modf(tablen/4) then
+										SendChatMessage("Я прошел четверть маршрута", "guild", nil, 1)
+									end
+									if testQ["marshF"][i] == math.modf(tablen/2) then
+										SendChatMessage("Я прошел половину маршрута", "guild", nil, 1)
+									end
+									if testQ["marshF"][i] == math.modf(tablen/4*3) then
+										SendChatMessage("Я прошел три четверти маршрута", "guild", nil, 1)
+									end
+
+									if tablen - 1 - #testQ["marshF"] < 1 then
+										SendChatMessage("Маршрут завершен", "guild", nil, 1)
+										testQ["старт"] = nil
+										testQ["num"] = nil
+										testQ["marshF"] = nil
+									end
+								end
+							else
+								testQ["schet"][i] = 0
+							end
 						end
 					end
 				end
@@ -475,16 +512,20 @@ end
 function testMarsh(tabella,diam)
 	trovMarsh(tabella,diam)
 		local rez = 0
-		if testQ["schet"] ~= nil then
-			for i = 1, #testQ["schet"] do
+		if testQ["schet1"] ~= nil then
+			for i = testQ["schet1"]-10, testQ["schet1"]+10 do
 				if testQ["schet"][i] ~= nil then
 					rez = rez + testQ["schet"][i]
+					if rez > 0 then
+						break
+					end
 				end
 			end
 		end
-		return rez
+	return rez
 end
-function testQuest(tabella)
+
+function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
 	local x,y = GetPlayerMapPosition("player")
@@ -496,7 +537,7 @@ function testQuest(tabella)
 				if testKont == tabella[testKont]["testKont"] then
 					if tabella[testKont][lok]["testLok"] == lok then
 						local mioCel=sqrt((x-tabella[testKont][lok]["1"]["x"])^2+(y-tabella[testKont][lok]["1"]["y"])^2)
-						if mioCel < 0.01 then
+						if mioCel < diam then
 							testQ["старт"] = 1
 							SendChatMessage("Старт маршрута", "guild", nil, 1)
 						end
@@ -504,6 +545,24 @@ function testQuest(tabella)
 				end
 			end
 		end
+	end
+end
+
+--[[function marafon(tabella,diam)
+	local testKont = GetCurrentMapContinent()
+	local lok = GetCurrentMapZone()
+	local x,y = GetPlayerMapPosition("player")
+	testKont = tostring(testKont)
+	lok = tostring(lok)
+	if testQ["старт"] == nil then
+		local mioCel=sqrt((x-tabella["1"][testKont][lok]["x"])^2+(y-tabella["1"][testKont][lok]["x"]["y"])^2)
+		if mioCel < diam then
+			testQ["старт"] = 1
+			testQ["marsh"] = 1
+		end
+	end
+	if testQ["старт"] == 1 then
+
 	end
 
 
@@ -518,4 +577,6 @@ function testQuest(tabella)
 
 
 
-end
+
+
+end--]]

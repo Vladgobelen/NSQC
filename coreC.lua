@@ -374,6 +374,15 @@ if string.find (message, "#ltr333") and testGM~=nil and lotTest[3]==myNome then
 	minusLrt=minusLrt-3
 	testQ[myNome]["лотерея"]=minusLrt
 end
+if string.find (message, "эвент") and string.find (message, "СТАРТ") and testGM~=nil then
+	testQ["start"] = lotTest[3]
+	testQ["старт"] = 0
+end
+if string.find (message, "СТОП") and string.find (message, "эвент") and testGM~=nil then
+	testQ["старт"] = nil
+	testQ["num"] = nil
+	testQ["marshF"] = nil
+end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
 	local x = math.random(1, 8)
