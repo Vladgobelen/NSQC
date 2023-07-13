@@ -1,4 +1,4 @@
-versAdd=147
+versAdd=148
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -133,7 +133,6 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				marsh[testKont][lok]["testLok"] = lok
 			end
 			local tablen = tablelength(marsh[testKont][lok])
-			print (tablen)
 			n = tablen
 			n = tostring(n)
 			marsh[testKont][lok][n] = {}
@@ -382,12 +381,29 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 		if testQ["старт"] == 0 then
+			local testKont = GetCurrentMapContinent()
+			testKont = tostring(testKont)
+			local lok = GetCurrentMapZone()
+			lok = tostring(lok)
+			local x,y = GetPlayerMapPosition("player")
 			local par1 = testQ["start"]
-			PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
-			testQuest(mapTables[testQ["start"]],0.010)
-			testQ["marshF"] = {}
-			testQ["marshF"][1] = 1
+			if mapTables[testQ["start"]] ~= nil then
+				if mapTables[testQ["start"]][testKont] ~= nil then
+					if mapTables[testQ["start"]][testKont][lok]["testLok"] == lok then
+						if testKont == mapTables[testQ["start"]][testKont]["testKont"] then
+							local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
+							if mioCel < 0.010 then
+								PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
+								testQuest(mapTables[testQ["start"]],0.010)
+								testQ["marshF"] = {}
+								testQ["marshF"][1] = 1
+							end
+						end
+					end
+				end
+			end
 		end
+	end
 
 		if testQ["старт"] ~= nil and testQ["старт"] == 1 then
 			local par1 = testQ["start"]
@@ -400,7 +416,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["marshF"] = nil
 			end
 		end
-	end
 end)
 
 
