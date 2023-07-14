@@ -1,4 +1,4 @@
-versAdd=149
+versAdd=150
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -855,7 +855,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
 			testComplit=testQ[myNome]["взятый_квест"]
 			testComplit=tonumber(testComplit)
-			id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+			if testComplit ~= nil then
+				id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+			end
 			if completed ~= true then
 				btn[2]:Disable()
 				if pokazat == 1 then
