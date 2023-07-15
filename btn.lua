@@ -1,4 +1,4 @@
-versAdd=157
+versAdd=158
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -198,7 +198,16 @@ btnF:SetScript("OnClick",
   end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
-
+minibtn:SetScript("OnEnter",function(self)
+	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+	GameTooltip:AddLine("ЛКМ - открыть аддон")
+	GameTooltip:AddLine("ПКМ - показать настройки (когда аддон открыт)")
+	GameTooltip:AddLine("Тягать кнопку можно, когда аддон открыт")
+	GameTooltip:Show()
+end)
+minibtn:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
 if testQ==nil then
 	testQ={}
 end
