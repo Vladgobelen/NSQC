@@ -1,4 +1,4 @@
-versAdd=156
+versAdd=157
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -198,6 +198,7 @@ btnF:SetScript("OnClick",
   end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
+
 if testQ==nil then
 	testQ={}
 end
@@ -212,6 +213,7 @@ end
 minibtn:SetFrameLevel(8)
 minibtn:SetSize(32,32)
 minibtn:SetMovable(true)
+
 
 
 
@@ -455,7 +457,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-
+		if pokazat == 0 then
+			if testQ["miniMapConf"] ~= nil then
+				myIconPos = testQ["miniMapConf"]
+				minibtn:SetPoint("TOPLEFT", Minimap, "TOPLEFT", 52 - (80 * cos(myIconPos)),(80 * sin(myIconPos)) - 52)
+			end
+		end
 		local hourq = date("%M")
 		hourq = tonumber(hourq)
 		if hourq == 1 then

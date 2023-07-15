@@ -2,6 +2,8 @@
 ## Title: NSQC
 ## Notes: NSQC
 ## Author: Vladgobelen
+## Version: 1.5.6
+## X-Date: 2023-07-15
 ## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh
 
 lib\lib_hook.lua
