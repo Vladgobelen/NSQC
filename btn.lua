@@ -477,6 +477,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		local testKont = GetCurrentMapContinent()
 		testKont = tonumber(testKont)
 		if WorldMapFrame:IsVisible() ~= nil then
+			if krt~=nil then
 			if krt[777] == nil then
 				if testKont ~= 1 then
 					krt[5551] = nil
@@ -501,6 +502,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				else
 					krt[5551] = 1
 				end
+			end
 			end
 		end
 		if testQ[myNome]["zzl"] ~= nil then
