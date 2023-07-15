@@ -455,6 +455,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		local hourq = date("%M")
+		hourq = tonumber(hourq)
+		if hourq == 1 then
+			ginv = nil
+		end
 		if myNome == "Веренс" or myNome == "Хэвлок" or myNome == "Витинари" then
 			btn[999999]:Show()
 		end

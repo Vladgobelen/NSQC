@@ -20,7 +20,7 @@ hshStran3=hshSenderNomeC(myNome)
     end
 
 gInv = mysplit(message)
-if string.find (message, "приглашается в вашу") then
+if string.find (message, "приглашается в вашу гильдию") then
     if ginv == nil then
         ginv = {}
     end
@@ -28,7 +28,7 @@ if string.find (message, "приглашается в вашу") then
 end
 
 if ginv ~= nil then
-    if string.find (message, "присоединяется к") then
+    if string.find (message, "присоединяется к гильдии") then
         for range,value in pairs(ginv) do
             if value == gInv[1] then
                 if testQ[myNome]["zzlf"] ~= nil then
