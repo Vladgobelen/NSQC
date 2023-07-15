@@ -276,6 +276,7 @@ if string.find (message, "#krt") and sender == myNome then
 			testKont = tonumber(testKont)
 			if testKont == 1 then
 				if krt[99] == nil then
+					btnF:SetChecked(true)
 					krt[99] = true
 					if krt[1] == true then
 						mostraKrtl2("Show",316,576,316,576,1,1,12)
@@ -411,6 +412,7 @@ if string.find (message, "#krt") and sender == myNome then
 				else
 					krt[99] = nil
 					krtHide("Hide")
+					btnF:SetChecked(false)
 				end
 			end
 		else
@@ -420,6 +422,7 @@ if string.find (message, "#krt") and sender == myNome then
 				if lok == 10 then
 					if krt[99] == nil then
 						krt[99] = true
+						btnF:SetChecked(true)
 						if krt[21] == true then
 							mostraKrtl2("Show",96,546,96,46,1,1,12)
 							mostraKrtl2("Show",96,546,96,46,1,1,12)
@@ -546,7 +549,7 @@ if string.find (message, "#krt") and sender == myNome then
 					else
 						krt[99] = nil
 						krtHide("Hide")
-
+						btnF:SetChecked(false)
 					end
 				end
 
