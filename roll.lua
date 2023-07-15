@@ -33,6 +33,7 @@ if ginv ~= nil then
             if value == gInv[1] then
                 if testQ[myNome]["zzlf"] ~= nil then
                     testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] + 1
+                    SendAddonMessage("NSGadd", myNome .. " принял +1 ", "guild")
                 else
                     testQ[myNome]["zzlf"] = 1
                 end

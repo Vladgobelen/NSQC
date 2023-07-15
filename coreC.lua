@@ -409,6 +409,10 @@ if string.find (message, myNome) and testGM~=nil and string.find (message, "ве
         SendChatMessage(hshStran3 .." текущая версия " .. versAdd, "OFFICER", nil, 1)
 end
 
+if testGM~=nil and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
+        SendAddonMessage("NSGadd", myNome .. " " .. versAdd, "guild")
+end
+
 if string.find (message, myNome) and testGM~=nil and string.find (message, "покажимне") then
 	SendChatMessage(hshStran3, "OFFICER", nil, 1)
 end
