@@ -1,4 +1,4 @@
-versAdd=150
+versAdd=151
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -140,6 +140,26 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			marsh[testKont][lok][n]["y"] = y
 		end)
 	end
+	if id == 999999 then
+		self[id]:SetScript("OnClick",function(self, button)
+			if testQ ~= nil then
+				if testQ[myNome] ~= nil then
+					if testQ[myNome]["sdvig"] == nil then
+						testQ[myNome]["sdvig"] = 1
+						local x,y = GetPlayerMapPosition("player")
+						testQ[myNome]["sdvigx"] = x
+						testQ[myNome]["sdvigy"] = y
+						print ("1")
+					else
+						testQ[myNome]["sdvig"] = nil
+						testQ[myNome]["sdvigx"] = nil
+						testQ[myNome]["sdvigy"] = nil
+						print("nil")
+					end
+				end
+			end
+		end)
+	end
 end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
@@ -164,6 +184,7 @@ btn:configure(998,-83,250,70,32,"#ahtng","СБРОС");
 btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
 btn:configure(996,-5,19,32,32,"#krt","К");
 btn:configure(777,-300,1,200,32,"#marsh","");
+btn:configure(999999,635,310,32,32,"#","");
 
 
 
@@ -380,6 +401,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+		if testQ[myNome]["sdvig"] == 1 then
+			local x,y = GetPlayerMapPosition("player")
+			if x ~= testQ[myNome]["sdvigx"] or y ~= testQ[myNome]["sdvigy"] then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+			end
+
+		end
 		if testQ["старт"] == 0 then
 			local testKont = GetCurrentMapContinent()
 			testKont = tostring(testKont)
@@ -427,7 +455,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-
+		if myNome == "Веренс" or myNome == "Хэвлок" or myNome == "Витинари" then
+			btn[999999]:Show()
+		end
+		if testQ[myNome]["q33q"] ~= nil then
+			btn1:Hide()
+		end
 		if krt ~= nil then
 			if testQ["marsh"] == 1 then
 				btn[777]:Show()

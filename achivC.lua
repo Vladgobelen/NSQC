@@ -232,6 +232,7 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	btn[1]:Show()
 	btn[1]:SetText("Взять квест")
 	testQ[myNome]["взятый_квест"]="9999"
+	testQ[myNome]["q33q"]=nil
 end
 
 if string.find (message, "#aak") and string.find (message, myNome) then
