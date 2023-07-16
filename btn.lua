@@ -1,4 +1,4 @@
-versAdd=161
+versAdd=162
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -415,7 +415,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 		if testQ["проверка_версии"] == nil then
-			testQ["Витинари"]["zzlf"]=0
+			testQ[myNome]["zzlf"]=0
 		end
 		if testQ["проверка_версии"] == nil then
 			testQ["проверка_версии"] = 1
