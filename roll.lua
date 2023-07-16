@@ -262,31 +262,20 @@ if testQ[myNome]["q33q"] == "хмуро" then
         end
     end
 end
-
-q3nik1 = "Лепрогнома-работника,"
-q3nik1 = tostring(q3nik1)
-if string.find (message, q3nik1:sub(1, -2), 1, true) then
-    print("ТипаБорто")
-end
-
 if testQ[myNome]["q33q"] == "смерь" then
-    print ("1")
-    q3nik1 = testQ[myNome]["q33nik1"]:sub(1, -2)
-    q3nik2 = testQ[myNome]["q33nik2"]:sub(1, -2)
-    q3nik3 = testQ[myNome]["q33nik3"]
     if string.find (message, "Вы меряете взглядом") then
-        print ("2")
-        print (message .. " ник в переменной " .. q3nik1)
-        if string.find (message, q3nik1, 1, true) then
-        print ("3")
-            SendChatMessage("Я меряю взглядом " .. q3nik1 , "OFFICER", nil, 1)
+        if string.find (message,"[" .. testQ[myNome]["q33nik1"]:sub(1, -2) .. "]") then
+            print (testQ[myNome]["q33nik1"])
+            SendChatMessage("Я меряю взглядом " .. testQ[myNome]["q33nik1"]:sub(1, -2) , "OFFICER", nil, 1)
             testQ[myNome]["q33nik1"] = 1
         end
-        if string.find (message, q3nik2) then
-            SendChatMessage("Я меряю взглядом " .. q3nik2 , "OFFICER", nil, 1)
+        if string.find (message,"[" .. testQ[myNome]["q33nik2"]:sub(1, -2) .. "]") then
+            print (testQ[myNome]["q33nik2"])
+            SendChatMessage("Я меряю взглядом " .. testQ[myNome]["q33nik2"]:sub(1, -2) , "OFFICER", nil, 1)
             testQ[myNome]["q33nik2"] = 1
         end
-        if string.find (message, q3nik3) then
+        if string.find (message,"[" .. testQ[myNome]["q33nik3"] .. "]") then
+            print (testQ[myNome]["q33nik3"])
             SendChatMessage("Я меряю взглядом " .. testQ[myNome]["q33nik3"] , "OFFICER", nil, 1)
             testQ[myNome]["q33nik3"] = 1
         end

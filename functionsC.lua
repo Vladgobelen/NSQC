@@ -529,6 +529,9 @@ function testMarsh(tabella,diam)
 	return rez
 end
 
+function testRegular(nik)
+
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
