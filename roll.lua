@@ -262,19 +262,21 @@ if testQ[myNome]["q33q"] == "хмуро" then
         end
     end
 end
+--if string.find(message,p:gsub("%-", "%%-"):sub(1, -2)) then
 if testQ[myNome]["q33q"] == "смерь" then
     if string.find (message, "Вы меряете взглядом") then
-        if string.find (message,"[" .. testQ[myNome]["q33nik1"]:sub(1, -2) .. "]") then
+        print (testQ[myNome]["q33nik1"]:gsub("%-","%%-"):sub(1, -2))
+        if string.find (message,testQ[myNome]["q33nik1"]:gsub("%-", "%%-"):sub(1, -2)) then
             print (testQ[myNome]["q33nik1"])
             SendChatMessage("Я меряю взглядом " .. testQ[myNome]["q33nik1"]:sub(1, -2) , "OFFICER", nil, 1)
             testQ[myNome]["q33nik1"] = 1
         end
-        if string.find (message,"[" .. testQ[myNome]["q33nik2"]:sub(1, -2) .. "]") then
+        if string.find (message,testQ[myNome]["q33nik2"]:gsub("%-", "%%-"):sub(1, -2)) then
             print (testQ[myNome]["q33nik2"])
             SendChatMessage("Я меряю взглядом " .. testQ[myNome]["q33nik2"]:sub(1, -2) , "OFFICER", nil, 1)
             testQ[myNome]["q33nik2"] = 1
         end
-        if string.find (message,"[" .. testQ[myNome]["q33nik3"] .. "]") then
+        if string.find (message,testQ[myNome]["q33nik3"]:gsub("%-", "%%-")) then
             print (testQ[myNome]["q33nik3"])
             SendChatMessage("Я меряю взглядом " .. testQ[myNome]["q33nik3"] , "OFFICER", nil, 1)
             testQ[myNome]["q33nik3"] = 1
