@@ -101,7 +101,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 4 then
 		self[id]:SetScript("OnClick",function(self, button)
-			SendAddonMessage("NSGadd", "#zzyyy " .. testQ[myNome]["zzlf"], "guild")
+			SendAddonMessage("NSGadd", "#zzyyyy " .. testQ[myNome]["zzlf"], "guild")
 		end)
 	end
 	if id == 3 then
