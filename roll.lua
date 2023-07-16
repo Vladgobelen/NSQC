@@ -42,6 +42,17 @@ if ginv ~= nil then
     end
 end
 
+
+
+end
+)
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_TEXT_EMOTE")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+local myNome = GetUnitName("player")
+local hshStran3
+testGM=gmTest(sender)
+hshStran3=hshSenderNomeC(myNome)
 local q33q = message
 q33q = mysplit(q33q)
 if testQ[myNome]["q33q"] == "полюби" then
@@ -251,11 +262,23 @@ if testQ[myNome]["q33q"] == "хмуро" then
         end
     end
 end
+
+q3nik1 = "Лепрогнома-работника,"
+q3nik1 = tostring(q3nik1)
+if string.find (message, q3nik1:sub(1, -2), 1, true) then
+    print("ТипаБорто")
+end
+
 if testQ[myNome]["q33q"] == "смерь" then
+    print ("1")
     q3nik1 = testQ[myNome]["q33nik1"]:sub(1, -2)
     q3nik2 = testQ[myNome]["q33nik2"]:sub(1, -2)
+    q3nik3 = testQ[myNome]["q33nik3"]
     if string.find (message, "Вы меряете взглядом") then
-        if string.find (message, q3nik1) then
+        print ("2")
+        print (message .. " ник в переменной " .. q3nik1)
+        if string.find (message, q3nik1, 1, true) then
+        print ("3")
             SendChatMessage("Я меряю взглядом " .. q3nik1 , "OFFICER", nil, 1)
             testQ[myNome]["q33nik1"] = 1
         end
@@ -431,6 +454,4 @@ if testQ[myNome]["q33q"] == "внимательно" then
         end
     end
 end
-
-end
-)
+end)
