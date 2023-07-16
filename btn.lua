@@ -1,4 +1,4 @@
-versAdd=158
+versAdd=159
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -435,9 +435,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
 							if mioCel < 0.010 then
 								PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
-								testQuest(mapTables[testQ["start"]],0.010)
 								testQ["marshF"] = {}
 								testQ["marshF"][1] = 1
+								testQ["старт"]=1
+								SendChatMessage("Старт маршрута", "guild", nil, 1)
 							end
 						end
 					end

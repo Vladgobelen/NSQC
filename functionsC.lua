@@ -529,7 +529,7 @@ function testMarsh(tabella,diam)
 	return rez
 end
 
-function testQuest(tabella,diam)
+--[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
 	local x,y = GetPlayerMapPosition("player")
@@ -550,7 +550,7 @@ function testQuest(tabella,diam)
 			end
 		end
 	end
-end
+end--]]
 
 --[[function marafon(tabella,diam)
 	local testKont = GetCurrentMapContinent()
