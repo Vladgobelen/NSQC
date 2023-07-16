@@ -385,7 +385,7 @@ if string.find (message, "СТОП") and string.find (message, "эвент") and
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
-	local x = math.random(1, 8)
+	local x = math.random(1, 10)
 	if x == 1 then
 		SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
 	elseif x == 2 then
@@ -402,6 +402,10 @@ if string.find (message, "покажи сиськи") and string.find(message, m
 		SendChatMessage("( >  ) (  <  )" , "OFFICER", nil, 1)
 	elseif x == 8 then
 		SendChatMessage("( ,  Y  , )" , "OFFICER", nil, 1)
+	elseif x == 9 then
+		SendChatMessage("(.)(.)" , "OFFICER", nil, 1)
+	elseif x == 10 then
+		SendChatMessage("(,)(,)" , "OFFICER", nil, 1)
 	end
 end
 
