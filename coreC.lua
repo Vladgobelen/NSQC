@@ -344,6 +344,7 @@ end
 
 
 
+
 --for key, val in pairs(npcScan[npcSK][npcSL]["Борто"]["1"]) do
 --	print (key)
 --	print (val)

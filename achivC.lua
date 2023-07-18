@@ -11,6 +11,25 @@ if testQ[myNome]==nil then
 	testQ[myNome]={}
 end
 testGM=gmTest(sender)
+if string.find (kod, "#q33q") and string.find (kod, myNome) and testGM ~= nil then
+	testQ[myNome]["q33q"] = message
+	testQ[myNome]["взятый_квест"] = "q33"
+end
+if string.find (kod, "#q33nik1") and string.find (kod, myNome) and testGM ~= nil then
+	testQ[myNome]["q33nik1"] = message
+end
+if string.find (kod, "#q33nik2") and string.find (kod, myNome) and testGM ~= nil then
+	testQ[myNome]["q33nik2"] = message
+end
+if string.find (kod, "#q33nik3") and string.find (kod, myNome) and testGM ~= nil then
+	testQ[myNome]["q33nik3"] = message
+end
+if string.find (kod, "#q33fnd") and string.find (kod, myNome) and testGM ~= nil then
+	testQ[myNome]["q33fnd"] = message
+end
+if string.find (kod, "#q33ans") and string.find (kod, myNome) and testGM ~= nil then
+	testQ[myNome]["q33ans"] = message
+end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
@@ -148,6 +167,23 @@ if string.find (message, "#aa3") and string.find (message, myNome) then
 	testQ[myNome]["лвл_квестов"]=3
 end
 
+if string.find (message, "!crtb") then
+	print("1")
+	if rangeGen == nil then
+		rangeGen = {}
+	end
+	local uni = UnitGUID("Target")
+	uni = tostring(uni)
+	if rangeGen[uni] == nil then
+		rangeGen[uni] = {}
+	end
+	rangeGen[uni] = {}
+	local n,ni = UnitName("target")
+	rangeGen[uni]["имя"] = n
+	rangeGen[uni]["айди"] = uni
+
+end
+
 if string.find (message, "#aah") or string.find (message, "#aan") then
 	if string.find (message, myNome) then
 		msgQLVL2 = mysplit(message)
@@ -266,6 +302,8 @@ if string.find (message, "#cls") and sender == myNome then
 	testQ[myNome]["старт_поиска_нпц"] = time()
 
 end
+
+
 
 if string.find (message, "#krt") and sender == myNome then
 	if krt == nil then
