@@ -1,4 +1,4 @@
-versAdd=166
+versAdd=167
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -492,20 +492,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if myNome == "Веренс" or myNome == "Хэвлок" or myNome == "Витинари" then
 			btn[999999]:Show()
-		end
-		if krt ~= nil then
-			if testQ["marsh"] == 1 then
-				btn[777]:Show()
-			else
-				btn[777]:Hide()
-			end
-			if krt[777] == nil then
-				if krt[1] == true and krt[2] == true and chern >= 1 then
-					mostraKrtl2("Show",100,550,175,375,100,1,3)
-					chern = chern - 1
-				end
-			elseif krt[777] == 2 then
 
+			if krt ~= nil then
+				if testQ["marsh"] == 1 then
+					btn[777]:Show()
+				else
+					btn[777]:Hide()
+				end
+				if krt[777] == nil then
+					if krt[1] == true and krt[2] == true and chern >= 1 then
+						mostraKrtl2("Show",100,550,175,375,100,1,3)
+						chern = chern - 1
+					end
+				elseif krt[777] == 2 then
+
+				end
 			end
 		end
 

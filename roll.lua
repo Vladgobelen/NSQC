@@ -56,7 +56,12 @@ hshStran3=hshSenderNomeC(myNome)
 local q33q = message
 q33q = mysplit(q33q)
 
+local msg1 ={}
 local msg = mysplit(message)
+for i=1,#msg do
+	msg1[i]=msg[i]:sub(1, -3)
+	print (msg1[i])
+end
 if testQ[myNome]["q33fnd"] ~= nil then
 	if string.find (message, testQ[myNome]["q33fnd"]) then
 		for i=1,#msg do
