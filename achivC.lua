@@ -10,19 +10,22 @@ end
 if testQ[myNome]==nil then
 	testQ[myNome]={}
 end
+if testQ[myNome]["q33nik"]==nil then
+	testQ[myNome]["q33nik"]={}
+end
 testGM=gmTest(sender)
 if string.find (kod, "#q33q") and string.find (kod, myNome) and testGM ~= nil then
 	testQ[myNome]["q33q"] = message
 	testQ[myNome]["взятый_квест"] = "q33"
 end
 if string.find (kod, "#q33nik1") and string.find (kod, myNome) and testGM ~= nil then
-	testQ[myNome]["q33nik1"] = message
+	testQ[myNome]["q33nik"][1] = message
 end
 if string.find (kod, "#q33nik2") and string.find (kod, myNome) and testGM ~= nil then
-	testQ[myNome]["q33nik2"] = message
+	testQ[myNome]["q33nik"][2] = message
 end
 if string.find (kod, "#q33nik3") and string.find (kod, myNome) and testGM ~= nil then
-	testQ[myNome]["q33nik3"] = message
+	testQ[myNome]["q33nik"][3] = message
 end
 if string.find (kod, "#q33fnd") and string.find (kod, myNome) and testGM ~= nil then
 	testQ[myNome]["q33fnd"] = message

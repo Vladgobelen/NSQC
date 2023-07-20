@@ -53,38 +53,14 @@ local myNome = GetUnitName("player")
 local hshStran3
 testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
-local q33q = message
-q33q = mysplit(q33q)
 
-local msg1 ={}
-local msg = mysplit(message)
-for i=1,#msg do
-	msg1[i]=msg[i]:sub(1, -3)
-	print (msg1[i])
-end
 if testQ[myNome]["q33fnd"] ~= nil then
 	if string.find (message, testQ[myNome]["q33fnd"]) then
-		for i=1,#msg do
-			if testQ[myNome]["q33nik1"] ~= 1 then
-				if string.find(msg[i],testQ[myNome]["q33nik1"]) then
-					SendChatMessage(testQ[myNome]["q33ans"] .. testQ[myNome]["q33nik1"] , "OFFICER", nil, 1)
-					testQ[myNome]["q33nik1"] = 1
-				end
-			end
-		end
-		for i=1,#msg do
-			if testQ[myNome]["q33nik2"] ~= 1 then
-				if string.find(msg[i],testQ[myNome]["q33nik2"]) then
-					SendChatMessage(testQ[myNome]["q33ans"] .. testQ[myNome]["q33nik2"] , "OFFICER", nil, 1)
-					testQ[myNome]["q33nik1"] = 1
-				end
-			end
-		end
-		for i=1,#msg do
-			if testQ[myNome]["q33nik3"] ~= 1 then
-				if string.find(msg[i],testQ[myNome]["q33nik3"]) then
-					SendChatMessage(testQ[myNome]["q33ans"] .. testQ[myNome]["q33nik3"] , "OFFICER", nil, 1)
-					testQ[myNome]["q33nik1"] = 1
+		for i=1,#testQ[myNome]["q33nik"] do
+			if testQ[myNome]["q33nik"][i] ~= 1 then
+				if string.find(message,testQ[myNome]["q33nik"][i]) then
+					SendChatMessage(testQ[myNome]["q33ans"] .. testQ[myNome]["q33nik"][i] , "OFFICER", nil, 1)
+					testQ[myNome]["q33nik"][i] = 1
 				end
 			end
 		end
