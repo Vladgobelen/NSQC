@@ -1,4 +1,4 @@
-versAdd=170
+versAdd=171
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -74,7 +74,16 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						proverkaVypolneniyaKvestySachivkoj(myNome,3)
 						end
 					else
-						SendChatMessage(testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "GUILD", nil, 1)
+						local nik = {}
+						for i=1,#testQ[myNome]["q33nik"] do
+							if testQ[myNome]["q33nik"][i] == 1 then
+								nik[i] = "выполнено"
+							else
+								nik[i] = testQ[myNome]["q33nik"][i]
+							end
+						end
+
+						SendChatMessage(testQ[myNome]["q33q"] .. nik[1] .. ", " .. nik[2] .. ", " .. nik[3], "OFFICER", nil, 1)
 					end
 				end)
 	end
