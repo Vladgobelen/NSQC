@@ -1,4 +1,4 @@
-versAdd=169
+versAdd=170
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -74,7 +74,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						proverkaVypolneniyaKvestySachivkoj(myNome,3)
 						end
 					else
-						SendChatMessage(testQ[myNome]["q33q"] .. testQ[myNome]["q33nik1"] .. ", " .. testQ[myNome]["q33nik2"] .. ", " .. testQ[myNome]["q33nik1"], "GUILD", nil, 1)
+						SendChatMessage(testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "GUILD", nil, 1)
 					end
 				end)
 	end
@@ -1046,7 +1046,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			else
 				btn[1]:Hide()
-				if testQ[myNome]["q33nik1"] ~= 1 or testQ[myNome]["q33nik2"] ~= 1 or testQ[myNome]["q33nik3"] ~= 1 then
+				if testQ[myNome]["q33nik"][1] ~= 1 or testQ[myNome]["q33nik"][2] ~= 1 or testQ[myNome]["q33nik"][3] ~= 1 then
 					btn[2]:Disable()
 					if pokazat == 1 then
 						btn[2]:Show()
