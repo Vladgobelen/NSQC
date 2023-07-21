@@ -34,7 +34,6 @@ if string.find (kod, "#q33ans") and string.find (kod, myNome) and testGM ~= nil 
 	testQ[myNome]["q33ans"] = message
 end
 if kod=="NSGadd" then
-print (message)
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
 		msg1 = mysplit(message)
