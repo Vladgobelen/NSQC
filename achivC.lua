@@ -34,6 +34,7 @@ if string.find (kod, "#q33ans") and string.find (kod, myNome) and testGM ~= nil 
 	testQ[myNome]["q33ans"] = message
 end
 if kod=="NSGadd" then
+print (message)
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
 		msg1 = mysplit(message)
@@ -277,7 +278,6 @@ end
 if string.find (message, "#questTimerID2") and sender == myNome then
 	testQ["timerID2"] = 60
 	btn[2]:Disable()
-
 end
 
 if string.find (message, "#aak") and string.find (message, myNome) then

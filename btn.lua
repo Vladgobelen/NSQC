@@ -1,4 +1,4 @@
-versAdd=174
+versAdd=175
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -52,6 +52,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		elseif id == 1 then
 			SendAddonMessage("NSGadd", zzid .. " " .. versAdd, "guild")
 			SendChatMessage("ВOЖДЬ", "guild", nil, 1)
+			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
 		else
 			SendAddonMessage("NSGadd", zzid, "guild")
 		end
@@ -455,21 +456,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 
-		if testQ["timerID2"] ~= nil then
-			testQ["timerID2"] = tonumber(testQ["timerID2"])
-			testQ["timerID2"] = testQ["timerID2"]-1
-			btn[2]:SetText(testQ["timerID2"])
-			if testQ["timerID2"] <= 1 then
-				testQ["timerID2"] = nil
-			end
-		else
-			if pokazat == 1 then
-				btn[2]:SetText("Сдать квест")
-				btn[2]:Enable()
-			end
-		end
-
-
 		if testQ["проверка_версии"] == nil then
 			testQ[myNome]["zzlf"]=0
 		end
@@ -535,6 +521,26 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		if testQ["timerID2"] ~= nil then
+			testQ["timerID2"] = tonumber(testQ["timerID2"])
+			testQ["timerID2"] = testQ["timerID2"]-0.01
+			local btnT1 = string.format("%02d", testQ["timerID2"])
+			btn[2]:SetText(btnT1)
+			btn[1]:SetText(btnT1)
+			btn[2]:Disable()
+			btn[1]:Disable()
+			if testQ["timerID2"] <= 1 then
+				testQ["timerID2"] = nil
+			end
+		end
+		if testQ["timerID2"] == nil then
+			if pokazat == 1 then
+				btn[2]:SetText("Сдать квест")
+				btn[2]:Enable()
+				btn[1]:Enable()
+				btn[1]:SetText("Взять квест")
+			end
+		end
 		if pokazat == 0 then
 			if testQ["miniMapConf"] ~= nil then
 				myIconPos = testQ["miniMapConf"]
@@ -986,7 +992,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[1]:Hide()
 				btn[1]:SetText("Ачивка не выполнена")
 			else
-				btn[2]:Enable()
+				if testQ["timerID2"] == nil then
+					btn[2]:Enable()
+					btn[1]:Enable()
+				end
 				if pokazat == 1 then
 						btn[2]:Show()
 						btn[1]:Hide()
@@ -1025,7 +1034,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[1]:Hide()
 				btn[1]:SetText("Ачивка не выполнена")
 			else
-				btn[2]:Enable()
+				if testQ["timerID2"] == nil then
+					btn[2]:Enable()
+				end
 				if pokazat == 1 then
 						btn[2]:Show()
 						btn[1]:Hide()
@@ -1052,7 +1063,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						btn[1]:Hide()
 						btn[1]:SetText("Ачивка не выполнена")
 					else
-						btn[2]:Enable()
+						if testQ["timerID2"] == nil then
+							btn[2]:Enable()
+							btn[1]:Enable()
+						end
 						if pokazat == 1 then
 							btn[2]:Show()
 							btn[1]:Hide()
@@ -1090,7 +1104,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						btn[1]:Hide()
 						btn[1]:SetText("Ачивка не выполнена")
 					else
-						btn[2]:Enable()
+						if testQ["timerID2"] == nil then
+							btn[2]:Enable()
+							btn[1]:Enable()
+						end
 						if pokazat == 1 then
 							btn[2]:Show()
 							btn[1]:Hide()
@@ -1114,7 +1131,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					btn[1]:Hide()
 					btn[1]:SetText("Ачивка не выполнена")
 				else
-					btn[2]:Enable()
+					if testQ["timerID2"] == nil then
+						btn[2]:Enable()
+						btn[1]:Enable()
+					end
 					if pokazat == 1 then
 						btn[2]:Show()
 						btn[1]:Hide()
