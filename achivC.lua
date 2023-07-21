@@ -274,6 +274,12 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["q33q"]=nil
 end
 
+if string.find (message, "#questTimerID2") and sender == myNome then
+	local testQ["timerID2"] = 60
+	btn[2]:Disable()
+
+end
+
 if string.find (message, "#aak") and string.find (message, myNome) then
 	msgVzyalQ2=mysplit(message)
 	msgVzyalQ2=msgVzyalQ2[3]

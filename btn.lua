@@ -1,4 +1,4 @@
-versAdd=171
+versAdd=172
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -48,6 +48,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				SendAddonMessage("NSGadd", "#q33x", "guild")
 			end
+			SendAddonMessage("NSGadd", #questTimerID2, "guild")
 		elseif id == 1 then
 			SendAddonMessage("NSGadd", zzid .. " " .. versAdd, "guild")
 			SendChatMessage("ВOЖДЬ", "guild", nil, 1)
@@ -151,6 +152,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			marsh[testKont][lok][n] = {}
 			marsh[testKont][lok][n]["x"] = x
 			marsh[testKont][lok][n]["y"] = y
+			print (n)
 		end)
 	end
 	if id == 999999 then
@@ -419,6 +421,31 @@ end
 end
 )
 
+--[[frameTextu = {}
+local i = 1
+WorldMapDetailFrame:SetScript("OnUpdate",function(self)
+	local uiScale, x, y = WorldMapDetailFrame:GetEffectiveScale(), GetCursorPosition()
+	frameTextu[i] = WorldMapDetailFrame:CreateTexture()
+	frameTextu[i]:SetTexture(1,1,1)
+	frameTextu[i]:SetSize(4,4)
+	frameTextu[i]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame, "BOTTOMLEFT", x / uiScale, y / uiScale)
+	x,y,z,jj,k,l=frameTextu[i]:GetPoint()
+	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+	GameTooltip:AddLine(jj)
+	GameTooltip:AddLine(k)
+	GameTooltip:Show()
+	WorldFrame:SetScript("OnMouseDown", function()
+		print (jj .. " " .. k)
+	end)
+	i=i+1
+	j = i - 2
+	if frameTextu[j] ~= nil then
+		frameTextu[j]:Hide()
+	end
+end)--]]
+
+
+
 
 
 local frameTime = CreateFrame("FRAME")
@@ -427,6 +454,20 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+
+		if testQ["timerID2"] ~= nil then
+			testQ["timerID2"] = tonumber(testQ["timerID2"])
+			testQ["timerID2"] = testQ["timerID2"]-1
+			btn[2]:SetText(testQ["timerID2"])
+			if testQ["timerID2"] <= 1 then
+				testQ["timerID2"] = nil
+			end
+		else
+			btn[2]:SetText("Сдать квест")
+			brn[2]:Enable()
+		end
+
+
 		if testQ["проверка_версии"] == nil then
 			testQ[myNome]["zzlf"]=0
 		end
@@ -449,15 +490,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			local par1 = testQ["start"]
 			if mapTables[testQ["start"]] ~= nil then
 				if mapTables[testQ["start"]][testKont] ~= nil then
-					if mapTables[testQ["start"]][testKont][lok]["testLok"] == lok then
-						if testKont == mapTables[testQ["start"]][testKont]["testKont"] then
-							local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
-							if mioCel < 0.010 then
-								PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
-								testQ["marshF"] = {}
-								testQ["marshF"][1] = 1
-								testQ["старт"]=1
-								SendChatMessage("Старт маршрута", "guild", nil, 1)
+					if mapTables[testQ["start"]][testKont][lok] ~= nik then
+						if mapTables[testQ["start"]][testKont] ~= nil then
+							if mapTables[testQ["start"]][testKont][lok]["testLok"] == lok then
+								if mapTables[testQ["start"]] ~= nil and testKont == mapTables[testQ["start"]][testKont]["testKont"] then
+									local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
+									if mioCel < 0.010 then
+										PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
+										testQ["marshF"] = {}
+										testQ["marshF"][1] = 1
+										testQ["старт"]=1
+										SendChatMessage("Старт маршрута", "OFFICER", nil, 1)
+									end
+								end
 							end
 						end
 					end
@@ -468,9 +513,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		if testQ["старт"] ~= nil and testQ["старт"] == 1 then
 			local par1 = testQ["start"]
-			local xxx = (testMarsh(mapTables[testQ["start"]],0.010))
+			local xxx = (testMarsh(mapTables[testQ["start"]],0.020))
 			if xxx < 1 then
-				SendChatMessage("Я проиграл", "guild", nil, 1)
+				SendChatMessage("Я проиграл", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
 				testQ["старт"] = 0
 				testQ["num"] = nil
@@ -861,7 +906,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						mioCel=sqrt((nXres-posmioX)^2+(nYres-posmioY)^2)
 						if mioCel>0.01 then
 							if testRasstoyanie~=1 then
-								SendChatMessage("Я сбежал с маршрута", "GUILD", nil, 1)
+								SendChatMessage("Я сбежал с маршрута", "OFFICER", nil, 1)
 								testRasstoyanie=1
 							else
 							end
@@ -869,7 +914,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if testRasstoyanie~=0 then
 								local hshStran3
 								hshStran3=hshSenderNomeC(myNome)
-								SendChatMessage(hshStran3 .. " Я вернулся на маршрут", "GUILD", nil, 1)
+								SendChatMessage(hshStran3 .. " Я вернулся на маршрут", "OFFICER", nil, 1)
 								nXres=nil
 								testRasstoyanie=0
 							else
