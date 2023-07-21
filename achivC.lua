@@ -278,6 +278,7 @@ end
 if string.find (message, "#questTimerID2") and sender == myNome then
 	testQ["timerID2"] = 60
 	btn[2]:Disable()
+	btn[1]:Disable()
 end
 
 if string.find (message, "#aak") and string.find (message, myNome) then
