@@ -465,7 +465,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		else
 			if pokazat == 1 then
 				btn[2]:SetText("Сдать квест")
-				brn[2]:Enable()
+				btn[2]:Enable()
 			end
 		end
 
