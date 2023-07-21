@@ -1,4 +1,4 @@
-versAdd=173
+versAdd=174
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -48,7 +48,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				SendAddonMessage("NSGadd", "#q33x", "guild")
 			end
-			SendAddonMessage("NSGadd", #questTimerID2, "guild")
+			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
 		elseif id == 1 then
 			SendAddonMessage("NSGadd", zzid .. " " .. versAdd, "guild")
 			SendChatMessage("ВOЖДЬ", "guild", nil, 1)
