@@ -275,7 +275,7 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 end
 
 if string.find (message, "#questTimerID2") and sender == myNome then
-	local testQ["timerID2"] = 60
+	testQ["timerID2"] = 60
 	btn[2]:Disable()
 
 end
