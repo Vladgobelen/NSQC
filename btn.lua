@@ -1,4 +1,4 @@
-versAdd=178
+versAdd=179
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -121,11 +121,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 3 then
 		self[id]:SetScript("OnClick",function(self, button)
-			SendChatMessage("Нужно принять в гильдию 20 новых игроков", "GUILD", nil, 1)
-			print ("Нажми \"Щ\". Затем выбери внизу вкладку \"Кто\"")
-			print ("В строке поиска снизу напиши диапазон лвлов (лучше всего по 5). например: 1-5, 6-10, 11-15 итд")
-			print ("Затем пиши в чате: /ginvite ник")
-			print ("Для удобства команду /ginvite лучше скопировать в буфер обмена с тремя пробелами в конце и вставлять.")
+
 		end)
 	end
 	if id == 777 then
@@ -182,7 +178,7 @@ end
 -- видимо я так понял имеет значение порядок создания кнопок
 btn:configure(1,0,300,300,30,"#zzs","Взять квест");
 btn:configure(2,0,300,300,30,"#zzr","Сдать квест");
-btn:configure(3,-135,270,30,30,"#zzz","?");
+btn:configure(3,-135,270,30,30,"","?");
 btn:configure(4,15,270,270,30,"#zzy","Сдать бонусный квест вне лимита");
 btn:configure(5,0,240,300,30,"#zzt","Узнать свой гилдлвл");
 btn:configure(99,-400,400,100,30,"","тест");
@@ -217,6 +213,21 @@ btn[14]:SetScript("OnEnter",function(self)
 	GameTooltip:Show()
 end)
 btn[14]:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
+
+btn[3]:SetScript("OnEnter",function(self)
+	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+	GameTooltip:AddLine("|c006495EDБонусный квест. Доступен всегда.")
+	GameTooltip:AddLine("|c00FFFFE0Каждые 20 принятых игроков принесут 3 опыта и кусок карты")
+	GameTooltip:AddLine("|c00FFFFE0По пометкам на карте можно найти клад: в кладе Механоцикл")
+	GameTooltip:AddLine("|c00F4A460Нажми \"Щ\". Затем выбери внизу вкладку \"Кто\"")
+	GameTooltip:AddLine("|c00F4A460В строке поиска снизу напиши диапазон лвлов (лучше всего по 5: 1-5, 6-10 итд)")
+	GameTooltip:AddLine("|c00F4A460Затем пиши в чате: /ginvite ник")
+	GameTooltip:AddLine("|c00FFFFE0Для удобства команду /ginvite лучше скопировать в буфер обмена")
+	GameTooltip:Show()
+end)
+btn[3]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
 
@@ -582,6 +593,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
 		if krt ~= nil then
 			if krt[777] == 2 then
 				if testQ["startChern"] == nil then
