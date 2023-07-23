@@ -12,6 +12,7 @@ lib\lib_string.lua
 lib\lib_table.lua
 libs\UTF8\utf8.lua
 ##################
+Incarichi\incCom.lua
 Incarichi\incAd.lua
 Incarichi\incGi.lua
 Incarichi\incOf.lua

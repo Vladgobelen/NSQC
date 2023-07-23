@@ -3,6 +3,7 @@
 
 # Do not ignore these files:
 !Incarichi/
+!Incarichi/incCom.lua
 !Incarichi/incAd.lua
 !Incarichi/incGi.lua
 !Incarichi/incOf.lua
