@@ -445,74 +445,6 @@ function tblAllFail(mm,nik)
 	return r
 end
 
-function trovMarsh(tabella,diam)
-	local testKont = GetCurrentMapContinent()
-	local lok = GetCurrentMapZone()
-	local x,y = GetPlayerMapPosition("player")
-	local mioCel
-	local mioCel1
-	testQ["schet1"] = nil
-	testKont = tostring(testKont)
-	lok = tostring(lok)
-	if tabella ~= nil then
-		if tabella[testKont] ~= nil then
-			if tabella[testKont][lok] ~= nil then
-				if testKont == tabella[testKont]["testKont"] then
-					local tablen = tablelength(tabella[testKont][lok])
-					testQ["schet"] = {}
-					testQ["numPunti"] = {}
-					if testQ["num"] == nil then
-						mioCel=sqrt((x-tabella[testKont][lok]["1"]["x"])^2+(y-tabella[testKont][lok]["1"]["y"])^2)
-						if mioCel < diam then
-							testQ["num"] = 1
-							testQ["schet1"] = 1
-						end
-					end
-					for i = testQ["num"]-10, testQ["num"]+10 do
-						testQ["schet1"] = i
-						j = tostring(i)
-						if tabella[testKont][lok][j] ~= nil then
-							mioCel=sqrt((x-tabella[testKont][lok][j]["x"])^2+(y-tabella[testKont][lok][j]["y"])^2)
-							if mioCel < diam then
-								testQ["schet"][i] = 1
-								j = testQ["num"]
-								j = tostring(j)
-								mioCel1=sqrt((x-tabella[testKont][lok][j]["x"])^2+(y-tabella[testKont][lok][j]["y"])^2)
-								if mioCel1 > mioCel then
-									testQ["num"] = i
-									testQ["marshF"][i] = i
-									if testQ["marshF"][i] == math.modf(tablen/4) then
-										SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-									end
-									if testQ["marshF"][i] == math.modf(tablen/2) then
-										SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-									end
-									if testQ["marshF"][i] == math.modf(tablen/4*3) then
-										SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-									end
-
-									if tablen - 1 - #testQ["marshF"] < 1 then
-										SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
-										testQ["старт"] = nil
-										testQ["num"] = nil
-										testQ["marshF"] = nil
-									end
-								end
-							else
-								testQ["schet"][i] = 0
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
 function testMarsh(tabella,diam)
 	trovMarsh(tabella,diam)
 		local rez = 0
@@ -529,9 +461,149 @@ function testMarsh(tabella,diam)
 	return rez
 end
 
-function testRegular(nik)
+function trovMarsh(tabella,diam)
+	if testKontLok(tabella) ~= nil then
+		local x,y = GetPlayerMapPosition("player")
+		local testKont = GetCurrentMapContinent()
+		testKont = tostring(testKont)
+		local lok = GetCurrentMapZone()
+		lok = tostring(lok)
+		local tablen = tablelength(mapTables[tabella][testKont][lok])
+		testQ["schet"] = {}
+		testQ["numPunti"] = {}
+		if testQ["num"] == nil then
+			if testKontLok(tabella) < diam then
+				testQ["num"] = 1
+				testQ["schet1"] = 1
+			end
+		end
+		for i = testQ["num"]-10, testQ["num"]+10 do
+			testQ["schet1"] = i
+			j = tostring(i)
+			if mapTables[tabella][testKont][lok][j] ~= nil then
+				mioCel=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+				if mioCel < diam then
+					testQ["schet"][i] = 1
+					j = testQ["num"]
+					j = tostring(j)
+					mioCel1=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+					if mioCel1 > mioCel then
+						testQ["num"] = i
+						testQ["marshF"][i] = i
+						if testQ["marshF"][i] == math.modf(tablen/4) then
+							SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
+							PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+						end
+						if testQ["marshF"][i] == math.modf(tablen/2) then
+							SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
+							PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+						end
+						if testQ["marshF"][i] == math.modf(tablen/4*3) then
+							SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
+							PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+						end
+						if tablen - 1 - #testQ["marshF"] < 1 then
+							SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
+							PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+							testQ["старт"] = nil
+							testQ["num"] = nil
+							testQ["marshF"] = nil
 
+							if testQ[tabella] == "старт" then
+								if tabella == "evO0102" then
+									testQ["evO0102"] = true
+								end
+								if tabella == "evO0203" then
+									testQ["evO0203"] = true
+								end
+								if tabella == "evO0304" then
+									testQ["evO0304"] = true
+								end
+								if tabella == "evO0405" then
+									testQ["evO0405"] = true
+								end
+								if tabella == "evO0506" then
+									testQ["evO0506"] = true
+								end
+								if tabella == "evO0607" then
+									testQ["evO0607"] = true
+								end
+								if tabella == "evO0708" then
+									testQ["evO0708"] = true
+								end
+								if tabella == "evO0809" then
+									testQ["evO0809"] = true
+								end
+								if tabella == "evO0910" then
+									testQ["evO0910"] = true
+								end
+								if tabella == "evO1011" then
+									testQ["evO1011"] = true
+								end
+								if tabella == "evO11" then
+									testQ["evO11"] = true
+								end
+								if tabella == "evO12" then
+									testQ["evO12"] = true
+								end
+								if tabella == "evO13" then
+									testQ["evO13"] = true
+								end
+								if tabella == "evO14" then
+									testQ["evO14"] = true
+								end
+							end
+						end
+					end
+				else
+					testQ["schet"][i] = 0
+				end
+			end
+		end
+	end
 end
+
+function testKontLok(tabella)
+	local testKont = GetCurrentMapContinent()
+	testKont = tostring(testKont)
+	local lok = GetCurrentMapZone()
+	lok = tostring(lok)
+	local mioCel
+	local x,y = GetPlayerMapPosition("player")
+	if x ~= 0 then
+
+		if mapTables[tabella][testKont] ~= nil then
+			if mapTables[tabella][testKont]["testKont"] ~= nil and mapTables[tabella][testKont]["testKont"] == testKont then
+				if mapTables[tabella][testKont][lok] ~= nil then
+					if mapTables[tabella][testKont][lok]["testLok"] == lok then
+						mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
+						return mioCel
+					end
+				end
+			end
+		end
+	end
+end
+
+function startFchern(tabella,n1,n2)
+	if krt[n1] == true and krt[n2] == true then
+		testQ["start"] = tabella
+		testQ["старт"] = 0
+		testQ[tabella] = "старт"
+	end
+end
+
+function testFchern(tabella,n1,n2)
+	if testQ[tabella] == nil then
+		if testKontLok(tabella) ~= nil then
+			if testKontLok(tabella) < 0.020 then
+				startFchern(tabella,n1,n2)
+			end
+		end
+	end
+end
+
+
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()

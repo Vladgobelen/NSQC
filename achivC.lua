@@ -533,61 +533,75 @@ if string.find (message, "#krt") and sender == myNome then
 							local chern = krt[999]
 							for i = 1, krt[999] do
 								if chern >=1 then
-									if krt[1] == true and krt[2] == true and chern >= 1 then
-										mostraKrtl2("Show",100,550,175,375,100,1,3)
-										chern = chern - 1
+									if krt[1] == true and krt[2] == true then
+										if testQ["evO0102"] == true then
+											mostraKrtl2("Show",100,550,175,375,100,1,3)
+										end
 									end
-									if krt[2] == true and krt[3] == true and chern >= 1 then
-										mostraKrtl2("Show",175,375,450,540,150,1,3)
-										chern = chern - 1
+									if krt[2] == true and krt[3] == true then
+										if testQ["evO0203"] == true then
+											mostraKrtl2("Show",175,375,450,540,150,1,3)
+										end
 									end
-									if krt[3] == true and krt[4] == true and chern >= 1 then
-										mostraKrtl2("Show",450,540,565,450,100,1,3)
-										chern = chern - 1
+									if krt[3] == true and krt[4] == true then
+										if testQ["evO0304"] == true then
+											mostraKrtl2("Show",450,540,565,450,100,1,3)
+										end
 									end
-									if krt[4] == true and krt[5] == true and chern >= 1 then
-										mostraKrtl2("Show",565,450,675,565,100,1,3)
-										chern = chern - 1
+									if krt[4] == true and krt[5] == true then
+										if testQ["evO0405"] == true then
+											mostraKrtl2("Show",565,450,675,565,100,1,3)
+										end
 									end
-									if krt[5] == true and krt[6] == true and chern >= 1 then
-										mostraKrtl2("Show",675,565,820,563,100,1,3)
-										chern = chern - 1
+									if krt[5] == true and krt[6] == true then
+										if testQ["evO0506"] == true then
+											mostraKrtl2("Show",675,565,820,563,100,1,3)
+										end
 									end
-									if krt[6] == true and krt[7] == true and chern >= 1 then
-										mostraKrtl2("Show",820,563,625,75,200,1,3)
-										chern = chern - 1
+									if krt[6] == true and krt[7] == true then
+										if testQ["evO0607"] == true then
+											mostraKrtl2("Show",820,563,625,75,200,1,3)
+										end
 									end
-									if krt[7] == true and krt[8] == true and chern >= 1 then
-										mostraKrtl2("Show",625,75,850,125,100,1,3)
-										chern = chern - 1
+									if krt[7] == true and krt[8] == true then
+										if testQ["evO0708"] == true then
+											mostraKrtl2("Show",625,75,850,125,100,1,3)
+										end
 									end
-									if krt[8] == true and krt[9] == true and chern >= 1 then
-										mostraKrtl2("Show",850,125,75,100,300,1,3)
-										chern = chern - 1
+									if krt[8] == true and krt[9] == true then
+										if testQ["evO0809"] == true then
+											mostraKrtl2("Show",850,125,75,100,300,1,3)
+										end
 									end
-									if krt[9] == true and krt[10] == true and chern >= 1 then
-										mostraKrtl2("Show",75,100,400,50,200,1,3)
-										chern = chern - 1
+									if krt[9] == true and krt[10] == true then
+										if testQ["evO0910"] == true then
+											mostraKrtl2("Show",75,100,400,50,200,1,3)
+										end
 									end
-									if krt[10] == true and krt[11] == true and chern >= 1 then
-										mostraKrtl2("Show",400,50,100,250,200,1,3)
-										chern = chern - 1
+									if krt[10] == true and krt[11] == true then
+										if testQ["evO1011"] == true then
+											mostraKrtl2("Show",400,50,100,250,200,1,3)
+										end
 									end
-									if krt[11] == true and  chern >= 1 then
-										mostraKrtl2("Show",100,250,1000,190,400,1,3)
-										chern = chern - 1
+									if krt[11] == true then
+										if testQ["evO11"] == true then
+											mostraKrtl2("Show",100,250,1000,190,400,1,3)
+										end
 									end
-									if krt[12] == true and  chern >= 1 then
-										mostraKrtl2("Show",300,365,1000,275,400,1,3)
-										chern = chern - 1
+									if krt[12] == true then
+										if testQ["evO12"] == true then
+											mostraKrtl2("Show",300,365,1000,275,400,1,3)
+										end
 									end
-									if krt[13] == true and  chern >= 1 then
-										mostraKrtl2("Show",375,300,1000,440,400,1,3)
-										chern = chern - 1
+									if krt[13] == true then
+										if testQ["evO13"] == true then
+											mostraKrtl2("Show",375,300,1000,440,400,1,3)
+										end
 									end
-									if krt[14] == true and  chern >= 1 then
-										mostraKrtl2("Show",900,250,0,460,400,1,3)
-										chern = chern - 1
+									if krt[14] == true then
+										if testQ["evO14"] == true then
+											mostraKrtl2("Show",900,250,0,460,400,1,3)
+										end
 									end
 
 								end
