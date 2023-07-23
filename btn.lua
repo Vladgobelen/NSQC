@@ -1,4 +1,4 @@
-versAdd=176
+versAdd=177
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -211,6 +211,50 @@ btnF:SetFrameStrata("TOOLTIP")
 btnF:SetScript("OnClick",
   function()
 	SendAddonMessage("NSGadd", "#krt", "guild")
+	testQ["startChern"] = nil
+	testQ["start"] = nil
+	if testQ["evO0102"] ~= true then
+		testQ["evO0102"] = nil
+	end
+	if testQ["evO0203"] ~= true then
+		testQ["evO0203"] = nil
+	end
+	if testQ["evO0304"] ~= true then
+		testQ["evO0304"] = nil
+	end
+	if testQ["evO0405"] ~= true then
+		testQ["evO0405"] = nil
+	end
+	if testQ["evO0506"] ~= true then
+		testQ["evO0506"] = nil
+	end
+	if testQ["evO0607"] ~= true then
+		testQ["evO0607"] = nil
+	end
+	if testQ["evO0708"] ~= true then
+		testQ["evO0708"] = nil
+	end
+	if testQ["evO0809"] ~= true then
+		testQ["evO0809"] = nil
+	end
+	if testQ["evO0910"] ~= true then
+		testQ["evO0910"] = nil
+	end
+	if testQ["evO1011"] ~= true then
+		testQ["evO1011"] = nil
+	end
+	if testQ["evO11"] ~= true then
+		testQ["evO11"] = nil
+	end
+	if testQ["evO12"] ~= true then
+		testQ["evO12"] = nil
+	end
+	if testQ["evO13"] ~= true then
+		testQ["evO13"] = nil
+	end
+	if testQ["evO14"] ~= true then
+		testQ["evO14"] = nil
+	end
   end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
@@ -523,20 +567,48 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 		if krt ~= nil then
 			if krt[777] == 2 then
-				testFchern("evO0102",1,2)
-				testFchern("evO0203",2,3)
-				testFchern("evO0304",3,4)
-				testFchern("evO0405",4,5)
-				testFchern("evO0506",5,6)
-				testFchern("evO0607",6,7)
-				testFchern("evO0708",7,8)
-				testFchern("evO0809",8,9)
-				testFchern("evO0910",9,10)
-				testFchern("evO1011",10,11)
-				testFchern("evO11",11,11)
-				testFchern("evO12",12,12)
-				testFchern("evO13",13,13)
-				testFchern("evO14",14,14)
+				if testQ["startChern"] == nil then
+					testFchern("evO0102",21,22)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0203",22,23)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0304",23,24)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0405",24,25)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0506",25,26)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0607",26,27)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0708",27,28)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0809",28,29)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO0910",29,30)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO1011",30,31)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO11",31,31)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO12",32,32)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO13",33,33)
+				end
+				if testQ["startChern"] == nil then
+					testFchern("evO14",34,34)
+				end
 			end
 		end
 

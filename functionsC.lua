@@ -512,46 +512,63 @@ function trovMarsh(tabella,diam)
 							if testQ[tabella] == "старт" then
 								if tabella == "evO0102" then
 									testQ["evO0102"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO0203" then
 									testQ["evO0203"] = true
+									testQ["startChern"] = nil
+									print (testQ["evO0203"])
 								end
 								if tabella == "evO0304" then
 									testQ["evO0304"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO0405" then
 									testQ["evO0405"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO0506" then
 									testQ["evO0506"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO0607" then
 									testQ["evO0607"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO0708" then
 									testQ["evO0708"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO0809" then
 									testQ["evO0809"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO0910" then
 									testQ["evO0910"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO1011" then
 									testQ["evO1011"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO11" then
 									testQ["evO11"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO12" then
 									testQ["evO12"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO13" then
 									testQ["evO13"] = true
+									testQ["startChern"] = nil
 								end
 								if tabella == "evO14" then
 									testQ["evO14"] = true
+									testQ["startChern"] = nil
 								end
+
+
 							end
 						end
 					end
@@ -598,6 +615,7 @@ function testFchern(tabella,n1,n2)
 		if testKontLok(tabella) ~= nil then
 			if testKontLok(tabella) < 0.020 then
 				startFchern(tabella,n1,n2)
+				testQ["startChern"] = tabella
 			end
 		end
 	end
