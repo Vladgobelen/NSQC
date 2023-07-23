@@ -19,13 +19,19 @@ if string.find (kod, "#q33q") and string.find (kod, myNome) and testGM ~= nil th
 	testQ[myNome]["взятый_квест"] = "q33"
 end
 if string.find (kod, "#q33nik1") and string.find (kod, myNome) and testGM ~= nil then
-	testQ[myNome]["q33nik"][1] = message
+	if testQ[myNome]["q33nik"][1] ~= 1 then
+		testQ[myNome]["q33nik"][1] = message
+	end
 end
 if string.find (kod, "#q33nik2") and string.find (kod, myNome) and testGM ~= nil then
-	testQ[myNome]["q33nik"][2] = message
+	if testQ[myNome]["q33nik"][2] ~= 1 then
+		testQ[myNome]["q33nik"][2] = message
+	end
 end
 if string.find (kod, "#q33nik3") and string.find (kod, myNome) and testGM ~= nil then
-	testQ[myNome]["q33nik"][3] = message
+	if testQ[myNome]["q33nik"][3] ~= 1 then
+		testQ[myNome]["q33nik"][3] = message
+	end
 end
 if string.find (kod, "#q33fnd") and string.find (kod, myNome) and testGM ~= nil then
 	testQ[myNome]["q33fnd"] = message
@@ -338,6 +344,9 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	btn[1]:SetText("Взять квест")
 	testQ[myNome]["взятый_квест"]="9999"
 	testQ[myNome]["q33q"]=nil
+	testQ[myNome]["q33nik"][1] = nil
+	testQ[myNome]["q33nik"][2] = nil
+	testQ[myNome]["q33nik"][3] = nil
 end
 
 if string.find (message, "#questTimerID2") and sender == myNome then
