@@ -521,21 +521,23 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-		if krt[777] == 2 then
-			testFchern("evO0102",1,2)
-			testFchern("evO0203",2,3)
-			testFchern("evO0304",3,4)
-			testFchern("evO0405",4,5)
-			testFchern("evO0506",5,6)
-			testFchern("evO0607",6,7)
-			testFchern("evO0708",7,8)
-			testFchern("evO0809",8,9)
-			testFchern("evO0910",9,10)
-			testFchern("evO1011",10,11)
-			testFchern("evO11",11,11)
-			testFchern("evO12",12,12)
-			testFchern("evO13",13,13)
-			testFchern("evO14",14,14)
+		if krt ~= nil then
+			if krt[777] == 2 then
+				testFchern("evO0102",1,2)
+				testFchern("evO0203",2,3)
+				testFchern("evO0304",3,4)
+				testFchern("evO0405",4,5)
+				testFchern("evO0506",5,6)
+				testFchern("evO0607",6,7)
+				testFchern("evO0708",7,8)
+				testFchern("evO0809",8,9)
+				testFchern("evO0910",9,10)
+				testFchern("evO1011",10,11)
+				testFchern("evO11",11,11)
+				testFchern("evO12",12,12)
+				testFchern("evO13",13,13)
+				testFchern("evO14",14,14)
+			end
 		end
 
 

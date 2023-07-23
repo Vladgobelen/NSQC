@@ -477,53 +477,66 @@ if string.find (message, "#krt") and sender == myNome then
 						end
 						if krt[22] == true then
 							mostraKrtl2("Show",171,371,171,371,1,1,12)
+							mostraKrtl2("Show",171,371,171,371,1,1,12)
 							mostraKrtl2("Show",175,375,275,435,100,1,3)
 						end
 						if krt[23] == true then
+							mostraKrtl2("Show",446,536,446,536,1,1,12)
 							mostraKrtl2("Show",446,536,446,536,1,1,12)
 							mostraKrtl2("Show",450,540,500,500,50,1,3)
 						end
 						if krt[24] == true then
 							mostraKrtl2("Show",561,446,561,446,1,1,12)
+							mostraKrtl2("Show",561,446,561,446,1,1,12)
 							mostraKrtl2("Show",565,450,613,500,100,1,3)
 						end
 						if krt[25] == true then
-								mostraKrtl2("Show",671,561,671,561,1,1,12)
-								mostraKrtl2("Show",675,565,750,564,50,1,3)
+							mostraKrtl2("Show",671,561,671,561,1,1,12)
+							mostraKrtl2("Show",671,561,671,561,1,1,12)
+							mostraKrtl2("Show",675,565,750,564,50,1,3)
 						end
 						if krt[26] == true then
+							mostraKrtl2("Show",816,559,816,559,1,1,12)
 							mostraKrtl2("Show",816,559,816,559,1,1,12)
 							mostraKrtl2("Show",820,563,795,500,50,1,3)
 						end
 							if krt[27] == true then
 							mostraKrtl2("Show",621,71,621,71,1,1,12)
+							mostraKrtl2("Show",621,71,621,71,1,1,12)
 							mostraKrtl2("Show",625,75,750,103,50,1,3)
 						end
 						if krt[28] == true then
+							mostraKrtl2("Show",846,121,846,121,1,1,12)
 							mostraKrtl2("Show",846,121,846,121,1,1,12)
 							mostraKrtl2("Show",850,125,750,122,50,1,3)
 						end
 						if krt[29] == true then
 							mostraKrtl2("Show",71,96,71,96,1,1,12)
+							mostraKrtl2("Show",71,96,71,96,1,1,12)
 							mostraKrtl2("Show",75,100,250,74,100,1,3)
 						end
 						if krt[30] == true then
+							mostraKrtl2("Show",396,46,396,46,1,1,12)
 							mostraKrtl2("Show",396,46,396,46,1,1,12)
 							mostraKrtl2("Show",400,50,250,150,100,1,3)
 						end
 						if krt[31] == true then
 							mostraKrtl2("Show",96,246,96,246,1,1,12)
+							mostraKrtl2("Show",96,246,96,246,1,1,12)
 							mostraKrtl2("Show",100,250,250,240,100,1,3)
 						end
 						if krt[32] == true then
+							mostraKrtl2("Show",296,361,296,361,1,1,12)
 							mostraKrtl2("Show",296,361,296,361,1,1,12)
 							mostraKrtl2("Show",300,365,450,346,200,1,3)
 						end
 						if krt[33] == true then
 							mostraKrtl2("Show",371,296,371,296,1,1,12)
+							mostraKrtl2("Show",371,296,371,296,1,1,12)
 							mostraKrtl2("Show",375,300,500,328,100,1,3)
 						end
 						if krt[34] == true then
+							mostraKrtl2("Show",896,246,896,246,1,1,12)
 							mostraKrtl2("Show",896,246,896,246,1,1,12)
 							mostraKrtl2("Show",900,250,750,285,100,1,3)
 						end
