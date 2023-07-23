@@ -588,13 +588,14 @@ function testKontLok(tabella)
 	local mioCel
 	local x,y = GetPlayerMapPosition("player")
 	if x ~= 0 then
-
-		if mapTables[tabella][testKont] ~= nil then
-			if mapTables[tabella][testKont]["testKont"] ~= nil and mapTables[tabella][testKont]["testKont"] == testKont then
-				if mapTables[tabella][testKont][lok] ~= nil then
-					if mapTables[tabella][testKont][lok]["testLok"] == lok then
-						mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
-						return mioCel
+		if tabella ~= nil then
+			if mapTables[tabella][testKont] ~= nil then
+				if mapTables[tabella][testKont]["testKont"] ~= nil and mapTables[tabella][testKont]["testKont"] == testKont then
+					if mapTables[tabella][testKont][lok] ~= nil then
+						if mapTables[tabella][testKont][lok]["testLok"] == lok then
+							mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
+							return mioCel
+						end
 					end
 				end
 			end
