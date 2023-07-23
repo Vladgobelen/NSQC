@@ -1,4 +1,4 @@
-versAdd=179
+versAdd=180
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -66,28 +66,30 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	if id==8 then
 			self[id]:SetScript("OnClick",function(self, button)
 				if testQ[myNome]["взятый_квест"] ~= "q33" then
-					if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
+					if testQ[myNome]["уровень_квестов"]~="2" and testQ[myNome]["уровень_квестов"]~="3" then
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
-						elseif testQ[myNome]["лвл_квестов"]==2 then
-						proverkaVypolneniyaKvestySachivkoj(myNome,2)
-						elseif testQ[myNome]["лвл_квестов"]==3 and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
-						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
-						elseif testQ[myNome]["лвл_квестов"]==3 and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
-						proverkaVypolneniyaKvestySachivkoj(myNome,3)
-						end
-					else
-						local nik = {}
-						for i=1,#testQ[myNome]["q33nik"] do
-							if testQ[myNome]["q33nik"][i] == 1 then
-								nik[i] = "выполнено"
-							else
-								nik[i] = testQ[myNome]["q33nik"][i]
-							end
-						end
-
-						SendChatMessage(testQ[myNome]["q33q"] .. nik[1] .. ", " .. nik[2] .. ", " .. nik[3], "OFFICER", nil, 1)
 					end
-				end)
+					if testQ[myNome]["уровень_квестов"]=="2" then
+						proverkaVypolneniyaKvestySachivkoj(myNome,2)
+					end
+					if testQ[myNome]["уровень_квестов"]=="3" and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
+					end
+					if testQ[myNome]["уровень_квестов"]=="3" and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
+						proverkaVypolneniyaKvestySachivkoj(myNome,3)
+					end
+				else
+					local nik = {}
+					for i=1,#testQ[myNome]["q33nik"] do
+						if testQ[myNome]["q33nik"][i] == 1 then
+							nik[i] = "выполнено"
+						else
+							nik[i] = testQ[myNome]["q33nik"][i]
+						end
+					end
+					SendChatMessage(testQ[myNome]["q33q"] .. nik[1] .. ", " .. nik[2] .. ", " .. nik[3], "OFFICER", nil, 1)
+				end
+		end)
 	end
 	if id == 14 then
 		self[id]:SetScript("OnClick",function(self, button)
@@ -1217,6 +1219,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 					vypolnenaLiAch=testQ[myNome]["взятый_квест"]
+					vypolnenaLiAch=tonumber(vypolnenaLiAch)
 					count = GetAchievementNumCriteria(vypolnenaLiAch)
 					chisloPunktop=testQ[myNome]["квест_лвл3"][vypolnenaLiAch]
 					j=0

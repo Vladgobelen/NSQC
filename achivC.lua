@@ -33,6 +33,72 @@ end
 if string.find (kod, "#q33ans") and string.find (kod, myNome) and testGM ~= nil then
 	testQ[myNome]["q33ans"] = message
 end
+
+if testQ ~= nil then
+	if string.find (kod, "#qUpdateS1") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["взятый_квест"] = message
+	end
+	if string.find (kod, "#qUpdate2v") and string.find (kod, myNome) and testGM ~= nil then
+		if testQ[myNome]["квест_лвл2"] == nil then
+			testQ[myNome]["квест_лвл2"] = {}
+		end
+		testQ[myNome]["уровень_квестов"] = message
+	end
+	if string.find (kod, "#qUpdateS2") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["взятый_квест"] = message
+	end
+	if string.find (kod, "#qUpdateSqKol2") and string.find (kod, myNome) and testGM ~= nil then
+		local q = testQ[myNome]["взятый_квест"]
+		testQ[myNome]["квест_лвл2"][q] = message
+	end
+	if string.find (kod, "#qUpdateS3") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["взятый_квест"] = message
+	end
+	if string.find (kod, "#qUpdateSF") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q33ans"] = message
+	end
+	if string.find (kod, "#qUpdateSq33q") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q33q"] = message
+	end
+	if testQ[myNome]["q33nik"] == nil then
+		testQ[myNome]["q33nik"] = {}
+	end
+	if string.find (kod, "#qUpdateSNik1") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q33nik"][1] = message
+	end
+	if string.find (kod, "#qUpdateSNik2") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q33nik"][2] = message
+	end
+	if string.find (kod, "#qUpdateSNik3") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q33nik"][3] = message
+	end
+	if string.find (kod, "#qUpdateQ32") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["взятый_квест"] = message
+	end
+	if string.find (kod, "#qUpdate3pNum") and string.find (kod, myNome) and testGM ~= nil then
+		local num = message
+		num = tonumber(num)
+		local q = testQ[myNome]["взятый_квест"]
+		if testQ[myNome]["квест_лвл3"] == nil then
+			testQ[myNome]["квест_лвл3"] = {}
+		end
+		testQ[myNome]["квест_лвл3"][q] = num
+	end
+	if string.find (kod, "#qUpdate3_2vz") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["взятый_квест3_2"] = message
+	end
+	if string.find (kod, "#qUpdate3_1vz") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["взятый_квест3_1"] = message
+	end
+	if string.find (kod, "#qUpdate3rez") and string.find (kod, myNome) and testGM ~= nil then
+		if testQ[myNome]["квест_лвл3"] == nil then
+			testQ[myNome]["квест_лвл3"] = {}
+		end
+		local q = testQ[myNome]["взятый_квест"]
+		testQ[myNome]["квест_лвл3"][q] = message
+	end
+end
+
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
@@ -919,3 +985,10 @@ end
 end
 end
 )
+local function OnEvent(self, event, isLogin, isReload)
+	SendAddonMessage("NSGadd", "#qUpdate", "guild")
+end
+
+local f = CreateFrame("Frame")
+f:RegisterEvent("PLAYER_ENTERING_WORLD")
+f:SetScript("OnEvent", OnEvent)
