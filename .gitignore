@@ -2,6 +2,11 @@
 *
 
 # Do not ignore these files:
+!Incarichi/
+!Incarichi/incAd.lua
+!Incarichi/incGi.lua
+!Incarichi/incOf.lua
+!Incarichi/incSys.lua
 !121212.tga
 !punto.ogg
 !start.ogg
