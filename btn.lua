@@ -1,4 +1,4 @@
-versAdd=177
+versAdd=178
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -202,6 +202,23 @@ btn:configure(996,-5,19,32,32,"#krt","К");
 btn:configure(777,-300,-75,200,32,"#marsh","");
 btn:configure(999999,635,310,32,32,"#","");
 
+btn[15]:SetScript("OnEnter",function(self)
+	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+	GameTooltip:AddLine("|cFF6495EDПоказать Устав гильдии(в первой вкладке чата)")
+	GameTooltip:Show()
+end)
+btn[15]:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
+
+btn[14]:SetScript("OnEnter",function(self)
+	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+	GameTooltip:AddLine("|cFF6495EDПроверить доступные обновления")
+	GameTooltip:Show()
+end)
+btn[14]:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
 
 
 btnF = CreateFrame("CheckButton", "myCheckButton_GlobalName", parentFrame, "ChatConfigCheckButtonTemplate");
