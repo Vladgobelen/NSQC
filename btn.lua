@@ -669,9 +669,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		local testKont = GetCurrentMapContinent()
 		testKont = tonumber(testKont)
+		local lok = GetCurrentMapZone()
+		lok = tonumber(lok)
+
 		if WorldMapFrame:IsVisible() ~= nil then
 			if krt~=nil then
 			if krt[777] == nil then
+
+				if lok ~= 0 then
+					krt[5551] = nil
+					if krt[5551] == nil then
+						krtHide("Hide")
+						krt[5551] = 1
+						krt[99] = nil
+						btnF:SetChecked(false)
+					end
+				else
+					krt[5551] = 1
+				end
+
 				if testKont ~= 1 then
 					krt[5551] = nil
 					if krt[5551] == nil then
