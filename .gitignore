@@ -2,6 +2,7 @@
 *
 
 # Do not ignore these files:
+!emblem.tga
 !Incarichi/
 !Incarichi/incCom.lua
 !Incarichi/incAd.lua
@@ -12,7 +13,7 @@
 !punto.ogg
 !start.ogg
 !fin.ogg
-!NSQCu-7.exe
+!NSQCu-8.exe
 !achivC.lua
 !coreC.lua
 !NSQC.toc
