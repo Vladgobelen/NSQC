@@ -2,7 +2,7 @@ local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("CHAT_MSG_OFFICER")
 GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 local myNome = GetUnitName("player")
-
+testGM=gmTest(sender)
 if string.find (message, "бСтарт") and string.find (message, myNome) and testGM ~= nil then
 	if inQuest == nil then
 		inQuest = {}
@@ -12,6 +12,7 @@ if string.find (message, "бСтарт") and string.find (message, myNome) and t
 	end
 	inQuest["бухло"]["старт"] = 0
 	SendChatMessage("У меня возникает смутное ощущение, что мне срочно  нужно набухаться с Витинари...", "guild", nil, 1)
+
 end
 
 end
