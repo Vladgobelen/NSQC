@@ -1,4 +1,4 @@
-versAdd=181
+versAdd=182
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -649,7 +649,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		if testQ["timerID2"] ~= nil then
 			testQ["timerID2"] = tonumber(testQ["timerID2"])
-			testQ["timerID2"] = testQ["timerID2"]-0.01
+			testQ["timerID2"] = testQ["timerID2"]-0.02
 			local btnT1 = string.format("%02d", testQ["timerID2"])
 			btn[2]:SetText(btnT1)
 			btn[1]:SetText(btnT1)
