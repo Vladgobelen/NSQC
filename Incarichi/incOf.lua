@@ -11,6 +11,7 @@ if string.find (message, "бСтарт") and string.find (message, myNome) and t
 		inQuest["бухло"] = {}
 	end
 	inQuest["бухло"]["старт"] = 0
+	SendChatMessage("У меня возникает смутное ощущение, что мне срочно  нужно набухаться с Витинари...", "guild", nil, 1)
 end
 
 end
