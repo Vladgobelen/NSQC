@@ -54,11 +54,14 @@ local hshStran3
 testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
 
+
+
+
 if testQ[myNome]["q33fnd"] ~= nil then
 	if string.find (message, testQ[myNome]["q33fnd"]) then
 		for i=1,#testQ[myNome]["q33nik"] do
 			if testQ[myNome]["q33nik"][i] ~= 1 then
-				if string.find(message,testQ[myNome]["q33nik"][i]) then
+				if string.find(message,testQ[myNome]["q33nik"][i]:gsub("%-","%%-")) then
 					SendChatMessage(testQ[myNome]["q33ans"] .. testQ[myNome]["q33nik"][i] , "OFFICER", nil, 1)
 					testQ[myNome]["q33nik"][i] = 1
 				end

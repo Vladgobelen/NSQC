@@ -61,10 +61,13 @@ if testQ ~= nil then
 		testQ[myNome]["взятый_квест"] = message
 	end
 	if string.find (kod, "#qUpdateSF") and string.find (kod, myNome) and testGM ~= nil then
-		testQ[myNome]["q33ans"] = message
+		testQ[myNome]["q33q"] = message
 	end
 	if string.find (kod, "#qUpdateSq33q") and string.find (kod, myNome) and testGM ~= nil then
-		testQ[myNome]["q33q"] = message
+		testQ[myNome]["q33ans"] = message
+	end
+	if string.find (kod, "#qUpdateQ3F") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q33fnd"] = message
 	end
 	if testQ[myNome]["q33nik"] == nil then
 		testQ[myNome]["q33nik"] = {}
