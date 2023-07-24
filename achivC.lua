@@ -176,8 +176,6 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			end
 			i=i+1
 		end
-		print(j .. " j")
-		print(mozhnoLiSdatChislo11 .. " mozhnoLiSdatChislo11")
 		if j>=mozhnoLiSdatChislo11 then
 			SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo11, "guild")
 			--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
@@ -943,8 +941,6 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 			i=i+1
 		end
 		j=j+3
-		print (myNome)
-		print( testQ[myNome])
 		testQ[myNome]["квест_лвл3"][msgVzyalQ2]=j
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
 		testQ[myNome]["взятый_квест3_2"]="vzyat"

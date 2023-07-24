@@ -38,7 +38,6 @@ for groupindex = 1,MAX_PARTY_MEMBERS do
   memberCount = memberCount + 1
  end
 end
-print (memberCount)
 end
 if string.find (message, "покажи ачивку") and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
 	msg2 = mysplit(message)
@@ -118,7 +117,6 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 				k=k+1
 			end
 			end
-			print(i)
 
 			if provShow~=true and countShow~=1 and countShow~=0 then
 				cmpltd1=j

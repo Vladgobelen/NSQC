@@ -517,7 +517,6 @@ function trovMarsh(tabella,diam)
 								if tabella == "evO0203" then
 									testQ["evO0203"] = true
 									testQ["startChern"] = nil
-									print (testQ["evO0203"])
 								end
 								if tabella == "evO0304" then
 									testQ["evO0304"] = true
