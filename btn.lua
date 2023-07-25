@@ -37,6 +37,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnClick",function(self, button)
 
 		if id==2 then
+			btn[2]:Disable()
 			if testQ[myNome]["взятый_квест"] ~= "q33" then
 				if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
 					SendAddonMessage("NSGadd", zzid, "guild")
