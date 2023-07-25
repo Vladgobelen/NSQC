@@ -20,37 +20,12 @@ print (arg15)
 print (arg16)
 print (arg17)--]]
 
-if arg2 == "UNIT_DIED" then
-	---Огненная пропасть
-	local testMM = GetInstanceInfo()
-	if mmList[testMM] ~= nil then
-		if testMM == mmList[testMM]["название"] then
-			if tblAllFail(testMM,arg7) == 0 then
-				if mobKNum ~= nil then
-					if btnMM[2]:IsEnabled() then
-						mobKNum = mobKNum - 1
-						btnMM[2]:SetText(mobKNum)
-						if mobKNum <= 0 then
-							btnMM[2]:Disable()
-							if testQ[myNome]["проверка_завершения"] ~= nil then
-								if mobKNum == 0 then
-									btnMM[2]:SetText("0")
-									testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
-								end
-							end
-						end
-					end
-				end
-			end
-			if tblAllFail(testMM,arg7) ~= 0 then
-				bossNum = tblAllFail(testMM,arg7)
-				bossNum = tonumber(bossNum)
-				bossNum = bossNum + 2
-				btnMM[bossNum]:Disable()
-				if testQ[myNome]["проверка_завершения"] ~= nil then
-					testQ[myNome]["проверка_завершения"] = testQ[myNome]["проверка_завершения"] + 1
-				end
-			end
+
+if inQuest["бухло"]["старт"] == 1 then
+	if arg2 == "UNIT_DIED" then
+		if arg7 == myNome then
+			SendChatMessage("Жизнь великого " .. myNome .. " завершена. Квест провален.", "OFFICER", nil, 1)
+			inQuest["бухло"]["старт"] = nil
 		end
 	end
 end
