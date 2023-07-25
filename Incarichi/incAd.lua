@@ -4,5 +4,17 @@ GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, se
 --команды для управления квестами
 local myNome = GetUnitName("player")
 
+if string.find (message, "бСтарт") and string.find (message, myNome) and testGM ~= nil then
+	if inQuest == nil then
+		inQuest = {}
+	end
+	if inQuest["бухло"] == nil then
+		inQuest["бухло"] = {}
+	end
+	inQuest["бухло"]["старт"] = 0
+	SendChatMessage("У меня возникает смутное ощущение, что мне срочно  нужно набухаться с Витинари...", "guild", nil, 1)
+
+end
+
 end
 )
