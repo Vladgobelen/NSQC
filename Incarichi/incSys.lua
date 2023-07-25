@@ -32,18 +32,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.1 then
 		timeElapsed = 0
-
-		if inQuest["бухло"]["старт"] == 1 then
-			spell, rank, displayName, icon, startTime, endTime, isTradeSkill, castID, interrupt = UnitCastingInfo("player")
-			if spell == "Камень возвращения" then
-				SendChatMessage("Стоп! Я бесчестно использую запретную магию. Это недостойное поведение. Пойду посыпать голову пеплом....", "OFFICER", nil, 1)
-				SendChatMessage("Квест провален.", "OFFICER", nil, 1)
-				inQuest["бухло"]["старт"] = nil
-			end
-			if string.find (message, "Вы снова трезвы.") then
-				SendChatMessage("Ой... Я кажется протрезвел и понял весь идиотизм ситуации. Ну его нафиг...", "OFFICER", nil, 1)
-				SendChatMessage("Квест провален.", "OFFICER", nil, 1)
-				inQuest["бухло"]["старт"] = nil
+		if inQuest ~= nil then
+			if inQuest["бухло"] ~= nil then
+				if inQuest["бухло"]["старт"] == 1 then
+					spell, rank, displayName, icon, startTime, endTime, isTradeSkill, castID, interrupt = UnitCastingInfo("player")
+					if spell == "Камень возвращения" then
+						SendChatMessage("Стоп! Я бесчестно использую запретную магию. Это недостойное поведение. Пойду посыпать голову пеплом....", "OFFICER", nil, 1)
+						SendChatMessage("Квест провален.", "OFFICER", nil, 1)
+						inQuest["бухло"]["старт"] = nil
+					end
+					if string.find (message, "Вы снова трезвы.") then
+						SendChatMessage("Ой... Я кажется протрезвел и понял весь идиотизм ситуации. Ну его нафиг...", "OFFICER", nil, 1)
+						SendChatMessage("Квест провален.", "OFFICER", nil, 1)
+						inQuest["бухло"]["старт"] = nil
+					end
+				end
 			end
 		end
 
