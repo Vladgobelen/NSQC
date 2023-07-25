@@ -31,14 +31,31 @@ if ginv ~= nil then
 	if string.find (message, "присоединяется к гильдии") then
 		for range,value in pairs(ginv) do
 			if value == gInv[1] then
-				if testQ[myNome]["zzlf"] ~= nil then
-					testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] + 1
-					SendAddonMessage("NSGadd", myNome .. " принял +1 ", "guild")
+				if testQ["shtrf"] == nil then
+					testQ["shtrf"] = {}
+				end
+				for range,value in pairs(testQ["shtrf"]) do
+					if value == gInv[1] then
+						shtraf = 1
+					else
+						shtraf = 0
+					end
+				end
+				if shtraf == 0 or shtraf == nil then
+					if testQ[myNome]["zzlf"] ~= nil then
+						testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] + 1
+						SendAddonMessage("NSGadd", myNome .. " принял +1 ", "guild")
+						break
+					else
+						testQ[myNome]["zzlf"] = 1
+					end
 				else
-					testQ[myNome]["zzlf"] = 1
+					SendAddonMessage("NSGadd", myNome .. " попытался наебать ником " .. gInv[1],"guild")
 				end
 			end
 		end
+		table.insert(testQ["shtrf"], gInv[1])
+		shtraf = nil
 	end
 end
 
