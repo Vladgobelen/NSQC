@@ -118,7 +118,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 4 then
 		self[id]:SetScript("OnClick",function(self, button)
-			SendAddonMessage("NSGadd", "#zzyyyy " .. testQ[myNome]["zzlf"], "guild")
+			SendAddonMessage("NSGadd", "#zzguild " .. testQ[myNome]["zzlf"], "guild")
 		end)
 	end
 	if id == 3 then
@@ -181,7 +181,7 @@ end
 btn:configure(1,0,300,300,30,"#zzs","Взять квест");
 btn:configure(2,0,300,300,30,"#zzr","Сдать квест");
 btn:configure(3,-135,270,30,30,"","?");
-btn:configure(4,15,270,270,30,"#zzy","Сдать бонусный квест вне лимита");
+btn:configure(4,15,270,270,30,"#zzguild","Сдать бонусный квест вне лимита");
 btn:configure(5,0,240,300,30,"#zzt","Узнать свой гилдлвл");
 btn:configure(99,-400,400,100,30,"","тест");
 btn:configure(7,0,210,300,30,"#zzp","Отказаться от квеста");
