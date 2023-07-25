@@ -38,6 +38,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
 		if id==2 then
 			btn[2]:Disable()
+			testQ["timerID2"] = 60
 			if testQ[myNome]["взятый_квест"] ~= "q33" then
 				if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
 					SendAddonMessage("NSGadd", zzid, "guild")
