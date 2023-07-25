@@ -3,6 +3,7 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
 GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, sender, hernya, name, instanceID)
 --команды для управления квестами
 local myNome = GetUnitName("player")
+testGM=gmTest(sender)
 
 if string.find (message, "бСтарт") and string.find (message, myNome) and testGM ~= nil then
 	if inQuest == nil then
