@@ -255,7 +255,7 @@ if string.find (message, "#aa3") and string.find (message, myNome) then
 	testQ[myNome]["лвл_квестов"]=3
 end
 
-if string.find (message, "!crtb") then
+if string.find (message, "!crtb") and sender == myNome then
 	print("1")
 	if rangeGen == nil then
 		rangeGen = {}
