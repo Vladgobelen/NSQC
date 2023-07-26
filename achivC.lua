@@ -90,7 +90,6 @@ if testQ ~= nil then
 	end
 	if string.find (kod, "#qUpdateQ32") and string.find (kod, myNome) and testGM ~= nil then
 		local q = message
-		print (q)
 		if q ~= "9999" then
 			q=tonumber(q)
 		end
