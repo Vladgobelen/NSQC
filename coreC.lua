@@ -181,18 +181,20 @@ end
 krtKus=mysplit(message)
 if string.find (message, "получает кусок карты") and krtKus[1]==myNome and testGM~=nil then
 	krtKusNikC=krtKus[1]
-	if krt[777] == nil then
-		if krt == nil then
-			krt = {}
-			x = math.random(1, 15)
-			krt[x] = true
-		else
-			for i = 1, 15 do
+	if krt ~= nil then
+		if krt[777] == nil then
+			if krt == nil then
+				krt = {}
 				x = math.random(1, 15)
-				if krt[x] == nil or krt[x] ~= true then
-					krt[x] = true
-					break
-				else
+				krt[x] = true
+			else
+				for i = 1, 15 do
+					x = math.random(1, 15)
+					if krt[x] == nil or krt[x] ~= true then
+						krt[x] = true
+						break
+					else
+					end
 				end
 			end
 		end
