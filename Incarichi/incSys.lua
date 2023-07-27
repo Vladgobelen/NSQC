@@ -20,7 +20,7 @@ if inQuest ~= nil then
 				SendChatMessage("Я срочно должен пойти и спросить у Тралла: /к ты меня уважаешь?!", "OFFICER", nil, 1)
 			end
 			if inQuest["бухло"]["старт"] == 1 then
-				if string.find (message, "Вы снова трезвы.") then
+				if string.find (message, "Вы снова трезвы") then
 					SendChatMessage("тест", "OFFICER", nil, 1)
 					SendChatMessage("Квест провален.", "OFFICER", nil, 1)
 					inQuest["бухло"]["старт"] = nil
