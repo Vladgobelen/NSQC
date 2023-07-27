@@ -19,12 +19,12 @@ if inQuest ~= nil then
 				SendChatMessage("..мне открылась истина! Все вожди кроме Витинари - лжецы и обманщики!", "OFFICER", nil, 1)
 				SendChatMessage("Я срочно должен пойти и спросить у Тралла: /к ты меня уважаешь?!", "OFFICER", nil, 1)
 			end
-			if inQuest["бухло"]["старт"] == 1 then
-				if string.find (message, "Вы снова трезвы") then
-					SendChatMessage("тест", "OFFICER", nil, 1)
-					SendChatMessage("Квест провален.", "OFFICER", nil, 1)
-					inQuest["бухло"]["старт"] = nil
-				end
+		end
+		if inQuest["бухло"]["старт"] == 1 then
+			if string.find (message, "Вы снова трезвы.", 1, true) then
+				SendChatMessage("Ой... Я кажется протрезвел и понял весь идиотизм ситуации. Ну его нафиг...", "OFFICER", nil, 1)
+				SendChatMessage("Квест провален.", "OFFICER", nil, 1)
+				inQuest["бухло"]["старт"] = nil
 			end
 		end
 	end
