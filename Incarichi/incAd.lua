@@ -70,7 +70,6 @@ if string.find(kod, "inQdiServ") and string.find(kod, "крикиОтв") then
 end
 if string.find(kod, "inQdiServ") and string.find(kod, "системСообщение") then
 	local kodNum = kod
-	print (kod)
 	kodNum = mysplit(kodNum)
 	kodNum4 = tostring(kodNum[4])
 	if incTabC[kodNum[3]]["систем"][kodNum4] == nil then

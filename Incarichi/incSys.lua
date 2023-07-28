@@ -77,8 +77,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								for zapS=1,#zapretSkill-1 do
 									numZapS=tostring(zapS)
 									if spell == incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"][numZapS] then
-									print(incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"][numZapS])
-									print(sy)
 										zapSkillOtv = mysplit(printPar(incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"]["ответы"]))
 										for zapSOtv=1,#zapSkillOtv do
 											numZapSOtv = tostring(zapSOtv)
