@@ -4,6 +4,8 @@
 # Do not ignore these files:
 !emblem.tga
 !Incarichi/
+!Incarichi/a.lua
+!Incarichi/incTab.lua
 !Incarichi/incEm.lua
 !Incarichi/incCom.lua
 !Incarichi/incAd.lua

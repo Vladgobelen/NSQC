@@ -20,13 +20,33 @@ print (arg15)
 print (arg16)
 print (arg17)--]]
 
-if inQuest ~= nil then
-	if inQuest["бухло"] ~= nil then
-		if inQuest["бухло"]["старт"] == 1 then
-			if arg2 == "UNIT_DIED" then
-				if arg7 == myNome then
-					SendChatMessage("Жизнь великого " .. myNome .. " завершена. Квест провален.", "OFFICER", nil, 1)
-					inQuest["бухло"]["старт"] = nil
+if incTabC ~= nil then
+	local spisokQ = mysplit(printPar(incTabC))
+	for i=1, #spisokQ do
+		local nomeTab = testTab(spisokQ[i])
+	end
+
+	if #spisokQ ~= 0 then
+		for i=1, #spisokQ do
+			if inQuest[spisokQ[i]]["старт"] ~= nil then
+				if arg2 == "UNIT_DIED" then
+					if arg7 == myNome then
+						if incTabC[spisokQ[i]]["пСмерть"] ~= 1 then
+							if incTabC[spisokQ[i]]["смерть"][inQuest[spisokQ[i]]["старт"]] ~= nil then
+								local num = tostring(inQuest[spisokQ[i]]["старт"])
+								local num1 = tostring(inQuest[spisokQ[i]]["старт"]+1)
+								SendChatMessage(incTabC[spisokQ[i]]["смерть"][num] .. myNome .. incTabC[spisokQ[i]]["смерть"][num1], "OFFICER", nil, 1)
+								inQuest[spisokQ[i]]["старт"] = nil
+							end
+						else
+							if incTabC[spisokQ[i]]["смерть"]["0"] ~= nil then
+								local num = "0"
+								local num1 = "1"
+								SendChatMessage(incTabC[spisokQ[i]]["смерть"][num] .. myNome .. incTabC[spisokQ[i]]["смерть"][num1], "OFFICER", nil, 1)
+								inQuest[spisokQ[i]]["старт"] = nil
+							end
+						end
+					end
 				end
 			end
 		end

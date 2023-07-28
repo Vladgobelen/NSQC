@@ -621,7 +621,17 @@ function testFchern(tabella,n1,n2)
 	end
 end
 
-
+function printPar(tabella)
+	local spisok = {}
+	local spisokRez
+	for k, v in pairs(tabella) do
+		if k ~= nil then
+			table.insert(spisok,k)
+		end
+	end
+	spisokRez = table.concat(spisok, " ")
+	return spisokRez
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()

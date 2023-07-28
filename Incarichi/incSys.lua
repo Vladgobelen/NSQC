@@ -6,30 +6,49 @@ local hshStran3
 testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
 
-if inQuest ~= nil then
-	if inQuest["бухло"] ~= nil then
-		if inQuest["бухло"]["старт"] == 0 then
-			x=UnitName("target")
-			if x == "Витинари" and string.find (message, "Вы пьяны") then
-				SendChatMessage("Вау...кажется я пяьн!", "OFFICER", nil, 1)
-				SendAddonMessage("NSGadd", "#buhloXXX", "guild")
-				inQuest["бухло"]["старт"] = 1
-			end
-			if inQuest["бухло"]["старт"] == 1 then
-				SendChatMessage("..мне открылась истина! Все вожди кроме Витинари - лжецы и обманщики!", "OFFICER", nil, 1)
-				SendChatMessage("Я срочно должен пойти и спросить у Тралла: /к ты меня уважаешь?!", "OFFICER", nil, 1)
-			end
-		end
-		if inQuest["бухло"]["старт"] == 1 then
-			if string.find (message, "Вы снова трезвы.", 1, true) then
-				SendChatMessage("Ой... Я кажется протрезвел и понял весь идиотизм ситуации. Ну его нафиг...", "OFFICER", nil, 1)
-				SendChatMessage("Квест провален.", "OFFICER", nil, 1)
-				inQuest["бухло"]["старт"] = nil
+
+if incTabC ~= nil then
+	local spisokQ = mysplit(printPar(incTabC))
+	for i=1, #spisokQ do
+		local nomeTab = testTab(spisokQ[i])
+	end
+
+	if #spisokQ ~= 0 then
+		for i=1, #spisokQ do
+			if incTabC[spisokQ[i]]["систем"] ~= nil then
+				local numSystem = mysplit(printPar(incTabC[spisokQ[i]]["систем"]))
+				for j=0,#numSystem do
+					numJ = tostring(j)
+					if incTabC[spisokQ[i]]["систем"][numJ] ~= nil then
+						x=UnitName("target")
+						if incTabC[spisokQ[i]]["систем"][numJ]["сообщение"] ~= nil then
+							if x == incTabC[spisokQ[i]]["систем"][numJ]["таргет"] and string.find (message, incTabC[spisokQ[i]]["систем"][numJ]["сообщение"]) then
+								local systemOtvety = mysplit(printPar(incTabC[spisokQ[i]]["систем"][numJ]["ответы"]))
+								for k=1,#systemOtvety do
+									numK=tostring(k)
+									SendChatMessage(incTabC[spisokQ[i]]["систем"][numJ]["ответы"][numK], "OFFICER", nil, 1)
+								end
+								SendAddonMessage("NSGadd", "#buhloXXX", "guild")
+								inQuest[spisokQ[i]]["старт"] = inQuest[spisokQ[i]]["старт"]+1
+							end
+						end
+						if incTabC[spisokQ[i]]["систем"][numJ]["провал"] ~= nil then
+							if string.find (message, incTabC[spisokQ[i]]["систем"][numJ]["провал"], 1, true) then
+								local systemProvalOtv = mysplit(printPar(incTabC[spisokQ[i]]["систем"][numJ]["провалОтв"]))
+								for l=1, #systemProvalOtv do
+									numL=tostring(l)
+									SendChatMessage(incTabC[spisokQ[i]]["систем"][numJ]["провалОтв"][numL], "OFFICER", nil, 1)
+								end
+								SendChatMessage("Квест провален.", "OFFICER", nil, 1)
+								inQuest[spisokQ[i]]["старт"] = nil
+							end
+						end
+					end
+				end
 			end
 		end
 	end
 end
-
 
 end)
 
@@ -39,19 +58,40 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.1 then
 		timeElapsed = 0
-		if inQuest ~= nil then
-			if inQuest["бухло"] ~= nil then
-				if inQuest["бухло"]["старт"] == 1 then
-					spell, rank, displayName, icon, startTime, endTime, isTradeSkill, castID, interrupt = UnitCastingInfo("player")
-					if spell == "Камень возвращения" then
-						SendChatMessage("Стоп! Я бесчестно использую запретную магию. Это недостойное поведение. Пойду посыпать голову пеплом....", "OFFICER", nil, 1)
-						SendChatMessage("Квест провален.", "OFFICER", nil, 1)
-						inQuest["бухло"]["старт"] = nil
-					end
+		local spisokQ
+		local qSystem
+		local zapretSkill
+		local zapSkillOtv
+		if incTabC ~= nil then
+			spisokQ = mysplit(printPar(incTabC))
+			for i=1, #spisokQ do
+				local nomeTab = testTab(spisokQ[i])
+				if inQuest[spisokQ[i]]["старт"] ~= nil then
+				numRez=tostring(inQuest[spisokQ[i]]["старт"])
+					qSystem = mysplit(printPar(incTabC[spisokQ[i]]["систем"]))
 
+						if incTabC[spisokQ[i]]["систем"][numRez] ~= nil then
+							if incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"] ~= nil then
+								spell, rank, displayName, icon, startTime, endTime, isTradeSkill, castID, interrupt = UnitCastingInfo("player")
+								zapretSkill = mysplit(printPar(incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"]))
+								for zapS=1,#zapretSkill-1 do
+									numZapS=tostring(zapS)
+									if spell == incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"][numZapS] then
+									print(incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"][numZapS])
+									print(sy)
+										zapSkillOtv = mysplit(printPar(incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"]["ответы"]))
+										for zapSOtv=1,#zapSkillOtv do
+											numZapSOtv = tostring(zapSOtv)
+											SendChatMessage(incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"]["ответы"][numZapSOtv], "OFFICER", nil, 1)
+										end
+										inQuest[spisokQ[i]]["старт"] = nil
+									end
+								end
+							end
+						end
 				end
 			end
 		end
-
 	end
+
 end)

@@ -4,8 +4,8 @@
 ## Author: Vladgobelen
 ## Version: 1.5.6
 ## X-Date: 2023-07-15
-## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh, inQuest
-
+## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh
+##SavedVariablesPerCharacter: inQuest, incTabC
 lib\lib_hook.lua
 lib\lib_math.lua
 lib\lib_string.lua
@@ -13,6 +13,8 @@ lib\lib_table.lua
 libs\UTF8\utf8.lua
 ##################
 emblem.tga
+Incarichi\a.lua
+Incarichi\incTab.lua
 Incarichi\incEm.lua
 Incarichi\incCom.lua
 Incarichi\incAd.lua
