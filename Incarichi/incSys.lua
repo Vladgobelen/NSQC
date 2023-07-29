@@ -19,9 +19,12 @@ if incTabC ~= nil then
 				numRez=tostring(inQuest[spisokQ[i]]["старт"])
 				if incTabC[spisokQ[i]]["систем"] ~= nil then
 					if incTabC[spisokQ[i]]["систем"][numRez] ~= nil then
-						x=UnitName("target")
+						if incTabC[spisokQ[i]]["систем"][numRez]["таргет"] ~= nil then
+							x=testNpc(incTabC[spisokQ[i]]["систем"][numRez]["таргет"])
+							x=tostring(x)
+						end
 						if incTabC[spisokQ[i]]["систем"][numRez]["сообщение"] ~= nil then
-							if x == incTabC[spisokQ[i]]["систем"][numRez]["таргет"] and string.find (message, incTabC[spisokQ[i]]["систем"][numRez]["сообщение"]) then
+							if x == "1" and string.find (message, incTabC[spisokQ[i]]["систем"][numRez]["сообщение"]) then
 								local systemOtvety = mysplit(printPar(incTabC[spisokQ[i]]["систем"][numRez]["ответы"]))
 								for k=1,#systemOtvety do
 									numK=tostring(k)

@@ -363,6 +363,7 @@ function npcXY(k,l,x,y,u)
 
 end
 function testNpc ( NpcID )
+	local r
 	CreateFrame( "GameTooltip", "MyScanningTooltip", nil, "GameTooltipTemplate" );
 	MyScanningTooltip:SetOwner( WorldFrame, "ANCHOR_NONE" );
 	MyScanningTooltip:AddFontStrings(
@@ -370,11 +371,14 @@ function testNpc ( NpcID )
     MyScanningTooltip:CreateFontString( "$parentTextRight1", nil, "GameTooltipText" ) );
     MyScanningTooltip:SetHyperlink("unit:" .. NpcID)
     --GameTooltip:Show()
-    EnumerateTooltipLines(MyScanningTooltip)
+
+    r=EnumerateTooltipLines(MyScanningTooltip)
+    return r
 end
 
 
 local function EnumerateTooltipLines_helper(...)
+	local rrr
     for i = 1, select("#", ...) do
         local region = select(i, ...)
         if region and region:GetObjectType() == "FontString" then
@@ -385,6 +389,11 @@ local function EnumerateTooltipLines_helper(...)
 				end
 				if string.find (text, "уровня") then
 					testLvlNpc=mysplit(text)
+					if string.find(testLvlNpc[3], "%?%?") then
+						SendAddonMessage("NSGadd", "#npcOff", "guild")
+					else
+						rrr="1"
+					end
 					if string.find(testLvlNpc[2], "%?%?") then
 						SendAddonMessage("NSGadd", "#npcOff", "guild")
 					end
@@ -396,10 +405,13 @@ local function EnumerateTooltipLines_helper(...)
             end
         end
     end
+    return rrr
 end
 
 function EnumerateTooltipLines(tooltip) -- good for script handlers that pass the tooltip as the first argument.
-    EnumerateTooltipLines_helper(tooltip:GetRegions())
+	local r
+    r=EnumerateTooltipLines_helper(tooltip:GetRegions())
+    return r
 end
 
 function pLid ()
