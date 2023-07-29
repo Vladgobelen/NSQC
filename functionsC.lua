@@ -390,7 +390,7 @@ local function EnumerateTooltipLines_helper(...)
 				if string.find (text, "уровня") then
 					testLvlNpc=mysplit(text)
 					if string.find(testLvlNpc[3], "%?%?") then
-						SendAddonMessage("NSGadd", "#npcOff", "guild")
+						--SendAddonMessage("NSGadd", "#npcOff", "guild")
 					else
 						rrr="1"
 					end
