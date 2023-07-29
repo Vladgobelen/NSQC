@@ -57,7 +57,7 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
-	if timeElapsed > 0.1 then
+	if timeElapsed > 1 then
 		timeElapsed = 0
 		local spisokQ
 		local qSystem
