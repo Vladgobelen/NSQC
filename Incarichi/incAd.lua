@@ -158,12 +158,9 @@ end
 if string.find(kod, "inQuest") then
 	local msg = mysplit(message)
 	local testTabella = testTab(msg[3])
-	print ("1")
 	if string.find (message, "инСтарт") and string.find (message, myNome) and testGM ~= nil and testTabella ~= nil and inQuest[msg[3]]["старт"] == nil then
-		print ("2")
 		inQuest[msg[3]]["старт"] = 0
-		print("3")
-		SendChatMessage(incTab[msg[3]]["старт"], "OFFICER", nil, 1)
+		SendChatMessage(incTabC[msg[3]]["старт"], "OFFICER", nil, 1)
 	end
 end
 if string.find(kod, "inQxxx") and string.find (message, myNome) and testGM ~= nil then
@@ -179,7 +176,7 @@ if string.find(kod, "inQuest") then
 	local testTabella = testTab(msg[2])
 	if string.find (message, "ОбинСтарт") and testGM ~= nil and testTabella ~= nil and inQuest[msg[2]]["старт"] == nil then
 		inQuest[msg[2]]["старт"] = 0
-		SendChatMessage(incTab[msg[3]]["старт"], "OFFICER", nil, 1)
+		SendChatMessage(incTabC[msg[3]]["старт"], "OFFICER", nil, 1)
 	end
 end
 
