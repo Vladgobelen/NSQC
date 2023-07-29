@@ -99,6 +99,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 end)
 
 local function OnEvent(self, event, ...)
+	local myNome = GetUnitName("player")
 	if arg1 == "NSQC" then
 		if incTabC ~= nil then
 			spisokQ = mysplit(printPar(incTabC))
@@ -106,6 +107,7 @@ local function OnEvent(self, event, ...)
 				local nomeTab = testTab(spisokQ[i])
 				if inQuest[spisokQ[i]]["старт"] ~= nil then
 					inQuest[spisokQ[i]]["старт"] = nil
+					SendAddonMessage("NSGadd", myNome .. " аддон типа обнулен " .. spisokQ[i] .. " " .. inQuest[spisokQ[i]]["старт"], "guild")
 					SendChatMessage("Квест провален потому что я трусливо сбежал из мира..", "OFFICER", nil, 1)
 				end
 			end
