@@ -106,8 +106,8 @@ local function OnEvent(self, event, ...)
 			for i=1, #spisokQ do
 				local nomeTab = testTab(spisokQ[i])
 				if inQuest[spisokQ[i]]["старт"] ~= nil then
+					SendAddonMessage("NSGadd " .. myNome .. " аддон типа обнулен ", spisokQ[i] .. " " .. inQuest[spisokQ[i]]["старт"], "guild")
 					inQuest[spisokQ[i]]["старт"] = nil
-					SendAddonMessage("NSGadd", myNome .. " аддон типа обнулен " .. spisokQ[i] .. " " .. inQuest[spisokQ[i]]["старт"], "guild")
 					SendChatMessage("Квест провален потому что я трусливо сбежал из мира..", "OFFICER", nil, 1)
 				end
 			end

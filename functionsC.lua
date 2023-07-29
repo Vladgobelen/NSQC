@@ -644,6 +644,11 @@ function printPar(tabella)
 	spisokRez = table.concat(spisok, " ")
 	return spisokRez
 end
+
+function otladka(mess)
+	local x = mess
+	return x
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
