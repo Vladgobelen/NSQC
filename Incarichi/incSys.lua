@@ -57,19 +57,21 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
-	if timeElapsed > 1 then
+	if timeElapsed > 0.1 then
 		timeElapsed = 0
-		local spisokQ
-		local qSystem
-		local zapretSkill
-		local zapSkillOtv
-		if incTabC ~= nil then
-			spisokQ = mysplit(printPar(incTabC))
-			for i=1, #spisokQ do
-				local nomeTab = testTab(spisokQ[i])
-				if inQuest[spisokQ[i]]["старт"] ~= nil then
-				numRez=tostring(inQuest[spisokQ[i]]["старт"])
-					qSystem = mysplit(printPar(incTabC[spisokQ[i]]["систем"]))
+		spell, rank, displayName, icon, startTime, endTime, isTradeSkill, castID, interrupt = UnitCastingInfo("player")
+		if spell ~= nil then
+			local spisokQ
+			local qSystem
+			local zapretSkill
+			local zapSkillOtv
+			if incTabC ~= nil then
+				spisokQ = mysplit(printPar(incTabC))
+				for i=1, #spisokQ do
+					local nomeTab = testTab(spisokQ[i])
+					if inQuest[spisokQ[i]]["старт"] ~= nil then
+						numRez=tostring(inQuest[spisokQ[i]]["старт"])
+						qSystem = mysplit(printPar(incTabC[spisokQ[i]]["систем"]))
 
 						if incTabC[spisokQ[i]]["систем"][numRez] ~= nil then
 							if incTabC[spisokQ[i]]["систем"][numRez]["запрет_скиллы"] ~= nil then
@@ -88,6 +90,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								end
 							end
 						end
+					end
 				end
 			end
 		end
