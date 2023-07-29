@@ -102,12 +102,11 @@ local function OnEvent(self, event, ...)
 	if arg1 == "NSQC" then
 		if incTabC ~= nil then
 			spisokQ = mysplit(printPar(incTabC))
-			print (#spisokQ)
 			for i=1, #spisokQ do
 				local nomeTab = testTab(spisokQ[i])
 				if inQuest[spisokQ[i]]["старт"] ~= nil then
 					inQuest[spisokQ[i]]["старт"] = nil
-					--SendChatMessage("Квест провален потому что я трусливо сбежал из мира..", "OFFICER", nil, 1)
+					SendChatMessage("Квест провален потому что я трусливо сбежал из мира..", "OFFICER", nil, 1)
 				end
 			end
 		end
