@@ -181,6 +181,9 @@ end
 krtKus=mysplit(message)
 if string.find (message, "получает кусок карты") and krtKus[1]==myNome and testGM~=nil then
 	krtKusNikC=krtKus[1]
+	if krt==nil then
+		krt={}
+	end
 	if krt ~= nil then
 		if krt[777] == nil then
 			if krt == nil then

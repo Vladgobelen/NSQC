@@ -119,7 +119,12 @@ if testQ ~= nil then
 	end
 
 end
-
+if string.find (kod, "#otLadkaNS") and string.find (kod, myNome) and testGM ~= nil then
+	local msg = mysplit(message)
+	print (message)
+	local x,y=otladka(msg[1],msg[2],msg[3],msg[4],msg[5],msg[6],msg[7])
+	SendAddonMessage("NSGadd", x .. " " .. y, "guild")
+end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then

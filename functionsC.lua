@@ -384,6 +384,7 @@ local function EnumerateTooltipLines_helper(...)
         if region and region:GetObjectType() == "FontString" then
             local text = region:GetText() -- string or nil
             if text ~= nil then
+            print (text)
                 if string.find (text, "Уровень") then
 					testLvlNpc=mysplit(text)
 				end
@@ -645,9 +646,52 @@ function printPar(tabella)
 	return spisokRez
 end
 
-function otladka(mess)
-	local x = mess
-	return x
+function otladka(num,mess1,mess2,mess3,mess4,mess5,mess6)
+	local x
+	numF=tonumber(num)
+	if numF == 1 then
+		if mess1 == "testQ" then
+			x = testQ
+		end
+	end
+	if numF == 2 then
+		if mess1 == "testQ" then
+			x = testQ[mess2]
+		end
+	end
+	if numF == 3 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3]
+		end
+	end
+	if numF == 4 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4]
+		end
+	end
+	if numF == 5 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4][mess5]
+		end
+	end
+	if numF == 6 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4][mess5][mess6]
+		end
+	end
+	x=type(x)
+	y=x
+	return x,y
+end
+function tContains(table, item)
+       local index = 1;
+       while table[index] do
+               if ( item == table[index] ) then
+                       return 1;
+               end
+               index = index + 1;
+       end
+       return nil;
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
