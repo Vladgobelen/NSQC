@@ -18,7 +18,6 @@ if incTabC ~= nil then
 			if inQuest[spisokQ[i]]["старт"] ~= nil then
 				numRez=tostring(inQuest[spisokQ[i]]["старт"])
 				if incTabC[spisokQ[i]]["систем"] ~= nil then
-					local numSystem = mysplit(printPar(incTabC[spisokQ[i]]["систем"]))
 					if incTabC[spisokQ[i]]["систем"][numRez] ~= nil then
 						x=UnitName("target")
 						if incTabC[spisokQ[i]]["систем"][numRez]["сообщение"] ~= nil then
