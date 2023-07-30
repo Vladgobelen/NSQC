@@ -683,7 +683,7 @@ function otladka(num,mess1,mess2,mess3,mess4,mess5,mess6)
 	y=x
 	return x,y
 end
-function tContains(table, item)
+function tabellaFind(table, item)
        local index = 1;
        while table[index] do
                if ( item == table[index] ) then
