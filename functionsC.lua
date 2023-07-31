@@ -686,6 +686,8 @@ end
 function tabellaFind(table, item)
        local index = 1;
        while table[index] do
+       print (item)
+       print(table[index])
                if ( item == table[index] ) then
                        return 1;
                end

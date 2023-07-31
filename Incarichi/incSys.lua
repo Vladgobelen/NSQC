@@ -99,19 +99,43 @@ if inQuest ~= nil then
 end
 end)
 
-local function OnEvent(self, event, ...)
-	local myNome = GetUnitName("player")
-	if arg1 == "NSQC" then
-		if incTabC ~= nil then
-			spisokQ = mysplit(printPar(incTabC))
-			for i=1, #spisokQ do
-				local nomeTab = testTab(spisokQ[i])
-				if inQuest[spisokQ[i]]["старт"] ~= nil then
-					SendAddonMessage("NSGadd " .. myNome .. " аддон типа обнулен ", spisokQ[i] .. " " .. inQuest[spisokQ[i]]["старт"], "guild")
-					inQuest[spisokQ[i]]["старт"] = nil
-					SendChatMessage("Квест провален потому что я трусливо сбежал из мира..", "OFFICER", nil, 1)
+local frameTime = CreateFrame("FRAME")
+local timeElapsed = 0
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+local myNome = GetUnitName("player")
+if testQ["t1"] ~= nil then
+	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 1 then
+		timeElapsed = 0
+		testQ["t1"]=testQ["t1"]+0.5
+		if testQ["t1"]>3 then
+			if incTabC ~= nil then
+				spisokQ = mysplit(printPar(incTabC))
+				for i=1, #spisokQ do
+					local nomeTab = testTab(spisokQ[i])
+					if inQuest[spisokQ[i]]["старт"] ~= nil then
+						SendAddonMessage("NSGadd " .. myNome .. " аддон типа обнулен ", spisokQ[i] .. " " .. inQuest[spisokQ[i]]["старт"], "guild")
+						inQuest[spisokQ[i]]["старт"] = nil
+						SendChatMessage("Квест провален потому что я трусливо сбежал из мира..", "OFFICER", nil, 1)
+						testQ["t1"] = nil
+					else
+						testQ["t1"] = nil
+					end
 				end
 			end
+		end
+	end
+end
+
+end)
+
+local function OnEvent(self, event, ...)
+	if arg1 == "NSQC" then
+		local myNome = GetUnitName("player")
+		local t = time()
+		local t1
+		if testQ["t1"] == nil then
+			testQ["t1"] = t
 		end
 	end
 end
