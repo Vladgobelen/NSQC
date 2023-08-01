@@ -117,6 +117,12 @@ if testQ ~= nil then
 		local q = testQ[myNome]["взятый_квест"]
 		testQ[myNome]["квест_лвл3"][q] = message
 	end
+	if string.find (kod, "#qUpq3S") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q3Stat"] = tonumber(message)
+	end
+	if string.find (kod, "#qUp3StatNum") and string.find (kod, myNome) and testGM ~= nil then
+		testQ[myNome]["q3StatNum"] = tonumber(message)
+	end
 
 end
 if string.find (kod, "#q3Stat") and string.find (kod, myNome) and testGM ~= nil then
@@ -379,6 +385,10 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["q33nik"][3] = nil
 	testQ[myNome]["взятый_квест3_2"] = nil
 	testQ[myNome]["взятый_квест3_1"] = nil
+	testQ[myNome]["q3Stat"] = nil
+	testQ[myNome]["q3stStart"] = nil
+	testQ[myNome]["q3StatNum"] = nil
+	testQ[myNome]["q3StatTemp"] = nil
 end
 
 if string.find (message, "#questTimerID2") and sender == myNome then
