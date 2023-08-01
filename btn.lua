@@ -1,4 +1,4 @@
-versAdd=198
+versAdd=199
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -47,8 +47,12 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				elseif testQ[myNome]["лвл_квестов"]==3 then
 					SendAddonMessage("NSGadd", "#aat", "guild")
 				end
-			else
+			end
+			if testQ[myNome]["взятый_квест"] == "q33" then
 				SendAddonMessage("NSGadd", "#q33x", "guild")
+			end
+			if testQ[myNome]["взятый_квест"] == "q3Stat" then
+				SendAddonMessage("NSGadd", "q3StX", "guild")
 			end
 			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
 		elseif id == 1 then
@@ -67,7 +71,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id==8 then
 			self[id]:SetScript("OnClick",function(self, button)
-				if testQ[myNome]["взятый_квест"] ~= "q33" then
+				if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~="q3Stat" then
 					if testQ[myNome]["уровень_квестов"]~="2" and testQ[myNome]["уровень_квестов"]~="3" then
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
 					end
@@ -80,7 +84,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					if testQ[myNome]["уровень_квестов"]=="3" and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 						proverkaVypolneniyaKvestySachivkoj(myNome,3)
 					end
-				else
+				end
+				if testQ[myNome]["взятый_квест"] == "q33" then
 					local nik = {}
 					for i=1,#testQ[myNome]["q33nik"] do
 						if testQ[myNome]["q33nik"][i] == 1 then
@@ -90,6 +95,10 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 					SendChatMessage(testQ[myNome]["q33q"] .. nik[1] .. ", " .. nik[2] .. ", " .. nik[3], "OFFICER", nil, 1)
+				end
+				if testQ[myNome]["взятый_квест"] == "q3Stat" then
+					local x = tonumber(testQ[myNome]["q3StatNum"])+5
+					SendChatMessage("Должно стать " .. x .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["q3Stat"])), "OFFICER", nil, 1)
 				end
 		end)
 	end
@@ -1190,7 +1199,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[2]:SetText("Сдать квест")
 			end
 		elseif testQ[myNome]["лвл_квестов"]==3 then
-			if testQ[myNome]["взятый_квест"] ~= "q33" then
+			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" then
 				if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 					testComplit=testQ[myNome]["взятый_квест"]
 					testComplit=tonumber(testComplit)
@@ -1262,7 +1271,37 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						btn[2]:SetText("Сдать квест")
 					end
 				end
-			else
+			end
+			if testQ[myNome]["взятый_квест"] == "q3Stat" then
+				btn[1]:Hide()
+				local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
+				if arg4 < tonumber(testQ[myNome]["q3StatNum"])+5 then
+					btn[2]:Disable()
+					if pokazat == 1 then
+						btn[2]:Show()
+						btn[1]:Hide()
+					else
+						btn[2]:Hide()
+					end
+					btn[2]:SetText("Ачивка не выполнена")
+					btn[1]:Hide()
+					btn[1]:SetText("Ачивка не выполнена")
+				else
+					if testQ["timerID2"] == nil then
+						btn[2]:Enable()
+						btn[1]:Enable()
+					end
+					if pokazat == 1 then
+						btn[2]:Show()
+						btn[1]:Hide()
+					else
+						btn[2]:Hide()
+					end
+						btn[2]:SetText("Сдать квест")
+				end
+
+			end
+			if testQ[myNome]["взятый_квест"] == "q33" then
 				btn[1]:Hide()
 				if testQ[myNome]["q33nik"][1] ~= 1 or testQ[myNome]["q33nik"][2] ~= 1 or testQ[myNome]["q33nik"][3] ~= 1 then
 					btn[2]:Disable()

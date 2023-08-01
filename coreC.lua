@@ -145,6 +145,7 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 				cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
 			end
 			if quantityShow~=0 and reqQuantityShow==0 and quantityShow~=nil then
+				print(i)
 				cmpltd1=" выполненно пунктов ачивки "
 				cmpltd2=quantityShow
 				cmpltd=cmpltd1 .. cmpltd2

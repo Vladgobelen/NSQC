@@ -102,7 +102,6 @@ end)
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
-local myNome = GetUnitName("player")
 if testQ["t1"] ~= nil then
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then

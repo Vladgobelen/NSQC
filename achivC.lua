@@ -119,6 +119,18 @@ if testQ ~= nil then
 	end
 
 end
+if string.find (kod, "#q3Stat") and string.find (kod, myNome) and testGM ~= nil then
+	local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(message), 1)
+	SendAddonMessage("#q3otvStat", arg4, "guild")
+	SendChatMessage("У меня выполненно " .. arg4 .. " пунктов ачивки " .. GetAchievementLink(tonumber(message)), "OFFICER", nil, 1)
+	testQ[myNome]["q3StatTemp"] = tonumber(message)
+	testQ[myNome]["q3StatNum"] = tonumber(arg4)
+end
+if string.find (kod, "#q3stStart") and string.find (kod, myNome) and testGM ~= nil then
+	testQ[myNome]["q3Stat"] = testQ[myNome]["q3StatTemp"]
+	testQ[myNome]["взятый_квест"] = "q3Stat"
+end
+
 if string.find (kod, "#otLadkaNS") and string.find (kod, myNome) and testGM ~= nil then
 	local msg = mysplit(message)
 	print (message)
