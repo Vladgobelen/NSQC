@@ -1,4 +1,4 @@
-versAdd=201
+versAdd=202
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -39,7 +39,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if id==2 then
 			btn[2]:Disable()
 			testQ["timerID2"] = 60
-			if testQ[myNome]["взятый_квест"] ~= "q33" then
+			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" then
 				if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
 					SendAddonMessage("NSGadd", zzid, "guild")
 				elseif testQ[myNome]["лвл_квестов"]==2 then
@@ -54,8 +54,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if testQ[myNome]["взятый_квест"] == "q3Stat" then
 				SendAddonMessage("NSGadd", testQ[myNome]["q3StatNum"], "guild")
 				local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
-				SendAddonMessage("NSGadd", arg4, "guild")
-				SendAddonMessage("NSGadd", "q3StX", "guild")
+				SendAddonMessage("#zlnDa", arg4, "guild")
+				--SendAddonMessage("NSGadd", "q3StX", "guild")
 			end
 			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
 		elseif id == 1 then
@@ -1278,7 +1278,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if testQ[myNome]["взятый_квест"] == "q3Stat" then
 				btn[1]:Hide()
 				local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
-				if arg4 < tonumber(testQ[myNome]["q3StatNum"])+5 then
+				local tQ = tonumber(testQ[myNome]["q3StatNum"])
+				local tQ1 = tQ+5
+				if arg4 < tQ1 then
 					btn[2]:Disable()
 					if pokazat == 1 then
 						btn[2]:Show()
