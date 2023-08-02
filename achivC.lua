@@ -154,8 +154,10 @@ if string.find (message, "#aaa") or string.find (message, "#aao") then
 			id, name, points, completed, month, day, year, description, flags, icon, rewardText, 	isGuildAch = GetAchievementInfo(msg1)
 			if completed == true then
 				SendAddonMessage("NSGadd", "#aab " .. msg1, "guild")
+				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			else
 				SendAddonMessage("NSGadd", "#aac " .. msg1, "guild")
+				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			end
 		elseif msg1TestLvl=="#aao" then
 			msg1 = msg1[3]
@@ -163,8 +165,10 @@ if string.find (message, "#aaa") or string.find (message, "#aao") then
 			id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 			if completed == true then
 				SendAddonMessage("NSGadd", "#aap " .. msg1, "guild")
+				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			else
 				SendAddonMessage("NSGadd", "#aaq " .. msg1, "guild")
+				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			end
 		end
 	end
@@ -213,7 +217,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		end
 		if j>=mozhnoLiSdatChislo11 then
 			SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo11, "guild")
-			--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
+			SendChatMessage("Я сделал " .. j .. " пунктов ачивки " .. GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:Show()
 			btn[1]:SetText("Взять квест")
@@ -249,7 +253,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 
 			if j>=mozhnoLiSdatChislo then
 				SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo, "guild")
-				--SendChatMessage(hshStran3C .. " #zzk " .. " Я сделал " .. j .. msg1" пунктов ачивки " .. msg1 .. " " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
+				SendChatMessage("Я сделал " .. j .. " пунктов ачивки " ..  GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
 				btn[1]:Enable()
 				btn[1]:Show()
 				btn[1]:SetText("Взять квест")
@@ -319,7 +323,7 @@ if string.find (message, "#aah") or string.find (message, "#aan") then
 				SendAddonMessage("NSGadd", "#aai " .. msgQLVL2, "guild")
 			else
 				SendAddonMessage("NSGadd", "#aaj " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
-			--SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+			SendChatMessage( "доступно пунктов ачивки: " .. GetAchievementLink(msgQLVL2) .. " " .. k .. " из " .. count, "OFFICER", nil, 1)
 			end
 		elseif msgQLVL2[1] == "#aan" then
 			testQ[myNome]["лвл_квестов"]=3
@@ -342,7 +346,7 @@ if string.find (message, "#aah") or string.find (message, "#aan") then
 				SendAddonMessage("NSGadd", "#aar " .. msgQLVL2, "guild")
 			else
 				SendAddonMessage("NSGadd", "#aas " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
-				--SendChatMessage(hshStran3C .. " #aaj " .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msgQLVL2 .. " " .. GetAchievementLink(msgQLVL2), "OFFICER", nil, 1)
+				SendChatMessage("Доступно пунктов ачивки: " .. GetAchievementLink(msgQLVL2) .. " " ..  k .. " из " .. count, "OFFICER", nil, 1)
 			end
 		end
 	end
