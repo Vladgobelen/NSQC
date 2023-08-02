@@ -1,4 +1,4 @@
-versAdd=200
+versAdd=201
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -52,6 +52,9 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				SendAddonMessage("NSGadd", "#q33x", "guild")
 			end
 			if testQ[myNome]["взятый_квест"] == "q3Stat" then
+				SendAddonMessage("NSGadd", testQ[myNome]["q3StatNum"], "guild")
+				local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
+				SendAddonMessage("NSGadd", arg4, "guild")
 				SendAddonMessage("NSGadd", "q3StX", "guild")
 			end
 			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
