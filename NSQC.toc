@@ -11,6 +11,7 @@ lib\lib_math.lua
 lib\lib_string.lua
 lib\lib_table.lua
 libs\UTF8\utf8.lua
+libs\ch.tga
 ##################
 emblem.tga
 Incarichi\a.lua

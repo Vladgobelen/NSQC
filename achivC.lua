@@ -533,6 +533,14 @@ if string.find (message, "#krt") and sender == myNome then
 						end
 
 						if krt[999] ~= nil then
+							local num = 1
+							local x = 1005
+							local y = 680
+							for i=1,krt[999] do
+								chMuestro(num,x,y)
+								num = num + 1
+								y = y - 32
+							end
 							local chern = krt[999]
 							for i = 1, krt[999] do
 								if chern >=1 then

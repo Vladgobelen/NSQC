@@ -14,7 +14,33 @@ iconRisText={}
 iconRisText2={}
 tochki = {}
 icN = 1
+iconCh = {}
+iconChText = {}
 --1-16   17-32   33-48 49-64
+function iconCh:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
+	self[id]:SetSize(Rx, Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
+
+function iconChText:configure(id,Rx,Ry,x,y)
+	self[id] = iconCh[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\ch.png")
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+
+function chMuestro(iCh,X0,Y0)
+	iconCh:configure(iCh,576,384)
+	iconChText:configure(iCh,32,32,X0,Y0)
+	iconCh:configure(iCh,X0,Y0)
+	iconChText:configure(iCh,32,32,X0,Y0)
+	iconCh[iCh]:SetFrameStrata("TOOLTIP")
+	iconChText[iCh]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", X0, Y0)
+end
+
+
+
 function iconRis:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
 	self[id]:SetSize(Rx, Ry)
@@ -125,6 +151,7 @@ function krtHide(signalKrt)
 		end
 	end
 end
+
 
 
 
