@@ -40,6 +40,13 @@ if string.find (kod, "#q33ans") and string.find (kod, myNome) and testGM ~= nil 
 	testQ[myNome]["q33ans"] = message
 end
 
+if kod == "#krt7772" and string.find (message, myNome) and testGM ~= nil then
+	if krt == nil then
+		krt = {}
+	end
+	krt[777] = 2
+end
+
 if testQ ~= nil then
 
 	if string.find (kod, "#qUpdateS1") and string.find (kod, myNome) and testGM ~= nil then

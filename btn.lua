@@ -1,4 +1,4 @@
-versAdd=204
+versAdd=205
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -543,6 +543,37 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+
+		if WorldMapFrame:IsVisible() then
+			if krt[777] == nil then
+				local testKont = GetCurrentMapContinent()
+				testKont = tostring(testKont)
+				local lok = GetCurrentMapZone()
+				lok = tostring(lok)
+				local x,y = GetPlayerMapPosition("player")
+				if testQ["chD"] == nil then
+					testQ["chD"] = {}
+				end
+				if testQ["chD"]["1"] == nil then
+					x1 = 0.56603670120239
+					y1 = 0.52367597818375
+					if testKont == "2" then
+						if lok == "15" then
+							local mioCel=sqrt((x-x1)^2+(y-y1)^2)
+							if mioCel <= 0.0009 then
+								SendChatMessage("Я нашел чернила из слез лепрогномов-рабов", "OFFICER", nil, 1)
+								if krt[999] == nil then
+									krt[999] = 1
+								else
+									krt[999] = krt[999]+1
+								end
+								testQ["chD"]["1"] = 1
+							end
+						end
+					end
+				end
+			end
+		end
 
 		if testQ["проверка_версии"] == nil then
 			testQ[myNome]["zzlf"]=0
@@ -1387,3 +1418,4 @@ myCheckButton2:SetScript("OnClick",
 
 	end
 );
+
