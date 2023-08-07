@@ -152,33 +152,100 @@ if string.find (kod, "#otLadkaNS") and string.find (kod, myNome) and testGM ~= n
 	SendAddonMessage("NSGadd", x .. " " .. y, "guild")
 end
 if kod == "#chernilaC" and testGM ~= nil then
-	if krt == nil then
-		krt = {}
+	if msg[6] == "chern1" then
+		if krt == nil then
+			krt = {}
+		end
+		if krt["chernila"] == nil then
+			krt["chernila"] = {}
+		end
+		if krt["chernila"][msg[1]] == nil then
+			krt["chernila"][msg[1]] = {}
+		end
+		if krt["chernila"][msg[1]][msg[2]] == nil then
+			krt["chernila"][msg[1]][msg[2]] = {}
+		end
+		if krt["chernila"][msg[1]][msg[2]][msg[3]] == nil then
+			krt["chernila"][msg[1]][msg[2]][msg[3]] = {}
+		end
+		krt["chernila"]["nomer"] = msg[1]
+		krt["chernila"]["kont"] = msg[2]
+		krt["chernila"]["lok"] = msg[3]
+		krt["chernila"]["msg"] = 1
+		krt["chernila"]["cel"] = 1
+		krt["chernila"][msg[1]][msg[2]][msg[3]]["x"] = msg[4]
+		krt["chernila"][msg[1]][msg[2]][msg[3]]["y"] = msg[5]
 	end
-	if krt["chernila"] == nil then
-		krt["chernila"] = {}
+	if msg[6] == "mapQuest" then
+		if testQ == nil then
+			testQ = {}
+		end
+		if testQ["mapQuest"] == nil then
+			testQ["mapQuest"] = {}
+		end
+		if testQ["mapQuest"][msg[1]] == nil then
+			testQ["mapQuest"][msg[1]] = {}
+		end
+		if testQ["mapQuest"][msg[1]][msg[2]] == nil then
+			testQ["mapQuest"][msg[1]][msg[2]] = {}
+		end
+		if testQ["mapQuest"][msg[1]][msg[2]][msg[3]] == nil then
+			testQ["mapQuest"][msg[1]][msg[2]][msg[3]] = {}
+		end
+		testQ["mapQuest"]["nomer"] = msg[1]
+		testQ["mapQuest"]["kont"] = msg[2]
+		testQ["mapQuest"]["lok"] = msg[3]
+		testQ["mapQuestMsg"] = 1
+		testQ["mapQuestCel"] = 1
+		testQ["mapQuest"][msg[1]][msg[2]][msg[3]]["x"] = msg[4]
+		testQ["mapQuest"][msg[1]][msg[2]][msg[3]]["y"] = msg[5]
 	end
-	if krt["chernila"][msg[1]] == nil then
-		krt["chernila"][msg[1]] = {}
-	end
-	if krt["chernila"][msg[1]][msg[2]] == nil then
-		krt["chernila"][msg[1]][msg[2]] = {}
-	end
-	if krt["chernila"][msg[1]][msg[2]][msg[3]] == nil then
-		krt["chernila"][msg[1]][msg[2]][msg[3]] = {}
-	end
-	krt["chernila"]["nomer"] = msg[1]
-	krt["chernila"]["kont"] = msg[2]
-	krt["chernila"]["lok"] = msg[3]
-	krt["chernila"][msg[1]][msg[2]][msg[3]]["x"] = msg[4]
-	krt["chernila"][msg[1]][msg[2]][msg[3]]["y"] = msg[5]
 end
 if kod == "#chernilaCMsg" and testGM ~= nil then
-	krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["msg"] = message
-	SendChatMessage("База чернил обновлена " .. krt["chernila"]["nomer"], "OFFICER", nil, 1)
-	krt["chernila"]["nomer"] = nil
-	krt["chernila"]["kont"] = nil
-	krt["chernila"]["lok"] = nil
+	if krt["chernila"]["msg"] == 1 then
+		krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["msg"] = message
+	end
+	if testQ["mapQuestMsg"] == 1 then
+		testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["msg"] = message
+	end
+end
+if kod == "#chernilaCel" and testGM ~= nil then
+	if krt["chernila"]["cel"] == 1 then
+		krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["cel"] = message
+		SendChatMessage("База чернил обновлена " .. krt["chernila"]["nomer"], "OFFICER", nil, 1)
+		krt["chernila"]["nomer"] = nil
+		krt["chernila"]["kont"] = nil
+		krt["chernila"]["lok"] = nil
+		krt["chernila"]["cel"] = nil
+		krt["chernila"]["msg"] = nil
+
+	end
+	if testQ["mapQuestCel"] == 1 then
+		testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["cel"] = message
+		SendChatMessage("База территориальных квестов обновлена " .. testQ["mapQuest"]["nomer"], "OFFICER", nil, 1)
+		testQ["mapQuest"]["nomer"] = nil
+		testQ["mapQuest"]["kont"] = nil
+		testQ["mapQuest"]["lok"] = nil
+		testQ["mapQuestMsg"] = nil
+		testQ["mapQuestCel"] = nil
+	end
+end
+if string.find (kod, "#qMapQuest") and string.find (message, myNome) and testGM ~= nil then
+	testQ["mapQuest"]["текущий"] = msg[2]
+	if testQ ~= nil then
+		if testQ["mapQuest"] ~= nil then
+			if testQ["mapQuest"]["список"] == nil then
+				testQ["mapQuest"]["список"] = {}
+			end
+			if testQ["mapQuest"]["список"] ~= nil then
+				if testQ["mapQuest"]["список"][msg[2]] ~= "9999" then
+					testQ["mapQuest"]["список"][msg[2]] = 1
+				else
+					SendChatMessage("Я уже делал териториальный квест " .. msg[2], "OFFICER", nil, 1)
+				end
+			end
+		end
+	end
 end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then

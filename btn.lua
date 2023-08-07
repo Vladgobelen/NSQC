@@ -1,4 +1,4 @@
-versAdd=208
+versAdd=209
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -577,6 +577,28 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										end
 										testQ["chD"][j] = 1
 									end
+								end
+							end
+						end
+					end
+				end
+			end
+			if testQ ~= nil then
+				if testQ["mapQuest"] ~= nil then
+					if testQ["mapQuest"]["текущий"] ~= nil and testQ["mapQuest"]["текущий"] ~= "9999" then
+						local testKont = GetCurrentMapContinent()
+						testKont = tostring(testKont)
+						local testLok = GetCurrentMapZone()
+						testLok = tostring(testLok)
+						local x,y = GetPlayerMapPosition("player")
+						local kont, lok, x1, y1, m = mapQuest(testQ["mapQuest"]["текущий"])
+						if testKont == kont then
+							if testLok == lok then
+								local mioCel=sqrt((x-x1)^2+(y-y1)^2)
+								if mioCel <= 0.0009 then
+									SendChatMessage(m, "OFFICER", nil, 1)
+									testQ["mapQuest"]["список"][testQ["mapQuest"]["текущий"]] = "9999"
+									testQ["mapQuest"]["текущий"] = "9999"
 								end
 							end
 						end
