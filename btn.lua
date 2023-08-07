@@ -1,4 +1,4 @@
-versAdd=207
+versAdd=208
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -551,26 +551,33 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if krt[777] == nil then
 				local testKont = GetCurrentMapContinent()
 				testKont = tostring(testKont)
-				local lok = GetCurrentMapZone()
-				lok = tostring(lok)
+				local testLok = GetCurrentMapZone()
+				testLok = tostring(testLok)
 				local x,y = GetPlayerMapPosition("player")
 				if testQ["chD"] == nil then
 					testQ["chD"] = {}
 				end
-				if testQ["chD"]["1"] == nil then
-					x1 = 0.56603670120239
-					y1 = 0.52367597818375
-					if testKont == "2" then
-						if lok == "15" then
-							local mioCel=sqrt((x-x1)^2+(y-y1)^2)
-							if mioCel <= 0.0009 then
-								SendChatMessage("Я нашел чернила из слез лепрогномов-рабов", "OFFICER", nil, 1)
-								if krt[999] == nil then
-									krt[999] = 1
-								else
-									krt[999] = krt[999]+1
+				for i=1,14 do
+					j = tostring(i)
+					if krt["chernila"]== nil then
+						krt["chernila"] = {}
+					end
+					if krt["chernila"][j] ~= nil then
+						if testQ["chD"][j] == nil then
+							local kont, lok, x1, y1, m = krtChernGetXY(j)
+							if testKont == kont then
+								if testLok == lok then
+									local mioCel=sqrt((x-x1)^2+(y-y1)^2)
+									if mioCel <= 0.0009 then
+										SendChatMessage(m, "OFFICER", nil, 1)
+										if krt[999] == nil then
+											krt[999] = 1
+										else
+											krt[999] = krt[999]+1
+										end
+										testQ["chD"][j] = 1
+									end
 								end
-								testQ["chD"]["1"] = 1
 							end
 						end
 					end

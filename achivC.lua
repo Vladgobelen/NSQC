@@ -4,6 +4,7 @@ GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, se
 --команды для управления квестами
 local nik=sender
 local myNome = GetUnitName("player")
+local msg = mysplit(message)
 if testQ==nil then
 	testQ={}
 end
@@ -149,6 +150,35 @@ if string.find (kod, "#otLadkaNS") and string.find (kod, myNome) and testGM ~= n
 	print (message)
 	local x,y=otladka(msg[1],msg[2],msg[3],msg[4],msg[5],msg[6],msg[7])
 	SendAddonMessage("NSGadd", x .. " " .. y, "guild")
+end
+if kod == "#chernilaC" and testGM ~= nil then
+	if krt == nil then
+		krt = {}
+	end
+	if krt["chernila"] == nil then
+		krt["chernila"] = {}
+	end
+	if krt["chernila"][msg[1]] == nil then
+		krt["chernila"][msg[1]] = {}
+	end
+	if krt["chernila"][msg[1]][msg[2]] == nil then
+		krt["chernila"][msg[1]][msg[2]] = {}
+	end
+	if krt["chernila"][msg[1]][msg[2]][msg[3]] == nil then
+		krt["chernila"][msg[1]][msg[2]][msg[3]] = {}
+	end
+	krt["chernila"]["nomer"] = msg[1]
+	krt["chernila"]["kont"] = msg[2]
+	krt["chernila"]["lok"] = msg[3]
+	krt["chernila"][msg[1]][msg[2]][msg[3]]["x"] = msg[4]
+	krt["chernila"][msg[1]][msg[2]][msg[3]]["y"] = msg[5]
+end
+if kod == "#chernilaCMsg" and testGM ~= nil then
+	krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["msg"] = message
+	SendChatMessage("База чернил обновлена " .. krt["chernila"]["nomer"], "OFFICER", nil, 1)
+	krt["chernila"]["nomer"] = nil
+	krt["chernila"]["kont"] = nil
+	krt["chernila"]["lok"] = nil
 end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then

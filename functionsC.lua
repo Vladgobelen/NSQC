@@ -695,6 +695,27 @@ function tabellaFind(table, item)
        end
        return nil;
 end
+function krtChernGetXY(nomer)
+	nomer = tostring(nomer)
+	for k, v in pairs(krt["chernila"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont][lok]) do
+		if k == "x" then
+			x = v
+		end
+		if k == "y" then
+			y = v
+		end
+		if k == "msg" then
+			m = v
+		end
+	end
+	return kont, lok, x, y, m
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
