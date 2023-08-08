@@ -734,8 +734,11 @@ function mapQuest(nomer)
 		if k == "msg" then
 			m = v
 		end
+		if k == "cel" then
+			c = v
+		end
 	end
-	return kont, lok, x, y, m
+	return kont, lok, x, y, m, c
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()

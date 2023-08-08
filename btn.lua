@@ -1,4 +1,4 @@
-versAdd=211
+versAdd=212
 bonusQuestF = 20
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -564,7 +564,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 					if krt["chernila"][j] ~= nil then
 						if testQ["chD"][j] == nil then
-							local kont, lok, x1, y1, m = krtChernGetXY(j)
+							local kont, lok, x1, y1, m, c = krtChernGetXY(j)
 							if testKont == kont then
 								if testLok == lok then
 									local mioCel=sqrt((x-x1)^2+(y-y1)^2)
