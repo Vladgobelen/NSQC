@@ -247,7 +247,7 @@ if string.find (kod, "#qMapQuest") and string.find (message, myNome) and testGM 
 			if testQ["mapQuest"]["список"] ~= nil then
 				if testQ["mapQuest"]["список"][msg[2]] ~= "9999" then
 					testQ["mapQuest"]["список"][msg[2]] = 1
-					local kont, lok, x1, y1, m = mapQuest(testQ["mapQuest"][msg[2]])
+					local kont, lok, x1, y1, m = mapQuest([msg[2]])
 					SendChatMessage(m, "OFFICER", nil, 1)
 				else
 					SendChatMessage("Я уже делал териториальный квест " .. msg[2], "OFFICER", nil, 1)
