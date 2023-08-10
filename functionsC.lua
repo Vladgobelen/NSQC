@@ -779,12 +779,7 @@ function chern1P(nomer)
 	end
 end
 function tabellaEnStr(nq,n)
-	local lenVlozh
-	local rez
-	local l
-	local k
-	local x
-	local x1
+	local lenVlozh, rez, l, k, x, x1
 	nq=tostring(nq)
 	n=tostring(n)
 	if testQ["chD"][tostring(nq)] == nil then
