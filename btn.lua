@@ -1,4 +1,4 @@
-versAdd=215
+versAdd=216
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -551,30 +551,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if krt["777"] == nil then
 				if krt["podskazki"] ~= nil then
 					if krt["chernila"] ~= nil then
-						local rez
-						local numPod=1
-						krt["quest"] = {}
-						chern1P(1)
+						local yrez,x,y,r,rezPod
 						for i=1, tablelength(krt["chernila"])-1 do
-							j=tostring(i)
-							if testQ["chD"][j] == nil then
-								chern1P(i)
-								for k=1,tablelength(krt["chernila"]["podskazkiRez"]) do
-									l=tostring(k)
-									if numPod <= krt["podskazki"] then
-										krt["quest"][j.. " " ..l]=krt["chernila"]["podskazkiRez"][l]
-										numPod = numPod + 1
-									else
-										break
-									end
-								end
+							x,y=tabellaEnStr(i,krt["podskazki"])
+							if r==nil then
+								r=x
+							else
+								r=r .. r
+							end
+							if yrez == nil then
+								yrez=tonumber(y)
+							else
+								yrez = yrez + tonumber(y)
+							end
+							rezPod = tonumber(krt["podskazki"])
+							if yrez >= rezPod then
+								break
 							end
 						end
-						rez = "Подсказки:\n"
-						for k, v in pairs(krt["quest"]) do
-							rez = rez .. k .. " " .. v .. "\n"
-						end
-						btnF.tooltip=rez
+						btnF.tooltip=r
 					end
 				end
 			end

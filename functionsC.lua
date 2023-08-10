@@ -778,6 +778,39 @@ function chern1P(nomer)
 		end
 	end
 end
+function tabellaEnStr(nq,n)
+	local lenVlozh
+	local rez
+	local l
+	local k
+	local x
+	local x1
+	nq=tostring(nq)
+	n=tostring(n)
+	l = "0"
+	for z, v in pairs(krt["chernila"][nq]) do
+		x=z
+	end
+	for z, v in pairs(krt["chernila"][nq][x]) do
+		x1=z
+	end
+	lenVlozh = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
+	for i=1,lenVlozh do
+		k=tostring(i)
+		if rez == nil then
+			rez = k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
+		else
+			rez = rez .. k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
+		end
+		l = tonumber(l)
+		l = l+1
+		l = tostring(l)
+		if l==n then
+			break
+		end
+	end
+	return rez,l
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
