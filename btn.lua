@@ -1,4 +1,4 @@
-versAdd=220
+versAdd=221
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -556,7 +556,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						podChast = krt["podskazki"]
 						for i=1, tablelength(krt["chernila"]) do
 							x,y=tabellaEnStr(i,podChast)
-							podChast = krt["podskazki"] - y
+							podChast = podChast - y
 							r[i] = x
 							if yrez == nil then
 								yrez=tonumber(y)
