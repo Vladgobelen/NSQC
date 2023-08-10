@@ -185,36 +185,34 @@ if string.find (message, "получает кусок карты") and krtKus[1]
 	if krt==nil then
 		krt={}
 	end
-	if krt ~= nil then
-		if krt[777] == nil then
-			if krt == nil then
-				krt = {}
+	if krt["777"] == nil then
+		x = math.random(1, 15)
+		x = tostring(x)
+		if krt[x] == nil then
+			krt[x] = true
+		else
+			for i = 1, 15 do
 				x = math.random(1, 15)
-				krt[x] = true
-			else
-				for i = 1, 15 do
-					x = math.random(1, 15)
-					if krt[x] == nil or krt[x] ~= true then
-						krt[x] = true
-						break
-					else
-					end
+				x = tostring(x)
+				if krt[x] == nil or krt[x] ~= true then
+					krt[x] = true
+					break
 				end
 			end
 		end
 	end
-	if krt[777] == 2 then
-		if krt == nil then
-			krt = {}
-			x = math.random(21, 34)
+	if krt["777"] == 2 then
+		x = math.random(21, 34)
+		x = tostring(x)
+		if krt[x] == nil then
 			krt[x] = true
 		else
 			for i = 21, 34 do
 				x = math.random(21, 34)
+				x = tostring(x)
 				if krt[x] == nil or krt[x] ~= true then
 					krt[x] = true
 					break
-				else
 				end
 			end
 		end
@@ -222,110 +220,23 @@ if string.find (message, "получает кусок карты") and krtKus[1]
 end
 
 if string.find (message, "!карта") and krtKus[1]==myNome and testGM~=nil then
-	krtKus[3] = tonumber(krtKus[3])
-	if krtKus[3] == 1 then
-		krt[1] = true
+	if krt == nil then
+		krt = {}
 	end
-	if krtKus[3] == 2 then
-		krt[2] = true
-	end
-	if krtKus[3] == 3 then
-		krt[3] = true
-	end
-	if krtKus[3] == 4 then
-		krt[4] = true
-	end
-	if krtKus[3] == 5 then
-		krt[5] = true
-	end
-	if krtKus[3] == 6 then
-		krt[6] = true
-	end
-	if krtKus[3] == 7 then
-		krt[7] = true
-	end
-	if krtKus[3] == 8 then
-		krt[8] = true
-	end
-	if krtKus[3] == 9 then
-		krt[9] = true
-	end
-	if krtKus[3] == 10 then
-		krt[10] = true
-	end
-	if krtKus[3] == 11 then
-		krt[11] = true
-	end
-	if krtKus[3] == 12 then
-		krt[12] = true
-	end
-	if krtKus[3] == 13 then
-		krt[13] = true
-	end
-	if krtKus[3] == 14 then
-		krt[14] = true
-	end
-	if krtKus[3] == 15 then
-		krt[15] = true
-	end
-	if krtKus[3] == 21 then
-		krt[21] = true
-	end
-	if krtKus[3] == 22 then
-		krt[22] = true
-	end
-	if krtKus[3] == 23 then
-		krt[23] = true
-	end
-	if krtKus[3] == 24 then
-		krt[24] = true
-	end
-	if krtKus[3] == 25 then
-		krt[25] = true
-	end
-	if krtKus[3] == 26 then
-		krt[26] = true
-	end
-	if krtKus[3] == 27 then
-		krt[27] = true
-	end
-	if krtKus[3] == 28 then
-		krt[28] = true
-	end
-	if krtKus[3] == 29 then
-		krt[29] = true
-	end
-	if krtKus[3] == 30 then
-		krt[30] = true
-	end
-	if krtKus[3] == 30 then
-		krt[30] = true
-	end
-	if krtKus[3] == 31 then
-		krt[31] = true
-	end
-	if krtKus[3] == 32 then
-		krt[32] = true
-	end
-	if krtKus[3] == 33 then
-		krt[33] = true
-	end
-	if krtKus[3] == 34 then
-		krt[34] = true
-	end
-	if krtKus[3] == 35 then
-		krt[35] = true
-	end
-	if krtKus[3] == 36 then
-		krt[36] = true
+	local x
+	x = tostring(krtKus[3])
+	if krt[x] == nil then
+		krt[x] = true
+	else
+		SendChatMessage("У " .. sender .. " уже есть " .. x .. " кусок", "OFFICER", nil, 1)
 	end
 end
 
 if string.find (message, "получает чернила") and krtKus[1]==myNome and testGM~=nil then
-	if krt[999] == nil then
-		krt[999] = 1
+	if krt["999"] == nil then
+		krt["999"] = 1
 	else
-		krt[999] = krt[999] + 1
+		krt["999"] = krt["999"] + 1
 	end
 end
 

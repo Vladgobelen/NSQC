@@ -56,6 +56,18 @@ if ginv ~= nil then
 		end
 		table.insert(testQ["shtrf"], gInv[1])
 		shtraf = nil
+		if testQ["mapQuestPodskazki"] ~= nil and testQ["mapQuestPodskazki"] ~= 1 then
+			testQ["mapQuestPodskazki"] = testQ["mapQuestPodskazki"] + 1
+			print (testQ["mapQuestPodskazki"])
+		end
+		if testQ["mapQuestPodskazki"] == nil then
+			testQ["mapQuestPodskazki"] = 0
+			print (testQ["mapQuestPodskazki"])
+		end
+		if testQ["mapQuestPodskazki"] >= 1 then
+			SendAddonMessage("#MQP", "заглушка", "guild")
+			testQ["mapQuestPodskazki"] = nil
+		end
 	end
 end
 

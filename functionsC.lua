@@ -616,6 +616,8 @@ function testKontLok(tabella)
 end
 
 function startFchern(tabella,n1,n2)
+	n1 = tostring(n1)
+	n2 = tostring(n2)
 	if krt[n1] == true and krt[n2] == true then
 		testQ["start"] = tabella
 		testQ["старт"] = 0
@@ -624,6 +626,8 @@ function startFchern(tabella,n1,n2)
 end
 
 function testFchern(tabella,n1,n2)
+	n1 = tostring(n1)
+	n2 = tostring(n2)
 	if testQ[tabella] == nil then
 		if testKontLok(tabella) ~= nil then
 			if testKontLok(tabella) < 0.020 then
@@ -739,6 +743,40 @@ function mapQuest(nomer)
 		end
 	end
 	return kont, lok, x, y, m, c
+end
+function mapQuestP(nomer)
+	nomer = tostring(nomer)
+	testQ["mapQuest"]["podskazkiRez"] = {}
+	for k, v in pairs(testQ["mapQuest"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]) do
+		if k == "podskazki" then
+			for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]["podskazki"]) do
+				testQ["mapQuest"]["podskazkiRez"][k] = v
+			end
+		end
+	end
+end
+function chern1P(nomer)
+	nomer = tostring(nomer)
+	krt["chernila"]["podskazkiRez"] = {}
+	for k, v in pairs(krt["chernila"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont][lok]) do
+		if k == "podskazki" then
+			for k, v in pairs(krt["chernila"][nomer][kont][lok]["podskazki"]) do
+				krt["chernila"]["podskazkiRez"][k] = v
+			end
+		end
+	end
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
