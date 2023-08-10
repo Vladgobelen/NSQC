@@ -787,27 +787,38 @@ function tabellaEnStr(nq,n)
 	local x1
 	nq=tostring(nq)
 	n=tostring(n)
-	l = "0"
-	for z, v in pairs(krt["chernila"][nq]) do
-		x=z
-	end
-	for z, v in pairs(krt["chernila"][nq][x]) do
-		x1=z
-	end
-	lenVlozh = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
-	for i=1,lenVlozh do
-		k=tostring(i)
-		if rez == nil then
-			rez = k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
-		else
-			rez = rez .. k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
+	if testQ["chD"][tostring(nq)] == nil then
+		l = "0"
+		for z, v in pairs(krt["chernila"][nq]) do
+			x=z
 		end
-		l = tonumber(l)
-		l = l+1
-		l = tostring(l)
-		if l==n then
-			break
+		for z, v in pairs(krt["chernila"][nq][x]) do
+			x1=z
 		end
+		lenVlozh = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
+		for i=1,lenVlozh do
+			k=tostring(i)
+			if rez == nil then
+				rez = k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
+			else
+				rez = rez .. k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
+			end
+			l = tonumber(l)
+			l = l+1
+			l = tostring(l)
+			if l==n then
+				break
+			end
+		end
+	else
+		for z, v in pairs(krt["chernila"][nq]) do
+			x=z
+		end
+		for z, v in pairs(krt["chernila"][nq][x]) do
+			x1=z
+		end
+		rez = "выполнено"
+		l = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
 	end
 	return rez,l
 end
