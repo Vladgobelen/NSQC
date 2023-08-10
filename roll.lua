@@ -58,14 +58,11 @@ if ginv ~= nil then
 		shtraf = nil
 		if testQ["mapQuestPodskazki"] ~= nil and testQ["mapQuestPodskazki"] ~= 1 then
 			testQ["mapQuestPodskazki"] = testQ["mapQuestPodskazki"] + 1
-			print (testQ["mapQuestPodskazki"])
 		elseif testQ["mapQuestPodskazki"] == nil then
 			testQ["mapQuestPodskazki"] = 0
-			print (testQ["mapQuestPodskazki"])
 		elseif testQ["mapQuestPodskazki"] >= 1 then
 			SendAddonMessage("#MQP", "заглушка", "guild")
 			testQ["mapQuestPodskazki"] = nil
-			print (testQ["mapQuestPodskazki"])
 		end
 	end
 end

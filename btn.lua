@@ -606,6 +606,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 											krt["999"] = krt["999"]+1
 										end
 										testQ["chD"][j] = 1
+										krt["podskazki"] = nil
 									end
 								end
 							end
