@@ -308,16 +308,16 @@ if kod == "#MQP" and sender == myNome then
 				if testQ["mapQuest"]["podskazki"] == nil then
 					testQ["mapQuest"]["podskazki"] = 1
 					mapQuestP(testQ["mapQuest"]["текущий"])
-					SendChatMessage(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])], "WHISPER", nil, myNome)
+					print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
 				else
 					mapQuestP(testQ["mapQuest"]["текущий"])
 					local x = tablelength(testQ["mapQuest"]["podskazkiRez"])
 					if testQ["mapQuest"]["podskazki"] < x then
 						testQ["mapQuest"]["podskazki"] = testQ["mapQuest"]["podskazki"] + 1
-						SendChatMessage(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])], "WHISPER", nil, myNome)
+						print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
 					end
 					if testQ["mapQuest"]["podskazki"] >= x then
-						SendChatMessage(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])], "WHISPER", nil, myNome)
+						print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
 						testQ["mapQuest"]["podskazki"] = nil
 					end
 				end
