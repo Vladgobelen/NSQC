@@ -812,7 +812,7 @@ function tabellaEnStr(nq,n)
 		for z, v in pairs(krt["chernila"][nq][x]) do
 			x1=z
 		end
-		rez = "выполнено"
+		rez = nq .." выполнено\n"
 		l = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
 	end
 	return rez,l
