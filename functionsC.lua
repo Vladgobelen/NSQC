@@ -292,9 +292,9 @@ end
 
 function proverkaVypolneniyaKvestySachivkoj(mNome,qlvl)
 	local vypolnenaLiAch=testQ[mNome]["взятый_квест"]
-	if qlvl == 2 then
+	if qlvl == "2" then
 		qlvl = "квест_лвл2"
-	elseif qlvl == 3 then
+	elseif qlvl == "3" then
 		qlvl = "квест_лвл3"
 	end
 	local chisloPunktop=testQ[mNome][qlvl][vypolnenaLiAch]

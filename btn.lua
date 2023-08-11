@@ -1,4 +1,4 @@
-versAdd=222
+versAdd=223
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -79,13 +79,13 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
 					end
 					if testQ[myNome]["лвл_квестов"]=="2" then
-						proverkaVypolneniyaKvestySachivkoj(myNome,2)
+						proverkaVypolneniyaKvestySachivkoj(myNome,"2")
 					end
 					if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
 					end
 					if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
-						proverkaVypolneniyaKvestySachivkoj(myNome,3)
+						proverkaVypolneniyaKvestySachivkoj(myNome,"3")
 					end
 				end
 				if testQ[myNome]["взятый_квест"] == "q33" then
