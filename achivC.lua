@@ -58,7 +58,7 @@ if testQ ~= nil then
 		if testQ[myNome]["квест_лвл2"] == nil then
 			testQ[myNome]["квест_лвл2"] = {}
 		end
-		testQ[myNome]["уровень_квестов"] = message
+		testQ[myNome]["лвл_квестов"] = tostring(message)
 	end
 	if string.find (kod, "#qUpdateS2") and string.find (kod, myNome) and testGM ~= nil then
 		testQ[myNome]["взятый_квест"] = message
@@ -357,7 +357,7 @@ if string.find (message, "#aaa") or string.find (message, "#aao") then
 end
 local myNome = GetUnitName("player")
 if string.find (message, "#aaf") and string.find (message, myNome) then
-	if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
+	if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
 		proverka_komandy=mysplit(message)
 		msg1=proverka_komandy[3]
 		msg1 = tonumber(msg1)
@@ -371,7 +371,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		else
 			SendChatMessage("*Квест еще не выполнен.", "OFFICER", nil, 1)
 		end
-	elseif testQ[myNome]["лвл_квестов"]==2 then
+	elseif testQ[myNome]["лвл_квестов"]=="2" then
 		proverka_komandy=mysplit(message)
 		msg1=proverka_komandy[3]
 		msg1=tonumber(msg1)
@@ -406,7 +406,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			testQ[myNome]["взятый_квест"]="9999"
 		else
 		end
-	elseif testQ[myNome]["лвл_квестов"]==3 then
+	elseif testQ[myNome]["лвл_квестов"]=="3" then
 		if testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 			proverka_komandy=mysplit(message)
 			msg1=proverka_komandy[3]
@@ -461,7 +461,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 end
 
 if string.find (message, "#aa3") and string.find (message, myNome) then
-	testQ[myNome]["лвл_квестов"]=3
+	testQ[myNome]["лвл_квестов"]="3"
 end
 
 if string.find (message, "!crtb") and sender == myNome then
@@ -485,7 +485,7 @@ if string.find (message, "#aah") or string.find (message, "#aan") then
 	if string.find (message, myNome) then
 		msgQLVL2 = mysplit(message)
 		if msgQLVL2[1] == "#aah" then
-			testQ[myNome]["лвл_квестов"]=2
+			testQ[myNome]["лвл_квестов"]="2"
 			msgQLVL2 = msgQLVL2[3]
 			msgQLVL2 = tonumber(msgQLVL2)
 			j=0
@@ -508,7 +508,7 @@ if string.find (message, "#aah") or string.find (message, "#aan") then
 			SendChatMessage( "доступно пунктов ачивки: " .. GetAchievementLink(msgQLVL2) .. " " .. k .. " из " .. count, "OFFICER", nil, 1)
 			end
 		elseif msgQLVL2[1] == "#aan" then
-			testQ[myNome]["лвл_квестов"]=3
+			testQ[myNome]["лвл_квестов"]="3"
 			msgQLVL2 = msgQLVL2[3]
 			msgQLVL2 = tonumber(msgQLVL2)
 			j=0
@@ -596,12 +596,12 @@ if string.find (message, "#aak") and string.find (message, myNome) then
 	if testQ[myNome]["квест_лвл3"]==nil then
 		testQ[myNome]["квест_лвл3"]={}
 	end
-	if testQ[myNome]["лвл_квестов"] == 2 then
+	if testQ[myNome]["лвл_квестов"] == "2" then
 		count = GetAchievementNumCriteria(msgVzyalQ2)
 		count = tonumber(count)
 		testQ[myNome]["квест_лвл2"][msgVzyalQ2]=count
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
-	elseif testQ[myNome]["лвл_квестов"] == 3 then
+	elseif testQ[myNome]["лвл_квестов"] == "3" then
 		count = GetAchievementNumCriteria(msgVzyalQ2)
 		count =tonumber(count)
 		testQ[myNome]["квест_лвл3"][msgVzyalQ2]=count
@@ -709,8 +709,8 @@ if string.find (message, "#krt") and sender == myNome then
 
 						if krt["999"] ~= nil then
 							local num = 1
-							local x = 1005
-							local y = 680
+							local x = 973
+							local y = 637
 							for i=1,krt["999"] do
 								chMuestro(num,x,y)
 								num = num + 1
@@ -1139,7 +1139,7 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 	if testQ[myNome]["квест_лвл3"]==nil then
 		testQ[myNome]["квест_лвл3"]={}
 	end
-	if testQ[myNome]["лвл_квестов"] == 2 then
+	if testQ[myNome]["лвл_квестов"] == "2" then
 		msgVzyalQ2=mysplit(message)
 		msgVzyalQ2=msgVzyalQ2[3]
 		j=0
@@ -1158,7 +1158,7 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 		j=j+3
 		testQ[myNome]["квест_лвл2"][msgVzyalQ2]=j
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
-	elseif testQ[myNome]["лвл_квестов"] == 3 then
+	elseif testQ[myNome]["лвл_квестов"] == "3" then
 		msgVzyalQ2=mysplit(message)
 		msgVzyalQ2=msgVzyalQ2[3]
 		msgVzyalQ2=tonumber(msgVzyalQ2)

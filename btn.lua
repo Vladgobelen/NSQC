@@ -1,4 +1,4 @@
-versAdd=221
+versAdd=222
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -40,11 +40,11 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			btn[2]:Disable()
 			testQ["timerID2"] = 60
 			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" then
-				if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
+				if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
 					SendAddonMessage("NSGadd", zzid, "guild")
-				elseif testQ[myNome]["лвл_квестов"]==2 then
+				elseif testQ[myNome]["лвл_квестов"]=="2" then
 					SendAddonMessage("NSGadd", "#aam", "guild")
-				elseif testQ[myNome]["лвл_квестов"]==3 then
+				elseif testQ[myNome]["лвл_квестов"]=="3" then
 					SendAddonMessage("NSGadd", "#aat", "guild")
 				end
 			end
@@ -75,16 +75,16 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	if id==8 then
 			self[id]:SetScript("OnClick",function(self, button)
 				if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~="q3Stat" then
-					if testQ[myNome]["уровень_квестов"]~="2" and testQ[myNome]["уровень_квестов"]~="3" then
+					if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
 					end
-					if testQ[myNome]["уровень_квестов"]=="2" then
+					if testQ[myNome]["лвл_квестов"]=="2" then
 						proverkaVypolneniyaKvestySachivkoj(myNome,2)
 					end
-					if testQ[myNome]["уровень_квестов"]=="3" and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+					if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
 					end
-					if testQ[myNome]["уровень_квестов"]=="3" and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
+					if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
 						proverkaVypolneniyaKvestySachivkoj(myNome,3)
 					end
 				end
@@ -1207,7 +1207,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		btn[7]:SetText("Отказаться от квеста")
 		btn[8]:Enable()
 		btn[8]:SetText("Узнать текущий квест")
-		if testQ[myNome]["лвл_квестов"]~=2 and testQ[myNome]["лвл_квестов"]~=3 then
+		if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
 			testComplit=testQ[myNome]["взятый_квест"]
 			testComplit=tonumber(testComplit)
 			if testComplit ~= nil then
@@ -1237,7 +1237,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				btn[2]:SetText("Сдать квест")
 			end
-		elseif testQ[myNome]["лвл_квестов"]==2 then
+		elseif testQ[myNome]["лвл_квестов"]=="2" then
 			vypolnenaLiAch=testQ[myNome]["взятый_квест"]
 			count = GetAchievementNumCriteria(vypolnenaLiAch)
 			chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
@@ -1278,7 +1278,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				btn[2]:SetText("Сдать квест")
 			end
-		elseif testQ[myNome]["лвл_квестов"]==3 then
+		elseif testQ[myNome]["лвл_квестов"]=="3" then
 			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" then
 				if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 					testComplit=testQ[myNome]["взятый_квест"]
