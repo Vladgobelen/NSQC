@@ -25,6 +25,7 @@
 !.gitignore
 !functionsC.lua
 !libs/
+!libs/q.ogg
 !libs/ch.tga
 !libs/UTF8/
 !libs/UTF8/utf8.lua

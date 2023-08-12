@@ -1,4 +1,4 @@
-versAdd=223
+versAdd=224
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -604,6 +604,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										else
 											krt["999"] = krt["999"]+1
 										end
+										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
 										testQ["chD"][j] = 1
 										btnF.tooltip = "Подсказки:\n"
 									end

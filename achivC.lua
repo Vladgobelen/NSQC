@@ -325,6 +325,112 @@ if kod == "#MQP" and sender == myNome then
 		end
 	end
 end
+if kod == "gKick" and sender == myNome then
+	testQ["gKick"] = {}
+	for Zc=1,GetNumGuildMembers(true) do
+		local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+		testQ["gKick"][Zc] = officerNote
+		level = tonumber(level)
+		if level <= 29 then
+			if officerNote == "" and publicNote == "" then
+				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+				if daysOffline ~= nil then
+					daysOffline = tonumber(daysOffline)
+					if daysOffline >= 3 then
+						if yearsOffline ~= nil then
+							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+						end
+					end
+				end
+			end
+		end
+		if level <= 39 then
+			if officerNote == "" and publicNote == "" then
+				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+				if daysOffline ~= nil then
+					daysOffline = tonumber(daysOffline)
+					if daysOffline >= 4 then
+						if yearsOffline ~= nil then
+							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+						end
+					end
+				end
+			end
+		end
+		if level <= 49 then
+			if officerNote == "" and publicNote == "" then
+				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+				if daysOffline ~= nil then
+					daysOffline = tonumber(daysOffline)
+					if daysOffline >= 5 then
+						if yearsOffline ~= nil then
+							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+						end
+					end
+				end
+			end
+		end
+		if level <= 59 then
+			if officerNote == "" and publicNote == "" then
+				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+				if daysOffline ~= nil then
+					daysOffline = tonumber(daysOffline)
+					if daysOffline >= 6 then
+						if yearsOffline ~= nil then
+							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+						end
+					end
+				end
+			end
+		end
+		if level <= 69 then
+			if officerNote == "" and publicNote == "" then
+				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+				if daysOffline ~= nil then
+					daysOffline = tonumber(daysOffline)
+					if daysOffline >= 7 then
+						if yearsOffline ~= nil then
+							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+						end
+					end
+				end
+			end
+		end
+		if level <= 79 then
+			if officerNote == "" and publicNote == "" then
+				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+				if daysOffline ~= nil then
+					daysOffline = tonumber(daysOffline)
+					if daysOffline >= 8 then
+						if yearsOffline ~= nil then
+							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+						end
+					end
+				end
+			end
+		end
+		if level == 80 then
+			if officerNote == "" and publicNote == "" then
+				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+				if daysOffline ~= nil then
+					daysOffline = tonumber(daysOffline)
+					if daysOffline >= 14 then
+						if yearsOffline ~= nil then
+							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+						end
+					end
+				end
+			end
+		end
+	end
+end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then

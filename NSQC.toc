@@ -12,6 +12,7 @@ lib\lib_string.lua
 lib\lib_table.lua
 libs\UTF8\utf8.lua
 libs\ch.tga
+libs\q.ogg
 ##################
 emblem.tga
 Incarichi\a.lua
