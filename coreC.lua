@@ -95,75 +95,78 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 	if lenShow[1]==myNome then
 		tblLensShow=tablelength(lenShow)
 		achShow=table.concat(lenShow, " ", 3,tblLensShow)
+		achShow = string.lower(achShow)
 		for i=1,10000 do
 			IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText, isGuildAch = GetAchievementInfo(i)
-
-			if Name==achShow then
-			prov1=Completed
-			j=0
-			k=0
-			countShow = GetAchievementNumCriteria(i)
-			testShow=1
-			for shoCount=1,countShow do
-				local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount);
-				if completed~=true then
-					testShow="000"
+			if Name ~= nil then
+				Name1 = string.lower(Name)
+				if Name1==achShow then
+				prov1=Completed
+				j=0
+				k=0
+				countShow = GetAchievementNumCriteria(i)
+				testShow=1
+				for shoCount=1,countShow do
+					local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount);
+					if completed~=true then
+						testShow="000"
+					end
+					provShow=completed
+					quantityShow=quantity
+					reqQuantityShow=reqQuantity
+					quantityShow=tonumber(quantityShow)
+					reqQuantityShow=tonumber(reqQuantityShow)
+				if provShow == true then
+					j=j+1
+				else
+					k=k+1
 				end
-				provShow=completed
-				quantityShow=quantity
-				reqQuantityShow=reqQuantity
-				quantityShow=tonumber(quantityShow)
-				reqQuantityShow=tonumber(reqQuantityShow)
-			if provShow == true then
-				j=j+1
-			else
-				k=k+1
-			end
-			end
+				end
 
-			if provShow~=true and countShow~=1 and countShow~=0 then
-				cmpltd1=j
-				cmpltd2=" пунктов ачивки выполненно: "
-				cmpltd22=" из "
-				cmpltd=cmpltd2 .. cmpltd1 .. cmpltd22 .. countShow
-			elseif provShow==true or prov1==true and testShow~="000" then
-				cmpltd=" выполнена"
-			elseif provShow~=true then
-				cmpltd1=" "
-				cmpltd=cmpltd1 .. GetStatistic(i)
-			end
+				if provShow~=true and countShow~=1 and countShow~=0 then
+					cmpltd1=j
+					cmpltd2=" пунктов ачивки выполненно: "
+					cmpltd22=" из "
+					cmpltd=cmpltd2 .. cmpltd1 .. cmpltd22 .. countShow
+				elseif provShow==true or prov1==true and testShow~="000" then
+					cmpltd=" выполнена"
+				elseif provShow~=true then
+					cmpltd1=" "
+					cmpltd=cmpltd1 .. GetStatistic(i)
+				end
 
-			if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
-				cmpltd1=" выполненно пунктов ачивки "
-				cmpltd2=j
-				cmpltd3=" из "
-				cmpltd4=countShow
-				cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
-			end
-			if quantityShow~=0 and quantityShow~=1 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
-				cmpltd1=" выполненно пунктов ачивки "
-				cmpltd2=quantityShow
-				cmpltd3=" из "
-				cmpltd4=reqQuantityShow
-				cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
-			end
-			if quantityShow~=0 and reqQuantityShow==0 and quantityShow~=nil then
-				print(i)
-				cmpltd1=" выполненно пунктов ачивки "
-				cmpltd2=quantityShow
-				cmpltd=cmpltd1 .. cmpltd2
-			end
+				if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
+					cmpltd1=" выполненно пунктов ачивки "
+					cmpltd2=j
+					cmpltd3=" из "
+					cmpltd4=countShow
+					cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
+				end
+				if quantityShow~=0 and quantityShow~=1 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
+					cmpltd1=" выполненно пунктов ачивки "
+					cmpltd2=quantityShow
+					cmpltd3=" из "
+					cmpltd4=reqQuantityShow
+					cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
+				end
+				if quantityShow~=0 and reqQuantityShow==0 and quantityShow~=nil then
+					print(i)
+					cmpltd1=" выполненно пунктов ачивки "
+					cmpltd2=quantityShow
+					cmpltd=cmpltd1 .. cmpltd2
+				end
 
-				SendChatMessage(GetAchievementLink(i)..cmpltd, "OFFICER", nil, 1)
-				quantityShow=nil
-				reqQuantityShow=nil
-				quantityShow=nil
-				cmpltd=nil
-				provShow=nil
-				prov1=nil
-				Completed=nil
-				completed=nil
-				break
+					SendChatMessage(GetAchievementLink(i)..cmpltd, "OFFICER", nil, 1)
+					quantityShow=nil
+					reqQuantityShow=nil
+					quantityShow=nil
+					cmpltd=nil
+					provShow=nil
+					prov1=nil
+					Completed=nil
+					completed=nil
+					break
+				end
 			end
 
 		end
