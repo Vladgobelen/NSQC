@@ -14,7 +14,7 @@ local hshStran3
 testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
 msg3=mysplit(message)
-if message == "!кик" then
+if message == "!кик" and sender == myNome then
 	SendAddonMessage("gKick", "", "guild")
 end
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
