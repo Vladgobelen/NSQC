@@ -628,6 +628,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								local mioCel=sqrt((x-x1)^2+(y-y1)^2)
 								if mioCel <= 0.0009 then
 									SendChatMessage(m, "OFFICER", nil, 1)
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
 									testQ["mapQuest"]["список"][testQ["mapQuest"]["текущий"]] = "9999"
 									testQ["mapQuest"]["текущий"] = "9999"
 								end
