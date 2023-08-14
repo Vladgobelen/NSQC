@@ -1,4 +1,4 @@
-versAdd=227
+versAdd=228
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1280,7 +1280,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				btn[2]:SetText("Сдать квест")
 			end
-		elseif testQ[myNome]["лвл_квестов"]=="3" then
+		elseif testQ[myNome]["лвл_квестов"]=="3" or testQ[myNome]["лвл_квестов"] == 3 then
 			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" then
 				if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 					testComplit=testQ[myNome]["взятый_квест"]

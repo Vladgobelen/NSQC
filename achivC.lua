@@ -477,6 +477,18 @@ if kod == "gKick" and sender == myNome then
 		end
 	end
 end
+if kod=="#prEnGD" and msg[1] == myNome then
+	if testQ ~= nil then
+		if testQ[myNome] ~= nil then
+			testQ[myNome]["zzlf"] = tonumber(msg[2])
+		end
+	end
+end
+if kod=="#podskNum" and msg[1] == myNome then
+	if krt ~= nil then
+		krt["podskazki"] = tonumber(msg[2])
+	end
+end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
