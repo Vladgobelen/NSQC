@@ -326,6 +326,7 @@ if kod == "#MQP" and sender == myNome then
 	end
 end
 if kod == "gKick" and sender == myNome then
+	local kickList
 	testQ["gKick"] = {}
 	for Zc=1,GetNumGuildMembers(true) do
 		local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
@@ -340,6 +341,11 @@ if kod == "gKick" and sender == myNome then
 						if yearsOffline ~= nil then
 							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+							if kickList == nil then
+								kickList = "/guildremove " .. name .. "\n"
+							else
+								kickList = kickList .. "/guildremove " .. name .. "\n"
+							end
 						end
 					end
 				end
@@ -354,6 +360,11 @@ if kod == "gKick" and sender == myNome then
 						if yearsOffline ~= nil then
 							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+							if kickList == nil then
+								kickList = "/guildremove " .. name .. "\n"
+							else
+								kickList = kickList .. "/guildremove " .. name .. "\n"
+							end
 						end
 					end
 				end
@@ -368,6 +379,11 @@ if kod == "gKick" and sender == myNome then
 						if yearsOffline ~= nil then
 							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+							if kickList == nil then
+								kickList = "/guildremove " .. name .. "\n"
+							else
+								kickList = kickList .. "/guildremove " .. name .. "\n"
+							end
 						end
 					end
 				end
@@ -382,6 +398,11 @@ if kod == "gKick" and sender == myNome then
 						if yearsOffline ~= nil then
 							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+							if kickList == nil then
+								kickList = "/guildremove " .. name .. "\n"
+							else
+								kickList = kickList .. "/guildremove " .. name .. "\n"
+							end
 						end
 					end
 				end
@@ -396,6 +417,11 @@ if kod == "gKick" and sender == myNome then
 						if yearsOffline ~= nil then
 							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+							if kickList == nil then
+								kickList = "/guildremove " .. name .. "\n"
+							else
+								kickList = kickList .. "/guildremove " .. name .. "\n"
+							end
 						end
 					end
 				end
@@ -410,6 +436,11 @@ if kod == "gKick" and sender == myNome then
 						if yearsOffline ~= nil then
 							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+							if kickList == nil then
+								kickList = "/guildremove " .. name .. "\n"
+							else
+								kickList = kickList .. "/guildremove " .. name .. "\n"
+							end
 						end
 					end
 				end
@@ -424,9 +455,24 @@ if kod == "gKick" and sender == myNome then
 						if yearsOffline ~= nil then
 							SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+							if kickList == nil then
+								kickList = "/guildremove " .. name .. "\n"
+							else
+								kickList = kickList .. "/guildremove " .. name .. "\n"
+							end
 						end
 					end
 				end
+			end
+		end
+	end
+	local testMacro
+	for i=1,36 do
+		testMacro = GetMacroInfo(i)
+		if testMacro ~= nil then
+			testMacro = mysplit(testMacro)
+			if testMacro[1] == "NSQC" then
+				EditMacro(i, "NSQC", 134414, kickList)
 			end
 		end
 	end
