@@ -58,6 +58,9 @@ if testQ ~= nil then
 		if testQ[myNome]["квест_лвл2"] == nil then
 			testQ[myNome]["квест_лвл2"] = {}
 		end
+		if testQ[myNome]["квест_лвл3"] == nil then
+			testQ[myNome]["квест_лвл3"] = {}
+		end
 		testQ[myNome]["лвл_квестов"] = tostring(message)
 	end
 	if string.find (kod, "#qUpdateS2") and string.find (kod, myNome) and testGM ~= nil then

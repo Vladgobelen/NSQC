@@ -1,4 +1,4 @@
-versAdd=228
+versAdd=229
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1360,8 +1360,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				local tQ = tonumber(testQ[myNome]["q3StatNum"])
 				local tQ1 = tQ+5
 				local tQ2 = tonumber(arg4)
-				print ("1 " .. tQ2)
-				print ("2 " .. tQ1)
 				if tQ2 < tQ1 then
 					btn[2]:Disable()
 					if pokazat == 1 then
