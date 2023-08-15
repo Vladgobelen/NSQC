@@ -768,11 +768,13 @@ if string.find (message, "#aak") and string.find (message, myNome) then
 		count = tonumber(count)
 		testQ[myNome]["квест_лвл2"][msgVzyalQ2]=count
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
-	elseif testQ[myNome]["лвл_квестов"] == "3" then
+	end
+	if testQ[myNome]["лвл_квестов"] == "3" then
 		count = GetAchievementNumCriteria(msgVzyalQ2)
-		count =tonumber(count)
+		count = tonumber(count)
 		testQ[myNome]["квест_лвл3"][msgVzyalQ2]=count
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
+		SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	end
 end
 
