@@ -261,10 +261,10 @@ if kodMsg[1] == "#chernilaPod" and testGM ~= nil then
 			if testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["podskazki"] == nil then
 				testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["podskazki"] = {}
 			end
-			testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["podskazki"][kodMsgStr] = message
+			testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["podskazki"][kodMsgStr] = txtXor(message)
 		end
 		if kodMsgStr == kodMsg[3] then
-			testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["podskazki"][kodMsgStr] = message
+			testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["podskazki"][kodMsgStr] = txtXor(message)
 			SendChatMessage("База территориальных квестов обновлена " .. testQ["mapQuest"]["nomer"], "OFFICER", nil, 1)
 			testQ["mapQuest"]["nomer"] = nil
 			testQ["mapQuest"]["kont"] = nil
@@ -287,7 +287,7 @@ if string.find (kod, "#qMapQuest") and string.find (message, myNome) and testGM 
 				if testQ["mapQuest"]["список"][msg[2]] ~= "9999" then
 					testQ["mapQuest"]["список"][msg[2]] = 1
 					local kont, lok, x1, y1, m, c = mapQuest(msg[2])
-					SendChatMessage(c, "OFFICER", nil, 1)
+					SendChatMessage(txtXor(c), "OFFICER", nil, 1)
 				else
 					SendChatMessage("Я уже делал териториальный квест " .. msg[2], "OFFICER", nil, 1)
 				end
@@ -311,20 +311,20 @@ if kod == "#MQP" and sender == myNome then
 				if testQ["mapQuest"]["podskazki"] == nil then
 					testQ["mapQuest"]["podskazki"] = 1
 					mapQuestP(testQ["mapQuest"]["текущий"])
-					message(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+					local msgQ = txtXor(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+					SendChatMessage(msgQ, "SAY", DEFAULT_CHAT_FRAME.editBox.languageID);
 					--print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
 				else
 					mapQuestP(testQ["mapQuest"]["текущий"])
 					local x = tablelength(testQ["mapQuest"]["podskazkiRez"])
-					if testQ["mapQuest"]["podskazki"] < x then
+					if tonumber(testQ["mapQuest"]["podskazki"]) <= tonumber(x) then
 						testQ["mapQuest"]["podskazki"] = testQ["mapQuest"]["podskazki"] + 1
-						message(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+						local msgQ = txtXor(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+						SendChatMessage(msgQ, "SAY", DEFAULT_CHAT_FRAME.editBox.languageID);
 						--print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
-					end
-					if testQ["mapQuest"]["podskazki"] >= x then
-						message(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
-						--print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
-						testQ["mapQuest"]["podskazki"] = nil
+						if tonumber(testQ["mapQuest"]["podskazki"]) >= tonumber(x) then
+							testQ["mapQuest"]["podskazki"] = nil
+						end
 					end
 				end
 			end
