@@ -496,7 +496,7 @@ if kod=="#chd" and msg[1] == myNome then
 	if testQ["chD"] == nil then
 		testQ["chD"] = {}
 	end
-	testQ["chD"][tostring(msg[2])] = nil
+	testQ["chD"][tostring(msg[2])] = tonumber(msg[3])
 end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
