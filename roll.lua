@@ -61,7 +61,7 @@ if ginv ~= nil then
 		elseif testQ["mapQuestPodskazki"] == nil then
 			testQ["mapQuestPodskazki"] = 0
 		elseif testQ["mapQuestPodskazki"] >= 1 then
-			SendAddonMessage("#MQP", "заглушка", "guild")
+			SendAddonMessage("#MQP", myNome, "guild")
 			testQ["mapQuestPodskazki"] = nil
 		end
 	end
