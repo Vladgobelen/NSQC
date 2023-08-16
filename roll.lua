@@ -29,7 +29,9 @@ end
 
 if ginv ~= nil then
 	if string.find (message, "присоединяется к гильдии") then
+	local vName
 		for range,value in pairs(ginv) do
+			vName = value
 			if value == gInv[1] then
 				if testQ["shtrf"] == nil then
 					testQ["shtrf"] = {}
@@ -45,6 +47,7 @@ if ginv ~= nil then
 					if testQ[myNome]["zzlf"] ~= nil then
 						testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] + 1
 						SendAddonMessage("NSGadd", myNome .. " принял +1 ", "guild")
+						SendChatMessage("Добро пожаловать! Подробности о гильдии: https://t.me/AnkMorporkInfo", "WHISPER", nil, vName)
 						break
 					else
 						testQ[myNome]["zzlf"] = 1
