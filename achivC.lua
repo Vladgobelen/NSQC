@@ -211,7 +211,6 @@ if kod == "#chernilaCMsg" and testGM ~= nil then
 	if krt~= nil then
 		if krt["chernila"] ~= nil then
 			if krt["chernila"]["msg"] == 1 then
-				print (message)
 				krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["msg"] = txtXor(message)
 			end
 		end
