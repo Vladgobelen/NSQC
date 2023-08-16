@@ -311,16 +311,19 @@ if kod == "#MQP" and sender == myNome then
 				if testQ["mapQuest"]["podskazki"] == nil then
 					testQ["mapQuest"]["podskazki"] = 1
 					mapQuestP(testQ["mapQuest"]["текущий"])
-					print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+					message(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+					--print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
 				else
 					mapQuestP(testQ["mapQuest"]["текущий"])
 					local x = tablelength(testQ["mapQuest"]["podskazkiRez"])
 					if testQ["mapQuest"]["podskazki"] < x then
 						testQ["mapQuest"]["podskazki"] = testQ["mapQuest"]["podskazki"] + 1
-						print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+						message(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+						--print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
 					end
 					if testQ["mapQuest"]["podskazki"] >= x then
-						print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+						message(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
+						--print(testQ["mapQuest"]["podskazkiRez"][tostring(testQ["mapQuest"]["podskazki"])])
 						testQ["mapQuest"]["podskazki"] = nil
 					end
 				end
