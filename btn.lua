@@ -1,4 +1,4 @@
-versAdd=232
+versAdd=233
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -598,7 +598,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								if testLok == lok then
 									local mioCel=sqrt((x-x1)^2+(y-y1)^2)
 									if mioCel <= 0.0009 then
-										SendChatMessage(m, "OFFICER", nil, 1)
+										SendChatMessage(txtXor(m), "OFFICER", nil, 1)
 										if krt["999"] == nil then
 											krt["999"] = 1
 										else
