@@ -492,6 +492,12 @@ if kod=="#podskNum" and msg[1] == myNome then
 		krt["podskazki"] = tonumber(msg[2])
 	end
 end
+if kod=="#chd" and msg[1] == myNome then
+	if testQ["chD"] == nil then
+		testQ["chD"] = {}
+	end
+	testQ["chD"][tostring(msg[2])] = nil
+end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
