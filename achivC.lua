@@ -211,24 +211,25 @@ if kod == "#chernilaCMsg" and testGM ~= nil then
 	if krt~= nil then
 		if krt["chernila"] ~= nil then
 			if krt["chernila"]["msg"] == 1 then
-				krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["msg"] = message
+				print (message)
+				krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["msg"] = txtXor(message)
 			end
 		end
 	end
 	if testQ["mapQuestMsg"] == 1 then
-		testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["msg"] = message
+		testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["msg"] = txtXor(message)
 	end
 end
 if kod == "#chernilaCel" and testGM ~= nil then
 	if krt ~= nil then
 		if krt["chernila"] ~= nil then
 			if krt["chernila"]["cel"] == 1 then
-				krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["cel"] = message
+				krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["cel"] = txtXor(message)
 			end
 		end
 	end
 	if testQ["mapQuestCel"] == 1 then
-		testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["cel"] = message
+		testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["cel"] = txtXor(message)
 	end
 end
 if kodMsg[1] == "#chernilaPod" and testGM ~= nil then
@@ -240,10 +241,10 @@ if kodMsg[1] == "#chernilaPod" and testGM ~= nil then
 				end
 				kodMsgStr = tostring(kodMsg[2])
 				if kodMsgStr ~= kodMsg[3] then
-					krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["podskazki"][kodMsgStr] = message
+					krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["podskazki"][kodMsgStr] = txtXor(message)
 				end
 				if kodMsgStr == kodMsg[3] then
-					krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["podskazki"][kodMsgStr] = message
+					krt["chernila"][krt["chernila"]["nomer"]][krt["chernila"]["kont"]][krt["chernila"]["lok"]]["podskazki"][kodMsgStr] = txtXor(message)
 					SendChatMessage("База чернил обновлена " .. krt["chernila"]["nomer"], "OFFICER", nil, 1)
 					krt["chernila"]["nomer"] = nil
 					krt["chernila"]["kont"] = nil

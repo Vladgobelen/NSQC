@@ -26,11 +26,25 @@ return r
 end
 
 function alfabet (bookv)
-shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	myB=string.find(shablon,bookv)
+shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'"
+	myB=string.find(shablon,bookv,1,true)
 	return myB
 end
-
+function alfabetC (bookv,c)
+	shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'"
+	local myB
+	if c == 0 then
+		myB=string.find(shablon,bookv,1,true)
+	end
+	if c == 1 then
+		if bookv < 133 then
+			myB = string.utf8sub(shablon,bookv/2+0.5,bookv/2+0.5)
+		else
+			myB = string.sub(shablon,bookv,bookv)
+		end
+	end
+	return myB
+end
 function hashStr (nome)
 	local i = time()
 	i = i % 10000
@@ -794,9 +808,9 @@ function tabellaEnStr(nq,n)
 		for i=1,lenVlozh do
 			k=tostring(i)
 			if rez == nil then
-				rez = k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
+				rez = k .. " " .. txtXor(krt["chernila"][nq][x][x1]["podskazki"][k]) .. "\n"
 			else
-				rez = rez .. k .. " " .. krt["chernila"][nq][x][x1]["podskazki"][k] .. "\n"
+				rez = rez .. k .. " " .. txtXor(krt["chernila"][nq][x][x1]["podskazki"][k]) .. "\n"
 			end
 			l = tonumber(l)
 			l = l+1
@@ -817,6 +831,28 @@ function tabellaEnStr(nq,n)
 	end
 	return rez,l
 end
+
+function txtXor(str)
+	local g = str:utf8sub(1,3)
+	local num
+	local strRez
+	if g ~= "###" then
+		num = string.utf8len(str)
+		strRez = "###"
+		for i=1,num do
+			strRez = strRez .. string.format("%03d",alfabet(string.utf8sub(str,i,i)))
+		end
+	end
+	if g == "###" then
+		strRez = alfabetC(tonumber(string.sub(str,4,6)),1)
+		for i=7,#str,3 do
+			strRez = strRez .. alfabetC(tonumber(string.sub(str,i,i+2)),1)
+		end
+	end
+	return strRez
+end
+
+
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
