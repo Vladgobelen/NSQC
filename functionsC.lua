@@ -796,6 +796,9 @@ function tabellaEnStr(nq,n)
 	local lenVlozh, rez, l, k, x, x1
 	nq=tostring(nq)
 	n=tostring(n)
+	if testQ["chD"] == nil then
+		testQ["chD"] = {}
+	end
 	if testQ["chD"][tostring(nq)] == nil then
 		l = "0"
 		for z, v in pairs(krt["chernila"][nq]) do
