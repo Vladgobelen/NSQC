@@ -39,7 +39,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if id==2 then
 			btn[2]:Disable()
 			testQ["timerID2"] = 60
-			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" then
+			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" and testQ[myNome]["взятый_квест"] ~= "itemQ" then
 				if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
 					SendAddonMessage("NSGadd", zzid, "guild")
 				elseif testQ[myNome]["лвл_квестов"]=="2" then
@@ -56,6 +56,9 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
 				SendAddonMessage("#zlnDa", arg4, "guild")
 				--SendAddonMessage("NSGadd", "q3StX", "guild")
+			end
+			if testQ[myNome]["взятый_квест"] == "itemQ" then
+				SendAddonMessage("itemQuestSend", myNome .. " " .. testQ[myNome]["itemName"] .. " " .. testQ[myNome]["itemNum"], "guild")
 			end
 			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
 		elseif id == 1 then
@@ -195,7 +198,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		self[id]:SetScript("OnClick",function(self, button)
 			SendMail("Железобетонс", "Квест на сбор предметов", "")
 			btn[995]:Hide()
-			SendAddonMessage("itemQuestSend", myNome .. " " .. testQ[myNome]["itemName"] .. " " .. testQ[myNome]["itemNum"], "guild")
+			testQ[myNome]["itemQend"] = 1
 		end)
 	end
 end
@@ -1460,7 +1463,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			if testQ[myNome]["взятый_квест"] == "itemQ" then
 				btn[1]:Hide()
-				if testQ[myNome]["itemRez"] ~= 1 then
+				if testQ[myNome]["itemQend"] ~= 1 then
 					btn[2]:Disable()
 					if pokazat == 1 then
 						btn[2]:Show()
