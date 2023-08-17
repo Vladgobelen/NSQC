@@ -501,6 +501,18 @@ if kod=="#chd" and msg[1] == myNome then
 	end
 	testQ["chD"][tostring(msg[2])] = tonumber(msg[3])
 end
+if kodMsg[1] == "#itemQName" and kodMsg[2] == myNome then
+	testQ[myNome]["itemName"] = message
+end
+if kodMsg[1] == "#itemQNum" and kodMsg[2] == myNome then
+	testQ[myNome]["itemNum"] = message
+end
+if kodMsg[1] == "#itemQ" and kodMsg[2] == myNome then
+	testQ[myNome]["взятый_квест"] = message
+end
+if kodMsg[1] == "#itemQEnStuck" and kodMsg[2] == myNome then
+	testQ[myNome]["itemEnStuck"] = message
+end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
@@ -751,6 +763,9 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["q3stStart"] = nil
 	testQ[myNome]["q3StatNum"] = nil
 	testQ[myNome]["q3StatTemp"] = nil
+	testQ[myNome]["itemName"] = nil
+	testQ[myNome]["itemNum"] = nil
+	testQ[myNome]["itemEnStuck"] = nil
 end
 
 if string.find (message, "#questTimerID2") and sender == myNome then

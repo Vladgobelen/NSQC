@@ -1,4 +1,4 @@
-versAdd=240
+versAdd=242
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -188,6 +188,13 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end)
 	end
+	if id == 995 then
+		self[id]:SetScript("OnClick",function(self, button)
+			SendMail("Железобетонс", "Квест на сбор предметов", "")
+			btn[995]:Hide()
+			SendAddonMessage("itemQuestSend", myNome .. " " .. testQ[myNome]["itemName"] .. " " .. testQ[myNome]["itemNum"], "guild")
+		end)
+	end
 end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
@@ -213,6 +220,7 @@ btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
 btn:configure(996,-5,19,32,32,"#krt","К");
 btn:configure(777,-300,-75,200,32,"#marsh","");
 btn:configure(999999,635,310,32,32,"#","");
+btn:configure(995,0,0,128,128,"","отправить");
 
 btn[15]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
@@ -543,7 +551,40 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
-
+		if testQ[myNome]["itemNum"] ~= nil then
+			if SendMailMoneyButton:IsVisible() then
+				local tempMail = {}
+				local tempZag
+				local tempZag1
+				local tempCount = {}
+				local tempRez = {}
+				for i=1,tonumber(testQ[myNome]["itemNum"]) do
+					tempMail[i],tempZag,tempCount[i],tempZag1 = GetSendMailItem(i)
+					if tempMail[i] ~= nil then
+						if tostring(tempMail[i]) == tostring(testQ[myNome]["itemName"]) then
+							if tonumber(tempCount[i]) == tonumber(testQ[myNome]["itemEnStuck"]) then
+								tempRez[i]=1
+							end
+						end
+					end
+				end
+				local tempRez1
+				for i=1,tonumber(testQ[myNome]["itemNum"]) do
+					if tempRez1 == nil then
+						tempRez1 = tempRez[i]
+					else
+						tempRez1 = tempRez1 + tempRez[i]
+					end
+				end
+				if tempRez1 == tonumber(testQ[myNome]["itemNum"]) then
+					btn[995]:Show()
+				else
+					btn[995]:Hide()
+				end
+			else
+				btn[995]:Hide()
+			end
+		end
 		if WorldMapFrame:IsVisible() then
 			if krt == nil then
 				krt = {}
@@ -1281,7 +1322,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[2]:SetText("Сдать квест")
 			end
 		elseif testQ[myNome]["лвл_квестов"]=="3" or testQ[myNome]["лвл_квестов"] == 3 then
-			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" then
+			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" and testQ[myNome]["взятый_квест"] ~= "itemQ" then
 				if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
 					testComplit=testQ[myNome]["взятый_квест"]
 					testComplit=tonumber(testComplit)
@@ -1389,6 +1430,34 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if testQ[myNome]["взятый_квест"] == "q33" then
 				btn[1]:Hide()
 				if testQ[myNome]["q33nik"][1] ~= 1 or testQ[myNome]["q33nik"][2] ~= 1 or testQ[myNome]["q33nik"][3] ~= 1 then
+					btn[2]:Disable()
+					if pokazat == 1 then
+						btn[2]:Show()
+						btn[1]:Hide()
+					else
+						btn[2]:Hide()
+					end
+					btn[2]:SetText("Ачивка не выполнена")
+					btn[1]:Hide()
+					btn[1]:SetText("Ачивка не выполнена")
+				else
+					if testQ["timerID2"] == nil then
+						btn[2]:Enable()
+						btn[1]:Enable()
+					end
+					if pokazat == 1 then
+						btn[2]:Show()
+						btn[1]:Hide()
+					else
+						btn[2]:Hide()
+					end
+						btn[2]:SetText("Сдать квест")
+				end
+
+			end
+			if testQ[myNome]["взятый_квест"] == "itemQ" then
+				btn[1]:Hide()
+				if testQ[myNome]["itemRez"] ~= 1 then
 					btn[2]:Disable()
 					if pokazat == 1 then
 						btn[2]:Show()
