@@ -1,4 +1,4 @@
-versAdd=242
+versAdd=243
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -74,7 +74,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id==8 then
 			self[id]:SetScript("OnClick",function(self, button)
-				if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~="q3Stat" then
+				if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~="q3Stat" and testQ[myNome]["взятый_квест"] ~="itemQ" then
 					if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
 					end
@@ -102,6 +102,9 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if testQ[myNome]["взятый_квест"] == "q3Stat" then
 					local x = tonumber(testQ[myNome]["q3StatNum"])+5
 					SendChatMessage("Должно стать " .. x .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["q3Stat"])), "OFFICER", nil, 1)
+				end
+				if testQ[myNome]["взятый_квест"] == "itemQ" then
+					SendChatMessage("Нужно достать " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"] .. " и прислать по почте персонажу Железобетонс", "OFFICER", nil, 1)
 				end
 		end)
 	end
