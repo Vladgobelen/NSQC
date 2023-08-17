@@ -47,7 +47,9 @@ if ginv ~= nil then
 					if testQ[myNome]["zzlf"] ~= nil then
 						testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] + 1
 						SendAddonMessage("NSGadd", myNome .. " принял +1 ", "guild")
-						SendChatMessage("Добро пожаловать! Подробности о гильдии: https://t.me/AnkMorporkInfo", "WHISPER", nil, vName)
+						if testQ[myNome]["настройки"]["roll"] == "Enable" then
+							SendChatMessage("Добро пожаловать! Подробности о гильдии: https://t.me/AnkMorporkInfo", "WHISPER", nil, vName)
+						end
 						break
 					else
 						testQ[myNome]["zzlf"] = 1

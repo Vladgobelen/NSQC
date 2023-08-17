@@ -1,4 +1,4 @@
-versAdd=238
+versAdd=239
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1450,10 +1450,10 @@ myCheckButton1:SetScript("OnClick",
 
 
 
-myCheckButton2 = createCheckbutton(UIParent, -100, 330, "Отображение ролла");
+myCheckButton2 = createCheckbutton(UIParent, -100, 330, "Отправка приветственного сообщения принятым в гильдию новичкам");
 myCheckButton1:SetFrameLevel(256)
 myCheckButton2:SetFrameLevel(256)
-myCheckButton2.tooltip = "Скрывать ли ролл в офицерском чате";
+myCheckButton2.tooltip = "Отправка приветственного сообщения принятым в гильдию новичкам";
 myCheckButton2:SetScript("OnClick",
 	function()
 		if testQ[myNome]["настройки"]["roll"]=="Disable" or testQ[myNome]["настройки"]["roll"]==nil then
