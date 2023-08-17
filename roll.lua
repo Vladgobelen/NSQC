@@ -48,7 +48,8 @@ if ginv ~= nil then
 						testQ[myNome]["zzlf"] = testQ[myNome]["zzlf"] + 1
 						SendAddonMessage("NSGadd", myNome .. " принял +1 ", "guild")
 						if testQ[myNome]["настройки"]["roll"] == "Enable" then
-							SendChatMessage(gInvite, "WHISPER", nil, vName)
+							local x = math.random(1, #gInvite)
+							SendChatMessage(gInvite[x], "WHISPER", nil, vName)
 						end
 						break
 					else

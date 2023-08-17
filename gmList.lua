@@ -7,7 +7,13 @@ gmList = {
 	"Веренс", --[6]
 	"Коэн", --[7]
 }
-gInvite = "Добро пожаловать! Подробности о гильдии: https://t.me/AnkMorporkInfo"
+gInvite = {
+	"Добро пожаловать! Подробности о гильдии: https://t.me/AnkMorporkInfo",
+	"Bienvenido! Detalles del gremio: https://t.me/AnkMorporkInfo",
+	"Benvenuto! Dettagli della gilda: https://t.me/AnkMorporkInfo",
+	"Bem-vindo! Detalhes da guilda: https://t.me/AnkMorporkInfo",
+	"Bienvenue ! Détails sur la guilde: https://t.me/AnkMorporkInfo",
+	}
 mapTables = {}
 mapTables["marsh1"] = {
 	["2"] = {
