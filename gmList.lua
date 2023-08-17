@@ -13,6 +13,15 @@ gInvite = {
 	"Benvenuto!",
 	"Bem-vindo!",
 	"Bienvenue!",
+	"Benvido!",
+	"Benvingut!",
+	"Grata!",
+	"Bine ai venit!",
+	"Willkommen!",
+	"Welkom!",
+	"Welcome!",
+	"Velkommen!",
+	"Добродошли!",
 	}
 mapTables = {}
 mapTables["marsh1"] = {
