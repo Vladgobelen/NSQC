@@ -766,6 +766,7 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["itemName"] = nil
 	testQ[myNome]["itemNum"] = nil
 	testQ[myNome]["itemEnStuck"] = nil
+	testQ[myNome]["itemQend"] = nil
 end
 
 if string.find (message, "#questTimerID2") and sender == myNome then
