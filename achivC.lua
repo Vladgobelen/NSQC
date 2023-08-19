@@ -295,7 +295,7 @@ if string.find (kod, "#qMapQuest") and string.find (message, myNome) and testGM 
 		end
 	end
 end
-if kod == "#MQP" and message == myNome then
+if kod == "#M1QP" and message == myNome then
 	if krt ~= nil then
 		if krt["777"] == nil then
 			if krt["podskazki"] == nil then
