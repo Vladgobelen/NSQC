@@ -1,4 +1,4 @@
-versAdd=246
+versAdd=247
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -258,6 +258,48 @@ GuildMemberDetailFrame:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
 
+GuildMemberDetailCloseButton:SetScript("OnEnter",function(self)
+	local nome = GuildFrame["selectedGuildMemberName"]
+	local zametka
+	if zametki ~= nil then
+		if zametki[nome] == nil or zametki[nome] == "" then
+			zametka = "Я пока ничего не добавлял этому персонажу"
+		else
+			zametka = zametki[nome]
+		end
+	else
+		zametka = "Я пока не добавлял заметок"
+	end
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+	GameTooltip:AddLine("|c00F4A460" .. zametka)
+	GameTooltip:Show()
+end)
+GuildMemberDetailCloseButton:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
+
+GuildFrame:SetScript("OnEnter",function(self)
+	if GuildFrame["selectedGuildMemberName"] ~= nil then
+		local nome = GuildFrame["selectedGuildMemberName"]
+		local zametka
+		SendAddonMessage("#получить_отзыв", nome, "guild")
+		if testQ ~= nil then
+			if testQ["tempOtzyv"] ~= nil then
+				if testQ["tempOtzyv"][nome] == nil or testQ["tempOtzyv"][nome] == "" then
+					zametka = "Информация обновляется"
+				else
+					zametka = testQ["tempOtzyv"][nome]
+				end
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("|cff99ff99" .. zametka)
+				GameTooltip:Show()
+			end
+		end
+	end
+end)
+GuildFrame:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
 
 btn[15]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();

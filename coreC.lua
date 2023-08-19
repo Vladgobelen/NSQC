@@ -4,6 +4,7 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 
 --команды для управления квестами
 local nik=sender
+local msg = mysplit(message)
 local neobhodimo="необходимо_сделать"
 local str = string.gsub(message, "%s+", "")
 local myNome = GetUnitName("player")
@@ -17,6 +18,41 @@ msg3=mysplit(message)
 if message == "!кик" and sender == myNome then
 	SendAddonMessage("gKick", "", "guild")
 end
+
+if zametki == nil then
+	zametki = {}
+end
+if msg[1] == "!памятка" and sender == myNome then
+	local zametka = msg[3]
+	zametki[msg[2]] = nil
+	if msg[4] ~= nil then
+		for i=4,#msg do
+			zametka = zametka .. " " .. msg[i]
+		end
+	end
+	zametki[msg[2]] = zametka
+	SendChatMessage("Заметка о персонаже " .. msg[2] .. " добавлена", "OFFICER", nil, 1)
+end
+if msg[1] == "!памятка+" and sender == myNome then
+	local zametka = msg[3]
+	if zametki[msg[2]] == nil then
+		if msg[4] ~= nil then
+			for i=4,#msg do
+				zametka = zametka .. " " .. msg[i]
+			end
+		end
+	else
+		zametka = zametki[msg[2]] .. "\n" .. zametka
+		if msg[4] ~= nil then
+			for i=4,#msg do
+				zametka = zametka .. " " .. msg[i]
+			end
+		end
+	end
+	zametki[msg[2]] = zametka
+	SendChatMessage("Заметка о персонаже " .. msg[2] .. " дополнена", "OFFICER", nil, 1)
+end
+
 if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
 	msg1 = mysplit(message)
 	if msg1[2]=="покажи" then

@@ -517,6 +517,12 @@ if kodMsg[1] == "#отправить_заметку" and kodMsg[2] == myNome the
 	testQ["tempZametka"] = {}
 	testQ["tempZametka"][kodMsg[3]] = message
 end
+if kodMsg[1] == "#отправить_отзыв" and kodMsg[2] == myNome then
+	testQ["tempOtzyv"] = {}
+	testQ["tempOtzyv"][kodMsg[3]] = message
+end
+
+
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
 	if string.find (message, myNome) then
