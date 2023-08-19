@@ -155,7 +155,7 @@ if string.find (kod, "#otLadkaNS") and string.find (kod, myNome) and testGM ~= n
 	local x,y=otladka(msg[1],msg[2],msg[3],msg[4],msg[5],msg[6],msg[7])
 	SendAddonMessage("NSGadd", x .. " " .. y, "guild")
 end
-if kod == "#chernilaC" and testGM ~= nil then
+if kod == "#ch1ernilaC" and testGM ~= nil then
 	if msg[6] == "chern1" then
 		if krt == nil then
 			krt = {}
@@ -231,7 +231,7 @@ if kod == "#chernilaCel" and testGM ~= nil then
 		testQ["mapQuest"][testQ["mapQuest"]["nomer"]][testQ["mapQuest"]["kont"]][testQ["mapQuest"]["lok"]]["cel"] = txtXor(message)
 	end
 end
-if kodMsg[1] == "#chernilaPod" and testGM ~= nil then
+if kodMsg[1] == "#ch1ernilaPod" and testGM ~= nil then
 	if krt ~= nil then
 		if  krt["chernila"] ~= nil then
 			if krt["chernila"]["podskazki"] == 1 then
