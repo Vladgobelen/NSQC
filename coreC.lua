@@ -31,6 +31,14 @@ if string.find (message, "покажи мне ачивку")  and string.find(me
 		end
 	end
 end
+if message == "ТестГМ" then
+	local MySlider = CreateFrame("Slider", "MySliderGlobalName", WorldMapFrame, "OptionsSliderTemplate")
+	MySlider:SetWidth(20)
+	MySlider:SetHeight(100)
+	 MySlider:SetOrientation('VERTICAL')
+	  MySlider:SetOrientation('HORIZONTAL')
+	  MySlider:Show()
+end
 
 if string.find (message, "testGroup") then
 

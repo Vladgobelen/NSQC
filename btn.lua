@@ -1,4 +1,4 @@
-versAdd=243
+versAdd=244
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -237,6 +237,32 @@ btn[15]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
 
+GuildMemberNoteBackground:SetScript("OnEnter",function(self)
+	local nome = GuildFrame["selectedGuildMemberName"]
+	local zametka
+	SendAddonMessage("#получить_заметку", nome, "guild")
+	if testQ~=nil then
+		if testQ["tempZametka"] ~= nil then
+			if testQ["tempZametka"][nome] == nil or testQ["tempZametka"][nome] == "" then
+				zametka = "Информация обновляется"
+			else
+				zametka = testQ["tempZametka"][nome]
+			end
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("|cFF6495ED" .. zametka)
+			GameTooltip:Show()
+		end
+	end
+end)
+GuildMemberNoteBackground:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
+
+
+btn[15]:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
+
 btn[14]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDПроверить доступные обновления")
@@ -260,7 +286,6 @@ end)
 btn[3]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
-
 
 btnF = CreateFrame("CheckButton", "myCheckButton_GlobalName", parentFrame, "ChatConfigCheckButtonTemplate");
 btnF:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",-5,-18)
@@ -549,14 +574,14 @@ end)--]]
 
 
 
-
-
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+
+
 		if testQ[myNome]["itemNum"] ~= nil then
 			if SendMailMoneyButton:IsVisible() then
 				local tempMail = {}
