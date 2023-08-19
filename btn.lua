@@ -1,4 +1,4 @@
-versAdd=244
+versAdd=245
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -237,7 +237,7 @@ btn[15]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
 
-GuildMemberNoteBackground:SetScript("OnEnter",function(self)
+GuildMemberDetailFrame:SetScript("OnEnter",function(self)
 	local nome = GuildFrame["selectedGuildMemberName"]
 	local zametka
 	SendAddonMessage("#получить_заметку", nome, "guild")
@@ -254,7 +254,7 @@ GuildMemberNoteBackground:SetScript("OnEnter",function(self)
 		end
 	end
 end)
-GuildMemberNoteBackground:SetScript("OnLeave", function(self)
+GuildMemberDetailFrame:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
 
