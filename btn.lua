@@ -845,6 +845,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 
+		if editB[1]:IsVisible() or editB[2]:IsVisible() or editB[3]:IsVisible() then
+			GameTooltip:Hide()
+		end
 
 		if testQ[myNome]["itemNum"] ~= nil then
 			if SendMailMoneyButton:IsVisible() then
