@@ -244,7 +244,7 @@ GuildMemberDetailFrame:SetScript("OnEnter",function(self)
 	if testQ~=nil then
 		if testQ["tempZametka"] ~= nil then
 			if testQ["tempZametka"][nome] == nil or testQ["tempZametka"][nome] == "" then
-				zametka = "Информация обновляется"
+				zametka = "Тут пока пусто"
 			else
 				zametka = testQ["tempZametka"][nome]
 			end
@@ -286,7 +286,7 @@ GuildFrame:SetScript("OnEnter",function(self)
 		if testQ ~= nil then
 			if testQ["tempOtzyv"] ~= nil then
 				if testQ["tempOtzyv"][nome] == nil or testQ["tempOtzyv"][nome] == "" then
-					zametka = "Информация обновляется"
+					zametka = "Тут пока пусто"
 				else
 					zametka = testQ["tempOtzyv"][nome]
 				end
