@@ -73,8 +73,6 @@ if ginv ~= nil then
 	end
 end
 
-
-
 end
 )
 local GC_Sniffer = CreateFrame("Frame")
@@ -84,9 +82,6 @@ local myNome = GetUnitName("player")
 local hshStran3
 testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
-
-
-
 
 if testQ[myNome]["q33fnd"] ~= nil then
 	if string.find (message, testQ[myNome]["q33fnd"]) then

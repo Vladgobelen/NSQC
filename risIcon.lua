@@ -1,14 +1,3 @@
---[[ Создание фрейма, который будет содержать текстуру иконки
-iconFrame1 = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
-iconFrame1:SetSize(12, 12)
-iconFrame1:SetPoint("BOTTOMLEFT")
--- Создание текстуры иконки
-iconTexture1 = iconFrame1:CreateTexture("myAddonIcon", "OVERLAY")
-iconTexture1:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark")
-iconTexture1:SetSize(12, 12)
-iconTexture1:SetPoint("BOTTOMLEFT", 0, 0)
-
---]]
 iconRis={}
 iconRisText={}
 iconRisText2={}
@@ -60,9 +49,6 @@ function iconRisText2:configure(id,Rx,Ry,x,y,nRis)
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("TOPLEFT", WorldMapDetailFrame,"TOPLEFT", x, y)
 end
-
-
-
 
 function setka()
 mostraKrtl2("Show",0,0,0,650,50,1,3)
@@ -151,11 +137,6 @@ function krtHide(signalKrt)
 		end
 	end
 end
-
-
-
-
-
 
 --[[
 iRis=1

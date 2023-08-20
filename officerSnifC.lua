@@ -18,7 +18,5 @@ if string.find (message, "#zzl") and string.find (message, myNome) and testGM ~=
 	end
 end
 
-
-
 end
 )

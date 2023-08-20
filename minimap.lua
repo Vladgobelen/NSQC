@@ -1,5 +1,3 @@
-
-
 -- Создание фрейма, который будет содержать текстуру иконки
 iconFrame = CreateFrame("FRAME", "myAddonIconFrame", WorldMapFrame)
 iconFrame:SetSize(12, 12)
@@ -29,22 +27,6 @@ myButton:SetScript("OnClick", function()
 --Ваш код
 end)
 --]]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 local UpdateSpeed = 1
 local ScrollMax = (UIParent:GetWidth() * UIParent:GetEffectiveScale()) -- max scroll width
@@ -89,12 +71,6 @@ f:SetScript("OnUpdate", function(self, elapsed)
 		iconFrame:Hide()
 	end
 --posX, posY = GetPlayerMapPosition("player");(posX*575)+15, ((1-posY)*386)+10)
-
-
-
-
-
-
 
 	f.Text1:SetPoint("LEFT", UIParent, xos, 0) -- reposition the text to its new location
 end)
