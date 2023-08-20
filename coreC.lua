@@ -51,7 +51,7 @@ if msg[1] == "!памятка" and sender == myNome then
 	else
 		SendChatMessage("Не указано кому добавлять памятку", "OFFICER", nil, 1)
 	end
-	end
+end
 if msg[1] == "!памятка+" and sender == myNome then
 	local zametka = msg[3]
 	if zametki[msg[2]] == nil then

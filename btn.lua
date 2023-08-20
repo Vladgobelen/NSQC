@@ -1,4 +1,4 @@
-versAdd=252
+versAdd=253
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -274,7 +274,7 @@ editB[1]:SetScript("OnEditFocusLost",function(self)
 				str1 = str1 .. str[i] .. " "
 			end
 			if testQ["клик994"] == nil then
-				SendChatMessage("!заметка " .. str1, "GUILD", nil, 1)
+				SendAddonMessage("zametkaNS", "!заметка " .. str1, "guild")
 			end
 			testQ["клик994"] = nil
 			--editB[1]:SetText("")
@@ -284,7 +284,7 @@ editB[1]:SetScript("OnEditFocusLost",function(self)
 				testQ["tempZametka"] = {}
 			end
 			testQ["tempZametka"][nome] = ""
-			SendChatMessage("!заметка " .. str1, "GUILD", nil, 1)
+			SendAddonMessage("zametkaNS", "!заметка " .. str1, "guild")
 		end
 	end
 end)
@@ -304,14 +304,14 @@ editB[2]:SetScript("OnEditFocusLost",function(self)
 				str1 = str1 .. str[i] .. " "
 			end
 			if testQ["клик993"] == nil then
-				SendChatMessage("!памятка " .. nome .. " " .. str1, "GUILD", nil, 1)
+				SendAddonMessage("pamyatkaNS", "!памятка " .. nome .. " " .. str1, "guild")
 			end
 			testQ["клик993"] = nil
 			--editB[1]:SetText("")
 		else
 			str1 = ""
 			zametki[nome] = ""
-			SendChatMessage("!памятка " .. nome .. " " .. str1, "GUILD", nil, 1)
+			SendAddonMessage("pamyatkaNS", "!памятка " .. nome .. " " .. str1, "guild")
 		end
 	end
 end)
@@ -326,7 +326,7 @@ editB[3]:SetScript("OnEditFocusLost",function(self)
 	if testQ["клик992"] == nil then
 		if str ~= nil then
 			if testQ["клик992"] == nil then
-				SendChatMessage("!отзыв " .. nome .. " " .. str, "GUILD", nil, 1)
+				SendAddonMessage("otzyvNS", "!отзыв " .. nome .. " " .. str, "guild")
 			end
 			testQ["клик992"] = nil
 			--editB[1]:SetText("")

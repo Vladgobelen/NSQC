@@ -540,7 +540,36 @@ if kodMsg[1] == "#отправить_отзыв" and kodMsg[2] == myNome then
 	testQ["tempOtzyv"] = {}
 	testQ["tempOtzyv"][kodMsg[3]] = message
 end
+if kod == "pamyatkaNS" and sender == myNome then
+	local zametka
+	if msg[2] ~= nil then
+		if zametki[msg[2]] == nil then
+			zametki[msg[2]] = {}
+		end
+		if msg[3] ~= nil then
+			if msg[3] == "###" then
+				zametka = "###\n"
+			else
+				zametka = msg[3] .. " "
+			end
+			if msg[4] ~= nil then
+				for i=4,#msg do
+					if msg[i] == "###" then
+						zametka = zametka .. " ###\n"
+					else
+						zametka = zametka.. " " .. msg[i]
+					end
+				end
+			end
+			zametki[msg[2]] = zametka
+			SendChatMessage("Заметка о персонаже " .. msg[2] .. " добавлена", "OFFICER", nil, 1)
+		else
 
+		end
+	else
+		SendChatMessage("Не указано кому добавлять памятку", "OFFICER", nil, 1)
+	end
+end
 
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
