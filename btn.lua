@@ -1,10 +1,11 @@
-versAdd=249
+versAdd=250
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
 
 btn = {};
+editB = {}
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	self[id]:SetFrameStrata("TOOLTIP")
@@ -233,6 +234,20 @@ btn:configure(994,0,-3,32,32,"","З");
 btn:configure(993,32,-3,32,32,"","П");
 btn:configure(992,64,-3,32,32,"","О");
 
+editB[1] = CreateFrame("EditBox", nil, UIParent, "UIPanelButtonTemplate");
+editB[1]:SetSize(512, 32)
+editB[1]:SetPoint("BOTTOMLEFT", btn[994],"TOPLEFT",0, 0)
+editB[1]:SetFrameStrata("TOOLTIP")
+editB[1]:SetMaxLetters(32000)
+editB[1]:SetAutoFocus(true)
+editB[1]:SetFontObject("ChatFontNormal")
+editB[1]:Hide()
+editB[1]:SetScript("OnEditFocusLost",function(self)
+	local str = editB[1]:GetText()
+	local nome = GuildFrame["selectedGuildMemberName"]
+	SendChatMessage("!заметка " .. str, "GUILD", nil, 1)
+	editB[1]:SetText("")
+end)
 btn[15]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDПоказать Устав гильдии(в первой вкладке чата)")
@@ -277,7 +292,13 @@ btn[994]:SetScript("OnEnter",function(self)
 		end
 	end
 end)
-
+btn[994]:SetScript("OnClick",function(self, button)
+	if editB[1]:IsVisible() then
+		editB[1]:Hide()
+	else
+		editB[1]:Show()
+	end
+end)
 GuildMemberDetailFrame:SetScript("OnEnter",function(self)
 	btn[994]:Show()
 	btn[993]:Show()
@@ -293,6 +314,7 @@ btn[994]:SetScript("OnLeave", function(self)
 	btn[994]:Hide()
 	btn[992]:Hide()
 	btn[993]:Hide()
+	editB[1]:Hide()
 	GameTooltip:Hide();
 end)
 btn[993]:SetScript("OnLeave", function(self)
