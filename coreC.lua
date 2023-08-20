@@ -23,16 +23,20 @@ if zametki == nil then
 	zametki = {}
 end
 if msg[1] == "!памятка" and sender == myNome then
-	local zametka = msg[3]
-	zametki[msg[2]] = nil
-	if msg[4] ~= nil then
-		for i=4,#msg do
-			zametka = zametka .. " " .. msg[i]
+	if msg[2] ~= nil then
+		local zametka = msg[3]
+		zametki[msg[2]] = nil
+		if msg[4] ~= nil then
+			for i=4,#msg do
+				zametka = zametka .. " " .. msg[i]
+			end
 		end
+		zametki[msg[2]] = zametka
+		SendChatMessage("Заметка о персонаже " .. msg[2] .. " добавлена", "OFFICER", nil, 1)
+	else
+		SendChatMessage("Не указано кому добавлять памятку", "OFFICER", nil, 1)
 	end
-	zametki[msg[2]] = zametka
-	SendChatMessage("Заметка о персонаже " .. msg[2] .. " добавлена", "OFFICER", nil, 1)
-end
+	end
 if msg[1] == "!памятка+" and sender == myNome then
 	local zametka = msg[3]
 	if zametki[msg[2]] == nil then

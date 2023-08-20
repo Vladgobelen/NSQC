@@ -515,7 +515,26 @@ if kodMsg[1] == "#itemQEnStuck" and kodMsg[2] == myNome then
 end
 if kodMsg[1] == "#отправить_заметку" and kodMsg[2] == myNome then
 	testQ["tempZametka"] = {}
-	testQ["tempZametka"][kodMsg[3]] = message
+	local str
+	if msg[1] ~= nil then
+		if msg[1] == "###" then
+			msg[1] = "###\n"
+			str = msg[1]
+		else
+			str = msg[1] .. " "
+		end
+		for i=2,#msg do
+			if msg[i] == "###" then
+				msg[i] = "###\n"
+				str = str .. msg[i]
+			else
+				str = str .. msg[i] .. " "
+			end
+		end
+	else
+		str = ""
+	end
+	testQ["tempZametka"][kodMsg[3]] = str
 end
 if kodMsg[1] == "#отправить_отзыв" and kodMsg[2] == myNome then
 	testQ["tempOtzyv"] = {}

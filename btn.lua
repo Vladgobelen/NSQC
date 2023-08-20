@@ -1,4 +1,4 @@
-versAdd=250
+versAdd=251
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -241,13 +241,101 @@ editB[1]:SetFrameStrata("TOOLTIP")
 editB[1]:SetMaxLetters(32000)
 editB[1]:SetAutoFocus(true)
 editB[1]:SetFontObject("ChatFontNormal")
+editB[1]:SetMultiLine(1000);
 editB[1]:Hide()
+
+editB[2] = CreateFrame("EditBox", nil, UIParent, "UIPanelButtonTemplate");
+editB[2]:SetSize(512, 32)
+editB[2]:SetPoint("BOTTOMLEFT", btn[993],"TOPLEFT",0, 0)
+editB[2]:SetFrameStrata("TOOLTIP")
+editB[2]:SetMaxLetters(32000)
+editB[2]:SetAutoFocus(true)
+editB[2]:SetFontObject("ChatFontNormal")
+editB[2]:SetMultiLine(1000);
+editB[2]:Hide()
+
+editB[3] = CreateFrame("EditBox", nil, UIParent, "UIPanelButtonTemplate");
+editB[3]:SetSize(512, 32)
+editB[3]:SetPoint("BOTTOMLEFT", btn[992],"TOPLEFT",0, 0)
+editB[3]:SetFrameStrata("TOOLTIP")
+editB[3]:SetMaxLetters(32000)
+editB[3]:SetAutoFocus(true)
+editB[3]:SetFontObject("ChatFontNormal")
+editB[3]:Hide()
+
 editB[1]:SetScript("OnEditFocusLost",function(self)
 	local str = editB[1]:GetText()
 	local nome = GuildFrame["selectedGuildMemberName"]
-	SendChatMessage("!заметка " .. str, "GUILD", nil, 1)
-	editB[1]:SetText("")
+	if testQ["клик994"] == nil then
+		str = mysplit(str)
+		if str[1] ~= nil then
+			local str1 = str[1] .. " "
+			for i=2,#str do
+				str1 = str1 .. str[i] .. " "
+			end
+			if testQ["клик994"] == nil then
+				SendChatMessage("!заметка " .. str1, "GUILD", nil, 1)
+			end
+			testQ["клик994"] = nil
+			--editB[1]:SetText("")
+		else
+			str1 = ""
+			testQ["tempZametka"][nome] = ""
+			SendChatMessage("!заметка " .. str1, "GUILD", nil, 1)
+		end
+	end
 end)
+editB[1]:SetScript("OnEnterPressed",function(self)
+	local str = editB[1]:GetText()
+	editB[1]:SetText(str .. " ###\n")
+end)
+
+editB[2]:SetScript("OnEditFocusLost",function(self)
+	local str = editB[2]:GetText()
+	local nome = GuildFrame["selectedGuildMemberName"]
+	if testQ["клик993"] == nil then
+		str = mysplit(str)
+		if str[1] ~= nil then
+			local str1 = str[1] .. " "
+			for i=2,#str do
+				str1 = str1 .. str[i] .. " "
+			end
+			if testQ["клик993"] == nil then
+				SendChatMessage("!памятка " .. nome .. " " .. str1, "GUILD", nil, 1)
+			end
+			testQ["клик993"] = nil
+			--editB[1]:SetText("")
+		else
+			str1 = ""
+			zametki[nome] = ""
+			SendChatMessage("!памятка " .. nome .. " " .. str1, "GUILD", nil, 1)
+		end
+	end
+end)
+editB[2]:SetScript("OnEnterPressed",function(self)
+	local str = editB[2]:GetText()
+	editB[2]:SetText(str .. " ###\n")
+end)
+
+editB[3]:SetScript("OnEditFocusLost",function(self)
+	local str = editB[3]:GetText()
+	local nome = GuildFrame["selectedGuildMemberName"]
+	if testQ["клик992"] == nil then
+		if str ~= nil then
+			if testQ["клик992"] == nil then
+				SendChatMessage("!отзыв " .. nome .. " " .. str, "GUILD", nil, 1)
+			end
+			testQ["клик992"] = nil
+			--editB[1]:SetText("")
+		end
+	end
+end)
+editB[3]:SetScript("OnEnterPressed",function(self)
+	local nome = GuildFrame["selectedGuildMemberName"]
+	local str = editB[3]:GetText()
+	editB[3]:Hide()
+end)
+
 btn[15]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDПоказать Устав гильдии(в первой вкладке чата)")
@@ -281,22 +369,122 @@ btn[994]:SetScript("OnEnter",function(self)
 	SendAddonMessage("#получить_заметку", nome, "guild")
 	if testQ~=nil then
 		if testQ["tempZametka"] ~= nil then
+			local str
 			if testQ["tempZametka"][nome] == nil or testQ["tempZametka"][nome] == "" then
 				zametka = "Тут пока пусто"
 			else
 				zametka = testQ["tempZametka"][nome]
+				editB[1]:SetText(zametka)
+			end
+			local msg = mysplit(zametka)
+			if msg[1] == "###" then
+				msg[1] = "\n"
+				str = msg[1]
+			else
+				str = msg[1] .. " "
+			end
+			for i=2,#msg do
+				if msg[i] == "###" then
+					msg[i] = "\n"
+					str = str .. msg[i]
+				else
+					str = str .. msg[i] .. " "
+				end
 			end
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|cFF6495ED" .. zametka)
+			GameTooltip:AddLine("|cFF6495ED" .. str)
 			GameTooltip:Show()
 		end
 	end
 end)
+
+btn[992]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
+	if GuildFrame["selectedGuildMemberName"] ~= nil then
+		local nome = GuildFrame["selectedGuildMemberName"]
+		local zametka
+		SendAddonMessage("#получить_отзыв", nome, "guild")
+		if testQ ~= nil then
+			if testQ["tempOtzyv"] ~= nil then
+				if testQ["tempOtzyv"][nome] == nil or testQ["tempOtzyv"][nome] == "" then
+					zametka = "Тут пока пусто"
+				else
+					zametka = testQ["tempOtzyv"][nome]
+				end
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("|cff99ff99" .. zametka)
+				GameTooltip:Show()
+			end
+		end
+	end
+end)
+
+btn[993]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
+	local nome = GuildFrame["selectedGuildMemberName"]
+	local zametka
+	if zametki~=nil then
+		local str
+		if zametki[nome] == nil or zametki[nome] == "" then
+			zametka = "Тут пока пусто"
+		else
+			zametka = zametki[nome]
+			editB[2]:SetText(zametka)
+		end
+		local msg = mysplit(zametka)
+		if msg[1] == "###" then
+			msg[1] = "\n"
+			str = msg[1]
+		else
+			str = msg[1] .. " "
+		end
+		for i=2,#msg do
+			if msg[i] == "###" then
+				msg[i] = "\n"
+				str = str .. msg[i]
+			else
+				str = str .. msg[i] .. " "
+			end
+		end
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		GameTooltip:AddLine("|c00F4A460" .. str)
+		GameTooltip:Show()
+	end
+end)
 btn[994]:SetScript("OnClick",function(self, button)
-	if editB[1]:IsVisible() then
-		editB[1]:Hide()
+	local nome = GuildFrame["selectedGuildMemberName"]
+	if nome == myNome then
+		if editB[1]:IsVisible() then
+			testQ["клик994"] = 1
+			editB[1]:Hide()
+		else
+			testQ["клик994"] = nil
+			editB[1]:Show()
+		end
+	end
+end)
+btn[993]:SetScript("OnClick",function(self, button)
+	local nome = GuildFrame["selectedGuildMemberName"]
+	if editB[2]:IsVisible() then
+		testQ["клик993"] = 1
+		editB[2]:Hide()
 	else
-		editB[1]:Show()
+		testQ["клик993"] = nil
+		editB[2]:Show()
+	end
+end)
+btn[992]:SetScript("OnClick",function(self, button)
+	local nome = GuildFrame["selectedGuildMemberName"]
+	if editB[3]:IsVisible() then
+		testQ["клик992"] = 1
+		editB[3]:Hide()
+	else
+		testQ["клик992"] = nil
+		editB[3]:Show()
 	end
 end)
 GuildMemberDetailFrame:SetScript("OnEnter",function(self)
@@ -321,55 +509,15 @@ btn[993]:SetScript("OnLeave", function(self)
 	btn[993]:Hide()
 	btn[992]:Hide()
 	btn[994]:Hide()
+	editB[2]:Hide()
 	GameTooltip:Hide();
 end)
 btn[992]:SetScript("OnLeave", function(self)
 	btn[992]:Hide()
 	btn[993]:Hide()
 	btn[994]:Hide()
+	editB[3]:Hide()
 	GameTooltip:Hide();
-end)
-btn[993]:SetScript("OnEnter",function(self)
-	btn[994]:Show()
-	btn[993]:Show()
-	btn[992]:Show()
-	local nome = GuildFrame["selectedGuildMemberName"]
-	local zametka
-	if zametki ~= nil then
-		if zametki[nome] == nil or zametki[nome] == "" then
-			zametka = "Я пока ничего не добавлял этому персонажу"
-		else
-			zametka = zametki[nome]
-		end
-	else
-		zametka = "Я пока не добавлял заметок"
-	end
-	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-	GameTooltip:AddLine("|c00F4A460" .. zametka)
-	GameTooltip:Show()
-end)
-
-btn[992]:SetScript("OnEnter",function(self)
-	btn[994]:Show()
-	btn[993]:Show()
-	btn[992]:Show()
-	if GuildFrame["selectedGuildMemberName"] ~= nil then
-		local nome = GuildFrame["selectedGuildMemberName"]
-		local zametka
-		SendAddonMessage("#получить_отзыв", nome, "guild")
-		if testQ ~= nil then
-			if testQ["tempOtzyv"] ~= nil then
-				if testQ["tempOtzyv"][nome] == nil or testQ["tempOtzyv"][nome] == "" then
-					zametka = "Тут пока пусто"
-				else
-					zametka = testQ["tempOtzyv"][nome]
-				end
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				GameTooltip:AddLine("|cff99ff99" .. zametka)
-				GameTooltip:Show()
-			end
-		end
-	end
 end)
 
 btn[15]:SetScript("OnLeave", function(self)
