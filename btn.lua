@@ -374,7 +374,7 @@ btn[994]:SetScript("OnEnter",function(self)
 		if testQ["tempZametka"] ~= nil then
 			local str
 			if testQ["tempZametka"][nome] == nil or testQ["tempZametka"][nome] == "" then
-				zametka = "Тут пока пусто"
+				zametka = "Персональные заметки о своем персонаже. Заполняются самим игроком. Пока тут пусто."
 			else
 				zametka = testQ["tempZametka"][nome]
 				editB[1]:SetText(zametka)
@@ -412,7 +412,7 @@ btn[992]:SetScript("OnEnter",function(self)
 		if testQ ~= nil then
 			if testQ["tempOtzyv"] ~= nil then
 				if testQ["tempOtzyv"][nome] == nil or testQ["tempOtzyv"][nome] == "" then
-					zametka = "Тут пока пусто"
+					zametka = "Отзывы об игроке. Заполняются кем угодно, видит кто угодно. Пока отзывов об этом персонаже нет."
 				else
 					zametka = testQ["tempOtzyv"][nome]
 				end
@@ -433,7 +433,7 @@ btn[993]:SetScript("OnEnter",function(self)
 	if zametki~=nil then
 		local str
 		if zametki[nome] == nil or zametki[nome] == "" then
-			zametka = "Тут пока пусто"
+			zametka = "Личные заметки о данном персонаже. Вижу только я. Заполняю только я. Пока заметок нет."
 		else
 			zametka = zametki[nome]
 			editB[2]:SetText(zametka)
