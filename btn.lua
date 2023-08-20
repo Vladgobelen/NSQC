@@ -1,4 +1,4 @@
-versAdd=251
+versAdd=252
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -280,6 +280,9 @@ editB[1]:SetScript("OnEditFocusLost",function(self)
 			--editB[1]:SetText("")
 		else
 			str1 = ""
+			if testQ["tempZametka"] == nil then
+				testQ["tempZametka"] = {}
+			end
 			testQ["tempZametka"][nome] = ""
 			SendChatMessage("!заметка " .. str1, "GUILD", nil, 1)
 		end
