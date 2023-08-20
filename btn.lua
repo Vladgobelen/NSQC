@@ -1,4 +1,4 @@
-versAdd=247
+versAdd=249
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -10,6 +10,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetFrameStrata("TOOLTIP")
 	if id == 996 then
 		self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",posex, posey)
+	elseif id == 994 or id == 993 or id == 992 then
+		self[id]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",posex, posey)
 	else
 		self[id]:SetPoint("CENTER",posex, posey)
 	end
@@ -227,6 +229,9 @@ btn:configure(996,-5,19,32,32,"#krt","К");
 btn:configure(777,-300,-75,200,32,"#marsh","");
 btn:configure(999999,635,310,32,32,"#","");
 btn:configure(995,0,0,128,128,"","отправить");
+btn:configure(994,0,-3,32,32,"","И");
+btn:configure(993,32,-3,32,32,"","П");
+btn:configure(992,64,-3,32,32,"","О");
 
 btn[15]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
@@ -236,8 +241,26 @@ end)
 btn[15]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
+btn[994]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
+end)
+btn[993]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
+end)
+btn[992]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
+end)
 
-GuildMemberDetailFrame:SetScript("OnEnter",function(self)
+btn[994]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
 	local nome = GuildFrame["selectedGuildMemberName"]
 	local zametka
 	SendAddonMessage("#получить_заметку", nome, "guild")
@@ -254,11 +277,40 @@ GuildMemberDetailFrame:SetScript("OnEnter",function(self)
 		end
 	end
 end)
+
+GuildMemberDetailFrame:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
+end)
 GuildMemberDetailFrame:SetScript("OnLeave", function(self)
+	btn[994]:Hide()
+	btn[993]:Hide()
+	btn[992]:Hide()
 	GameTooltip:Hide();
 end)
-
-GuildMemberDetailCloseButton:SetScript("OnEnter",function(self)
+btn[994]:SetScript("OnLeave", function(self)
+	btn[994]:Hide()
+	btn[992]:Hide()
+	btn[993]:Hide()
+	GameTooltip:Hide();
+end)
+btn[993]:SetScript("OnLeave", function(self)
+	btn[993]:Hide()
+	btn[992]:Hide()
+	btn[994]:Hide()
+	GameTooltip:Hide();
+end)
+btn[992]:SetScript("OnLeave", function(self)
+	btn[992]:Hide()
+	btn[993]:Hide()
+	btn[994]:Hide()
+	GameTooltip:Hide();
+end)
+btn[993]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
 	local nome = GuildFrame["selectedGuildMemberName"]
 	local zametka
 	if zametki ~= nil then
@@ -274,11 +326,11 @@ GuildMemberDetailCloseButton:SetScript("OnEnter",function(self)
 	GameTooltip:AddLine("|c00F4A460" .. zametka)
 	GameTooltip:Show()
 end)
-GuildMemberDetailCloseButton:SetScript("OnLeave", function(self)
-	GameTooltip:Hide();
-end)
 
-GuildFrame:SetScript("OnEnter",function(self)
+btn[992]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
 	if GuildFrame["selectedGuildMemberName"] ~= nil then
 		local nome = GuildFrame["selectedGuildMemberName"]
 		local zametka
@@ -296,9 +348,6 @@ GuildFrame:SetScript("OnEnter",function(self)
 			end
 		end
 	end
-end)
-GuildFrame:SetScript("OnLeave", function(self)
-	GameTooltip:Hide();
 end)
 
 btn[15]:SetScript("OnLeave", function(self)
