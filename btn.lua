@@ -340,6 +340,7 @@ editB[3]:SetScript("OnEnterPressed",function(self)
 end)
 
 btn[15]:SetScript("OnClick",function(self)
+	SendAddonMessage("NSGadd", "Я читаю Устав", "guild")
 	if GameTooltip:IsVisible() then
 		GameTooltip:Hide()
 	else
@@ -760,7 +761,7 @@ minibtn:SetScript("OnClick", function()
 		if pokazat~=1 then
 			ii=6
 			btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-			btn[ii]:SetFrameStrata("TOOLTIP")
+			btn[ii]:SetFrameStrata("FULLSCREEN_DIALOG")
 			btn[ii]:SetPoint("CENTER",0,150)
 			btn[ii]:SetSize(300, 30)
 			btn[ii]:SetText("Закрыть")
