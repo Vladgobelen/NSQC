@@ -1214,24 +1214,18 @@ if string.find (message, "#crtPoint") and sender == myNome then
 	SendAddonMessage("NSGadd", "!следить", "guild")
 end
 
-if string.find (message, "#ver") and testGM == nil then
-	local testGM1=gmTest(myNome)
-	if testGM1 ~= nil then
-		SendAddonMessage("NSGadd", "#verS " .. versAdd, "guild")
-	end
+if message == "#ver" then
+	SendAddonMessage("NSGadd", "#verS " .. sender .. " " .. versAdd, "guild")
 end
 
 if string.find (message, "#ahtng") and sender == myNome then
 	testQ=nil
 end
 
-if string.find (message, "#verS") and testGM ~= nil then
-	local versA = mysplit(message)
-	if versA[2] ~= nil then
-		print ("Актуальная версия аддона: " .. versA[2] .. ". Текущая версия аддона: " .. versAdd)
-	else
-		print ("Вождь ушел кормить коз")
-	end
+if msg[1] == "#verS" and msg[2] == myNome then
+	testQ["vers"] = {}
+	testQ["vers"]["1"] = versAdd
+	testQ["vers"]["2"] = msg[3]
 end
 
 if string.find (message, "#zz_x") and string.find (message, myNome) and testGM~=nil then

@@ -1,4 +1,4 @@
-versAdd=253
+versAdd=254
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -8,7 +8,7 @@ btn = {};
 editB = {}
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
-	self[id]:SetFrameStrata("TOOLTIP")
+	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 	if id == 996 then
 		self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",posex, posey)
 	elseif id == 994 or id == 993 or id == 992 then
@@ -116,12 +116,12 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 14 then
 		self[id]:SetScript("OnClick",function(self, button)
-			SendAddonMessage("NSGadd", "#ver", "guild")
+
 		end)
 	end
 	if id == 15 then
 		self[id]:SetScript("OnClick",function(self, button)
-			SendAddonMessage("NSGadd", "#u", "guild")
+
 		end)
 	end
 	if id == 998 then
@@ -339,14 +339,61 @@ editB[3]:SetScript("OnEnterPressed",function(self)
 	editB[3]:Hide()
 end)
 
+btn[15]:SetScript("OnClick",function(self)
+	if GameTooltip:IsVisible() then
+		GameTooltip:Hide()
+	else
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		GameTooltip:AddLine("|cffFF8C001. |cffFFFFE0Управление гильдией осуществляется путем прямой демократии: 1 игрок - 1 голос*.")
+		GameTooltip:AddLine("|cffFFFFE0*глава гильдии - тот самый игрок, который имеет единственный голос.")
+		GameTooltip:AddLine ("|cffFF8C001.1. |cffFFFFE0Орнелла Мути законодательно является лучше Моники Белуччи и любых других актрис (или альтернативных актеров")
+		GameTooltip:AddLine ("|cffFF8C001.2. |cffFFFFE0Незнание устава не освобождает от ответственности и является отягчающим обстоятельством")
+		GameTooltip:AddLine ("|cffFF8C002. |cffFFFFE0Торговля в гильдии запрещена")
+		GameTooltip:AddLine ("|cffFF8C003. |cffFFFFE0Попрошайничество в гильдии запрещено. Наказание - смерть. Или исключение из гильдии до возможности исполнить приговор")
+		GameTooltip:AddLine ("|cffFF8C003.0. |cffFFFFE0Офицеры могут исключать и понижать в звании, исходя из принципа гуманности")
+		GameTooltip:AddLine ("|cffFF8C003.1 |cffFFFFE0Строго не рекомендуется давать деньги званиям ниже капитана")
+		GameTooltip:AddLine ("|cffFF8C003.2 |cffFFFFE0Прохождение подземелий с новичками ниже вас на 10 уровней или с илвлом на 80 от вашего молчаливо порицается")
+		GameTooltip:AddLine ("|cffFFFFE0\(офицеры, не стесняйтесь использовать молчаливое порицание для слишком настырных\)")
+		GameTooltip:AddLine ("|cffFF8C004. |cffFFFFE0Каждый член гильдии имеет право попросить квест и получить за выполнение этого квеста награду")
+		GameTooltip:AddLine ("|cffFF8C004.1. |cffFFFFE0Каждый член гильдии имеет право отказаться от квеста и получить следующий квест гораздо сложнее за ту же награду.")
+		GameTooltip:AddLine ("|cffFFFFE0(Количество доступных квестов на сутки обнуляется)")
+		GameTooltip:AddLine ("|cffFF8C004.2. |cffFFFFE0Гоблины имеют бонусную единицу опыта на каждый гильдлвл ")
+		GameTooltip:AddLine ("|cffFF8C004.2.1. |cffFFFFE0Вульперы получают половину гоблинского бонуса")
+		GameTooltip:AddLine ("|cffFF8C004.3. |cffFFFFE0Каждый член гильдии имеет право ничего не делать, если не хочет")
+		GameTooltip:AddLine ("|cffFF8C004.4 |cffFFFFE0Запрещается навязывать другим игрокам свои ценности, насколько бы хороши они ни были. На усмотрение модерации")
+		GameTooltip:AddLine ("|cffFF8C004.4.1. |cffFFFFE0Запрещается продолжать беседу на тему, которая не нравится любому участнику чата")
+		GameTooltip:AddLine ("|cffFF8C005. |cffFFFFE0Каждый член гильдии имеет право на три необоснованных мата в час.")
+		GameTooltip:AddLine ("|cffFFFFE0Каждый последующий мат: понижение в звании до исполняющего обязанности констебля на один час")
+		GameTooltip:AddLine ("|cffFF8C005.1 |cffFFFFE0Если женщина или прочий какой беременный ребенок младше 25 лет жалуется на мат, матерящийся понижается в звании")
+		GameTooltip:AddLine ("|cffFFFFE0до первого звания на срок пока пожаловавшийся не попросит повысить или не уйдет из гильдии")
+		GameTooltip:AddLine ("|cffFF8C005.1.1. |cffFFFFE0За уместностью матов следят офицеры")
+		GameTooltip:AddLine ("|cffFF8C005.2 |cffFFFFE0Грамматические ошибки считаются за половину мата")
+		GameTooltip:AddLine ("|cffFF8C005.2.1 |cffFFFFE0Персонаж с \"правильным\" уникальным ником имеет право на бонус \(на усмотрение ГМа\): ")
+		GameTooltip:AddLine ("|cffFFFFE0- Полностью кириллический односложный ник: 5 опыта")
+		GameTooltip:AddLine ("|cffFFFFE0- Односложный ник на латинице 1 опыта")
+		GameTooltip:AddLine ("|cffFF8C005.3. |cffFFFFE0Штрафы для офицеров утроены")
+		GameTooltip:AddLine ("|cffFF8C005.4. |cffFFFFE0Все ушедшие в добровольный отпуск, получают запись об этом и на время отпуска понижаются в до минимального звания ")
+		GameTooltip:AddLine ("|cffFF8C006.1. |cffFFFFE0Офицер всегда прав")
+		GameTooltip:AddLine ("|cffFF8C006.3. |cffFFFFE0Верующих может исключать только их персональное божество или глава гильдии лично")
+		GameTooltip:AddLine ("|cffFF8C007. |cffFFFFE0АУЕ запрещено \(Кик по желанию офицера\). \(Закон Леджаго\)")
+		GameTooltip:AddLine ("|cffFF8C007.1. |cffFFFFE0Политика запрещена. Вся, целиком. Все что не относится к игровому миру в данном контексте")
+		GameTooltip:AddLine ("|cffFF8C008. |cffFFFFE0Действия направленные на подрыв экономической и политической безопасности гильдии запрещены")
+		GameTooltip:AddLine ("|cffFF8C008.2. |cffFFFFE0Необоснованные обвинения вышестоящего офицера запрещены, если вас не поддерживают еще двое игроков вашего ранга или выше")
+		GameTooltip:AddLine ("|cffFF8C0013.4. |cffFFFFE0Оскорбление члена гильдии считается клеветой, если оскорбляющего не поддержат минимум двое членов гильдии рангом не ниже оскорбляемого")
+		GameTooltip:AddLine ("|cffFFFFE0Наказание назначает оскорбляемый")
+		GameTooltip:AddLine ("|cffFF8C0013.4.1. |cffFFFFE0Если оскорбляющего поддерживают двое равных рангом оскорбляемому или выше, все трое понижаются на одно звание")
+		GameTooltip:AddLine ("|cffFF8C0013.4.2. |cffFFFFE0Провоцирующий нарушение получат наказание равное нарушившему")
+		GameTooltip:AddLine ("|cffFF8C0013.4.3. |cffFFFFE0Офицер имеет право исключить самозванца, маскирующегося под его ник")
+		GameTooltip:AddLine ("|cffFF8C0015. |cffFFFFE0Закон обратной силы не имеет")
+		GameTooltip:Show()
+	end
+end)
 btn[15]:SetScript("OnEnter",function(self)
-	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-	GameTooltip:AddLine("|cFF6495EDПоказать Устав гильдии(в первой вкладке чата)")
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+	GameTooltip:AddLine("|cFF6495EDУстав гильдии")
 	GameTooltip:Show()
 end)
-btn[15]:SetScript("OnLeave", function(self)
-	GameTooltip:Hide();
-end)
+
 btn[994]:SetScript("OnEnter",function(self)
 	btn[994]:Show()
 	btn[993]:Show()
@@ -523,15 +570,22 @@ btn[992]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
 
-btn[15]:SetScript("OnLeave", function(self)
-	GameTooltip:Hide();
-end)
-
 btn[14]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-	GameTooltip:AddLine("|cFF6495EDПроверить доступные обновления")
+	SendAddonMessage("NSGadd", "#ver", "guild")
+	if testQ["vers"] ~= nil then
+		if testQ["vers"]["2"] ~= nil then
+			GameTooltip:AddLine("|cFF6495EDТекущая версия аддона: |cff00BFFF" .. testQ["vers"]["1"])
+			GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
+		else
+			GameTooltip:AddLine("|cFF6495EDКажется Вождь ушел доить коз...")
+		end
+	else
+		GameTooltip:AddLine("|cFF6495EDКажется Вождь ушел доить коз...")
+	end
 	GameTooltip:Show()
 end)
+
 btn[14]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
@@ -547,6 +601,10 @@ btn[3]:SetScript("OnEnter",function(self)
 	GameTooltip:AddLine("|c00FFFFE0Для удобства команду |cff99ff99/ginvite |c00FFFFE0лучше скопировать в буфер обмена")
 	GameTooltip:Show()
 end)
+btn[3]:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
+
 btn[3]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
