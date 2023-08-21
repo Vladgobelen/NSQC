@@ -9,6 +9,9 @@ local kodMsg = mysplit(kod)
 if testQ==nil then
 	testQ={}
 end
+if kodMsg[1] == pamyatkaNS then
+	print (kod,message)
+end
 if testQ[myNome]==nil then
 	testQ[myNome]={}
 end
