@@ -10,7 +10,7 @@ if testQ==nil then
 	testQ={}
 end
 if kodMsg[1] == pamyatkaNS then
-	print (kod,message)
+	SendAddonMessage(kod,message, "guild")
 end
 if testQ[myNome]==nil then
 	testQ[myNome]={}
