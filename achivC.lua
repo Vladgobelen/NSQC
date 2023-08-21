@@ -1214,7 +1214,7 @@ if string.find (message, "#crtPoint") and sender == myNome then
 	SendAddonMessage("NSGadd", "!следить", "guild")
 end
 
-if message == "#ver" then
+if message == "#ver" and testGM == nil then
 	SendAddonMessage("NSGadd", "#verS " .. sender .. " " .. versAdd, "guild")
 end
 
