@@ -8,7 +8,13 @@ function mysplit (inputstr, sep)
 	end
 	return t
 end
-
+function nsplit(str)
+	lines = {}
+	for s in str:gmatch("[^\r\n]+") do
+		table.insert(lines, s)
+	end
+	return lines
+end
 function all_trim(s)
 	return s:match( "^%s*(.-)%s*$" )
 end
