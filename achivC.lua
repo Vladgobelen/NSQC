@@ -784,6 +784,7 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["itemNum"] = nil
 	testQ[myNome]["itemEnStuck"] = nil
 	testQ[myNome]["itemQend"] = nil
+	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 end
 
 if string.find (message, "#questTimerID2") and sender == myNome then
@@ -810,6 +811,7 @@ if string.find (message, "#aak") and string.find (message, myNome) then
 		count = tonumber(count)
 		testQ[myNome]["квест_лвл2"][msgVzyalQ2]=count
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
+		SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	end
 	if testQ[myNome]["лвл_квестов"] == "3" then
 		count = GetAchievementNumCriteria(msgVzyalQ2)
