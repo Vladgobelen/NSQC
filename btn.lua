@@ -1,4 +1,4 @@
-versAdd=256
+versAdd=257
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -13,6 +13,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",posex, posey)
 	elseif id == 994 or id == 993 or id == 992 then
 		self[id]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",posex, posey)
+	elseif id == 995 then
+		self[id]:SetPoint("BOTTOMLEFT", SendMailMailButton,"TOPLEFT",posex, posey)
 	else
 		self[id]:SetPoint("CENTER",posex, posey)
 	end
@@ -229,7 +231,7 @@ btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
 btn:configure(996,-5,19,32,32,"#krt","К");
 btn:configure(777,-300,-75,200,32,"#marsh","");
 btn:configure(999999,635,310,32,32,"#","");
-btn:configure(995,0,0,128,128,"","отправить");
+btn:configure(995,0,-32,184,64,"","отправить");
 btn:configure(994,0,-3,32,32,"","З");
 btn:configure(993,32,-3,32,32,"","П");
 btn:configure(992,64,-3,32,32,"","О");
@@ -838,40 +840,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			GameTooltip:Hide()
 		end
 
-		if testQ[myNome]["itemNum"] ~= nil then
-			if SendMailMoneyButton:IsVisible() then
-				local tempMail = {}
-				local tempZag
-				local tempZag1
-				local tempCount = {}
-				local tempRez = {}
-				for i=1,tonumber(testQ[myNome]["itemNum"]) do
-					tempMail[i],tempZag,tempCount[i],tempZag1 = GetSendMailItem(i)
-					if tempMail[i] ~= nil then
-						if tostring(tempMail[i]) == tostring(testQ[myNome]["itemName"]) then
-							if tonumber(tempCount[i]) == tonumber(testQ[myNome]["itemEnStuck"]) then
-								tempRez[i]=1
-							end
-						end
-					end
-				end
-				local tempRez1
-				for i=1,tonumber(testQ[myNome]["itemNum"]) do
-					if tempRez1 == nil then
-						tempRez1 = tempRez[i]
-					else
-						tempRez1 = tempRez1 + tempRez[i]
-					end
-				end
-				if tempRez1 == tonumber(testQ[myNome]["itemNum"]) then
-					btn[995]:Show()
-				else
-					btn[995]:Hide()
-				end
-			else
-				btn[995]:Hide()
-			end
-		end
 		if WorldMapFrame:IsVisible() then
 			if krt == nil then
 				krt = {}
@@ -1033,6 +1001,41 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
+		if testQ[myNome]["itemNum"] ~= nil then
+			if SendMailMoneyButton:IsVisible() then
+				local tempMail = {}
+				local tempZag
+				local tempZag1
+				local tempCount = {}
+				local tempRez = {}
+				for i=1,tonumber(testQ[myNome]["itemNum"]) do
+					tempMail[i],tempZag,tempCount[i],tempZag1 = GetSendMailItem(i)
+					if tempMail[i] ~= nil then
+						if tostring(tempMail[i]) == tostring(testQ[myNome]["itemName"]) then
+							if tonumber(tempCount[i]) == tonumber(testQ[myNome]["itemEnStuck"]) then
+								tempRez[i]=1
+							end
+						end
+					end
+				end
+				local tempRez1
+				if tempRez[1] ~= nil then
+					if tempRez[2] ~= nil then
+						tempRez1 = tonumber(tempRez[1])
+						for i=2,tonumber(testQ[myNome]["itemNum"]) do
+							tempRez1 = tempRez1 + tonumber(tempRez[i])
+						end
+					end
+				end
+				if tempRez1 == tonumber(testQ[myNome]["itemNum"]) then
+					btn[995]:Show()
+				else
+					btn[995]:Hide()
+				end
+			else
+				btn[995]:Hide()
+			end
+		end
 		if krt ~= nil then
 			if krt["777"] == 2 then
 				if testQ["startChern"] == nil then
