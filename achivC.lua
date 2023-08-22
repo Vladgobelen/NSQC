@@ -1390,10 +1390,11 @@ end
 end
 end
 )
+--[[
 local function OnEvent(self, event, isLogin, isReload)
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 end
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
-f:SetScript("OnEvent", OnEvent)
+f:SetScript("OnEvent", OnEvent)--]]
