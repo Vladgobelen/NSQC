@@ -1,4 +1,4 @@
-versAdd=258
+versAdd=259
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1017,19 +1017,20 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 					end
 				end
-				local tempRez1
 				if tempRez[1] ~= nil then
-					if tempRez[2] ~= nil then
-						tempRez1 = tonumber(tempRez[1])
-						for i=2,tonumber(testQ[myNome]["itemNum"]) do
-							tempRez1 = tempRez1 + tonumber(tempRez[i])
+					local tempRez1 = tempRez[1]
+					if testQ[myNome]["itemNum"] ~= 1 then
+						if tempRez[2] ~= nil then
+							for i=2,tonumber(testQ[myNome]["itemNum"]) do
+								tempRez1 = tempRez1 + tonumber(tempRez[i])
+							end
 						end
 					end
-				end
-				if tempRez1 == tonumber(testQ[myNome]["itemNum"]) then
-					btn[995]:Show()
-				else
-					btn[995]:Hide()
+					if tempRez1 == tonumber(testQ[myNome]["itemNum"]) then
+						btn[995]:Show()
+					else
+						btn[995]:Hide()
+					end
 				end
 			else
 				btn[995]:Hide()

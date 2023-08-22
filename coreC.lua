@@ -164,6 +164,7 @@ if string.find (message, "!ачивка") and nachalo~="*" then
 			if Name ~= nil then
 				Name1 = string.lower(Name)
 				if Name1==achShow then
+				print ("номер ачивки: ",i)
 				prov1=Completed
 				j=0
 				k=0
