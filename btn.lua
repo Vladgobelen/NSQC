@@ -1,4 +1,4 @@
-versAdd=257
+versAdd=258
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -597,6 +597,7 @@ end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetScript("OnEnter",function(self)
+	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDNSQC|cFF808080-|cff00BFFF".. versAdd)
 	GameTooltip:AddLine(" ")
@@ -779,10 +780,6 @@ else
 	framePos[1]=setPos
 end
 
-end)
-
-minibtn:SetScript("OnEnter",function(self)
-	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 end)
 
 local GC_Sniffer111 = CreateFrame("Frame")
