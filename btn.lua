@@ -593,7 +593,7 @@ btnF:SetScript("OnClick",
 	if testQ["evO14"] ~= true then
 		testQ["evO14"] = nil
 	end
-  end)
+end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetScript("OnEnter",function(self)
@@ -781,7 +781,9 @@ end
 
 end)
 
-
+minibtn:SetScript("OnEnter",function(self)
+	SendAddonMessage("NSGadd", "#qUpdate", "guild")
+end)
 
 local GC_Sniffer111 = CreateFrame("Frame")
 GC_Sniffer111:RegisterEvent("CHAT_MSG_GUILD")
