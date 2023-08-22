@@ -352,7 +352,7 @@ btn[15]:SetScript("OnClick",function(self)
 end)
 btn[15]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-	GameTooltip:AddLine("|cFF6495EDУстав гильдии")
+	GameTooltip:AddLine("|cFF6495EDУстав гильдии(Нажать кнопку пару раз)")
 	GameTooltip:Show()
 end)
 
