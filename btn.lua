@@ -588,6 +588,7 @@ end)
 minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetScript("OnEnter",function(self)
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
+	testQ["vers"]["2"] = nil
 	SendAddonMessage("NSGadd", "#ver", "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDNSQC|cFF808080-|cff00BFFF".. versAdd)
