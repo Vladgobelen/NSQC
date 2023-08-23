@@ -505,17 +505,7 @@ end)
 
 btn[14]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-	SendAddonMessage("NSGadd", "#ver", "guild")
-	if testQ["vers"] ~= nil then
-		if testQ["vers"]["2"] ~= nil then
-			GameTooltip:AddLine("|cFF6495EDТекущая версия аддона: |cff00BFFF" .. testQ["vers"]["1"])
-			GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
-		else
-			GameTooltip:AddLine("|cFF6495EDКажется Вождь ушел доить коз...")
-		end
-	else
-		GameTooltip:AddLine("|cFF6495EDКажется Вождь ушел доить коз...")
-	end
+
 	GameTooltip:Show()
 end)
 
@@ -598,8 +588,10 @@ end)
 minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetScript("OnEnter",function(self)
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
+	SendAddonMessage("NSGadd", "#ver", "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDNSQC|cFF808080-|cff00BFFF".. versAdd)
+	GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddLine("|cffFF8C00ЛКМ|cffFFFFE0 - открыть аддон")
 	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки (когда аддон открыт)")
