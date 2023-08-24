@@ -27,7 +27,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end)
 	end
 
-	if id==10 then
+	if id == 10 then
 		self[id]:SetScript("OnClick",function(self, button)
 			RandomRoll(1, 333)
 		end)
