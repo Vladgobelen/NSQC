@@ -486,6 +486,16 @@ if kod == "gKick" and sender == myNome then
 end
 
 if kod == "gUp" and sender == myNome then
+	local testMacro
+	for i=1,36 do
+		testMacro = GetMacroInfo(i)
+		if testMacro ~= nil then
+			testMacro = mysplit(testMacro)
+			if testMacro[1] == "NSQC" then
+				EditMacro(i, "NSQC", 134414, "пусто")
+			end
+		end
+	end
 	local kickList
 	testQ["gUp"] = {}
 	for Zc=1,GetNumGuildMembers(true) do
