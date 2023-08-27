@@ -18,6 +18,9 @@ msg3=mysplit(message)
 if message == "!кик" and sender == myNome then
 	SendAddonMessage("gKick", "", "guild")
 end
+if message == "!повысить" and sender == myNome then
+	SendAddonMessage("gUp", "", "guild")
+end
 
 if zametki == nil then
 	zametki = {}

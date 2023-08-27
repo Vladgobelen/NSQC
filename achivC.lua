@@ -484,6 +484,38 @@ if kod == "gKick" and sender == myNome then
 		end
 	end
 end
+
+if kod == "gUp" and sender == myNome then
+	local kickList
+	testQ["gUp"] = {}
+	for Zc=1,GetNumGuildMembers(true) do
+		local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+		testQ["gUp"][Zc] = officerNote
+		level = tonumber(level)
+		if rankName == "И.О. Констебля" then
+			if officerNote == "" and publicNote == "" then
+				SendChatMessage(name .. " " .. level .. " лвл " .. rankName, "OFFICER", nil, 1)
+				--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+				if kickList == nil then
+					kickList = "/gpromote " .. name .. "\n"
+				else
+					kickList = kickList .. "/gpromote " .. name .. "\n"
+				end
+			end
+		end
+	end
+	local testMacro
+	for i=1,36 do
+		testMacro = GetMacroInfo(i)
+		if testMacro ~= nil then
+			testMacro = mysplit(testMacro)
+			if testMacro[1] == "NSQC" then
+				EditMacro(i, "NSQC", 134414, kickList)
+			end
+		end
+	end
+end
+
 if kod=="#prEnGD" and msg[1] == myNome then
 	if testQ ~= nil then
 		if testQ[myNome] ~= nil then
@@ -1400,3 +1432,16 @@ end
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
 f:SetScript("OnEvent", OnEvent)--]]
+
+--[[
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+GC_Sniffer:SetScript("OnEvent", function (timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
+local myNome = GetUnitName("player")
+	if InterfaceOptionsCombatTextPanelHealing["value"] == "0" then
+		if arg2 == "SPELL_HEAL" then
+			testQ["cmbtNum"] = "+" .. tostring(arg12/1000):gsub("[.]", ",")
+			testQ["cmbtTime"] = 1
+		end
+	end
+end)--]]

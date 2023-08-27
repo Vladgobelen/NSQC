@@ -984,13 +984,28 @@ end)
 
 
 
-
+local txtNum = 1
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if testQ["cmbtTime"] ~= nil then
+			if bcsQuickFrame[txtNum-1] ~= nil then
+				bcsQuickFrame[txtNum-1]:Hide()
+			end
+			createQuickHtmlFrame(testQ["cmbtNum"],testQ["cmbtTime"],txtNum)
+			if testQ["cmbtTime"] >=111 then
+				bcsQuickFrame[txtNum]:Hide()
+				testQ["cmbtTime"] = nil
+			end
+			if testQ["cmbtTime"] ~= nil then
+				testQ["cmbtTime"] = testQ["cmbtTime"]+(elapsed*150)
+			end
+			txtNum = txtNum + 1
+		end
 
 		if testQ[myNome]["itemNum"] ~= nil then
 			if SendMailMoneyButton:IsVisible() then

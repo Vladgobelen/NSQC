@@ -860,7 +860,23 @@ function txtXor(str)
 	end
 	return strRez
 end
+bcsQuickFrame = {}
+function createQuickHtmlFrame(text,num,id)
+	local tm = GetTime()
+	bcsQuickFrame[id]  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	bcsQuickFrame[id]:SetSize(222, 222)
+	bcsQuickFrame[id]:SetFrameStrata("HIGH")
+	bcsQuickFrame[id]:SetPoint("CENTER", UIParent, "CENTER", 33, num)
+	bcsQuickFrame[id]:SetBackdropColor(0, 103, 51, 1)
+	bcsQuickFrame[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
+end
 
+function showOpt()
+	for k, v in pairs(InterfaceOptionsCombatTextPanelHealing) do
+		print(k,v)
+	end
+end
 
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
