@@ -20,6 +20,10 @@ testGM=gmTest(sender)
 if string.find (kod, "#q33q") and string.find (kod, myNome) and testGM ~= nil then
 	testQ[myNome]["q33q"] = message
 	testQ[myNome]["взятый_квест"] = "q33"
+	btn[7]:Enable()
+	btn[8]:Enable()
+	btn[7]:SetText("Отменить квест")
+	btn[8]:SetText("Узнать квест")
 end
 if string.find (kod, "#q33nik1") and string.find (kod, myNome) and testGM ~= nil then
 	if testQ[myNome]["q33nik"][1] ~= 1 then
@@ -148,6 +152,10 @@ end
 if string.find (kod, "#q3stStart") and string.find (kod, myNome) and testGM ~= nil then
 	testQ[myNome]["q3Stat"] = testQ[myNome]["q3StatTemp"]
 	testQ[myNome]["взятый_квест"] = "q3Stat"
+	btn[7]:Enable()
+	btn[8]:Enable()
+	btn[7]:SetText("Отменить квест")
+	btn[8]:SetText("Узнать квест")
 end
 
 if string.find (kod, "#otLadkaNS") and string.find (kod, myNome) and testGM ~= nil then
@@ -806,6 +814,10 @@ if string.find (message, "#aae") or string.find (message, "#aaq") then
 			testQ[myNome]["взятый_квест3_2"]="vzyat"
 			testQ[myNome]["взятый_квест3_1"]="nevzyat"
 		end
+		btn[7]:Enable()
+		btn[8]:Enable()
+		btn[7]:SetText("Отменить квест")
+		btn[8]:SetText("Узнать квест")
 	end
 end
 
@@ -829,6 +841,12 @@ if string.find (message, "#xxx") and string.find (message, myNome) then
 	testQ[myNome]["itemEnStuck"] = nil
 	testQ[myNome]["itemQend"] = nil
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
+	btn[7]:Disable()
+	btn[7]:SetText("Нет взятых квестов")
+	btn[8]:Disable()
+	btn[8]:SetText("Нет взятых квестов")
+	btn[2]:Hide()
+	btn[2]:Disable()
 end
 
 if string.find (message, "#questTimerID2") and sender == myNome then
@@ -1387,6 +1405,10 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 		testQ[myNome]["взятый_квест3_2"]="vzyat"
 		testQ[myNome]["взятый_квест3_1"]="nevzyat"
 	end
+	btn[7]:Enable()
+	btn[8]:Enable()
+	btn[7]:SetText("Отменить квест")
+	btn[8]:SetText("Узнать квест")
 end
 
 if testGM~=nil then
