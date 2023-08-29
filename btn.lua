@@ -1,4 +1,4 @@
-versAdd=260
+versAdd=261
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -204,6 +204,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			SendMail("Железобетонс", "Квест на сбор предметов", "")
 			btn[995]:Hide()
 			testQ[myNome]["itemQend"] = 1
+			tempRez1 = nil
+			MailFrame:Hide()
 		end)
 	end
 end

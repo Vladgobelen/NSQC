@@ -560,6 +560,10 @@ if kodMsg[1] == "#itemQNum" and kodMsg[2] == myNome then
 end
 if kodMsg[1] == "#itemQ" and kodMsg[2] == myNome then
 	testQ[myNome]["взятый_квест"] = message
+	btn[7]:Enable()
+	btn[8]:Enable()
+	btn[7]:SetText("Отменить квест")
+	btn[8]:SetText("Узнать квест")
 end
 if kodMsg[1] == "#itemQEnStuck" and kodMsg[2] == myNome then
 	testQ[myNome]["itemEnStuck"] = message
@@ -593,10 +597,8 @@ if string.find (message, "#aaa") or string.find (message, "#aao") then
 			id, name, points, completed, month, day, year, description, flags, icon, rewardText, 	isGuildAch = GetAchievementInfo(msg1)
 			if completed == true then
 				SendAddonMessage("NSGadd", "#aab " .. msg1, "guild")
-				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			else
 				SendAddonMessage("NSGadd", "#aac " .. msg1, "guild")
-				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			end
 		elseif msg1TestLvl=="#aao" then
 			msg1 = msg1[3]
@@ -604,10 +606,8 @@ if string.find (message, "#aaa") or string.find (message, "#aao") then
 			id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 			if completed == true then
 				SendAddonMessage("NSGadd", "#aap " .. msg1, "guild")
-				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			else
 				SendAddonMessage("NSGadd", "#aaq " .. msg1, "guild")
-				SendChatMessage(GetAchievementLink(msg1), "OFFICER", nil, 1)
 			end
 		end
 	end
@@ -762,7 +762,6 @@ if string.find (message, "#aah") or string.find (message, "#aan") then
 				SendAddonMessage("NSGadd", "#aai " .. msgQLVL2, "guild")
 			else
 				SendAddonMessage("NSGadd", "#aaj " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
-			SendChatMessage( "доступно пунктов ачивки: " .. GetAchievementLink(msgQLVL2) .. " " .. k .. " из " .. count, "OFFICER", nil, 1)
 			end
 		elseif msgQLVL2[1] == "#aan" then
 			testQ[myNome]["лвл_квестов"]="3"
@@ -785,12 +784,15 @@ if string.find (message, "#aah") or string.find (message, "#aan") then
 				SendAddonMessage("NSGadd", "#aar " .. msgQLVL2, "guild")
 			else
 				SendAddonMessage("NSGadd", "#aas " .. k .. " " .. count .. " " .. msgQLVL2, "guild")
-				SendChatMessage("Доступно пунктов ачивки: " .. GetAchievementLink(msgQLVL2) .. " " ..  k .. " из " .. count, "OFFICER", nil, 1)
 			end
 		end
 	end
 end
-
+if message == "#показывайАчивкуСтатУже" then
+	local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
+	SendChatMessage(sender .. ", сейчас у меня выполнено " .. arg4 .. " пунктов ачивки " .. testQ[myNome]["q3Stat"], "officer", nil, 1)
+	SendAddonMessage("NSGadd", "#дайДоброНаСтат", "guild")
+end
 local myNome = GetUnitName("player")
 if string.find (message, "#aae") or string.find (message, "#aaq") then
 	if string.find (message, myNome) then
@@ -804,6 +806,7 @@ if string.find (message, "#aae") or string.find (message, "#aaq") then
 			table.insert(testQ[myNome]["квест_лвл3"],msg13)
 			testQ[myNome]["взятый_квест3_1"]="vzyat"
 			testQ[myNome]["взятый_квест3_2"]="nevzyat"
+			SendAddonMessage("NSGadd", "#показать_ачивку3один", "guild")
 		elseif msg13[1] == "#aaq" then
 			if testQ[myNome]["квест_лвл3"] == nil then
 				testQ[myNome]["квест_лвл3"] = {}
@@ -820,7 +823,10 @@ if string.find (message, "#aae") or string.find (message, "#aaq") then
 		btn[8]:SetText("Узнать квест")
 	end
 end
-
+if message == "#показал_ачивку3один" then
+	SendChatMessage(sender .. ", ачивка " .. GetAchievementLink(testQ[myNome]["взятый_квест"]) .. " еще не выполнена", "OFFICER", nil, 1)
+	SendAddonMessage("NSGadd", "#ачивка_3один_нету", "guild")
+end
 if string.find (message, "#xxx") and string.find (message, myNome) then
 	btn[1]:Enable()
 	btn[1]:Show()
@@ -874,6 +880,7 @@ if string.find (message, "#aak") and string.find (message, myNome) then
 		testQ[myNome]["квест_лвл2"][msgVzyalQ2]=count
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
 		SendAddonMessage("NSGadd", "#qUpdate", "guild")
+		SendAddonMessage("NSGadd", "#отобразить_квест_ачивки_нум", "guild")
 	end
 	if testQ[myNome]["лвл_квестов"] == "3" then
 		count = GetAchievementNumCriteria(msgVzyalQ2)
@@ -881,7 +888,13 @@ if string.find (message, "#aak") and string.find (message, myNome) then
 		testQ[myNome]["квест_лвл3"][msgVzyalQ2]=count
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
 		SendAddonMessage("NSGadd", "#qUpdate", "guild")
+		SendAddonMessage("NSGadd", "#отобразить_квест_ачивки_нум", "guild")
 	end
+end
+
+if message == "#ShowAchAAK" then
+	SendChatMessage(sender .. " ачивка " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест"])) .. " еще не выполнена", "OFFICER", nil, 1)
+	SendAddonMessage("NSGadd", "#ачивкуПоказал", "guild")
 end
 
 if string.find (message, "#cls") and sender == myNome then
@@ -1382,6 +1395,7 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 		j=j+3
 		testQ[myNome]["квест_лвл2"][msgVzyalQ2]=j
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
+		SendAddonMessage("NSGadd", "#показать_ачивку3много", "guild")
 	elseif testQ[myNome]["лвл_квестов"] == "3" then
 		msgVzyalQ2=mysplit(message)
 		msgVzyalQ2=msgVzyalQ2[3]
@@ -1404,13 +1418,29 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 		testQ[myNome]["взятый_квест"]=msgVzyalQ2
 		testQ[myNome]["взятый_квест3_2"]="vzyat"
 		testQ[myNome]["взятый_квест3_1"]="nevzyat"
+		SendAddonMessage("NSGadd", "#показать_ачивку3много", "guild")
 	end
 	btn[7]:Enable()
 	btn[8]:Enable()
 	btn[7]:SetText("Отменить квест")
 	btn[8]:SetText("Узнать квест")
 end
-
+if message == "#показалАчивку3много" then
+	local count = GetAchievementNumCriteria(tonumber(testQ[myNome]["взятый_квест"]))
+	j=0
+	k=0
+	for i=1, count do
+		local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["взятый_квест"]), i);
+		local prov=completed
+		if prov == true then
+			j=j+1
+		else
+			k=k+1
+		end
+	end
+	SendChatMessage(sender .. ", доступно " .. k .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест"])) .. " из " .. count, "officer", nil, 1)
+	SendAddonMessage("NSGadd", "#выдайДоброНаАчивку3много", "guild")
+end
 if testGM~=nil then
 local testXY
 testXY=mysplit(message)
