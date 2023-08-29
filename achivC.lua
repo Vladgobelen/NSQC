@@ -823,7 +823,7 @@ if string.find (message, "#aae") or string.find (message, "#aaq") then
 		btn[8]:SetText("Узнать квест")
 	end
 end
-if message == "#показал_ачивку3один" then
+if msg[1] == "#показал_ачивку3один" and msg[2] == myNome then
 	SendChatMessage(sender .. ", ачивка " .. GetAchievementLink(testQ[myNome]["взятый_квест"]) .. " еще не выполнена", "OFFICER", nil, 1)
 	SendAddonMessage("NSGadd", "#ачивка_3один_нету", "guild")
 end
@@ -892,7 +892,7 @@ if string.find (message, "#aak") and string.find (message, myNome) then
 	end
 end
 
-if message == "#ShowAchAAK" then
+if msg[1] == "#ShowAchAAK" and msg[2] == myNome then
 	SendChatMessage(sender .. " ачивка " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест"])) .. " еще не выполнена", "OFFICER", nil, 1)
 	SendAddonMessage("NSGadd", "#ачивкуПоказал", "guild")
 end
@@ -1425,7 +1425,7 @@ if string.find (message, "#aal") and string.find (message, myNome) then
 	btn[7]:SetText("Отменить квест")
 	btn[8]:SetText("Узнать квест")
 end
-if message == "#показалАчивку3много" then
+if msg[1] == "#показалАчивку3много" and msg[2] == myNome then
 	local count = GetAchievementNumCriteria(tonumber(testQ[myNome]["взятый_квест"]))
 	j=0
 	k=0
