@@ -592,10 +592,11 @@ end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetScript("OnEnter",function(self)
+	MainMenuMicroButton["hover"]=1
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	SendAddonMessage("NSGadd", "#ver", "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-	GameTooltip:AddLine("|cFF6495EDNSQC|cFF808080-|cff00BFFF".. versAdd)
+	GameTooltip:AddLine("|cFF6495EDNSQC|cFF808080-|cff00BFFF".. versAdd .. " |cffbbbbbbОЗУ: |cff00BFFF" .. string.format("%.0f", GetAddOnMemoryUsage("NSQC")) .. " |cffbbbbbbкб")
 	GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddLine("|cffFF8C00ЛКМ|cffFFFFE0 - открыть аддон")
