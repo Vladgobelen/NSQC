@@ -593,6 +593,7 @@ end)
 minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetScript("OnEnter",function(self)
 	MainMenuMicroButton["hover"]=1
+	MainMenuMicroButton.updateInterval = 10
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	SendAddonMessage("NSGadd", "#ver", "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
@@ -603,7 +604,6 @@ minibtn:SetScript("OnEnter",function(self)
 	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки (когда аддон открыт)")
 	GameTooltip:AddLine("|cffFFFFE0Тягать кнопку можно, когда аддон открыт")
 	GameTooltip:Show()
-
 end)
 minibtn:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
