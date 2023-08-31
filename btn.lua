@@ -15,6 +15,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		self[id]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",posex, posey)
 	elseif id == 995 then
 		self[id]:SetPoint("BOTTOMLEFT", SendMailMailButton,"TOPLEFT",posex, posey)
+	elseif id == 991 then
+		self[id]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
 	else
 		self[id]:SetPoint("CENTER",posex, posey)
 	end
@@ -237,6 +239,7 @@ btn:configure(995,0,-32,184,64,"","отправить");
 btn:configure(994,0,-3,32,32,"","З");
 btn:configure(993,32,-3,32,32,"","П");
 btn:configure(992,64,-3,32,32,"","О");
+btn:configure(991,0,0,32,32,"","");
 
 btn[1]:Hide()
 btn[2]:Hide()
@@ -455,6 +458,13 @@ btn[994]:SetScript("OnClick",function(self, button)
 		end
 	end
 end)
+btn[991]:SetScript("OnClick",function(self, button)
+	if buffBTN == nil then
+		buffBTN	= 1
+	elseif buffBTN == 1 then
+		buffBTN = nil
+	end
+end)
 btn[993]:SetScript("OnClick",function(self, button)
 	local nome = GuildFrame["selectedGuildMemberName"]
 	if editB[2]:IsVisible() then
@@ -508,10 +518,8 @@ btn[992]:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
 end)
 
-btn[14]:SetScript("OnEnter",function(self)
-	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-
-	GameTooltip:Show()
+btn[14]:SetScript("OnClick",function(self)
+	showRB(myNome)
 end)
 
 btn[14]:SetScript("OnLeave", function(self)
@@ -589,11 +597,31 @@ btnF:SetScript("OnClick",
 		testQ["evO14"] = nil
 	end
 end)
+function memB()
+for k, v in pairs(MainMenuMicroButton) do
+	if v~= nil then
+		print(k, v[1])
+	end
+end
+end
+
+btn[14]:SetScript("OnEnter",function(self)
+	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
+	GameTooltip:AddLine("|cFF6495EDКлик по кнопке: открыть/закрыть настройки")
+	GameTooltip:AddLine(" ")
+	GameTooltip:AddLine("|cff99ff99!заметка+ |cffFFFFE0[текст заметки] |cffbbbbbb- дополнить системную заметку о себе")
+	GameTooltip:AddLine("|cffbbbbbbВ гильдчат: |cff99ff99" .. myNome .. " покажи предмет |cffFF8C00[название предмета, существующего в игре]")
+	GameTooltip:AddLine("|cffbbbbbbВ гильдчат: |cff99ff99" .. myNome .. " !ачивка |cffFF8C00[название ачивки ИЛИ статистики]")
+	GameTooltip:Show()
+end)
+btn[14]:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:SetScript("OnEnter",function(self)
 	MainMenuMicroButton["hover"]=1
-	MainMenuMicroButton.updateInterval = 10
+	MainMenuMicroButton.updateInterval = 5
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	SendAddonMessage("NSGadd", "#ver", "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
@@ -607,6 +635,7 @@ minibtn:SetScript("OnEnter",function(self)
 end)
 minibtn:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
+	MainMenuMicroButton["hover"]=nil
 end)
 if testQ==nil then
 	testQ={}
@@ -681,11 +710,6 @@ if testQ ~= nil then
 		pokazat=0
 		pokazatChk=0
 end
-
-
-
-
-
 
 minibtn:SetScript("OnClick", function()
 	minibtn:RegisterForClicks("LeftButtonUp", "RightButtonDown")
@@ -1001,6 +1025,7 @@ minibtn:SetScript("OnClick", function()
 			pokazat=1
 			myCheckButton1:Hide()
 			myCheckButton2:Hide()
+			myCheckButton3:Hide()
 			btn[998]:Hide()
 			btn[997]:Hide()
 			pokazatChk=0
@@ -1017,38 +1042,14 @@ minibtn:SetScript("OnClick", function()
 			pokazat=0
 			myCheckButton1:Hide()
 			myCheckButton2:Hide()
+			myCheckButton3:Hide()
 			btn[998]:Hide()
 			btn[997]:Hide()
 			pokazatChk=0
 		end
-	elseif arg1=="RightButton" then
-		if pokazat==1 then
-			print ("Информация:")
-			print ("NSQC-" .. versAdd)
-			print ("!заметка [текст заметки] - добавть информацию о себе")
-			print ("!заметка+ [текст заметки] - дополнить информацию о себе")
-			print ("В гильдчат: " .. myNome .. " покажи предмет [название предмета]")
-			print ("В гильдчат: " .. myNome .. " !ачивка [название ачивки ИЛИ статистики]")
-			for ii=3,15 do
-				btn[ii]:Hide();
-			end
-			myCheckButton1:Show()
-			myCheckButton2:Show()
-			btn[998]:Show()
-			btn[997]:Show()
-			pokazat=0
-			pokazatChk=1
-		elseif pokazat==0 then
-			for ii=3,15 do
-				btn[ii]:Show();
-			end
-			myCheckButton1:Hide()
-			myCheckButton2:Hide()
-			btn[998]:Hide()
-			btn[997]:Hide()
-			pokazat=1
-			pokazatChk=0
-		end
+	end
+	if arg1=="RightButton" then
+		showRB(myNome)
 	end
 end)
 
@@ -1287,6 +1288,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
+		if testQ["buffX"] == nil or testQ["buffX"] == 0 then
+			btn[991]:ClearAllPoints()
+			btn[991]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
+		else
+			btn[991]:ClearAllPoints()
+			btn[991]:SetPoint("BOTTOMLEFT", UIParent,"BOTTOMLEFT",testQ["buffX"], testQ["buffY"])
+		end
+		if btn[991]:IsVisible() then
+			if buffBTN == 1 then
+				local x, y = GetCursorPosition()
+				btn[991]:ClearAllPoints()
+				local WFx,WFy = WorldFrame:GetSize()
+				local UIx,UIy = UIParent:GetSize()
+				btn[991]:SetPoint("BOTTOMLEFT", WorldFrame,"BOTTOMLEFT",x*(UIx/WFx), y*(UIy/WFy))
+			end
+			xx1,yy1,xx2,xx,yy=btn[991]:GetPoint(1)
+			testQ["buffX"]=xx
+			testQ["buffY"]=yy
+		end
 		if testQ["cmbtTime"] ~= nil then
 			if bcsQuickFrame[txtNum-1] ~= nil then
 				bcsQuickFrame[txtNum-1]:Hide()
@@ -1664,6 +1684,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if pokazatChk==0 then
 				myCheckButton1:Hide()
 				myCheckButton2:Hide()
+				myCheckButton3:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 		end
@@ -1677,6 +1698,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if testQ[myNome]["настройки"]["roll"]=="Enable" then
 			myCheckButton2:SetChecked(true)
+		end
+		if testQ[myNome]["настройки"]["debuff"]==nil or testQ[myNome]["настройки"]["debuff"]=="Disable" then
+			myCheckButton3:SetChecked(false)
+		end
+		if testQ[myNome]["настройки"]["debuff"]=="Enable" then
+			myCheckButton3:SetChecked(true)
 		end
 
 		if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
@@ -1853,7 +1880,20 @@ myCheckButton1:SetScript("OnClick",
 		end
 	end
 );
+myCheckButton3 = createCheckbutton(UIParent, -100, 310, "Скрыть панель дебафов");
+myCheckButton3.tooltip = "Скрыть панель дебафов";
+myCheckButton3:SetScript("OnClick",
+	function()
 
+		if testQ[myNome]["настройки"]["debuff"]=="Disable" or testQ[myNome]["настройки"]["debuff"]==nil then
+			testQ[myNome]["настройки"]["debuff"]="Enable"
+			myCheckButton1:SetChecked(true)
+		elseif testQ[myNome]["настройки"]["debuff"]=="Enable" then
+			testQ[myNome]["настройки"]["debuff"]="Disable"
+			myCheckButton1:SetChecked(false)
+		end
+	end
+);
 
 
 myCheckButton2 = createCheckbutton(UIParent, -100, 330, "Отправка приветственного сообщения принятым в гильдию новичкам");

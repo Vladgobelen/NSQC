@@ -878,6 +878,43 @@ function showOpt()
 	end
 end
 
+function showRB(nome)
+	if pokazat==1 then
+		for ii=1,15 do
+			btn[ii]:Hide();
+		end
+		btn[991]:Show()
+		btn[14]:Show()
+		myCheckButton1:Show()
+		myCheckButton2:Show()
+		myCheckButton3:Show()
+		btn[998]:Show()
+		btn[997]:Show()
+		pokazat=0
+		pokazatChk=1
+	elseif pokazat==0 then
+		for ii=1,15 do
+			btn[ii]:Show();
+		end
+		btn[991]:Hide()
+		if testQ[nome]["взятый_квест"] == "9999" then
+			btn[1]:Show()
+			btn[2]:Hide()
+		end
+		if testQ[nome]["взятый_квест"] ~= "9999" then
+			btn[1]:Hide()
+			btn[2]:Show()
+		end
+		myCheckButton1:Hide()
+		myCheckButton2:Hide()
+		myCheckButton3:Hide()
+		btn[998]:Hide()
+		btn[997]:Hide()
+		pokazat=1
+		pokazatChk=0
+	end
+end
+
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
