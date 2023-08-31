@@ -1185,7 +1185,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if testKont == kont then
 								if testLok == lok then
 									local mioCel=sqrt((x-x1)^2+(y-y1)^2)
-									if mioCel <= 0.0019 then
+									if mioCel <= 0.0011 then
 										SendChatMessage(txtXor(m), "OFFICER", nil, 1)
 										if krt["999"] == nil then
 											krt["999"] = 1
@@ -1214,7 +1214,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						if testKont == kont then
 							if testLok == lok then
 								local mioCel=sqrt((x-x1)^2+(y-y1)^2)
-								if mioCel <= 0.0019 then
+								if mioCel <= 0.0011 then
 									SendChatMessage(txtXor(m), "OFFICER", nil, 1)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
 									testQ["mapQuest"]["список"][testQ["mapQuest"]["текущий"]] = "9999"
