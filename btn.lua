@@ -1174,7 +1174,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				if testQ["chD"] == nil then
 					testQ["chD"] = {}
 				end
-				for i=3,15 do
+				for i=1,15 do
 					j = tostring(i)
 					if krt["chernila"]== nil then
 						krt["chernila"] = {}
