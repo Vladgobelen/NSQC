@@ -1185,7 +1185,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if testKont == kont then
 								if testLok == lok then
 									local mioCel=sqrt((x-x1)^2+(y-y1)^2)
-									print(mioCel)
 									if mioCel <= 0.0011 then
 										SendChatMessage(txtXor(m), "OFFICER", nil, 1)
 										if krt["999"] == nil then
