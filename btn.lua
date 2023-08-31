@@ -1713,22 +1713,24 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 
 		if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
-			btn[1]:EnableKeyboard(0);
+			btn[3]:EnableKeyboard(0);
 			myCheckButton1:EnableKeyboard(0);
 			myCheckButton1:SetChecked(false)
 		elseif testQ[myNome]["настройки"]["esc"]=="Enable" then
 			myCheckButton1:SetChecked(true)
-			btn[1]:EnableKeyboard(1);
+			btn[3]:EnableKeyboard(1);
 			myCheckButton1:EnableKeyboard(1);
-			btn[1]:SetScript("OnKeyDown",function(self,key)
+			btn[3]:SetScript("OnKeyDown",function(self,key)
 			if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-				for ii=3,15 do
+				for ii=1,15 do
 					btn[ii]:Hide();
 				end
 				myCheckButton1:Hide()
 				myCheckButton2:Hide()
+				myCheckButton3:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
+				btn[991]:Hide()
 				pokazatChk=0
 				pokazat=0
 				minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
@@ -1738,13 +1740,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end);
 			myCheckButton1:SetScript("OnKeyDown",function(self,key)
 				if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
-				for ii=3,15 do
+				for ii=1,15 do
 					btn[ii]:Hide();
 				end
 				myCheckButton1:Hide()
 				myCheckButton2:Hide()
+				myCheckButton3:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
+				btn[991]:Hide()
 				pokazatChk=0
 				pokazat=0
 				minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
