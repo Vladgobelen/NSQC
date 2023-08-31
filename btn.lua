@@ -1031,6 +1031,7 @@ minibtn:SetScript("OnClick", function()
 			myCheckButton1:Hide()
 			myCheckButton2:Hide()
 			myCheckButton3:Hide()
+			myCheckButton4:Hide()
 			btn[998]:Hide()
 			btn[997]:Hide()
 			pokazatChk=0
@@ -1048,6 +1049,7 @@ minibtn:SetScript("OnClick", function()
 			myCheckButton1:Hide()
 			myCheckButton2:Hide()
 			myCheckButton3:Hide()
+			myCheckButton4:Hide()
 			btn[998]:Hide()
 			btn[997]:Hide()
 			pokazatChk=0
@@ -1127,6 +1129,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+
+		if testQ[myNome]["настройки"]["watch"]=="Enable" then
+			WatchFrame:Hide()
+		end
+		if testQ[myNome]["настройки"]["watch"]=="Disable" then
+			WatchFrame:Show()
+		end
 
 		if editB[1]:IsVisible() or editB[2]:IsVisible() or editB[3]:IsVisible() then
 			GameTooltip:Hide()
@@ -1691,6 +1700,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton1:Hide()
 				myCheckButton2:Hide()
 				myCheckButton3:Hide()
+				myCheckButton4:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 		end
@@ -1711,6 +1721,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["настройки"]["debuff"]=="Enable" then
 			myCheckButton3:SetChecked(true)
 		end
+		if testQ[myNome]["настройки"]["watch"]==nil or testQ[myNome]["настройки"]["watch"]=="Disable" then
+			myCheckButton4:SetChecked(false)
+		end
+		if testQ[myNome]["настройки"]["watch"]=="Enable" then
+			myCheckButton4:SetChecked(true)
+		end
 
 		if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
 			btn[3]:EnableKeyboard(0);
@@ -1728,6 +1744,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton1:Hide()
 				myCheckButton2:Hide()
 				myCheckButton3:Hide()
+				myCheckButton4:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 				btn[991]:Hide()
@@ -1746,6 +1763,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton1:Hide()
 				myCheckButton2:Hide()
 				myCheckButton3:Hide()
+				myCheckButton4:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 				btn[991]:Hide()
@@ -1897,10 +1915,24 @@ myCheckButton3:SetScript("OnClick",
 
 		if testQ[myNome]["настройки"]["debuff"]=="Disable" or testQ[myNome]["настройки"]["debuff"]==nil then
 			testQ[myNome]["настройки"]["debuff"]="Enable"
-			myCheckButton1:SetChecked(true)
+			myCheckButton3:SetChecked(true)
 		elseif testQ[myNome]["настройки"]["debuff"]=="Enable" then
 			testQ[myNome]["настройки"]["debuff"]="Disable"
-			myCheckButton1:SetChecked(false)
+			myCheckButton3:SetChecked(false)
+		end
+	end
+);
+myCheckButton4 = createCheckbutton(UIParent, -100, 290, "Скрыть список квестов");
+myCheckButton4.tooltip = "Скрыть список квестов";
+myCheckButton4:SetScript("OnClick",
+	function()
+
+		if testQ[myNome]["настройки"]["watch"]=="Disable" or testQ[myNome]["настройки"]["watch"]==nil then
+			testQ[myNome]["настройки"]["watch"]="Enable"
+			myCheckButton4:SetChecked(true)
+		elseif testQ[myNome]["настройки"]["watch"]=="Enable" then
+			testQ[myNome]["настройки"]["watch"]="Disable"
+			myCheckButton4:SetChecked(false)
 		end
 	end
 );
