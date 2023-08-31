@@ -459,6 +459,11 @@ btn[994]:SetScript("OnClick",function(self, button)
 	end
 end)
 btn[991]:SetScript("OnClick",function(self, button)
+	btn[991]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
+	if arg1=="RightButton" then
+		testQ["buffX"] = nil
+		btn[991]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",0, 0)
+	end
 	if buffBTN == nil then
 		buffBTN	= 1
 	elseif buffBTN == 1 then
@@ -1288,13 +1293,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-		if testQ["buffX"] == nil or testQ["buffX"] == 0 then
-			btn[991]:ClearAllPoints()
-			btn[991]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
-		else
-			btn[991]:ClearAllPoints()
-			btn[991]:SetPoint("BOTTOMLEFT", UIParent,"BOTTOMLEFT",testQ["buffX"], testQ["buffY"])
-		end
 		if btn[991]:IsVisible() then
 			if buffBTN == 1 then
 				local x, y = GetCursorPosition()
@@ -1306,6 +1304,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			xx1,yy1,xx2,xx,yy=btn[991]:GetPoint(1)
 			testQ["buffX"]=xx
 			testQ["buffY"]=yy
+		end
+
+		if testQ["buffX"] == nil or testQ["buffX"] == 0 then
+			btn[991]:ClearAllPoints()
+			btn[991]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",0, 0)
+		else
+			btn[991]:ClearAllPoints()
+			btn[991]:SetPoint("CENTER", UIParent,"BOTTOMLEFT",testQ["buffX"], testQ["buffY"])
 		end
 		if testQ["cmbtTime"] ~= nil then
 			if bcsQuickFrame[txtNum-1] ~= nil then
