@@ -562,6 +562,8 @@ if kodMsg[1] == "#itemQ" and kodMsg[2] == myNome then
 	testQ[myNome]["взятый_квест"] = message
 	btn[7]:Enable()
 	btn[8]:Enable()
+	btn[1]:Hide()
+	btn[2]:Show()
 	btn[7]:SetText("Отменить квест")
 	btn[8]:SetText("Узнать квест")
 end
@@ -1512,7 +1514,7 @@ local myNome = GetUnitName("player")
 local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 GC_Sniffer:SetScript("OnEvent", function (timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
-if testQ[myNome]["настройки"]["debuff"] == "Disable" then
+if testQ[myNome]["настройки"]["debuff"] == "Disable" or testQ[myNome]["настройки"]["debuff"] == nil then
 	if testQ["buffX"] ~= nil and testQ["buffX"] ~= 0 then
 		if DebuffButton1 ~= nil then
 			hooksecurefunc("DebuffButton_UpdateAnchors", function()
