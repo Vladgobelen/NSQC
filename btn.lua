@@ -1258,7 +1258,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			local par1 = testQ["start"]
 			if mapTables[testQ["start"]] ~= nil then
 				if mapTables[testQ["start"]][testKont] ~= nil then
-					if mapTables[testQ["start"]][testKont][lok] ~= nik then
+					if mapTables[testQ["start"]][testKont][lok] ~= nil then
 						if mapTables[testQ["start"]][testKont] ~= nil then
 							if mapTables[testQ["start"]][testKont][lok]["testLok"] == lok then
 								if mapTables[testQ["start"]] ~= nil and testKont == mapTables[testQ["start"]][testKont]["testKont"] then
