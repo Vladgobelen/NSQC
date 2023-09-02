@@ -248,7 +248,7 @@ editB[1] = CreateFrame("EditBox", nil, UIParent, "UIPanelButtonTemplate");
 editB[1]:SetSize(512, 32)
 editB[1]:SetPoint("BOTTOMLEFT", btn[994],"TOPLEFT",0, 0)
 editB[1]:SetFrameStrata("TOOLTIP")
-editB[1]:SetMaxLetters(100)
+editB[1]:SetMaxLetters(32000)
 editB[1]:SetAutoFocus(true)
 editB[1]:SetFontObject("ChatFontNormal")
 editB[1]:SetMultiLine(1000);
