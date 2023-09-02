@@ -638,11 +638,6 @@ minibtn:SetScript("OnEnter",function(self)
 	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки (когда аддон открыт)")
 	GameTooltip:AddLine("|cffFFFFE0Тягать кнопку можно, когда аддон открыт")
 	GameTooltip:Show()
-	if tonumber(versAdd) ~= tonumber(testQ["vers"]["2"]) then
-		versFail()
-	else
-		VerF:Hide()
-	end
 end)
 minibtn:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
@@ -1138,6 +1133,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 
+		if tonumber(versAdd) ~= tonumber(testQ["vers"]["2"]) then
+			versFail()
+		else
+			if VerF ~= nil then
+				VerF:Hide()
+			end
+		end
 		if testQ["enWorld"] ~= nil then
 			local timer = time()
 			if timer >= tonumber(testQ["enWorld"])+5 then
