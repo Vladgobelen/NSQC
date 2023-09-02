@@ -230,8 +230,8 @@ btn:configure(12,-22225,350,150,30,"#opn","Включить поиск");
 btn:configure(13,-22225,320,150,30,"#crtPoint","Создать точку");
 btn:configure(14,-133,332,32,32,"#ver","*");
 btn:configure(15,-101,332,32,32,"#u","У");
-btn:configure(998,-83,250,70,32,"#ahtng","СБРОС");
-btn:configure(997,-13,250,70,32,"#zzp","ОТМЕНА");
+btn:configure(998,-83,230,70,32,"#ahtng","СБРОС");
+btn:configure(997,-13,230,70,32,"#zzp","ОТМЕНА");
 btn:configure(996,-5,19,32,32,"#krt","К");
 btn:configure(777,-300,-75,200,32,"#marsh","");
 btn:configure(999999,635,310,32,32,"#","");
@@ -458,6 +458,7 @@ btn[994]:SetScript("OnClick",function(self, button)
 		end
 	end
 end)
+
 btn[991]:SetScript("OnClick",function(self, button)
 	btn[991]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
 	if arg1=="RightButton" then
@@ -1032,6 +1033,7 @@ minibtn:SetScript("OnClick", function()
 			myCheckButton2:Hide()
 			myCheckButton3:Hide()
 			myCheckButton4:Hide()
+			myCheckButton5:Hide()
 			btn[998]:Hide()
 			btn[997]:Hide()
 			pokazatChk=0
@@ -1050,6 +1052,7 @@ minibtn:SetScript("OnClick", function()
 			myCheckButton2:Hide()
 			myCheckButton3:Hide()
 			myCheckButton4:Hide()
+			myCheckButton5:Hide()
 			btn[998]:Hide()
 			btn[997]:Hide()
 			pokazatChk=0
@@ -1129,6 +1132,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+
 		if testQ["enWorld"] ~= nil then
 			local timer = time()
 			if timer >= tonumber(testQ["enWorld"])+5 then
@@ -1307,7 +1311,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		if testQ[myNome]["настройки"]["auk"] == "Enable" then
+			if AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1 ~= nil then
 
+				AuctionHouseFrameItemBuyFrameBuyoutFrameBuyoutButton:SetPoint("CENTER", AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1,"CENTER",-300, 0)
+				AuctionHouseFrameItemBuyFrameBuyoutFrameBuyoutButton:SetFrameStrata("FULLSCREEN_DIALOG")
+
+			end
+			if StaticPopup1Button1:IsVisible() ~= nil then
+
+				StaticPopup1Button1:ClearAllPoints()
+				StaticPopup1Button1:SetPoint("CENTER", AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1,"CENTER",270, 0)
+				StaticPopup1Button1:SetFrameStrata("TOOLTIP")
+
+			end
+		end
 		if btn[991]:IsVisible() then
 			if buffBTN == 1 then
 				local x, y = GetCursorPosition()
@@ -1707,6 +1725,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton2:Hide()
 				myCheckButton3:Hide()
 				myCheckButton4:Hide()
+				myCheckButton5:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 		end
@@ -1733,6 +1752,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["настройки"]["watch"]=="Enable" then
 			myCheckButton4:SetChecked(true)
 		end
+		if testQ[myNome]["настройки"]["auk"]==nil or testQ[myNome]["настройки"]["auk"]=="Disable" then
+			myCheckButton5:SetChecked(false)
+		end
+		if testQ[myNome]["настройки"]["auk"]=="Enable" then
+			myCheckButton5:SetChecked(true)
+		end
 
 		if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
 			btn[3]:EnableKeyboard(0);
@@ -1751,6 +1776,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton2:Hide()
 				myCheckButton3:Hide()
 				myCheckButton4:Hide()
+				myCheckButton5:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 				btn[991]:Hide()
@@ -1770,6 +1796,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton2:Hide()
 				myCheckButton3:Hide()
 				myCheckButton4:Hide()
+				myCheckButton5:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 				btn[991]:Hide()
@@ -1943,6 +1970,20 @@ myCheckButton4:SetScript("OnClick",
 	end
 );
 
+myCheckButton5 = createCheckbutton(UIParent, -100, 270, "Более удобная скупка товара на аукционе");
+myCheckButton5.tooltip = "Более удобная скупка товара на аукционе";
+myCheckButton5:SetScript("OnClick",
+	function()
+
+		if testQ[myNome]["настройки"]["auk"]=="Disable" or testQ[myNome]["настройки"]["auk"]==nil then
+			testQ[myNome]["настройки"]["auk"]="Enable"
+			myCheckButton5:SetChecked(true)
+		elseif testQ[myNome]["настройки"]["auk"]=="Enable" then
+			testQ[myNome]["настройки"]["auk"]="Disable"
+			myCheckButton5:SetChecked(false)
+		end
+	end
+);
 
 myCheckButton2 = createCheckbutton(UIParent, -100, 330, "Отправка приветственного сообщения принятым в гильдию новичкам");
 myCheckButton1:SetFrameLevel(256)
