@@ -1318,7 +1318,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				AuctionHouseFrameItemBuyFrameBuyoutFrameBuyoutButton:SetFrameStrata("FULLSCREEN_DIALOG")
 
 			end
-			if StaticPopup1Button1:IsVisible() ~= nil then
+			if StaticPopup1Button1:IsVisible() ~= nil and AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1 ~= nil and AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1:IsVisible() then
 
 				StaticPopup1Button1:ClearAllPoints()
 				StaticPopup1Button1:SetPoint("CENTER", AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1,"CENTER",270, 0)
