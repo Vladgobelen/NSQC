@@ -872,11 +872,12 @@ function createQuickHtmlFrame(text,num,id)
 	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
 end
 function versFail()
-	VerF = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	local tm = GetTime()
+	VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
 	VerF:SetSize(777, 222)
 	VerF:SetFrameStrata("HIGH")
-	VerF:SetPoint("CENTER", UIParent, "CENTER", 333, 1)
-	VerF:SetBackdropColor(0, 333, 51, 1)
+	VerF:SetPoint("CENTER", UIParent, "CENTER", 333, 0)
+	VerF:SetBackdropColor(0, 103, 51, 1)
 	VerF:SetFont('Fonts\\FRIZQT__.TTF', 222);
 	VerF:SetText("<html><body><p>|cffff0000ОБНОВИ АДДОН</p></body></html>");
 end

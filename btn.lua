@@ -248,7 +248,7 @@ editB[1] = CreateFrame("EditBox", nil, UIParent, "UIPanelButtonTemplate");
 editB[1]:SetSize(512, 32)
 editB[1]:SetPoint("BOTTOMLEFT", btn[994],"TOPLEFT",0, 0)
 editB[1]:SetFrameStrata("TOOLTIP")
-editB[1]:SetMaxLetters(32000)
+editB[1]:SetMaxLetters(100)
 editB[1]:SetAutoFocus(true)
 editB[1]:SetFontObject("ChatFontNormal")
 editB[1]:SetMultiLine(1000);
@@ -1133,13 +1133,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 
-		if tonumber(versAdd) ~= tonumber(testQ["vers"]["2"]) then
-			versFail()
+		if tostring(versAdd) ~= tostring(testQ["vers"]["2"]) then
+			if VerF == nil then
+				versFail()
+			end
 		else
-			if VerF ~= nil then
+			if VerF ~= nil and VerF:IsVisible() then
 				VerF:Hide()
 			end
 		end
+
 		if testQ["enWorld"] ~= nil then
 			local timer = time()
 			if timer >= tonumber(testQ["enWorld"])+5 then
