@@ -872,7 +872,6 @@ function createQuickHtmlFrame(text,num,id)
 	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
 end
 function versFail()
-	local tm = GetTime()
 	VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
 	VerF:SetSize(777, 222)
 	VerF:SetFrameStrata("HIGH")
