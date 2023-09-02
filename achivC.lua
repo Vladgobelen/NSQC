@@ -625,6 +625,12 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			SendAddonMessage("NSGadd", "#aag " .. msg1, "guild")
 			btn[1]:Enable()
 			btn[1]:Show()
+			btn[7]:Disable()
+			btn[7]:SetText("Нет взятых квестов")
+			btn[8]:Disable()
+			btn[8]:SetText("Нет взятых квестов")
+			btn[2]:Hide()
+			btn[2]:Disable()
 			btn[1]:SetText("Взять квест")
 			testQ[myNome]["взятый_квест"]="9999"
 		else
@@ -1490,11 +1496,6 @@ end
 )
 
 local function OnEvent(self, event, isLogin, isReload)
-	local myNome = GetUnitName("player")
-	debuffMove(myNome)
-	print("1")
-	print("1")
-print("1")
 	--SendAddonMessage("NSGadd", "#qUpdate", "guild")
 end
 
@@ -1521,3 +1522,4 @@ GC_Sniffer:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 GC_Sniffer:SetScript("OnEvent", function (timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
 	debuffMove(myNome)
 end)
+

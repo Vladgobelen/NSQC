@@ -1,4 +1,4 @@
-versAdd=262
+versAdd=263
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1122,14 +1122,20 @@ WorldMapDetailFrame:SetScript("OnUpdate",function(self)
 end)--]]
 
 
-
+local myNome = GetUnitName("player")
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
-
+		if testQ["enWorld"] ~= nil then
+			local timer = time()
+			if timer >= tonumber(testQ["enWorld"])+5 then
+				debuffMove(myNome)
+				testQ["enWorld"] = nil
+			end
+		end
 		if testQ[myNome]["настройки"]["watch"]=="Enable" then
 			WatchFrame:Hide()
 		end
