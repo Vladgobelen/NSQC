@@ -638,6 +638,9 @@ minibtn:SetScript("OnEnter",function(self)
 	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки (когда аддон открыт)")
 	GameTooltip:AddLine("|cffFFFFE0Тягать кнопку можно, когда аддон открыт")
 	GameTooltip:Show()
+	if tonumber(versAdd) ~= tonumber(testQ["vers"]["2"]) then
+		versFail()
+	end
 end)
 minibtn:SetScript("OnLeave", function(self)
 	GameTooltip:Hide();
