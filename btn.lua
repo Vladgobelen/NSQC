@@ -1,4 +1,4 @@
-versAdd=263
+versAdd=264
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -640,6 +640,8 @@ minibtn:SetScript("OnEnter",function(self)
 	GameTooltip:Show()
 	if tonumber(versAdd) ~= tonumber(testQ["vers"]["2"]) then
 		versFail()
+	else
+		VerF:Hide()
 	end
 end)
 minibtn:SetScript("OnLeave", function(self)
