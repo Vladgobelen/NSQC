@@ -245,8 +245,8 @@ btn[1]:Hide()
 btn[2]:Hide()
 
 editB[1] = CreateFrame("EditBox", nil, UIParent, "UIPanelButtonTemplate");
-editB[1]:SetSize(512, 32)
-editB[1]:SetPoint("BOTTOMLEFT", btn[994],"TOPLEFT",0, 0)
+editB[1]:SetSize(900, 32)
+editB[1]:SetPoint("BOTTOMLEFT", btn[994],"TOPLEFT",-300, -700)
 editB[1]:SetFrameStrata("TOOLTIP")
 editB[1]:SetMaxLetters(32000)
 editB[1]:SetAutoFocus(true)
@@ -255,8 +255,8 @@ editB[1]:SetMultiLine(1000);
 editB[1]:Hide()
 
 editB[2] = CreateFrame("EditBox", nil, UIParent, "UIPanelButtonTemplate");
-editB[2]:SetSize(512, 32)
-editB[2]:SetPoint("BOTTOMLEFT", btn[993],"TOPLEFT",0, 0)
+editB[2]:SetSize(900, 32)
+editB[2]:SetPoint("BOTTOMLEFT", btn[993],"TOPLEFT",-300, -700)
 editB[2]:SetFrameStrata("TOOLTIP")
 editB[2]:SetMaxLetters(32000)
 editB[2]:SetAutoFocus(true)
