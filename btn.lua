@@ -398,7 +398,7 @@ btn[994]:SetScript("OnEnter",function(self)
 				editB[1]:SetText(zametka)
 			end
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|cFF6495ED" .. zametka)
+			GameTooltip:AddLine("|c006495ED" .. zametka)
 			GameTooltip:Show()
 		end
 	end
@@ -422,7 +422,7 @@ btn[992]:SetScript("OnEnter",function(self)
 			zametka = "Отзывы об игроке. Заполняются кем угодно, видит кто угодно. Пока отзывов об этом персонаже нет."
 		end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-		GameTooltip:AddLine("|cff99ff99" .. zametka)
+		GameTooltip:AddLine("|c0099ff99" .. zametka)
 		GameTooltip:Show()
 	end
 end)
