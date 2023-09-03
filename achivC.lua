@@ -1497,6 +1497,7 @@ end
 
 local function OnEvent(self, event, isLogin, isReload)
 	--SendAddonMessage("NSGadd", "#qUpdate", "guild")
+	SendAddonMessage("NSGadd", "#ver", "guild")
 end
 
 local f = CreateFrame("Frame")
