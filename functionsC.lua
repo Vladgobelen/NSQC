@@ -1105,7 +1105,7 @@ function debuffHide(sign)
 			end
 		end
 	else
-		if DebuffButton1:IsVisible() then
+		if DebuffButton1 ~= nil and DebuffButton1:IsVisible() then
 		else
 			if DebuffButton1 ~= nil then
 				DebuffButton1:Show()
