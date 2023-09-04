@@ -1321,6 +1321,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if testQ[myNome]["настройки"]["debuff"]=="Enable" then
+			debuffHide("Hide")
+		else
+			debuffHide("Show")
+		end
 		if testQ[myNome]["настройки"]["auk"] == "Enable" then
 			if AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1 ~= nil then
 

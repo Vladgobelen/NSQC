@@ -929,7 +929,6 @@ function showRB(nome)
 end
 
 function debuffMove(myNome)
-	if testQ[myNome]["настройки"]["debuff"] == "Disable" or testQ[myNome]["настройки"]["debuff"] == nil then
 	if testQ["buffX"] ~= nil and testQ["buffX"] ~= 0 then
 		if DebuffButton1 ~= nil then
 			hooksecurefunc("DebuffButton_UpdateAnchors", function()
@@ -1033,154 +1032,143 @@ function debuffMove(myNome)
 			end
 
 		end)
-		end
 
 	end
-	if testQ["buffX"] == 0 then
-		testQ["buffX"]=nil
+		if testQ["buffX"] == 0 then
+			testQ["buffX"]=nil
+		end
 	end
+
 end
-if testQ[myNome]["настройки"]["debuff"] == "Enable" then
-	if DebuffButton1 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton1:ClearAllPoints()
-			DebuffButton1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
+function debuffHide(sign)
+	if sign == "Hide" then
+		if DebuffButton1:IsVisible() then
+			if DebuffButton1 ~= nil then
+				DebuffButton1:Hide()
+			end
+			if DebuffButton2 ~= nil then
+				DebuffButton2:Hide()
+			end
+			if DebuffButton3 ~= nil then
+				DebuffButton3:Hide()
+			end
+			if DebuffButton4 ~= nil then
+				DebuffButton4:Hide()
+			end
+			if DebuffButton5 ~= nil then
+				DebuffButton5:Hide()
+			end
+			if DebuffButton6 ~= nil then
+				DebuffButton6:Hide()
+			end
+			if DebuffButton7 ~= nil then
+				DebuffButton7:Hide()
+			end
+			if DebuffButton8 ~= nil then
+				DebuffButton8:Hide()
+			end
+			if DebuffButton9 ~= nil then
+				DebuffButton9:Hide()
+			end
+			if DebuffButton10 ~= nil then
+				DebuffButton10:Hide()
+			end
+			if DebuffButton11 ~= nil then
+				DebuffButton11:Hide()
+			end
+			if DebuffButton12 ~= nil then
+				DebuffButton12:Hide()
+			end
+			if DebuffButton13 ~= nil then
+				DebuffButton13:Hide()
+			end
+			if DebuffButton14 ~= nil then
+				DebuffButton14:Hide()
+			end
+			if DebuffButton15 ~= nil then
+				DebuffButton15:Hide()
+			end
+			if DebuffButton16 ~= nil then
+				DebuffButton16:Hide()
+			end
+			if DebuffButton17 ~= nil then
+				DebuffButton17:Hide()
+			end
+			if DebuffButton18 ~= nil then
+				DebuffButton18:Hide()
+			end
+			if DebuffButton19 ~= nil then
+				DebuffButton19:Hide()
+			end
+			if DebuffButton20 ~= nil then
+				DebuffButton20:Hide()
+			end
 		end
-		if DebuffButton2 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton2:ClearAllPoints()
-			local x,y = DebuffButton2:GetSize()
-			DebuffButton2:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
+	else
+		if DebuffButton1:IsVisible() then
+		else
+			if DebuffButton1 ~= nil then
+				DebuffButton1:Show()
+			end
+			if DebuffButton2 ~= nil then
+				DebuffButton2:Show()
+			end
+			if DebuffButton3 ~= nil then
+				DebuffButton3:Show()
+			end
+			if DebuffButton4 ~= nil then
+				DebuffButton4:Show()
+			end
+			if DebuffButton5 ~= nil then
+				DebuffButton5:Show()
+			end
+			if DebuffButton6 ~= nil then
+				DebuffButton6:Show()
+			end
+			if DebuffButton7 ~= nil then
+				DebuffButton7:Show()
+			end
+			if DebuffButton8 ~= nil then
+				DebuffButton8:Show()
+			end
+			if DebuffButton9 ~= nil then
+				DebuffButton9:Show()
+			end
+			if DebuffButton10 ~= nil then
+				DebuffButton10:Show()
+			end
+			if DebuffButton11 ~= nil then
+				DebuffButton11:Show()
+			end
+			if DebuffButton12 ~= nil then
+				DebuffButton12:Show()
+			end
+			if DebuffButton13 ~= nil then
+				DebuffButton13:Show()
+			end
+			if DebuffButton14 ~= nil then
+				DebuffButton14:Show()
+			end
+			if DebuffButton15 ~= nil then
+				DebuffButton15:Show()
+			end
+			if DebuffButton16 ~= nil then
+				DebuffButton16:Show()
+			end
+			if DebuffButton17 ~= nil then
+				DebuffButton17:Show()
+			end
+			if DebuffButton18 ~= nil then
+				DebuffButton18:Show()
+			end
+			if DebuffButton19 ~= nil then
+				DebuffButton19:Show()
+			end
+			if DebuffButton20 ~= nil then
+				DebuffButton20:Show()
+			end
 		end
-		if DebuffButton3 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton3:ClearAllPoints()
-			local x,y = DebuffButton3:GetSize()
-			DebuffButton3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton4 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton4:ClearAllPoints()
-			local x,y = DebuffButton4:GetSize()
-			DebuffButton4:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton5 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton5:ClearAllPoints()
-			local x,y = DebuffButton5:GetSize()
-			DebuffButton5:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton6 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton6:ClearAllPoints()
-			local x,y = DebuffButton6:GetSize()
-			DebuffButton6:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton7 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton7:ClearAllPoints()
-			local x,y = DebuffButton7:GetSize()
-			DebuffButton7:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton8 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton8:ClearAllPoints()
-			local x,y = DebuffButton8:GetSize()
-			DebuffButton8:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton9 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton9:ClearAllPoints()
-			local x,y = DebuffButton9:GetSize()
-			DebuffButton9:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton10 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton10:ClearAllPoints()
-			local x,y = DebuffButton10:GetSize()
-			DebuffButton10:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton11 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton11:ClearAllPoints()
-			local x,y = DebuffButton11:GetSize()
-			DebuffButton11:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton12 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton12:ClearAllPoints()
-			local x,y = DebuffButton12:GetSize()
-			DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton13 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton13:ClearAllPoints()
-			local x,y = DebuffButton13:GetSize()
-			DebuffButton13:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton14 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton14:ClearAllPoints()
-			local x,y = DebuffButton14:GetSize()
-			DebuffButton14:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton15 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton15:ClearAllPoints()
-			local x,y = DebuffButton15:GetSize()
-			DebuffButton15:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton16 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton16:ClearAllPoints()
-			local x,y = DebuffButton16:GetSize()
-			DebuffButton16:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton17 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton17:ClearAllPoints()
-			local x,y = DebuffButton17:GetSize()
-			DebuffButton17:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton18 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton18:ClearAllPoints()
-			local x,y = DebuffButton18:GetSize()
-			DebuffButton18:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton19 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton19:ClearAllPoints()
-			local x,y = DebuffButton19:GetSize()
-			DebuffButton19:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-		if DebuffButton20 ~= nil then
-			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton20:ClearAllPoints()
-			local x,y = DebuffButton20:GetSize()
-			DebuffButton20:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999,9999)
-			end)
-		end
-end
+	end
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
