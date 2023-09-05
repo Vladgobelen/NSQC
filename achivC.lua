@@ -54,8 +54,8 @@ if  kodMsg[1] == "NSGChatY" then
 			mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j]["y"] = tonumber("0." .. msg[kk])
 			kk=kk+1
 		else
-			break
 			SendChatMessage("Маршрут " .. kodMsg[3] .. " добавлен", "OFFICER", nil, 1)
+			break
 		end
 	end
 end
