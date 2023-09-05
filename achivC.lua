@@ -55,6 +55,7 @@ if  kodMsg[1] == "NSGChatY" then
 			kk=kk+1
 		else
 			break
+			SendChatMessage("Маршрут " .. kodMsg[3] .. " добавлен", "OFFICER", nil, 1)
 		end
 	end
 end
