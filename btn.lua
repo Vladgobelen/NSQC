@@ -1,4 +1,4 @@
-versAdd=264
+versAdd=265
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -166,18 +166,15 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if marsh[testKont] == nil then
 				marsh[testKont] = {}
-				marsh[testKont]["testKont"] = testKont
 			end
 			if marsh[testKont][lok] == nil then
 				marsh[testKont][lok] = {}
-				marsh[testKont][lok]["testLok"] = lok
 			end
-			local tablen = tablelength(marsh[testKont][lok])
-			n = tablen
-			n = tostring(n)
+			local n = tablelength(marsh[testKont][lok])
+			n = tostring(n+1)
 			marsh[testKont][lok][n] = {}
-			marsh[testKont][lok][n]["x"] = x
-			marsh[testKont][lok][n]["y"] = y
+			marsh[testKont][lok][n]["x"] =  string.format("%.3f",x)
+			marsh[testKont][lok][n]["y"] =  string.format("%.3f",y)
 			print (n)
 		end)
 	end
@@ -1276,20 +1273,29 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			lok = tostring(lok)
 			local x,y = GetPlayerMapPosition("player")
 			local par1 = testQ["start"]
+			local tKont,tLok
+			for k, v in pairs(mapTables[testQ["start"]]) do
+				if type(k)=="string" then
+				tKont = k
+			end
+				for k, v in pairs(mapTables[testQ["start"]][k]) do
+					if type(k)=="string" then
+						tLok = k
+					end
+				end
+			end
 			if mapTables[testQ["start"]] ~= nil then
 				if mapTables[testQ["start"]][testKont] ~= nil then
 					if mapTables[testQ["start"]][testKont][lok] ~= nil then
-						if mapTables[testQ["start"]][testKont] ~= nil then
-							if mapTables[testQ["start"]][testKont][lok]["testLok"] == lok then
-								if mapTables[testQ["start"]] ~= nil and testKont == mapTables[testQ["start"]][testKont]["testKont"] then
-									local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
-									if mioCel < 0.010 then
-										PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
-										testQ["marshF"] = {}
-										testQ["marshF"][1] = 1
-										testQ["старт"]=1
-										SendChatMessage("Старт маршрута", "OFFICER", nil, 1)
-									end
+						if tLok == lok then
+							if testKont == tKont then
+								local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
+								if mioCel < 0.010 then
+									PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
+									testQ["marshF"] = {}
+									testQ["marshF"][1] = 1
+									testQ["старт"]=1
+									SendChatMessage("Старт маршрута", "OFFICER", nil, 1)
 								end
 							end
 						end

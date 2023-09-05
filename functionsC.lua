@@ -513,99 +513,101 @@ function trovMarsh(tabella,diam)
 		for i = testQ["num"]-10, testQ["num"]+10 do
 			testQ["schet1"] = i
 			j = tostring(i)
-			if mapTables[tabella][testKont][lok][j] ~= nil then
-				mioCel=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
-				if mioCel < diam then
-					testQ["schet"][i] = 1
-					j = testQ["num"]
-					j = tostring(j)
-					mioCel1=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
-					if mioCel1 > mioCel then
-						testQ["num"] = i
-						testQ["marshF"][i] = i
-						if testQ["marshF"][i] == math.modf(tablen/4) then
-							SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
-							PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-						end
-						if testQ["marshF"][i] == math.modf(tablen/2) then
-							SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
-							PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-						end
-						if testQ["marshF"][i] == math.modf(tablen/4*3) then
-							SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
-							PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-						end
-						if tablen - 1 - #testQ["marshF"] < 1 then
-							SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
-							PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
-							testQ["старт"] = nil
-							testQ["num"] = nil
-							testQ["marshF"] = nil
+			if testQ["старт"] ~= nil then
+				if mapTables[tabella][testKont][lok][j] ~= nil then
+					mioCel=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+					if mioCel < diam then
+						testQ["schet"][i] = 1
+						j = testQ["num"]
+						j = tostring(j)
+						mioCel1=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+						if mioCel1 > mioCel then
+							testQ["num"] = i
+							testQ["marshF"][i] = i
+							if testQ["marshF"][i] == math.modf(tablen/4) then
+								SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/2) then
+								SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/4*3) then
+								SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if tablen - 1 - #testQ["marshF"] < 1 then
+								SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+								testQ["старт"] = nil
+								testQ["num"] = nil
+								testQ["marshF"] = nil
 
-							if testQ[tabella] == "старт" then
-								if tabella == "evO0102" then
-									testQ["evO0102"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0203" then
-									testQ["evO0203"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0304" then
-									testQ["evO0304"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0405" then
-									testQ["evO0405"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0506" then
-									testQ["evO0506"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0607" then
-									testQ["evO0607"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0708" then
-									testQ["evO0708"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0809" then
-									testQ["evO0809"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO0910" then
-									testQ["evO0910"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO1011" then
-									testQ["evO1011"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO11" then
-									testQ["evO11"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO12" then
-									testQ["evO12"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO13" then
-									testQ["evO13"] = true
-									testQ["startChern"] = nil
-								end
-								if tabella == "evO14" then
-									testQ["evO14"] = true
-									testQ["startChern"] = nil
-								end
+								if testQ[tabella] == "старт" then
+									if tabella == "evO0102" then
+										testQ["evO0102"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0203" then
+										testQ["evO0203"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0304" then
+										testQ["evO0304"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0405" then
+										testQ["evO0405"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0506" then
+										testQ["evO0506"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0607" then
+										testQ["evO0607"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0708" then
+										testQ["evO0708"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0809" then
+										testQ["evO0809"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0910" then
+										testQ["evO0910"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO1011" then
+										testQ["evO1011"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO11" then
+										testQ["evO11"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO12" then
+										testQ["evO12"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO13" then
+										testQ["evO13"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO14" then
+										testQ["evO14"] = true
+										testQ["startChern"] = nil
+									end
 
 
+								end
 							end
 						end
+					else
+						testQ["schet"][i] = 0
 					end
-				else
-					testQ["schet"][i] = 0
 				end
 			end
 		end
@@ -619,12 +621,23 @@ function testKontLok(tabella)
 	lok = tostring(lok)
 	local mioCel
 	local x,y = GetPlayerMapPosition("player")
+	local tKont,tLok
+	for k, v in pairs(mapTables[testQ["start"]]) do
+		if type(k)=="string" then
+			tKont = k
+		end
+		for k, v in pairs(mapTables[testQ["start"]][k]) do
+			if type(k)=="string" then
+				tLok = k
+			end
+		end
+	end
 	if x ~= 0 then
 		if tabella ~= nil then
 			if mapTables[tabella][testKont] ~= nil then
-				if mapTables[tabella][testKont]["testKont"] ~= nil and mapTables[tabella][testKont]["testKont"] == testKont then
+				if tKont == testKont then
 					if mapTables[tabella][testKont][lok] ~= nil then
-						if mapTables[tabella][testKont][lok]["testLok"] == lok then
+						if tLok == lok then
 							mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
 							return mioCel
 						end

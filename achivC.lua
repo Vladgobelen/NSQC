@@ -17,6 +17,48 @@ if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
 testGM=gmTest(sender)
+
+if  kodMsg[1] == "NSGaddChatKL" then
+	if mapTables == nil then
+		mapTables = {}
+	end
+	mapTables[kodMsg[2]] = {}
+	mapTables[kodMsg[2]][tostring(msg[1])]={}
+	mapTables[kodMsg[2]][tostring(msg[1])][tostring(msg[2])]={}
+	testQ["tempTabKont"] = msg[1]
+	testQ["tempTabLok"] = msg[2]
+end
+if  kodMsg[1] == "NSGChatX" then
+	local kk=1
+	for i=1+(tonumber(kodMsg[2])-1)*200,tonumber(kodMsg[2])*200 do
+		j = tostring(i)
+		if msg[kk] ~= nil then
+			if mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j] == nil then
+				mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j] = {}
+			end
+			mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j]["x"] = tonumber("0." .. msg[kk])
+			kk=kk+1
+		else
+			break
+		end
+	end
+end
+if  kodMsg[1] == "NSGChatY" then
+	local kk=1
+	for i=1+(tonumber(kodMsg[2])-1)*200,tonumber(kodMsg[2])*200 do
+		j = tostring(i)
+		if msg[kk] ~= nil then
+			if mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j] == nil then
+				mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j] = {}
+			end
+			mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j]["y"] = tonumber("0." .. msg[kk])
+			kk=kk+1
+		else
+			break
+		end
+	end
+end
+
 if string.find (kod, "#q33q") and string.find (kod, myNome) and testGM ~= nil then
 	testQ[myNome]["q33q"] = message
 	testQ[myNome]["взятый_квест"] = "q33"
