@@ -622,24 +622,28 @@ function testKontLok(tabella)
 	local mioCel
 	local x,y = GetPlayerMapPosition("player")
 	local tKont,tLok
-	for k, v in pairs(mapTables[testQ["start"]]) do
-		if type(k)=="string" then
-			tKont = k
-		end
-		for k, v in pairs(mapTables[testQ["start"]][k]) do
-			if type(k)=="string" then
-				tLok = k
+	if mapTables ~= nil then
+		if mapTables[testQ["start"]] ~= nil then
+			for k, v in pairs(mapTables[testQ["start"]]) do
+				if type(k)=="string" then
+					tKont = k
+				end
+				for k, v in pairs(mapTables[testQ["start"]][k]) do
+					if type(k)=="string" then
+						tLok = k
+					end
+				end
 			end
-		end
-	end
-	if x ~= 0 then
-		if tabella ~= nil then
-			if mapTables[tabella][testKont] ~= nil then
-				if tKont == testKont then
-					if mapTables[tabella][testKont][lok] ~= nil then
-						if tLok == lok then
-							mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
-							return mioCel
+			if x ~= 0 then
+				if tabella ~= nil then
+					if mapTables[tabella][testKont] ~= nil then
+						if tKont == testKont then
+							if mapTables[tabella][testKont][lok] ~= nil then
+								if tLok == lok then
+									mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
+									return mioCel
+								end
+							end
 						end
 					end
 				end
