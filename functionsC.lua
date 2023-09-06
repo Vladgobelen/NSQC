@@ -636,7 +636,7 @@ function testKontLok(tabella)
 			end
 			if x ~= 0 then
 				if tabella ~= nil then
-					if mapTables[tabella][testKont] ~= nil then
+					if mapTables[tabella] ~= nil then
 						if tKont == testKont then
 							if mapTables[tabella][testKont][lok] ~= nil then
 								if tLok == lok then
