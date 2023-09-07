@@ -1780,6 +1780,22 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["настройки"]["auk"]=="Enable" then
 			myCheckButton5:SetChecked(true)
 		end
+		if debuffChkB ~= nil then
+			for k, v in pairs(debuffChkB) do
+				if debuffChkB[k] ~= nil then
+					if testQ[myNome]["настройки"]["debuffChkB"] ~= nil then
+						if testQ[myNome]["настройки"]["debuffChkB"][k] ~= nil then
+							if testQ[myNome]["настройки"]["debuffChkB"][k] == nil or testQ[myNome]["настройки"]["debuffChkB"][k] == "Disable" then
+								debuffChkB[k]:SetChecked(false)
+							end
+							if testQ[myNome]["настройки"]["debuffChkB"][k] == "Enable" then
+								debuffChkB[k]:SetChecked(true)
+							end
+						end
+					end
+				end
+			end
+		end
 
 		if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
 			btn[3]:EnableKeyboard(0);

@@ -905,6 +905,9 @@ function showOpt()
 end
 
 function showRB(nome)
+	if debuffChkB == nil then
+		debuffChkB = {}
+	end
 	if pokazat==1 then
 		for ii=1,15 do
 			btn[ii]:Hide();
@@ -918,6 +921,29 @@ function showRB(nome)
 		myCheckButton5:Show()
 		btn[998]:Show()
 		btn[997]:Show()
+
+		for i=1,20 do
+			local name,__,__,__,__,__,__,__ = UnitDebuff("player",i)
+			if name ~= nil then
+				debuffChkB[name] = createCheckbutton(UIParent, 150, (-20*i)+230, name)
+				debuffChkB[name].tooltip = "Скрывать иконку " .. name
+				debuffChkB[name]:SetScript("OnClick",	function()
+
+					if testQ[nome]["настройки"]["debuffChkB"] == nil then
+						testQ[nome]["настройки"]["debuffChkB"] = {}
+					end
+
+					if testQ[nome]["настройки"]["debuffChkB"][name] == "Disable" or testQ[nome]["настройки"]["debuffChkB"][name] == nil then
+						testQ[nome]["настройки"]["debuffChkB"][name] = "Enable"
+						debuffChkB[name]:SetChecked(true)
+					elseif testQ[nome]["настройки"]["debuffChkB"][name] == "Enable" then
+						testQ[nome]["настройки"]["debuffChkB"][name] = "Disable"
+						debuffChkB[name]:SetChecked(false)
+					end
+				end)
+			end
+		end
+
 		pokazat=0
 		pokazatChk=1
 	elseif pokazat==0 then
@@ -938,6 +964,11 @@ function showRB(nome)
 		myCheckButton3:Hide()
 		myCheckButton4:Hide()
 		myCheckButton5:Hide()
+		for k, v in pairs(debuffChkB) do
+			if debuffChkB[k] ~= nil then
+				debuffChkB[k]:Hide()
+			end
+		end
 		btn[998]:Hide()
 		btn[997]:Hide()
 		pokazat=1
@@ -949,105 +980,245 @@ function debuffMove(myNome)
 	if testQ["buffX"] ~= nil and testQ["buffX"] ~= 0 then
 		if DebuffButton1 ~= nil then
 			hooksecurefunc("DebuffButton_UpdateAnchors", function()
-			DebuffButton1:ClearAllPoints()
-			DebuffButton1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"]), testQ["buffY"])
-
+			local i = 0
+			local name,__,__,__,__,__,__,__ = UnitDebuff("player",1)
+			if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+				DebuffButton1:ClearAllPoints()
+				local x,y = DebuffButton1:GetSize()
+				DebuffButton1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+				i=i+1
+			else
+				DebuffButton1:ClearAllPoints()
+				DebuffButton1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+			end
 			if DebuffButton2 ~= nil then
-				DebuffButton2:ClearAllPoints()
-				local x,y = DebuffButton2:GetSize()
-				DebuffButton2:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x, testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",2)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton2:ClearAllPoints()
+					local x,y = DebuffButton2:GetSize()
+					DebuffButton2:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton2:ClearAllPoints()
+					DebuffButton2:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton3 ~= nil then
-				DebuffButton3:ClearAllPoints()
-				local x,y = DebuffButton3:GetSize()
-				DebuffButton3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*2), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",3)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton3:ClearAllPoints()
+					local x,y = DebuffButton3:GetSize()
+					DebuffButton3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton3:ClearAllPoints()
+					DebuffButton3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton4 ~= nil then
-				DebuffButton4:ClearAllPoints()
-				local x,y = DebuffButton4:GetSize()
-				DebuffButton4:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*3), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",4)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton4:ClearAllPoints()
+					local x,y = DebuffButton4:GetSize()
+					DebuffButton4:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton4:ClearAllPoints()
+					DebuffButton4:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton5 ~= nil then
-				DebuffButton5:ClearAllPoints()
-				local x,y = DebuffButton5:GetSize()
-				DebuffButton5:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*4), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",5)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton5:ClearAllPoints()
+					local x,y = DebuffButton5:GetSize()
+					DebuffButton5:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton5:ClearAllPoints()
+					DebuffButton5:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton6 ~= nil then
-				DebuffButton6:ClearAllPoints()
-				local x,y = DebuffButton6:GetSize()
-				DebuffButton6:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*5), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",6)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton6:ClearAllPoints()
+					local x,y = DebuffButton6:GetSize()
+					DebuffButton6:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton6:ClearAllPoints()
+					DebuffButton6:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton7 ~= nil then
-				DebuffButton7:ClearAllPoints()
-				local x,y = DebuffButton7:GetSize()
-				DebuffButton7:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*6), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",7)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton7:ClearAllPoints()
+					local x,y = DebuffButton7:GetSize()
+					DebuffButton7:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton7:ClearAllPoints()
+					DebuffButton7:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton8 ~= nil then
-				DebuffButton8:ClearAllPoints()
-				local x,y = DebuffButton8:GetSize()
-				DebuffButton8:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*7), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",8)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton8:ClearAllPoints()
+					local x,y = DebuffButton8:GetSize()
+					DebuffButton8:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton8:ClearAllPoints()
+					DebuffButton8:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton9 ~= nil then
-				DebuffButton9:ClearAllPoints()
-				local x,y = DebuffButton9:GetSize()
-				DebuffButton9:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*8), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",9)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton9:ClearAllPoints()
+					local x,y = DebuffButton9:GetSize()
+					DebuffButton9:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton9:ClearAllPoints()
+					DebuffButton9:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton10 ~= nil then
-				DebuffButton10:ClearAllPoints()
-				local x,y = DebuffButton10:GetSize()
-				DebuffButton10:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*9), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",10)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton10:ClearAllPoints()
+					local x,y = DebuffButton10:GetSize()
+					DebuffButton10:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton10:ClearAllPoints()
+					DebuffButton10:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton11 ~= nil then
-				DebuffButton11:ClearAllPoints()
-				local x,y = DebuffButton11:GetSize()
-				DebuffButton11:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*10), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",11)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton11:ClearAllPoints()
+					local x,y = DebuffButton11:GetSize()
+					DebuffButton11:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton11:ClearAllPoints()
+					DebuffButton11:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton12 ~= nil then
-				DebuffButton12:ClearAllPoints()
-				local x,y = DebuffButton12:GetSize()
-				DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*11), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",12)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton12:ClearAllPoints()
+					local x,y = DebuffButton12:GetSize()
+					DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton12:ClearAllPoints()
+					DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton13 ~= nil then
-				DebuffButton13:ClearAllPoints()
-				local x,y = DebuffButton13:GetSize()
-				DebuffButton13:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*12), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",13)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton13:ClearAllPoints()
+					local x,y = DebuffButton13:GetSize()
+					DebuffButton13:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton13:ClearAllPoints()
+					DebuffButton13:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton14 ~= nil then
-				DebuffButton14:ClearAllPoints()
-				local x,y = DebuffButton14:GetSize()
-				DebuffButton14:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*13), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",14)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton14:ClearAllPoints()
+					local x,y = DebuffButton14:GetSize()
+					DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton14:ClearAllPoints()
+					DebuffButton14:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton15 ~= nil then
-				DebuffButton15:ClearAllPoints()
-				local x,y = DebuffButton15:GetSize()
-				DebuffButton15:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*14), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",15)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton15:ClearAllPoints()
+					local x,y = DebuffButton15:GetSize()
+					DebuffButton15:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton15:ClearAllPoints()
+					DebuffButton15:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton16 ~= nil then
-				DebuffButton16:ClearAllPoints()
-				local x,y = DebuffButton16:GetSize()
-				DebuffButton16:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*15), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",16)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton16:ClearAllPoints()
+					local x,y = DebuffButton16:GetSize()
+					DebuffButton16:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton16:ClearAllPoints()
+					DebuffButton16:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton17 ~= nil then
-				DebuffButton17:ClearAllPoints()
-				local x,y = DebuffButton17:GetSize()
-				DebuffButton17:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*16), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",17)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton17:ClearAllPoints()
+					local x,y = DebuffButton17:GetSize()
+					DebuffButton17:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton17:ClearAllPoints()
+					DebuffButton17:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton18 ~= nil then
-				DebuffButton18:ClearAllPoints()
-				local x,y = DebuffButton18:GetSize()
-				DebuffButton18:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*17), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",18)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton18:ClearAllPoints()
+					local x,y = DebuffButton18:GetSize()
+					DebuffButton18:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton18:ClearAllPoints()
+					DebuffButton18:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton19 ~= nil then
-				DebuffButton19:ClearAllPoints()
-				local x,y = DebuffButton19:GetSize()
-				DebuffButton19:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*18), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",19)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton19:ClearAllPoints()
+					local x,y = DebuffButton19:GetSize()
+					DebuffButton19:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton19:ClearAllPoints()
+					DebuffButton19:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
 			if DebuffButton20 ~= nil then
-				DebuffButton20:ClearAllPoints()
-				local x,y = DebuffButton20:GetSize()
-				DebuffButton20:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+(x*19), testQ["buffY"])
+				local name,__,__,__,__,__,__,__ = UnitDebuff("player",20)
+				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
+					DebuffButton20:ClearAllPoints()
+					local x,y = DebuffButton20:GetSize()
+					DebuffButton20:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					i=i+1
+				else
+					DebuffButton20:ClearAllPoints()
+					DebuffButton20:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 9999, testQ["buffY"])
+				end
 			end
-
 		end)
 
 	end
