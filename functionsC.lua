@@ -984,11 +984,17 @@ function debuffMove(myNome)
 		if DebuffButton1 ~= nil then
 			hooksecurefunc("DebuffButton_UpdateAnchors", function()
 			local i = 0
+			local getSize
+			getSize = UIParent:GetSize()/2
 			local name,__,__,__,__,__,__,__ = UnitDebuff("player",1)
 			if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 				DebuffButton1:ClearAllPoints()
 				local x,y = DebuffButton1:GetSize()
-				DebuffButton1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+				if testQ["buffX"] < getSize then
+					DebuffButton1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+				else
+					DebuffButton1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+				end
 				i=i+1
 			else
 				DebuffButton1:ClearAllPoints()
@@ -999,7 +1005,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton2:ClearAllPoints()
 					local x,y = DebuffButton2:GetSize()
-					DebuffButton2:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton2:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton2:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton2:ClearAllPoints()
@@ -1011,7 +1021,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton3:ClearAllPoints()
 					local x,y = DebuffButton3:GetSize()
-					DebuffButton3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton3:ClearAllPoints()
@@ -1023,7 +1037,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton4:ClearAllPoints()
 					local x,y = DebuffButton4:GetSize()
-					DebuffButton4:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton4:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton4:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton4:ClearAllPoints()
@@ -1035,7 +1053,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton5:ClearAllPoints()
 					local x,y = DebuffButton5:GetSize()
-					DebuffButton5:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton5:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton5:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton5:ClearAllPoints()
@@ -1047,7 +1069,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton6:ClearAllPoints()
 					local x,y = DebuffButton6:GetSize()
-					DebuffButton6:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton6:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton6:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton6:ClearAllPoints()
@@ -1059,7 +1085,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton7:ClearAllPoints()
 					local x,y = DebuffButton7:GetSize()
-					DebuffButton7:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton7:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton7:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton7:ClearAllPoints()
@@ -1071,7 +1101,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton8:ClearAllPoints()
 					local x,y = DebuffButton8:GetSize()
-					DebuffButton8:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton8:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton8:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton8:ClearAllPoints()
@@ -1083,7 +1117,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton9:ClearAllPoints()
 					local x,y = DebuffButton9:GetSize()
-					DebuffButton9:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton9:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton9:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton9:ClearAllPoints()
@@ -1095,7 +1133,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton10:ClearAllPoints()
 					local x,y = DebuffButton10:GetSize()
-					DebuffButton10:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton10:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton10:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton10:ClearAllPoints()
@@ -1107,7 +1149,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton11:ClearAllPoints()
 					local x,y = DebuffButton11:GetSize()
-					DebuffButton11:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton11:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton11:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton11:ClearAllPoints()
@@ -1119,7 +1165,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton12:ClearAllPoints()
 					local x,y = DebuffButton12:GetSize()
-					DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton12:ClearAllPoints()
@@ -1131,7 +1181,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton13:ClearAllPoints()
 					local x,y = DebuffButton13:GetSize()
-					DebuffButton13:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton13:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton13:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton13:ClearAllPoints()
@@ -1143,7 +1197,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton14:ClearAllPoints()
 					local x,y = DebuffButton14:GetSize()
-					DebuffButton12:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton14:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton14:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton14:ClearAllPoints()
@@ -1155,7 +1213,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton15:ClearAllPoints()
 					local x,y = DebuffButton15:GetSize()
-					DebuffButton15:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton15:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton15:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton15:ClearAllPoints()
@@ -1167,7 +1229,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton16:ClearAllPoints()
 					local x,y = DebuffButton16:GetSize()
-					DebuffButton16:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton16:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton16:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton16:ClearAllPoints()
@@ -1179,7 +1245,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton17:ClearAllPoints()
 					local x,y = DebuffButton17:GetSize()
-					DebuffButton17:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton17:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton17:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton17:ClearAllPoints()
@@ -1191,7 +1261,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton18:ClearAllPoints()
 					local x,y = DebuffButton18:GetSize()
-					DebuffButton18:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton18:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton18:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton18:ClearAllPoints()
@@ -1203,7 +1277,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton19:ClearAllPoints()
 					local x,y = DebuffButton19:GetSize()
-					DebuffButton19:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton19:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton19:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton19:ClearAllPoints()
@@ -1215,7 +1293,11 @@ function debuffMove(myNome)
 				if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 					DebuffButton20:ClearAllPoints()
 					local x,y = DebuffButton20:GetSize()
-					DebuffButton20:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					if testQ["buffX"] < getSize then
+						DebuffButton20:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*i, testQ["buffY"])
+					else
+						DebuffButton20:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*i, testQ["buffY"])
+					end
 					i=i+1
 				else
 					DebuffButton20:ClearAllPoints()
