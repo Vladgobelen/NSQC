@@ -17,6 +17,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		self[id]:SetPoint("BOTTOMLEFT", SendMailMailButton,"TOPLEFT",posex, posey)
 	elseif id == 991 then
 		self[id]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
+	elseif id == 990 then
+
 	else
 		self[id]:SetPoint("CENTER",posex, posey)
 	end
@@ -237,6 +239,7 @@ btn:configure(994,0,-3,32,32,"","З");
 btn:configure(993,32,-3,32,32,"","П");
 btn:configure(992,64,-3,32,32,"","О");
 btn:configure(991,0,0,32,32,"","");
+btn:configure(990,0,0,32,32,"","?");
 
 btn[1]:Hide()
 btn[2]:Hide()
@@ -358,6 +361,24 @@ end)
 btn[15]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 	GameTooltip:AddLine("|cFF6495EDУстав гильдии(Нажать кнопку пару раз)")
+	GameTooltip:Show()
+end)
+btn[990]:SetScript("OnEnter",function(self)
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+	GameTooltip:AddLine("|cFF6495EDЧтобы надпись исчезла, обнови аддон NSQC")
+	GameTooltip:AddLine("|cFF6495EDКлик по кнопке - временно убрать надпись")
+	GameTooltip:Show()
+end)
+btn[990]:SetScript("OnClick",function(self)
+	testQ["VerF"] = 1500
+	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], 0)
+end)
+btn[991]:SetScript("OnEnter",function(self)
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+	GameTooltip:AddLine("|cFF6495EDРасположение панели дебафов")
+	GameTooltip:AddLine("|cFF6495EDПКМ один раз - привязать кнопку к курсору")
+	GameTooltip:AddLine("|cFF6495EDПКМ второй раз - отвязать кнопку от курсора")
+	GameTooltip:AddLine("|cFF6495EDПКМ по кнопке и затем ЛКМ по кнопке  - сброс")
 	GameTooltip:Show()
 end)
 
@@ -1131,12 +1152,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 
 		if tostring(versAdd) ~= tostring(testQ["vers"]["2"]) then
-			if VerF == nil then
+			if VerF == nil or not VerF:IsVisible() then
 				versFail()
+				btn[990]:SetPoint("CENTER", VerF, "CENTER", -70, 125)
+				btn[990]:Show()
+			end
+			if VerF ~= nil and VerF:IsVisible() then
+				if testQ["VerF"] ~= nil and testQ["VerF"] ~= 333 then
+					testQ["VerF"] = testQ["VerF"] - 1
+					VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], 0)
+				end
 			end
 		else
 			if VerF ~= nil and VerF:IsVisible() then
 				VerF:Hide()
+				btn[990]:Hide()
 			end
 		end
 
