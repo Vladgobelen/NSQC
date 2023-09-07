@@ -987,6 +987,9 @@ function debuffMove(myNome)
 			local getSize
 			getSize = UIParent:GetSize()/2
 			local name,__,__,__,__,__,__,__ = UnitDebuff("player",1)
+			if testQ[myNome]["настройки"]["debuffChkB"] == nil then
+				testQ[myNome]["настройки"]["debuffChkB"] = {}
+			end
 			if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
 				DebuffButton1:ClearAllPoints()
 				local x,y = DebuffButton1:GetSize()
