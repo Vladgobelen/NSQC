@@ -922,6 +922,7 @@ function showRB(nome)
 		myCheckButton3:Show()
 		myCheckButton4:Show()
 		myCheckButton5:Show()
+		myCheckButton6:Show()
 		btn[998]:Show()
 		btn[997]:Show()
 
@@ -967,6 +968,7 @@ function showRB(nome)
 		myCheckButton3:Hide()
 		myCheckButton4:Hide()
 		myCheckButton5:Hide()
+		myCheckButton6:Hide()
 		for k, v in pairs(debuffChkB) do
 			if debuffChkB[k] ~= nil then
 				debuffChkB[k]:Hide()
