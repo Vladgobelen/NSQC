@@ -157,27 +157,15 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 777 then
 		self[id]:SetScript("OnClick",function(self, button)
-			local testKont = GetCurrentMapContinent()
-			local lok = GetCurrentMapZone()
-			local x,y = GetPlayerMapPosition("player")
-			local n
-			testKont = tostring(testKont)
-			lok = tostring(lok)
-			if marsh == nil then
-				marsh = {}
+			if testQ["marshS"] == nil then
+				testQ["marshS"] = 1
+			elseif testQ["marshS"] == 1 then
+				marsh = nil
+				testQ["marshS"] = nil
+				testQ["marshK"] = nil
+				testQ["marshL"] = nil
+				testQ["marshN"] = nil
 			end
-			if marsh[testKont] == nil then
-				marsh[testKont] = {}
-			end
-			if marsh[testKont][lok] == nil then
-				marsh[testKont][lok] = {}
-			end
-			local n = tablelength(marsh[testKont][lok])
-			n = tostring(n+1)
-			marsh[testKont][lok][n] = {}
-			marsh[testKont][lok][n]["x"] =  string.format("%.3f",x)
-			marsh[testKont][lok][n]["y"] =  string.format("%.3f",y)
-			print (n)
 		end)
 	end
 	if id == 999999 then
@@ -1317,7 +1305,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						if tLok == lok then
 							if testKont == tKont then
 								local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
-								if mioCel < 0.010 then
+								if mioCel < 0.003 then
 									PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
 									testQ["marshF"] = {}
 									testQ["marshF"][1] = 1
@@ -1334,7 +1322,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		if testQ["старт"] ~= nil and testQ["старт"] == 1 then
 			local par1 = testQ["start"]
-			local xxx = (testMarsh(par1,0.020))
+			local xxx = (testMarsh(par1,0.008))
 			if xxx < 1 then
 				SendChatMessage("Я проиграл", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
@@ -1355,6 +1343,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
+		if testQ["marshS"] == 1 then
+			local x,y = GetPlayerMapPosition("player")
+			if testQ["marshK"] == nil then
+				marSh()
+			end
+			if testQ["marshK"] ~= nil then
+				local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
+				if mioCel >= 0.007 then
+					marSh()
+				end
+			end
+		end
 		if testQ[myNome]["настройки"]["debuff"]=="Enable" then
 			debuffHide("Hide")
 		else
