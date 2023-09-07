@@ -1039,7 +1039,6 @@ minibtn:SetScript("OnClick", function()
 			for ii=1,15 do
 				btn[ii]:Hide();
 			end
-			pokazat=0
 			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
 			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
 			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
@@ -1047,21 +1046,14 @@ minibtn:SetScript("OnClick", function()
 			for ii=3,15 do
 				btn[ii]:Show();
 			end
-			pokazat=1
-			myCheckButton1:Hide()
-			myCheckButton2:Hide()
-			myCheckButton3:Hide()
-			myCheckButton4:Hide()
-			myCheckButton5:Hide()
-			btn[998]:Hide()
-			btn[997]:Hide()
+			if myCheckButton1:IsVisible() then
+				showRB(myNome)
+			end
 			pokazatChk=0
 			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
 			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
 			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
-			if myCheckButton1:IsVisible() then
-				showRB(myNome)
-			end
+			pokazat=1
 		else
 			for ii=3,15 do
 				btn[ii]:Hide();
