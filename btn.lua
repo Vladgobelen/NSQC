@@ -767,6 +767,7 @@ minibtn:SetScript("OnClick", function()
 			btn[8]:Disable()
 			btn[8]:SetText("Нет взятых квестов")
 			btn[2]:Disable()
+
 		end
 	elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
 		if pokazat == 0 then
@@ -1058,6 +1059,9 @@ minibtn:SetScript("OnClick", function()
 			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
 			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
 			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
+			if myCheckButton1:IsVisible() then
+				showRB(myNome)
+			end
 		else
 			for ii=3,15 do
 				btn[ii]:Hide();
