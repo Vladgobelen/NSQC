@@ -73,7 +73,7 @@ if ginv ~= nil then
 			table.insert(testQ["shtrf"], gInv[1])
 			shtraf = nil
 		end
-	else
+	end
 end
 
 end
