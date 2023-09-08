@@ -938,16 +938,16 @@ function createQuickHtmlFrame(text,num,id)
 	bcsQuickFrame[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
 	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
 end
-function versFail()
+function versFail(num)
 	VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
-	VerF:SetSize(777, 222)
+	VerF:SetSize(1111, 888)
 	VerF:SetFrameStrata("HIGH")
 	if testQ["VerF"] == nil then
-		testQ["VerF"] = 333
+		testQ["VerF"] = 600
 	end
-	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], 0)
+	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
 	VerF:SetBackdropColor(0, 103, 51, 1)
-	VerF:SetFont('Fonts\\FRIZQT__.TTF', 222);
+	VerF:SetFont('Fonts\\FRIZQT__.TTF', num);
 	VerF:SetText("<html><body><p>|cffff0000ОБНОВИ АДДОН</p></body></html>");
 end
 

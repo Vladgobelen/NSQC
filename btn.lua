@@ -358,7 +358,8 @@ btn[990]:SetScript("OnEnter",function(self)
 	GameTooltip:Show()
 end)
 btn[990]:SetScript("OnClick",function(self)
-	testQ["VerF"] = 1500
+	testQ["VerF"] = 2300
+	testQ["fontVers"]=testQ["fontVers"]+5
 	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], 0)
 end)
 btn[991]:SetScript("OnEnter",function(self)
@@ -410,6 +411,11 @@ btn[994]:SetScript("OnEnter",function(self)
 	end
 end)
 
+btn[990]:SetScript("OnEnter",function(self)
+	if testQ["fontVers"] >=80 then
+		btn[990]:Hide()
+	end
+end)
 btn[992]:SetScript("OnEnter",function(self)
 	btn[994]:Show()
 	btn[993]:Show()
@@ -1135,17 +1141,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
-
+		if VerF == nil or not VerF:IsVisible() then
+			if testQ["fontVers"] ~= nil then
+				testQ["fontVers"]=nil
+			end
+		end
 		if tostring(versAdd) ~= tostring(testQ["vers"]["2"]) then
 			if VerF == nil or not VerF:IsVisible() then
-				versFail()
-				btn[990]:SetPoint("CENTER", VerF, "CENTER", -70, 125)
+				if testQ["fontVers"] == nil then
+					testQ["fontVers"]=5
+				end
+				versFail(testQ["fontVers"])
+				btn[990]:SetPoint("CENTER", VerF, "CENTER", -400, 470)
 				btn[990]:Show()
 			end
 			if VerF ~= nil and VerF:IsVisible() then
-				if testQ["VerF"] ~= nil and testQ["VerF"] ~= 333 then
+				if testQ["VerF"] ~= nil and testQ["VerF"] ~= 600 then
 					testQ["VerF"] = testQ["VerF"] - 1
-					VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], 0)
+					VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
+					VerF:SetFont('Fonts\\FRIZQT__.TTF', testQ["fontVers"])
 				end
 			end
 		else
