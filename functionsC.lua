@@ -481,9 +481,20 @@ end
 function testMarsh(tabella,diam)
 	trovMarsh(tabella,diam)
 		local rez = 0
+		for k, v in pairs(mapTables[testQ["start"]]) do
+			if type(k)=="string" then
+				tKont = k
+			end
+			for k, v in pairs(mapTables[testQ["start"]][k]) do
+				if type(k)=="string" then
+					tLok = k
+				end
+			end
+		end
 		if testQ["schet1"] ~= nil then
 			for i = testQ["schet1"]-10, testQ["schet1"]+10 do
 				if testQ["schet"][i] ~= nil then
+					marshrut(i,tablelength(mapTables[tabella][tKont][tLok]))
 					rez = rez + testQ["schet"][i]
 					if rez > 0 then
 						break
@@ -510,120 +521,116 @@ function trovMarsh(tabella,diam)
 				testQ["schet1"] = 1
 			end
 		end
-		for k, v in pairs(mapTables[testQ["start"]]) do
-				if type(k)=="string" then
-					tKont = k
-				end
-			end
-		if testKont == tKont then
-			for i = testQ["num"]-10, testQ["num"]+10 do
-				testQ["schet1"] = i
-				j = tostring(i)
-				if testQ["старт"] ~= nil then
-					if mapTables[tabella][testKont][lok][j] ~= nil then
-						mioCel=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
-						if mioCel < diam then
-							testQ["schet"][i] = 1
-							j = testQ["num"]
-							j = tostring(j)
-							mioCel1=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
-							if mioCel1 > mioCel then
-								testQ["num"] = i
-								testQ["marshF"][i] = i
-								if testQ["marshF"][i] == math.modf(tablen/4) then
-									SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
-									PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-								end
-								if testQ["marshF"][i] == math.modf(tablen/2) then
-									SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
-									PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-								end
-								if testQ["marshF"][i] == math.modf(tablen/4*3) then
-									SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
-									PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-								end
-								if tablen - #testQ["marshF"] < 1 then
-									SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
-									PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
-									testQ["старт"] = nil
-									testQ["num"] = nil
-									testQ["marshF"] = nil
-
-									if testQ[tabella] == "старт" then
-										if tabella == "evO0102" then
-											testQ["evO0102"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0203" then
-											testQ["evO0203"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0304" then
-											testQ["evO0304"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0405" then
-											testQ["evO0405"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0506" then
-											testQ["evO0506"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0607" then
-											testQ["evO0607"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0708" then
-											testQ["evO0708"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0809" then
-											testQ["evO0809"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO0910" then
-											testQ["evO0910"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO1011" then
-											testQ["evO1011"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO11" then
-											testQ["evO11"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO12" then
-											testQ["evO12"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO13" then
-											testQ["evO13"] = true
-											testQ["startChern"] = nil
-										end
-										if tabella == "evO14" then
-											testQ["evO14"] = true
-											testQ["startChern"] = nil
-										end
-
-
+		for i = testQ["num"]-10, testQ["num"]+10 do
+			testQ["schet1"] = i
+			j = tostring(i)
+			if testQ["старт"] ~= nil then
+				if mapTables[tabella][testKont][lok][j] ~= nil then
+					mioCel=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+					if mioCel < diam then
+						testQ["schet"][i] = 1
+						j = testQ["num"]
+						j = tostring(j)
+						mioCel1=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+						if mioCel1 > mioCel then
+							testQ["num"] = i
+							testQ["marshF"][i] = i
+							if testQ["marshF"][i] == math.modf(tablen/4) then
+								SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/2) then
+								SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/4*3) then
+								SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if tonumber(tablen) == tonumber(i) then
+								SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+								if marshruT ~= nil then
+								for i=1,9999 do
+									if marshruT[i] ~= nil then
+										marshruT[i]:Hide()
 									end
 								end
+								end
+								marshruT = nil
+								testQ["старт"] = nil
+								testQ["num"] = nil
+								testQ["marshF"] = nil
+
+								if testQ[tabella] == "старт" then
+									if tabella == "evO0102" then
+										testQ["evO0102"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0203" then
+										testQ["evO0203"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0304" then
+										testQ["evO0304"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0405" then
+										testQ["evO0405"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0506" then
+										testQ["evO0506"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0607" then
+										testQ["evO0607"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0708" then
+										testQ["evO0708"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0809" then
+										testQ["evO0809"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0910" then
+										testQ["evO0910"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO1011" then
+										testQ["evO1011"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO11" then
+										testQ["evO11"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO12" then
+										testQ["evO12"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO13" then
+										testQ["evO13"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO14" then
+										testQ["evO14"] = true
+										testQ["startChern"] = nil
+									end
+
+
+								end
 							end
-						else
-							testQ["schet"][i] = 0
 						end
+					else
+						testQ["schet"][i] = 0
 					end
 				end
 			end
-		else
-			SendChatMessage("Я проиграл", "OFFICER", nil, 1)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
-			testQ["старт"] = 0
-			testQ["num"] = nil
-			testQ["marshF"] = nil
 		end
+
 	end
 end
 
@@ -647,19 +654,49 @@ function testKontLok(tabella)
 					end
 				end
 			end
-			if x ~= 0 then
-				if tabella ~= nil then
-					if mapTables[tabella] ~= nil then
-						if tKont == testKont then
-							if mapTables[tabella][testKont][lok] ~= nil then
-								if tLok == lok then
-									mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
-									return mioCel
+			if tostring(lok) == tostring(tLok) then
+				if x ~= 0 then
+					if tabella ~= nil then
+						if mapTables[tabella] ~= nil then
+							if tKont == testKont then
+								if mapTables[tabella][testKont][lok] ~= nil then
+									if tLok == lok then
+										mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
+										return mioCel
+									end
 								end
 							end
 						end
 					end
+				else
+					if marshruT ~= nil then
+						for i=1,9999 do
+							if marshruT[i] ~= nil then
+								marshruT[i]:Hide()
+							end
+						end
+					end
+					marshruT = nil
+					SendChatMessage("Я проиграл", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+					testQ["старт"] = 0
+					testQ["num"] = nil
+					testQ["marshF"] = nil
 				end
+			else
+				if marshruT ~= nil then
+					for i=1,9999 do
+						if marshruT[i] ~= nil then
+							marshruT[i]:Hide()
+						end
+					end
+				end
+				marshruT = nil
+				SendChatMessage("Я проиграл", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+				testQ["старт"] = 0
+				testQ["num"] = nil
+				testQ["marshF"] = nil
 			end
 		end
 	end
@@ -912,6 +949,50 @@ function versFail()
 	VerF:SetBackdropColor(0, 103, 51, 1)
 	VerF:SetFont('Fonts\\FRIZQT__.TTF', 222);
 	VerF:SetText("<html><body><p>|cffff0000ОБНОВИ АДДОН</p></body></html>");
+end
+
+function marshrut(id,num1)
+	local j = id-1
+	local jj = id+1
+	local jjj = id+2
+	local jjjj = id-2
+	local jjjjj = id+3
+	local jjjjjj = id-3
+	if marshruT ~= nil then
+		if marshruT[id] == nil then
+			marshruT[id]  = CreateFrame("SimpleHTML", "marshrut", UIParent)
+			marshruT[id]:SetSize(222, 222)
+			marshruT[id]:SetFrameStrata("HIGH")
+			marshruT[id]:SetPoint("CENTER", UIParent, "CENTER", 333, 111)
+			marshruT[id]:SetBackdropColor(0, 103, 51, 1)
+			marshruT[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+			marshruT[id]:SetText("<html><body><p>|cff90ee90" .. id .. " из " .. tostring(num1) .. "</p></body></html>");
+		end
+		if marshruT[j] ~= nil then
+			marshruT[j]:Hide()
+			marshruT[j] = nil
+		end
+		if marshruT[jj] ~= nil then
+			marshruT[jj]:Hide()
+			marshruT[jj] = nil
+		end
+		if marshruT[jjj] ~= nil then
+			marshruT[jjj]:Hide()
+			marshruT[jjj] = nil
+		end
+		if marshruT[jjjj] ~= nil then
+			marshruT[jjjj]:Hide()
+			marshruT[jjjj] = nil
+		end
+		if marshruT[jjjjj] ~= nil then
+			marshruT[jjjjj]:Hide()
+			marshruT[jjjjj] = nil
+		end
+		if marshruT[jjjjjj] ~= nil then
+			marshruT[jjjjjj]:Hide()
+			marshruT[jjjjjj] = nil
+		end
+	end
 end
 
 function showOpt()

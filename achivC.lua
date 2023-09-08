@@ -18,6 +18,19 @@ if testQ[myNome]["q33nik"]==nil then
 end
 testGM=gmTest(sender)
 
+if kodMsg[1] == "rasstoyanie" then
+	if mapTables == nil then
+		mapTables = {}
+	end
+	if mapTables["lokRasstoyanie"] == nil then
+		mapTables["lokRasstoyanie"] = {}
+	end
+	if mapTables["lokRasstoyanie"][tostring(kodMsg[2])] == nil then
+		mapTables["lokRasstoyanie"][tostring(kodMsg[2])] = {}
+	end
+	mapTables["lokRasstoyanie"][tostring(kodMsg[2])][tostring(kodMsg[3])] = tonumber(message)
+end
+
 if  kodMsg[1] == "NSGaddChatKL" then
 	if mapTables == nil then
 		mapTables = {}

@@ -366,11 +366,20 @@ end
 if string.find (message, "эвент") and string.find (message, "СТАРТ") and testGM~=nil then
 	testQ["start"] = lotTest[3]
 	testQ["старт"] = 0
+	marshruT = {}
 end
 if string.find (message, "СТОП") and string.find (message, "эвент") and testGM~=nil then
 	testQ["старт"] = nil
 	testQ["num"] = nil
 	testQ["marshF"] = nil
+	if marshruT ~= nil then
+		for i=1,9999 do
+			if marshruT[i] ~= nil then
+				marshruT[i]:Hide()
+			end
+		end
+	end
+	marshruT = nil
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then

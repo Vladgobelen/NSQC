@@ -1,4 +1,4 @@
-versAdd=265
+versAdd=266
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1305,12 +1305,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						if tLok == lok then
 							if testKont == tKont then
 								local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
-								if mioCel < 0.003 then
+								if mioCel < tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*6 then
 									PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
 									testQ["marshF"] = {}
 									testQ["marshF"][1] = 1
 									testQ["старт"]=1
 									SendChatMessage("Старт маршрута", "OFFICER", nil, 1)
+									marshruT = {}
 								end
 							end
 						end
@@ -1324,6 +1325,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			local par1 = testQ["start"]
 			local xxx = (testMarsh(par1,0.008))
 			if xxx < 1 then
+				if marshruT ~= nil then
+					for i=1,9999 do
+						if marshruT[i] ~= nil then
+							marshruT[i]:Hide()
+						end
+					end
+				end
+				marshruT = nil
 				SendChatMessage("Я проиграл", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
 				testQ["старт"] = 0
@@ -1350,7 +1359,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			if testQ["marshK"] ~= nil then
 				local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
-				if mioCel >= 0.007 then
+				for k, v in pairs(mapTables[testQ["start"]]) do
+					if type(k)=="string" then
+						tKont = k
+					end
+					for k, v in pairs(mapTables[testQ["start"]][k]) do
+						if type(k)=="string" then
+							tLok = k
+						end
+					end
+				end
+				if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*10 then
 					marSh()
 				end
 			end
