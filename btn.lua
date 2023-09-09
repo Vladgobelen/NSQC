@@ -1377,26 +1377,28 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-		if testQ["marshS"] == 1 then
-			local x,y = GetPlayerMapPosition("player")
-			if testQ["marshK"] == nil then
-				marSh()
-			end
-			if testQ["marshK"] ~= nil then
-				local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
-				for k, v in pairs(mapTables[testQ["start"]]) do
-					if type(k)=="string" then
-						tKont = k
-					end
-					for k, v in pairs(mapTables[testQ["start"]][k]) do
+		if testQ["start" ~= nil then
+			if testQ["marshS"] == 1 then
+				local x,y = GetPlayerMapPosition("player")
+				if testQ["marshK"] == nil then
+					marSh()
+				end
+				if testQ["marshK"] ~= nil then
+					local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
+					for k, v in pairs(mapTables[testQ["start"]]) do
 						if type(k)=="string" then
-							tLok = k
+							tKont = k
+						end
+						for k, v in pairs(mapTables[testQ["start"]][k]) do
+							if type(k)=="string" then
+								tLok = k
+							end
 						end
 					end
-				end
-				print (mioCel)
-				if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*1 then
-					marSh()
+					print (mioCel)
+					if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*1 then
+						marSh()
+					end
 				end
 			end
 		end
