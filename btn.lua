@@ -1380,7 +1380,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-		if testQ["start" ~= nil then
+		if testQ["start"] ~= nil then
 			if testQ["marshS"] == 1 then
 				local x,y = GetPlayerMapPosition("player")
 				if testQ["marshK"] == nil then
