@@ -1177,6 +1177,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["enWorld"] = nil
 			end
 		end
+		if testQ[myNome]["настройки"] == nil then
+			testQ[myNome]["настройки"]={}
+		end
 		if testQ[myNome]["настройки"]["watch"]=="Enable" then
 			WatchFrame:Hide()
 		end
@@ -1401,6 +1404,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				end
 			end
+		end
+		if testQ[myNome]["настройки"] == nil then
+			testQ[myNome]["настройки"]={}
 		end
 		if testQ[myNome]["настройки"]["debuff"]=="Enable" then
 			debuffHide("Hide")
