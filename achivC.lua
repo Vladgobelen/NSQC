@@ -679,6 +679,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 		if completed == true then
 			SendAddonMessage("NSGadd", "#aag " .. msg1, "guild")
+			SendChatMessage("Я выполнил ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест"])) , "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:Show()
 			btn[7]:Disable()
@@ -770,6 +771,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 			id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
 			if completed == true then
 				SendAddonMessage("NSGadd", "#aag " .. msg1, "guild")
+				SendChatMessage("Я выполнил ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест"])) , "OFFICER", nil, 1)
 				btn[1]:Enable()
 				btn[1]:Show()
 				btn[1]:SetText("Взять квест")
