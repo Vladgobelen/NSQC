@@ -687,6 +687,7 @@ function testFchern(tabella,n1,n2)
 	n1 = tostring(n1)
 	n2 = tostring(n2)
 	local tKont,tLok
+	print (tabella)
 	if testQ[tabella] == nil then
 	for k, v in pairs(mapTables[tabella]) do
 		if type(k)=="string" then
@@ -696,14 +697,14 @@ function testFchern(tabella,n1,n2)
 			if type(k)=="string" then
 				tLok = k
 			end
-		enda
+		end
 	end
 		if mapTables["lokRasstoyanie"][tostring(tKont)] ~= nil then
-		print("1")
+		print ("1")
 			if mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)] ~= nil then
-			print("2")
+			print ("2")
 				if testKontLok(tabella) ~= nil then
-				print("3")
+				print ("3")
 					if tonumber(testKontLok(tabella)) <= tonumber(mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)])*3 then
 						startFchern(tabella,n1,n2)
 						testQ["startChern"] = tabella
