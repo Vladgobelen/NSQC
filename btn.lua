@@ -1318,6 +1318,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						if tLok == lok then
 							if testKont == tKont then
 								local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
+								print(mioCel)
 								if mioCel < tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
 									PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
 									testQ["marshF"] = {}
