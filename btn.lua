@@ -642,7 +642,9 @@ minibtn:SetScript("OnEnter",function(self)
 	SendAddonMessage("NSGadd", "#ver", "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDNSQC|cFF808080-|cff00BFFF".. versAdd .. " |cffbbbbbbОЗУ: |cff00BFFF" .. string.format("%.0f", GetAddOnMemoryUsage("NSQC")) .. " |cffbbbbbbкб")
-	GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
+	if testQ["vers"] ~= nil then
+		GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
+	end
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddLine("|cffFF8C00ЛКМ|cffFFFFE0 - открыть аддон")
 	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки (когда аддон открыт)")
@@ -1144,29 +1146,30 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["fontVers"]=nil
 			end
 		end
-		if tostring(versAdd) ~= tostring(testQ["vers"]["2"]) then
-			if VerF == nil or not VerF:IsVisible() then
-				if testQ["fontVers"] == nil then
-					testQ["fontVers"]=5
+		if testQ["vers"] ~= nil then
+			if tostring(versAdd) ~= tostring(testQ["vers"]["2"]) then
+				if VerF == nil or not VerF:IsVisible() then
+					if testQ["fontVers"] == nil then
+						testQ["fontVers"]=5
+					end
+					versFail(testQ["fontVers"])
+					btn[990]:SetPoint("CENTER", VerF, "CENTER", -400, 470)
+					btn[990]:Show()
 				end
-				versFail(testQ["fontVers"])
-				btn[990]:SetPoint("CENTER", VerF, "CENTER", -400, 470)
-				btn[990]:Show()
-			end
-			if VerF ~= nil and VerF:IsVisible() then
-				if testQ["VerF"] ~= nil and testQ["VerF"] ~= 600 then
-					testQ["VerF"] = testQ["VerF"] - 1
-					VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
-					VerF:SetFont('Fonts\\FRIZQT__.TTF', testQ["fontVers"])
+				if VerF ~= nil and VerF:IsVisible() then
+					if testQ["VerF"] ~= nil and testQ["VerF"] ~= 600 then
+						testQ["VerF"] = testQ["VerF"] - 1
+						VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
+						VerF:SetFont('Fonts\\FRIZQT__.TTF', testQ["fontVers"])
+					end
 				end
-			end
-		else
-			if VerF ~= nil and VerF:IsVisible() then
-				VerF:Hide()
-				btn[990]:Hide()
+			else
+				if VerF ~= nil and VerF:IsVisible() then
+					VerF:Hide()
+					btn[990]:Hide()
+				end
 			end
 		end
-
 		if testQ["enWorld"] ~= nil then
 			local timer = time()
 			if timer >= tonumber(testQ["enWorld"])+5 then
