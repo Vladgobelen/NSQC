@@ -372,6 +372,7 @@ if string.find (message, "СТОП") and string.find (message, "эвент") and
 	testQ["старт"] = nil
 	testQ["num"] = nil
 	testQ["marshF"] = nil
+	testQ["start"]=nil
 	if marshruT ~= nil then
 		for i=1,9999 do
 			if marshruT[i] ~= nil then

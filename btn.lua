@@ -1318,7 +1318,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						if tLok == lok then
 							if testKont == tKont then
 								local mioCel=sqrt((x-mapTables[testQ["start"]][testKont][lok]["1"]["x"])^2+(y-mapTables[testQ["start"]][testKont][lok]["1"]["y"])^2)
-								if mioCel < tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*6 then
+								if mioCel < tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*1 then
 									PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
 									testQ["marshF"] = {}
 									testQ["marshF"][1] = 1
@@ -1336,7 +1336,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		if testQ["старт"] ~= nil and testQ["старт"] == 1 then
 			local par1 = testQ["start"]
-			local xxx = (testMarsh(par1,0.008))
+			for k, v in pairs(mapTables[testQ["start"]]) do
+				if type(k)=="string" then
+				tKont = k
+			end
+				for k, v in pairs(mapTables[testQ["start"]][k]) do
+					if type(k)=="string" then
+						tLok = k
+					end
+				end
+			end
+			local xxx = (testMarsh(par1,tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3))
 			if xxx < 1 then
 				if marshruT ~= nil then
 					for i=1,9999 do
@@ -1382,7 +1392,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 					end
 				end
-				if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*10 then
+				print (mioCel)
+				if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*1 then
 					marSh()
 				end
 			end

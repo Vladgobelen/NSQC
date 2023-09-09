@@ -481,11 +481,11 @@ end
 function testMarsh(tabella,diam)
 	trovMarsh(tabella,diam)
 		local rez = 0
-		for k, v in pairs(mapTables[testQ["start"]]) do
+		for k, v in pairs(mapTables[tabella]) do
 			if type(k)=="string" then
 				tKont = k
 			end
-			for k, v in pairs(mapTables[testQ["start"]][k]) do
+			for k, v in pairs(mapTables[tabella][k]) do
 				if type(k)=="string" then
 					tLok = k
 				end
@@ -643,60 +643,30 @@ function testKontLok(tabella)
 	local x,y = GetPlayerMapPosition("player")
 	local tKont,tLok
 	if mapTables ~= nil then
-		if mapTables[testQ["start"]] ~= nil then
-			for k, v in pairs(mapTables[testQ["start"]]) do
+		if mapTables[tabella] ~= nil then
+			for k, v in pairs(mapTables[tabella]) do
 				if type(k)=="string" then
 					tKont = k
 				end
-				for k, v in pairs(mapTables[testQ["start"]][k]) do
+				for k, v in pairs(mapTables[tabella][k]) do
 					if type(k)=="string" then
 						tLok = k
 					end
 				end
 			end
 			if tostring(lok) == tostring(tLok) then
-				if x ~= 0 then
-					if tabella ~= nil then
-						if mapTables[tabella] ~= nil then
-							if tKont == testKont then
-								if mapTables[tabella][testKont][lok] ~= nil then
-									if tLok == lok then
-										mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
-										return mioCel
-									end
+				if tabella ~= nil then
+					if mapTables[tabella] ~= nil then
+						if tKont == testKont then
+							if mapTables[tabella][testKont][lok] ~= nil then
+								if tLok == lok then
+									mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
+									return mioCel
 								end
 							end
 						end
 					end
-				else
-					if marshruT ~= nil then
-						for i=1,9999 do
-							if marshruT[i] ~= nil then
-								marshruT[i]:Hide()
-							end
-						end
-					end
-					marshruT = nil
-					SendChatMessage("Я проиграл", "OFFICER", nil, 1)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
-					testQ["старт"] = 0
-					testQ["num"] = nil
-					testQ["marshF"] = nil
 				end
-			else
-				if marshruT ~= nil then
-					for i=1,9999 do
-						if marshruT[i] ~= nil then
-							marshruT[i]:Hide()
-						end
-					end
-				end
-				marshruT = nil
-				SendChatMessage("Я проиграл", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
-				testQ["старт"] = 0
-				testQ["num"] = nil
-				testQ["marshF"] = nil
 			end
 		end
 	end
@@ -706,6 +676,7 @@ function startFchern(tabella,n1,n2)
 	n1 = tostring(n1)
 	n2 = tostring(n2)
 	if krt[n1] == true and krt[n2] == true then
+		print ("карты есть")
 		testQ["start"] = tabella
 		testQ["старт"] = 0
 		testQ[tabella] = "старт"
@@ -716,10 +687,22 @@ function testFchern(tabella,n1,n2)
 	n1 = tostring(n1)
 	n2 = tostring(n2)
 	if testQ[tabella] == nil then
-		if testKontLok(tabella) ~= nil then
-			if testKontLok(tabella) < 0.020 then
-				startFchern(tabella,n1,n2)
-				testQ["startChern"] = tabella
+	for k, v in pairs(mapTables[tabella]) do
+		if type(k)=="string" then
+			tKont = k
+		end
+		for k, v in pairs(mapTables[tabella][tKont]) do
+			if type(k)=="string" then
+				tLok = k
+			end
+		end
+	end
+		if mapTables["lokRasstoyanie"][tostring(tKont)] ~= nil then
+			if testKontLok(tabella) ~= nil then
+				if testKontLok(tabella) < tonumber(mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)])*3 then
+					startFchern(tabella,n1,n2)
+					testQ["startChern"] = tabella
+				end
 			end
 		end
 	end
