@@ -351,12 +351,7 @@ btn[15]:SetScript("OnEnter",function(self)
 	GameTooltip:AddLine("|cFF6495EDУстав гильдии(Нажать кнопку пару раз)")
 	GameTooltip:Show()
 end)
-btn[990]:SetScript("OnEnter",function(self)
-	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-	GameTooltip:AddLine("|cFF6495EDЧтобы надпись исчезла, обнови аддон NSQC")
-	GameTooltip:AddLine("|cFF6495EDКлик по кнопке - временно убрать надпись")
-	GameTooltip:Show()
-end)
+
 btn[990]:SetScript("OnClick",function(self)
 	testQ["VerF"] = 2300
 	testQ["fontVers"]=testQ["fontVers"]+5
@@ -415,6 +410,10 @@ btn[990]:SetScript("OnEnter",function(self)
 	if testQ["fontVers"] >=80 then
 		btn[990]:Hide()
 	end
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+	GameTooltip:AddLine("|cFF6495EDЧтобы надпись исчезла, обнови аддон NSQC")
+	GameTooltip:AddLine("|cFF6495EDКлик по кнопке - временно убрать надпись")
+	GameTooltip:Show()
 end)
 btn[992]:SetScript("OnEnter",function(self)
 	btn[994]:Show()
