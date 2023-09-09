@@ -1405,6 +1405,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
+		if testQ == nil then
+			testQ = {}
+		end
+		if testQ[myNome] == nil then
+			testQ[myNome] = {}
+		end
 		if testQ[myNome]["настройки"] == nil then
 			testQ[myNome]["настройки"]={}
 		end
