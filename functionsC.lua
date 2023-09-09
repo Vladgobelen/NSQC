@@ -696,11 +696,14 @@ function testFchern(tabella,n1,n2)
 			if type(k)=="string" then
 				tLok = k
 			end
-		end
+		enda
 	end
 		if mapTables["lokRasstoyanie"][tostring(tKont)] ~= nil then
+		print("1")
 			if mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)] ~= nil then
+			print("2")
 				if testKontLok(tabella) ~= nil then
+				print("3")
 					if tonumber(testKontLok(tabella)) <= tonumber(mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)])*3 then
 						startFchern(tabella,n1,n2)
 						testQ["startChern"] = tabella
