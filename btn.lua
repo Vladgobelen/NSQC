@@ -919,9 +919,6 @@ minibtn:SetScript("OnClick", function()
 
 			end
 			if testQ[myNome]["взятый_квест"] == "q33" then
-			print(testQ[myNome]["q33nik"][1])
-					print(testQ[myNome]["q33nik"][2])
-					print(testQ[myNome]["q33nik"][3])
 				btn[1]:Hide()
 				if testQ[myNome]["q33nik"][1] ~= 1 or testQ[myNome]["q33nik"][2] ~= 1 or testQ[myNome]["q33nik"][3] ~= 1 then
 					btn[2]:Disable()
@@ -1334,8 +1331,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end
 end)
-
-
 
 local txtNum = 1
 local frameTime = CreateFrame("FRAME")
