@@ -934,9 +934,9 @@ minibtn:SetScript("OnClick", function()
 					btn[1]:SetText("Ачивка не выполнена")
 				else
 					if testQ["timerID2"] == nil then
-					print(testQ[myNome]["q33nik"][1]))
-					print(testQ[myNome]["q33nik"][2]))
-					print(testQ[myNome]["q33nik"][3]))
+					print(testQ[myNome]["q33nik"][1])
+					print(testQ[myNome]["q33nik"][2])
+					print(testQ[myNome]["q33nik"][3])
 						btn[2]:Enable()
 						btn[1]:Enable()
 					end
