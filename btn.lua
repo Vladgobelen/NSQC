@@ -568,50 +568,6 @@ btnF:SetFrameStrata("TOOLTIP")
 btnF:SetScript("OnClick",
   function()
 	SendAddonMessage("NSGadd", "#krt", "guild")
-	testQ["startChern"] = nil
-	testQ["start"] = nil
-	if testQ["evO0102"] ~= true then
-		testQ["evO0102"] = nil
-	end
-	if testQ["evO0203"] ~= true then
-		testQ["evO0203"] = nil
-	end
-	if testQ["evO0304"] ~= true then
-		testQ["evO0304"] = nil
-	end
-	if testQ["evO0405"] ~= true then
-		testQ["evO0405"] = nil
-	end
-	if testQ["evO0506"] ~= true then
-		testQ["evO0506"] = nil
-	end
-	if testQ["evO0607"] ~= true then
-		testQ["evO0607"] = nil
-	end
-	if testQ["evO0708"] ~= true then
-		testQ["evO0708"] = nil
-	end
-	if testQ["evO0809"] ~= true then
-		testQ["evO0809"] = nil
-	end
-	if testQ["evO0910"] ~= true then
-		testQ["evO0910"] = nil
-	end
-	if testQ["evO1011"] ~= true then
-		testQ["evO1011"] = nil
-	end
-	if testQ["evO11"] ~= true then
-		testQ["evO11"] = nil
-	end
-	if testQ["evO12"] ~= true then
-		testQ["evO12"] = nil
-	end
-	if testQ["evO13"] ~= true then
-		testQ["evO13"] = nil
-	end
-	if testQ["evO14"] ~= true then
-		testQ["evO14"] = nil
-	end
 end)
 function memB()
 for k, v in pairs(MainMenuMicroButton) do
@@ -1300,6 +1256,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		end
 		if testQ["старт"] == 0 then
+			if testQ["start"]==nil then
+				testQ["start"] = testQ["tempStartT"]
+			end
 			local testKont = GetCurrentMapContinent()
 			testKont = tostring(testKont)
 			local lok = GetCurrentMapZone()
@@ -1361,6 +1320,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				end
 				marshruT = nil
+				testQ["tempStartT"] = testQ["start"]
 				if testQ[testQ["start"]] ~= nil then
 					testQ[testQ["start"]]=nil
 				end
@@ -1519,50 +1479,50 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if krt ~= nil then
 			if krt["777"] == 2 then
-
-				if krt["21"] == true and krt["21"] == true then
-					testFchern("evO0102",21,22)
+				if testQ["start"] == nil then
+					if krt["21"] == true and krt["21"] == true then
+						testFchern("evO0102",21,22)
+					end
+					if krt["22"] == true and krt["23"] == true then
+						testFchern("evO0203",22,23)
+					end
+					if krt["23"] == true and krt["24"] == true then
+						testFchern("evO0304",23,24)
+					end
+					if krt["24"] == true and krt["25"] == true then
+						testFchern("evO0405",24,25)
+					end
+					if krt["25"] == true and krt["26"] == true then
+						testFchern("evO0506",25,26)
+					end
+					if krt["26"] == true and krt["27"] == true then
+						testFchern("evO0607",26,27)
+					end
+					if krt["27"] == true and krt["28"] == true then
+						testFchern("evO0708",27,28)
+					end
+					if krt["28"] == true and krt["29"] == true then
+						testFchern("evO0809",28,29)
+					end
+					if krt["29"] == true and krt["30"] == true then
+						testFchern("evO0910",29,30)
+					end
+					if krt["30"] == true and krt["31"] == true then
+						testFchern("evO1011",30,31)
+					end
+					if krt["31"] == true then
+						testFchern("evO11",31,31)
+					end
+					if krt["32"] == true then
+						testFchern("evO12",32,32)
+					end
+					if krt["33"] == true then
+						testFchern("evO13",33,33)
+					end
+					if krt["34"] == true then
+						testFchern("evO14",34,34)
+					end
 				end
-				if krt["22"] == true and krt["23"] == true then
-					testFchern("evO0203",22,23)
-				end
-				if krt["23"] == true and krt["24"] == true then
-					testFchern("evO0304",23,24)
-				end
-				if krt["24"] == true and krt["25"] == true then
-					testFchern("evO0405",24,25)
-				end
-				if krt["25"] == true and krt["26"] == true then
-					testFchern("evO0506",25,26)
-				end
-				if krt["26"] == true and krt["27"] == true then
-					testFchern("evO0607",26,27)
-				end
-				if krt["27"] == true and krt["28"] == true then
-					testFchern("evO0708",27,28)
-				end
-				if krt["28"] == true and krt["29"] == true then
-					testFchern("evO0809",28,29)
-				end
-				if krt["29"] == true and krt["30"] == true then
-					testFchern("evO0910",29,30)
-				end
-				if krt["30"] == true and krt["31"] == true then
-					testFchern("evO1011",30,31)
-				end
-				if krt["31"] == true then
-					testFchern("evO11",31,31)
-				end
-				if krt["32"] == true then
-					testFchern("evO12",32,32)
-				end
-				if krt["33"] == true then
-					testFchern("evO13",33,33)
-				end
-				if krt["34"] == true then
-					testFchern("evO14",34,34)
-				end
-
 			end
 		end
 
