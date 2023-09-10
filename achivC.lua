@@ -589,7 +589,7 @@ if kod == "gUp" and sender == myNome then
 	end
 end
 
-if kod=="#prEnGD" and msg[1] == myNome then
+if kod=="#prEnGD" and msg[1] == myNome and gmTest~=nil then
 	if testQ ~= nil then
 		if testQ[myNome] ~= nil then
 			testQ[myNome]["zzlf"] = tonumber(msg[2])

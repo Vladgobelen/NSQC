@@ -919,6 +919,7 @@ minibtn:SetScript("OnClick", function()
 
 			end
 			if testQ[myNome]["взятый_квест"] == "q33" then
+			print("111")
 				btn[1]:Hide()
 				if testQ[myNome]["q33nik"][1] ~= 1 or testQ[myNome]["q33nik"][2] ~= 1 or testQ[myNome]["q33nik"][3] ~= 1 then
 					btn[2]:Disable()
@@ -933,7 +934,9 @@ minibtn:SetScript("OnClick", function()
 					btn[1]:SetText("Ачивка не выполнена")
 				else
 					if testQ["timerID2"] == nil then
-					print ("1")
+					print(testQ[myNome]["q33nik"][1]))
+					print(testQ[myNome]["q33nik"][2]))
+					print(testQ[myNome]["q33nik"][3]))
 						btn[2]:Enable()
 						btn[1]:Enable()
 					end
@@ -1343,28 +1346,22 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-		if testQ["start"] ~= nil then
-			if testQ["marshS"] == 1 then
-				local x,y = GetPlayerMapPosition("player")
-				if testQ["marshK"] == nil then
+		if testQ["marshS"] == 1 then
+			local x,y = GetPlayerMapPosition("player")
+			if testQ["marshK"] == nil then
+				marSh()
+			end
+			local testKont = GetCurrentMapContinent()
+			testKont = tostring(testKont)
+			local lok = GetCurrentMapZone()
+			lok = tostring(lok)
+			if testQ["marshK"] ~= nil then
+				local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
+				local tKont = testKont
+				local tLok = lok
+				--print (mioCel)
+				if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
 					marSh()
-				end
-				if testQ["marshK"] ~= nil then
-					local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
-					for k, v in pairs(mapTables[testQ["start"]]) do
-						if type(k)=="string" then
-							tKont = k
-						end
-						for k, v in pairs(mapTables[testQ["start"]][k]) do
-							if type(k)=="string" then
-								tLok = k
-							end
-						end
-					end
-					print (mioCel)
-					if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*1 then
-						marSh()
-					end
 				end
 			end
 		end

@@ -88,16 +88,14 @@ function tablelength(T)
 end
 
 function getPOS(x,y)
-	local XXX
-	local YYY
+	local XXX,YYY
 	if WorldMapFrameSizeUpButton:IsVisible()==nil then
-			YYY=((1-y)*668)
-			XXX=x*1002
+		YYY=((1-y)*668)
+		XXX=x*1002
 	end
 	if WorldMapFrameSizeDownButton:IsVisible()==nil then
-
-			YYY=((1-y)*382)
-			XXX=(x*574)
+		YYY=((1-y)*382)
+		XXX=(x*574)
 	end
 	return XXX,YYY
 end
