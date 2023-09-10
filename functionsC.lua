@@ -562,7 +562,6 @@ function trovMarsh(tabella,diam)
 								testQ["num"] = nil
 								testQ["marshF"] = nil
 
-								if testQ[tabella] == "старт" then
 									if tabella == "evO0102" then
 										testQ["evO0102"] = true
 										testQ["startChern"] = nil
@@ -619,9 +618,8 @@ function trovMarsh(tabella,diam)
 										testQ["evO14"] = true
 										testQ["startChern"] = nil
 									end
+								testQ["start"] = nil
 
-
-								end
 							end
 						end
 					else
@@ -688,26 +686,26 @@ function testFchern(tabella,n1,n2)
 	n2 = tostring(n2)
 	local tKont,tLok
 	if testQ[tabella] == nil then
-	for k, v in pairs(mapTables[tabella]) do
-		if type(k)=="string" then
-			tKont = k
-		end
-		for k, v in pairs(mapTables[tabella][tKont]) do
+		for k, v in pairs(mapTables[tabella]) do
 			if type(k)=="string" then
-				tLok = k
+				tKont = k
 			end
-		end
-	end
-		if mapTables["lokRasstoyanie"][tostring(tKont)] ~= nil then
-			if mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)] ~= nil then
-				if testKontLok(tabella) ~= nil then
-					if tonumber(testKontLok(tabella)) <= tonumber(mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)])*3 then
-						startFchern(tabella,n1,n2)
-						testQ["startChern"] = tabella
-					end
+			for k, v in pairs(mapTables[tabella][tKont]) do
+				if type(k)=="string" then
+					tLok = k
 				end
 			end
 		end
+			if mapTables["lokRasstoyanie"][tostring(tKont)] ~= nil then
+				if mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)] ~= nil then
+					if testKontLok(tabella) ~= nil then
+						if tonumber(testKontLok(tabella)) <= tonumber(mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)])*3 then
+							startFchern(tabella,n1,n2)
+							testQ["startChern"] = tabella
+						end
+					end
+				end
+			end
 	end
 end
 
