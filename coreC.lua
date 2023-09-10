@@ -369,6 +369,9 @@ if string.find (message, "эвент") and string.find (message, "СТАРТ") a
 	marshruT = {}
 end
 if string.find (message, "СТОП") and string.find (message, "эвент") and testGM~=nil then
+	if testQ[testQ["start"]] ~= nil then
+		testQ[testQ["start"]]=nil
+	end
 	testQ["старт"] = nil
 	testQ["num"] = nil
 	testQ["marshF"] = nil

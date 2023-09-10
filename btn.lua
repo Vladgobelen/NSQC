@@ -1361,11 +1361,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				end
 				marshruT = nil
+				if testQ[testQ["start"]] ~= nil then
+					testQ[testQ["start"]]=nil
+				end
 				SendChatMessage("Я проиграл", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
-				testQ["старт"] = 0
 				testQ["num"] = nil
 				testQ["marshF"] = nil
+				testQ["старт"] = 0
 			end
 		end
 end)

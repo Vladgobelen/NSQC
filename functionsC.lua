@@ -676,10 +676,10 @@ function startFchern(tabella,n1,n2)
 	n1 = tostring(n1)
 	n2 = tostring(n2)
 	if krt[n1] == true and krt[n2] == true then
-		print ("карты есть")
 		testQ["start"] = tabella
 		testQ["старт"] = 0
 		testQ[tabella] = "старт"
+		marshruT = {}
 	end
 end
 
