@@ -1065,6 +1065,7 @@ end
 end
 )
 
+
 --[[frameTextu = {}
 local i = 1
 WorldMapDetailFrame:SetScript("OnUpdate",function(self)
@@ -1096,6 +1097,104 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+		--[[if WorldMapFrame:IsVisible() then
+			if myMap == nil then
+				myMap = CreateFrame("Button")
+				myMap:SetPoint("BOTTOMLEFT",WorldMapDetailFrame,"BOTTOMLEFT",0,0)
+				myMap:SetSize(449, 300)
+				myMap:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\map.tga")
+				myMap:SetFrameStrata("FULLSCREEN_DIALOG")
+
+				myMap:SetScript("OnClick",function(self)
+					local x,y = GetCursorPosition()
+					local testKont = GetCurrentMapContinent()
+					testKont = tostring(testKont)
+					local lok = GetCurrentMapZone()
+					lok = tostring(lok)
+					if marsh == nil then
+						marsh = {}
+					end
+					if marsh[tostring(testKont)] == nil then
+						marsh[tostring(testKont)] = {}
+					end
+					if marsh[tostring(testKont)][tostring(lok)] == nil then
+						marsh[tostring(testKont)][tostring(lok)] = {}
+					end
+
+					if marsh[tostring(testKont)][tostring(lok)]["1"] == nil then
+						marsh[tostring(testKont)][tostring(lok)]["1"] = {}
+						marsh[tostring(testKont)][tostring(lok)]["1"]["x"] = (x-17)/449
+						marsh[tostring(testKont)][tostring(lok)]["1"]["y"] = 1-((y-359)/301)
+					else
+						local tablen = tablelength(marsh[tostring(testKont)][tostring(lok)])
+						if marsh[tostring(testKont)][tostring(lok)][tostring(tablen+1)] == nil then
+							marsh[tostring(testKont)][tostring(lok)][tostring(tablen+1)] = {}
+							marsh[tostring(testKont)][tostring(lok)][tostring(tablen+1)]["x"] = (x-17)/449
+							marsh[tostring(testKont)][tostring(lok)][tostring(tablen+1)]["y"] = 1-((y-359)/301)
+						end
+					end
+
+					print (tablelength(marsh[tostring(testKont)][tostring(lok)]))
+				end)
+			end
+			if myMap ~= nil and not myMap:IsVisible() then
+				myMap:Show()
+			end
+		else
+			if myMap ~= nil and myMap:IsVisible() then
+				myMap:Hide()
+			end
+		end--]]
+
+		if testQ["эвент1_запущен"] == 0 then
+			for k, v in pairs(mapTables["bo"]) do
+				if type(k)=="string" then
+				tKont = k
+			end
+				for k, v in pairs(mapTables["bo"][k]) do
+					if type(k)=="string" then
+						tLok = k
+					end
+				end
+			end
+			local testKont = tostring(GetCurrentMapContinent())
+			local testLok = tostring(GetCurrentMapZone())
+			local x,y = GetPlayerMapPosition("player")
+			if testKont == tKont and testLok == tLok then
+				for i=1,10 do
+					if iconRisBO[tonumber(testQ["event1"][i])] == nil then
+						bo(tonumber(testQ["event1"][i]))
+					end
+					if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
+						iconRis[tonumber(testQ["event1"][i])]:Show()
+					end
+				end
+
+				local tempCel = nil
+				local mioCel=sqrt((x-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
+				if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
+					tempCel = 1
+				end
+				if tempCel ~= nil then
+					SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)
+					SendAddonMessage("clientEvent1",myNome, "guild")
+				end
+			else
+				for i=1,100 do
+					if iconRis[i] ~= nil then
+						iconRis[i]:Hide()
+					end
+				end
+			end
+			if not WorldMapFrame:IsVisible() then
+				for i=1,100 do
+					if iconRis[i] ~= nil then
+						iconRis[i]:Hide()
+					end
+				end
+			end
+		end
+
 		if VerF == nil or not VerF:IsVisible() then
 			if testQ["fontVers"] ~= nil then
 				testQ["fontVers"]=nil

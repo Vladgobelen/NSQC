@@ -363,19 +363,20 @@ if string.find (message, "#ltr333") and testGM~=nil and lotTest[3]==myNome then
 	minusLrt=minusLrt-3
 	testQ[myNome]["лотерея"]=minusLrt
 end
-if string.find (message, "эвент") and string.find (message, "СТАРТ") and testGM~=nil then
+if string.find (message, "сизиф") and string.find (message, "СТАРТ") and testGM~=nil then
 	if testQ["старт"] == nil then
 		testQ["start"] = lotTest[3]
 		testQ["старт"] = 0
 		marshruT = {}
 	end
 end
-if string.find (message, "эвент1") and string.find (message, "СТАРТ") and testGM~=nil then
+if string.find (message, "буриданов_осел") and string.find (message, "СТАРТ") and testGM~=nil then
 	if testQ["эвент1"] == nil then
 		testQ["эвент1"] = lotTest[3]
 		testQ["эвент1_запущен"] = 0
 	end
 end
+
 if string.find (message, "СТОП") and string.find (message, "эвент") and testGM~=nil then
 	if testQ[testQ["start"]] ~= nil then
 		testQ[testQ["start"]]=nil
@@ -392,6 +393,12 @@ if string.find (message, "СТОП") and string.find (message, "эвент") and
 		end
 	end
 	marshruT = nil
+	testQ["эвент1_запущен"]=nil
+	for i=1,100 do
+		if iconRis[i] ~= nil then
+			iconRis[i]:Hide()
+		end
+	end
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then

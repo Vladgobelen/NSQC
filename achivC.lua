@@ -29,7 +29,14 @@ if kodMsg[1] == "rasstoyanie" then
 	end
 	mapTables["lokRasstoyanie"][tostring(kodMsg[2])][tostring(kodMsg[3])] = tonumber(message)
 end
-
+if kodMsg[1] == "event1" then
+	if testQ ~= nil then
+		testQ["event1"] = {}
+		for i=1,10 do
+			testQ["event1"][i] = msg[i]
+		end
+	end
+end
 if  kodMsg[1] == "NSGaddChatKL" then
 	if mapTables == nil then
 		mapTables = {}

@@ -1,6 +1,7 @@
 iconRis={}
 iconRisText={}
 iconRisText2={}
+iconRisBO={}
 tochki = {}
 icN = 1
 iconCh = {}
@@ -41,6 +42,30 @@ function iconRisText:configure(id,Rx,Ry,x,y,nRis)
 	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+function iconRisBO:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+
+function bo(n)
+	for k, v in pairs(mapTables["bo"]) do
+		if type(k)=="string" then
+		tKont = k
+	end
+		for k, v in pairs(mapTables["bo"][k]) do
+			if type(k)=="string" then
+				tLok = k
+			end
+		end
+	end
+	iconRis:configure(n,576,384)
+	local xx,yy = getPOS(tonumber(mapTables["bo"][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables["bo"][tKont][tLok][tostring(n)]["y"]))
+	iconRisBO:configure(n,8,8,xx,yy,121212)
+	iconRis[n]:SetFrameStrata("TOOLTIP")
+	iconRisBO[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )
 end
 
 function iconRisText2:configure(id,Rx,Ry,x,y,nRis)
