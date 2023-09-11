@@ -1337,7 +1337,7 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
-	if timeElapsed > 0.01 then
+	if timeElapsed > 0.9 then
 		timeElapsed = 0
 		print("123")
 		if testQ["marshS"] == 1 then
