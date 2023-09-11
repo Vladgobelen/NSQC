@@ -1467,51 +1467,78 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[995]:Hide()
 			end
 		end
-		print("555")
 		if krt ~= nil then
 			if krt["777"] == 2 then
 				if testQ["start"] == nil then
-					if krt["21"] == true and krt["21"] == true then
-						testFchern("evO0102",21,22)
+					if krt["21"] ~= nil and krt["22"] ~=nil then
+						if krt["21"] == true and krt["22"] == true then
+							testFchern("evO0102",21,22)
+						end
 					end
-					if krt["22"] == true and krt["23"] == true then
-						testFchern("evO0203",22,23)
+					if krt["22"] ~= nil and krt["23"] ~=nil then
+						if krt["22"] == true and krt["23"] == true then
+							testFchern("evO0203",22,23)
+						end
 					end
-					if krt["23"] == true and krt["24"] == true then
-						testFchern("evO0304",23,24)
+					if krt["23"] ~= nil and krt["24"] ~=nil then
+						if krt["23"] == true and krt["24"] == true then
+							testFchern("evO0304",23,24)
+						end
 					end
-					if krt["24"] == true and krt["25"] == true then
-						testFchern("evO0405",24,25)
+					if krt["24"] ~= nil and krt["25"] ~=nil then
+						if krt["24"] == true and krt["25"] == true then
+							testFchern("evO0405",24,25)
+						end
 					end
-					if krt["25"] == true and krt["26"] == true then
-						testFchern("evO0506",25,26)
+					if krt["25"] ~= nil and krt["26"] ~=nil then
+						if krt["25"] == true and krt["26"] == true then
+							testFchern("evO0506",25,26)
+						end
 					end
-					if krt["26"] == true and krt["27"] == true then
-						testFchern("evO0607",26,27)
+					if krt["26"] ~= nil and krt["27"] ~=nil then
+						if krt["26"] == true and krt["27"] == true then
+							testFchern("evO0607",26,27)
+						end
 					end
-					if krt["27"] == true and krt["28"] == true then
-						testFchern("evO0708",27,28)
+					if krt["27"] ~= nil and krt["28"] ~=nil then
+						if krt["27"] == true and krt["28"] == true then
+							testFchern("evO0708",27,28)
+						end
 					end
-					if krt["28"] == true and krt["29"] == true then
-						testFchern("evO0809",28,29)
+					if krt["28"] ~= nil and krt["29"] ~=nil then
+						if krt["28"] == true and krt["29"] == true then
+							testFchern("evO0809",28,29)
+						end
 					end
-					if krt["29"] == true and krt["30"] == true then
-						testFchern("evO0910",29,30)
+					if krt["29"] ~= nil and krt["30"] ~=nil then
+						if krt["29"] == true and krt["30"] == true then
+							testFchern("evO0910",29,30)
+						end
 					end
-					if krt["30"] == true and krt["31"] == true then
-						testFchern("evO1011",30,31)
+					if krt["30"] ~= nil and krt["31"] ~=nil then
+						if krt["30"] == true and krt["31"] == true then
+							testFchern("evO1011",30,31)
+						end
 					end
-					if krt["31"] == true then
-						testFchern("evO11",31,31)
+					if krt["31"] ~= nil then
+						if krt["31"] == true then
+							testFchern("evO11",31,31)
+						end
 					end
-					if krt["32"] == true then
-						testFchern("evO12",32,32)
+					if krt["32"] ~= nil then
+						if krt["32"] == true then
+							testFchern("evO12",32,32)
+						end
 					end
-					if krt["33"] == true then
-						testFchern("evO13",33,33)
+					if krt["33"] ~= nil then
+						if krt["33"] == true then
+							testFchern("evO13",33,33)
+						end
 					end
-					if krt["34"] == true then
-						testFchern("evO14",34,34)
+					if krt["34"] ~= nil then
+						if krt["34"] == true then
+							testFchern("evO14",34,34)
+						end
 					end
 				end
 			end
