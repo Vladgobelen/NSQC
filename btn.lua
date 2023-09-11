@@ -1335,7 +1335,7 @@ local frame = CreateFrame("FRAME")
 local timeElapsed = 0
 frame:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
-	if timeElapsed > 0.05 then
+	if timeElapsed > 1 then
 		timeElapsed = 0
 		print("1")
 	end
