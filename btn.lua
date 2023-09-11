@@ -1467,6 +1467,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[995]:Hide()
 			end
 		end
+		print("555")
 		if krt ~= nil then
 			if krt["777"] == 2 then
 				if testQ["start"] == nil then
@@ -1519,7 +1520,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 
 
-		print("555")
+
 		if testQ["timerID2"] ~= nil then
 			testQ["timerID2"] = tonumber(testQ["timerID2"])
 			testQ["timerID2"] = testQ["timerID2"]-0.02
