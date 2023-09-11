@@ -1161,19 +1161,36 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			local testLok = tostring(GetCurrentMapZone())
 			local x,y = GetPlayerMapPosition("player")
 			if testKont == tKont and testLok == tLok then
+
 				for i=1,10 do
-					if iconRisBO[tonumber(testQ["event1"][i])] == nil then
-						bo(tonumber(testQ["event1"][i]))
-					end
-					if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
-						iconRis[tonumber(testQ["event1"][i])]:Show()
+					if testQ["event1"][i] ~= 9999 then
+						if iconRisBO[tonumber(testQ["event1"][i])] == nil then
+							bo(tonumber(testQ["event1"][i]))
+						end
+						if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
+							iconRis[tonumber(testQ["event1"][i])]:Show()
+						end
 					end
 				end
 
 				local tempCel = nil
-				local mioCel=sqrt((x-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
-				if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
-					tempCel = 1
+				if testQ["event1"]["1"] ~= 9999 then
+					local mioCel=sqrt((x-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
+					if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
+						tempCel = 1
+					end
+				end
+				local mioCel1
+				for i=2,10 do
+					if testQ["event1"][i] ~= 9999 then
+						mioCel1=sqrt((x-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][i])]["x"]))^2+(y-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][i])]["y"]))^2)
+					end
+					if mioCel1 ~= nil then
+						if mioCel1 <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
+							SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
+							SendAddonMessage("clientEvent1Fail",i, "guild")
+						end
+					end
 				end
 				if tempCel ~= nil then
 					SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)

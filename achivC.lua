@@ -37,6 +37,12 @@ if kodMsg[1] == "event1" then
 		end
 	end
 end
+if kodMsg[1] == "FailPointEvent1" then
+	if iconRis[tonumber(testQ["event1"][tonumber(message)])] ~= nil then
+		iconRis[tonumber(testQ["event1"][tonumber(message)])]:Hide()
+	end
+	testQ["event1"][tonumber(message)]=9999
+end
 if  kodMsg[1] == "NSGaddChatKL" then
 	if mapTables == nil then
 		mapTables = {}
