@@ -1331,6 +1331,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end
 end)
+local frame = CreateFrame("FRAME")
+local timeElapsed = 0
+frame:HookScript("OnUpdate", function(self, elapsed)
+	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 0.05 then
+		timeElapsed = 0
+		print("1")
+	end
+end)
 
 local txtNum = 1
 local frameTime = CreateFrame("FRAME")
