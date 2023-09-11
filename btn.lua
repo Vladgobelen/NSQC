@@ -1188,12 +1188,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if mioCel1 ~= nil then
 						if mioCel1 <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
 							SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
+							PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
 							SendAddonMessage("clientEvent1Fail",i, "guild")
 						end
 					end
 				end
 				if tempCel ~= nil then
 					SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
 					SendAddonMessage("clientEvent1",myNome, "guild")
 				end
 			else
