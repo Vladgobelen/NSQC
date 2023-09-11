@@ -1339,7 +1339,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.9 then
 		timeElapsed = 0
-		print("123")
 		if testQ["marshS"] == 1 then
 			local x,y = GetPlayerMapPosition("player")
 			if testQ["marshK"] == nil then
@@ -1520,7 +1519,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 
 
-
+		print("555")
 		if testQ["timerID2"] ~= nil then
 			testQ["timerID2"] = tonumber(testQ["timerID2"])
 			testQ["timerID2"] = testQ["timerID2"]-0.02
