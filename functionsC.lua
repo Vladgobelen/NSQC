@@ -1052,11 +1052,11 @@ end
 
 function debuffMove(myNome)
 	if testQ["buffX"] ~= nil and testQ["buffX"] ~= 0 then
-		local __,__,__,tempPoint = DebuffButton1:GetPoint()
-		local __,__,__,tempPointB = btn[991]:GetPoint()
-		if tempPoint ~= tempPointB then
-			if tostring(tempPoint):sub(1,4) ~= "9999" then
-				if DebuffButton1 ~= nil then
+		if DebuffButton1 ~= nil then
+			local __,__,__,tempPoint = DebuffButton1:GetPoint()
+			local __,__,__,tempPointB = btn[991]:GetPoint()
+			if tempPoint ~= tempPointB then
+				if tostring(tempPoint):sub(1,4) ~= "9999" then
 					hooksecurefunc("DebuffButton_UpdateAnchors", function()
 					local i = 0
 					local getSize

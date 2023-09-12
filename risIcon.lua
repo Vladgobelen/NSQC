@@ -50,7 +50,7 @@ function iconRisBO:configure(id,Rx,Ry,x,y,nRis)
 	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
 end
 
-function bo(n)
+function bo(n,n1)
 	for k, v in pairs(mapTables["bo"]) do
 		if type(k)=="string" then
 		tKont = k
@@ -63,7 +63,7 @@ function bo(n)
 	end
 	iconRis:configure(n,576,384)
 	local xx,yy = getPOS(tonumber(mapTables["bo"][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables["bo"][tKont][tLok][tostring(n)]["y"]))
-	iconRisBO:configure(n,8,8,xx,yy,121212)
+	iconRisBO:configure(n,n1,n1,xx,yy,121212)
 	iconRis[n]:SetFrameStrata("TOOLTIP")
 	iconRisBO[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )
 end

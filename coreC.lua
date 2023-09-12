@@ -375,6 +375,7 @@ if string.find (message, "буриданов_осел") and string.find (message
 		testQ["эвент1"] = lotTest[3]
 		testQ["эвент1_запущен"] = 0
 	end
+	testQ["boDiam"] = tonumber(lotTest[3])
 end
 
 if string.find (message, "СТОП") and string.find (message, "эвент") and testGM~=nil then
@@ -394,11 +395,13 @@ if string.find (message, "СТОП") and string.find (message, "эвент") and
 	end
 	marshruT = nil
 	testQ["эвент1_запущен"]=nil
+	testQ["эвент1"] = nil
 	for i=1,100 do
 		if iconRis[i] ~= nil then
 			iconRis[i]:Hide()
 		end
 	end
+	testQ["boDiam"] = nil
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then

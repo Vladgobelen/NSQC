@@ -1165,7 +1165,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				for i=1,10 do
 					if testQ["event1"][i] ~= 9999 then
 						if iconRisBO[tonumber(testQ["event1"][i])] == nil then
-							bo(tonumber(testQ["event1"][i]))
+							bo(tonumber(testQ["event1"][i]),testQ["boDiam"])
 						end
 						if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
 							iconRis[tonumber(testQ["event1"][i])]:Show()
