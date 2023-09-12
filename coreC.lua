@@ -402,6 +402,7 @@ if string.find (message, "СТОП") and string.find (message, "эвент") and
 		end
 	end
 	testQ["boDiam"] = nil
+	testQ["event1"] = nil
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
