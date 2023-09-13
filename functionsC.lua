@@ -503,6 +503,11 @@ function trovMarsh(tabella,diam)
 		testKont = tostring(testKont)
 		local lok = GetCurrentMapZone()
 		lok = tostring(lok)
+		local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
 		local tablen = tablelength(mapTables[tabella][testKont][lok])
 		testQ["schet"] = {}
 		testQ["numPunti"] = {}
@@ -631,6 +636,11 @@ function testKontLok(tabella)
 	local mioCel
 	local x,y = GetPlayerMapPosition("player")
 	local tKont,tLok
+	local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
 	if mapTables ~= nil then
 		if mapTables[tabella] ~= nil then
 			for k, v in pairs(mapTables[tabella]) do
@@ -933,39 +943,41 @@ function marshrut(id,num1)
 	local jjjj = id-2
 	local jjjjj = id+3
 	local jjjjjj = id-3
-	if marshruT ~= nil then
-		if marshruT[id] == nil then
-			marshruT[id]  = CreateFrame("SimpleHTML", "marshrut", UIParent)
-			marshruT[id]:SetSize(222, 222)
-			marshruT[id]:SetFrameStrata("HIGH")
-			marshruT[id]:SetPoint("CENTER", UIParent, "CENTER", 333, 111)
-			marshruT[id]:SetBackdropColor(0, 103, 51, 1)
-			marshruT[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
-			marshruT[id]:SetText("<html><body><p>|cff90ee90" .. id .. " из " .. tostring(num1) .. "</p></body></html>");
-		end
-		if marshruT[j] ~= nil then
-			marshruT[j]:Hide()
-			marshruT[j] = nil
-		end
-		if marshruT[jj] ~= nil then
-			marshruT[jj]:Hide()
-			marshruT[jj] = nil
-		end
-		if marshruT[jjj] ~= nil then
-			marshruT[jjj]:Hide()
-			marshruT[jjj] = nil
-		end
-		if marshruT[jjjj] ~= nil then
-			marshruT[jjjj]:Hide()
-			marshruT[jjjj] = nil
-		end
-		if marshruT[jjjjj] ~= nil then
-			marshruT[jjjjj]:Hide()
-			marshruT[jjjjj] = nil
-		end
-		if marshruT[jjjjjj] ~= nil then
-			marshruT[jjjjjj]:Hide()
-			marshruT[jjjjjj] = nil
+	if testQ["start"] ~= "evO3" then
+		if marshruT ~= nil then
+			if marshruT[id] == nil then
+				marshruT[id]  = CreateFrame("SimpleHTML", "marshrut", UIParent)
+				marshruT[id]:SetSize(222, 222)
+				marshruT[id]:SetFrameStrata("HIGH")
+				marshruT[id]:SetPoint("CENTER", UIParent, "CENTER", 333, 111)
+				marshruT[id]:SetBackdropColor(0, 103, 51, 1)
+				marshruT[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+				marshruT[id]:SetText("<html><body><p>|cff90ee90" .. id .. " из " .. tostring(num1) .. "</p></body></html>");
+			end
+			if marshruT[j] ~= nil then
+				marshruT[j]:Hide()
+				marshruT[j] = nil
+			end
+			if marshruT[jj] ~= nil then
+				marshruT[jj]:Hide()
+				marshruT[jj] = nil
+			end
+			if marshruT[jjj] ~= nil then
+				marshruT[jjj]:Hide()
+				marshruT[jjj] = nil
+			end
+			if marshruT[jjjj] ~= nil then
+				marshruT[jjjj]:Hide()
+				marshruT[jjjj] = nil
+			end
+			if marshruT[jjjjj] ~= nil then
+				marshruT[jjjjj]:Hide()
+				marshruT[jjjjj] = nil
+			end
+			if marshruT[jjjjjj] ~= nil then
+				marshruT[jjjjjj]:Hide()
+				marshruT[jjjjjj] = nil
+			end
 		end
 	end
 end
@@ -1530,6 +1542,11 @@ function marSh()
 	local n
 	testKont = tostring(testKont)
 	lok = tostring(lok)
+	local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
 	if marsh == nil then
 		marsh = {}
 	end

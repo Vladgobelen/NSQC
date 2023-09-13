@@ -375,7 +375,7 @@ if string.find (message, "буриданов_осел") and string.find (message
 		testQ["эвент1"] = lotTest[3]
 		testQ["эвент1_запущен"] = 0
 	end
-	testQ["boDiam"] = tonumber(lotTest[3])
+	testQ["boDiam"] = tonumber(lotTest[4])
 end
 
 if string.find (message, "СТОП") and string.find (message, "эвент") and testGM~=nil then

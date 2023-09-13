@@ -381,6 +381,14 @@ if kod == "#M1QP" and message == myNome then
 				krt["podskazki"] = krt["podskazki"] + 1
 			end
 		end
+		if krt["777"] == 3 then
+			if krt["evO3"] == nil then
+				krt["evO3"] = {}
+				krt["evO3"]=1
+			else
+				krt["evO3"] = krt["evO3"]+1
+			end
+		end
 	end
 	if testQ ~= nil then
 		if testQ["mapQuest"] ~= nil then

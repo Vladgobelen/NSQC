@@ -565,9 +565,20 @@ btnF = CreateFrame("CheckButton", "myCheckButton_GlobalName", parentFrame, "Chat
 btnF:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",-5,-18)
 btnF:SetText("CheckBox Name");
 btnF:SetFrameStrata("TOOLTIP")
-btnF:SetScript("OnClick",
-  function()
-	SendAddonMessage("NSGadd", "#krt", "guild")
+btnF:SetScript("OnClick",  function()
+	if krt["777"] ~= 3 then
+		SendAddonMessage("NSGadd", "#krt", "guild")
+	else
+		if krt["evO3"] ~= nil then
+			for i=1,krt["evO3"] do
+				if iconRisEv3[i] == nil then
+					ev3("evO3",i,4)
+				else
+					iconRisEv3[i]:Show()
+				end
+			end
+		end
+	end
 end)
 function memB()
 for k, v in pairs(MainMenuMicroButton) do
@@ -1301,6 +1312,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testKont = tostring(testKont)
 				local testLok = GetCurrentMapZone()
 				testLok = tostring(testLok)
+				local zoneName = GetMapInfo()
+				if zoneName == "Ragefire" then
+					testKont = "99"
+					lok = "1"
+				end
 				local x,y = GetPlayerMapPosition("player")
 				if testQ["chD"] == nil then
 					testQ["chD"] = {}
@@ -1340,6 +1356,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						testKont = tostring(testKont)
 						local testLok = GetCurrentMapZone()
 						testLok = tostring(testLok)
+						local zoneName = GetMapInfo()
+						if zoneName == "Ragefire" then
+							testKont = "99"
+							lok = "1"
+						end
 						local x,y = GetPlayerMapPosition("player")
 						local kont, lok, x1, y1, m = mapQuest(testQ["mapQuest"]["текущий"])
 						if testKont == kont then
@@ -1382,6 +1403,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			local x,y = GetPlayerMapPosition("player")
 			local par1 = testQ["start"]
 			local tKont,tLok
+			local zoneName = GetMapInfo()
+			if zoneName == "Ragefire" then
+				testKont = "99"
+				lok = "1"
+			end
 			for k, v in pairs(mapTables[testQ["start"]]) do
 				if type(k)=="string" then
 				tKont = k
@@ -1440,8 +1466,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				if testQ[testQ["start"]] ~= nil then
 					testQ[testQ["start"]]=nil
 				end
-				SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+				if testQ["start"] ~= "evO3" then
+					SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+				end
 				testQ["num"] = nil
 				testQ["marshF"] = nil
 				testQ["старт"] = 0
@@ -1461,17 +1489,28 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if testQ["marshK"] == nil then
 				marSh()
 			end
+			local zoneName = GetMapInfo()
 			local testKont = GetCurrentMapContinent()
 			testKont = tostring(testKont)
 			local lok = GetCurrentMapZone()
 			lok = tostring(lok)
+			if zoneName == "Ragefire" then
+				testKont = "99"
+				lok = "1"
+			end
 			if testQ["marshK"] ~= nil then
 				local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
 				local tKont = testKont
 				local tLok = lok
 				--print (mioCel)
-				if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
-					marSh()
+				if mapTables["lokRasstoyanie"][tKont] ~= nil then
+					if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
+						marSh()
+					end
+				else
+					if mioCel >= 0. then
+						marSh()
+					end
 				end
 			end
 		end
@@ -1795,6 +1834,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				else
 					krt["5551"] = 1
+				end
+			elseif krt["777"] == 3 then
+				local zoneName = GetMapInfo()
+				if zoneName == "Ragefire" then
+					testKont = "99"
+					lok = "1"
+				else
+					btnF:SetChecked(false)
+					for i=1,krt["evO3"] do
+						if iconRisEv3[i] ~= nil then
+							iconRisEv3[i]:Hide()
+						end
+					end
 				end
 			end
 			end

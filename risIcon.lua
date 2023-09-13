@@ -3,9 +3,12 @@ iconRisText={}
 iconRisText2={}
 iconRisBO={}
 tochki = {}
+iconRisEv3={}
+iconRisEvO3 ={}
 icN = 1
 iconCh = {}
 iconChText = {}
+iconRisEv3 = {}
 --1-16   17-32   33-48 49-64
 function iconCh:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
@@ -36,6 +39,11 @@ function iconRis:configure(id,Rx,Ry)
 	self[id]:SetSize(Rx, Ry)
 	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
 end
+function iconRisEv3:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
+	self[id]:SetSize(Rx, Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
 
 function iconRisText:configure(id,Rx,Ry,x,y,nRis)
 	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
@@ -45,6 +53,12 @@ function iconRisText:configure(id,Rx,Ry,x,y,nRis)
 end
 function iconRisBO:configure(id,Rx,Ry,x,y,nRis)
 	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	self[id]:SetSize(Rx, Ry)
+	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+function iconRisEvO3:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRisEv3[id]:CreateTexture("myAddonIcon", "OVERLAY")
 	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
@@ -66,6 +80,23 @@ function bo(n,n1)
 	iconRisBO:configure(n,n1,n1,xx,yy,121212)
 	iconRis[n]:SetFrameStrata("TOOLTIP")
 	iconRisBO[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )
+end
+function ev3(tabella,n,n1)
+	for k, v in pairs(mapTables[tabella]) do
+		if type(k)=="string" then
+		tKont = k
+	end
+		for k, v in pairs(mapTables[tabella][k]) do
+			if type(k)=="string" then
+				tLok = k
+			end
+		end
+	end
+	iconRisEv3:configure(n,576,384)
+	local xx,yy = getPOS(tonumber(mapTables[tabella][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables[tabella][tKont][tLok][tostring(n)]["y"]))
+	iconRisEvO3:configure(n,n1,n1,xx,yy,121212)
+	iconRisEv3[n]:SetFrameStrata("TOOLTIP")
+	iconRisEvO3[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )
 end
 
 function iconRisText2:configure(id,Rx,Ry,x,y,nRis)
