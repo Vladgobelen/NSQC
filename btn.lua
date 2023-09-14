@@ -1108,78 +1108,80 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 
 		if testQ["эвент1_запущен"] == 0 then
-			for k, v in pairs(mapTables[testQ["эвент1"]]) do
-				if type(k)=="string" then
-				tKont = k
-			end
-				for k, v in pairs(mapTables[testQ["эвент1"]][k]) do
+			if mapTables[testQ["эвент1"]] ~= nil then
+				for k, v in pairs(mapTables[testQ["эвент1"]]) do
 					if type(k)=="string" then
-						tLok = k
+					tKont = k
+				end
+					for k, v in pairs(mapTables[testQ["эвент1"]][k]) do
+						if type(k)=="string" then
+							tLok = k
+						end
 					end
 				end
-			end
-			local testKont = tostring(GetCurrentMapContinent())
-			local testLok = tostring(GetCurrentMapZone())
-			local x,y = GetPlayerMapPosition("player")
-			if testKont == tKont and testLok == tLok then
+				local testKont = tostring(GetCurrentMapContinent())
+				local testLok = tostring(GetCurrentMapZone())
+				local x,y = GetPlayerMapPosition("player")
+				if testKont == tKont and testLok == tLok then
 
-				for i=1,10 do
-					if testQ["event1"] ~= nil then
-						if testQ["event1"][i] ~= 9999 then
-							if iconRisBO[tonumber(testQ["event1"][i])] == nil then
-								bo(tonumber(testQ["event1"][i]),testQ["boDiam"])
-							end
-							if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
-								iconRis[tonumber(testQ["event1"][i])]:Show()
+					for i=1,10 do
+						if testQ["event1"] ~= nil then
+							if testQ["event1"][i] ~= 9999 then
+								if iconRisBO[tonumber(testQ["event1"][i])] == nil then
+									bo(tonumber(testQ["event1"][i]),testQ["boDiam"])
+								end
+								if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
+									iconRis[tonumber(testQ["event1"][i])]:Show()
+								end
 							end
 						end
 					end
-				end
 
-				local tempCel = nil
-				if testQ["event1"] ~= nil then
-					if testQ["event1"]["1"] ~= 9999 then
-						local mioCel=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
-						if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
-							tempCel = 1
-						end
-					end
-				end
-				local mioCel1
-				for i=2,10 do
+					local tempCel = nil
 					if testQ["event1"] ~= nil then
-						if testQ["event1"][i] ~= 9999 then
-							mioCel1=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["y"]))^2)
-						end
-					end
-					if mioCel1 ~= nil then
-						if mioCel1 <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
-							SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
-							PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
-							if iconRis[tonumber(testQ["event1"][i])] ~= nil then
-								iconRis[tonumber(testQ["event1"][i])]:Hide()
+						if testQ["event1"]["1"] ~= 9999 then
+							local mioCel=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
+							if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
+								tempCel = 1
 							end
-							testQ["event1"][i] = 9999
-							SendAddonMessage("clientEvent1Fail",i, "guild")
+						end
+					end
+					local mioCel1
+					for i=2,10 do
+						if testQ["event1"] ~= nil then
+							if testQ["event1"][i] ~= 9999 then
+								mioCel1=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["y"]))^2)
+							end
+						end
+						if mioCel1 ~= nil then
+							if mioCel1 <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
+								SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+								if iconRis[tonumber(testQ["event1"][i])] ~= nil then
+									iconRis[tonumber(testQ["event1"][i])]:Hide()
+								end
+								testQ["event1"][i] = 9999
+								SendAddonMessage("clientEvent1Fail",i, "guild")
+							end
+						end
+					end
+					if tempCel ~= nil then
+						SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
+						SendAddonMessage("clientEvent1",myNome, "guild")
+					end
+				else
+					for i=1,100 do
+						if iconRis[i] ~= nil then
+							iconRis[i]:Hide()
 						end
 					end
 				end
-				if tempCel ~= nil then
-					SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
-					SendAddonMessage("clientEvent1",myNome, "guild")
-				end
-			else
-				for i=1,100 do
-					if iconRis[i] ~= nil then
-						iconRis[i]:Hide()
-					end
-				end
-			end
-			if not WorldMapFrame:IsVisible() then
-				for i=1,100 do
-					if iconRis[i] ~= nil then
-						iconRis[i]:Hide()
+				if not WorldMapFrame:IsVisible() then
+					for i=1,100 do
+						if iconRis[i] ~= nil then
+							iconRis[i]:Hide()
+						end
 					end
 				end
 			end
