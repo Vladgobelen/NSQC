@@ -371,10 +371,8 @@ if string.find (message, "сизиф") and string.find (message, "СТАРТ") a
 	end
 end
 if string.find (message, "буриданов_осел") and string.find (message, "СТАРТ") and testGM~=nil then
-	if testQ["эвент1"] == nil then
-		testQ["эвент1"] = lotTest[3]
-		testQ["эвент1_запущен"] = 0
-	end
+	testQ["эвент1"] = lotTest[3]
+	testQ["эвент1_запущен"] = 0
 	testQ["boDiam"] = tonumber(lotTest[4])
 end
 

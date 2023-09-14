@@ -65,18 +65,18 @@ function iconRisEvO3:configure(id,Rx,Ry,x,y,nRis)
 end
 
 function bo(n,n1)
-	for k, v in pairs(mapTables["bo"]) do
+	for k, v in pairs(mapTables[testQ["эвент1"]]) do
 		if type(k)=="string" then
 		tKont = k
 	end
-		for k, v in pairs(mapTables["bo"][k]) do
+		for k, v in pairs(mapTables[testQ["эвент1"]][k]) do
 			if type(k)=="string" then
 				tLok = k
 			end
 		end
 	end
 	iconRis:configure(n,576,384)
-	local xx,yy = getPOS(tonumber(mapTables["bo"][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables["bo"][tKont][tLok][tostring(n)]["y"]))
+	local xx,yy = getPOS(tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(n)]["y"]))
 	iconRisBO:configure(n,n1,n1,xx,yy,121212)
 	iconRis[n]:SetFrameStrata("TOOLTIP")
 	iconRisBO[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )

@@ -1098,7 +1098,93 @@ WorldMapDetailFrame:SetScript("OnUpdate",function(self)
 		frameTextu[j]:Hide()
 	end
 end)--]]
+local myNome = GetUnitName("player")
+local frameTime = CreateFrame("FRAME")
+local timeElapsed = 0
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 1 then
+		timeElapsed = 0
 
+		if testQ["эвент1_запущен"] == 0 then
+			for k, v in pairs(mapTables[testQ["эвент1"]]) do
+				if type(k)=="string" then
+				tKont = k
+			end
+				for k, v in pairs(mapTables[testQ["эвент1"]][k]) do
+					if type(k)=="string" then
+						tLok = k
+					end
+				end
+			end
+			local testKont = tostring(GetCurrentMapContinent())
+			local testLok = tostring(GetCurrentMapZone())
+			local x,y = GetPlayerMapPosition("player")
+			if testKont == tKont and testLok == tLok then
+
+				for i=1,10 do
+					if testQ["event1"] ~= nil then
+						if testQ["event1"][i] ~= 9999 then
+							if iconRisBO[tonumber(testQ["event1"][i])] == nil then
+								bo(tonumber(testQ["event1"][i]),testQ["boDiam"])
+							end
+							if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
+								iconRis[tonumber(testQ["event1"][i])]:Show()
+							end
+						end
+					end
+				end
+
+				local tempCel = nil
+				if testQ["event1"] ~= nil then
+					if testQ["event1"]["1"] ~= 9999 then
+						local mioCel=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
+						if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
+							tempCel = 1
+						end
+					end
+				end
+				local mioCel1
+				for i=2,10 do
+					if testQ["event1"] ~= nil then
+						if testQ["event1"][i] ~= 9999 then
+							mioCel1=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["y"]))^2)
+						end
+					end
+					if mioCel1 ~= nil then
+						if mioCel1 <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
+							SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
+							PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+							if iconRis[tonumber(testQ["event1"][i])] ~= nil then
+								iconRis[tonumber(testQ["event1"][i])]:Hide()
+							end
+							testQ["event1"][i] = 9999
+							SendAddonMessage("clientEvent1Fail",i, "guild")
+						end
+					end
+				end
+				if tempCel ~= nil then
+					SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
+					SendAddonMessage("clientEvent1",myNome, "guild")
+				end
+			else
+				for i=1,100 do
+					if iconRis[i] ~= nil then
+						iconRis[i]:Hide()
+					end
+				end
+			end
+			if not WorldMapFrame:IsVisible() then
+				for i=1,100 do
+					if iconRis[i] ~= nil then
+						iconRis[i]:Hide()
+					end
+				end
+			end
+		end
+	end
+end)
 
 local myNome = GetUnitName("player")
 local frameTime = CreateFrame("FRAME")
@@ -1156,73 +1242,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end--]]
 
-		if testQ["эвент1_запущен"] == 0 then
-			for k, v in pairs(mapTables["bo"]) do
-				if type(k)=="string" then
-				tKont = k
-			end
-				for k, v in pairs(mapTables["bo"][k]) do
-					if type(k)=="string" then
-						tLok = k
-					end
-				end
-			end
-			local testKont = tostring(GetCurrentMapContinent())
-			local testLok = tostring(GetCurrentMapZone())
-			local x,y = GetPlayerMapPosition("player")
-			if testKont == tKont and testLok == tLok then
-
-				for i=1,10 do
-					if testQ["event1"][i] ~= 9999 then
-						if iconRisBO[tonumber(testQ["event1"][i])] == nil then
-							bo(tonumber(testQ["event1"][i]),testQ["boDiam"])
-						end
-						if not iconRisBO[tonumber(testQ["event1"][i])]:IsVisible() then
-							iconRis[tonumber(testQ["event1"][i])]:Show()
-						end
-					end
-				end
-
-				local tempCel = nil
-				if testQ["event1"]["1"] ~= 9999 then
-					local mioCel=sqrt((x-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
-					if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
-						tempCel = 1
-					end
-				end
-				local mioCel1
-				for i=2,10 do
-					if testQ["event1"][i] ~= 9999 then
-						mioCel1=sqrt((x-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][i])]["x"]))^2+(y-tonumber(mapTables["bo"][tKont][tLok][tostring(testQ["event1"][i])]["y"]))^2)
-					end
-					if mioCel1 ~= nil then
-						if mioCel1 <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
-							SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
-							PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
-							SendAddonMessage("clientEvent1Fail",i, "guild")
-						end
-					end
-				end
-				if tempCel ~= nil then
-					SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
-					SendAddonMessage("clientEvent1",myNome, "guild")
-				end
-			else
-				for i=1,100 do
-					if iconRis[i] ~= nil then
-						iconRis[i]:Hide()
-					end
-				end
-			end
-			if not WorldMapFrame:IsVisible() then
-				for i=1,100 do
-					if iconRis[i] ~= nil then
-						iconRis[i]:Hide()
-					end
-				end
-			end
-		end
 
 		if VerF == nil or not VerF:IsVisible() then
 			if testQ["fontVers"] ~= nil then
@@ -1502,13 +1521,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
 				local tKont = testKont
 				local tLok = lok
-				--print (mioCel)
-				if mapTables["lokRasstoyanie"][tKont] ~= nil then
+				print (mioCel)
+				if mapTables["lokRasstoyanie"][tKont][tLok] ~= nil then
 					if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
 						marSh()
 					end
 				else
-					if mioCel >= 0. then
+					if mioCel >= 0.9 then
 						marSh()
 					end
 				end
