@@ -662,7 +662,7 @@ if kodMsg[1] == "pamyatkaNS" and sender == myNome then
 	SendChatMessage("Заметка о персонаже " .. kodMsg[2] .. " добавлена", "OFFICER", nil, 1)
 end
 if kod == "NSVersion" then
-        SendAddonMessage("Текущая версия", versAdd, "guild")
+        SendAddonMessage("Текущая версия", versAdd .. "." .. versAddDop, "guild")
 end
 if kod=="NSGadd" then
 if string.find (message, "#aaa") or string.find (message, "#aao") then
