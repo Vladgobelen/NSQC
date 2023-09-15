@@ -1,5 +1,5 @@
 versAdd=268
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1107,6 +1107,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 1 then
 		timeElapsed = 0
 
+		if testQ["эвент3"] == 0 then
+			if myNome ~= "Витинари" then
+				local testKont = tostring(GetCurrentMapContinent())
+				local testLok = tostring(GetCurrentMapZone())
+				local x,y = GetPlayerMapPosition("player")
+				local x1,y1 = GetPlayerMapPosition("Витинари")
+				if tonumber(testKont) == tonumber(testQ["эвент3_k"]) and tonumber(testLok) == tonumber(testQ["эвент3_l"]) then
+					local mioCel=sqrt((x-x1)^2+(y-y1)^2)
+					event3(1,(((0.999-mioCel)*1000)+500),"show")
+					if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
+						SendAddonMessage("clientEvent3Win","", "guild")
+					end
+				end
+			end
+		end
 		if testQ["эвент1_запущен"] == 0 then
 			if mapTables[testQ["эвент1"]] ~= nil then
 				for k, v in pairs(mapTables[testQ["эвент1"]]) do

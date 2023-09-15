@@ -370,6 +370,12 @@ if string.find (message, "сизиф") and string.find (message, "СТАРТ") a
 		marshruT = {}
 	end
 end
+if string.find (message, "фемида") and string.find (message, "СТАРТ") and testGM~=nil then
+	testQ["эвент3"] = 0
+	testQ["эвент3_k"] = lotTest[3]
+	testQ["эвент3_l"] = lotTest[4]
+	testQ["эвент3_n"] = lotTest[5]
+end
 if string.find (message, "буриданов_осел") and string.find (message, "СТАРТ") and testGM~=nil then
 	testQ["эвент1"] = lotTest[3]
 	testQ["эвент1_запущен"] = 0
@@ -401,6 +407,11 @@ if string.find (message, "СТОП") and string.find (message, "эвент") and
 	end
 	testQ["boDiam"] = nil
 	testQ["event1"] = nil
+	testQ["эвент3"] = nil
+	testQ["эвент3_k"] = nil
+	testQ["эвент3_l"] = nil
+	testQ["эвент3_n"] = nil
+	event3(1,1,"hide")
 end
 
 if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then

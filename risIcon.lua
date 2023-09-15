@@ -9,6 +9,8 @@ icN = 1
 iconCh = {}
 iconChText = {}
 iconRisEv3 = {}
+iconRisEvent3 = {}
+iconRisEvent3Tex={}
 --1-16   17-32   33-48 49-64
 function iconCh:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
@@ -44,6 +46,11 @@ function iconRisEv3:configure(id,Rx,Ry)
 	self[id]:SetSize(Rx, Ry)
 	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
 end
+function iconRisEvent3:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	self[id]:SetSize(Rx, Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
 
 function iconRisText:configure(id,Rx,Ry,x,y,nRis)
 	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
@@ -63,6 +70,11 @@ function iconRisEvO3:configure(id,Rx,Ry,x,y,nRis)
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
 end
+function iconRisEvent3Tex:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRisEvent3[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	self[id]:SetPoint("CENTER", UIParent,"BOTTOMLEFT", x, y)
+end
 
 function bo(n,n1)
 	for k, v in pairs(mapTables[testQ["эвент1"]]) do
@@ -80,6 +92,22 @@ function bo(n,n1)
 	iconRisBO:configure(n,n1,n1,xx,yy,121212)
 	iconRis[n]:SetFrameStrata("TOOLTIP")
 	iconRisBO[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )
+end
+function event3(n,n1,show)
+	if show == "show" then
+		if iconRisEvent3[n] == nil then
+			iconRisEvent3:configure(n,576,384)
+			iconRisEvent3Tex:configure(n,n1,n1,0,0,121212)
+			iconRisEvent3Tex[n]:SetSize(n1, n1)
+			iconRisEvent3[n]:SetFrameStrata("BACKGROUND")
+			iconRisEvent3Tex[n]:SetPoint("CENTER", UIParent,"CENTER",0,0)
+		else
+			iconRisEvent3[n]:Show()
+			iconRisEvent3Tex[n]:SetSize(n1, n1)
+		end
+	else
+		iconRisEvent3[n]:Hide()
+	end
 end
 function ev3(tabella,n,n1)
 	for k, v in pairs(mapTables[tabella]) do
