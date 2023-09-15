@@ -110,7 +110,9 @@ function event3(n,n1,show)
 			end
 		end
 	else
-		iconRisEvent3[1]:Hide()
+		if iconRisEvent3[1] ~= nil then
+			iconRisEvent3[1]:Hide()
+		end
 	end
 end
 function ev3(tabella,n,n1)
