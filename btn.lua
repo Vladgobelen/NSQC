@@ -1119,6 +1119,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if mioCel <= tonumber(mapTables["lokRasstoyanie"][testKont][testLok])*2 then
 						SendAddonMessage("clientEvent3Win","", "guild")
 					end
+				else
+					event3(1,1,"hide")
 				end
 			end
 		end

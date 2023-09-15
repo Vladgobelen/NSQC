@@ -95,18 +95,22 @@ function bo(n,n1)
 end
 function event3(n,n1,show)
 	if show == "show" then
-		if iconRisEvent3[n] == nil then
-			iconRisEvent3:configure(n,576,384)
-			iconRisEvent3Tex:configure(n,n1,n1,0,0,121212)
+		if iconRisEvent3[1] == nil then
+			iconRisEvent3:configure(1,576,384)
+			iconRisEvent3Tex:configure(1,n1,n1,0,0,121212)
 			iconRisEvent3Tex[n]:SetSize(n1, n1)
-			iconRisEvent3[n]:SetFrameStrata("BACKGROUND")
-			iconRisEvent3Tex[n]:SetPoint("CENTER", UIParent,"CENTER",0,0)
+			iconRisEvent3[1]:SetFrameStrata("BACKGROUND")
+			iconRisEvent3Tex[1]:SetPoint("CENTER", UIParent,"CENTER",0,0)
 		else
-			iconRisEvent3[n]:Show()
-			iconRisEvent3Tex[n]:SetSize(n1, n1)
+			if not iconRisEvent3[1]:IsVisible() then
+				iconRisEvent3[1]:Show()
+				iconRisEvent3Tex[1]:SetSize(n1, n1)
+			else
+				iconRisEvent3Tex[1]:SetSize(n1, n1)
+			end
 		end
 	else
-		iconRisEvent3[n]:Hide()
+		iconRisEvent3[1]:Hide()
 	end
 end
 function ev3(tabella,n,n1)
