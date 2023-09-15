@@ -1116,8 +1116,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				if tonumber(testKont) == tonumber(testQ["эвент3_k"]) and tonumber(testLok) == tonumber(testQ["эвент3_l"]) then
 					local mioCel=sqrt((x-x1)^2+(y-y1)^2)
 					event3(1,(((0.999-mioCel)*1000)+500),"show")
-					print(mioCel)
-					if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
+					if mioCel <= tonumber(mapTables["lokRasstoyanie"][testKont][testLok])*2 then
 						SendAddonMessage("clientEvent3Win","", "guild")
 					end
 				end
