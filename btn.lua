@@ -1,5 +1,5 @@
 versAdd=268
-versAddDop=7
+versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1528,29 +1528,31 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		local x,y = GetPlayerMapPosition("player")
 		local testKont = tostring(GetCurrentMapContinent())
 		local testLok = tostring(GetCurrentMapZone())
-		if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
-			if testKont == "2" and testLok == "15" then
-				local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
-				local triger
-				if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 3.4 or face > 3.5) then
-					MoveViewLeftStart()
-					if face > 2.5 and face < 4.5 then
+		if mapTables["lokRasstoyanie"][testKont] ~= nil then
+			if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+				if testKont == "2" and testLok == "15" then
+					local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
+					local triger
+					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 3.4 or face > 3.5) then
+						MoveViewLeftStart()
+						if face > 2.5 and face < 4.5 then
+							MoveViewLeftStop()
+							triger = 1
+						end
+					else
 						MoveViewLeftStop()
-						triger = 1
 					end
-				else
-					MoveViewLeftStop()
-				end
-				if face > 3.4 and face < 3.5 then
+					if face > 3.4 and face < 3.5 then
 
-					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
-						SetView(5)
-						rtnTextF("надпись",1,"show")
+						if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+							SetView(5)
+							rtnTextF("надпись",1,"show")
+						else
+							rtnTextF("надпись",1,"hide")
+						end
 					else
 						rtnTextF("надпись",1,"hide")
 					end
-				else
-					rtnTextF("надпись",1,"hide")
 				end
 			end
 		end
