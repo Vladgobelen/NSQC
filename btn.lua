@@ -1545,21 +1545,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-			local face = GetPlayerFacing()
-			local x,y = GetPlayerMapPosition("player")
-			local testKont = tostring(GetCurrentMapContinent())
-			local testLok = tostring(GetCurrentMapZone())
-			if face > 1.7 and face < 1.9 then
-				local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
-				if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
-					SetView(5)
-					rtnTextF("надпись",1,"show")
+		local face = GetPlayerFacing()
+		local x,y = GetPlayerMapPosition("player")
+		local testKont = tostring(GetCurrentMapContinent())
+		local testLok = tostring(GetCurrentMapZone())
+		if mapTables["lokRasstoyanie"][testKont] ~= nil then
+			if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+				if face > 1.7 and face < 1.9 then
+					local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
+					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+						SetView(5)
+						rtnTextF("надпись",1,"show")
+					else
+						rtnTextF("надпись",1,"hide")
+					end
 				else
 					rtnTextF("надпись",1,"hide")
 				end
-			else
-				rtnTextF("надпись",1,"hide")
 			end
+		end
 
 		if testQ["marshS"] == 1 then
 			local x,y = GetPlayerMapPosition("player")
