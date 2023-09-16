@@ -14,6 +14,7 @@ libs\UTF8\utf8.lua
 libs\ch.tga
 libs\map.tga
 libs\q.ogg
+libs\sh.ogg
 ##################
 
 emblem.tga

@@ -897,35 +897,37 @@ minibtn:SetScript("OnClick", function()
 				end
 			end
 			if testQ[myNome]["взятый_квест"] == "q3Stat" then
-				btn[1]:Hide()
-				btn[2]:Disable()
-				local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
-				local tQ = tonumber(testQ[myNome]["q3StatNum"])
-				local tQ1 = tQ+5
-				local tQ2 = tonumber(arg4)
-				if tQ2 < tQ1 then
-					btn[2]:Disable()
-					if pokazat == 0 then
-						btn[2]:Show()
-						btn[1]:Hide()
-					else
-						btn[2]:Hide()
-					end
-					btn[2]:SetText("Ачивка не выполнена")
+				if testQ[myNome]["q3Stat"]~= nil then
 					btn[1]:Hide()
-					btn[1]:SetText("Ачивка не выполнена")
-				else
-					if testQ["timerID2"] == nil then
-						btn[2]:Enable()
-						btn[1]:Enable()
-					end
-					if pokazat == 0 then
-						btn[2]:Show()
+					btn[2]:Disable()
+					local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
+					local tQ = tonumber(testQ[myNome]["q3StatNum"])
+					local tQ1 = tQ+5
+					local tQ2 = tonumber(arg4)
+					if tQ2 < tQ1 then
+						btn[2]:Disable()
+						if pokazat == 0 then
+							btn[2]:Show()
+							btn[1]:Hide()
+						else
+							btn[2]:Hide()
+						end
+						btn[2]:SetText("Ачивка не выполнена")
 						btn[1]:Hide()
+						btn[1]:SetText("Ачивка не выполнена")
 					else
-						btn[2]:Hide()
+						if testQ["timerID2"] == nil then
+							btn[2]:Enable()
+							btn[1]:Enable()
+						end
+						if pokazat == 0 then
+							btn[2]:Show()
+							btn[1]:Hide()
+						else
+							btn[2]:Hide()
+						end
+						btn[2]:SetText("Сдать квест")
 					end
-					btn[2]:SetText("Сдать квест")
 				end
 
 			end
@@ -1534,13 +1536,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
 					local triger
 					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 3.4 or face > 3.5) then
-						MoveViewLeftStart()
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\sh.ogg")
 						if face > 2.5 and face < 4.5 then
-							MoveViewLeftStop()
 							triger = 1
 						end
 					else
-						MoveViewLeftStop()
 					end
 					if face > 3.4 and face < 3.5 then
 
