@@ -1528,29 +1528,32 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		local x,y = GetPlayerMapPosition("player")
 		local testKont = tostring(GetCurrentMapContinent())
 		local testLok = tostring(GetCurrentMapZone())
-		local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
-		local triger
-		if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 3.4 or face > 3.5) then
-			MoveViewLeftStart()
-			if face > 2.5 and face < 4.5 then
-				MoveViewLeftStop()
-				triger = 1
-			end
-		else
-			MoveViewLeftStop()
-		end
-		if face > 3.4 and face < 3.5 then
+		if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+			if testKont == "2" and testLok == "15" then
+				local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
+				local triger
+				if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 3.4 or face > 3.5) then
+					MoveViewLeftStart()
+					if face > 2.5 and face < 4.5 then
+						MoveViewLeftStop()
+						triger = 1
+					end
+				else
+					MoveViewLeftStop()
+				end
+				if face > 3.4 and face < 3.5 then
 
-			if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
-				SetView(5)
-				rtnTextF("надпись",1,"show")
-			else
-				rtnTextF("надпись",1,"hide")
+					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+						SetView(5)
+						rtnTextF("надпись",1,"show")
+					else
+						rtnTextF("надпись",1,"hide")
+					end
+				else
+					rtnTextF("надпись",1,"hide")
+				end
 			end
-		else
-			rtnTextF("надпись",1,"hide")
 		end
-
 		if testQ["marshS"] == 1 then
 			local x,y = GetPlayerMapPosition("player")
 			if testQ["marshK"] == nil then
