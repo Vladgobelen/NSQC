@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=0
+versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1266,6 +1266,37 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end--]]
 
 
+		local face = GetPlayerFacing()
+		local x,y = GetPlayerMapPosition("player")
+		local testKont = tostring(GetCurrentMapContinent())
+		local testLok = tostring(GetCurrentMapZone())
+		if mapTables["lokRasstoyanie"][testKont] ~= nil then
+			if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+				if testKont == "2" and testLok == "15" then
+					local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
+					local triger
+					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 1.5 or face > 2) then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\sh.ogg")
+						if face > 2.5 and face < 4.5 then
+							triger = 1
+						end
+					else
+					end
+					if face > 1.7 and face < 1.9 then
+
+						if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+							SetView(5)
+							rtnTextF("надпись",1,"show")
+						else
+							rtnTextF("надпись",1,"hide")
+						end
+					else
+						rtnTextF("надпись",1,"hide")
+					end
+				end
+			end
+		end
+
 		if VerF == nil or not VerF:IsVisible() then
 			if testQ["fontVers"] ~= nil then
 				testQ["fontVers"]=nil
@@ -1526,36 +1557,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-		local face = GetPlayerFacing()
-		local x,y = GetPlayerMapPosition("player")
-		local testKont = tostring(GetCurrentMapContinent())
-		local testLok = tostring(GetCurrentMapZone())
-		if mapTables["lokRasstoyanie"][testKont] ~= nil then
-			if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
-				if testKont == "2" and testLok == "15" then
-					local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
-					local triger
-					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 3.4 or face > 3.5) then
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\sh.ogg")
-						if face > 2.5 and face < 4.5 then
-							triger = 1
-						end
-					else
-					end
-					if face > 3.4 and face < 3.5 then
 
-						if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
-							SetView(5)
-							rtnTextF("надпись",1,"show")
-						else
-							rtnTextF("надпись",1,"hide")
-						end
-					else
-						rtnTextF("надпись",1,"hide")
-					end
-				end
-			end
-		end
 		if testQ["marshS"] == 1 then
 			local x,y = GetPlayerMapPosition("player")
 			if testQ["marshK"] == nil then
