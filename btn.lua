@@ -1,5 +1,5 @@
 versAdd=268
-versAddDop=6
+versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1262,21 +1262,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myMap:Hide()
 			end
 		end--]]
-		local face = GetPlayerFacing()
-		local x,y = GetPlayerMapPosition("player")
-		local testKont = tostring(GetCurrentMapContinent())
-		local testLok = tostring(GetCurrentMapZone())
-		local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
-		if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
-			if face > 3.4 and face < 3.5 then
-				SetView(5)
-				rtnTextF("надпись",1,"show")
-			else
-				rtnTextF("надпись",1,"hide")
-			end
-		else
-			rtnTextF("надпись",1,"hide")
-		end
+
 
 		if VerF == nil or not VerF:IsVisible() then
 			if testQ["fontVers"] ~= nil then
@@ -1538,6 +1524,33 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		local face = GetPlayerFacing()
+		local x,y = GetPlayerMapPosition("player")
+		local testKont = tostring(GetCurrentMapContinent())
+		local testLok = tostring(GetCurrentMapZone())
+		local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
+		local triger
+		if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 3.4 or face > 3.5) then
+			MoveViewLeftStart()
+			if face > 2.5 and face < 4.5 then
+				MoveViewLeftStop()
+				triger = 1
+			end
+		else
+			MoveViewLeftStop()
+		end
+		if face > 3.4 and face < 3.5 then
+
+			if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+				SetView(5)
+				rtnTextF("надпись",1,"show")
+			else
+				rtnTextF("надпись",1,"hide")
+			end
+		else
+			rtnTextF("надпись",1,"hide")
+		end
+
 		if testQ["marshS"] == 1 then
 			local x,y = GetPlayerMapPosition("player")
 			if testQ["marshK"] == nil then
