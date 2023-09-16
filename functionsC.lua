@@ -923,6 +923,28 @@ function createQuickHtmlFrame(text,num,id)
 	bcsQuickFrame[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
 	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
 end
+rtnText = {}
+function rtnTextF(text,id,show)
+	if show == "show" then
+		if rtnText[id] == nil then
+			rtnText[id]  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+			rtnText[id]:SetSize(222, 222)
+			rtnText[id]:SetFrameStrata("HIGH")
+			rtnText[id]:SetPoint("CENTER", UIParent, "CENTER", 55, 55)
+			rtnText[id]:SetBackdropColor(0, 103, 51, 1)
+			rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+			rtnText[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
+		else
+			if not rtnText[id]:IsVisible() then
+				rtnText[id]: Show()
+			end
+		end
+	else
+		if rtnText[id] ~= nil then
+			rtnText[id]: Hide()
+		end
+	end
+end
 function versFail(num)
 	VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
 	VerF:SetSize(1111, 888)

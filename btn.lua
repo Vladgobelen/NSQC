@@ -1,5 +1,5 @@
 versAdd=268
-versAddDop=5
+versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1262,7 +1262,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myMap:Hide()
 			end
 		end--]]
-
+		local face = GetPlayerFacing()
+		local x,y = GetPlayerMapPosition("player")
+		local testKont = tostring(GetCurrentMapContinent())
+		local testLok = tostring(GetCurrentMapZone())
+		local mioCel = sqrt((x-0.56452363729477)^2+(y-0.51950472593307)^2)
+		if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+			if face > 3.4 and face < 3.5 then
+				SetView(5)
+				rtnTextF("надпись",1,"show")
+			else
+				rtnTextF("надпись",1,"hide")
+			end
+		else
+			rtnTextF("надпись",1,"hide")
+		end
 
 		if VerF == nil or not VerF:IsVisible() then
 			if testQ["fontVers"] ~= nil then
