@@ -1582,6 +1582,7 @@ local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
 f:SetScript("OnEvent", OnEvent)
 
+
 --[[
 local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
