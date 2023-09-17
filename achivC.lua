@@ -32,7 +32,7 @@ end
 if kodMsg[1] == "event1" then
 	if testQ ~= nil then
 		testQ["event1"] = {}
-		for i=1,10 do
+		for i=1,100 do
 			testQ["event1"][i] = msg[i]
 		end
 	end

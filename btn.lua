@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1144,7 +1144,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				local x,y = GetPlayerMapPosition("player")
 				if testKont == tKont and testLok == tLok then
 
-					for i=1,10 do
+					for i=1,100 do
 						if testQ["event1"] ~= nil then
 							if testQ["event1"][i] ~= 9999 then
 								if iconRisBO[tonumber(testQ["event1"][i])] == nil then
@@ -1157,17 +1157,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 					end
 
-					local tempCel = nil
-					if testQ["event1"] ~= nil then
-						if testQ["event1"]["1"] ~= 9999 then
-							local mioCel=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][1])]["y"]))^2)
-							if mioCel <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
-								tempCel = 1
-							end
-						end
-					end
 					local mioCel1
-					for i=2,10 do
+					for i=1,100 do
 						if testQ["event1"] ~= nil then
 							if testQ["event1"][i] ~= 9999 then
 								mioCel1=sqrt((x-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["x"]))^2+(y-tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(testQ["event1"][i])]["y"]))^2)
@@ -1175,8 +1166,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 						if mioCel1 ~= nil then
 							if mioCel1 <= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*3 then
-								SendChatMessage("Ой! Не туда!!!", "OFFICER", nil, 1)
-								PlaySoundFile("Interface\\AddOns\\NSQC\\gob.ogg")
+								SendChatMessage("Нашел!!!", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
 								if iconRis[tonumber(testQ["event1"][i])] ~= nil then
 									iconRis[tonumber(testQ["event1"][i])]:Hide()
 								end
@@ -1185,11 +1176,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							end
 						end
 					end
-					if tempCel ~= nil then
-						SendChatMessage("ПОБЕДА!!!", "OFFICER", nil, 1)
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
-						SendAddonMessage("clientEvent1",myNome, "guild")
-					end
+
 				else
 					for i=1,100 do
 						if iconRis[i] ~= nil then
