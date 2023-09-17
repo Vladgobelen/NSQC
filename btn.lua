@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -27,24 +27,27 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:Hide();
 	if id==9 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			RandomRoll(1, 100)
 		end)
 	end
 
 	if id == 10 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			RandomRoll(1, 333)
 		end)
 	end
 
 	if id==11 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			RandomRoll(1, 111)
 		end)
 	end
 	if id==7 or id==1 or id==2 then
 	self[id]:SetScript("OnClick",function(self, button)
-
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if id==2 then
 			btn[2]:Disable()
 			testQ["timerID2"] = 60
@@ -82,10 +85,12 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
 	elseif id==5 or id==6 or id==999 or id==12 or id==13 then
 	self[id]:SetScript("OnClick",function(self, button)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		   SendAddonMessage("NSGadd", zzid, "guild") end)
 	end
 	if id==8 then
 			self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 				if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~="q3Stat" and testQ[myNome]["взятый_квест"] ~="itemQ" then
 					if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
 						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
@@ -122,41 +127,46 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 14 then
 		self[id]:SetScript("OnClick",function(self, button)
-
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		end)
 	end
 	if id == 15 then
 		self[id]:SetScript("OnClick",function(self, button)
-
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		end)
 	end
 	if id == 998 then
 		self[id]:SetScript("OnClick",function(self, button)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			SendAddonMessage("NSGadd", "#ahtng", "guild")
 		end)
 	end
 	if id == 997 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			SendAddonMessage("NSGadd", "#zzp", "guild")
 		end)
 	end
 	if id == 996 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			SendAddonMessage("NSGadd", "#2t", "guild")
 		end)
 	end
 	if id == 4 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			SendAddonMessage("NSGadd", "#zzguild " .. testQ[myNome]["zzlf"], "guild")
 		end)
 	end
 	if id == 3 then
 		self[id]:SetScript("OnClick",function(self, button)
-
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		end)
 	end
 	if id == 777 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			if testQ["marshS"] == nil then
 				testQ["marshS"] = 1
 			elseif testQ["marshS"] == 1 then
@@ -170,6 +180,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 999999 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			if testQ ~= nil then
 				if testQ[myNome] ~= nil then
 					if testQ[myNome]["sdvig"] == nil then
@@ -190,6 +201,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 995 then
 		self[id]:SetScript("OnClick",function(self, button)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			SendMail("Железобетонс", "Квест на сбор предметов", "")
 			btn[995]:Hide()
 			testQ[myNome]["itemQend"] = 1
@@ -297,6 +309,7 @@ editB[3]:SetScript("OnEnterPressed",function(self)
 end)
 
 btn[15]:SetScript("OnClick",function(self)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	SendAddonMessage("NSGadd", "Я читаю Устав", "guild")
 	if GameTooltip:IsVisible() then
 		GameTooltip:Hide()
@@ -353,6 +366,7 @@ btn[15]:SetScript("OnEnter",function(self)
 end)
 
 btn[990]:SetScript("OnClick",function(self)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	testQ["VerF"] = 2300
 	testQ["fontVers"]=testQ["fontVers"]+5
 	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], 0)
@@ -458,6 +472,7 @@ btn[993]:SetScript("OnEnter",function(self)
 	end
 end)
 btn[994]:SetScript("OnClick",function(self, button)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	local nome = GuildFrame["selectedGuildMemberName"]
 	if nome == myNome then
 		if editB[1]:IsVisible() then
@@ -471,6 +486,7 @@ btn[994]:SetScript("OnClick",function(self, button)
 end)
 
 btn[991]:SetScript("OnClick",function(self, button)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	btn[991]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
 	if arg1=="RightButton" then
 		testQ["buffX"] = nil
@@ -483,6 +499,7 @@ btn[991]:SetScript("OnClick",function(self, button)
 	end
 end)
 btn[993]:SetScript("OnClick",function(self, button)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	local nome = GuildFrame["selectedGuildMemberName"]
 	if editB[2]:IsVisible() then
 		testQ["клик993"] = 1
@@ -493,6 +510,7 @@ btn[993]:SetScript("OnClick",function(self, button)
 	end
 end)
 btn[992]:SetScript("OnClick",function(self, button)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	local nome = GuildFrame["selectedGuildMemberName"]
 	if editB[3]:IsVisible() then
 		testQ["клик992"] = 1
@@ -536,6 +554,7 @@ btn[992]:SetScript("OnLeave", function(self)
 end)
 
 btn[14]:SetScript("OnClick",function(self)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	showRB(myNome)
 end)
 
@@ -567,6 +586,7 @@ btnF:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",-5,-18)
 btnF:SetText("CheckBox Name");
 btnF:SetFrameStrata("TOOLTIP")
 btnF:SetScript("OnClick",  function()
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	if krt["777"] ~= 3 then
 		SendAddonMessage("NSGadd", "#krt", "guild")
 	else
@@ -698,6 +718,7 @@ if testQ ~= nil then
 end
 
 minibtn:SetScript("OnClick", function()
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	minibtn:RegisterForClicks("LeftButtonUp", "RightButtonDown")
 	if arg1=="LeftButton" then
 		if testQ==nil then
@@ -998,12 +1019,13 @@ minibtn:SetScript("OnClick", function()
 			btn[ii]:SetText("Закрыть")
 			btn[ii]:Hide();
 			btn[ii]:SetScript("OnClick", function(self, button)
-			for ii=1,15 do
-				btn[ii]:Hide();
-			end
-			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+				for ii=1,15 do
+					btn[ii]:Hide();
+				end
+				minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+				minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+				minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
 			end)
 			for ii=3,15 do
 				btn[ii]:Show();
@@ -1045,15 +1067,16 @@ if framePos==nil then
 	framePos={}
 end
 btn[99]:SetScript("OnClick",function(self, button)
-if setPos==1 or setPos==nil then
-	setPos=0
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+	if setPos==1 or setPos==nil then
+		setPos=0
 
-	framePos[1]=setPos
-else
-	setPos=1
+		framePos[1]=setPos
+	else
+		setPos=1
 
-	framePos[1]=setPos
-end
+		framePos[1]=setPos
+	end
 
 end)
 
@@ -2339,7 +2362,7 @@ myCheckButton1 = createCheckbutton(UIParent, -100, 350, "Выключение п
 myCheckButton1.tooltip = "Скрывать ли аддон при нажатии на Esc - он будет перехватывать управление, пока включен";
 myCheckButton1:SetScript("OnClick",
 	function()
-
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if testQ[myNome]["настройки"]["esc"]=="Disable" or testQ[myNome]["настройки"]["esc"]==nil then
 			testQ[myNome]["настройки"]["esc"]="Enable"
 			myCheckButton1:SetChecked(true)
@@ -2353,7 +2376,7 @@ myCheckButton3 = createCheckbutton(UIParent, -100, 310, "Скрыть панел
 myCheckButton3.tooltip = "Скрыть панель дебафов";
 myCheckButton3:SetScript("OnClick",
 	function()
-
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if testQ[myNome]["настройки"]["debuff"]=="Disable" or testQ[myNome]["настройки"]["debuff"]==nil then
 			testQ[myNome]["настройки"]["debuff"]="Enable"
 			myCheckButton3:SetChecked(true)
@@ -2367,7 +2390,7 @@ myCheckButton4 = createCheckbutton(UIParent, -100, 290, "Скрыть списо
 myCheckButton4.tooltip = "Скрыть список квестов";
 myCheckButton4:SetScript("OnClick",
 	function()
-
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if testQ[myNome]["настройки"]["watch"]=="Disable" or testQ[myNome]["настройки"]["watch"]==nil then
 			testQ[myNome]["настройки"]["watch"]="Enable"
 			myCheckButton4:SetChecked(true)
@@ -2382,7 +2405,7 @@ myCheckButton5 = createCheckbutton(UIParent, -100, 270, "Более удобна
 myCheckButton5.tooltip = "Более удобная скупка товара на аукционе";
 myCheckButton5:SetScript("OnClick",
 	function()
-
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if testQ[myNome]["настройки"]["auk"]=="Disable" or testQ[myNome]["настройки"]["auk"]==nil then
 			testQ[myNome]["настройки"]["auk"]="Enable"
 			myCheckButton5:SetChecked(true)
@@ -2396,7 +2419,7 @@ myCheckButton6 = createCheckbutton(UIParent, -100, 250, "Скрывать соо
 myCheckButton6.tooltip = "Не показывать сообщения о недостигших цели атаках, недостаточности ярости итд";
 myCheckButton6:SetScript("OnClick",
 	function()
-
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if testQ[myNome]["настройки"]["err"]=="Disable" or testQ[myNome]["настройки"]["err"]==nil then
 			testQ[myNome]["настройки"]["err"]="Enable"
 			myCheckButton6:SetChecked(true)
@@ -2413,6 +2436,7 @@ myCheckButton2:SetFrameLevel(256)
 myCheckButton2.tooltip = "Отправка приветственного сообщения принятым в гильдию новичкам";
 myCheckButton2:SetScript("OnClick",
 	function()
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if testQ[myNome]["настройки"]["roll"]=="Disable" or testQ[myNome]["настройки"]["roll"]==nil then
 			testQ[myNome]["настройки"]["roll"]="Enable"
 			myCheckButton2:SetChecked(true)
