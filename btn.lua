@@ -191,6 +191,14 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				SendAddonMessage("itemQuestSend", myNome .. " " .. testQ[myNome]["itemName"] .. " " .. testQ[myNome]["itemNum"], "guild")
 			end
 			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
+
+			for ii=1,15 do
+				btn[ii]:Hide();
+			end
+			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
+			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
+			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+			pokazat = 0
 		elseif id == 1 then
 			SendAddonMessage("NSGadd", zzid .. " " .. versAdd, "guild")
 			SendChatMessage("ВOЖДЬ", "guild", nil, 1)
@@ -1751,6 +1759,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if btn[6] == nil or not btn[6]:IsVisible() then
+			btn[2]:Hide()
+			btn[1]:Hide()
+		end
 
 		local face = GetPlayerFacing()
 		local x,y = GetPlayerMapPosition("player")
