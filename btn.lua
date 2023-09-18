@@ -1,17 +1,135 @@
 versAdd=269
-versAddDop=4
+versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
 ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
 btn = {};
 editB = {}
+fBtn = {}
+
+function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
+	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	self[id]:SetPoint("CENTER",posex, posey)
+	self[id]:SetSize(sizex, sizey)
+	self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
+	self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
+	self[id]:Hide();
+	self[id]:SetScript("OnClick",function(self, button)
+
+	end)
+	self[id]:SetScript("OnEnter",function(self)
+		btn[989]:Show()
+	end)
+end
+
+fBtn:configure(1,-320,320,64,64,"","");
+fBtn:configure(2,-256,320,64,64,"","");
+fBtn:configure(3,-192,320,64,64,"","");
+fBtn:configure(4,-128,320,64,64,"","");
+fBtn:configure(5,-64,320,64,64,"","");
+fBtn:configure(6,0,320,64,64,"","");
+fBtn:configure(7,64,320,64,64,"","");
+fBtn:configure(8,128,320,64,64,"","");
+fBtn:configure(9,192,320,64,64,"","");
+fBtn:configure(10,256,320,64,64,"","");
+fBtn:configure(11,-320,256,64,64,"","");
+fBtn:configure(12,-256,256,64,64,"","");
+fBtn:configure(13,-192,256,64,64,"","");
+fBtn:configure(14,-128,256,64,64,"","");
+fBtn:configure(15,-64,256,64,64,"","");
+fBtn:configure(16,-0,256,64,64,"","");
+fBtn:configure(17,64,256,64,64,"","");
+fBtn:configure(18,128,256,64,64,"","");
+fBtn:configure(19,192,256,64,64,"","");
+fBtn:configure(20,256,256,64,64,"","");
+fBtn:configure(21,-320,192,64,64,"","");
+fBtn:configure(22,-256,192,64,64,"","");
+fBtn:configure(23,-192,192,64,64,"","");
+fBtn:configure(24,-128,192,64,64,"","");
+fBtn:configure(25,-64,192,64,64,"","");
+fBtn:configure(26,0,192,64,64,"","");
+fBtn:configure(27,64,192,64,64,"","");
+fBtn:configure(28,128,192,64,64,"","");
+fBtn:configure(29,192,192,64,64,"","");
+fBtn:configure(30,256,192,64,64,"","");
+fBtn:configure(31,-320,128,64,64,"","");
+fBtn:configure(32,-256,128,64,64,"","");
+fBtn:configure(33,-192,128,64,64,"","");
+fBtn:configure(34,-128,128,64,64,"","");
+fBtn:configure(35,-64,128,64,64,"","");
+fBtn:configure(36,0,128,64,64,"","");
+fBtn:configure(37,64,128,64,64,"","");
+fBtn:configure(38,128,128,64,64,"","");
+fBtn:configure(39,192,128,64,64,"","");
+fBtn:configure(40,256,128,64,64,"","");
+fBtn:configure(41,-320,64,64,64,"","");
+fBtn:configure(42,-256,64,64,64,"","");
+fBtn:configure(43,-192,64,64,64,"","");
+fBtn:configure(44,-128,64,64,64,"","");
+fBtn:configure(45,-64,64,64,64,"","");
+fBtn:configure(46,0,64,64,64,"","");
+fBtn:configure(47,64,64,64,64,"","");
+fBtn:configure(48,128,64,64,64,"","");
+fBtn:configure(49,192,64,64,64,"","");
+fBtn:configure(50,256,64,64,64,"","");
+fBtn:configure(51,-320,0,64,64,"","");
+fBtn:configure(52,-256,0,64,64,"","");
+fBtn:configure(53,-192,0,64,64,"","");
+fBtn:configure(54,-128,0,64,64,"","");
+fBtn:configure(55,-64,0,64,64,"","");
+fBtn:configure(56,0,0,64,64,"","");
+fBtn:configure(57,64,0,64,64,"","");
+fBtn:configure(58,128,0,64,64,"","");
+fBtn:configure(59,192,0,64,64,"","");
+fBtn:configure(60,256,0,64,64,"","");
+fBtn:configure(61,-320,-64,64,64,"","");
+fBtn:configure(62,-256,-64,64,64,"","");
+fBtn:configure(63,-192,-64,64,64,"","");
+fBtn:configure(64,-128,-64,64,64,"","");
+fBtn:configure(65,-64,-64,64,64,"","");
+fBtn:configure(66,0,-64,64,64,"","");
+fBtn:configure(67,64,-64,64,64,"","");
+fBtn:configure(68,128,-64,64,64,"","");
+fBtn:configure(69,192,-64,64,64,"","");
+fBtn:configure(70,256,-64,64,64,"","");
+fBtn:configure(71,-320,-128,64,64,"","");
+fBtn:configure(72,-256,-128,64,64,"","");
+fBtn:configure(73,-192,-128,64,64,"","");
+fBtn:configure(74,-128,-128,64,64,"","");
+fBtn:configure(75,-64,-128,64,64,"","");
+fBtn:configure(76,0,-128,64,64,"","");
+fBtn:configure(77,64,-128,64,64,"","");
+fBtn:configure(78,128,-128,64,64,"","");
+fBtn:configure(79,192,-128,64,64,"","");
+fBtn:configure(80,256,-128,64,64,"","");
+fBtn:configure(81,-320,-192,64,64,"","");
+fBtn:configure(82,-256,-192,64,64,"","");
+fBtn:configure(83,-192,-192,64,64,"","");
+fBtn:configure(84,-128,-192,64,64,"","");
+fBtn:configure(85,-64,-192,64,64,"","");
+fBtn:configure(86,0,-192,64,64,"","");
+fBtn:configure(87,64,-192,64,64,"","");
+fBtn:configure(88,128,-192,64,64,"","");
+fBtn:configure(89,192,-192,64,64,"","");
+fBtn:configure(90,256,-192,64,64,"","");
+fBtn:configure(91,-320,-256,64,64,"","");
+fBtn:configure(92,-256,-256,64,64,"","");
+fBtn:configure(93,-192,-256,64,64,"","");
+fBtn:configure(94,-128,-256,64,64,"","");
+fBtn:configure(95,-64,-256,64,64,"","");
+fBtn:configure(96,0,-256,64,64,"","");
+fBtn:configure(97,64,-256,64,64,"","");
+fBtn:configure(98,128,-256,64,64,"","");
+fBtn:configure(99,192,-256,64,64,"","");
+fBtn:configure(100,256,-256,64,64,"","");
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 	if id == 996 then
 		self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",posex, posey)
-	elseif id == 994 or id == 993 or id == 992 then
+	elseif id == 994 or id == 993 or id == 992 or id == 989 then
 		self[id]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",posex, posey)
 	elseif id == 995 then
 		self[id]:SetPoint("BOTTOMLEFT", SendMailMailButton,"TOPLEFT",posex, posey)
@@ -240,6 +358,75 @@ btn:configure(993,32,-3,32,32,"","П");
 btn:configure(992,64,-3,32,32,"","О");
 btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
+btn:configure(989,96,-3,32,32,"","Б");
+
+btn[989]:SetScript("OnClick",function(self, button)
+	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+	if not GuildRosterShowOfflineButton:GetChecked() then
+		local nome = GuildFrame["selectedGuildMemberName"]
+		if nome ~= myNome then
+			SendAddonMessage("shMFld", nome, "guild")
+			if not fBtn[1]:IsVisible() then
+				for i=1,100 do
+					fBtn[i]:Show()
+					btn[989]:ClearAllPoints()
+					btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
+					if testQ[nome] ~= nil then
+						if testQ[nome]["fld"] ~= nil then
+							if testQ[nome]["fld"][i] == "t" then
+								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
+								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
+							end
+							if testQ[nome]["fld"][i] == "f" then
+								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
+								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
+							end
+							if testQ[nome]["fld"][i] == nil or testQ[nome]["fld"][i] == "z" or testQ[nome]["fld"][i] == "0" then
+								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
+								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
+							end
+						end
+					end
+				end
+			else
+				for i=1,100 do
+					fBtn[i]:Hide()
+					btn[989]:ClearAllPoints()
+					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+				end
+			end
+		else
+			if not fBtn[1]:IsVisible() then
+				for i=1,100 do
+					fBtn[i]:Show()
+					btn[989]:ClearAllPoints()
+					btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
+					if mioFld == nil then
+						mioFld = {}
+					end
+					if mioFld[i] == "t" then
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
+						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
+					end
+					if mioFld[i] == "f" then
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
+						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
+					end
+					if mioFld[i] == nil or mioFld[i] == "z" or mioFld[i] == "0" then
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
+						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
+					end
+				end
+			else
+				for i=1,100 do
+					fBtn[i]:Hide()
+					btn[989]:ClearAllPoints()
+					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+				end
+			end
+		end
+	end
+end)
 
 btn[1]:Hide()
 btn[2]:Hide()
@@ -384,22 +571,7 @@ btn[994]:SetScript("OnEnter",function(self)
 	btn[994]:Show()
 	btn[993]:Show()
 	btn[992]:Show()
-end)
-btn[993]:SetScript("OnEnter",function(self)
-	btn[994]:Show()
-	btn[993]:Show()
-	btn[992]:Show()
-end)
-btn[992]:SetScript("OnEnter",function(self)
-	btn[994]:Show()
-	btn[993]:Show()
-	btn[992]:Show()
-end)
-
-btn[994]:SetScript("OnEnter",function(self)
-	btn[994]:Show()
-	btn[993]:Show()
-	btn[992]:Show()
+	btn[989]:Show()
 	local nome = GuildFrame["selectedGuildMemberName"]
 	local zametka
 	SendAddonMessage("#получить_заметку", nome, "guild")
@@ -433,6 +605,7 @@ btn[992]:SetScript("OnEnter",function(self)
 	btn[994]:Show()
 	btn[993]:Show()
 	btn[992]:Show()
+	btn[989]:Show()
 	local nome = GuildFrame["selectedGuildMemberName"]
 	local zametka
 	SendAddonMessage("#получить_отзыв", nome, "guild")
@@ -452,10 +625,21 @@ btn[992]:SetScript("OnEnter",function(self)
 	end
 end)
 
+btn[989]:SetScript("OnEnter",function(self)
+	btn[994]:Show()
+	btn[993]:Show()
+	btn[992]:Show()
+	btn[989]:Show()
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+	GameTooltip:AddLine("|c0099ff99Бонусы")
+	GameTooltip:Show()
+end)
+
 btn[993]:SetScript("OnEnter",function(self)
 	btn[994]:Show()
 	btn[993]:Show()
 	btn[992]:Show()
+	btn[989]:Show()
 	local nome = GuildFrame["selectedGuildMemberName"]
 	local zametka
 	if zametki~=nil then
@@ -471,6 +655,7 @@ btn[993]:SetScript("OnEnter",function(self)
 		GameTooltip:Show()
 	end
 end)
+
 btn[994]:SetScript("OnClick",function(self, button)
 	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	local nome = GuildFrame["selectedGuildMemberName"]
@@ -524,17 +709,20 @@ GuildMemberDetailFrame:SetScript("OnEnter",function(self)
 	btn[994]:Show()
 	btn[993]:Show()
 	btn[992]:Show()
+	btn[989]:Show()
 end)
 GuildMemberDetailFrame:SetScript("OnLeave", function(self)
 	btn[994]:Hide()
 	btn[993]:Hide()
 	btn[992]:Hide()
+	btn[989]:Hide()
 	GameTooltip:Hide();
 end)
 btn[994]:SetScript("OnLeave", function(self)
 	btn[994]:Hide()
 	btn[992]:Hide()
 	btn[993]:Hide()
+	btn[989]:Hide()
 	editB[1]:Hide()
 	GameTooltip:Hide();
 end)
@@ -542,6 +730,7 @@ btn[993]:SetScript("OnLeave", function(self)
 	btn[993]:Hide()
 	btn[992]:Hide()
 	btn[994]:Hide()
+	btn[989]:Hide()
 	editB[2]:Hide()
 	GameTooltip:Hide();
 end)
@@ -549,7 +738,15 @@ btn[992]:SetScript("OnLeave", function(self)
 	btn[992]:Hide()
 	btn[993]:Hide()
 	btn[994]:Hide()
+	btn[989]:Hide()
 	editB[3]:Hide()
+	GameTooltip:Hide();
+end)
+btn[989]:SetScript("OnLeave", function(self)
+	btn[992]:Hide()
+	btn[993]:Hide()
+	btn[994]:Hide()
+	btn[989]:Hide()
 	GameTooltip:Hide();
 end)
 

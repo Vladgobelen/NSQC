@@ -4,7 +4,7 @@
 ## Author: Vladgobelen
 ## Version: 1.5.6
 ## X-Date: 2023-07-15
-## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh, zametki, mapTables
+## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh, zametki, mapTables,mioFld
 ##SavedVariablesPerCharacter: inQuest, incTabC
 lib\lib_hook.lua
 lib\lib_math.lua
@@ -16,6 +16,9 @@ libs\map.tga
 libs\q.ogg
 libs\sh.ogg
 libs\clc.ogg
+libs\z.tga
+libs\t.tga
+libs\f.tga
 ##################
 
 emblem.tga

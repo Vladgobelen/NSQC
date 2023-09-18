@@ -68,6 +68,42 @@ if  kodMsg[1] == "NSGChatX" then
 		end
 	end
 end
+if kodMsg[1] == "shMFld" and message == "myNome" then
+	local rez
+	if mioFld == nil then
+		mioFld = {}
+	end
+	for i=1,100 do
+		if mioFld[i] ~= nil then
+			if rez == nil then
+				rez = mioFld[i]
+			else
+				rez = rez .. " " .. mioFld[i]
+			end
+		else
+			if rez == nil then
+				rez = "0"
+			else
+				rez = rez .. " " .. "0"
+			end
+		end
+	end
+	SendAddonMessage("MioFld " .. sender, rez, "guild")
+end
+if kodMsg[1] == "MioFld" and kodMsg[2] == "myNome" then
+	if testQ == nil then
+		testQ = {}
+	end
+	if testQ[sender] == nil then
+		testQ[sender] = {}
+	end
+	if testQ[sender]["fld"] == nil then
+		testQ[sender]["fld"] = {}
+	end
+	for i=1,100 do
+		testQ[sender]["fld"][i] = msg[i]
+	end
+end
 if  kodMsg[1] == "NSGChatY" then
 	local kk=1
 	for i=1+(tonumber(kodMsg[2])-1)*200,tonumber(kodMsg[2])*200 do
