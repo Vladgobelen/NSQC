@@ -370,68 +370,23 @@ btn:configure(989,96,-3,32,32,"","Б");
 
 btn[989]:SetScript("OnClick",function(self, button)
 	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-	if not GuildRosterShowOfflineButton:GetChecked() then
-		local nome = GuildFrame["selectedGuildMemberName"]
-		if nome ~= myNome then
-			SendAddonMessage("shMFld", nome, "guild")
-			if not fBtn[1]:IsVisible() then
-				for i=1,100 do
-					fBtn[i]:Show()
-					btn[989]:ClearAllPoints()
-					btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-					if testQ[nome] ~= nil then
-						if testQ[nome]["fld"] ~= nil then
-							if testQ[nome]["fld"][i] == "t" then
-								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
-								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
-							end
-							if testQ[nome]["fld"][i] == "f" then
-								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
-								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
-							end
-							if testQ[nome]["fld"][i] == nil or testQ[nome]["fld"][i] == "z" or testQ[nome]["fld"][i] == "0" then
-								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
-								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
-							end
-						end
-					end
-				end
-			else
-				for i=1,100 do
-					fBtn[i]:Hide()
-					btn[989]:ClearAllPoints()
-					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-				end
-			end
+	if not fBtn[1]:IsVisible() then
+		if not GuildRosterShowOfflineButton:GetChecked() then
+			local nome = GuildFrame["selectedGuildMemberName"]
+			testQ["fRand1"] = math.random(1,1000000)
+			SendAddonMessage("shMFld " .. testQ["fRand1"], nome, "guild")
 		else
-			if not fBtn[1]:IsVisible() then
-				for i=1,100 do
-					fBtn[i]:Show()
-					btn[989]:ClearAllPoints()
-					btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-					if mioFld == nil then
-						mioFld = {}
-					end
-					if mioFld[i] == "t" then
-						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
-						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\t.tga")
-					end
-					if mioFld[i] == "f" then
-						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
-						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
-					end
-					if mioFld[i] == nil or mioFld[i] == "z" or mioFld[i] == "0" then
-						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
-						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
-					end
-				end
-			else
-				for i=1,100 do
-					fBtn[i]:Hide()
-					btn[989]:ClearAllPoints()
-					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-				end
+			for i=1,100 do
+				fBtn[i]:Hide()
+				btn[989]:ClearAllPoints()
+				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 			end
+		end
+	else
+		for i=1,100 do
+			fBtn[i]:Hide()
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 		end
 	end
 end)
@@ -1759,6 +1714,26 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if testQ["fRand2"] ~= nil and (tonumber(testQ["fRand2"]) == tonumber(testQ["fRand1"]))then
+			if GuildFrame:IsVisible() then
+				if not GuildRosterShowOfflineButton:GetChecked() then
+					local nome = GuildFrame["selectedGuildMemberName"]
+					if not fBtn[1]:IsVisible() then
+						for i=1,100 do
+							j = tostring(i)
+							fBtn[i]:Show()
+							btn[989]:ClearAllPoints()
+							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[myNome]["объекты"][j] .. ".tga")
+							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[myNome]["объекты"][j] .. ".tga")
+						end
+					end
+				end
+			end
+			testQ["fRand2"] = nil
+			testQ["fRand1"] = nil
+		end
 
 		if btn[6] == nil or not btn[6]:IsVisible() then
 			btn[2]:Hide()

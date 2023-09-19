@@ -68,41 +68,55 @@ if  kodMsg[1] == "NSGChatX" then
 		end
 	end
 end
-if kodMsg[1] == "shMFld" and message == "myNome" then
-	local rez
-	if mioFld == nil then
-		mioFld = {}
-	end
-	for i=1,100 do
-		if mioFld[i] ~= nil then
-			if rez == nil then
-				rez = mioFld[i]
-			else
-				rez = rez .. " " .. mioFld[i]
-			end
-		else
-			if rez == nil then
-				rez = "0"
-			else
-				rez = rez .. " " .. "0"
+
+if kodMsg[1] == "shMFld" and message == myNome then
+	local rez = {}
+	if sender ~= myNome then
+		if mioFld == nil then
+			mioFld = {}
+			mioFld[myNome] = {}
+			mioFld[myNome]["объекты"] = {}
+			mioFld[myNome]["целостность"] = {}
+			for i = 1, 100 do
+				j = tostring(i)
+				mioFld[myNome]["объекты"][j] = "t"
+				mioFld[myNome]["целостность"][j] = 1000
 			end
 		end
+		for k, v in pairs(mioFld[myNome]) do
+			rez[k] = ""
+			for i = 1, 100 do
+				j = tostring(i)
+				rez[k] = rez[k] .. mioFld[myNome][k][i] .. " "
+			end
+			SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
+		end
+	else
+		if mioFld == nil then
+			mioFld = {}
+			mioFld[myNome] = {}
+			mioFld[myNome]["объекты"] = {}
+			mioFld[myNome]["целостность"] = {}
+			for i = 1, 100 do
+				j = tostring(i)
+				mioFld[myNome]["объекты"][j] = "t"
+				mioFld[myNome]["целостность"][j] = 1000
+			end
+		end
+		testQ["fRand2"] = kodMsg[2]
 	end
-	SendAddonMessage("MioFld " .. sender, rez, "guild")
 end
 if kodMsg[1] == "MioFld" and kodMsg[2] == "myNome" then
-	if testQ == nil then
-		testQ = {}
+	if mioFld == nil then
+		mioFld = {}
+		mioFld[sender] = {}
+		mioFld[sender][kodMsg[3]] = {}
 	end
-	if testQ[sender] == nil then
-		testQ[sender] = {}
+	for i = 1, 100 do
+		j = tostring(i)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	if testQ[sender]["fld"] == nil then
-		testQ[sender]["fld"] = {}
-	end
-	for i=1,100 do
-		testQ[sender]["fld"][i] = msg[i]
-	end
+	testQ["fRand2"] = kodMsg[4]
 end
 if  kodMsg[1] == "NSGChatY" then
 	local kk=1
