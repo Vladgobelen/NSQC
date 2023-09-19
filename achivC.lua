@@ -42,6 +42,16 @@ if kodMsg[1] == "obgIz" then
 		if mioFld[message] ~= nil then
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand3"] = 1
+			testQ["fRand3Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "travA" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
 		end
 	end
 end

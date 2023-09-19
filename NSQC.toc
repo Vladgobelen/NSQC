@@ -15,6 +15,7 @@ libs\ch.tga
 libs\map.tga
 libs\q.ogg
 libs\sh.ogg
+libs\tx.ogg
 libs\clc.ogg
 libs\axe.ogg
 libs\z.tga
