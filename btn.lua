@@ -1776,7 +1776,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 				for i = 1,100 do
 					if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
-						fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
+						fBtn[i]:SetText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)])
 					end
 				end
 			end
@@ -1786,8 +1786,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ["fRand4"] == 1 then
 			if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 				for i = 1,100 do
-					fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
-					fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
+					fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+					fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
 				end
 			end
 			testQ["fRand4"] = nil
