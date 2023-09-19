@@ -80,14 +80,14 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			for i = 1, 100 do
 				j = tostring(i)
 				mioFld[myNome]["объекты"][j] = "t"
-				mioFld[myNome]["целостность"][j] = 1000
+				mioFld[myNome]["целостность"][j] = 999
 			end
 		end
 		for k, v in pairs(mioFld[myNome]) do
 			rez[k] = ""
 			for i = 1, 100 do
 				j = tostring(i)
-				rez[k] = rez[k] .. mioFld[myNome][k][i] .. " "
+				rez[k] = rez[k] .. mioFld[myNome][k][j] .. " "
 			end
 			SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
 		end
@@ -100,7 +100,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			for i = 1, 100 do
 				j = tostring(i)
 				mioFld[myNome]["объекты"][j] = "t"
-				mioFld[myNome]["целостность"][j] = 1000
+				mioFld[myNome]["целостность"][j] = 999
 			end
 		end
 		testQ["fRand2"] = kodMsg[2]
