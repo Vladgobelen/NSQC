@@ -106,12 +106,15 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		testQ["fRand2"] = kodMsg[2]
 	end
 end
-if kodMsg[1] == "MioFld" and kodMsg[2] == "myNome" then
+
+if kodMsg[1] == "MioFld" and kodMsg[2] == myNome then
 	if mioFld == nil then
 		mioFld = {}
-		mioFld[sender] = {}
-		mioFld[sender][kodMsg[3]] = {}
 	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	mioFld[sender][kodMsg[3]] = {}
 	for i = 1, 100 do
 		j = tostring(i)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
