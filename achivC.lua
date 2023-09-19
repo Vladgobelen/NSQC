@@ -37,6 +37,14 @@ if kodMsg[1] == "event1" then
 		end
 	end
 end
+if kodMsg[1] == "obgIz" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand3"] = 1
+		end
+	end
+end
 if kodMsg[1] == "FailPointEvent1" then
 	if iconRis[tonumber(testQ["event1"][tonumber(message)])] ~= nil then
 		iconRis[tonumber(testQ["event1"][tonumber(message)])]:Hide()
@@ -94,6 +102,8 @@ if kodMsg[1] == "shMFld" and message == myNome then
 	else
 		if mioFld == nil then
 			mioFld = {}
+		end
+		if mioFld[myNome] == nil then
 			mioFld[myNome] = {}
 			mioFld[myNome]["объекты"] = {}
 			mioFld[myNome]["целостность"] = {}

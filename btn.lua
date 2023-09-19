@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=9
+versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -17,7 +17,41 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
 	self[id]:Hide();
 	self[id]:SetScript("OnClick",function(self, button)
+		local nome = GuildFrame["selectedGuildMemberName"]
+		if mioFld[nome]["объекты"][tostring(id)] == "t" then
+			if tonumber(mioFld[nome]["целостность"][tostring(id)]) >=1 then
+				if krt ~= nil then
+					if krt["podskazki"] ~= nil then
+						if testQ["трудовые_ресурсы"] == nil then
+							testQ["трудовые_ресурсы"] = {}
+							testQ["трудовые_ресурсы"] = 0
+						end
+						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+							if nome == myNome then
+								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-50
+							else
+								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-10
+							end
+							--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
+							testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
+							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
+							SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
+						else
+							if nome == myNome then
+								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-10
+							else
+								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-3
+							end
+							--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
+							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
+							SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
+						end
+					end
+				end
+			else
 
+			end
+		end
 	end)
 	self[id]:SetScript("OnEnter",function(self)
 		btn[989]:Show()
@@ -1727,6 +1761,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
 							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
 							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
+							if mioFld[nome]["целостность"][tostring(i)] < 999 then
+								fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
+							end
 						end
 					end
 				end
@@ -1734,7 +1771,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			testQ["fRand2"] = nil
 			testQ["fRand1"] = nil
 		end
-
+		if testQ["fRand3"] == 1 then
+			local nome = GuildFrame["selectedGuildMemberName"]
+			for i = 1,100 do
+				if tonumber(mioFld[nome]["целостность"][tostring(i)]) < 999 then
+					fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
+				end
+			end
+			testQ["fRand3"] = nil
+		end
 		if btn[6] == nil or not btn[6]:IsVisible() then
 			btn[2]:Hide()
 			btn[1]:Hide()
