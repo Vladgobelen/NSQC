@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=11
+versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -42,6 +42,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							else
 								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-3
 							end
+							testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
 							--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
 							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
 							SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
@@ -1786,8 +1787,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ["fRand4"] == 1 then
 			if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 				for i = 1,100 do
+					j = tostring(i)
 					fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
 					fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+					if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
+						fBtn[i]:SetText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)])
+					else
+						fBtn[i]:SetText("")
+					end
 				end
 			end
 			testQ["fRand4"] = nil

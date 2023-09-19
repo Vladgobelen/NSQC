@@ -50,6 +50,7 @@ if kodMsg[1] == "travA" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
