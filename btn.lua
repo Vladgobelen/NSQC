@@ -1725,8 +1725,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							fBtn[i]:Show()
 							btn[989]:ClearAllPoints()
 							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[myNome]["объекты"][j] .. ".tga")
-							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[myNome]["объекты"][j] .. ".tga")
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
+							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
 						end
 					end
 				end
