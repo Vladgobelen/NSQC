@@ -43,7 +43,7 @@ if kodMsg[1] == "obgIz" then
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand3"] = 1
 			testQ["fRand3Nome"] = message
-			if sender ~= myNome then
+			if sender ~= myNome and message == myNome then
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
 			end
 		end
