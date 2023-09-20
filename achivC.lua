@@ -131,7 +131,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 	end
 end
 
-if kodMsg[1] == "MioFld" and kodMsg[2] == myNome then
+if kodMsg[1] == "MioFld" then
 	if mioFld == nil then
 		mioFld = {}
 	end
@@ -818,7 +818,7 @@ if string.find (message, "#aaf") and string.find (message, myNome) then
 		end
 		if j>=mozhnoLiSdatChislo11 then
 			SendAddonMessage("NSGadd", "#zzk " .. j .. " " .. msg1 .. " " .. mozhnoLiSdatChislo11, "guild")
-			SendChatMessage("Я сделал " .. j .. " пунктов ачивки " .. GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo, "OFFICER", nil, 1)
+			SendChatMessage("Я сделал " .. j .. " пунктов ачивки " .. GetAchievementLink(msg1) .. " из " .. mozhnoLiSdatChislo11, "OFFICER", nil, 1)
 			btn[1]:Enable()
 			btn[1]:Show()
 			btn[1]:SetText("Взять квест")
