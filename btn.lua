@@ -1444,16 +1444,20 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		local x,y = GetPlayerMapPosition("player")
 		local testKont = tostring(GetCurrentMapContinent())
 		local testLok = tostring(GetCurrentMapZone())
-		if mapTables["lokRasstoyanie"][testKont] ~= nil then
-			if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
-				if testKont == "2" and testLok == "15" then
-					local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
-					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 1.5 or face > 2) then
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\sh.ogg")
-						if face > 1 and face < 2.5 then
+		if mapTables ~= nil then
+			if mapTables["lokRasstoyanie"] ~= nil then
+				if mapTables["lokRasstoyanie"][testKont] ~= nil then
+					if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+						if testKont == "2" and testLok == "15" then
+							local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
+							if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 1.5 or face > 2) then
+								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\sh.ogg")
+								if face > 1 and face < 2.5 then
+								end
+							end
+
 						end
 					end
-
 				end
 			end
 		end
