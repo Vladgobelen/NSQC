@@ -1763,7 +1763,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
 							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
 							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
-							if mioFld[nome]["целостность"][tostring(i)] < 999 then
+							if tonumber(mioFld[nome]["целостность"][tostring(i)]) < 999 then
 								fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
 							end
 						end
