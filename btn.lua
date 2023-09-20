@@ -292,6 +292,27 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	if id == 3 then
 		self[id]:SetScript("OnClick",function(self, button)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+			if ChatFrame1:IsVisible() then
+				ChatFrame1EditBox:Show()
+				ChatFrame1EditBox:SetFocus()
+				ChatFrame1EditBox:SetText("/ginvite ")
+			end
+			if ChatFrame2:IsVisible() then
+				ChatFrame1EditBox:Show()
+				ChatFrame2EditBox:SetFocus()
+				ChatFrame2EditBox:SetText("/ginvite ")
+			end
+			if ChatFrame3:IsVisible() then
+				ChatFrame1EditBox:Show()
+				ChatFrame3EditBox:SetFocus()
+				ChatFrame3EditBox:SetText("/ginvite ")
+			end
+			if ChatFrame4:IsVisible() then
+				ChatFrame1EditBox:Show()
+				ChatFrame4EditBox:SetFocus()
+				ChatFrame4EditBox:SetText("/ginvite ")
+			end
+
 		end)
 	end
 	if id == 777 then
