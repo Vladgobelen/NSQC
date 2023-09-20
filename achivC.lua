@@ -43,6 +43,9 @@ if kodMsg[1] == "obgIz" then
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand3"] = 1
 			testQ["fRand3Nome"] = message
+			if sender ~= myNome then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
+			end
 		end
 	end
 end
