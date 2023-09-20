@@ -1590,32 +1590,35 @@ function marSh()
 end
 function treeX(nome,myNome,id)
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) >=1 then
-		if krt ~= nil then
-			if krt["podskazki"] ~= nil then
-				if testQ["трудовые_ресурсы"] == nil then
-					testQ["трудовые_ресурсы"] = {}
-					testQ["трудовые_ресурсы"] = 0
-				end
-				if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-					if nome == myNome then
-						mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-50
-					else
-						mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-5
-					end
-					--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-					testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
-					SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
-				else
-					if nome == myNome then
-						mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-5
-					else
-						mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-1
-					end
-					testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
-					--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-					SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
-				end
+
+		if krt == nil then
+			krt = {}
+		end
+		if krt["podskazki"] == nil then
+			krt["podskazki"] = 1
+		end
+		if testQ["трудовые_ресурсы"] == nil then
+			testQ["трудовые_ресурсы"] = {}
+			testQ["трудовые_ресурсы"] = 0
+		end
+		if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+			if nome == myNome then
+				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-50
+			else
+				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-5
 			end
+			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
+			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
+			SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
+		else
+			if nome == myNome then
+				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-5
+			else
+				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-1
+			end
+			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
+			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
+			SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
 		end
 	else
 		SendAddonMessage("travA " .. id, nome, "guild")
