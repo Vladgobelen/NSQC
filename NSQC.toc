@@ -17,7 +17,7 @@ libs\q.ogg
 libs\sh.ogg
 libs\tx.ogg
 libs\clc.ogg
-libs\axe.ogg
+libs\t.ogg
 libs\z.tga
 libs\t.tga
 libs\f.tga

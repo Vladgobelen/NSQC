@@ -44,7 +44,9 @@ if kodMsg[1] == "obgIz" then
 			testQ["fRand3"] = 1
 			testQ["fRand3Nome"] = message
 			if sender ~= myNome then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
+				if mioFld[message]["объекты"][tostring(kodMsg[2])] == "t" then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
+				end
 			end
 		end
 	end

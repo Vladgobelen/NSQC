@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=13
+versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -19,40 +19,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
 		if mioFld[nome]["объекты"][tostring(id)] == "t" then
-			if tonumber(mioFld[nome]["целостность"][tostring(id)]) >=1 then
-				if krt ~= nil then
-					if krt["podskazki"] ~= nil then
-						if testQ["трудовые_ресурсы"] == nil then
-							testQ["трудовые_ресурсы"] = {}
-							testQ["трудовые_ресурсы"] = 0
-						end
-						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-							if nome == myNome then
-								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-50
-							else
-								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-10
-							end
-							--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-							testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
-							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
-							SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
-						else
-							if nome == myNome then
-								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-10
-							else
-								mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-3
-							end
-							testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
-							--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\axe.ogg")
-							SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
-						end
-					end
-				end
-			else
-				SendAddonMessage("travA " .. id, nome, "guild")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tx.ogg")
-			end
+			treeX(nome,myNome,id)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self)
