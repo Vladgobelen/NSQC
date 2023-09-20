@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=14
+versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1778,18 +1778,22 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		local x,y = GetPlayerMapPosition("player")
 		local testKont = tostring(GetCurrentMapContinent())
 		local testLok = tostring(GetCurrentMapZone())
-		if mapTables["lokRasstoyanie"][testKont] ~= nil then
-			if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
-				if face > 1.7 and face < 1.9 then
-					local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
-					if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
-						SetView(5)
-						rtnTextF("надпись",1,"show")
-					else
-						rtnTextF("надпись",1,"hide")
+		if mapTables ~= nil then
+			if mapTables["lokRasstoyanie"] ~= nil then
+				if mapTables["lokRasstoyanie"][testKont] ~= nil then
+					if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+						if face > 1.7 and face < 1.9 then
+							local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
+							if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+								SetView(5)
+								rtnTextF("надпись",1,"show")
+							else
+								rtnTextF("надпись",1,"hide")
+							end
+						else
+							rtnTextF("надпись",1,"hide")
+						end
 					end
-				else
-					rtnTextF("надпись",1,"hide")
 				end
 			end
 		end
