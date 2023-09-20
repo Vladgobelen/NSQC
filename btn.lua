@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=19
+versAddDop=20
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -291,29 +291,32 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end
 	if id == 3 then
 		self[id]:SetScript("OnClick",function(self, button)
-			local wNome = WhoFrame["selectedName"]
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			if ChatFrame1:IsVisible() then
-				ChatFrame1EditBox:Show()
-				ChatFrame1EditBox:SetFocus()
-				ChatFrame1EditBox:SetText("/ginvite " .. wNome)
+			if WhoFrame:IsVisible() then
+				if WhoFrame["selectedName"] ~= nil then
+					local wNome = WhoFrame["selectedName"]
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+					if ChatFrame1:IsVisible() then
+						ChatFrame1EditBox:Show()
+						ChatFrame1EditBox:SetFocus()
+						ChatFrame1EditBox:SetText("/ginvite " .. wNome)
+					end
+					if ChatFrame2:IsVisible() then
+						ChatFrame1EditBox:Show()
+						ChatFrame2EditBox:SetFocus()
+						ChatFrame2EditBox:SetText("/ginvite " .. wNome)
+					end
+					if ChatFrame3:IsVisible() then
+						ChatFrame1EditBox:Show()
+						ChatFrame3EditBox:SetFocus()
+						ChatFrame3EditBox:SetText("/ginvite " .. wNome)
+					end
+					if ChatFrame4:IsVisible() then
+						ChatFrame1EditBox:Show()
+						ChatFrame4EditBox:SetFocus()
+						ChatFrame4EditBox:SetText("/ginvite " .. wNome)
+					end
+				end
 			end
-			if ChatFrame2:IsVisible() then
-				ChatFrame1EditBox:Show()
-				ChatFrame2EditBox:SetFocus()
-				ChatFrame2EditBox:SetText("/ginvite " .. wNome)
-			end
-			if ChatFrame3:IsVisible() then
-				ChatFrame1EditBox:Show()
-				ChatFrame3EditBox:SetFocus()
-				ChatFrame3EditBox:SetText("/ginvite " .. wNome)
-			end
-			if ChatFrame4:IsVisible() then
-				ChatFrame1EditBox:Show()
-				ChatFrame4EditBox:SetFocus()
-				ChatFrame4EditBox:SetText("/ginvite " .. wNome)
-			end
-
 		end)
 	end
 	if id == 777 then

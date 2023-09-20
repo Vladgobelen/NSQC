@@ -87,7 +87,7 @@ function bo(n,n1)
 			end
 		end
 	end
-	iconRis:configure(n,576,384)
+	iconRis:configure(n,n,n1)
 	local xx,yy = getPOS(tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(n)]["y"]))
 	iconRisBO:configure(n,n1,n1,xx,yy,121212)
 	iconRis[n]:SetFrameStrata("TOOLTIP")
