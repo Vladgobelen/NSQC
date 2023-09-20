@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=16
+versAddDop=17
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
@@ -1758,6 +1758,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
 							if tonumber(mioFld[nome]["целостность"][tostring(i)]) < 999 then
 								fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
+							else
+								fBtn[i]:SetText("")
 							end
 						end
 					end
