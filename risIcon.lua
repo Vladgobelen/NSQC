@@ -60,7 +60,7 @@ function iconRisText:configure(id,Rx,Ry,x,y,nRis)
 end
 function iconRisBO:configure(id,Rx,Ry,x,y,nRis)
 	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
-	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	self[id]:SetTexture("Interface/COMMON/Indicator-Green.png")
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
 end
@@ -72,7 +72,7 @@ function iconRisEvO3:configure(id,Rx,Ry,x,y,nRis)
 end
 function iconRisEvent3Tex:configure(id,Rx,Ry,x,y,nRis)
 	self[id] = iconRisEvent3[id]:CreateTexture("myAddonIcon", "OVERLAY")
-	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	self[id]:SetTexture("Interface/COMMON/Indicator-Green.png")
 	self[id]:SetPoint("CENTER", UIParent,"BOTTOMLEFT", x, y)
 end
 

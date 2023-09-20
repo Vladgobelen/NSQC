@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=18
+versAddDop=19
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
