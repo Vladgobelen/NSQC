@@ -1630,15 +1630,7 @@ function treeX(nome,myNome,id)
 				end
 			end
 		end
-		if mioFld ~= nil then
-			if mioFld[nome] ~= nil then
-				if mioFld[nome]["подсказки"] ~= nil then
-					if mioFld[nome]["подсказки"][tostring(id)] ~= nil then
-						SendAddonMessage("podSkazka " .. id .. " " .. nome, mioFld[nome]["подсказки"][tostring(id)], "guild")
-					end
-				end
-			end
-		end
+		SendAddonMessage("podSkazka " .. id, nome, "guild")
 	else
 		SendAddonMessage("travA " .. id, nome, "guild")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .."x.ogg")

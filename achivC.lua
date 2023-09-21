@@ -147,7 +147,6 @@ if kodMsg[1] == "obgIz" then
 			if mioFld[message]["подсказки"] == nil then
 				mioFld[message]["подсказки"] = {}
 			end
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = kodMsg[4]
 			if kodMsg[5] ~= nil then
 				local podskazka = sender .. " " .. kodMsg[5]
 				mioFld[message]["влияние"][tostring(kodMsg[2])] = podskazka
@@ -173,12 +172,22 @@ if kodMsg[1] == "travA" then
 		end
 	end
 end
-if kodMsg[1] == "podSkazka" then
+if kodMsg[1] == "podSkazka" and message == myNome then
 	if mioFld ~= nil then
-		if mioFld[kodMsg[3]] ~= nil then
-			if mioFld[kodMsg[3]]["подсказки"] ~= nil then
-				mioFld[kodMsg[3]]["подсказки"][tostring(kodMsg[2])] = message
+		if mioFld[message] ~= nil then
+			if mioFld[myNome]["подсказки"] ~= nil then
+				SendAddonMessage("MyPodSkazka " .. kodMsg[2], mioFld[myNome]["подсказки"][tostring(kodMsg[2])], "guild")
 			end
+		end
+	end
+end
+if kodMsg[1] == "MyPodSkazka" then
+	if mioFld ~= nil then
+		if mioFld[sender] ~= nil then
+			if mioFld[sender]["подсказки"] == nil then
+				mioFld[sender]["подсказки"] = {}
+			end
+			mioFld[sender]["подсказки"][tostring(kodMsg[2])] = message
 		end
 	end
 end
