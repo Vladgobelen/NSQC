@@ -1631,9 +1631,13 @@ function treeX(nome,myNome,id)
 			end
 		end
 		SendAddonMessage("podSkazka " .. id, nome, "guild")
-	else
+	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
 		SendAddonMessage("travA " .. id, nome, "guild")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .."x.ogg")
+	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "f" then
+		SendAddonMessage("zemlYa " .. id, nome, "guild")
 	end
 end
 --[[function testQuest(tabella,diam)

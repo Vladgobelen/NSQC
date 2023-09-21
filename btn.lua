@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=27
+versAddDop=28
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -16,7 +16,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:Hide();
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
-		if mioFld[nome]["объекты"][tostring(id)] == "t" then
+		if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
 			treeX(nome,myNome,id)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 		end

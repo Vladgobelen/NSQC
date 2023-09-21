@@ -167,17 +167,30 @@ if kodMsg[1] == "travA" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Густая трава. Ну видно же!"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
-			SendAddonMessage("podSkazka " .. kodMsg[2], nome, "guild")
 		end
 	end
 end
-if kodMsg[1] == "podSkazka" and message == myNome then
+if kodMsg[1] == "zemlYa" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Чистая слегка рыхлая земля.."
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "podSkazka" and kodMsg[3] == myNome then
+	if mioFld ~= nil then
+		if mioFld[kodMsg[3]] ~= nil then
 			if mioFld[myNome]["подсказки"] ~= nil then
-				SendAddonMessage("MyPodSkazka " .. kodMsg[2], mioFld[myNome]["подсказки"][tostring(kodMsg[2])], "guild")
+				mioFld[myNome]["подсказки"][tostring(kodMsg[2])] = message
+				SendAddonMessage("MyPodSkazka " .. kodMsg[2], message, "guild")
 			end
 		end
 	end
