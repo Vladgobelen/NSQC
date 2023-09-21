@@ -17,6 +17,10 @@ if testQ[myNome]["q33nik"]==nil then
 end
 testGM=gmTest(sender)
 
+if kodMsg[1] == "obgIz" then
+print(sender,kod,message)
+end
+
 if kodMsg[1] == "rasstoyanie" then
 	if mapTables == nil then
 		mapTables = {}
@@ -88,6 +92,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			rez[k] = ""
 			for i = 1, 100 do
 				j = tostring(i)
+				print(k,j,rez[k])
 				rez[k] = rez[k] .. mioFld[myNome][k][j] .. " "
 			end
 			SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
@@ -136,8 +141,12 @@ if kodMsg[1] == "obgIz" then
 			if mioFld[message]["влияние"] == nil then
 				mioFld[message]["влияние"] = {}
 			end
-			if kodMsg[4] ~= nil then
-				local podskazka = sender .. " " .. kodMsg[4]
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = kodMsg[4]
+			if kodMsg[5] ~= nil then
+				local podskazka = sender .. " " .. kodMsg[5]
 				mioFld[message]["влияние"][tostring(kodMsg[2])] = podskazka
 			else
 				mioFld[message]["влияние"][tostring(kodMsg[2])] = sender
@@ -158,6 +167,15 @@ if kodMsg[1] == "travA" then
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "podSkazka" then
+	if mioFld ~= nil then
+		if mioFld[kodMsg[3]] ~= nil then
+			if mioFld[kodMsg[3]]["подсказки"] ~= nil then
+				mioFld[kodMsg[3]]["подсказки"][tostring(kodMsg[2])] = message
+			end
 		end
 	end
 end

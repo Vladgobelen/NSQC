@@ -1625,9 +1625,18 @@ function treeX(nome,myNome,id)
 					else
 						SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
 					end
+				else
+					SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
 				end
-			else
-				SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
+			end
+		end
+		if mioFld ~= nil then
+			if mioFld[nome] ~= nil then
+				if mioFld[nome]["подсказки"] ~= nil then
+					if mioFld[nome]["подсказки"][tostring(id)] ~= nil then
+						SendAddonMessage("podSkazka " .. id .. " " .. nome, mioFld[nome]["подсказки"][tostring(id)], "guild")
+					end
+				end
 			end
 		end
 	else
