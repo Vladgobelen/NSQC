@@ -1,9 +1,7 @@
 versAdd=269
-versAddDop=22
+versAddDop=23
 bonusQuestF = 30
 local myNome = GetUnitName("player")
-ChatFrame1:AddMessage("NSQC: Клик левой кнопкой: показать аддон/скрыть аддон");
-ChatFrame1:AddMessage("NSQC: Клик правой кнопкой: показать информацию");
 btn = {};
 editB = {}
 fBtn = {}
@@ -24,7 +22,51 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self)
+		local nome = GuildFrame["selectedGuildMemberName"]
 		btn[989]:Show()
+		if testQ == nil then
+			testQ = {}
+		end
+		if testQ[myNome] == nil then
+			testQ[myNome] = {}
+		end
+		if testQ[myNome]["характеристики"] == nil then
+			testQ[myNome]["характеристики"] = {}
+		end
+		local x = math.random(1,1000)
+		if x == 1 then
+			if testQ[myNome]["характеристики"]["внимательность"] == nil then
+				testQ[myNome]["характеристики"]["внимательность"] = 1
+			else
+				testQ[myNome]["характеристики"]["внимательность"] = testQ[myNome]["характеристики"]["внимательность"]+1
+			end
+		end
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		if mioFld ~= nil then
+			if mioFld[nome] ~= nil then
+				if mioFld[nome]["подсказки"] ~= nil then
+					if mioFld[nome]["подсказки"][tostring(id)] ~= nil then
+						GameTooltip:AddLine(mioFld[nome]["подсказки"][tostring(id)])
+					end
+				end
+				if mioFld[nome]["влияние"] ~= nil then
+					if mioFld[nome]["влияние"][tostring(id)] ~= nil then
+						local skryt = mysplit(mioFld[nome]["влияние"][tostring(id)])
+						if skryt[2] ~= nil then
+							if tonumber(skryt[2]) <= testQ[myNome]["характеристики"]["внимательность"] then
+								GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
+							end
+						else
+							GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
+						end
+					end
+				end
+			end
+		end
+		GameTooltip:Show()
+	end)
+	self[id]:SetScript("OnLeave",function(self)
+		GameTooltip:Hide();
 	end)
 end
 

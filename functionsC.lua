@@ -1590,7 +1590,6 @@ function marSh()
 end
 function treeX(nome,myNome,id)
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) >=1 then
-
 		if krt == nil then
 			krt = {}
 		end
@@ -1609,7 +1608,6 @@ function treeX(nome,myNome,id)
 			end
 			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
 			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
-			SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
 		else
 			if nome == myNome then
 				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-5
@@ -1618,7 +1616,19 @@ function treeX(nome,myNome,id)
 			end
 			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
 			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-			SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
+		end
+		if testQ ~= nil then
+			if testQ[myNome] ~= nil then
+				if testQ[myNome]["характеристики"] ~= nil then
+					if testQ[myNome]["характеристики"]["скрытность"] ~= nil then
+						SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)] .. " " .. testQ[myNome]["характеристики"]["скрытность"], nome, "guild")
+					else
+						SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
+					end
+				end
+			else
+				SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
+			end
 		end
 	else
 		SendAddonMessage("travA " .. id, nome, "guild")
