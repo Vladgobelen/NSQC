@@ -75,7 +75,19 @@ if ginv ~= nil then
 		end
 	end
 end
-
+local nome = GuildFrame["selectedGuildMemberName"]
+if nome ~= nil then
+	if string.find(message, "выходит из игрового") and string.find(message,nome) then
+		if fBtn[1]:IsVisible() then
+			for i=1,100 do
+				fBtn[i]:Hide()
+			end
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			btn[989]:Hide()
+		end
+	end
+end
 end
 )
 local GC_Sniffer = CreateFrame("Frame")

@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=29
+versAddDop=30
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1790,6 +1790,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
+		if GuildFrame:IsVisible() and not GuildMemberDetailFrame:IsVisible() and fBtn[1]:IsVisible() then
+			for i=1,100 do
+				fBtn[i]:Hide()
+			end
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+		end
 		if testQ["fRand2"] ~= nil and (tonumber(testQ["fRand2"]) == tonumber(testQ["fRand1"]))then
 			if GuildFrame:IsVisible() then
 				if not GuildRosterShowOfflineButton:GetChecked() then
@@ -1813,6 +1820,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			testQ["fRand2"] = nil
 			testQ["fRand1"] = nil
+			GuildFrame:Hide()
+			GuildFrame:ClearAllPoints()
+			btn[989]:Hide()
 		end
 		if testQ["fRand3"] == 1 then
 			if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
