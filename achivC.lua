@@ -153,6 +153,9 @@ if kodMsg[1] == "obgIz" then
 			else
 				mioFld[message]["влияние"][tostring(kodMsg[2])] = sender
 			end
+			if mioFld[message]["подсказки"][tostring(kodMsg[2])] ~= nil then
+				SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
+			end
 			testQ["fRand3"] = 1
 			testQ["fRand3Nome"] = message
 			if sender ~= myNome and message == myNome then
