@@ -1,11 +1,11 @@
 versAdd=269
-versAddDop=33
+versAddDop=34
 bonusQuestF = 31
 local myNome = GetUnitName("player")
 btn = {};
 editB = {}
 fBtn = {}
-
+resursy = {}
 function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	self[id]:SetFrameStrata("FULLSCREEN")
@@ -24,6 +24,12 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnEnter",function(self)
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("FULLSCREEN")
+		end
+		if resursy[1] ~= nil then
+			resursy[1]:SetFrameStrata("FULLSCREEN")
+		end
+		if resursy[2] ~= nil then
+			resursy[2]:SetFrameStrata("FULLSCREEN")
 		end
 		local nome = GuildFrame["selectedGuildMemberName"]
 		btn[989]:Show()
@@ -74,6 +80,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("BACKGROUND")
 		end
+		resursy[1]:SetFrameStrata("BACKGROUND")
 	end)
 end
 
@@ -177,6 +184,7 @@ fBtn:configure(97,64,-256,64,64,"","");
 fBtn:configure(98,128,-256,64,64,"","");
 fBtn:configure(99,192,-256,64,64,"","");
 fBtn:configure(100,256,-256,64,64,"","");
+
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
@@ -446,13 +454,8 @@ btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
 btn:configure(989,96,-3,32,32,"","Б");
 
-
-
 btn[989]:SetScript("OnClick",function(self, button)
 	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
-	if arg1=="RightButton" then
-
-	end
 	if arg1=="LeftButton" then
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if not fBtn[1]:IsVisible() then
@@ -466,12 +469,20 @@ btn[989]:SetScript("OnClick",function(self, button)
 					btn[989]:ClearAllPoints()
 					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 				end
+				if resursy ~= nil then
+					resursy[1]:Hide()
+					resursy[2]:Hide()
+				end
 			end
 		else
 			for i=1,100 do
 				fBtn[i]:Hide()
 				btn[989]:ClearAllPoints()
 				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			end
+			if resursy ~= nil then
+				resursy[1]:Hide()
+				resursy[2]:Hide()
 			end
 		end
 	end
@@ -1805,67 +1816,153 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
-		if GuildFrame:IsVisible() and not GuildMemberDetailFrame:IsVisible() and fBtn[1]:IsVisible() then
-			for i=1,100 do
-				fBtn[i]:Hide()
+		if fBtn[1]:IsVisible() then
+			if resursy[1] == nil then
+				resursy[1] = CreateFrame("Button", nil, fBtn[10], "UIPanelButtonTemplate");
+				resursy[1]:SetFrameStrata("FULLSCREEN")
+				resursy[1]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, 0)
+				resursy[1]:SetSize(64, 64)
+				resursy[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
+				resursy[1]:SetHighlightTexture("")
 			end
-			btn[989]:ClearAllPoints()
-			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			if resursy[2] == nil then
+				resursy[2] = CreateFrame("Button", nil, fBtn[10], "UIPanelButtonTemplate");
+				resursy[2]:SetFrameStrata("FULLSCREEN")
+				resursy[2]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -64)
+				resursy[2]:SetSize(64, 64)
+				resursy[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\stog.tga")
+				resursy[2]:SetHighlightTexture("")
+			end
+			if not resursy[1]:IsVisible() then
+				resursy[1]:Show()
+				resursy[2]:Show()
+			end
+			if testQ ~= nil then
+				if testQ["brevna"] == nil then
+					testQ["brevna"] = 0
+				end
+				resursy[1]:SetText(testQ["brevna"])
+			end
+			if testQ ~= nil then
+				if testQ["stog"] == nil then
+					testQ["stog"] = 0
+				end
+				resursy[2]:SetText(testQ["stog"])
+			end
+
+			resursy[1]:SetScript("OnEnter",function(self)
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("FULLSCREEN")
+				end
+				resursy[1]:SetFrameStrata("FULLSCREEN")
+				resursy[2]:SetFrameStrata("FULLSCREEN")
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("|c0099ff99Бревна")
+				GameTooltip:Show()
+			end)
+			resursy[2]:SetScript("OnEnter",function(self)
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("FULLSCREEN")
+				end
+				resursy[1]:SetFrameStrata("FULLSCREEN")
+				resursy[2]:SetFrameStrata("FULLSCREEN")
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("|c0099ff99Трава")
+				GameTooltip:Show()
+			end)
+			resursy[1]:SetScript("OnLeave",function(self)
+				GameTooltip:Hide();
+				local str = fBtn[1]:GetFrameStrata()
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("BACKGROUND")
+				end
+				resursy[1]:SetFrameStrata("BACKGROUND")
+				resursy[2]:SetFrameStrata("BACKGROUND")
+				GameTooltip:Hide()
+			end)
+			resursy[2]:SetScript("OnLeave",function(self)
+				GameTooltip:Hide();
+				local str = fBtn[1]:GetFrameStrata()
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("BACKGROUND")
+				end
+				resursy[1]:SetFrameStrata("BACKGROUND")
+				resursy[2]:SetFrameStrata("BACKGROUND")
+				GameTooltip:Hide()
+			end)
+
+		else
+			if resursy[1] ~= nil then
+				if resursy[1]:IsVisible() then
+					resursy[1]:Hide()
+					resursy[2]:Hide()
+				end
+			end
 		end
-		if testQ["fRand2"] ~= nil and (tonumber(testQ["fRand2"]) == tonumber(testQ["fRand1"]))then
-			if GuildFrame:IsVisible() then
-				if not GuildRosterShowOfflineButton:GetChecked() then
-					local nome = GuildFrame["selectedGuildMemberName"]
-					if not fBtn[1]:IsVisible() then
-						for i=1,100 do
-							j = tostring(i)
-							fBtn[i]:Show()
-							btn[989]:ClearAllPoints()
-							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
-							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
-							if tonumber(mioFld[nome]["целостность"][tostring(i)]) < 999 then
-								fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
-							else
-								fBtn[i]:SetText("")
+
+
+			if GuildFrame:IsVisible() and not GuildMemberDetailFrame:IsVisible() and fBtn[1]:IsVisible() then
+				for i=1,100 do
+					fBtn[i]:Hide()
+				end
+				resursy[1]:Hide()
+				resursy[2]:Hide()
+				btn[989]:ClearAllPoints()
+				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+				btn[989]:Hide()
+			end
+			if testQ["fRand2"] ~= nil and (tonumber(testQ["fRand2"]) == tonumber(testQ["fRand1"]))then
+				if GuildFrame:IsVisible() then
+					if not GuildRosterShowOfflineButton:GetChecked() then
+						local nome = GuildFrame["selectedGuildMemberName"]
+						if not fBtn[1]:IsVisible() then
+							for i=1,100 do
+								j = tostring(i)
+								fBtn[i]:Show()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
+								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
+								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
+								if tonumber(mioFld[nome]["целостность"][tostring(i)]) < 999 then
+									fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
+								else
+									fBtn[i]:SetText("")
+								end
 							end
 						end
 					end
 				end
+				testQ["fRand2"] = nil
+				testQ["fRand1"] = nil
+				GuildFrame:Hide()
 			end
-			testQ["fRand2"] = nil
-			testQ["fRand1"] = nil
-			GuildFrame:Hide()
-			GuildFrame:ClearAllPoints()
-			btn[989]:Hide()
-		end
-		if testQ["fRand3"] == 1 then
-			if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-				for i = 1,100 do
-					if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
-						fBtn[i]:SetText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)])
+			if testQ["fRand3"] == 1 then
+				if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+					for i = 1,100 do
+						if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
+							fBtn[i]:SetText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)])
+						end
 					end
 				end
+				testQ["fRand3"] = nil
+				testQ["fRand3Nome"] = nil
 			end
-			testQ["fRand3"] = nil
-			testQ["fRand3Nome"] = nil
-		end
-		if testQ["fRand4"] == 1 then
-			if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-				for i = 1,100 do
-					j = tostring(i)
-					fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-					fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-					if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
-						fBtn[i]:SetText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)])
-					else
-						fBtn[i]:SetText("")
+			if testQ["fRand4"] == 1 then
+				if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+					for i = 1,100 do
+						j = tostring(i)
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+						if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
+							fBtn[i]:SetText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)])
+						else
+							fBtn[i]:SetText("")
+						end
 					end
 				end
+				testQ["fRand4"] = nil
+				testQ["fRand4Nome"] = nil
 			end
-			testQ["fRand4"] = nil
-			testQ["fRand4Nome"] = nil
-		end
 
 		if btn[6] == nil or not btn[6]:IsVisible() then
 			btn[2]:Hide()

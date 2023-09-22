@@ -22,6 +22,8 @@ libs\f.ogg
 libs\z.tga
 libs\t.tga
 libs\f.tga
+libs\b.tga
+libs\stog.tga
 ##################
 
 emblem.tga
