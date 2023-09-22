@@ -76,8 +76,8 @@ if kodMsg[1] == "shMFld" and message == myNome then
 	local rez = {}
 	if sender ~= myNome then
 		if mioFld == nil then
+			mioFld = {}
 			if mioFld[myNome] == nil then
-				mioFld = {}
 				mioFld[myNome] = {}
 				mioFld[myNome]["объекты"] = {}
 				mioFld[myNome]["целостность"] = {}

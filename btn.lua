@@ -1,6 +1,6 @@
 versAdd=269
 versAddDop=32
-bonusQuestF = 30
+bonusQuestF = 31
 local myNome = GetUnitName("player")
 btn = {};
 editB = {}
