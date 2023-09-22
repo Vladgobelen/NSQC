@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=31
+versAddDop=32
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -22,6 +22,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self)
+		for i = 1,100 do
+			fBtn[i]:SetFrameStrata("FULLSCREEN")
+		end
 		local nome = GuildFrame["selectedGuildMemberName"]
 		btn[989]:Show()
 		if testQ == nil then
@@ -67,6 +70,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end)
 	self[id]:SetScript("OnLeave",function(self)
 		GameTooltip:Hide();
+		local str = fBtn[1]:GetFrameStrata()
+		for i = 1,100 do
+			fBtn[i]:SetFrameStrata("BACKGROUND")
+		end
 	end)
 end
 
@@ -444,17 +451,7 @@ btn:configure(989,96,-3,32,32,"","Б");
 btn[989]:SetScript("OnClick",function(self, button)
 	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
 	if arg1=="RightButton" then
-		local str = fBtn[1]:GetFrameStrata()
-		if str == "BACKGROUND" then
-			for i = 1,100 do
-				fBtn[i]:SetFrameStrata("FULLSCREEN")
-			end
-		end
-		if str == "FULLSCREEN" then
-			for i = 1,100 do
-				fBtn[i]:SetFrameStrata("BACKGROUND")
-			end
-		end
+
 	end
 	if arg1=="LeftButton" then
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
