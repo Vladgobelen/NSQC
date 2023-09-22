@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=30
+versAddDop=31
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8,7 +8,7 @@ fBtn = {}
 
 function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
-	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	self[id]:SetFrameStrata("FULLSCREEN")
 	self[id]:SetPoint("CENTER",posex, posey)
 	self[id]:SetSize(sizex, sizey)
 	self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
@@ -439,25 +439,43 @@ btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
 btn:configure(989,96,-3,32,32,"","Б");
 
+
+
 btn[989]:SetScript("OnClick",function(self, button)
-	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-	if not fBtn[1]:IsVisible() then
-		if not GuildRosterShowOfflineButton:GetChecked() then
-			local nome = GuildFrame["selectedGuildMemberName"]
-			testQ["fRand1"] = math.random(1,1000000)
-			SendAddonMessage("shMFld " .. testQ["fRand1"], nome, "guild")
+	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
+	if arg1=="RightButton" then
+		local str = fBtn[1]:GetFrameStrata()
+		if str == "BACKGROUND" then
+			for i = 1,100 do
+				fBtn[i]:SetFrameStrata("FULLSCREEN")
+			end
+		end
+		if str == "FULLSCREEN" then
+			for i = 1,100 do
+				fBtn[i]:SetFrameStrata("BACKGROUND")
+			end
+		end
+	end
+	if arg1=="LeftButton" then
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+		if not fBtn[1]:IsVisible() then
+			if not GuildRosterShowOfflineButton:GetChecked() then
+				local nome = GuildFrame["selectedGuildMemberName"]
+				testQ["fRand1"] = math.random(1,1000000)
+				SendAddonMessage("shMFld " .. testQ["fRand1"], nome, "guild")
+			else
+				for i=1,100 do
+					fBtn[i]:Hide()
+					btn[989]:ClearAllPoints()
+					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+				end
+			end
 		else
 			for i=1,100 do
 				fBtn[i]:Hide()
 				btn[989]:ClearAllPoints()
 				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 			end
-		end
-	else
-		for i=1,100 do
-			fBtn[i]:Hide()
-			btn[989]:ClearAllPoints()
-			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 		end
 	end
 end)
