@@ -1,11 +1,40 @@
 versAdd=269
-versAddDop=34
+versAddDop=35
 bonusQuestF = 31
 local myNome = GetUnitName("player")
 btn = {};
 editB = {}
 fBtn = {}
 resursy = {}
+vybor = {}
+function vybor:configure(id)
+	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	self[id]:SetSize(128, 128)
+	self[id]:Hide();
+	self[id]:SetScript("OnEnter",function(self)
+		vybor[1]:Show()
+		vybor[2]:Show()
+		if mioFld[myNome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Утрамбовать")
+			GameTooltip:Show()
+		end
+		if mioFld[myNome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Копать")
+			GameTooltip:Show()
+		end
+	end)
+	self[id]:SetScript("OnLeave",function(self)
+		vybor[1]:Hide()
+		vybor[2]:Hide()
+		GameTooltip:Show()
+	end)
+	self[id]:SetScript("OnClick",function(self)
+		print(testQ["idp"])
+	end)
+end
 function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	self[id]:SetFrameStrata("FULLSCREEN")
@@ -22,6 +51,37 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self)
+		local nome = GuildFrame["selectedGuildMemberName"]
+		if mioFld[nome]["объекты"][tostring(id)] == "z" then
+			if vybor[1] == nil then
+				vybor:configure(1)
+				vybor:configure(2)
+				vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",-64, 96)
+				vybor[2]:SetPoint("CENTER", fBtn[id],"CENTER",64, 96)
+				vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+				vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+				vybor[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+				vybor[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+				vybor[1]:Show()
+				vybor[2]:Show()
+				if testQ ~= nil then
+					testQ["idp"] = id
+				end
+			end
+			if not vybor[1]:IsVisible() then
+				vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",-64, 96)
+				vybor[2]:SetPoint("CENTER", fBtn[id],"CENTER",64, 96)
+				vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+				vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+				vybor[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+				vybor[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+				vybor[1]:Show()
+				vybor[2]:Show()
+				if testQ ~= nil then
+					testQ["idp"] = id
+				end
+			end
+		end
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("FULLSCREEN")
 		end
@@ -75,6 +135,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self)
+		if vybor[1]:IsVisible() then
+			vybor[1]:Hide()
+			vybor[2]:Hide()
+		end
 		GameTooltip:Hide();
 		local str = fBtn[1]:GetFrameStrata()
 		for i = 1,100 do
