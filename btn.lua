@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=35
+versAddDop=36
 bonusQuestF = 31
 local myNome = GetUnitName("player")
 btn = {};
@@ -533,7 +533,7 @@ btn[989]:SetScript("OnClick",function(self, button)
 					btn[989]:ClearAllPoints()
 					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 				end
-				if resursy ~= nil then
+				if resursy[1] ~= nil then
 					resursy[1]:Hide()
 					resursy[2]:Hide()
 				end
@@ -544,7 +544,7 @@ btn[989]:SetScript("OnClick",function(self, button)
 				btn[989]:ClearAllPoints()
 				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 			end
-			if resursy ~= nil then
+			if resursy[1] ~= nil then
 				resursy[1]:Hide()
 				resursy[2]:Hide()
 			end
