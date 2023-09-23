@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=36
+versAddDop=37
 bonusQuestF = 31
 local myNome = GetUnitName("player")
 btn = {};
@@ -8,31 +8,70 @@ fBtn = {}
 resursy = {}
 vybor = {}
 function vybor:configure(id)
+	local nome = GuildFrame["selectedGuildMemberName"]
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 	self[id]:SetSize(128, 128)
 	self[id]:Hide();
-	self[id]:SetScript("OnEnter",function(self)
+	vybor[id]:SetScript("OnEnter",function(self)
 		vybor[1]:Show()
 		vybor[2]:Show()
-		if mioFld[myNome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Утрамбовать")
 			GameTooltip:Show()
 		end
-		if mioFld[myNome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 then
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 and tonumber(testQ["brevna"]) >= 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Копать")
 			GameTooltip:Show()
 		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 and tonumber(testQ["brevna"]) < 10 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:Show()
+		end
 	end)
-	self[id]:SetScript("OnLeave",function(self)
+	vybor[id]:SetScript("OnLeave",function(self)
 		vybor[1]:Hide()
 		vybor[2]:Hide()
+		testQ["temp"] = nil
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
+			vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 then
+			vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+		end
 		GameTooltip:Show()
 	end)
-	self[id]:SetScript("OnClick",function(self)
-		print(testQ["idp"])
+	vybor[id]:SetScript("OnClick",function(self)
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\topto.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\toptop.ogg")
+				SendAddonMessage("TopTop " .. testQ["idp"], nome, "guild")
+				testQ["temp"] = nil
+				vybor[1]:Hide()
+				vybor[2]:Hide()
+			end
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 then
+			if tonumber(testQ["brevna"]) >= 10 then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopko.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\kopkop.ogg")
+					SendAddonMessage("KopKop " .. testQ["idp"], nome, "guild")
+					testQ["temp"] = nil
+					testQ["brevna"] = tonumber(testQ["brevna"])-10
+					vybor[1]:Hide()
+					vybor[2]:Hide()
+				end
+			end
+		end
 	end)
 end
 function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
@@ -135,9 +174,11 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self)
-		if vybor[1]:IsVisible() then
-			vybor[1]:Hide()
-			vybor[2]:Hide()
+		if vybor[1]~= nil then
+			if vybor[1]:IsVisible() then
+				vybor[1]:Hide()
+				vybor[2]:Hide()
+			end
 		end
 		GameTooltip:Hide();
 		local str = fBtn[1]:GetFrameStrata()

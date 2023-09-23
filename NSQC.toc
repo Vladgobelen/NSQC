@@ -26,6 +26,15 @@ libs\b.tga
 libs\stog.tga
 libs\kopkop.tga
 libs\toptop.tga
+libs\kopkop.ogg
+libs\toptop.ogg
+libs\m.tga
+libs\zt.tga
+libs\h.tga
+libs\uz.tga
+libs\ms.tga
+libs\topto.tga
+libs\kopko.tga
 ##################
 
 emblem.tga

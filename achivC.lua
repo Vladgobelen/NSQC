@@ -210,6 +210,30 @@ if kodMsg[1] == "MyPodSkazka" then
 		end
 	end
 end
+if kodMsg[1] == "TopTop" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Несколько следов на рыхлой земле"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "KopKop" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Дыра в земле"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if  kodMsg[1] == "NSGChatY" then
 	local kk=1
 	for i=1+(tonumber(kodMsg[2])-1)*200,tonumber(kodMsg[2])*200 do
