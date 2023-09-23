@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=5
+versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2097,15 +2097,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 			if testQ["fRand4"] == 1 then
-				if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-					for i = 1,100 do
-						j = tostring(i)
-						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-						if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
-							fBtn[i]:SetText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)])
-						else
-							fBtn[i]:SetText("")
+				local nome = GuildFrame["selectedGuildMemberName"]
+				if nome == testQ["fRand4Nome"] then
+					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+						for i = 1,100 do
+							j = tostring(i)
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+							if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
+								fBtn[i]:SetText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)])
+							else
+								fBtn[i]:SetText("")
+							end
 						end
 					end
 				end
@@ -2113,16 +2116,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["fRand4Nome"] = nil
 			end
 			if testQ["fRand5"] == 1 then
-				if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-					for i = 1,100 do
-						j = tostring(i)
-						if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
-							fBtn[i]:SetText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)])
-						else
-							fBtn[i]:SetText("")
+				local nome = GuildFrame["selectedGuildMemberName"]
+				if nome == testQ["fRand5Nome"] then
+					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+						for i = 1,100 do
+							j = tostring(i)
+							if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
+								fBtn[i]:SetText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)])
+							else
+								fBtn[i]:SetText("")
+							end
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
+							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 						end
-						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
-						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 					end
 				end
 				testQ["fRand5"] = nil
