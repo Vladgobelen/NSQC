@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=6
+versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -22,6 +22,9 @@ function vybor:configure(id)
 		end
 		if resursy[2] ~= nil then
 			resursy[2]:SetFrameStrata("FULLSCREEN")
+		end
+		if resursy[3] ~= nil then
+			resursy[3]:SetFrameStrata("FULLSCREEN")
 		end
 		vybor[1]:Show()
 		vybor[2]:Show()
@@ -103,6 +106,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				resObj(id,myNome,nome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 			end
+			if mioFld[nome]["объекты"][tostring(id)] == "m" then
+				gKam()
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
+			end
 		end
 		if arg1 == "RightButton" then
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
@@ -161,6 +168,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 		if resursy[2] ~= nil then
 			resursy[2]:SetFrameStrata("FULLSCREEN")
+		end
+		if resursy[3] ~= nil then
+			resursy[3]:SetFrameStrata("FULLSCREEN")
 		end
 		local nome = GuildFrame["selectedGuildMemberName"]
 		btn[989]:Show()
@@ -618,6 +628,7 @@ btn[989]:SetScript("OnClick",function(self, button)
 				if resursy[1] ~= nil then
 					resursy[1]:Hide()
 					resursy[2]:Hide()
+					resursy[3]:Hide()
 				end
 			end
 		else
@@ -629,6 +640,7 @@ btn[989]:SetScript("OnClick",function(self, button)
 			if resursy[1] ~= nil then
 				resursy[1]:Hide()
 				resursy[2]:Hide()
+				resursy[3]:Hide()
 			end
 		end
 	end
@@ -1979,9 +1991,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\stog.tga")
 				resursy[2]:SetHighlightTexture("")
 			end
+			if resursy[3] == nil then
+				resursy[3] = CreateFrame("Button", nil, fBtn[10], "UIPanelButtonTemplate");
+				resursy[3]:SetFrameStrata("FULLSCREEN")
+				resursy[3]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -128)
+				resursy[3]:SetSize(64, 64)
+				resursy[3]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
+				resursy[3]:SetHighlightTexture("")
+			end
 			if not resursy[1]:IsVisible() then
 				resursy[1]:Show()
 				resursy[2]:Show()
+				resursy[3]:Show()
 			end
 			if testQ ~= nil then
 				if testQ["brevna"] == nil then
@@ -1994,6 +2015,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					testQ["stog"] = 0
 				end
 				resursy[2]:SetText(testQ["stog"])
+			end
+			if testQ ~= nil then
+				if testQ["kamen"] == nil then
+					testQ["kamen"] = 0
+				end
+				resursy[3]:SetText(testQ["kamen"])
 			end
 
 			resursy[1]:SetScript("OnEnter",function(self)
@@ -2016,6 +2043,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				GameTooltip:AddLine("|c0099ff99Трава")
 				GameTooltip:Show()
 			end)
+			resursy[3]:SetScript("OnEnter",function(self)
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("FULLSCREEN")
+				end
+				resursy[1]:SetFrameStrata("FULLSCREEN")
+				resursy[2]:SetFrameStrata("FULLSCREEN")
+				resursy[3]:SetFrameStrata("FULLSCREEN")
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("|c0099ff99Камень")
+				GameTooltip:Show()
+			end)
 			resursy[1]:SetScript("OnLeave",function(self)
 				GameTooltip:Hide();
 				local str = fBtn[1]:GetFrameStrata()
@@ -2024,6 +2062,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				resursy[1]:SetFrameStrata("BACKGROUND")
 				resursy[2]:SetFrameStrata("BACKGROUND")
+				resursy[3]:SetFrameStrata("BACKGROUND")
 				GameTooltip:Hide()
 			end)
 			resursy[2]:SetScript("OnLeave",function(self)
@@ -2034,6 +2073,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				resursy[1]:SetFrameStrata("BACKGROUND")
 				resursy[2]:SetFrameStrata("BACKGROUND")
+				resursy[3]:SetFrameStrata("BACKGROUND")
+				GameTooltip:Hide()
+			end)
+			resursy[3]:SetScript("OnLeave",function(self)
+				GameTooltip:Hide();
+				local str = fBtn[1]:GetFrameStrata()
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("BACKGROUND")
+				end
+				resursy[1]:SetFrameStrata("BACKGROUND")
+				resursy[2]:SetFrameStrata("BACKGROUND")
+				resursy[3]:SetFrameStrata("BACKGROUND")
 				GameTooltip:Hide()
 			end)
 
@@ -2042,6 +2093,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				if resursy[1]:IsVisible() then
 					resursy[1]:Hide()
 					resursy[2]:Hide()
+					resursy[3]:Hide()
 				end
 			end
 		end
@@ -2053,6 +2105,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				resursy[1]:Hide()
 				resursy[2]:Hide()
+				resursy[3]:Hide()
 				btn[989]:ClearAllPoints()
 				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 				btn[989]:Hide()

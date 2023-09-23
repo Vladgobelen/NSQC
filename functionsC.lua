@@ -1714,6 +1714,12 @@ function resObj(id,myNome,nome)
 		end
 	end
 end
+function gKam()
+	local x = math.random(1,500)
+	if x == 500 then
+		testQ["kamen"] = testQ["kamen"]+1
+	end
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
