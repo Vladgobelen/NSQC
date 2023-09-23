@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=7
+versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -617,6 +617,24 @@ btn[989]:SetScript("OnClick",function(self, button)
 		if not fBtn[1]:IsVisible() then
 			if not GuildRosterShowOfflineButton:GetChecked() then
 				local nome = GuildFrame["selectedGuildMemberName"]
+				for Zc=1,GetNumGuildMembers(true) do
+					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+					local msgZ3n = tonumber (msgZ3)
+					if name == nome then
+						if officerNote ~= "" then
+							testQ["fldLvl"] = string.sub(officerNote,1,1)
+						else
+							testQ["fldLvl"] = 1
+						end
+					end
+					if name == myNome then
+						if officerNote ~= "" then
+							testQ["fldLvl"] = string.sub(officerNote,1,1)
+						else
+							testQ["mioFldLvl"] = 1
+						end
+					end
+				end
 				testQ["fRand1"] = math.random(1,1000000)
 				SendAddonMessage("shMFld " .. testQ["fRand1"], nome, "guild")
 			else

@@ -1610,9 +1610,9 @@ function treeX(nome,myNome,id)
 			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
 		else
 			if nome == myNome then
-				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-5
+				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-math.round(((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
 			else
-				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-1
+				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-math.round(((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
 			end
 			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
 			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
@@ -1697,13 +1697,13 @@ function resObj(id,myNome,nome)
 				if mioFld[nome]["целостность"] ~= nil then
 					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
 						if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
-							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+5
+							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+math.round(((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
 						else
 							mioFld[nome]["целостность"][tostring(id)] = 999
 						end
 					else
 						if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
-							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+1
+							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+math.round(((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
 						else
 							mioFld[nome]["целостность"][tostring(id)] = 999
 						end
