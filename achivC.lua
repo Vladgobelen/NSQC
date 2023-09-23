@@ -136,6 +136,41 @@ if kodMsg[1] == "MioFld" then
 		j = tostring(i)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
+	if mioFld[sender]["подсказки"] == nil then
+		mioFld[sender]["подсказки"] = {}
+	end
+	for i = 1, 100 do
+		j = tostring(i)
+		if mioFld[sender]["объекты"] ~= nil then
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "t" then
+				mioFld[sender]["подсказки"][j] = "Определенно это дерево.."
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "f" then
+				mioFld[sender]["подсказки"][j] = "Густая трава! Ну видно же!"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "m" then
+				mioFld[sender]["подсказки"][j] = "Каменоломня"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "z" then
+				mioFld[sender]["подсказки"][j] = "Чистая слегка рыхлая земля"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "zt" then
+				mioFld[sender]["подсказки"][j] = "Хорошо утрамбованная земля"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "h" then
+				mioFld[sender]["подсказки"][j] = "Хижина"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "uz" then
+				mioFld[sender]["подсказки"][j] = "Еще трамбовать и трамбовать"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "ms" then
+				mioFld[sender]["подсказки"][j] = "Дыра в земле"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "mx" then
+				mioFld[sender]["подсказки"][j] = "Полуразрушенная каменоломня"
+			end
+		end
+	end
 	testQ["fRand2"] = kodMsg[4]
 end
 
@@ -187,32 +222,13 @@ if kodMsg[1] == "zemlYa" then
 		end
 	end
 end
-if kodMsg[1] == "podSkazka" and kodMsg[3] == myNome then
-	if mioFld ~= nil then
-		if mioFld[kodMsg[3]] ~= nil then
-			if mioFld[myNome]["подсказки"] ~= nil then
-				SendAddonMessage("MyPodSkazka " .. kodMsg[2], mioFld[myNome]["подсказки"][tostring(kodMsg[2])], "guild")
-			end
-		end
-	end
-end
-if kodMsg[1] == "MyPodSkazka" then
-	if mioFld ~= nil then
-		if mioFld[sender] ~= nil then
-			if mioFld[sender]["подсказки"] == nil then
-				mioFld[sender]["подсказки"] = {}
-			end
-			mioFld[sender]["подсказки"][tostring(kodMsg[2])] = message
-		end
-	end
-end
+
 if kodMsg[1] == "TopTop" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Несколько следов на рыхлой земле"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -224,7 +240,6 @@ if kodMsg[1] == "KopKop" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Дыра в земле"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -236,7 +251,6 @@ if kodMsg[1] == "uZ" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -246,9 +260,8 @@ if kodMsg[1] == "mS" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменный рудник"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -260,7 +273,6 @@ if kodMsg[1] == "mX" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -272,7 +284,6 @@ if kodMsg[1] == "mXx" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Чистая слегка рыхлая земля.."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end

@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -14,6 +14,15 @@ function vybor:configure(id)
 	self[id]:SetSize(128, 128)
 	self[id]:Hide();
 	vybor[id]:SetScript("OnEnter",function(self)
+		for i = 1,100 do
+			fBtn[i]:SetFrameStrata("FULLSCREEN")
+		end
+		if resursy[1] ~= nil then
+			resursy[1]:SetFrameStrata("FULLSCREEN")
+		end
+		if resursy[2] ~= nil then
+			resursy[2]:SetFrameStrata("FULLSCREEN")
+		end
 		vybor[1]:Show()
 		vybor[2]:Show()
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
