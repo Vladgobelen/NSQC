@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=8
+versAddDop=9
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -620,18 +620,30 @@ btn[989]:SetScript("OnClick",function(self, button)
 				for Zc=1,GetNumGuildMembers(true) do
 					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 					local msgZ3n = tonumber (msgZ3)
-					if name == nome then
-						if officerNote ~= "" then
-							testQ["fldLvl"] = string.sub(officerNote,1,1)
-						else
-							testQ["fldLvl"] = 1
+					if nome ~= myNome then
+						if name == myNome then
+							if officerNote ~= "" then
+								testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+							else
+								testQ["mioFldLvl"] = 1
+							end
 						end
-					end
-					if name == myNome then
-						if officerNote ~= "" then
-							testQ["fldLvl"] = string.sub(officerNote,1,1)
-						else
-							testQ["mioFldLvl"] = 1
+						if name == nome then
+							if officerNote ~= "" then
+								testQ["fldLvl"] = string.sub(officerNote,1,1)
+							else
+								testQ["fldLvl"] = 1
+							end
+						end
+					else
+						if name == myNome then
+							if officerNote ~= "" then
+								testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+								testQ["fldLvl"] = testQ["mioFldLvl"]
+							else
+								testQ["mioFldLvl"] = 1
+								testQ["fldLvl"] = testQ["mioFldLvl"]
+							end
 						end
 					end
 				end

@@ -8,6 +8,14 @@ function mysplit (inputstr, sep)
 	end
 	return t
 end
+function round(number)
+  if (number - (number % 0.1)) - (number - (number % 1)) < 0.5 then
+    number = number - (number % 1)
+  else
+    number = (number - (number % 1)) + 1
+  end
+ return number
+end
 function nsplit(str)
 	lines = {}
 	for s in str:gmatch("[^\r\n]+") do
@@ -1610,9 +1618,9 @@ function treeX(nome,myNome,id)
 			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
 		else
 			if nome == myNome then
-				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-math.round(((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
+				mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round(((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
 			else
-				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-math.round(((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
+				mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round(((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
 			end
 			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
 			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
@@ -1697,13 +1705,14 @@ function resObj(id,myNome,nome)
 				if mioFld[nome]["целостность"] ~= nil then
 					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
 						if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
-							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+math.round(((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
+							print((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+							mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 						else
 							mioFld[nome]["целостность"][tostring(id)] = 999
 						end
 					else
 						if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
-							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+math.round(((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])))
+							mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 						else
 							mioFld[nome]["целостность"][tostring(id)] = 999
 						end
@@ -1720,6 +1729,8 @@ function gKam()
 		testQ["kamen"] = testQ["kamen"]+1
 	end
 end
+
+
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
