@@ -1659,6 +1659,61 @@ function treeX(nome,myNome,id)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
 	end
 end
+function resObj(id,myNome,nome)
+	if krt == nil then
+		krt = {}
+	end
+	if krt["podskazki"] == nil then
+		krt["podskazki"] = 1
+	end
+	if testQ["трудовые_ресурсы"] == nil then
+		testQ["трудовые_ресурсы"] = {}
+		testQ["трудовые_ресурсы"] = 0
+	end
+	if myNome == nome then
+		if mioFld ~= nil then
+			if mioFld[myNome] ~= nil then
+				if mioFld[myNome]["целостность"] ~= nil then
+					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+						if mioFld[myNome]["целостность"][tostring(id)] < 999 then
+							mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+						else
+							mioFld[myNome]["целостность"][tostring(id)] = 999
+						end
+					else
+						if mioFld[myNome]["целостность"][tostring(id)] < 999 then
+							mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+						else
+							mioFld[myNome]["целостность"][tostring(id)] = 999
+						end
+					end
+					SendAddonMessage("resObj " .. id .. " " .. mioFld[myNome]["целостность"][tostring(id)],nome , "guild")
+				end
+			end
+		end
+	else
+		if mioFld ~= nil then
+			if mioFld[nome] ~= nil then
+				if mioFld[nome]["целостность"] ~= nil then
+					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+						if mioFld[nome]["целостность"][tostring(id)] < 999 then
+							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+5
+						else
+							mioFld[nome]["целостность"][tostring(id)] = 999
+						end
+					else
+						if mioFld[nome]["целостность"][tostring(id)] < 999 then
+							mioFld[nome]["целостность"][tostring(id)] = mioFld[nome]["целостность"][tostring(id)]+1
+						else
+							mioFld[nome]["целостность"][tostring(id)] = 999
+						end
+					end
+					SendAddonMessage("resObj " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)],nome , "guild")
+				end
+			end
+		end
+	end
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()

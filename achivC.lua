@@ -289,6 +289,24 @@ if kodMsg[1] == "mXx" then
 		end
 	end
 end
+if kodMsg[1] == "resObj" then
+	if sender ~= myNome and message == myNome then
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+	end
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["целостность"] ~= nil then
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 999 then
+					mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
+					mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
+				end
+				testQ["fRand5"] = 1
+				testQ["fRand5Nome"] = message
+			end
+		end
+	end
+end
 
 if  kodMsg[1] == "NSGChatY" then
 	local kk=1

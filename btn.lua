@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=4
+versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -94,9 +94,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown")
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
-		if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" or mioFld[nome]["объекты"][tostring(id)] == "mx" then
-			treeX(nome,myNome,id)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
+		if arg1 == "LeftButton" then
+			if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "mx" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
 		end
 		if arg1 == "RightButton" then
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
@@ -108,6 +114,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					SendAddonMessage("mX " .. id, nome, "guild")
 					testQ["temp"] = nil
 				end
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "mx" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 			end
 		end
 	end)
@@ -2101,6 +2111,22 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				testQ["fRand4"] = nil
 				testQ["fRand4Nome"] = nil
+			end
+			if testQ["fRand5"] == 1 then
+				if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+					for i = 1,100 do
+						j = tostring(i)
+						if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
+							fBtn[i]:SetText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)])
+						else
+							fBtn[i]:SetText("")
+						end
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
+						fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
+					end
+				end
+				testQ["fRand5"] = nil
+				testQ["fRand5Nome"] = nil
 			end
 
 		if btn[6] == nil or not btn[6]:IsVisible() then
