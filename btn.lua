@@ -1,5 +1,5 @@
 versAdd=269
-versAddDop=39
+versAddDop=40
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -82,11 +82,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
 	self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
 	self[id]:Hide();
+	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown")
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
-		if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
+		if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" or mioFld[nome]["объекты"][tostring(id)] == "mx" then
 			treeX(nome,myNome,id)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
+		end
+		if arg1 == "RightButton" then
+			if mioFld[nome]["объекты"][tostring(id)] == "m" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. "x.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. "x.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("mX " .. id, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self)
@@ -174,6 +187,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self)
+		local nome = GuildFrame["selectedGuildMemberName"]
 		if vybor[1]~= nil then
 			if vybor[1]:IsVisible() then
 				vybor[1]:Hide()
@@ -185,7 +199,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("BACKGROUND")
 		end
-		resursy[1]:SetFrameStrata("BACKGROUND")
+		for i = 1, 10 do
+			if resursy[i] ~= nil then
+				if resursy[i]:IsVisible() then
+					resursy[i]:SetFrameStrata("BACKGROUND")
+				end
+			end
+		end
+		fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".tga")
+		fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".tga")
 	end)
 end
 

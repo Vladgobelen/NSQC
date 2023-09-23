@@ -155,9 +155,6 @@ if kodMsg[1] == "obgIz" then
 			else
 				mioFld[message]["влияние"][tostring(kodMsg[2])] = sender
 			end
-			if mioFld[message]["подсказки"][tostring(kodMsg[2])] ~= nil then
-				SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
-			end
 			testQ["fRand3"] = 1
 			testQ["fRand3Nome"] = message
 			if sender ~= myNome and message == myNome then
@@ -258,6 +255,31 @@ if kodMsg[1] == "mS" then
 		end
 	end
 end
+if kodMsg[1] == "mX" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "mXx" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Чистая слегка рыхлая земля.."
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+
 if  kodMsg[1] == "NSGChatY" then
 	local kk=1
 	for i=1+(tonumber(kodMsg[2])-1)*200,tonumber(kodMsg[2])*200 do
