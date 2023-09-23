@@ -1,6 +1,6 @@
 versAdd=269
-versAddDop=37
-bonusQuestF = 31
+versAddDop=39
+bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
 editB = {}
@@ -50,7 +50,7 @@ function vybor:configure(id)
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\topto.tga")
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\toptop.ogg")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\uz.ogg")
 				SendAddonMessage("TopTop " .. testQ["idp"], nome, "guild")
 				testQ["temp"] = nil
 				vybor[1]:Hide()
@@ -63,7 +63,7 @@ function vybor:configure(id)
 					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopko.tga")
 					testQ["temp"] = 1
 				elseif testQ["temp"] == 1 then
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\kopkop.ogg")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 					SendAddonMessage("KopKop " .. testQ["idp"], nome, "guild")
 					testQ["temp"] = nil
 					testQ["brevna"] = tonumber(testQ["brevna"])-10
@@ -84,7 +84,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:Hide();
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
-		if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
+		if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
 			treeX(nome,myNome,id)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 		end

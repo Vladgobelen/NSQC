@@ -1647,6 +1647,14 @@ function treeX(nome,myNome,id)
 			testQ["stog"] = testQ["stog"]+1
 		end
 	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
+		SendAddonMessage("uZ " .. id, nome, "guild")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
+	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ms" then
+		SendAddonMessage("mS " .. id, nome, "guild")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
+	end
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
