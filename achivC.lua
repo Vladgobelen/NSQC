@@ -191,8 +191,7 @@ if kodMsg[1] == "podSkazka" and kodMsg[3] == myNome then
 	if mioFld ~= nil then
 		if mioFld[kodMsg[3]] ~= nil then
 			if mioFld[myNome]["подсказки"] ~= nil then
-				mioFld[myNome]["подсказки"][tostring(kodMsg[2])] = message
-				SendAddonMessage("MyPodSkazka " .. kodMsg[2], message, "guild")
+				SendAddonMessage("MyPodSkazka " .. kodMsg[2], mioFld[myNome]["подсказки"][tostring(kodMsg[2])], "guild")
 			end
 		end
 	end
