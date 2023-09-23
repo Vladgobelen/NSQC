@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=0
+versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2064,15 +2064,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				GuildFrame:Hide()
 			end
 			if testQ["fRand3"] == 1 then
-				if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-					for i = 1,100 do
-						if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
-							fBtn[i]:SetText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)])
+				local nome = GuildFrame["selectedGuildMemberName"]
+				if testQ["fRand3Nome"] == nome then
+					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+						for i = 1,100 do
+							if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
+								fBtn[i]:SetText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)])
+							end
 						end
 					end
+					testQ["fRand3"] = nil
+					testQ["fRand3Nome"] = nil
 				end
-				testQ["fRand3"] = nil
-				testQ["fRand3Nome"] = nil
 			end
 			if testQ["fRand4"] == 1 then
 				if fBtn[1] ~= nil or fBtn[1]:IsVisible() then

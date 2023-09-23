@@ -1630,7 +1630,7 @@ function treeX(nome,myNome,id)
 				end
 			end
 		end
-		SendAddonMessage("podSkazka " .. id, nome, "guild")
+		SendAddonMessage("podSkazka " .. id .. " " .. nome, mioFld[nome]["подсказка"][tostring(id)], "guild")
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
 		SendAddonMessage("travA " .. id, nome, "guild")
