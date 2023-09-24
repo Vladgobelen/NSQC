@@ -77,18 +77,18 @@ if kodMsg[1] == "shMFld" and message == myNome then
 	if sender ~= myNome then
 		if mioFld == nil then
 			mioFld = {}
-			if mioFld[myNome] == nil then
-				mioFld[myNome] = {}
-				mioFld[myNome]["объекты"] = {}
-				mioFld[myNome]["целостность"] = {}
-				mioFld[myNome]["подсказки"] = {}
-				mioFld[myNome]["влияние"] = {}
-				for i = 1, 100 do
-					j = tostring(i)
-					mioFld[myNome]["объекты"][j] = "t"
-					mioFld[myNome]["целостность"][j] = 999
-					mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
-				end
+		end
+		if mioFld[myNome] == nil then
+			mioFld[myNome] = {}
+			mioFld[myNome]["объекты"] = {}
+			mioFld[myNome]["целостность"] = {}
+			mioFld[myNome]["подсказки"] = {}
+			mioFld[myNome]["влияние"] = {}
+			for i = 1, 100 do
+				j = tostring(i)
+				mioFld[myNome]["объекты"][j] = "t"
+				mioFld[myNome]["целостность"][j] = 999
+				mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
 			end
 		end
 		for k, v in pairs(mioFld[myNome]) do
