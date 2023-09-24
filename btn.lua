@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=11
+versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -26,11 +26,29 @@ function vybor:configure(id)
 		if resursy[3] ~= nil then
 			resursy[3]:SetFrameStrata("FULLSCREEN")
 		end
-		vybor[1]:Show()
-		vybor[2]:Show()
+		for i=1,10 do
+			if vybor[i] ~= nil and vybor[i] ~= 9999 then
+				vybor[i]:Show()
+			end
+		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Утрамбовать")
+			GameTooltip:Show()
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["stog"]) >= 10 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Построить хижину")
+			GameTooltip:Show()
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["brevna"]) < 10 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:Show()
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["stog"]) < 10 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Нужно больше травы")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 and tonumber(testQ["brevna"]) >= 10 then
@@ -45,9 +63,15 @@ function vybor:configure(id)
 		end
 	end)
 	vybor[id]:SetScript("OnLeave",function(self)
-		vybor[1]:Hide()
-		vybor[2]:Hide()
+		for i=1,10 do
+			if vybor[i] ~= nil and vybor[i] ~= 9999 then
+				vybor[i]:Hide()
+			end
+		end
 		testQ["temp"] = nil
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 then
+			vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 1 then
 			vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
 		end
@@ -65,8 +89,11 @@ function vybor:configure(id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\uz.ogg")
 				SendAddonMessage("TopTop " .. testQ["idp"], nome, "guild")
 				testQ["temp"] = nil
-				vybor[1]:Hide()
-				vybor[2]:Hide()
+				for i=1,10 do
+					if vybor[i] ~= nil and vybor[i] ~= 9999 then
+						vybor[i]:Hide()
+					end
+				end
 			end
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 2 then
@@ -79,8 +106,30 @@ function vybor:configure(id)
 					SendAddonMessage("KopKop " .. testQ["idp"], nome, "guild")
 					testQ["temp"] = nil
 					testQ["brevna"] = tonumber(testQ["brevna"])-10
-					vybor[1]:Hide()
-					vybor[2]:Hide()
+					for i=1,10 do
+						if vybor[i] ~= nil and vybor[i] ~= 9999 then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 then
+			if tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["stog"]) >= 10 then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("hS " .. testQ["idp"], nome, "guild")
+					testQ["temp"] = nil
+					testQ["brevna"] = tonumber(testQ["brevna"])-10
+					testQ["stog"] = tonumber(testQ["stog"])-10
+					for i=1,10 do
+						if vybor[i] ~= nil and vybor[i] ~= 9999 then
+							vybor[i]:Hide()
+						end
+					end
 				end
 			end
 		end
@@ -130,8 +179,28 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end)
 	self[id]:SetScript("OnEnter",function(self)
 		local nome = GuildFrame["selectedGuildMemberName"]
+		for i = 1, 10 do
+			vybor[i] = 9999
+		end
+		if testQ["mioFldLvl"] == nil or tonumber(testQ["mioFldLvl"]) == 0 then
+			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
+				if vybor[1] == nil or vybor[1] == 9999 then
+					vybor:configure(1)
+					vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
+					vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+					vybor[1]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+					vybor[1]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+					end
+				end
+				for i = 2,10 do
+					vybor[i] = 9999
+				end
+			end
+		end
 		if mioFld[nome]["объекты"][tostring(id)] == "z" then
-			if vybor[1] == nil then
+			if vybor[1] == nil or vybor[1] == 9999 then
 				vybor:configure(1)
 				vybor:configure(2)
 				vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",-64, 96)
@@ -158,6 +227,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if testQ ~= nil then
 					testQ["idp"] = id
 				end
+			end
+			for i = 3,10 do
+				vybor[i] = 9999
 			end
 		end
 		for i = 1,100 do
@@ -217,10 +289,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end)
 	self[id]:SetScript("OnLeave",function(self)
 		local nome = GuildFrame["selectedGuildMemberName"]
-		if vybor[1]~= nil then
-			if vybor[1]:IsVisible() then
-				vybor[1]:Hide()
-				vybor[2]:Hide()
+		for i = 1,10 do
+			if vybor[i]~= nil and vybor[i] ~= 9999 and vybor[i]:IsVisible() then
+				vybor[i]:Hide()
 			end
 		end
 		GameTooltip:Hide();

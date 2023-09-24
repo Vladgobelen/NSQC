@@ -24,6 +24,7 @@ libs\z.tga
 libs\t.tga
 libs\f.tga
 libs\b.tga
+libs\hs.ogg
 libs\stog.tga
 libs\kopkop.tga
 libs\toptop.tga
