@@ -196,7 +196,11 @@ if kodMsg[1] == "obgIz" then
 			testQ["fRand3"] = 1
 			testQ["fRand3Nome"] = message
 			if sender ~= myNome and message == myNome then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
+				if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+				else
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
+				end
 			end
 		end
 	end
@@ -253,7 +257,7 @@ if kodMsg[1] == "hS" then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "hs"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 99
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -320,6 +324,9 @@ if kodMsg[1] == "resObj" then
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "uz" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\uz.ogg")
 		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+		end
 	end
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -345,6 +352,10 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="f" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Это трава! Ну видно же!!!"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="hs" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хижина"
 					end
 				end
 				testQ["fRand5"] = 1

@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=13
+versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -147,6 +147,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
 		if arg1 == "LeftButton" then
+			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
 				treeX(nome,myNome,id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
@@ -182,6 +186,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					SendAddonMessage("mX " .. id, nome, "guild")
 					testQ["temp"] = nil
 				end
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "mx" then
 				treeX(nome,myNome,id)
