@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=12
+versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -147,9 +147,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
 		if arg1 == "LeftButton" then
-			if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
+			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
 				treeX(nome,myNome,id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tr.ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "mx" then
 				resObj(id,myNome,nome)
@@ -161,6 +165,14 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if arg1 == "RightButton" then
+			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
 				if testQ["temp"] == nil then
 					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. "x.tga")
@@ -182,8 +194,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		for i = 1, 10 do
 			vybor[i] = 9999
 		end
-		if testQ["mioFldLvl"] == nil or tonumber(testQ["mioFldLvl"]) == 0 then
+		if testQ["mioFldLvl"] == nil or tonumber(testQ["mioFldLvl"]) == 0.5 then
 			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
+			print ("1")
 				if vybor[1] == nil or vybor[1] == 9999 then
 					vybor:configure(1)
 					vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
@@ -716,6 +729,12 @@ btn[989]:SetScript("OnClick",function(self, button)
 								testQ["fldLvl"] = testQ["mioFldLvl"]
 							end
 						end
+					end
+					if tonumber(testQ["mioFldLvl"]) == 0 then
+						testQ["mioFldLvl"] = 0.5
+					end
+					if tonumber(testQ["fldLvl"]) == 0 then
+						testQ["fldLvl"] = 0.5
 					end
 				end
 				testQ["fRand1"] = math.random(1,1000000)

@@ -305,15 +305,47 @@ if kodMsg[1] == "mXx" then
 end
 if kodMsg[1] == "resObj" then
 	if sender ~= myNome and message == myNome then
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "ms" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "mx" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "t" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tr.ogg")
+		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "f" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tr.ogg")
+		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "uz" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\uz.ogg")
+		end
 	end
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			if mioFld[message]["целостность"] ~= nil then
 				mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 999 then
-					mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
-					mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "mx" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "uz" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Дыра в земле"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ms" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="t" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Определенно это дерево.."
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="f" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Это трава! Ну видно же!!!"
+					end
 				end
 				testQ["fRand5"] = 1
 				testQ["fRand5Nome"] = message

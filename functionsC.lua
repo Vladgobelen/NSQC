@@ -1697,13 +1697,13 @@ function resObj(id,myNome,nome)
 			if mioFld[myNome] ~= nil then
 				if mioFld[myNome]["целостность"] ~= nil then
 					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-						if mioFld[myNome]["целостность"][tostring(id)] < 999 then
+						if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
 							mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
 						else
 							mioFld[myNome]["целостность"][tostring(id)] = 999
 						end
 					else
-						if mioFld[myNome]["целостность"][tostring(id)] < 999 then
+						if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
 							mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
 						else
 							mioFld[myNome]["целостность"][tostring(id)] = 999
