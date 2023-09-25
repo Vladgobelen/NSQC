@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=14
+versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -36,7 +36,7 @@ function vybor:configure(id)
 			GameTooltip:AddLine("Утрамбовать")
 			GameTooltip:Show()
 		end
-		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["stog"]) >= 10 then
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["stog"]) >= 10 and tonumber(testQ["kamen"]) >= 5 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Построить хижину")
 			GameTooltip:Show()
@@ -44,6 +44,11 @@ function vybor:configure(id)
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["brevna"]) < 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:Show()
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["kamen"]) < 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Нужно больше камня")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["stog"]) < 10 then
@@ -115,16 +120,17 @@ function vybor:configure(id)
 			end
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 then
-			if tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["stog"]) >= 10 then
+			if tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["stog"]) >= 10 and tonumber(testQ["kamen"]) >= 5 then
 				if testQ["temp"] == nil then
 					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
 					testQ["temp"] = 1
 				elseif testQ["temp"] == 1 then
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
-					SendAddonMessage("hS " .. testQ["idp"], nome, "guild")
+					SendAddonMessage("hS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 					testQ["temp"] = nil
 					testQ["brevna"] = tonumber(testQ["brevna"])-10
 					testQ["stog"] = tonumber(testQ["stog"])-10
+					testQ["kamen"] = tonumber(testQ["kamen"])-5
 					for i=1,10 do
 						if vybor[i] ~= nil and vybor[i] ~= 9999 then
 							vybor[i]:Hide()
@@ -147,6 +153,25 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedGuildMemberName"]
 		if arg1 == "LeftButton" then
+
+			if mioFld[nome]["объекты"][tostring(id)] == "h" then
+				if mapTables ~= nil then
+					if mapTables["nMapPoint"] ~= nil then
+						for k, v in pairs(mapTables["nMapPoint"]["1"]) do
+							if type(k)=="string" then
+								tKont = k
+							end
+							for k, v in pairs(mapTables["nMapPoint"]["1"][tKont]) do
+								if type(k)=="string" then
+									tLok = k
+								end
+							end
+						end
+						SendChatMessage("Мое задание где-то " .. mapTables["nMapPoint"]["1"][tKont][tLok]["p"], "guild", nil, 1)
+						testQ["nPoint"] = 1
+					end
+				end
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
 				resObj(id,myNome,nome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
@@ -187,6 +212,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["temp"] = nil
 				end
 			end
+			if mioFld[nome]["объекты"][tostring(id)] == "h" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("hS " .. id .. " " .. 999, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
 				treeX(nome,myNome,id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
@@ -199,12 +234,21 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end)
 	self[id]:SetScript("OnEnter",function(self)
 		local nome = GuildFrame["selectedGuildMemberName"]
+		testQ["hs"] = 0
+		testQ["h"] = 0
 		for i = 1, 10 do
 			vybor[i] = 9999
 		end
-		if testQ["mioFldLvl"] == nil or tonumber(testQ["mioFldLvl"]) == 0.5 then
+		for i=1,100 do
+			if  mioFld[nome]["объекты"][tostring(i)] == "h" then
+				testQ["h"] = testQ["h"]+1
+			end
+			if  mioFld[nome]["объекты"][tostring(i)] == "hs" then
+				testQ["hs"] = testQ["hs"]+1
+			end
+		end
+		if testQ["mioFldLvl"] == nil or tonumber(testQ["mioFldLvl"]) == 0.5 and testQ["hs"] < 1 and testQ["h"] < 1 then
 			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
-			print ("1")
 				if vybor[1] == nil or vybor[1] == 9999 then
 					vybor:configure(1)
 					vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
@@ -309,6 +353,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self)
+		testQ["temp"] = nil
 		local nome = GuildFrame["selectedGuildMemberName"]
 		for i = 1,10 do
 			if vybor[i]~= nil and vybor[i] ~= 9999 and vybor[i]:IsVisible() then
@@ -1817,24 +1862,40 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myMap:Hide()
 			end
 		end--]]
-
-
-		local face = GetPlayerFacing()
-		local x,y = GetPlayerMapPosition("player")
-		local testKont = tostring(GetCurrentMapContinent())
-		local testLok = tostring(GetCurrentMapZone())
 		if mapTables ~= nil then
-			if mapTables["lokRasstoyanie"] ~= nil then
-				if mapTables["lokRasstoyanie"][testKont] ~= nil then
-					if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
-						if testKont == "2" and testLok == "15" then
-							local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
-							if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < 1.5 or face > 2) then
-								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\sh.ogg")
-								if face > 1 and face < 2.5 then
+			if mapTables["nMapPoint"] ~= nil then
+				if testQ ~= nil then
+					if testQ["nPoint"] ~= nil then
+						for k, v in pairs(mapTables["nMapPoint"][tostring(testQ["nPoint"])]) do
+							if type(k)=="string" then
+								tKont = k
+							end
+							for k, v in pairs(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont]) do
+								if type(k)=="string" then
+									tLok = k
 								end
 							end
+						end
+						local face = GetPlayerFacing()
+						local x,y = GetPlayerMapPosition("player")
+						local testKont = tostring(GetCurrentMapContinent())
+						local testLok = tostring(GetCurrentMapZone())
+						if mapTables ~= nil then
+							if mapTables["lokRasstoyanie"] ~= nil then
+								if mapTables["lokRasstoyanie"][testKont] ~= nil then
+									if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+										if testKont == tostring(tKont) and testLok == tostring(tLok) then
+											local mioCel = sqrt((x-tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["x"]))^2+(y-tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["y"]))^2)
+											if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))*2 and (face < tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["f"])-0.3 or face > tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["f"])+0.3) then
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\sh.ogg")
+												if face > tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["f"])-0.8 and face < tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["f"])+0.7 then
+												end
+											end
 
+										end
+									end
+								end
+							end
 						end
 					end
 				end
@@ -2321,24 +2382,56 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			btn[1]:Hide()
 		end
 
-		local face = GetPlayerFacing()
-		local x,y = GetPlayerMapPosition("player")
-		local testKont = tostring(GetCurrentMapContinent())
-		local testLok = tostring(GetCurrentMapZone())
 		if mapTables ~= nil then
-			if mapTables["lokRasstoyanie"] ~= nil then
-				if mapTables["lokRasstoyanie"][testKont] ~= nil then
-					if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
-						if face > 1.7 and face < 1.9 then
-							local mioCel = sqrt((x-0.55834645032883)^2+(y-0.52947282791138)^2)
-							if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
-								SetView(5)
-								rtnTextF("надпись",1,"show")
-							else
-								rtnTextF("надпись",1,"hide")
+			if mapTables["nMapPoint"] ~= nil then
+				if testQ ~= nil then
+					if testQ["nPoint"] ~= nil then
+						for k, v in pairs(mapTables["nMapPoint"][tostring(testQ["nPoint"])]) do
+							if type(k)=="string" then
+								tKont = k
 							end
-						else
-							rtnTextF("надпись",1,"hide")
+							for k, v in pairs(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont]) do
+								if type(k)=="string" then
+									tLok = k
+								end
+							end
+						end
+						local face = GetPlayerFacing()
+						local x,y = GetPlayerMapPosition("player")
+						local testKont = tostring(GetCurrentMapContinent())
+						local testLok = tostring(GetCurrentMapZone())
+						if mapTables ~= nil then
+							if mapTables["lokRasstoyanie"] ~= nil then
+								if mapTables["lokRasstoyanie"][testKont] ~= nil then
+									if mapTables["lokRasstoyanie"][testKont][testLok] ~= nil then
+										if face > tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["f"])-0.1 and face < tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["f"])+0.1 then
+											local mioCel = sqrt((x-tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["x"]))^2+(y-tonumber(mapTables["nMapPoint"][tostring(testQ["nPoint"])][tKont][tLok]["y"]))^2)
+											if mioCel <= (tonumber(mapTables["lokRasstoyanie"][testKont][testLok]))/2 then
+												SetView(5)
+												local x = math.random(1,2)
+												if x == 1 then
+													rtnTextF("Твое задание в другой точке",1,"show")
+													SendChatMessage("Мое задание в другой точке...", "guild", nil, 1)
+													rtnTextF("надпись",1,"hide")
+													testQ["nPoint"] = nil
+												end
+												if x == 2 then
+													rtnTextF("Получить задание",1,"show")
+													SendAddonMessage("NSGadd", "#zzs " .. versAdd, "guild")
+													SendChatMessage("ВOЖДЬ", "guild", nil, 1)
+													SendAddonMessage("NSGadd", "#questTimerID2", "guild")
+													rtnTextF("надпись",1,"hide")
+													testQ["nPoint"] = nil
+												end
+											else
+												rtnTextF("надпись",1,"hide")
+											end
+										else
+											rtnTextF("надпись",1,"hide")
+										end
+									end
+								end
+							end
 						end
 					end
 				end

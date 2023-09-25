@@ -940,7 +940,7 @@ function rtnTextF(text,id,show)
 			rtnText[id]:SetFrameStrata("HIGH")
 			rtnText[id]:SetPoint("CENTER", UIParent, "CENTER", 55, 55)
 			rtnText[id]:SetBackdropColor(0, 103, 51, 1)
-			rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+			rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 12);
 			rtnText[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
 		else
 			if not rtnText[id]:IsVisible() then

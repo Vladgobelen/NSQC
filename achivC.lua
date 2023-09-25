@@ -39,6 +39,28 @@ if kodMsg[1] == "event1" then
 		end
 	end
 end
+if kodMsg[1] == "nMapPoint" then
+	if mapTables == nil then
+		mapTables = {}
+	end
+	if mapTables["nMapPoint"] == nil then
+		mapTables["nMapPoint"] = {}
+	end
+	if mapTables["nMapPoint"][tostring(kodMsg[2])] == nil then
+		mapTables["nMapPoint"][tostring(kodMsg[2])] = {}
+	end
+	if mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])] == nil then
+		mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])] = {}
+	end
+	if mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])] == nil then
+		mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])] = {}
+	end
+	mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])]["x"] = tonumber(kodMsg[5])
+	mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])]["y"] = tonumber(kodMsg[6])
+	mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])]["f"] = tonumber(kodMsg[7])
+	mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])]["p"] = message
+end
+
 
 if kodMsg[1] == "FailPointEvent1" then
 	if iconRis[tonumber(testQ["event1"][tonumber(message)])] ~= nil then
@@ -257,7 +279,7 @@ if kodMsg[1] == "hS" then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "hs"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 99
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
