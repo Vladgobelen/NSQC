@@ -1919,6 +1919,6 @@ local myNome = GetUnitName("player")
 local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 GC_Sniffer:SetScript("OnEvent", function (timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing)
-	debuffMove(myNome)
+	--bdf(myNome)
 end)
 

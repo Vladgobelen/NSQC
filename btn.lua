@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=15
+versAddDop=16
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2162,7 +2162,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-
+		bdf(myNome)
 		if fBtn[1]:IsVisible() then
 			if resursy[1] == nil then
 				resursy[1] = CreateFrame("Button", nil, fBtn[10], "UIPanelButtonTemplate");
@@ -2476,11 +2476,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if testQ[myNome]["настройки"] == nil then
 			testQ[myNome]["настройки"]={}
-		end
-		if testQ[myNome]["настройки"]["debuff"]=="Enable" then
-			debuffHide("Hide")
-		else
-			debuffHide("Show")
 		end
 		if testQ[myNome]["настройки"]["err"] == "Enable" then
 			if UIErrorsFrame:IsVisible() then
