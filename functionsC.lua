@@ -1289,37 +1289,39 @@ function gKam()
 end
 
 function bdf(myNome)
-	if tonumber(testQ["buffX"]) ~= nil then
-		local __,__,__,tempPoint = DebuffButton1:GetPoint()
-		local __,__,__,tempPointB = btn[991]:GetPoint()
-		if tempPoint ~= tempPointB then
-			local x,y = DebuffButton1:GetSize()
-			local getSize = UIParent:GetSize()/2
-			j = 1
-			for i=1, DEBUFF_MAX_DISPLAY do
-				if AuraButton_Update("DebuffButton", i, "HARMFUL") then
-					local name,__,__,__,__,__,__,__ = UnitDebuff("player",i)
-					local buff = _G["DebuffButton"..i]
-					if testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable" then
-						buff:ClearAllPoints()
-						if tonumber(testQ["buffX"]) < getSize then
-							buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*j, testQ["buffY"])
-							j = j+1
+	if DebuffButton1 ~= nil then
+		if tonumber(testQ["buffX"]) ~= nil then
+			local __,__,__,tempPoint = DebuffButton1:GetPoint()
+			local __,__,__,tempPointB = btn[991]:GetPoint()
+			if tempPoint ~= tempPointB then
+				local x,y = DebuffButton1:GetSize()
+				local getSize = UIParent:GetSize()/2
+				j = 1
+				for i=1, DEBUFF_MAX_DISPLAY do
+					if AuraButton_Update("DebuffButton", i, "HARMFUL") then
+						local name,__,__,__,__,__,__,__ = UnitDebuff("player",i)
+						local buff = _G["DebuffButton"..i]
+						if buff ~= nil and (testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable") then
+							buff:ClearAllPoints()
+							if tonumber(testQ["buffX"]) < getSize then
+								buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*j, testQ["buffY"])
+								j = j+1
+							else
+								buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*j, testQ["buffY"])
+								j = j+1
+							end
 						else
-							buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*j, testQ["buffY"])
-							j = j+1
+							if buff ~= nil and buff:IsVisible() then
+								buff:Hide()
+							end
 						end
-					else
-						if buff ~= nil and buff:IsVisible() then
-							local buff = _G["DebuffButton"..i]
-							buff:Hide()
-						end
+						--buff:SetAllPoints(btn[991])
 					end
 				end
 			end
-		end
-		if testQ["buffX"] == 0 then
-			testQ["buffX"]=nil
+			if testQ["buffX"] == 0 then
+				testQ["buffX"]=nil
+			end
 		end
 	end
 end

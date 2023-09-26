@@ -1,5 +1,5 @@
 versAdd=270
-versAddDop=16
+versAddDop=17
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2410,24 +2410,28 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												SetView(5)
 												local x = math.random(1,2)
 												if x == 1 then
-													rtnTextF("Твое задание в другой точке",1,"show")
-													SendChatMessage("Мое задание в другой точке...", "guild", nil, 1)
-													rtnTextF("надпись",1,"hide")
-													testQ["nPoint"] = nil
+													if iconQ[1] == nil or not iconQ[1]:IsVisible() then
+														quesT(text,"show")
+														rtnTextF("Твое задание в другой точке",1,"show")
+														SendChatMessage("Мое задание в другой точке...", "guild", nil, 1)
+													end
 												end
 												if x == 2 then
-													rtnTextF("Получить задание",1,"show")
-													SendAddonMessage("NSGadd", "#zzs " .. versAdd, "guild")
-													SendChatMessage("ВOЖДЬ", "guild", nil, 1)
-													SendAddonMessage("NSGadd", "#questTimerID2", "guild")
-													rtnTextF("надпись",1,"hide")
-													testQ["nPoint"] = nil
+													if iconQ[1] == nil or not iconQ[1]:IsVisible() then
+														quesT(text,"show")
+														rtnTextF("Получить задание",1,"show")
+														SendAddonMessage("NSGadd", "#zzs " .. versAdd, "guild")
+														SendChatMessage("ВOЖДЬ", "guild", nil, 1)
+														SendAddonMessage("NSGadd", "#questTimerID2", "guild")
+													end
 												end
 											else
 												rtnTextF("надпись",1,"hide")
+												quesT(text,"0")
 											end
 										else
 											rtnTextF("надпись",1,"hide")
+											quesT(text,"0")
 										end
 									end
 								end

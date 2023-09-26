@@ -11,6 +11,8 @@ iconChText = {}
 iconRisEv3 = {}
 iconRisEvent3 = {}
 iconRisEvent3Tex={}
+iconQ = {}
+iconQText = {}
 --1-16   17-32   33-48 49-64
 function iconCh:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
@@ -33,8 +35,16 @@ function chMuestro(iCh,X0,Y0)
 	iconCh[iCh]:SetFrameStrata("TOOLTIP")
 	iconChText[iCh]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", X0, Y0)
 end
-
-
+function iconQ:configure()
+	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	self[1]:SetSize(1024, 768)
+end
+function iconQText:configure()
+	self[1] = iconQ[1]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\quest.tga")
+	self[1]:SetSize(1024, 768)
+	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
+end
 
 function iconRis:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
@@ -75,7 +85,22 @@ function iconRisEvent3Tex:configure(id,Rx,Ry,x,y,nRis)
 	self[id]:SetTexture("Interface/COMMON/Indicator-Green.png")
 	self[id]:SetPoint("CENTER", UIParent,"BOTTOMLEFT", x, y)
 end
-
+function quesT(text,sign)
+	if sign == "show" then
+		if iconQ[1] == nil then
+			iconQ:configure()
+			iconQText:configure()
+			iconQ[1]:SetFrameStrata("TOOLTIP")
+			iconQText[1]:SetPoint("CENTER", UIParent,"CENTER",0,0)
+		else
+			iconQ[1]:Show()
+		end
+	else
+		if iconQ[1] ~= nil then
+			iconQ[1]:Hide()
+		end
+	end
+end
 function bo(n,n1)
 	for k, v in pairs(mapTables[testQ["эвент1"]]) do
 		if type(k)=="string" then
