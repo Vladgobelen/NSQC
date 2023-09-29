@@ -600,9 +600,9 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			for ii=1,15 do
 				btn[ii]:Hide();
 			end
-			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+			minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+			minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+			minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 			pokazat = 0
 		elseif id == 1 then
 			SendAddonMessage("NSGadd", zzid .. " " .. versAdd, "guild")
@@ -1316,9 +1316,9 @@ minibtn:SetMovable(true)
 --minibtn:SetNormalTexture("Interface/AddOns/NSQuestClient/icon.tga")
 --minibtn:SetPushedTexture("Interface/AddOns/NSQuestClient/icon.tga")
 --minibtn:SetHighlightTexture("Interface/AddOns/NSQuestClient/icon.tga")
-	minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-	minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-	minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+	minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+	minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+	minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 if testQ ~= nil then
 	if testQ["miniMapConf"] == nil then
 		myIconPos = 0
@@ -1670,9 +1670,9 @@ minibtn:SetScript("OnClick", function()
 				for ii=1,15 do
 					btn[ii]:Hide();
 				end
-				minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-				minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-				minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+				minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+				minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+				minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 			end)
 			for ii=3,15 do
 				btn[ii]:Show();
@@ -1681,17 +1681,17 @@ minibtn:SetScript("OnClick", function()
 				showRB(myNome)
 			end
 			pokazatChk=0
-			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Green.png")
-			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Green.png")
-			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Green.png")
+			minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+			minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+			minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 			pokazat=1
 		else
 			for ii=3,15 do
 				btn[ii]:Hide();
 			end
-			minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-			minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-			minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+			minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+			minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+			minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 			pokazat=0
 			myCheckButton1:Hide()
 			myCheckButton2:Hide()
@@ -3137,9 +3137,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[991]:Hide()
 				pokazatChk=0
 				pokazat=0
-				minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-				minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-				minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+				minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+				minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+				minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 			end
 			end);
 			myCheckButton1:SetScript("OnKeyDown",function(self,key)
@@ -3158,9 +3158,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[997]:Hide()
 				btn[991]:Hide()
 				pokazatChk=0
-				minibtn:SetNormalTexture("Interface/COMMON/Indicator-Red.png")
-				minibtn:SetPushedTexture("Interface/COMMON/Indicator-Red.png")
-				minibtn:SetHighlightTexture("Interface/COMMON/Indicator-Red.png")
+				minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+				minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+				minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 			end
 			end);
 		end

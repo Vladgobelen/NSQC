@@ -24,6 +24,7 @@ libs\z.tga
 libs\t.tga
 libs\f.tga
 libs\b.tga
+libs\emblem.tga
 libs\ok.tga
 libs\no.tga
 libs\hs.ogg
