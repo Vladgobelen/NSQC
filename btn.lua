@@ -1,5 +1,5 @@
-versAdd=270
-versAddDop=17
+versAdd=271
+versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -50,7 +50,7 @@ end
 
 function vybor:configure(id)
 	local nome = GuildFrame["selectedName"]
-	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+	self[id] = CreateFrame("Button", nil, UIParent, "");
 	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 	self[id]:SetSize(128, 128)
 	self[id]:Hide();
@@ -183,7 +183,7 @@ function vybor:configure(id)
 	end)
 end
 function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
-	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+	self[id] = CreateFrame("Button", nil, UIParent, "");
 	self[id]:SetFrameStrata("FULLSCREEN")
 	self[id]:SetPoint("CENTER",posex, posey)
 	self[id]:SetSize(sizex, sizey)
@@ -220,6 +220,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							resursy[3]:Hide()
 						end
 						btn[989]:Hide()
+						btn[989]:ClearAllPoints()
+						btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 					end
 				end
 			end
@@ -2224,7 +2226,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		bdf(myNome)
 		if fBtn[1]:IsVisible() then
 			if resursy[1] == nil then
-				resursy[1] = CreateFrame("Button", nil, fBtn[10], "UIPanelButtonTemplate");
+				resursy[1] = CreateFrame("Button", nil, fBtn[10], "");
 				resursy[1]:SetFrameStrata("FULLSCREEN")
 				resursy[1]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, 0)
 				resursy[1]:SetSize(64, 64)
@@ -2232,7 +2234,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[1]:SetHighlightTexture("")
 			end
 			if resursy[2] == nil then
-				resursy[2] = CreateFrame("Button", nil, fBtn[10], "UIPanelButtonTemplate");
+				resursy[2] = CreateFrame("Button", nil, fBtn[10], "");
 				resursy[2]:SetFrameStrata("FULLSCREEN")
 				resursy[2]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -64)
 				resursy[2]:SetSize(64, 64)
@@ -2240,7 +2242,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[2]:SetHighlightTexture("")
 			end
 			if resursy[3] == nil then
-				resursy[3] = CreateFrame("Button", nil, fBtn[10], "UIPanelButtonTemplate");
+				resursy[3] = CreateFrame("Button", nil, fBtn[10], "");
 				resursy[3]:SetFrameStrata("FULLSCREEN")
 				resursy[3]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -128)
 				resursy[3]:SetSize(64, 64)
