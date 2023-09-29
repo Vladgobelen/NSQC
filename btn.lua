@@ -7,8 +7,49 @@ editB = {}
 fBtn = {}
 resursy = {}
 vybor = {}
+okNo = {}
+function okNo:configure(id,sign)
+	if sign == "show" then
+		if okNo[1] == nil then
+			self[1] = CreateFrame("Button", nil, UIParent, "");
+			self[1]:SetFrameStrata("FULLSCREEN")
+			self[1]:SetPoint("BOTTOMLEFT", iconQText[1],"BOTTOMLEFT",20, 20)
+			self[1]:SetSize(128, 128)
+			self[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ok.tga")
+			self[1]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ok.tga")
+			self[2] = CreateFrame("Button", nil, UIParent, "");
+			self[2]:SetFrameStrata("FULLSCREEN")
+			self[2]:SetPoint("BOTTOMRIGHT", iconQText[1],"BOTTOMRIGHT",-20, 20)
+			self[2]:SetSize(128, 128)
+			self[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\no.tga")
+			self[2]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\no.tga")
+		else
+			okNo[1]:Show()
+			okNo[2]:Show()
+		end
+	else
+		okNo[1]:Hide()
+		okNo[2]:Hide()
+	end
+	self[1]:SetScript("OnClick",function(self, button)
+		print("задание принято")
+		quesT("hide")
+		okNo:configure(1,"hide")
+		rtnTextF("Тут текст задания типа",1,"hide")
+		okNo[1]:Hide()
+		okNo[2]:Hide()
+	end)
+	self[2]:SetScript("OnClick",function(self, button)
+		quesT("hide")
+		okNo:configure(1,"hide")
+		rtnTextF("Тут текст задания типа",1,"hide")
+		okNo[1]:Hide()
+		okNo[2]:Hide()
+	end)
+end
+
 function vybor:configure(id)
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 	self[id]:SetSize(128, 128)
@@ -151,7 +192,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:Hide();
 	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown")
 	self[id]:SetScript("OnClick",function(self, button)
-		local nome = GuildFrame["selectedGuildMemberName"]
+		local nome = GuildFrame["selectedName"]
 		if arg1 == "LeftButton" then
 
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
@@ -167,8 +208,18 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								end
 							end
 						end
-						SendChatMessage("Мое задание где-то " .. mapTables["nMapPoint"]["1"][tKont][tLok]["p"], "guild", nil, 1)
-						testQ["nPoint"] = 1
+						quesT("show")
+						okNo:configure(1,"show")
+						rtnTextF("Тут текст задания типа",1,"show")
+						for i=1,100 do
+							fBtn[i]:Hide()
+						end
+						if resursy[1] ~= nil then
+							resursy[1]:Hide()
+							resursy[2]:Hide()
+							resursy[3]:Hide()
+						end
+						btn[989]:Hide()
 					end
 				end
 			end
@@ -233,7 +284,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self)
-		local nome = GuildFrame["selectedGuildMemberName"]
+		local nome = GuildFrame["selectedName"]
 		testQ["hs"] = 0
 		testQ["h"] = 0
 		for i = 1, 10 do
@@ -309,7 +360,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if resursy[3] ~= nil then
 			resursy[3]:SetFrameStrata("FULLSCREEN")
 		end
-		local nome = GuildFrame["selectedGuildMemberName"]
+		local nome = GuildFrame["selectedName"]
 		btn[989]:Show()
 		if testQ == nil then
 			testQ = {}
@@ -354,7 +405,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end)
 	self[id]:SetScript("OnLeave",function(self)
 		testQ["temp"] = nil
-		local nome = GuildFrame["selectedGuildMemberName"]
+		local nome = GuildFrame["selectedName"]
 		for i = 1,10 do
 			if vybor[i]~= nil and vybor[i] ~= 9999 and vybor[i]:IsVisible() then
 				vybor[i]:Hide()
@@ -747,13 +798,21 @@ btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
 btn:configure(989,96,-3,32,32,"","Б");
 
+function test()
+
+	for k, v in pairs(WhoFrame) do
+		print(k,v, v[1], v[2], v[3])
+	end
+
+end
+
 btn[989]:SetScript("OnClick",function(self, button)
 	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
 	if arg1=="LeftButton" then
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if not fBtn[1]:IsVisible() then
-			if not GuildRosterShowOfflineButton:GetChecked() then
-				local nome = GuildFrame["selectedGuildMemberName"]
+			if not GuildFrameLFGButton:GetChecked() then
+				local nome = GuildFrame["selectedName"]
 				for Zc=1,GetNumGuildMembers(true) do
 					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 					local msgZ3n = tonumber (msgZ3)
@@ -853,7 +912,7 @@ editB[3]:Hide()
 
 editB[1]:SetScript("OnEditFocusLost",function(self)
 	local str = editB[1]:GetText()
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	if testQ["клик994"] == nil then
 		SendAddonMessage("zametkaNS", str, "guild")
 			--editB[1]:SetText("")
@@ -862,7 +921,7 @@ end)
 
 editB[2]:SetScript("OnEditFocusLost",function(self)
 	local str = editB[2]:GetText()
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	if testQ["клик993"] == nil then
 		SendAddonMessage("pamyatkaNS " .. nome, str, "guild")
 	end
@@ -870,7 +929,7 @@ end)
 
 editB[3]:SetScript("OnEditFocusLost",function(self)
 	local str = editB[3]:GetText()
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	if testQ["клик992"] == nil then
 		if str ~= nil and str ~= "" then
 			SendAddonMessage("otzyvNS " .. nome, str, "guild")
@@ -882,7 +941,7 @@ editB[3]:SetScript("OnEditFocusLost",function(self)
 	end
 end)
 editB[3]:SetScript("OnEnterPressed",function(self)
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	editB[3]:Hide()
 end)
 
@@ -963,7 +1022,7 @@ btn[994]:SetScript("OnEnter",function(self)
 	btn[993]:Show()
 	btn[992]:Show()
 	btn[989]:Show()
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	local zametka
 	SendAddonMessage("#получить_заметку", nome, "guild")
 	if testQ~=nil then
@@ -997,7 +1056,7 @@ btn[992]:SetScript("OnEnter",function(self)
 	btn[993]:Show()
 	btn[992]:Show()
 	btn[989]:Show()
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	local zametka
 	SendAddonMessage("#получить_отзыв", nome, "guild")
 	if testQ ~= nil then
@@ -1031,7 +1090,7 @@ btn[993]:SetScript("OnEnter",function(self)
 	btn[993]:Show()
 	btn[992]:Show()
 	btn[989]:Show()
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	local zametka
 	if zametki~=nil then
 		if zametki[nome] == nil or zametki[nome] == "" then
@@ -1049,7 +1108,7 @@ end)
 
 btn[994]:SetScript("OnClick",function(self, button)
 	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	if nome == myNome then
 		if editB[1]:IsVisible() then
 			testQ["клик994"] = 1
@@ -1076,7 +1135,7 @@ btn[991]:SetScript("OnClick",function(self, button)
 end)
 btn[993]:SetScript("OnClick",function(self, button)
 	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	if editB[2]:IsVisible() then
 		testQ["клик993"] = 1
 		editB[2]:Hide()
@@ -1087,7 +1146,7 @@ btn[993]:SetScript("OnClick",function(self, button)
 end)
 btn[992]:SetScript("OnClick",function(self, button)
 	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-	local nome = GuildFrame["selectedGuildMemberName"]
+	local nome = GuildFrame["selectedName"]
 	if editB[3]:IsVisible() then
 		testQ["клик992"] = 1
 		editB[3]:Hide()
@@ -2301,8 +2360,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			if testQ["fRand2"] ~= nil and (tonumber(testQ["fRand2"]) == tonumber(testQ["fRand1"]))then
 				if GuildFrame:IsVisible() then
-					if not GuildRosterShowOfflineButton:GetChecked() then
-						local nome = GuildFrame["selectedGuildMemberName"]
+					if not GuildFrameLFGButton:GetChecked() then
+						local nome = GuildFrame["selectedName"]
 						if not fBtn[1]:IsVisible() then
 							for i=1,100 do
 								j = tostring(i)
@@ -2322,10 +2381,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				testQ["fRand2"] = nil
 				testQ["fRand1"] = nil
-				GuildFrame:Hide()
+				FriendsFrame:Hide()
 			end
 			if testQ["fRand3"] == 1 then
-				local nome = GuildFrame["selectedGuildMemberName"]
+				local nome = GuildFrame["selectedName"]
 				if testQ["fRand3Nome"] == nome then
 					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 						for i = 1,100 do
@@ -2339,7 +2398,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 			if testQ["fRand4"] == 1 then
-				local nome = GuildFrame["selectedGuildMemberName"]
+				local nome = GuildFrame["selectedName"]
 				if nome == testQ["fRand4Nome"] then
 					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 						for i = 1,100 do
@@ -2358,7 +2417,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["fRand4Nome"] = nil
 			end
 			if testQ["fRand5"] == 1 then
-				local nome = GuildFrame["selectedGuildMemberName"]
+				local nome = GuildFrame["selectedName"]
 				if nome == testQ["fRand5Nome"] then
 					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 						for i = 1,100 do
@@ -2411,27 +2470,31 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												local x = math.random(1,2)
 												if x == 1 then
 													if iconQ[1] == nil or not iconQ[1]:IsVisible() then
-														quesT(text,"show")
+														quesT("show")
+														okNo:configure(1,"show")
 														rtnTextF("Твое задание в другой точке",1,"show")
-														SendChatMessage("Мое задание в другой точке...", "guild", nil, 1)
+														--SendChatMessage("Мое задание в другой точке...", "guild", nil, 1)
 													end
 												end
 												if x == 2 then
 													if iconQ[1] == nil or not iconQ[1]:IsVisible() then
-														quesT(text,"show")
+														quesT("show")
+														okNo:configure(1,"show")
 														rtnTextF("Получить задание",1,"show")
-														SendAddonMessage("NSGadd", "#zzs " .. versAdd, "guild")
-														SendChatMessage("ВOЖДЬ", "guild", nil, 1)
-														SendAddonMessage("NSGadd", "#questTimerID2", "guild")
+														--SendAddonMessage("NSGadd", "#zzs " .. versAdd, "guild")
+														--SendChatMessage("ВOЖДЬ", "guild", nil, 1)
+														--SendAddonMessage("NSGadd", "#questTimerID2", "guild")
 													end
 												end
 											else
 												rtnTextF("надпись",1,"hide")
-												quesT(text,"0")
+												quesT("0")
+												okNo:configure(1,"hide")
 											end
 										else
 											rtnTextF("надпись",1,"hide")
-											quesT(text,"0")
+											quesT("0")
+											okNo:configure(1,"hide")
 										end
 									end
 								end

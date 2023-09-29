@@ -37,12 +37,12 @@ function chMuestro(iCh,X0,Y0)
 end
 function iconQ:configure()
 	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
-	self[1]:SetSize(1024, 768)
+	self[1]:SetSize(512, 396)
 end
 function iconQText:configure()
 	self[1] = iconQ[1]:CreateTexture("myAddonIcon", "OVERLAY")
 	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\quest.tga")
-	self[1]:SetSize(1024, 768)
+	self[1]:SetSize(512, 396)
 	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
 end
 
@@ -85,12 +85,12 @@ function iconRisEvent3Tex:configure(id,Rx,Ry,x,y,nRis)
 	self[id]:SetTexture("Interface/COMMON/Indicator-Green.png")
 	self[id]:SetPoint("CENTER", UIParent,"BOTTOMLEFT", x, y)
 end
-function quesT(text,sign)
+function quesT(sign)
 	if sign == "show" then
 		if iconQ[1] == nil then
 			iconQ:configure()
 			iconQText:configure()
-			iconQ[1]:SetFrameStrata("TOOLTIP")
+			iconQ[1]:SetFrameStrata("HIGH")
 			iconQText[1]:SetPoint("CENTER", UIParent,"CENTER",0,0)
 		else
 			iconQ[1]:Show()

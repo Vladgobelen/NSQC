@@ -24,6 +24,8 @@ libs\z.tga
 libs\t.tga
 libs\f.tga
 libs\b.tga
+libs\ok.tga
+libs\no.tga
 libs\hs.ogg
 libs\stog.tga
 libs\kopkop.tga
