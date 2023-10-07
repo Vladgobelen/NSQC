@@ -109,12 +109,11 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			for i = 1, 100 do
 				j = tostring(i)
 				mioFld[myNome]["объекты"][j] = "t"
-				mioFld[myNome]["целостность"][j] = 999
-				mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
+				mioFld[myNome]["целостность"][j] = "999"
 			end
 		end
 		for k, v in pairs(mioFld[myNome]) do
-			if k == "объекты" or k == "целостность" then
+			if k == "объекты" then
 				if rez[k] == nil then
 					rez[k] = mioFld[myNome][k]["1"] .. " "
 				end
@@ -123,6 +122,33 @@ if kodMsg[1] == "shMFld" and message == myNome then
 					rez[k] = rez[k] .. mioFld[myNome][k][j] .. " "
 				end
 				SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
+			end
+			if k == "целостность" then
+				if rez[1] == nil then
+					rez[1] = mioFld[myNome][k]["1"] .. " "
+				end
+				for i = 2, 35 do
+					j = tostring(i)
+					rez[1] = rez[1] .. mioFld[myNome][k][j] .. " "
+				end
+				if rez[2] == nil then
+					rez[2] = mioFld[myNome][k]["36"] .. " "
+				end
+				for i = 37, 70 do
+					j = tostring(i)
+					rez[2] = rez[2] .. mioFld[myNome][k][j] .. " "
+				end
+				if rez[3] == nil then
+					rez[3] = mioFld[myNome][k]["71"] .. " "
+				end
+				for i = 72, 100 do
+					j = tostring(i)
+					rez[3] = rez[3] .. mioFld[myNome][k][j] .. " "
+				end
+				SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
+				SendAddonMessage("MioFld1 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[1], "guild")
+				SendAddonMessage("MioFld2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
+				SendAddonMessage("MioFld3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
 			end
 		end
 	else
@@ -143,9 +169,57 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			end
 		end
 		testQ["fRand2"] = kodMsg[2]
+		testQ["fRandD1nome"] = myNome
+		testQ["fRandD1"] = 1
+		testQ["fRandD2"] = 1
+		testQ["fRandD3"] = 1
 	end
 end
-
+if kodMsg[1] == "MioFld1" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	mioFld[sender][kodMsg[3]] = {}
+	for i = 1, 35 do
+		j = tostring(i)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD1"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFld2" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	mioFld[sender][kodMsg[3]] = {}
+	for i = 36, 70 do
+		j = tostring(i)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD2"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFld3" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	mioFld[sender][kodMsg[3]] = {}
+	for i = 71, 100 do
+		j = tostring(i)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD3"] = 1
+	testQ["fRandD1nome"] = sender
+end
 if kodMsg[1] == "MioFld" then
 	if mioFld == nil then
 		mioFld = {}
@@ -906,8 +980,9 @@ if kod == "gUp" and sender == myNome then
 		testQ["gUp"][Zc] = officerNote
 		level = tonumber(level)
 		if rankName == "И.О. Констебля" then
+		print(rankName,name)
 			if officerNote == "" and publicNote == "" then
-				SendChatMessage(name .. " " .. level .. " лвл " .. rankName, "OFFICER", nil, 1)
+				--SendChatMessage(name .. " " .. level .. " лвл " .. rankName, "OFFICER", nil, 1)
 				--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
 				if kickList == nil then
 					kickList = "/gpromote " .. name .. "\n"
@@ -968,6 +1043,7 @@ end
 if kodMsg[1] == "#отправить_заметку" and kodMsg[2] == myNome then
 	testQ["tempZametka"] = {}
 	testQ["tempZametka"][kodMsg[3]] = message
+	print(kodMsg[3])
 end
 if kodMsg[1] == "#отправить_отзыв" and kodMsg[2] == myNome then
 	testQ["tempOtzyv"] = {}

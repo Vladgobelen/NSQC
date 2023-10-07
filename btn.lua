@@ -1,5 +1,5 @@
 versAdd=271
-versAddDop=1
+versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -182,6 +182,36 @@ function vybor:configure(id)
 		end
 	end)
 end
+if myNome == "Хефе" or myNome == "Витинари" then
+	local gTest1,gTest2
+	gtg = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+	gtg:SetPoint("BOTTOMLEFT",350, 370)
+	gtg:SetSize(32, 32)
+	gtg:RegisterForClicks("RightButtonDown", "LeftButtonDown")
+	gtg:SetScript("OnClick",function(self,button)
+		if arg1 == "LeftButton" then
+			for i=1, 50 do
+				if gTest[i] ~= nil then
+					gTest1 = gTest[i]
+					gTest2 = i
+				end
+			end
+			if gTest1 ~= nil then
+				if ChatFrame1:IsVisible() then
+					ChatFrame1EditBox:Show()
+					ChatFrame1EditBox:SetFocus()
+					ChatFrame1EditBox:SetText("/ginvite " .. gTest1)
+					gTest[gTest2]=nil
+					gTest1 = nil
+				end
+				testQ["gTimer"] = 5
+				gtg:Disable()
+			end
+		elseif arg1 == "RightButton" then
+			gtest()
+		end
+	end)
+end
 function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "");
 	self[id]:SetFrameStrata("FULLSCREEN")
@@ -194,7 +224,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome = GuildFrame["selectedName"]
 		if arg1 == "LeftButton" then
-
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
 				if mapTables ~= nil then
 					if mapTables["nMapPoint"] ~= nil then
@@ -800,14 +829,6 @@ btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
 btn:configure(989,96,-3,32,32,"","Б");
 
-function test()
-
-	for k, v in pairs(WhoFrame) do
-		print(k,v, v[1], v[2], v[3])
-	end
-
-end
-
 btn[989]:SetScript("OnClick",function(self, button)
 	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
 	if arg1=="LeftButton" then
@@ -864,6 +885,17 @@ btn[989]:SetScript("OnClick",function(self, button)
 					resursy[2]:Hide()
 					resursy[3]:Hide()
 				end
+				for i = 1,100 do
+					if dmG[i] ~= nil and dmG[i]:IsVisible()then
+						dmG[i]:Hide()
+					end
+				end
+				for i = 1,3 do
+					resursy[i]:Hide()
+				end
+				for i=101,103 do
+					dmG[i]:Hide()
+				end
 			end
 		else
 			for i=1,100 do
@@ -875,6 +907,19 @@ btn[989]:SetScript("OnClick",function(self, button)
 				resursy[1]:Hide()
 				resursy[2]:Hide()
 				resursy[3]:Hide()
+			end
+			for i = 1,100 do
+				if dmG[i] ~= nil and dmG[i]:IsVisible()then
+					dmG[i]:Hide()
+				end
+			end
+			for i = 1,3 do
+				resursy[i]:Hide()
+			end
+			for i=101,103 do
+				if dmG[i] ~= nil then
+					dmG[i]:Hide()
+				end
 			end
 		end
 	end
@@ -1067,6 +1112,7 @@ btn[992]:SetScript("OnEnter",function(self)
 				zametka = "Отзывы об игроке. Заполняются кем угодно, видит кто угодно. Пока отзывов об этом персонаже нет."
 			else
 				zametka = testQ["tempOtzyv"][nome]
+				print(zametka)
 			end
 		else
 			zametka = "Отзывы об игроке. Заполняются кем угодно, видит кто угодно. Пока отзывов об этом персонаже нет."
@@ -1781,6 +1827,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 1 then
 		timeElapsed = 0
 
+		if testQ["gTimer"] ~= nil then
+			gtg:SetText(testQ["gTimer"])
+			testQ["gTimer"] = testQ["gTimer"] - 1
+		end
+		if testQ["gTimer"] == 0 then
+			gtg:SetText("")
+			gtg:Enable()
+			testQ["gTimer"] = nil
+		end
+
 		if testQ["эвент3"] == 0 then
 			if myNome ~= "Витинари" then
 				local w = GetScreenWidth()
@@ -2068,6 +2124,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if krt["chernila"][j] ~= nil then
 						if testQ["chD"][j] == nil then
 							local kont, lok, x1, y1, m, c = krtChernGetXY(j)
+							print (kont,testKont,lok,testLok)
 							if testKont == kont then
 								if testLok == lok then
 									local mioCel=sqrt((x-x1)^2+(y-y1)^2)
@@ -2224,6 +2281,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 		bdf(myNome)
+		if resursy[1] ~= nil and resursy[1]:IsVisible() then
+			if dmG[101] == nil or not dmG[101]:IsVisible() then
+				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+				dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			end
+			dmG[101]:Show()
+			dmG[102]:Show()
+			dmG[103]:Show()
+		end
 		if fBtn[1]:IsVisible() then
 			if resursy[1] == nil then
 				resursy[1] = CreateFrame("Button", nil, fBtn[10], "");
@@ -2258,19 +2325,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				if testQ["brevna"] == nil then
 					testQ["brevna"] = 0
 				end
-				resursy[1]:SetText(testQ["brevna"])
 			end
 			if testQ ~= nil then
 				if testQ["stog"] == nil then
 					testQ["stog"] = 0
 				end
-				resursy[2]:SetText(testQ["stog"])
 			end
 			if testQ ~= nil then
 				if testQ["kamen"] == nil then
 					testQ["kamen"] = 0
 				end
-				resursy[3]:SetText(testQ["kamen"])
 			end
 
 			resursy[1]:SetScript("OnEnter",function(self)
@@ -2372,11 +2436,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
 								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
 								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
-								if tonumber(mioFld[nome]["целостность"][tostring(i)]) < 999 then
-									fBtn[i]:SetText(mioFld[nome]["целостность"][tostring(i)])
-								else
-									fBtn[i]:SetText("")
-								end
 							end
 						end
 					end
@@ -2385,13 +2444,45 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["fRand1"] = nil
 				FriendsFrame:Hide()
 			end
+			if testQ["fRandD1"] == 1 then
+				for i=1,35 do
+					j = tostring(i)
+					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
+						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
+						dmG[i]:Show()
+					end
+				end
+				testQ["fRandD1"] = nil
+			end
+			if testQ["fRandD2"] == 1 then
+				for i=36,70 do
+					j = tostring(i)
+					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
+						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
+						dmG[i]:Show()
+					end
+				end
+				testQ["fRandD2"] = nil
+			end
+			if testQ["fRandD3"] == 1 then
+				for i=71,100 do
+					j = tostring(i)
+					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
+						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
+						dmG[i]:Show()
+					end
+				end
+				testQ["fRandD3"] = nil
+				testQ["fRandD1nome"] = nil
+			end
 			if testQ["fRand3"] == 1 then
 				local nome = GuildFrame["selectedName"]
 				if testQ["fRand3Nome"] == nome then
 					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 						for i = 1,100 do
 							if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
-								fBtn[i]:SetText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)])
+								dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,22,"FF8C00")
+								dmG[i]:Show()
 							end
 						end
 					end
@@ -2408,9 +2499,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
 							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
 							if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
-								fBtn[i]:SetText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)])
+								dmgText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)],fBtn[i],i,22,"FF8C00")
+								dmG[i]:Show()
 							else
-								fBtn[i]:SetText("")
+								if dmG[i]~=nil then
+									dmG[i]:Hide()
+								end
 							end
 						end
 					end
@@ -2425,9 +2519,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						for i = 1,100 do
 							j = tostring(i)
 							if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
-								fBtn[i]:SetText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)])
+								dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,22,"FF8C00")
+								dmG[i]:Show()
 							else
-								fBtn[i]:SetText("")
+								if dmG[i]~=nil then
+									dmG[i]:Hide()
+								end
 							end
 							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")

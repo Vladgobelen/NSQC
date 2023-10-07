@@ -931,6 +931,20 @@ function createQuickHtmlFrame(text,num,id)
 	bcsQuickFrame[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
 	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
 end
+dmG = {}
+function dmgText(text,obj,id,raz,cvet)
+	if dmG[id] == nil then
+		dmG[id] = CreateFrame("SimpleHTML", "dmG", obj)
+		dmG[id]:SetSize(64, 64)
+		dmG[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+		dmG[id]:ClearAllPoints()
+		dmG[id]:SetPoint("CENTER", obj, "CENTER", 0, -16)
+		dmG[id]:SetBackdropColor(0, 103, 51, 1)
+		dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', raz);
+	end
+		dmG[id]:SetText("<html><body><p>|cff" .. cvet .. text .. "</p></body></html>");
+end
+
 rtnText = {}
 function rtnTextF(text,id,show)
 	if show == "show" then
@@ -1289,6 +1303,18 @@ function gKam()
 end
 
 function bdf(myNome)
+	if testQ == nil then
+		testQ = {}
+	end
+	if testQ["myNome"] == nil then
+		testQ["myNome"] = {}
+	end
+	if testQ[myNome]["настройки"] == nil then
+		testQ[myNome]["настройки"] = {}
+	end
+	if  testQ[myNome]["настройки"]["debuffChkB"] == nil then
+		testQ[myNome]["настройки"]["debuffChkB"] = {}
+	end
 	if DebuffButton1 ~= nil then
 		if tonumber(testQ["buffX"]) ~= nil then
 			local __,__,__,tempPoint = DebuffButton1:GetPoint()
@@ -1325,7 +1351,19 @@ function bdf(myNome)
 		end
 	end
 end
-
+function gtest()
+	gTest = nil
+	gTest = {}
+	for i = 1, 50 do
+		local t1,t2,g,r,t3,t4,t= GetWhoInfo(i)
+		if t2 == "" then
+			if r ~= "Дреней" and r ~= "Ночная эльфийка" and r ~= "Человек" and r ~= "Ночной эльф" and r ~= "Гном" and r ~= "Дворф" then
+				gTest[i] = t1
+			end
+		end
+	end
+	print("1")
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
