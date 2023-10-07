@@ -29,6 +29,7 @@ libs\ok.tga
 libs\no.tga
 libs\hs.ogg
 libs\stog.tga
+libs\kamen.tga
 libs\kopkop.tga
 libs\toptop.tga
 libs\kopkop.ogg
