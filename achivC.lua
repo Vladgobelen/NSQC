@@ -102,15 +102,26 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		end
 		if mioFld[myNome] == nil then
 			mioFld[myNome] = {}
+		end
+		if mioFld[myNome]["объекты"] == nil then
 			mioFld[myNome]["объекты"] = {}
-			mioFld[myNome]["целостность"] = {}
-			mioFld[myNome]["подсказки"] = {}
-			mioFld[myNome]["влияние"] = {}
 			for i = 1, 100 do
 				j = tostring(i)
 				mioFld[myNome]["объекты"][j] = "t"
+			end
+		end
+		if mioFld[myNome]["целостность"] == nil then
+			mioFld[myNome]["целостность"] = {}
+			for i = 1, 100 do
+				j = tostring(i)
 				mioFld[myNome]["целостность"][j] = "999"
 			end
+		end
+		if mioFld[myNome]["подсказки"] == nil then
+			mioFld[myNome]["подсказки"] = {}
+		end
+		if mioFld[myNome]["влияние"] == nil then
+			mioFld[myNome]["влияние"] = {}
 		end
 		for k, v in pairs(mioFld[myNome]) do
 			if k == "объекты" then
@@ -123,6 +134,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				end
 				SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
 			end
+			rez={}
 			if k == "целостность" then
 				if rez[1] == nil then
 					rez[1] = mioFld[myNome][k]["1"] .. " "
@@ -182,7 +194,9 @@ if kodMsg[1] == "MioFld1" then
 	if mioFld[sender] == nil then
 		mioFld[sender] = {}
 	end
-	mioFld[sender][kodMsg[3]] = {}
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
 	for i = 1, 35 do
 		j = tostring(i)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
@@ -191,30 +205,17 @@ if kodMsg[1] == "MioFld1" then
 	testQ["fRandD1nome"] = sender
 end
 if kodMsg[1] == "MioFld2" then
-	if mioFld == nil then
-		mioFld = {}
-	end
-	if mioFld[sender] == nil then
-		mioFld[sender] = {}
-	end
-	mioFld[sender][kodMsg[3]] = {}
-	for i = 36, 70 do
-		j = tostring(i)
+print(message,kodMsg[1],kodMsg[2],kodMsg[3])
+	for i = 1, 35 do
+		j = tostring(i+35)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
 	testQ["fRandD2"] = 1
 	testQ["fRandD1nome"] = sender
 end
 if kodMsg[1] == "MioFld3" then
-	if mioFld == nil then
-		mioFld = {}
-	end
-	if mioFld[sender] == nil then
-		mioFld[sender] = {}
-	end
-	mioFld[sender][kodMsg[3]] = {}
-	for i = 71, 100 do
-		j = tostring(i)
+	for i = 1, 30 do
+		j = tostring(i+70)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
 	testQ["fRandD3"] = 1
@@ -227,7 +228,9 @@ if kodMsg[1] == "MioFld" then
 	if mioFld[sender] == nil then
 		mioFld[sender] = {}
 	end
-	mioFld[sender][kodMsg[3]] = {}
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
 	for i = 1, 100 do
 		j = tostring(i)
 		mioFld[sender][kodMsg[3]][j] = msg[i]

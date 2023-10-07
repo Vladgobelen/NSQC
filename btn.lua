@@ -1,5 +1,5 @@
 versAdd=271
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -891,10 +891,14 @@ btn[989]:SetScript("OnClick",function(self, button)
 					end
 				end
 				for i = 1,3 do
-					resursy[i]:Hide()
+					if resursy[i] ~= nil then
+						resursy[i]:Hide()
+					end
 				end
 				for i=101,103 do
-					dmG[i]:Hide()
+					if dmG[i]~= nil then
+						dmG[i]:Hide()
+					end
 				end
 			end
 		else
@@ -2055,14 +2059,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["enWorld"] = nil
 			end
 		end
-		if testQ[myNome]["настройки"] == nil then
-			testQ[myNome]["настройки"]={}
-		end
-		if testQ[myNome]["настройки"]["watch"]=="Enable" then
-			WatchFrame:Hide()
-		end
-		if testQ[myNome]["настройки"]["watch"]=="Disable" then
-			WatchFrame:Show()
+		if testQ ~= nil then
+			if testQ[myNome] ~= nil then
+				if testQ[myNome]["настройки"] == nil then
+					testQ[myNome]["настройки"]={}
+				end
+				if testQ[myNome]["настройки"]["watch"]=="Enable" then
+					WatchFrame:Hide()
+				end
+				if testQ[myNome]["настройки"]["watch"]=="Disable" then
+					WatchFrame:Show()
+				end
+			end
 		end
 
 		if editB[1]:IsVisible() or editB[2]:IsVisible() or editB[3]:IsVisible() then
