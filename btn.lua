@@ -1,5 +1,5 @@
 versAdd=271
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2463,6 +2463,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
 						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
 						dmG[i]:Show()
+					else
+						dmgText("",fBtn[i],i,22,"FF8C00")
+						dmG[i]:Show()
 					end
 				end
 				testQ["fRandD1"] = nil
@@ -2473,6 +2476,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
 						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
 						dmG[i]:Show()
+					else
+						dmgText("",fBtn[i],i,22,"FF8C00")
+						dmG[i]:Show()
 					end
 				end
 				testQ["fRandD2"] = nil
@@ -2482,6 +2488,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					j = tostring(i)
 					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
 						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
+						dmG[i]:Show()
+					else
+						dmgText("",fBtn[i],i,22,"FF8C00")
 						dmG[i]:Show()
 					end
 				end
