@@ -205,7 +205,6 @@ if kodMsg[1] == "MioFld1" then
 	testQ["fRandD1nome"] = sender
 end
 if kodMsg[1] == "MioFld2" then
-print(message,kodMsg[1],kodMsg[2],kodMsg[3])
 	for i = 1, 35 do
 		j = tostring(i+35)
 		mioFld[sender][kodMsg[3]][j] = msg[i]

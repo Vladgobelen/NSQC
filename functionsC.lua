@@ -1199,6 +1199,7 @@ function treeX(nome,myNome,id)
 		if testQ ~= nil then
 			if testQ["brevna"] ~= nil and testQ["brevna"] < 100 then
 				testQ["brevna"] = testQ["brevna"]+1
+				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
 		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .."x.ogg")
@@ -1207,6 +1208,7 @@ function treeX(nome,myNome,id)
 		SendAddonMessage("zemlYa " .. id, nome, "guild")
 		if testQ["stog"] ~= nil and testQ["stog"] < 100 then
 			testQ["stog"] = testQ["stog"]+1
+			dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 		end
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
@@ -1298,7 +1300,10 @@ end
 function gKam()
 	local x = math.random(1,500)
 	if x == 500 then
-		testQ["kamen"] = testQ["kamen"]+1
+		if testQ["kamen"] ~= nil and testQ["kamen"] < 100 then
+			testQ["kamen"] = testQ["kamen"]+1
+			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+		end
 	end
 end
 

@@ -225,33 +225,39 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		local nome = GuildFrame["selectedName"]
 		if arg1 == "LeftButton" then
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
-				if mapTables ~= nil then
-					if mapTables["nMapPoint"] ~= nil then
-						for k, v in pairs(mapTables["nMapPoint"]["1"]) do
-							if type(k)=="string" then
-								tKont = k
-							end
-							for k, v in pairs(mapTables["nMapPoint"]["1"][tKont]) do
+				if nome == myNome then
+					if mapTables ~= nil then
+						if mapTables["nMapPoint"] ~= nil then
+							for k, v in pairs(mapTables["nMapPoint"]["1"]) do
 								if type(k)=="string" then
-									tLok = k
+									tKont = k
+								end
+								for k, v in pairs(mapTables["nMapPoint"]["1"][tKont]) do
+									if type(k)=="string" then
+										tLok = k
+									end
 								end
 							end
+							quesT("show")
+							okNo:configure(1,"show")
+							rtnTextF("Тут текст задания типа",1,"show")
+							for i=1,100 do
+								fBtn[i]:Hide()
+							end
+							if resursy[1] ~= nil then
+								resursy[1]:Hide()
+								resursy[2]:Hide()
+								resursy[3]:Hide()
+							end
+							btn[989]:Hide()
+							btn[989]:ClearAllPoints()
+							btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 						end
-						quesT("show")
-						okNo:configure(1,"show")
-						rtnTextF("Тут текст задания типа",1,"show")
-						for i=1,100 do
-							fBtn[i]:Hide()
-						end
-						if resursy[1] ~= nil then
-							resursy[1]:Hide()
-							resursy[2]:Hide()
-							resursy[3]:Hide()
-						end
-						btn[989]:Hide()
-						btn[989]:ClearAllPoints()
-						btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 					end
+				else
+					quesT("show")
+					okNo:configure(1,"show")
+					rtnTextF("Ты кто такой? Я тебя не знаю.",1,"show")
 				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
@@ -2132,7 +2138,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if krt["chernila"][j] ~= nil then
 						if testQ["chD"][j] == nil then
 							local kont, lok, x1, y1, m, c = krtChernGetXY(j)
-							print (kont,testKont,lok,testLok)
 							if testKont == kont then
 								if testLok == lok then
 									local mioCel=sqrt((x-x1)^2+(y-y1)^2)
