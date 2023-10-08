@@ -573,7 +573,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				testQ["hs"] = testQ["hs"]+1
 			end
 		end
-		if testQ["mioFldLvl"] == nil or tonumber(testQ["mioFldLvl"]) == 0.5 and testQ["hs"] < 1 and testQ["h"] < 1 then
+		if testQ["hs"] < 1 and testQ["h"] < 1 then
 			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
 				if vybor[1] == nil or vybor[1] == 9999 then
 					vybor:configure(1)
