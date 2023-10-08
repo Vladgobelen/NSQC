@@ -20,6 +20,28 @@ end
 if message == "!повысить" and sender == myNome then
 	SendAddonMessage("gUp", "", "guild")
 end
+if msg[1] == "!добавить" and msg[2] == "предмет" and testGM~=nil then
+	local nazvanie
+	local n
+	if pQuest["items"] == nil then
+		pQuest["items"] = {}
+	end
+	if #pQuest["items"] == 0 then
+		n = 1
+	else
+		n = #pQuest["items"]+1
+	end
+	pQuest["items"][n] = {}
+	pQuest["items"][n]["itemNum"] = msg[3]
+	pQuest["items"][n]["itemEnStuck"] = msg[4]
+	nazvanie = msg[5]
+	for i=6,#msg do
+		nazvanie = nazvanie .. " " .. msg[i]
+	end
+	pQuest["items"][n]["itemName"] = nazvanie
+	print(pQuest["items"][n]["itemName"] .. " успешно добавлен")
+end
+
 if msg[1] == "!добавить" and msg[2] == "квест" and testGM~=nil then
 	local testIDqq
 	if pQuest == nil then

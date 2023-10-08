@@ -1,4 +1,4 @@
-versAdd=272
+versAdd=273
 versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -10,7 +10,7 @@ vybor = {}
 okNo = {}
 function okNo:configure(id,sign)
 	if sign == "show" then
-		if testQ["okno"] ~= "completed" then
+		if testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend" then
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
 				self[1]:SetFrameStrata("FULLSCREEN")
@@ -31,6 +31,7 @@ function okNo:configure(id,sign)
 				end
 			end
 		else
+		print("1")
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
 				self[1]:SetFrameStrata("FULLSCREEN")
@@ -49,102 +50,67 @@ function okNo:configure(id,sign)
 		end
 	end
 	self[1]:SetScript("OnClick",function(self, button)
+		if testQ["okno"] == "itemQend" then
+			SendChatMessage("Я отправил Возждю все что нужно", "OFFICER", nil, 1)
+			SendAddonMessage("#hQ1itemQ", testQ[myNome]["взятый_квест_х"], "guild")
+			hX()
+		end
+		if testQ["okno"] == "itemQ" then
+			SendChatMessage("Скоро я пришлю Вождю многа многа стаков вот этого: " .. testQ[myNome]["itemName"], "OFFICER", nil, 1)
+			testQ[myNome]["взятый_квест"] = "itemQ"
+			testQ[myNome]["взятый_квест_х"] = "itemQ"
+			testQ[myNome]["itemQend"]=nil
+			testQ["okno"] = nil
+		end
 		if testQ["okno"] == "completed" then
 			SendChatMessage("ВОЖДЬ, я выполнил ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])), "OFFICER", nil, 1)
 			SendAddonMessage("#hQ1", testQ[myNome]["взятый_квест_х"], "guild")
 			testQ["okno"] = nil
-			quesT("hide")
-			okNo:configure(1,"hide")
-			rtnTextF("fdsa",1,"hide")
-			for i=1,100 do
-				fBtn[i]:Hide()
-			end
-			if resursy[1] ~= nil then
-				resursy[1]:Hide()
-				resursy[2]:Hide()
-				resursy[3]:Hide()
-			end
-			btn[989]:Hide()
-			btn[989]:ClearAllPoints()
-			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			hX()
 		end
 		if testQ["okno"] == "99991" then
 			SendChatMessage("Ухожу, ухожу...", nil, 1)
 			testQ["okno"] = nil
-			quesT("hide")
-			okNo:configure(1,"hide")
-			rtnTextF("fdsa",1,"hide")
-			for i=1,100 do
-				fBtn[i]:Hide()
-			end
-			if resursy[1] ~= nil then
-				resursy[1]:Hide()
-				resursy[2]:Hide()
-				resursy[3]:Hide()
-			end
-			btn[989]:Hide()
-			btn[989]:ClearAllPoints()
-			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			hX()
 		end
 		if testQ["okno"] == nil then
-			quesT("hide")
-			okNo:configure(1,"hide")
-			rtnTextF("fdsa",1,"hide")
-			for i=1,100 do
-				fBtn[i]:Hide()
-			end
-			if resursy[1] ~= nil then
-				resursy[1]:Hide()
-				resursy[2]:Hide()
-				resursy[3]:Hide()
-			end
-			btn[989]:Hide()
-			btn[989]:ClearAllPoints()
-			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			hX()
 			testQ["okno"] = nil
 		end
 		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
 			testQ["okno"] = nil
-			quesT("hide")
-			okNo:configure(1,"hide")
-			rtnTextF("fdsa",1,"hide")
-			for i=1,100 do
-				fBtn[i]:Hide()
-			end
-			if resursy[1] ~= nil then
-				resursy[1]:Hide()
-				resursy[2]:Hide()
-				resursy[3]:Hide()
-			end
-			btn[989]:Hide()
-			btn[989]:ClearAllPoints()
-			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			hX()
 		end
 	end)
 	if self[2] ~= nil then
 		self[2]:SetScript("OnClick",function(self, button)
-			if testQ["okno"] == "99991" then
-				SendChatMessage("Ухожу, но я еще вернусь...", nil, 1)
+			if testQ["okno"] == "itemQ" then
+				SendChatMessage("Я злонамеренно отказываются от квеста.", "OFFICER", nil, 1)
+				for Zc=1,GetNumGuildMembers(true) do
+					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+					if name == myNome then
+						local oN = string.sub(officerNote,1,4)
+						local oN1 = string.sub(officerNote,6,7)
+						local oN2 = string.sub(officerNote,8,8)
+						if oN ~= "" then
+							if tonumber(date("%d")) ~= tonumber(oN1) then
+								GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. "1")
+							else
+								GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. tonumber(oN2)+1)
+							end
+						else
+							GuildRosterSetOfficerNote(Zc, "0000" .. " " .. date("%d") .. "1")
+						end
+					end
+				end
+				testQ[myNome]["взятый_квест"] = "9999"
+				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
-				quesT("hide")
-				okNo:configure(1,"hide")
-				rtnTextF(GetAchievementLink(tonumber(testQ["okno"])),1,"hide")
-				for i=1,100 do
-					fBtn[i]:Hide()
-				end
-				if resursy[1] ~= nil then
-					resursy[1]:Hide()
-					resursy[2]:Hide()
-					resursy[3]:Hide()
-				end
-				btn[989]:Hide()
-				btn[989]:ClearAllPoints()
-				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-			end
-			if testQ["okno"] == nil then
-				if testQ[myNome]["взятый_квест_х"] ~= nil or testQ[myNome]["взятый_квест_х"] ~= "9999" then
+				hX()
+			elseif testQ["okno"] == nil then
+				if testQ[myNome]["взятый_квест_х"] ~= nil or testQ[myNome]["взятый_квест_х"] ~= "9999" or testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
 					for Zc=1,GetNumGuildMembers(true) do
 					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 						if name == myNome then
@@ -165,38 +131,17 @@ function okNo:configure(id,sign)
 					SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])), "OFFICER", nil, 1)
 					testQ[myNome]["взятый_квест_х"] = "9999"
 					testQ["okno"] = nil
-					quesT("hide")
-					okNo:configure(1,"hide")
-					rtnTextF("fdsa",1,"hide")
-					for i=1,100 do
-						fBtn[i]:Hide()
-					end
-					if resursy[1] ~= nil then
-						resursy[1]:Hide()
-						resursy[2]:Hide()
-						resursy[3]:Hide()
-					end
-					btn[989]:Hide()
-					btn[989]:ClearAllPoints()
-					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+					hX()
 					testQ["okno"] = nil
 				else
-					quesT("hide")
-					okNo:configure(1,"hide")
-					rtnTextF("fdsa",1,"hide")
-					for i=1,100 do
-						fBtn[i]:Hide()
-					end
-					if resursy[1] ~= nil then
-						resursy[1]:Hide()
-						resursy[2]:Hide()
-						resursy[3]:Hide()
-					end
-					btn[989]:Hide()
-					btn[989]:ClearAllPoints()
-					btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+					hX()
 					testQ["okno"] = nil
 				end
+			end
+			if testQ["okno"] == "99991" then
+				SendChatMessage("Ухожу, но я еще вернусь...", nil, 1)
+				testQ["okno"] = nil
+				hX()
 			end
 			if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" then
 				SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
@@ -219,20 +164,7 @@ function okNo:configure(id,sign)
 				end
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
-				quesT("hide")
-				okNo:configure(1,"hide")
-				rtnTextF("fdsa",1,"hide")
-				for i=1,100 do
-					fBtn[i]:Hide()
-				end
-				if resursy[1] ~= nil then
-					resursy[1]:Hide()
-					resursy[2]:Hide()
-					resursy[3]:Hide()
-				end
-				btn[989]:Hide()
-				btn[989]:ClearAllPoints()
-				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+				hX()
 			end
 		end)
 	end
@@ -419,91 +351,151 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if tonumber(string.sub(testQ["mioFldLvl"],1,1)) == 0 or tonumber(string.sub(testQ["mioFldLvl"],1,1)) == 1 then
 					lvlTemp=1
 				end
-				if tonumber(lvlTemp) > tonumber(testQ["qNum"]) then
-					if nome == myNome then
-						if testQ == nil then
-							testQ = {}
-						end
-						if testQ[myNome] == nil then
-							testQ[myNome] = {}
-						end
-						if testQ[myNome]["выполненные_квесты_х"] == nil then
-							testQ[myNome]["выполненные_квесты_х"] = {}
-						end
-						if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
-							local x = math.random(1,tonumber(#pQuest["х"]))
-							for i = 1, #pQuest["х"] do
-								if testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] == nil or testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] ~= "9999" then
-									local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(pQuest["х"][x]))
-									if completed == false then
-										testQ["okno"] = pQuest["х"][x]
-										break
+				if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
+					if tonumber(lvlTemp) > tonumber(testQ["qNum"]) then
+						if nome == myNome then
+							if testQ == nil then
+								testQ = {}
+							end
+							if testQ[myNome] == nil then
+								testQ[myNome] = {}
+							end
+							if testQ[myNome]["выполненные_квесты_х"] == nil then
+								testQ[myNome]["выполненные_квесты_х"] = {}
+							end
+							if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
+								local qx = math.random(1,4)
+								if qx ~= 1 then
+									local x = math.random(1,tonumber(#pQuest["х"]))
+									for i = 1, #pQuest["х"] do
+										if testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] == nil or testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] ~= "9999" then
+											local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(pQuest["х"][x]))
+											if completed == false then
+												testQ["okno"] = pQuest["х"][x]
+												break
+											end
+										end
+									end
+									if testQ["okno"] ~= nil then
+										quesT("show")
+										okNo:configure(1,"show")
+										rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])),1,"show")
+										for i=1,100 do
+											fBtn[i]:Hide()
+										end
+										if resursy[1] ~= nil then
+											resursy[1]:Hide()
+											resursy[2]:Hide()
+											resursy[3]:Hide()
+										end
+										btn[989]:Hide()
+										btn[989]:ClearAllPoints()
+										btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+									else
+										SendChatMessage("В хижине закончились задания", "OFFICER", nil, 1)
 									end
 								end
+								if qx == 1 then
+									local qq=math.random(1,#pQuest["items"])
+									testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
+									testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
+									testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
+									testQ["okno"] = "itemQ"
+									quesT("show")
+									okNo:configure(1,"show")
+									rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+									for i=1,100 do
+										fBtn[i]:Hide()
+									end
+									if resursy[1] ~= nil then
+										resursy[1]:Hide()
+										resursy[2]:Hide()
+										resursy[3]:Hide()
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								end
 							end
-							if testQ["okno"] ~= nil then
-								quesT("show")
-								okNo:configure(1,"show")
-								rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])),1,"show")
-								for i=1,100 do
-									fBtn[i]:Hide()
+							if testQ[myNome]["взятый_квест_х"] ~= nil and testQ[myNome]["взятый_квест_х"] ~= "9999" then
+								local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(testQ[myNome]["взятый_квест_х"]))
+								if completed == false then
+									testQ["okno"] = nil
+									quesT("show")
+									okNo:configure(1,"show")
+									rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])),1,"show")
+									for i=1,100 do
+										fBtn[i]:Hide()
+									end
+									if resursy[1] ~= nil then
+										resursy[1]:Hide()
+										resursy[2]:Hide()
+										resursy[3]:Hide()
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								else
+									testQ["okno"] = "completed"
+									quesT("show")
+									rtnTextF("Ачивка " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])) .. " выполнена",1,"show")
+									okNo:configure(1,"show")
+									for i=1,100 do
+										fBtn[i]:Hide()
+									end
+									if resursy[1] ~= nil then
+										resursy[1]:Hide()
+										resursy[2]:Hide()
+										resursy[3]:Hide()
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-								end
-								btn[989]:Hide()
-								btn[989]:ClearAllPoints()
-								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-							else
-								SendChatMessage("В хижине закончились задания", "OFFICER", nil, 1)
 							end
-						end
-						if testQ[myNome]["взятый_квест_х"] ~= nil and testQ[myNome]["взятый_квест_х"] ~= "9999" then
-							local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(testQ[myNome]["взятый_квест_х"]))
-							if completed == false then
-								testQ["okno"] = nil
-								quesT("show")
-								okNo:configure(1,"show")
-								rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])),1,"show")
-								for i=1,100 do
-									fBtn[i]:Hide()
-								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-								end
-								btn[989]:Hide()
-								btn[989]:ClearAllPoints()
-								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-							else
-								testQ["okno"] = "completed"
-								quesT("show")
-								rtnTextF("Ачивка " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])) .. " выполнена",1,"show")
-								okNo:configure(1,"show")
-								for i=1,100 do
-									fBtn[i]:Hide()
-								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-								end
-								btn[989]:Hide()
-								btn[989]:ClearAllPoints()
-								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-							end
+						else
+							quesT("show")
+							okNo:configure(1,"show")
+							rtnTextF("Ты кто такой? Я тебя не знаю.",1,"show")
+							testQ["okno"] = "99991"
 						end
 					else
-						quesT("show")
-						okNo:configure(1,"show")
-						rtnTextF("Ты кто такой? Я тебя не знаю.",1,"show")
-						testQ["okno"] = "99991"
+						SendChatMessage("Следущий квест на моем гильдлвле доступен завтра, однако я всегда могу принять немного новых игроков в гильдию и получить бонус.", "OFFICER", nil, 1)
 					end
 				else
-					SendChatMessage("Следущий квест на моем гильдлвле доступен завтра, однако я всегда могу принять немного новых игроков в гильдию и получить бонус.", "OFFICER", nil, 1)
+					if testQ[myNome]["itemQend"] ~= 1 then
+						testQ["okno"] = "itemQ"
+						quesT("show")
+						okNo:configure(1,"show")
+						rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+						for i=1,100 do
+							fBtn[i]:Hide()
+						end
+						if resursy[1] ~= nil then
+							resursy[1]:Hide()
+							resursy[2]:Hide()
+							resursy[3]:Hide()
+						end
+						btn[989]:Hide()
+						btn[989]:ClearAllPoints()
+						btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+					else
+						testQ["okno"] = "itemQend"
+						quesT("show")
+						okNo:configure(1,"show")
+						rtnTextF("Я отправил Вождю, все что нужно",1,"show")
+						for i=1,100 do
+							fBtn[i]:Hide()
+						end
+						if resursy[1] ~= nil then
+							resursy[1]:Hide()
+							resursy[2]:Hide()
+							resursy[3]:Hide()
+						end
+						btn[989]:Hide()
+						btn[989]:ClearAllPoints()
+						btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+					end
 				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
@@ -935,7 +927,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					SendChatMessage("Должно стать " .. x .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["q3Stat"])), "OFFICER", nil, 1)
 				end
 				if testQ[myNome]["взятый_квест"] == "itemQ" then
-					SendChatMessage("Нужно достать " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"] .. " и прислать по почте персонажу Железобетонс", "OFFICER", nil, 1)
+					SendChatMessage("Нужно достать " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"] .. " и прислать по почте персонажу Хефе", "OFFICER", nil, 1)
 				end
 		end)
 	end
@@ -1041,7 +1033,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	if id == 995 then
 		self[id]:SetScript("OnClick",function(self, button)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			SendMail("Железобетонс", "Квест на сбор предметов", "")
+			SendMail("Хефе", "Квест на сбор предметов", "")
 			btn[995]:Hide()
 			testQ[myNome]["itemQend"] = 1
 			tempRez1 = nil

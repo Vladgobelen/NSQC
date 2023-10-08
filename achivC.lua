@@ -20,6 +20,9 @@ testGM=gmTest(sender)
 if kodMsg[1] == "#hQ1x" then
 	testQ[myNome]["взятый_квест_х"] = "9999"
 	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
+	testQ[myNome]["взятый_квест"] = "9999"
+	testQ["okno"] = nil
+	testQ[myNome]["itemQend"] = nil
 end
 
 if kodMsg[1] == "rasstoyanie" then

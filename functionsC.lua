@@ -1367,6 +1367,23 @@ function gtest()
 	end
 	print("1")
 end
+
+function hX()
+	quesT("hide")
+	okNo:configure(1,"hide")
+	rtnTextF("fdsa",1,"hide")
+	for i=1,100 do
+		fBtn[i]:Hide()
+	end
+	if resursy[1] ~= nil then
+		resursy[1]:Hide()
+		resursy[2]:Hide()
+		resursy[3]:Hide()
+	end
+	btn[989]:Hide()
+	btn[989]:ClearAllPoints()
+	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
