@@ -35,6 +35,7 @@ libs\toptop.tga
 libs\kopkop.ogg
 libs\toptop.ogg
 libs\quest.tga
+libs\hs.tga
 libs\m.ogg
 libs\tr.ogg
 libs\m.tga
