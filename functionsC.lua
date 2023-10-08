@@ -950,17 +950,15 @@ function rtnTextF(text,id,show)
 	if show == "show" then
 		if rtnText[id] == nil then
 			rtnText[id]  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
-			rtnText[id]:SetSize(222, 222)
+			rtnText[id]:SetSize(460, 396)
 			rtnText[id]:SetFrameStrata("TOOLTIP")
-			rtnText[id]:SetPoint("CENTER", UIParent, "CENTER", 55, 0)
+			rtnText[id]:SetPoint("CENTER", UIParent, "CENTER", 15, -55)
 			rtnText[id]:SetBackdropColor(0, 0, 0, 0)
 			rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 33);
-			rtnText[id]:SetText("<html><body><p>|cff000000" .. text .. "</p></body></html>");
-		else
-			if not rtnText[id]:IsVisible() then
-				rtnText[id]: Show()
-			end
+
 		end
+		rtnText[id]:SetText("<html><body><p>|cff000000" .. text .. "</p></body></html>");
+		rtnText[id]: Show()
 	else
 		if rtnText[id] ~= nil then
 			rtnText[id]: Hide()

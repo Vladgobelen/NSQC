@@ -20,7 +20,25 @@ end
 if message == "!повысить" and sender == myNome then
 	SendAddonMessage("gUp", "", "guild")
 end
-
+if msg[1] == "!добавить" and msg[2] == "квест" and testGM~=nil then
+	local testIDqq
+	if pQuest == nil then
+		pQuest = {}
+	end
+	if pQuest["х"] == nil then
+		pQuest["х"] = {}
+	end
+	for key, val in pairs(pQuest[msg[3]]) do
+		if tonumber(val) == tonumber(msg[4]) then
+			print("*Ачивка " .. val .. " " .. GetAchievementLink(tonumber(val)) .. " уже была добавлена.")
+			testIDqq=1
+		end
+	end
+	if testIDqq~=1 then
+		table.insert(pQuest[msg[3]], msg[4])
+		print("*Ачивка " .. msg[4] .. " " .. GetAchievementLink(tonumber(msg[4])) .. " была добавлена.")
+	end
+end
 if zametki == nil then
 	zametki = {}
 end

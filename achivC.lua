@@ -17,7 +17,10 @@ if testQ[myNome]["q33nik"]==nil then
 end
 testGM=gmTest(sender)
 
-
+if kodMsg[1] == "#hQ1x" then
+	testQ[myNome]["взятый_квест_х"] = "9999"
+	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
+end
 
 if kodMsg[1] == "rasstoyanie" then
 	if mapTables == nil then
