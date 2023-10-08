@@ -1319,7 +1319,7 @@ function bdf(myNome)
 		testQ[myNome]["настройки"]["debuffChkB"] = {}
 	end
 	if DebuffButton1 ~= nil then
-		if tonumber(testQ["buffX"]) ~= nil then
+		if tonumber(testQ["buffX"]) ~= nil and tonumber(testQ["buffX"]) ~= 0 then
 			local __,__,__,tempPoint = DebuffButton1:GetPoint()
 			local __,__,__,tempPointB = btn[991]:GetPoint()
 			if tempPoint ~= tempPointB then

@@ -2534,7 +2534,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-		bdf(myNome)
+		--bdf(myNome)
 
 		if resursy[1] ~= nil and resursy[1]:IsVisible() then
 			if dmG[101] == nil or not dmG[101]:IsVisible() then
