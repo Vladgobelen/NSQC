@@ -935,14 +935,14 @@ dmG = {}
 function dmgText(text,obj,id,raz,cvet)
 	if dmG[id] == nil then
 		dmG[id] = CreateFrame("SimpleHTML", "dmG", obj)
-		dmG[id]:SetSize(64, 64)
+		dmG[id]:SetSize(48, 48)
 		dmG[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 		dmG[id]:ClearAllPoints()
-		dmG[id]:SetPoint("CENTER", obj, "CENTER", 0, -16)
+		dmG[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
 		dmG[id]:SetBackdropColor(0, 103, 51, 1)
-		dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', raz);
+		dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', raz,"OUTLINE", "MONOCHROME");
 	end
-		dmG[id]:SetText("<html><body><p>|cff" .. cvet .. text .. "</p></body></html>");
+		dmG[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
 end
 
 rtnText = {}

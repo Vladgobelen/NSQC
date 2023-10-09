@@ -1,5 +1,5 @@
 versAdd=273
-versAddDop=0
+versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2538,9 +2538,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		if resursy[1] ~= nil and resursy[1]:IsVisible() then
 			if dmG[101] == nil or not dmG[101]:IsVisible() then
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-				dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+				dmgText(testQ["brevna"],resursy[1],101,14,"FF8C00")
+				dmgText(testQ["stog"],resursy[2],102,14,"FF8C00")
+				dmgText(testQ["kamen"],resursy[3],103,14,"FF8C00")
 			end
 			dmG[101]:Show()
 			dmG[102]:Show()
@@ -2699,104 +2699,120 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["fRand1"] = nil
 				FriendsFrame:Hide()
 			end
-			if testQ["fRandD1"] == 1 then
-				for i=1,35 do
-					j = tostring(i)
-					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
-						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
-						dmG[i]:Show()
-					else
-						dmgText("",fBtn[i],i,22,"FF8C00")
-						dmG[i]:Show()
-					end
-				end
-				testQ["fRandD1"] = nil
-			end
-			if testQ["fRandD2"] == 1 then
-				for i=36,70 do
-					j = tostring(i)
-					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
-						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
-						dmG[i]:Show()
-					else
-						dmgText("",fBtn[i],i,22,"FF8C00")
-						dmG[i]:Show()
-					end
-				end
-				testQ["fRandD2"] = nil
-			end
-			if testQ["fRandD3"] == 1 then
-				for i=71,100 do
-					j = tostring(i)
-					if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
-						dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,22,"FF8C00")
-						dmG[i]:Show()
-					else
-						dmgText("",fBtn[i],i,22,"FF8C00")
-						dmG[i]:Show()
-					end
-				end
-				testQ["fRandD3"] = nil
-				testQ["fRandD1nome"] = nil
-			end
-			if testQ["fRand3"] == 1 then
-				local nome = GuildFrame["selectedName"]
-				if testQ["fRand3Nome"] == nome then
-					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-						for i = 1,100 do
-							if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
-								dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,22,"FF8C00")
+			if GuildFrame["selectedName"] ~= nil and testQ["fRandD1nome"] ~= nil then
+				if GuildFrame["selectedName"] == testQ["fRandD1nome"] then
+					if testQ["fRandD1"] == 1 then
+						for i=1,35 do
+							j = tostring(i)
+							if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
+								dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,14,"FF8C00")
+								dmG[i]:Show()
+							else
+								dmgText("",fBtn[i],i,14,"FF8C00")
 								dmG[i]:Show()
 							end
 						end
+						testQ["fRandD1"] = nil
 					end
-					testQ["fRand3"] = nil
-					testQ["fRand3Nome"] = nil
-				end
-			end
-			if testQ["fRand4"] == 1 then
-				local nome = GuildFrame["selectedName"]
-				if nome == testQ["fRand4Nome"] then
-					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-						for i = 1,100 do
+					if testQ["fRandD2"] == 1 then
+						for i=36,70 do
 							j = tostring(i)
-							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-							if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
-								dmgText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)],fBtn[i],i,22,"FF8C00")
+							if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
+								dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,14,"FF8C00")
 								dmG[i]:Show()
 							else
-								if dmG[i]~=nil then
-									dmG[i]:Hide()
+								dmgText("",fBtn[i],i,14,"FF8C00")
+								dmG[i]:Show()
+							end
+						end
+						testQ["fRandD2"] = nil
+					end
+					if testQ["fRandD3"] == 1 then
+						for i=71,100 do
+							j = tostring(i)
+							if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
+								dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,14,"FF8C00")
+								dmG[i]:Show()
+							else
+								dmgText("",fBtn[i],i,14,"FF8C00")
+								dmG[i]:Show()
+							end
+						end
+						testQ["fRandD3"] = nil
+						testQ["fRandD1nome"] = nil
+					end
+				end
+			end
+			if GuildFrame["selectedName"] ~= nil and testQ["fRand3Nome"] ~= nil then
+				if GuildFrame["selectedName"] == testQ["fRand3Nome"] then
+					if testQ["fRand3"] == 1 then
+						local nome = GuildFrame["selectedName"]
+						if testQ["fRand3Nome"] == nome then
+							if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+								for i = 1,100 do
+									if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
+										dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,14,"FF8C00")
+										dmG[i]:Show()
+									end
+								end
+							end
+							testQ["fRand3"] = nil
+							testQ["fRand3Nome"] = nil
+						end
+					end
+				end
+			end
+			if GuildFrame["selectedName"] ~= nil and testQ["fRand4Nome"] ~= nil then
+				if GuildFrame["selectedName"] == testQ["fRand4Nome"] then
+					if testQ["fRand4"] == 1 then
+						local nome = GuildFrame["selectedName"]
+						if nome == testQ["fRand4Nome"] then
+							if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+								for i = 1,100 do
+									j = tostring(i)
+									fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+									if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
+										dmgText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)],fBtn[i],i,14,"FF8C00")
+										dmG[i]:Show()
+									else
+										if dmG[i]~=nil then
+											dmG[i]:Hide()
+										end
+									end
 								end
 							end
 						end
+						testQ["fRand4"] = nil
+						testQ["fRand4Nome"] = nil
 					end
 				end
-				testQ["fRand4"] = nil
-				testQ["fRand4Nome"] = nil
 			end
-			if testQ["fRand5"] == 1 then
-				local nome = GuildFrame["selectedName"]
-				if nome == testQ["fRand5Nome"] then
-					if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-						for i = 1,100 do
-							j = tostring(i)
-							if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
-								dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,22,"FF8C00")
-								dmG[i]:Show()
-							else
-								if dmG[i]~=nil then
-									dmG[i]:Hide()
+			if GuildFrame["selectedName"] ~= nil and testQ["fRand5Nome"] ~= nil then
+				if GuildFrame["selectedName"] == testQ["fRand5Nome"] then
+					if testQ["fRand5"] == 1 then
+						local nome = GuildFrame["selectedName"]
+						if nome == testQ["fRand5Nome"] then
+							if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
+								for i = 1,100 do
+									j = tostring(i)
+									if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
+										dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,14,"FF8C00")
+										dmG[i]:Show()
+									else
+										if dmG[i]~=nil then
+											dmG[i]:Hide()
+										end
+									end
+									fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
+									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 								end
 							end
-							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
-							fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 						end
+						testQ["fRand5"] = nil
+						testQ["fRand5Nome"] = nil
 					end
 				end
-				testQ["fRand5"] = nil
-				testQ["fRand5Nome"] = nil
 			end
 
 		if btn[6] == nil or not btn[6]:IsVisible() then
