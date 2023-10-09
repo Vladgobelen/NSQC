@@ -1,5 +1,5 @@
 versAdd=273
-versAddDop=1
+versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -347,12 +347,17 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		local nome = GuildFrame["selectedName"]
 		if arg1 == "LeftButton" then
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
-				local lvlTemp = testQ["mioFldLvl"]
-				if tonumber(string.sub(testQ["mioFldLvl"],1,1)) == 0 or tonumber(string.sub(testQ["mioFldLvl"],1,1)) == 1 then
-					lvlTemp=1
+				local lvlTemp = tonumber(testQ["mioFldLvl"])
+				local testDate = tonumber(string.sub(date(),4,5))
+				local lvlTest = nil
+				if tonumber(testQ["qDay"]) ~= testDate then
+					lvlTest=1
+				end
+				if tonumber(testQ["qDay"]) == testDate and lvlTemp > tonumber(testQ["qNum"]) then
+					lvlTest = 1
 				end
 				if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
-					if tonumber(lvlTemp) > tonumber(testQ["qNum"]) then
+					if lvlTest ~= nil then
 						if nome == myNome then
 							if testQ == nil then
 								testQ = {}
@@ -1083,29 +1088,42 @@ btn[989]:SetScript("OnClick",function(self, button)
 				for Zc=1,GetNumGuildMembers(true) do
 					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 					if nome ~= myNome then
+						local proverkaLvla
 						if name == myNome then
-							if officerNote ~= "" then
+							proverkaLvla = string.sub(officerNote,1,1)
+							if officerNote ~= "" and proverkaLvla ~= "1" then
 								testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+							elseif proverkaLvla == "1" then
+								testQ["mioFldLvl"] = 0.9
 							else
 								testQ["mioFldLvl"] = 0.5
 							end
 						end
 						if name == nome then
-							if officerNote ~= "" then
+							proverkaLvla = string.sub(officerNote,1,1)
+							if officerNote ~= "" and proverkaLvla ~= "1" then
 								testQ["fldLvl"] = string.sub(officerNote,1,1)
+							elseif proverkaLvla == "1" then
+								testQ["mioFldLvl"] = 0.9
 							else
 								testQ["fldLvl"] = 0.5
 							end
 						end
 					else
 						if name == myNome then
-							if officerNote ~= "" then
+							proverkaLvla = string.sub(officerNote,1,1)
+							if officerNote ~= "" and proverkaLvla ~= "1" then
 								testQ["mioFldLvl"] = string.sub(officerNote,1,1)
 								testQ["fldLvl"] = testQ["mioFldLvl"]
 								testQ["qNum"] = string.sub(officerNote,8,8)
 								testQ["qDay"] = string.sub(officerNote,6,7)
+							elseif proverkaLvla == "1" then
+								testQ["mioFldLvl"] = 0.9
+								testQ["fldLvl"] = testQ["mioFldLvl"]
+								testQ["qNum"] = string.sub(officerNote,8,8)
+								testQ["qDay"] = string.sub(officerNote,6,7)
 							else
-								testQ["mioFldLvl"] = 1
+								testQ["mioFldLvl"] = 0.5
 								testQ["fldLvl"] = testQ["mioFldLvl"]
 								testQ["qNum"] = 0
 								testQ["qDay"] = 0
