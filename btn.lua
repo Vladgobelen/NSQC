@@ -1,5 +1,5 @@
 versAdd=273
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -326,7 +326,7 @@ if myNome == "Хефе" or myNome == "Витинари" then
 					gTest[gTest2]=nil
 					gTest1 = nil
 				end
-				testQ["gTimer"] = 5
+				testQ["gTimer"] = 6
 				gtg:Disable()
 			end
 		elseif arg1 == "RightButton" then
@@ -347,18 +347,18 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		local nome = GuildFrame["selectedName"]
 		if arg1 == "LeftButton" then
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
-				local lvlTemp = tonumber(testQ["mioFldLvl"])
-				local testDate = tonumber(string.sub(date(),4,5))
-				local lvlTest = nil
-				if tonumber(testQ["qDay"]) ~= testDate then
-					lvlTest=1
-				end
-				if tonumber(testQ["qDay"]) == testDate and lvlTemp > tonumber(testQ["qNum"]) then
-					lvlTest = 1
-				end
-				if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
-					if lvlTest ~= nil then
-						if nome == myNome then
+				if nome == myNome then
+					local lvlTemp = tonumber(testQ["mioFldLvl"])
+					local testDate = tonumber(string.sub(date(),4,5))
+					local lvlTest = nil
+					if tonumber(testQ["qDay"]) ~= testDate then
+						lvlTest=1
+					end
+					if tonumber(testQ["qDay"]) == testDate and lvlTemp > tonumber(testQ["qNum"]) then
+						lvlTest = 1
+					end
+					if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
+						if lvlTest ~= nil then
 							if testQ == nil then
 								testQ = {}
 							end
@@ -459,48 +459,48 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								end
 							end
 						else
+							SendChatMessage("Следущий квест на моем гильдлвле доступен завтра, однако я всегда могу принять немного новых игроков в гильдию и получить бонус.", "OFFICER", nil, 1)
+						end
+					else
+						if testQ[myNome]["itemQend"] ~= 1 then
+							testQ["okno"] = "itemQ"
 							quesT("show")
 							okNo:configure(1,"show")
-							rtnTextF("Ты кто такой? Я тебя не знаю.",1,"show")
-							testQ["okno"] = "99991"
+							rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+							for i=1,100 do
+								fBtn[i]:Hide()
+							end
+							if resursy[1] ~= nil then
+								resursy[1]:Hide()
+								resursy[2]:Hide()
+								resursy[3]:Hide()
+							end
+							btn[989]:Hide()
+							btn[989]:ClearAllPoints()
+							btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+						else
+							testQ["okno"] = "itemQend"
+							quesT("show")
+							okNo:configure(1,"show")
+							rtnTextF("Я отправил Вождю, все что нужно",1,"show")
+							for i=1,100 do
+								fBtn[i]:Hide()
+							end
+							if resursy[1] ~= nil then
+								resursy[1]:Hide()
+								resursy[2]:Hide()
+								resursy[3]:Hide()
+							end
+							btn[989]:Hide()
+							btn[989]:ClearAllPoints()
+							btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 						end
-					else
-						SendChatMessage("Следущий квест на моем гильдлвле доступен завтра, однако я всегда могу принять немного новых игроков в гильдию и получить бонус.", "OFFICER", nil, 1)
 					end
 				else
-					if testQ[myNome]["itemQend"] ~= 1 then
-						testQ["okno"] = "itemQ"
-						quesT("show")
-						okNo:configure(1,"show")
-						rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
-						for i=1,100 do
-							fBtn[i]:Hide()
-						end
-						if resursy[1] ~= nil then
-							resursy[1]:Hide()
-							resursy[2]:Hide()
-							resursy[3]:Hide()
-						end
-						btn[989]:Hide()
-						btn[989]:ClearAllPoints()
-						btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-					else
-						testQ["okno"] = "itemQend"
-						quesT("show")
-						okNo:configure(1,"show")
-						rtnTextF("Я отправил Вождю, все что нужно",1,"show")
-						for i=1,100 do
-							fBtn[i]:Hide()
-						end
-						if resursy[1] ~= nil then
-							resursy[1]:Hide()
-							resursy[2]:Hide()
-							resursy[3]:Hide()
-						end
-						btn[989]:Hide()
-						btn[989]:ClearAllPoints()
-						btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-					end
+					quesT("show")
+					okNo:configure(1,"show")
+					rtnTextF("Ты кто такой? Я тебя не знаю.",1,"show")
+					testQ["okno"] = "99991"
 				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
