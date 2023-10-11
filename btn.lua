@@ -375,6 +375,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									while true do
 										if testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] == nil or testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] ~= "9999" then
 											if iii == tonumber(#pQuest["х"]) then
+												SendChatMessage("В хижине больше нет заданий...", "OFFICER", nil, 1)
 												break
 											end
 											local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(pQuest["х"][x]))
