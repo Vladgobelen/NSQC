@@ -1,5 +1,5 @@
 versAdd=273
-versAddDop=5
+versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3032,10 +3032,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				if tempRez[1] ~= nil then
 					local tempRez1 = tempRez[1]
-					if testQ[myNome]["itemNum"] ~= 1 then
+					if tonumber(testQ[myNome]["itemNum"]) ~= 1 then
 						if tempRez[2] ~= nil then
 							for i=2,tonumber(testQ[myNome]["itemNum"]) do
-								tempRez1 = tonumber(tempRez1) + tonumber(tempRez[i])
+								if tempRez[i] ~= nil then
+									tempRez1 = tonumber(tempRez1) + tonumber(tempRez[i])
+								end
 							end
 						end
 					end
