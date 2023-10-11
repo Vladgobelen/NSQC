@@ -1,5 +1,5 @@
 versAdd=273
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -31,7 +31,6 @@ function okNo:configure(id,sign)
 				end
 			end
 		else
-		print("1")
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
 				self[1]:SetFrameStrata("FULLSCREEN")
@@ -2829,6 +2828,20 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 						testQ["fRand5"] = nil
 						testQ["fRand5Nome"] = nil
+					end
+				end
+			end
+
+			if GuildFrame["selectedName"] ~= nil then
+				local nome = GuildFrame["selectedName"]
+				if GuildFrame["selectedName"] == myNome then
+					if testQ["fRand6"] == 1 then
+						if resursy[1] ~= nil and resursy[1]:IsVisible() then
+							dmgText(testQ["brevna"],resursy[1],101,14,"FF8C00")
+							dmgText(testQ["stog"],resursy[2],102,14,"FF8C00")
+							dmgText(testQ["kamen"],resursy[3],103,14,"FF8C00")
+						end
+						testQ["fRand6"] = nil
 					end
 				end
 			end

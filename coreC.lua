@@ -20,6 +20,18 @@ end
 if message == "!повысить" and sender == myNome then
 	SendAddonMessage("gUp", "", "guild")
 end
+if msg[1] == "\"камни" and msg[2] == myNome and testGM~=nil then
+	testQ["kamen"] = tonumber(testQ["kamen"])+tonumber(msg[3])
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"бревна" and msg[2] == myNome and testGM~=nil then
+	testQ["brevna"] = tonumber(testQ["brevna"])+tonumber(msg[3])
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"трава" and msg[2] == myNome and testGM~=nil then
+	testQ["stog"] = tonumber(testQ["stog"])+tonumber(msg[3])
+	testQ["fRand6"] = 1
+end
 if msg[1] == "!добавить" and msg[2] == "предмет" and testGM~=nil then
 	local nazvanie
 	local n
