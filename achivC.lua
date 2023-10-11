@@ -102,6 +102,7 @@ end
 
 if kodMsg[1] == "shMFld" and message == myNome then
 	local rez = {}
+	local x
 	if sender ~= myNome then
 		if mioFld == nil then
 			mioFld = {}
@@ -115,6 +116,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				j = tostring(i)
 				mioFld[myNome]["объекты"][j] = "t"
 			end
+			x = math.random(1,100)
 		end
 		if mioFld[myNome]["целостность"] == nil then
 			mioFld[myNome]["целостность"] = {}
@@ -129,6 +131,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if mioFld[myNome]["влияние"] == nil then
 			mioFld[myNome]["влияние"] = {}
 		end
+		mioFld[myNome]["объекты"][tostring(x)] = "h"
 		for k, v in pairs(mioFld[myNome]) do
 			if k == "объекты" then
 				if rez[k] == nil then
@@ -184,7 +187,9 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				mioFld[myNome]["объекты"][j] = "t"
 				mioFld[myNome]["целостность"][j] = 999
 				mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
+				x = math.random(1,100)
 			end
+			mioFld[myNome]["объекты"][tostring(x)] = "h"
 		end
 		testQ["fRand2"] = kodMsg[2]
 		testQ["fRandD1nome"] = myNome

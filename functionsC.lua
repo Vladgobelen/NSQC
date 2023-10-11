@@ -1034,12 +1034,16 @@ function showRB(nome)
 	if debuffChkB == nil then
 		debuffChkB = {}
 	end
-	if pokazat==1 then
+	if pokazat==1 and btn[1] ~= nil then
 		for ii=1,15 do
-			btn[ii]:Hide();
+			if btn[ii] ~= nil then
+				btn[ii]:Hide();
+			end
 		end
 		btn[991]:Show()
-		btn[14]:Show()
+		if testQ["lvlProv"] ~= "0" and testQ["lvlProv"] ~= "" and testQ["lvlProv"] ~= nil then
+			btn[14]:Show()
+		end
 		myCheckButton1:Show()
 		myCheckButton2:Show()
 		myCheckButton3:Show()
@@ -1073,19 +1077,26 @@ function showRB(nome)
 
 		pokazat=0
 		pokazatChk=1
-	elseif pokazat==0 then
-		for ii=1,15 do
-			btn[ii]:Show();
-		end
+	elseif pokazat == 0 then
 		btn[991]:Hide()
-		if testQ[nome]["взятый_квест"] == "9999" then
-			btn[1]:Show()
-			btn[2]:Hide()
+		if testQ["lvlProv"] ~= "0" and testQ["lvlProv"] ~= "" and testQ["lvlProv"] ~= nil then
+			for ii=1,15 do
+				if btn[ii] ~= nil then
+					btn[ii]:Show();
+				end
+			end
+			if btn[ii] ~= nil then
+				if testQ[nome]["взятый_квест"] == "9999" then
+					btn[1]:Show()
+					btn[2]:Hide()
+				end
+				if testQ[nome]["взятый_квест"] ~= "9999" then
+					btn[1]:Hide()
+					btn[2]:Show()
+				end
+			end
 		end
-		if testQ[nome]["взятый_квест"] ~= "9999" then
-			btn[1]:Hide()
-			btn[2]:Show()
-		end
+		testQ["lvlProv"] = nil
 		myCheckButton1:Hide()
 		myCheckButton2:Hide()
 		myCheckButton3:Hide()
@@ -1383,6 +1394,126 @@ function hX()
 	btn[989]:Hide()
 	btn[989]:ClearAllPoints()
 	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+end
+
+function showFld(sign,myNome)
+	local nome
+	local proverkaLvla
+	if not fBtn[1]:IsVisible() then
+		if not GuildFrameLFGButton:GetChecked() or sign == "1" then
+			if sign == "0" then
+				nome = GuildFrame["selectedName"]
+			else
+				nome = myNome
+			end
+			for Zc=1,GetNumGuildMembers(true) do
+				local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+				if nome ~= myNome then
+					if name == myNome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						if officerNote ~= "" and proverkaLvla ~= "1" then
+							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+						elseif proverkaLvla == "1" then
+							testQ["mioFldLvl"] = 0.9
+						else
+							testQ["mioFldLvl"] = 0.5
+						end
+					end
+					if name == nome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						if officerNote ~= "" and proverkaLvla ~= "1" then
+							testQ["fldLvl"] = string.sub(officerNote,1,1)
+						elseif proverkaLvla == "1" then
+							testQ["mioFldLvl"] = 0.9
+						else
+							testQ["fldLvl"] = 0.5
+						end
+					end
+				else
+					if name == myNome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						if officerNote ~= "" and proverkaLvla ~= "1" then
+							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "1" then
+							testQ["mioFldLvl"] = 0.9
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						else
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+					end
+				end
+				if tonumber(testQ["mioFldLvl"]) == 0 then
+					testQ["mioFldLvl"] = 0.5
+				end
+				if tonumber(testQ["fldLvl"]) == 0 then
+					testQ["fldLvl"] = 0.5
+				end
+			end
+			testQ["fRand1"] = math.random(1,1000000)
+			testQ['sign'] = sign
+			SendAddonMessage("shMFld " .. testQ["fRand1"], nome, "guild")
+		else
+			for i=1,100 do
+				fBtn[i]:Hide()
+				btn[989]:ClearAllPoints()
+				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			end
+			if resursy[1] ~= nil then
+				resursy[1]:Hide()
+				resursy[2]:Hide()
+				resursy[3]:Hide()
+			end
+			for i = 1,100 do
+				if dmG[i] ~= nil and dmG[i]:IsVisible()then
+					dmG[i]:Hide()
+				end
+			end
+			for i = 1,3 do
+				if resursy[i] ~= nil then
+					resursy[i]:Hide()
+				end
+			end
+			for i=101,103 do
+				if dmG[i]~= nil then
+					dmG[i]:Hide()
+				end
+			end
+			testQ['sign'] = nil
+		end
+	else
+		for i=1,100 do
+			fBtn[i]:Hide()
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+		end
+		if resursy[1] ~= nil then
+			resursy[1]:Hide()
+			resursy[2]:Hide()
+			resursy[3]:Hide()
+		end
+		for i = 1,100 do
+			if dmG[i] ~= nil and dmG[i]:IsVisible()then
+				dmG[i]:Hide()
+			end
+		end
+		for i = 1,3 do
+			resursy[i]:Hide()
+		end
+		for i=101,103 do
+			if dmG[i] ~= nil then
+				dmG[i]:Hide()
+			end
+		end
+		testQ['sign'] = nil
+	end
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
