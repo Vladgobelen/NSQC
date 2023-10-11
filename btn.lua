@@ -1,5 +1,5 @@
 versAdd=273
-versAddDop=7
+versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -371,13 +371,18 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								local qx = math.random(1,4)
 								if qx ~= 1 then
 									local x = math.random(1,tonumber(#pQuest["х"]))
-									for i = 1, #pQuest["х"] do
+									local iii = 0
+									while true do
 										if testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] == nil or testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] ~= "9999" then
+											if iii == tonumber(#pQuest["х"]) then
+												break
+											end
 											local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(pQuest["х"][x]))
 											if completed == false then
 												testQ["okno"] = pQuest["х"][x]
 												break
 											end
+											iii = iii + 1
 										end
 									end
 									if testQ["okno"] ~= nil then
