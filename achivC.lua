@@ -165,6 +165,12 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		pQuest["х"][1]=628
 		pQuest["х"][1]=633
 		pQuest["х"][1]=631
+		if pQuest["items"] == nil then
+			pQuest["items"] = {}
+		end
+		if pQuest["items"][1] == nil then
+			pQuest["items"][1] = {}
+		end
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
@@ -218,11 +224,10 @@ if kodMsg[1] == "shMFld" and message == myNome then
 					j = tostring(i)
 					rez[3] = rez[3] .. mioFld[myNome][k][j] .. " "
 				end
-				SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
 				SendAddonMessage("MioFld1 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[1], "guild")
 				SendAddonMessage("MioFld2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
 				SendAddonMessage("MioFld3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
-			end
+				end
 		end
 	else
 		if mioFld == nil then
@@ -241,13 +246,66 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
 				x = math.random(1,100)
 			end
+		end
+		if x ~= nil then
 			mioFld[myNome]["объекты"][tostring(x)] = "h"
 		end
+		if pQuest == nil then
+			pQuest = {}
+		end
+		if pQuest["х"] == nil then
+			pQuest["х"] = {}
+		end
+		if mapTables == nil then
+			mapTables = {}
+		end
+		if mapTables["lokRasstoyanie"] == nil then
+			mapTables["lokRasstoyanie"] = {}
+		end
+		pQuest["х"][1]=964
+		pQuest["х"][1]=545
+		pQuest["х"][1]=546
+		pQuest["х"][1]=845
+		pQuest["х"][1]=750
+		pQuest["х"][1]=1017
+		pQuest["х"][1]=1243
+		pQuest["х"][1]=153
+		pQuest["х"][1]=627
+		pQuest["х"][1]=621
+		pQuest["х"][1]=776
+		pQuest["х"][1]=728
+		pQuest["х"][1]=736
+		pQuest["х"][1]=126
+		pQuest["х"][1]=1556
+		pQuest["х"][1]=629
+		pQuest["х"][1]=628
+		pQuest["х"][1]=633
+		pQuest["х"][1]=631
+		pQuest["items"][1]["itemNum"] = "2"
+		pQuest["items"][1]["itemEnStuck"] = "100"
+		pQuest["items"][1]["itemName"] = "Шерсть"
+		if mapTables["lokRasstoyanie"]["1"] == nil then
+			mapTables["lokRasstoyanie"]["1"] = {}
+		end
+		mapTables["lokRasstoyanie"]["1"]["19"] = 0.00087
+		mapTables["lokRasstoyanie"]["1"]["18"] = 0.000499
+		mapTables["lokRasstoyanie"]["1"]["4"] = 0.00067
+		mapTables["lokRasstoyanie"]["1"]["10"] = 0.003676
+		if mapTables["lokRasstoyanie"]["99"] == nil then
+			mapTables["lokRasstoyanie"]["99"] = {}
+		end
+		mapTables["lokRasstoyanie"]["99"]["1"] = 0.003
+		if mapTables["lokRasstoyanie"]["2"] == nil then
+			mapTables["lokRasstoyanie"]["2"] = {}
+		end
+		mapTables["lokRasstoyanie"]["2"]["14"] = 0.002
+		mapTables["lokRasstoyanie"]["1"]["34"] = 0.0021
 		testQ["fRand2"] = kodMsg[2]
 		testQ["fRandD1nome"] = myNome
 		testQ["fRandD1"] = 1
 		testQ["fRandD2"] = 1
 		testQ["fRandD3"] = 1
+		testQ["fRand2name"] = myNome
 	end
 end
 if kodMsg[1] == "MioFld1" then
@@ -336,6 +394,7 @@ if kodMsg[1] == "MioFld" then
 		end
 	end
 	testQ["fRand2"] = kodMsg[4]
+	testQ["fRand2name"] = kodMsg[2]
 end
 
 if kodMsg[1] == "obgIz" then

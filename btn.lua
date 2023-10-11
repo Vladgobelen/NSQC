@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -70,7 +70,6 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 		end
 		if testQ["okno"] == "99991" then
-			print("1")
 			SendChatMessage("Ухожу, ухожу...", "guild")
 			hX()
 			testQ["okno"] = nil
@@ -2655,7 +2654,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[989]:Hide()
 				testQ['sign'] = nil
 			end
-			if testQ["fRand2"] ~= nil and (tonumber(testQ["fRand2"]) == tonumber(testQ["fRand1"]))then
+			if testQ["fRand2"] ~= nil and testQ["fRand2name"] == myNome then
+			print('1')
 				local nome
 				if GuildFrame:IsVisible() or testQ['sign'] == "1" then
 					if not GuildFrameLFGButton:GetChecked() or testQ['sign'] == "1" then
@@ -2678,6 +2678,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				testQ["fRand2"] = nil
 				testQ["fRand1"] = nil
+				testQ["fRand2name"] = nil
 				FriendsFrame:Hide()
 			end
 			if (GuildFrame["selectedName"] ~= nil and testQ["fRandD1nome"] ~= nil) or testQ['sign'] == "1" then
