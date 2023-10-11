@@ -90,7 +90,7 @@ function quesT(sign)
 		if iconQ[1] == nil then
 			iconQ:configure()
 			iconQText:configure()
-			iconQ[1]:SetFrameStrata("HIGH")
+			iconQ[1]:SetFrameStrata("FULLSCREEN_DIALOG")
 			iconQText[1]:SetPoint("CENTER", UIParent,"CENTER",0,0)
 		else
 			iconQ[1]:Show()

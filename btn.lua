@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -13,13 +13,13 @@ function okNo:configure(id,sign)
 		if testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend" then
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
-				self[1]:SetFrameStrata("FULLSCREEN")
+				self[1]:SetFrameStrata("TOOLTIP")
 				self[1]:SetPoint("BOTTOMLEFT", iconQText[1],"BOTTOMLEFT",20, 20)
 				self[1]:SetSize(128, 128)
 				self[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ok.tga")
 				self[1]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ok.tga")
 				self[2] = CreateFrame("Button", nil, UIParent, "");
-				self[2]:SetFrameStrata("FULLSCREEN")
+				self[2]:SetFrameStrata("TOOLTIP")
 				self[2]:SetPoint("BOTTOMRIGHT", iconQText[1],"BOTTOMRIGHT",-20, 20)
 				self[2]:SetSize(128, 128)
 				self[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\no.tga")
@@ -33,7 +33,7 @@ function okNo:configure(id,sign)
 		else
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
-				self[1]:SetFrameStrata("FULLSCREEN")
+				self[1]:SetFrameStrata("TOOLTIP")
 				self[1]:SetPoint("BOTTOMLEFT", iconQText[1],"BOTTOMLEFT",20, 20)
 				self[1]:SetSize(128, 128)
 				self[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ok.tga")
@@ -70,9 +70,10 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 		end
 		if testQ["okno"] == "99991" then
-			SendChatMessage("Ухожу, ухожу...", nil, 1)
-			testQ["okno"] = nil
+			print("1")
+			SendChatMessage("Ухожу, ухожу...", "guild")
 			hX()
+			testQ["okno"] = nil
 			testQ['sign'] = nil
 		end
 		if testQ["okno"] == nil then
@@ -146,9 +147,9 @@ function okNo:configure(id,sign)
 				end
 			end
 			if testQ["okno"] == "99991" then
-				SendChatMessage("Ухожу, но я еще вернусь...", nil, 1)
-				testQ["okno"] = nil
+				SendChatMessage("Ухожу, но я еще вернусь...", "guild")
 				hX()
+				testQ["okno"] = nil
 				testQ['sign'] = nil
 			end
 			if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" then
