@@ -102,7 +102,7 @@ end
 
 if kodMsg[1] == "shMFld" and message == myNome then
 	local rez = {}
-	local x
+	local x = nil
 	if sender ~= myNome then
 		if mioFld == nil then
 			mioFld = {}
@@ -131,7 +131,9 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if mioFld[myNome]["влияние"] == nil then
 			mioFld[myNome]["влияние"] = {}
 		end
-		mioFld[myNome]["объекты"][tostring(x)] = "h"
+		if x ~= nil then
+			mioFld[myNome]["объекты"][tostring(x)] = "h"
+		end
 		if pQuest == nil then
 			pQuest = {}
 		end
