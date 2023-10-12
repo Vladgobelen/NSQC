@@ -861,7 +861,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
 					testQ["temp"] = 1
 				elseif testQ["temp"] == 1 then
-					SendAddonMessage("hS " .. id .. " " .. 999, nome, "guild")
+					SendAddonMessage("hS " .. id .. " " .. 9999, nome, "guild")
 					testQ["temp"] = nil
 				end
 			end
