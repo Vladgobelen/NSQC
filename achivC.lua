@@ -434,7 +434,7 @@ if kodMsg[1] == "obgIz" then
 			testQ["fRand3"] = 1
 			testQ["fRand3Nome"] = message
 			if sender ~= myNome and message == myNome then
-				if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" then
+				if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" then
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 				else
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
@@ -553,6 +553,36 @@ if kodMsg[1] == "zX" then
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 19999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "zXx" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "zSx" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "zS" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			testQ["fRand5"] = 1
+			testQ["fRand5Nome"] = message
 		end
 	end
 end
