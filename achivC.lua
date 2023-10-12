@@ -16,7 +16,15 @@ if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
 testGM=gmTest(sender)
-
+if kodMsg[1] == "построить" and kodMsg[2] == myNome then
+	if mioFld ~= nil then
+		if mioFld[myNome] ~= nil then
+			if mioFld[myNome]["объекты"] ~= nil then
+				mioFld[myNome]["объекты"][tostring(kodMsg[3])] = message
+			end
+		end
+	end
+end
 if kodMsg[1] == "#hQ1x" then
 	testQ[myNome]["взятый_квест_х"] = "9999"
 	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
