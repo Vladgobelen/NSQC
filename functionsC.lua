@@ -1487,7 +1487,7 @@ function showFld(sign,myNome)
 				end
 			end
 			if sign == 0 then
-				GuildFrame:Show()
+				FriendsFrame:Show()
 			end
 			testQ['sign'] = nil
 		end
@@ -1516,7 +1516,7 @@ function showFld(sign,myNome)
 			end
 		end
 		if sign == 0 then
-			GuildFrame:Show()
+			FriendsFrame:Show()
 		end
 		testQ['sign'] = nil
 	end
