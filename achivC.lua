@@ -403,6 +403,12 @@ if kodMsg[1] == "MioFld" then
 			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "hs" then
 				mioFld[sender]["подсказки"][j] = "Стройка"
 			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "za" then
+				mioFld[sender]["подсказки"][j] = "Бетонный завод>"
+			end
+			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "zs" then
+				mioFld[sender]["подсказки"][j] = "Бетонный завод>"
+			end
 		end
 	end
 	testQ["fRand2"] = kodMsg[4]
@@ -473,6 +479,17 @@ if kodMsg[1] == "TopTop" then
 		end
 	end
 end
+if kodMsg[1] == "za" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zs"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "KopKop" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -528,6 +545,17 @@ if kodMsg[1] == "mX" then
 		end
 	end
 end
+if kodMsg[1] == "zX" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zx"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный бетонный завод"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 19999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "mXx" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -559,6 +587,12 @@ if kodMsg[1] == "resObj" then
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+		end
 	end
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -585,9 +619,23 @@ if kodMsg[1] == "resObj" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Это трава! Ну видно же!!!"
 					end
+				end
+				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 9999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="hs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хижина"
+					end
+				end
+				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zs" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
+					end
+				end
+				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zx" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
 					end
 				end
 				testQ["fRand5"] = 1

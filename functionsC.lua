@@ -935,13 +935,25 @@ dmG = {}
 function dmgText(text,obj,id,raz,cvet)
 	if dmG[id] == nil then
 		dmG[id] = CreateFrame("SimpleHTML", "dmG", obj)
-		dmG[id]:SetSize(48, 48)
 		dmG[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 		dmG[id]:ClearAllPoints()
-		dmG[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
 		dmG[id]:SetBackdropColor(0, 103, 51, 1)
 		dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', raz,"OUTLINE", "MONOCHROME");
 	end
+		if text ~= "" then
+			if tonumber(text) <= 9999 then
+				dmG[id]:SetSize(48, 48)
+			end
+			if tonumber(text) > 9999 then
+				dmG[id]:SetSize(54, 48)
+			end
+			if tonumber(text) <= 9999 then
+				dmG[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+			end
+			if tonumber(text) > 9999 then
+				dmG[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+			end
+		end
 		dmG[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
 end
 
@@ -1172,7 +1184,7 @@ function treeX(nome,myNome,id)
 				end
 			end
 			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
+			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.1
 		else
 			if nome == myNome then
 				mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
@@ -1186,7 +1198,7 @@ function treeX(nome,myNome,id)
 					mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 				end
 			end
-			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+1
+			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.1
 			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
 		end
 		if testQ ~= nil then
@@ -1253,16 +1265,62 @@ function resObj(id,myNome,nome)
 			if mioFld[myNome] ~= nil then
 				if mioFld[myNome]["целостность"] ~= nil then
 					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-						if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
-							mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
-						else
-							mioFld[myNome]["целостность"][tostring(id)] = 999
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
 						end
 					else
-						if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
-							mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
-						else
-							mioFld[myNome]["целостность"][tostring(id)] = 999
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
 						end
 					end
 					SendAddonMessage("resObj " .. id .. " " .. mioFld[myNome]["целостность"][tostring(id)],nome , "guild")
@@ -1273,33 +1331,121 @@ function resObj(id,myNome,nome)
 		if mioFld ~= nil then
 			if mioFld[nome] ~= nil then
 				if mioFld[nome]["целостность"] ~= nil then
-					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-						if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
-							if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
-								local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
-								if x == 9 then
-									mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+							if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 999
 								end
-							else
-								mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+							end
+							if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
 							end
 						else
-							mioFld[nome]["целостность"][tostring(id)] = 999
-						end
-					else
-						if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
-							if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
-								local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
-								if x == 9 then
-									mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+							if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 999
 								end
-							else
-								mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 							end
-						else
-							mioFld[nome]["целостность"][tostring(id)] = 999
+							if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
 						end
-					end
 					SendAddonMessage("resObj " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)],nome , "guild")
 				end
 			end
@@ -1486,7 +1632,7 @@ function showFld(sign,myNome)
 					dmG[i]:Hide()
 				end
 			end
-			if sign == 0 then
+			if tonumber(testQ['sign']) == 0 then
 				FriendsFrame:Show()
 			end
 			testQ['sign'] = nil
@@ -1515,7 +1661,7 @@ function showFld(sign,myNome)
 				dmG[i]:Hide()
 			end
 		end
-		if sign == 0 then
+		if tonumber(testQ['sign']) == 0 then
 			FriendsFrame:Show()
 		end
 		testQ['sign'] = nil
