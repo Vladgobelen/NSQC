@@ -99,6 +99,8 @@ function okNo:configure(id,sign)
 						local oN1 = string.sub(officerNote,6,7)
 						local oN2 = string.sub(officerNote,8,8)
 						if oN ~= "" then
+						print(date("%d")
+						print(oN1)
 							if tonumber(date("%d")) ~= tonumber(oN1) then
 								GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. "1")
 							else
