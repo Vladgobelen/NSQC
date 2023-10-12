@@ -1535,6 +1535,7 @@ function gKam(myNome)
 			testQ["kamen"] = testQ["kamen"]+1
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		end
+		PlaySoundFile("Interface\\AddOns\\NSQC\\k.ogg")
 	end
 end
 
