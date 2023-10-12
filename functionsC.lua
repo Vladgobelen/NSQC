@@ -1486,6 +1486,9 @@ function showFld(sign,myNome)
 					dmG[i]:Hide()
 				end
 			end
+			if sign == 0 then
+				GuildFrame:Show()
+			end
 			testQ['sign'] = nil
 		end
 	else
@@ -1511,6 +1514,9 @@ function showFld(sign,myNome)
 			if dmG[i] ~= nil then
 				dmG[i]:Hide()
 			end
+		end
+		if sign == 0 then
+			GuildFrame:Show()
 		end
 		testQ['sign'] = nil
 	end
