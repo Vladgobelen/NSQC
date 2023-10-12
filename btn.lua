@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=5
+versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -92,6 +92,7 @@ function okNo:configure(id,sign)
 		self[2]:SetScript("OnClick",function(self, button)
 			if testQ["okno"] == "itemQ" then
 				SendChatMessage("Я злонамеренно отказываются от квеста.", "OFFICER", nil, 1)
+				testQ['dQDay'] = date("%d")
 				for Zc=1,GetNumGuildMembers(true) do
 					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 					if name == myNome then
@@ -99,15 +100,13 @@ function okNo:configure(id,sign)
 						local oN1 = string.sub(officerNote,6,7)
 						local oN2 = string.sub(officerNote,8,8)
 						if oN ~= "" then
-						print(date("%d"))
-						print(oN1)
-							if tonumber(date("%d")) ~= tonumber(oN1) then
-								GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. "1")
+							if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
+								testQ['dQ'] = 1
 							else
-								GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. tonumber(oN2)+1)
+								testQ['dQ'] = tonumber(testQ['dQ'])+1
 							end
 						else
-							GuildRosterSetOfficerNote(Zc, "0000" .. " " .. date("%d") .. "1")
+							testQ['dQ'] = 1
 						end
 					end
 				end
@@ -125,13 +124,13 @@ function okNo:configure(id,sign)
 							local oN1 = string.sub(officerNote,6,7)
 							local oN2 = string.sub(officerNote,8,8)
 							if oN ~= "" then
-								if tonumber(date("%d")) ~= tonumber(oN1) then
-									GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. "1")
+								if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
+									testQ['dQ'] = 1
 								else
-									GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. tonumber(oN2)+1)
+									testQ['dQ'] = tonumber(testQ['dQ'])+1
 								end
 							else
-								GuildRosterSetOfficerNote(Zc, "0000" .. " " .. date("%d") .. "1")
+								testQ['dQ'] = 1
 							end
 						end
 					end
@@ -367,10 +366,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					local lvlTemp = tonumber(testQ["mioFldLvl"])
 					local testDate = tonumber(string.sub(date(),4,5))
 					local lvlTest = nil
-					if tonumber(testQ["qDay"]) ~= testDate then
+					if testQ['dQ'] == nil then
+						testQ['dQ'] = 0
+					end
+					if tonumber(testQ['dQDay']) ~= tonumber(date("%d")) then
 						lvlTest=1
 					end
-					if tonumber(testQ["qDay"]) == testDate and lvlTemp > tonumber(testQ["qNum"]) then
+					if tonumber(testQ['dQDay']) == tonumber(date("%d")) and lvlTemp > tonumber(testQ['dQ']) then
 						lvlTest = 1
 					end
 					if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
