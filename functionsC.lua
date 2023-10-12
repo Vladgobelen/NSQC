@@ -1218,7 +1218,37 @@ function treeX(nome,myNome,id)
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
 		SendAddonMessage("travA " .. id, nome, "guild")
 		if testQ ~= nil then
-			if testQ["brevna"] ~= nil and testQ["brevna"] < 100 then
+			local testB = nil
+			for i = 1,100 do
+				if mioFld[nome]["объекты"][tostring(i)] == "sb" then
+					if testB == nil then
+						testB = 1
+					else
+						testB = testB + 1
+					end
+				end
+			end
+			if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
+				testQ["brevna"] = testQ["brevna"]+1
+				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+			end
+			if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
+				testQ["brevna"] = testQ["brevna"]+1
+				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+			end
+			if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
+				testQ["brevna"] = testQ["brevna"]+1
+				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+			end
+			if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
+				testQ["brevna"] = testQ["brevna"]+1
+				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+			end
+			if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
+				testQ["brevna"] = testQ["brevna"]+1
+				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+			end
+			if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
 				testQ["brevna"] = testQ["brevna"]+1
 				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
@@ -1227,7 +1257,7 @@ function treeX(nome,myNome,id)
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "f" then
 		SendAddonMessage("zemlYa " .. id, nome, "guild")
-		if testQ["stog"] ~= nil and testQ["stog"] < 100 then
+		if testQ["stog"] ~= nil and testQ["stog"] < 1000 then
 			testQ["stog"] = testQ["stog"]+1
 			dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 		end
@@ -1254,6 +1284,14 @@ function treeX(nome,myNome,id)
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "zx" then
 		SendAddonMessage("zXx " .. id, nome, "guild")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "skc" then
+		SendAddonMessage("skcX " .. id, nome, "guild")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "sb" then
+		SendAddonMessage("sbX " .. id, nome, "guild")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 	end
 end
@@ -1462,8 +1500,38 @@ function resObj(id,myNome,nome)
 end
 function gKam()
 	local x = math.random(1,500)
+	local testK = nil
 	if x == 500 then
-		if testQ["kamen"] ~= nil and testQ["kamen"] < 100 then
+		for i = 1,100 do
+			if mioFld[myNome]["объекты"][tostring(i)] == "sk" then
+				if testK == nil then
+					testK = 1
+				else
+					testK = testK + 1
+				end
+			end
+		end
+		if testQ["kamen"] ~= nil and testQ["kamen"] < 10 and testK == nil then
+			testQ["kamen"] = testQ["kamen"]+1
+			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+		end
+		if testQ["kamen"] ~= nil and testQ["kamen"] < 100 and testK == 1 then
+			testQ["kamen"] = testQ["kamen"]+1
+			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+		end
+		if testQ["kamen"] ~= nil and testQ["kamen"] < 200 and testK == 2 then
+			testQ["kamen"] = testQ["kamen"]+1
+			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+		end
+		if testQ["kamen"] ~= nil and testQ["kamen"] < 300 and testK == 3 then
+			testQ["kamen"] = testQ["kamen"]+1
+			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+		end
+		if testQ["kamen"] ~= nil and testQ["kamen"] < 400 and testK == 4 then
+			testQ["kamen"] = testQ["kamen"]+1
+			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+		end
+		if testQ["kamen"] ~= nil and testQ["kamen"] < 500 and testK == 5 then
 			testQ["kamen"] = testQ["kamen"]+1
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		end

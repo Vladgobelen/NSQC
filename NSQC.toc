@@ -33,6 +33,10 @@ libs\bi.tga
 libs\sk.tga
 libs\sb.tga
 libs\s.tga
+libs\hsS.tga
+libs\skS.tga
+libs\skc.tga
+libs\sbS.tga
 libs\emblem.tga
 libs\ok.tga
 libs\no.tga
