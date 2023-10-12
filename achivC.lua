@@ -243,8 +243,12 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				j = tostring(i)
 				mioFld[myNome]["объекты"][j] = "t"
 				mioFld[myNome]["целостность"][j] = 999
-				mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
 				x = math.random(1,100)
+				if i ~= x then
+					mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
+				else
+					mioFld[myNome]["подсказки"][j] = "Хижина"
+				end
 			end
 		end
 		if x ~= nil then

@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=4
+versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -385,9 +385,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
 								local qx = math.random(1,4)
 								if qx ~= 1 then
-									local x = math.random(1,tonumber(#pQuest["х"]))
 									local iii = 0
 									while true do
+										local x = math.random(1,tonumber(#pQuest["х"]))
 										if testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] == nil or testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] ~= "9999" then
 											if iii == tonumber(#pQuest["х"]) then
 												SendChatMessage("В хижине больше нет заданий...", "OFFICER", nil, 1)
