@@ -771,6 +771,12 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if  mioFld[nome]["объекты"][tostring(i)] == "hs" then
 				testQ["hs"] = testQ["hs"]+1
 			end
+			if  mioFld[nome]["объекты"][tostring(i)] == "zx" then
+				testQ["za"] = testQ["za"]+1
+			end
+			if  mioFld[nome]["объекты"][tostring(i)] == "zs" then
+				testQ["za"] = testQ["za"]+1
+			end
 			if  mioFld[nome]["объекты"][tostring(i)] == "za" then
 				testQ["za"] = testQ["za"]+1
 			end
