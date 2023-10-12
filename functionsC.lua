@@ -1378,7 +1378,7 @@ function resObj(id,myNome,nome)
 			if mioFld[nome] ~= nil then
 				if mioFld[nome]["целостность"] ~= nil then
 						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-							if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" then
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
 									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1392,7 +1392,7 @@ function resObj(id,myNome,nome)
 									mioFld[nome]["целостность"][tostring(id)] = 999
 								end
 							end
-							if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if 	mioFld[nome]["объекты"][tostring(id)] == "hs" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
 									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1406,7 +1406,7 @@ function resObj(id,myNome,nome)
 									mioFld[nome]["целостность"][tostring(id)] = 9999
 								end
 							end
-							if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zs" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
 									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1420,7 +1420,7 @@ function resObj(id,myNome,nome)
 									mioFld[nome]["целостность"][tostring(id)] = 19999
 								end
 							end
-							if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zx" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
 									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1435,7 +1435,7 @@ function resObj(id,myNome,nome)
 								end
 							end
 						else
-							if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" then
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
 									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1446,10 +1446,11 @@ function resObj(id,myNome,nome)
 										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 									end
 								else
+								print('111')
 									mioFld[nome]["целостность"][tostring(id)] = 999
 								end
 							end
-							if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if 	mioFld[nome]["объекты"][tostring(id)] == "hs" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
 									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1463,7 +1464,7 @@ function resObj(id,myNome,nome)
 									mioFld[nome]["целостность"][tostring(id)] = 9999
 								end
 							end
-							if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zs" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
 									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1477,7 +1478,7 @@ function resObj(id,myNome,nome)
 									mioFld[nome]["целостность"][tostring(id)] = 19999
 								end
 							end
-							if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zx" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
 									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1535,7 +1536,8 @@ function gKam(myNome)
 			testQ["kamen"] = testQ["kamen"]+1
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		end
-		PlaySoundFile("Interface\\AddOns\\NSQC\\k.ogg")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		print("500")
 	end
 end
 
