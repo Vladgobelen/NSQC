@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=10
+versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -822,7 +822,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
-				gKam()
+				gKam(myNome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 			end
 		end
