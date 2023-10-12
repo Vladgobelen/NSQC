@@ -1375,6 +1375,7 @@ function resObj(id,myNome,nome)
 		end
 	else
 		if mioFld ~= nil then
+		print('111')
 			if mioFld[nome] ~= nil then
 				if mioFld[nome]["целостность"] ~= nil then
 						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then

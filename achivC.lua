@@ -155,24 +155,24 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			mapTables["lokRasstoyanie"] = {}
 		end
 		pQuest["х"][1]=964
-		pQuest["х"][1]=545
-		pQuest["х"][1]=546
-		pQuest["х"][1]=845
-		pQuest["х"][1]=750
-		pQuest["х"][1]=1017
-		pQuest["х"][1]=1243
-		pQuest["х"][1]=153
-		pQuest["х"][1]=627
+		pQuest["х"][2]=545
+		pQuest["х"][3]=546
+		pQuest["х"][4]=845
+		pQuest["х"][5]=750
+		pQuest["х"][6]=1017
+		pQuest["х"][7]=1243
+		pQuest["х"][8]=153
+		pQuest["х"][9]=627
 		pQuest["х"][1]=621
-		pQuest["х"][1]=776
-		pQuest["х"][1]=728
-		pQuest["х"][1]=736
-		pQuest["х"][1]=126
-		pQuest["х"][1]=1556
-		pQuest["х"][1]=629
-		pQuest["х"][1]=628
-		pQuest["х"][1]=633
-		pQuest["х"][1]=631
+		pQuest["х"][11]=776
+		pQuest["х"][12]=728
+		pQuest["х"][13]=736
+		pQuest["х"][14]=126
+		pQuest["х"][15]=1556
+		pQuest["х"][16]=629
+		pQuest["х"][17]=628
+		pQuest["х"][18]=633
+		pQuest["х"][19]=631
 		if pQuest["items"] == nil then
 			pQuest["items"] = {}
 		end
@@ -275,24 +275,30 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			mapTables["lokRasstoyanie"] = {}
 		end
 		pQuest["х"][1]=964
-		pQuest["х"][1]=545
-		pQuest["х"][1]=546
-		pQuest["х"][1]=845
-		pQuest["х"][1]=750
-		pQuest["х"][1]=1017
-		pQuest["х"][1]=1243
-		pQuest["х"][1]=153
-		pQuest["х"][1]=627
+		pQuest["х"][2]=545
+		pQuest["х"][3]=546
+		pQuest["х"][4]=845
+		pQuest["х"][5]=750
+		pQuest["х"][6]=1017
+		pQuest["х"][7]=1243
+		pQuest["х"][8]=153
+		pQuest["х"][9]=627
 		pQuest["х"][1]=621
-		pQuest["х"][1]=776
-		pQuest["х"][1]=728
-		pQuest["х"][1]=736
-		pQuest["х"][1]=126
-		pQuest["х"][1]=1556
-		pQuest["х"][1]=629
-		pQuest["х"][1]=628
-		pQuest["х"][1]=633
-		pQuest["х"][1]=631
+		pQuest["х"][11]=776
+		pQuest["х"][12]=728
+		pQuest["х"][13]=736
+		pQuest["х"][14]=126
+		pQuest["х"][15]=1556
+		pQuest["х"][16]=629
+		pQuest["х"][17]=628
+		pQuest["х"][18]=633
+		pQuest["х"][19]=631
+		if pQuest["items"] == nil then
+			pQuest["items"] = {}
+		end
+		if pQuest["items"][1] == nil then
+			pQuest["items"][1] = {}
+		end
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
