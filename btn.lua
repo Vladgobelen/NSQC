@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=15
+versAddDop=16
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -744,38 +744,40 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							SendChatMessage("Следущий квест на моем гильдлвле доступен завтра, однако я всегда могу принять немного новых игроков в гильдию и получить бонус.", "OFFICER", nil, 1)
 						end
 					else
-						if testQ[myNome]["itemQend"] ~= 1 then
-							testQ["okno"] = "itemQ"
-							quesT("show")
-							okNo:configure(1,"show")
-							rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
-							for i=1,100 do
-								fBtn[i]:Hide()
+						if lvlTest ~= nil then
+							if testQ[myNome]["itemQend"] ~= 1 then
+								testQ["okno"] = "itemQ"
+								quesT("show")
+								okNo:configure(1,"show")
+								rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+								for i=1,100 do
+									fBtn[i]:Hide()
+								end
+								if resursy[1] ~= nil then
+									resursy[1]:Hide()
+									resursy[2]:Hide()
+									resursy[3]:Hide()
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								testQ["okno"] = "itemQend"
+								quesT("show")
+								okNo:configure(1,"show")
+								rtnTextF("Я отправил Вождю, все что нужно",1,"show")
+								for i=1,100 do
+									fBtn[i]:Hide()
+								end
+								if resursy[1] ~= nil then
+									resursy[1]:Hide()
+									resursy[2]:Hide()
+									resursy[3]:Hide()
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 							end
-							if resursy[1] ~= nil then
-								resursy[1]:Hide()
-								resursy[2]:Hide()
-								resursy[3]:Hide()
-							end
-							btn[989]:Hide()
-							btn[989]:ClearAllPoints()
-							btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-						else
-							testQ["okno"] = "itemQend"
-							quesT("show")
-							okNo:configure(1,"show")
-							rtnTextF("Я отправил Вождю, все что нужно",1,"show")
-							for i=1,100 do
-								fBtn[i]:Hide()
-							end
-							if resursy[1] ~= nil then
-								resursy[1]:Hide()
-								resursy[2]:Hide()
-								resursy[3]:Hide()
-							end
-							btn[989]:Hide()
-							btn[989]:ClearAllPoints()
-							btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 						end
 					end
 				else
