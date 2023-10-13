@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=4
+versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -597,9 +597,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		else
 			nome = myNome
 		end
-		if testQ["hTimer"] == nil then
-			if arg1 == "LeftButton" then
-				if mioFld[nome]["объекты"][tostring(id)] == "h" then
+
+		if arg1 == "LeftButton" then
+			if mioFld[nome]["объекты"][tostring(id)] == "h" then
+				if testQ["hTimer"] == nil then
 					testQ["hTimer"] = 60
 					if nome == myNome then
 						local lvlTemp = tonumber(testQ["mioFldLvl"])
@@ -768,48 +769,48 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						testQ["okno"] = "99991"
 					end
 				end
-				if mioFld[nome]["объекты"][tostring(id)] == "hs" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
-				end
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+			end
 
-				if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
-					treeX(nome,myNome,id)
-					print(mioFld[nome]["объекты"][tostring(id)])
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tr.ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "mx" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "zx" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "zs" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "zx" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "skc" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "sb" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-				end
-				if mioFld[nome]["объекты"][tostring(id)] == "m" then
-					gKam(myNome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
-				end
+			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
+				treeX(nome,myNome,id)
+				print(mioFld[nome]["объекты"][tostring(id)])
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tr.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "mx" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "zx" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "zs" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "zx" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "skc" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "sb" then
+				resObj(id,myNome,nome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "m" then
+				gKam(myNome)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 			end
 		end
 		if arg1 == "RightButton" then
@@ -2449,6 +2450,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				for i = 1, 100 do
 					if mioFld[nome]["объекты"][tostring(i)] == "h" then
 						dmgText(testQ["hTimer"],fBtn[i],i,13,"ff0000")
+						dmG[i]:Show()
 					end
 				end
 			end
