@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -293,12 +293,12 @@ function vybor:configure(id)
 			GameTooltip:AddLine("Построить склад бревен")
 			GameTooltip:Show()
 		end
-		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 3 and tonumber(testQ["brevna"]) < 10 then
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 3 and tonumber(testQ["brevna"]) < 15 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Нужно больше бревен")
 			GameTooltip:Show()
 		end
-		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 3 and tonumber(testQ["brevna"]) >= 10 then
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 3 and tonumber(testQ["brevna"]) >= 15 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Построить склад камня")
 			GameTooltip:Show()
