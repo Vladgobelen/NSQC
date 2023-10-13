@@ -1,5 +1,5 @@
-kversAdd=276
-versAddDop=1
+versAdd=276
+versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -999,8 +999,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if tonumber(testQ["h"]) == 0 and tonumber(testQ["hs"]) == 0 then
 							vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*320, 96)
 						end
-						print(testQ["h"])
-						print(testQ["hs"])
 						if tonumber(testQ["h"]) ~= 0 or tonumber(testQ["hs"]) ~= 0 then
 							vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*192, 96)
 						end
