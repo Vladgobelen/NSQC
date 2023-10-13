@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=18
+versAddDop=19
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -241,8 +241,10 @@ function vybor:configure(id)
 				vybor[3]:Show()
 			end
 		end
+
 		if testQ["picon"] == "zt" and (testFldhs ~= 1 or testFldh ~= 1) and testFldza ~= 1 then
-			if vybor[2] ~= nil then
+			if vybor[1] ~= nil then
+				vybor[1]:Show()
 				vybor[2]:Show()
 				vybor[3]:Show()
 				vybor[4]:Show()
@@ -1018,7 +1020,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
 					if vybor[4] == nil or not vybor[4]:IsVisible() then
 						vybor:configure(4)
-						vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*192, 96)
+						vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*320, 96)
 						vybor[4]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 						vybor[4]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 						vybor[4]:Show()
