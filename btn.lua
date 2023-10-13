@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=5
+versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -69,6 +69,12 @@ function okNo:configure(id,sign)
 			testQ["okno"] = nil
 			hX()
 			testQ['sign'] = nil
+			if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
+				testQ['dQ'] = 1
+				testQ['dQDay'] = tonumber(date("%d"))
+			else
+				testQ['dQ'] = tonumber(testQ['dQ'])+1
+			end
 		end
 		if testQ["okno"] == "99991" then
 			SendChatMessage("Ухожу, ухожу...", "guild")
