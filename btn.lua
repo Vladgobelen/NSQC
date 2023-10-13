@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=7
+versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -186,6 +186,9 @@ function vybor:configure(id)
 		if resursy[3] ~= nil then
 			resursy[3]:SetFrameStrata("FULLSCREEN")
 		end
+		if resursy[4] ~= nil then
+			resursy[4]:SetFrameStrata("FULLSCREEN")
+		end
 		for i = 1,100 do
 			if mioFld[nome]["объекты"][tostring(i)] == "hs" then
 				testFldh = 1
@@ -343,6 +346,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,10 do
 							if vybor[i] ~= nil then
@@ -366,6 +370,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,10 do
 							if vybor[i] ~= nil then
@@ -404,6 +409,7 @@ function vybor:configure(id)
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 					for i=1,10 do
 						if vybor[i] ~= nil then
 							vybor[i]:Hide()
@@ -427,6 +433,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,10 do
 							if vybor[i] ~= nil then
@@ -451,6 +458,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,10 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
@@ -589,7 +597,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
 	self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
 	self[id]:Hide();
-	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown")
+	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown","LeftButtonUp")
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome
 		if testQ['sign'] ~= "1" then
@@ -597,7 +605,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		else
 			nome = myNome
 		end
-
+		if mioFld[nome]["объекты"][tostring(id)] == "za" then
+			if arg1 == "LeftButton" then
+				if arg2 == true then
+					testQ["zavod"] = 1
+				end
+				if arg2 == false then
+					testQ["zavod"] = nil
+				end
+			end
+		end
 		if arg1 == "LeftButton" then
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
 				if testQ["hTimer"] == nil then
@@ -656,6 +673,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 												resursy[1]:Hide()
 												resursy[2]:Hide()
 												resursy[3]:Hide()
+												resursy[4]:Hide()
 											end
 											btn[989]:Hide()
 											btn[989]:ClearAllPoints()
@@ -680,6 +698,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											resursy[1]:Hide()
 											resursy[2]:Hide()
 											resursy[3]:Hide()
+											resursy[4]:Hide()
 										end
 										btn[989]:Hide()
 										btn[989]:ClearAllPoints()
@@ -700,6 +719,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											resursy[1]:Hide()
 											resursy[2]:Hide()
 											resursy[3]:Hide()
+											resursy[4]:Hide()
 										end
 										btn[989]:Hide()
 										btn[989]:ClearAllPoints()
@@ -716,6 +736,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											resursy[1]:Hide()
 											resursy[2]:Hide()
 											resursy[3]:Hide()
+											resursy[4]:Hide()
 										end
 										btn[989]:Hide()
 										btn[989]:ClearAllPoints()
@@ -739,6 +760,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										resursy[1]:Hide()
 										resursy[2]:Hide()
 										resursy[3]:Hide()
+										resursy[4]:Hide()
 									end
 									btn[989]:Hide()
 									btn[989]:ClearAllPoints()
@@ -755,6 +777,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										resursy[1]:Hide()
 										resursy[2]:Hide()
 										resursy[3]:Hide()
+										resursy[4]:Hide()
 									end
 									btn[989]:Hide()
 									btn[989]:ClearAllPoints()
@@ -1051,6 +1074,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if resursy[3] ~= nil then
 			resursy[3]:SetFrameStrata("FULLSCREEN")
 		end
+		if resursy[4] ~= nil then
+			resursy[4]:SetFrameStrata("FULLSCREEN")
+		end
 		local nome
 		if testQ['sign'] ~= "1" then
 			nome = GuildFrame["selectedName"]
@@ -1100,6 +1126,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self)
+		testQ["zavod"] = nil
 		testQ["temp"] = nil
 		local nome
 		if testQ['sign'] ~= "1" then
@@ -2439,6 +2466,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if testQ["zavod"] == 1 then
+			if testQ["beton"] == nil then
+				testQ["beton"] = 0.01
+			else
+				testQ["beton"] = tonumber(testQ["beton"])+0.01
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
+				dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+			end
+		end
 		if testQ["hTimer"] ~= nil then
 			local nome
 			if testQ['sign'] ~= "1" then
@@ -2938,10 +2974,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+				dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 			end
 			dmG[101]:Show()
 			dmG[102]:Show()
 			dmG[103]:Show()
+			dmG[104]:Show()
 		end
 		if fBtn[1]:IsVisible() then
 			if resursy[1] == nil then
@@ -2968,10 +3006,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[3]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
 				resursy[3]:SetHighlightTexture("")
 			end
+			if resursy[4] == nil then
+				resursy[4] = CreateFrame("Button", nil, fBtn[10], "");
+				resursy[4]:SetFrameStrata("FULLSCREEN")
+				resursy[4]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -192)
+				resursy[4]:SetSize(64, 64)
+				resursy[4]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bt.tga")
+				resursy[4]:SetHighlightTexture("")
+			end
 			if not resursy[1]:IsVisible() then
 				resursy[1]:Show()
 				resursy[2]:Show()
 				resursy[3]:Show()
+				resursy[4]:Show()
 			end
 			if testQ ~= nil then
 				if testQ["brevna"] == nil then
@@ -2995,6 +3042,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				resursy[1]:SetFrameStrata("FULLSCREEN")
 				resursy[2]:SetFrameStrata("FULLSCREEN")
+				resursy[3]:SetFrameStrata("FULLSCREEN")
+				resursy[4]:SetFrameStrata("FULLSCREEN")
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("|c0099ff99Бревна")
 				GameTooltip:Show()
@@ -3005,6 +3054,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 				resursy[1]:SetFrameStrata("FULLSCREEN")
 				resursy[2]:SetFrameStrata("FULLSCREEN")
+				resursy[3]:SetFrameStrata("FULLSCREEN")
+				resursy[4]:SetFrameStrata("FULLSCREEN")
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("|c0099ff99Трава")
 				GameTooltip:Show()
@@ -3016,8 +3067,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[1]:SetFrameStrata("FULLSCREEN")
 				resursy[2]:SetFrameStrata("FULLSCREEN")
 				resursy[3]:SetFrameStrata("FULLSCREEN")
+				resursy[4]:SetFrameStrata("FULLSCREEN")
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("|c0099ff99Камень")
+				GameTooltip:Show()
+			end)
+			resursy[4]:SetScript("OnEnter",function(self)
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("FULLSCREEN")
+				end
+				resursy[1]:SetFrameStrata("FULLSCREEN")
+				resursy[2]:SetFrameStrata("FULLSCREEN")
+				resursy[3]:SetFrameStrata("FULLSCREEN")
+				resursy[4]:SetFrameStrata("FULLSCREEN")
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("|c0099ff99Бетон")
 				GameTooltip:Show()
 			end)
 			resursy[1]:SetScript("OnLeave",function(self)
@@ -3029,6 +3093,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[1]:SetFrameStrata("BACKGROUND")
 				resursy[2]:SetFrameStrata("BACKGROUND")
 				resursy[3]:SetFrameStrata("BACKGROUND")
+				resursy[4]:SetFrameStrata("BACKGROUND")
 				GameTooltip:Hide()
 			end)
 			resursy[2]:SetScript("OnLeave",function(self)
@@ -3040,6 +3105,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[1]:SetFrameStrata("BACKGROUND")
 				resursy[2]:SetFrameStrata("BACKGROUND")
 				resursy[3]:SetFrameStrata("BACKGROUND")
+				resursy[4]:SetFrameStrata("BACKGROUND")
 				GameTooltip:Hide()
 			end)
 			resursy[3]:SetScript("OnLeave",function(self)
@@ -3051,15 +3117,28 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[1]:SetFrameStrata("BACKGROUND")
 				resursy[2]:SetFrameStrata("BACKGROUND")
 				resursy[3]:SetFrameStrata("BACKGROUND")
+				resursy[4]:SetFrameStrata("BACKGROUND")
 				GameTooltip:Hide()
 			end)
-
+			resursy[4]:SetScript("OnLeave",function(self)
+				GameTooltip:Hide();
+				local str = fBtn[1]:GetFrameStrata()
+				for i = 1,100 do
+					fBtn[i]:SetFrameStrata("BACKGROUND")
+				end
+				resursy[1]:SetFrameStrata("BACKGROUND")
+				resursy[2]:SetFrameStrata("BACKGROUND")
+				resursy[3]:SetFrameStrata("BACKGROUND")
+				resursy[4]:SetFrameStrata("BACKGROUND")
+				GameTooltip:Hide()
+			end)
 		else
 			if resursy[1] ~= nil then
 				if resursy[1]:IsVisible() then
 					resursy[1]:Hide()
 					resursy[2]:Hide()
 					resursy[3]:Hide()
+					resursy[4]:Hide()
 				end
 			end
 		end
@@ -3072,6 +3151,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[1]:Hide()
 				resursy[2]:Hide()
 				resursy[3]:Hide()
+				resursy[4]:Hide()
 				btn[989]:ClearAllPoints()
 				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 				btn[989]:Hide()
@@ -3359,6 +3439,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+							dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						end
 						testQ["fRand6"] = nil
 					end
