@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=13
+versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -929,7 +929,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				testQ["za"] = testQ["za"]+1
 			end
 		end
-		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if testQ["hs"] < 1 and testQ["h"] < 1 then
 				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
 					if vybor[1] == nil or not vybor[1]:IsVisible() then
@@ -950,7 +950,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
 				if vybor[2] == nil or not vybor[2]:IsVisible() then
 					vybor:configure(2)
@@ -979,7 +979,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
 				if vybor[3] == nil or not vybor[3]:IsVisible() then
 					vybor:configure(3)
@@ -1008,7 +1008,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if testQ["za"] < 1 then
 				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
 					if vybor[4] == nil or not vybor[4]:IsVisible() then
@@ -1026,7 +1026,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if mioFld[nome]["объекты"][tostring(id)] == "z" then
 				if vybor[5] == nil or not vybor[5]:IsVisible() then
 					vybor:configure(5)
