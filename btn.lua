@@ -2457,9 +2457,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			testQ["hTimer"] = tonumber(testQ["hTimer"]) - 1
 			if tonumber(testQ["hTimer"]) <=1 then
 				testQ["hTimer"] = nil
-				for i = 1, 100 do
-					if mioFld[nome]["объекты"][tostring(i)] == "h" then
-						dmgText("",fBtn[i],i,13,"ff0000")
+				if fBtn[1] ~= nil and fBtn[1]:IsVisible() then
+					for i = 1, 100 do
+						if mioFld[nome]["объекты"][tostring(i)] == "h" then
+							dmgText("",fBtn[i],i,13,"ff0000")
+						end
 					end
 				end
 			end
