@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=19
+versAddDop=20
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -212,7 +212,7 @@ function vybor:configure(id)
 		end
 		for i = 1,100 do
 			if mioFld[nome]["объекты"][tostring(i)] == "hs" then
-				testFldhs = 1
+				testFldh = 1
 			end
 			if mioFld[nome]["объекты"][tostring(i)] == "h" then
 				testFldh = 1
@@ -228,21 +228,27 @@ function vybor:configure(id)
 			end
 		end
 
-		if testQ["picon"] == "zt" and (testFldhs ~= 1 or testFldh ~= 1) and testFldza == 1 then
+		if testQ["picon"] == "zt" and testFldh ~= 1 and testFldza == 1 then
 			if vybor[1] ~= nil then
 				vybor[1]:Show()
 				vybor[2]:Show()
 				vybor[3]:Show()
 			end
 		end
-		if testQ["picon"] == "zt" and (testFldhs == 1 or testFldh == 1) and testFldza == 1 then
+		if testQ["picon"] == "zt" and testFldh == 1 and testFldza == 1 then
 			if vybor[2] ~= nil then
 				vybor[2]:Show()
 				vybor[3]:Show()
 			end
 		end
-
-		if testQ["picon"] == "zt" and (testFldhs ~= 1 or testFldh ~= 1) and testFldza ~= 1 then
+		if testQ["picon"] == "zt" and testFldh == 1 and testFldza ~= 1 then
+			if vybor[2] ~= nil then
+				vybor[2]:Show()
+				vybor[3]:Show()
+				vybor[4]:Show()
+			end
+		end
+		if testQ["picon"] == "zt" and testFldh ~= 1 and testFldza ~= 1 then
 			if vybor[1] ~= nil then
 				vybor[1]:Show()
 				vybor[2]:Show()
@@ -1020,7 +1026,14 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
 					if vybor[4] == nil or not vybor[4]:IsVisible() then
 						vybor:configure(4)
-						vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*320, 96)
+						if tonumber(testQ["h"]) == 0 and tonumber(testQ["hs"]) == 0 then
+							vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*320, 96)
+						end
+						print(testQ["h"])
+						print(testQ["hs"])
+						if tonumber(testQ["h"]) ~= 0 or tonumber(testQ["hs"]) ~= 0 then
+							vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*192, 96)
+						end
 						vybor[4]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 						vybor[4]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 						vybor[4]:Show()
