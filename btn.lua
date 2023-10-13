@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=14
+versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -80,13 +80,7 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 			testQ["okno"] = nil
 		end
-		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" then
-			print(testQ["okno"])
-			print(testQ["okno"])
-			print(testQ["okno"])
-			print(testQ["okno"])
-			print(testQ["okno"])
-
+		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
 			testQ["okno"] = nil
