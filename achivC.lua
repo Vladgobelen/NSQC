@@ -25,7 +25,7 @@ if kodMsg[1] == "построить" and kodMsg[2] == myNome then
 		end
 	end
 end
-if kodMsg[1] == "#hQ1x" then
+if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ[myNome]["взятый_квест_х"] = "9999"
 	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
 	testQ[myNome]["взятый_квест"] = "9999"
