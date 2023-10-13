@@ -69,12 +69,6 @@ function okNo:configure(id,sign)
 			testQ["okno"] = nil
 			hX()
 			testQ['sign'] = nil
-			if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
-				testQ['dQ'] = 1
-				testQ['dQDay'] = tonumber(date("%d"))
-			else
-				testQ['dQ'] = tonumber(testQ['dQ'])+1
-			end
 		end
 		if testQ["okno"] == "99991" then
 			SendChatMessage("Ухожу, ухожу...", "guild")
@@ -89,6 +83,12 @@ function okNo:configure(id,sign)
 		end
 		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
+			if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
+				testQ['dQ'] = 1
+				testQ['dQDay'] = tonumber(date("%d"))
+			else
+				testQ['dQ'] = tonumber(testQ['dQ'])+1
+			end
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
 			testQ["okno"] = nil
 			hX()
