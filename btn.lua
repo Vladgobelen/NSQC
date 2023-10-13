@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=11
+versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -605,13 +605,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		else
 			nome = myNome
 		end
-		if mioFld[nome]["объекты"][tostring(id)] == "za" then
-			if arg1 == "LeftButton" then
-				if arg2 == true then
-					testQ["zavod"] = 1
-				end
-				if arg2 == false then
-					testQ["zavod"] = nil
+		if nome == myNome then
+			if mioFld[nome]["объекты"][tostring(id)] == "za" then
+				if arg1 == "LeftButton" then
+					if arg2 == true then
+						testQ["zavod"] = 1
+					end
+					if arg2 == false then
+						testQ["zavod"] = nil
+					end
 				end
 			end
 		end
