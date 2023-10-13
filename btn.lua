@@ -792,8 +792,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				resObj(id,myNome,nome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 			end
+
 			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
 				treeX(nome,myNome,id)
+				print(mioFld[nome]["объекты"][tostring(id)])
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
