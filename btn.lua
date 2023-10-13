@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=16
+versAddDop=17
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1474,6 +1474,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			testQ[myNome]["itemQend"] = 1
 			tempRez1 = nil
 			MailFrame:Hide()
+			testQ['dQ'] = tonumber(testQ['dQ'])+1
 		end)
 	end
 end
