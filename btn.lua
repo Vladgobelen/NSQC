@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=12
+versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -606,13 +606,32 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			nome = myNome
 		end
 		if nome == myNome then
-			if mioFld[nome]["объекты"][tostring(id)] == "za" then
-				if arg1 == "LeftButton" then
-					if arg2 == true then
-						testQ["zavod"] = 1
+			if tonumber(testQ["kamen"]) >=1 then
+				if mioFld[nome]["объекты"][tostring(id)] == "za" then
+					if arg1 == "LeftButton" then
+						if arg2 == true then
+							testQ["zavod"] = 1
+							testQ["kamen"] = tonumber(testQ["kamen"])-1
+							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						end
+						if arg2 == false then
+							testQ["zavod"] = nil
+						end
 					end
-					if arg2 == false then
-						testQ["zavod"] = nil
+				end
+			end
+		else
+			if tonumber(testQ["kamen"]) >=1 then
+				if mioFld[nome]["объекты"][tostring(id)] == "za" then
+					if arg1 == "LeftButton" then
+						if arg2 == true then
+							testQ["zavodA"] = 1
+							testQ["kamen"] = tonumber(testQ["kamen"])-5
+							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						end
+						if arg2 == false then
+							testQ["zavodA"] = nil
+						end
 					end
 				end
 			end
@@ -1106,6 +1125,12 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if mioFld ~= nil then
 			if mioFld[nome] ~= nil then
+				if mioFld[nome]["объекты"][tostring(id)] == "za" and tonumber(testQ["kamen"]) < 1 then
+					GameTooltip:AddLine("Нужно больше камня")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "za" and tonumber(testQ["kamen"]) >= 1 then
+					GameTooltip:AddLine("Потребление: 1-5 камня за попытку")
+				end
 				if mioFld[nome]["подсказки"] ~= nil then
 					if mioFld[nome]["подсказки"][tostring(id)] ~= nil then
 						GameTooltip:AddLine(mioFld[nome]["подсказки"][tostring(id)])
@@ -1129,6 +1154,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end)
 	self[id]:SetScript("OnLeave",function(self)
 		testQ["zavod"] = nil
+		testQ["zavodA"] = nil
 		testQ["temp"] = nil
 		local nome
 		if testQ['sign'] ~= "1" then
