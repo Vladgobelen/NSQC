@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=10
+versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -633,16 +633,55 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							lvlTest = 1
 						end
 						if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
+
+							if testQ == nil then
+								testQ = {}
+							end
+							if testQ[myNome] == nil then
+								testQ[myNome] = {}
+							end
+							if testQ[myNome]["выполненные_квесты_х"] == nil then
+								testQ[myNome]["выполненные_квесты_х"] = {}
+							end
+							if testQ[myNome]["взятый_квест_х"] ~= nil and testQ[myNome]["взятый_квест_х"] ~= "9999" then
+								local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(testQ[myNome]["взятый_квест_х"]))
+								if completed == false then
+									testQ["okno"] = nil
+									quesT("show")
+									okNo:configure(1,"show")
+									rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])),1,"show")
+									for i=1,100 do
+										fBtn[i]:Hide()
+									end
+									if resursy[1] ~= nil then
+										resursy[1]:Hide()
+										resursy[2]:Hide()
+										resursy[3]:Hide()
+										resursy[4]:Hide()
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								else
+									testQ["okno"] = "completed"
+									quesT("show")
+									rtnTextF("Ачивка " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])) .. " выполнена",1,"show")
+									okNo:configure(1,"show")
+									for i=1,100 do
+										fBtn[i]:Hide()
+									end
+									if resursy[1] ~= nil then
+										resursy[1]:Hide()
+										resursy[2]:Hide()
+										resursy[3]:Hide()
+										resursy[4]:Hide()
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								end
+							end
 							if lvlTest ~= nil then
-								if testQ == nil then
-									testQ = {}
-								end
-								if testQ[myNome] == nil then
-									testQ[myNome] = {}
-								end
-								if testQ[myNome]["выполненные_квесты_х"] == nil then
-									testQ[myNome]["выполненные_квесты_х"] = {}
-								end
 								if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
 									local qx = math.random(1,4)
 									if qx ~= 1 then
@@ -691,44 +730,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										quesT("show")
 										okNo:configure(1,"show")
 										rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
-										for i=1,100 do
-											fBtn[i]:Hide()
-										end
-										if resursy[1] ~= nil then
-											resursy[1]:Hide()
-											resursy[2]:Hide()
-											resursy[3]:Hide()
-											resursy[4]:Hide()
-										end
-										btn[989]:Hide()
-										btn[989]:ClearAllPoints()
-										btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-									end
-								end
-								if testQ[myNome]["взятый_квест_х"] ~= nil and testQ[myNome]["взятый_квест_х"] ~= "9999" then
-									local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(testQ[myNome]["взятый_квест_х"]))
-									if completed == false then
-										testQ["okno"] = nil
-										quesT("show")
-										okNo:configure(1,"show")
-										rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])),1,"show")
-										for i=1,100 do
-											fBtn[i]:Hide()
-										end
-										if resursy[1] ~= nil then
-											resursy[1]:Hide()
-											resursy[2]:Hide()
-											resursy[3]:Hide()
-											resursy[4]:Hide()
-										end
-										btn[989]:Hide()
-										btn[989]:ClearAllPoints()
-										btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-									else
-										testQ["okno"] = "completed"
-										quesT("show")
-										rtnTextF("Ачивка " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])) .. " выполнена",1,"show")
-										okNo:configure(1,"show")
 										for i=1,100 do
 											fBtn[i]:Hide()
 										end
