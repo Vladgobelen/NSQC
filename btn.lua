@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=6
+versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -428,9 +428,6 @@ function vybor:configure(id)
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
-						testQ["brevna"] = tonumber(testQ["brevna"])-10
-						testQ["stog"] = tonumber(testQ["stog"])-10
-						testQ["kamen"] = tonumber(testQ["kamen"])-5
 						for i=1,10 do
 							if vybor[i] ~= nil then
 								vybor[i]:Hide()
@@ -455,9 +452,6 @@ function vybor:configure(id)
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
-						testQ["brevna"] = tonumber(testQ["brevna"])-10
-						testQ["stog"] = tonumber(testQ["stog"])-10
-						testQ["kamen"] = tonumber(testQ["kamen"])-5
 						for i=1,10 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
 								vybor[i]:Hide()
