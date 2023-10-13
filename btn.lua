@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=9
+versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3034,6 +3034,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					testQ["kamen"] = 0
 				end
 			end
+			if testQ ~= nil then
+				if testQ["beton"] == nil then
+					testQ["beton"] = 0
+				end
+			end
+
 
 			resursy[1]:SetScript("OnEnter",function(self)
 				for i = 1,100 do
