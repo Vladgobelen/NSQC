@@ -1,4 +1,4 @@
-versAdd=275
+versAdd=276
 versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -93,24 +93,15 @@ function okNo:configure(id,sign)
 		self[2]:SetScript("OnClick",function(self, button)
 			if testQ["okno"] == "itemQ" then
 				SendChatMessage("Я злонамеренно отказываются от квеста.", "OFFICER", nil, 1)
-				testQ['dQDay'] = date("%d")
-				for Zc=1,GetNumGuildMembers(true) do
-					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-					if name == myNome then
-						local oN = string.sub(officerNote,1,4)
-						local oN1 = string.sub(officerNote,6,7)
-						local oN2 = string.sub(officerNote,8,8)
-						if oN ~= "" then
-							if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
-								testQ['dQ'] = 1
-							else
-								testQ['dQ'] = tonumber(testQ['dQ'])+1
-							end
-						else
-							testQ['dQ'] = 1
-						end
-					end
+
+				if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
+					testQ['dQ'] = 1
+					testQ['dQDay'] = tonumber(date("%d"))
+				else
+					testQ['dQ'] = tonumber(testQ['dQ'])+1
 				end
+
+
 				testQ[myNome]["взятый_квест"] = "9999"
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
@@ -118,23 +109,13 @@ function okNo:configure(id,sign)
 				testQ['sign'] = nil
 			elseif testQ["okno"] == nil then
 				if testQ[myNome]["взятый_квест_х"] ~= nil or testQ[myNome]["взятый_квест_х"] ~= "9999" or testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
-					for Zc=1,GetNumGuildMembers(true) do
-					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-						if name == myNome then
-							local oN = string.sub(officerNote,1,4)
-							local oN1 = string.sub(officerNote,6,7)
-							local oN2 = string.sub(officerNote,8,8)
-							if oN ~= "" then
-								if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
-									testQ['dQ'] = 1
-								else
-									testQ['dQ'] = tonumber(testQ['dQ'])+1
-								end
-							else
-								testQ['dQ'] = 1
-							end
-						end
+					if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
+						testQ['dQ'] = 1
+						testQ['dQDay'] = tonumber(date("%d"))
+					else
+						testQ['dQ'] = tonumber(testQ['dQ'])+1
 					end
+
 					SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])), "OFFICER", nil, 1)
 					testQ[myNome]["взятый_квест_х"] = "9999"
 					testQ["okno"] = nil
@@ -155,22 +136,11 @@ function okNo:configure(id,sign)
 			end
 			if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" then
 				SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
-				for Zc=1,GetNumGuildMembers(true) do
-					local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-					if name == myNome then
-						local oN = string.sub(officerNote,1,4)
-						local oN1 = string.sub(officerNote,6,7)
-						local oN2 = string.sub(officerNote,8,8)
-						if oN ~= "" then
-							if tonumber(date("%d")) ~= tonumber(oN1) then
-								GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. "1")
-							else
-								GuildRosterSetOfficerNote(Zc, oN .. " " .. date("%d") .. tonumber(oN2)+1)
-							end
-						else
-							GuildRosterSetOfficerNote(Zc, "0000" .. " " .. date("%d") .. "1")
-						end
-					end
+				if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
+					testQ['dQ'] = 1
+					testQ['dQDay'] = tonumber(date("%d"))
+				else
+					testQ['dQ'] = tonumber(testQ['dQ'])+1
 				end
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
