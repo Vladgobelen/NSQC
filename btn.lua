@@ -605,8 +605,17 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		else
 			nome = myNome
 		end
-
-		if arg1 == "LeftButton" then
+		if mioFld[nome]["объекты"][tostring(id)] == "za" then
+			if arg1 == "LeftButton" then
+				if arg2 == true then
+					testQ["zavod"] = 1
+				end
+				if arg2 == false then
+					testQ["zavod"] = nil
+				end
+			end
+		end
+		if arg1 == "LeftButton" and arg2 == true then
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
 				if testQ["hTimer"] == nil then
 					testQ["hTimer"] = 60
