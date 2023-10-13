@@ -1,5 +1,5 @@
 versAdd=274
-versAddDop=17
+versAddDop=18
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -54,6 +54,7 @@ function okNo:configure(id,sign)
 			SendAddonMessage("#hQ1itemQ", testQ[myNome]["взятый_квест_х"], "guild")
 			hX()
 			testQ['sign'] = nil
+			testQ["okno"] = nil
 		end
 		if testQ["okno"] == "itemQ" then
 			SendChatMessage("Скоро я пришлю Вождю многа многа стаков вот этого: " .. testQ[myNome]["itemName"], "OFFICER", nil, 1)
