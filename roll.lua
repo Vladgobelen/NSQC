@@ -51,11 +51,20 @@ if ginv ~= nil then
 							SendAddonMessage("NSGadd", myNome .. " принял +1 ", "guild")
 							if testQ["mapQuestPodskazki"] ~= nil and testQ["mapQuestPodskazki"] ~= 1 then
 								testQ["mapQuestPodskazki"] = testQ["mapQuestPodskazki"] + 1
+								if testQ["hTimer"] ~= nil then
+									testQ["hTimer"] = tonumber(testQ["hTimer"])-60
+								end
 							elseif testQ["mapQuestPodskazki"] == nil then
 								testQ["mapQuestPodskazki"] = 0
+								if testQ["hTimer"] ~= nil then
+									testQ["hTimer"] = tonumber(testQ["hTimer"])-60
+								end
 							elseif testQ["mapQuestPodskazki"] >= 1 then
 								SendAddonMessage("#M1QP", myNome, "guild")
 								testQ["mapQuestPodskazki"] = nil
+								if testQ["hTimer"] ~= nil then
+									testQ["hTimer"] = tonumber(testQ["hTimer"])-60
+								end
 							end
 							if testQ[myNome]["настройки"]["roll"] == "Enable" then
 								local x = math.random(1, #gInvite)
