@@ -1,5 +1,5 @@
-versAdd=276
-versAddDop=14
+versAdd=277
+versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -83,12 +83,6 @@ function okNo:configure(id,sign)
 		end
 		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
-			if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
-				testQ['dQ'] = 1
-				testQ['dQDay'] = tonumber(date("%d"))
-			else
-				testQ['dQ'] = tonumber(testQ['dQ'])+1
-			end
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
 			testQ["okno"] = nil
 			hX()
@@ -99,15 +93,6 @@ function okNo:configure(id,sign)
 		self[2]:SetScript("OnClick",function(self, button)
 			if testQ["okno"] == "itemQ" then
 				SendChatMessage("Я злонамеренно отказываются от квеста.", "OFFICER", nil, 1)
-
-				if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
-					testQ['dQ'] = 1
-					testQ['dQDay'] = tonumber(date("%d"))
-				else
-					testQ['dQ'] = tonumber(testQ['dQ'])+1
-				end
-
-
 				testQ[myNome]["взятый_квест"] = "9999"
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
@@ -115,13 +100,6 @@ function okNo:configure(id,sign)
 				testQ['sign'] = nil
 			elseif testQ["okno"] == nil then
 				if testQ[myNome]["взятый_квест_х"] ~= nil or testQ[myNome]["взятый_квест_х"] ~= "9999" or testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
-					if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
-						testQ['dQ'] = 1
-						testQ['dQDay'] = tonumber(date("%d"))
-					else
-						testQ['dQ'] = tonumber(testQ['dQ'])+1
-					end
-
 					SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])), "OFFICER", nil, 1)
 					testQ[myNome]["взятый_квест_х"] = "9999"
 					testQ["okno"] = nil
@@ -142,12 +120,6 @@ function okNo:configure(id,sign)
 			end
 			if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" then
 				SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
-				if tonumber(date("%d")) ~= tonumber(testQ['dQDay']) then
-					testQ['dQ'] = 1
-					testQ['dQDay'] = tonumber(date("%d"))
-				else
-					testQ['dQ'] = tonumber(testQ['dQ'])+1
-				end
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
 				hX()
@@ -639,20 +611,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if arg1 == "LeftButton" and arg2 == true then
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
 				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 60
 					if nome == myNome then
 						local lvlTemp = tonumber(testQ["mioFldLvl"])
 						local testDate = tonumber(string.sub(date(),4,5))
-						local lvlTest = nil
-						if testQ['dQ'] == nil then
-							testQ['dQ'] = 0
-						end
-						if tonumber(testQ['dQDay']) ~= tonumber(date("%d")) then
-							lvlTest=1
-						end
-						if tonumber(testQ['dQDay']) == tonumber(date("%d")) and lvlTemp > tonumber(testQ['dQ']) then
-							lvlTest = 1
-						end
+						local lvlTest = 1
 						if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
 
 							if testQ == nil then
@@ -855,6 +817,35 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
 				gKam(myNome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
+			end
+			if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
+				if testQ["hTimer"] == nil then
+					testQ["hTimer"] = 86400
+				end
+			elseif tonumber(testQ["mioFldLvl"]) == 2 then
+				if testQ["hTimer"] == nil then
+					testQ["hTimer"] = 43200
+				end
+			elseif tonumber(testQ["mioFldLvl"]) == 3 then
+				if testQ["hTimer"] == nil then
+					testQ["hTimer"] = 21600
+				end
+			elseif tonumber(testQ["mioFldLvl"]) == 4 then
+				if testQ["hTimer"] == nil then
+					testQ["hTimer"] = 10800
+				end
+			elseif tonumber(testQ["mioFldLvl"]) == 5 then
+				if testQ["hTimer"] == nil then
+					testQ["hTimer"] = 5400
+				end
+			elseif tonumber(testQ["mioFldLvl"]) == 6 then
+				if testQ["hTimer"] == nil then
+					testQ["hTimer"] = 2700
+				end
+			elseif tonumber(testQ["mioFldLvl"]) == 7 then
+				if testQ["hTimer"] == nil then
+					testQ["hTimer"] = 1350
+				end
 			end
 		end
 		if arg1 == "RightButton" then
@@ -1518,11 +1509,6 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			testQ[myNome]["itemQend"] = 1
 			tempRez1 = nil
 			MailFrame:Hide()
-			if testQ['dQ'] == nil then
-				testQ['dQ'] = 1
-			else
-				testQ['dQ'] = tonumber(testQ['dQ'])+1
-			end
 		end)
 	end
 end

@@ -31,11 +31,6 @@ if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ[myNome]["взятый_квест"] = "9999"
 	testQ["okno"] = nil
 	testQ[myNome]["itemQend"] = nil
-	if testQ['dQ'] == nil then
-		testQ['dQ'] = 1
-	else
-		testQ['dQ'] = tonumber(testQ['dQ']) + 1
-	end
 end
 
 if kodMsg[1] == "rasstoyanie" then
