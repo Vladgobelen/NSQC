@@ -1,5 +1,5 @@
 versAdd=276
-versAddDop=13
+versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -606,7 +606,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			nome = myNome
 		end
 		if nome == myNome then
-			if tonumber(testQ["kamen"]) >=1 then
+			if tonumber(testQ["kamen"]) >= 1 then
 				if mioFld[nome]["объекты"][tostring(id)] == "za" then
 					if arg1 == "LeftButton" then
 						if arg2 == true then
@@ -621,16 +621,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		else
-			if tonumber(testQ["kamen"]) >=1 then
+			if tonumber(testQ["kamen"]) >= 5 then
 				if mioFld[nome]["объекты"][tostring(id)] == "za" then
 					if arg1 == "LeftButton" then
 						if arg2 == true then
-							testQ["zavodA"] = 1
+							testQ["zavod"] = 1
 							testQ["kamen"] = tonumber(testQ["kamen"])-5
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						end
 						if arg2 == false then
-							testQ["zavodA"] = nil
+							testQ["zavod"] = nil
 						end
 					end
 				end
@@ -1154,7 +1154,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	end)
 	self[id]:SetScript("OnLeave",function(self)
 		testQ["zavod"] = nil
-		testQ["zavodA"] = nil
 		testQ["temp"] = nil
 		local nome
 		if testQ['sign'] ~= "1" then
