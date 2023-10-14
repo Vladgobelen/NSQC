@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -730,6 +730,35 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							else
 								SendChatMessage("Следущий квест на моем гильдлвле доступен завтра, однако я всегда могу принять немного новых игроков в гильдию и получить бонус.", "OFFICER", nil, 1)
 							end
+							if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
+								if testQ["hTimer"] == nil then
+									testQ["hTimer"] = 86400
+								end
+							elseif tonumber(testQ["mioFldLvl"]) == 2 then
+								if testQ["hTimer"] == nil then
+									testQ["hTimer"] = 43200
+								end
+							elseif tonumber(testQ["mioFldLvl"]) == 3 then
+								if testQ["hTimer"] == nil then
+									testQ["hTimer"] = 28800
+								end
+							elseif tonumber(testQ["mioFldLvl"]) == 4 then
+								if testQ["hTimer"] == nil then
+									testQ["hTimer"] = 21600
+								end
+							elseif tonumber(testQ["mioFldLvl"]) == 5 then
+								if testQ["hTimer"] == nil then
+									testQ["hTimer"] = 18000
+								end
+							elseif tonumber(testQ["mioFldLvl"]) == 6 then
+								if testQ["hTimer"] == nil then
+									testQ["hTimer"] = 14000
+								end
+							elseif tonumber(testQ["mioFldLvl"]) == 7 then
+								if testQ["hTimer"] == nil then
+									testQ["hTimer"] = 10800
+								end
+							end
 						end
 					else
 						if lvlTest ~= nil then
@@ -817,35 +846,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
 				gKam(myNome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
-			end
-			if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
-				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 86400
-				end
-			elseif tonumber(testQ["mioFldLvl"]) == 2 then
-				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 43200
-				end
-			elseif tonumber(testQ["mioFldLvl"]) == 3 then
-				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 28800
-				end
-			elseif tonumber(testQ["mioFldLvl"]) == 4 then
-				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 21600
-				end
-			elseif tonumber(testQ["mioFldLvl"]) == 5 then
-				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 18000
-				end
-			elseif tonumber(testQ["mioFldLvl"]) == 6 then
-				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 14000
-				end
-			elseif tonumber(testQ["mioFldLvl"]) == 7 then
-				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 10800
-				end
 			end
 		end
 		if arg1 == "RightButton" then
