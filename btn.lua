@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -732,31 +732,31 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							end
 							if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
 								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 86400
+									testQ["hTimer"] = 50400
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 2 then
 								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 43200
+									testQ["hTimer"] = 25200
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 3 then
 								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 28800
+									testQ["hTimer"] = 14500
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 4 then
 								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 21600
+									testQ["hTimer"] = 11000
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 5 then
 								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 18000
+									testQ["hTimer"] = 10500
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 6 then
 								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 14000
+									testQ["hTimer"] = 7500
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 7 then
 								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 10800
+									testQ["hTimer"] = 7200
 								end
 							end
 						end
