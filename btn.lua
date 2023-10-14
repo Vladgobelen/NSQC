@@ -828,23 +828,23 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			elseif tonumber(testQ["mioFldLvl"]) == 3 then
 				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 21600
+					testQ["hTimer"] = 28800
 				end
 			elseif tonumber(testQ["mioFldLvl"]) == 4 then
 				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 10800
+					testQ["hTimer"] = 21600
 				end
 			elseif tonumber(testQ["mioFldLvl"]) == 5 then
 				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 5400
+					testQ["hTimer"] = 18000
 				end
 			elseif tonumber(testQ["mioFldLvl"]) == 6 then
 				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 2700
+					testQ["hTimer"] = 14000
 				end
 			elseif tonumber(testQ["mioFldLvl"]) == 7 then
 				if testQ["hTimer"] == nil then
-					testQ["hTimer"] = 1350
+					testQ["hTimer"] = 10800
 				end
 			end
 		end
