@@ -34,9 +34,13 @@ libs\za.tga
 libs\zak.tga
 libs\zp.tga
 libs\bi.tga
+libs\bb.tga
 libs\sk.tga
 libs\sb.tga
+libs\gz.tga
+libs\os.tga
 libs\s.tga
+libs\hr.ogg
 libs\hsS.tga
 libs\skS.tga
 libs\skc.tga

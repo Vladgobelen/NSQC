@@ -238,7 +238,33 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				SendAddonMessage("MioFld1 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[1], "guild")
 				SendAddonMessage("MioFld2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
 				SendAddonMessage("MioFld3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
+			end
+			if k == "петы" then
+				if rez[1] == nil then
+					rez[1] = mioFld[myNome][k]["1"] .. " "
 				end
+				for i = 2, 35 do
+					j = tostring(i)
+					rez[1] = rez[1] .. mioFld[myNome][k][j] .. " "
+				end
+				if rez[2] == nil then
+					rez[2] = mioFld[myNome][k]["36"] .. " "
+				end
+				for i = 37, 70 do
+					j = tostring(i)
+					rez[2] = rez[2] .. mioFld[myNome][k][j] .. " "
+				end
+				if rez[3] == nil then
+					rez[3] = mioFld[myNome][k]["71"] .. " "
+				end
+				for i = 72, 100 do
+					j = tostring(i)
+					rez[3] = rez[3] .. mioFld[myNome][k][j] .. " "
+				end
+				SendAddonMessage("MioFldP1 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[1], "guild")
+				SendAddonMessage("MioFldP2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
+				SendAddonMessage("MioFldP3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
+			end
 		end
 	else
 		if mioFld == nil then
@@ -362,6 +388,50 @@ if kodMsg[1] == "MioFld3" then
 	testQ["fRandD3"] = 1
 	testQ["fRandD1nome"] = sender
 end
+if kodMsg[1] == "MioFldP1" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
+	for i = 1, 35 do
+		j = tostring(i)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD1"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFldP2" then
+	for i = 1, 35 do
+		j = tostring(i+35)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD2"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFldP3" then
+	for i = 1, 30 do
+		j = tostring(i+70)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD3"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "bB" then
+	if mioFld[message]["петы"] == nil then
+		mioFld[message]["петы"] = {}
+	end
+	mioFld[message]["петы"][tostring(kodMsg[2])] = "bb " .. sender
+	testQ["fRandDb"] = 1
+	testQ["fRandDbnome"] = message
+	if message == myNome then
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+	end
+end
 if kodMsg[1] == "MioFld" then
 	if mioFld == nil then
 		mioFld = {}
@@ -462,6 +532,22 @@ if kodMsg[1] == "travA" then
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
+	end
+end
+if kodMsg[1] == "oS" then
+	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
+	if sender == myNome then
+		local pet = mysplit(kodMsg[3])
+		testQ[myNome]["петы"][pet[1]] = 1
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+	end
+end
+if kodMsg[1] == "gZ" then
+	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
+	local pet = mysplit(kodMsg[3])
+	if pet[2] == myNome then
+		testQ[myNome]["петы"][pet[1]] = 1
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
 	end
 end
 if kodMsg[1] == "zemlYa" then
