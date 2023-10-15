@@ -140,6 +140,11 @@ if string.find (message, "покажи мне ачивку")  and string.find(me
 		end
 	end
 end
+if msg[1] == "\"пет" and msg[2] == myNome and testGM ~= nil then
+	if msg[3] == "бобер" then
+		testQ[myNome]["петы"]["bb"] = 1
+	end
+end
 if message == "ТестГМ" then
 	local MySlider = CreateFrame("Slider", "MySliderGlobalName", WorldMapFrame, "OptionsSliderTemplate")
 	MySlider:SetWidth(20)

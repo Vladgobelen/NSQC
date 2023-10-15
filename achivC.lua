@@ -433,6 +433,7 @@ if kodMsg[1] == "MioFldP1" then
 	testQ["fRandD1"] = 1
 	testQ["fRandD1nome"] = sender
 end
+
 if kodMsg[1] == "MioFldP2" then
 	for i = 1, 35 do
 		j = tostring(i+35)
