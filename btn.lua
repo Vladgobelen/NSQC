@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=9
+versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -230,14 +230,24 @@ function vybor:configure(id)
 				vybor[6]:Show()
 			end
 		end
-		if testQ["picon"] == "t" and testQ["icon"] == "gz" then
+		if testQ["icon"] == "gz" then
 			if vybor[10] ~= nil then
 				vybor[10]:Show()
+				for i = 1, 100 do
+					if i ~= 10 and vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
 			end
 		end
-		if testQ["picon"] == "t" and testQ["icon"] == "os" then
+		if testQ["icon"] == "os" then
 			if vybor[9] ~= nil then
 				vybor[9]:Show()
+				for i = 1, 100 do
+					if i ~= 9 and vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
 			end
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 4 and tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["kamen"]) >= 20 then
@@ -516,6 +526,7 @@ function vybor:configure(id)
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+				print(mioFld[nome]["петы"][tostring(testQ["idp"])])
 				SendAddonMessage("gZ " .. testQ["idp"] .. " " .. mioFld[nome]["петы"][tostring(testQ["idp"])], nome, "guild")
 				testQ["temp"] = nil
 				for i=1,10 do
@@ -1333,6 +1344,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "t" then
 				if vybor[8] == nil or not vybor[8]:IsVisible() then
 					if testQ[myNome]["петы"] ~= nil then
+						if mioFld[nome]["петы"] == nil then
+							mioFld[nome]["петы"] = {}
+						end
 						if mioFld[nome]["петы"][tostring(id)] == nil then
 							if testQ[myNome]["петы"]["bb"] == 1 then
 								vybor:configure(8)
@@ -1351,7 +1365,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if testQ[myNome]["петы"] ~= nil then
+		if mioFld[nome]["петы"] ~= nil then
 			if mioFld[nome]["петы"][tostring(id)] ~= nil then
 				local pet = mysplit(mioFld[nome]["петы"][tostring(id)])
 				if pet[2] == myNome then
@@ -3335,10 +3349,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 				dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 			end
-			dmG[101]:Show()
-			dmG[102]:Show()
-			dmG[103]:Show()
-			dmG[104]:Show()
+			if dmG[101] ~= nil then
+				dmG[101]:Show()
+			end
+			if dmG[102] ~= nil then
+				dmG[102]:Show()
+			end
+			if dmG[103] ~= nil then
+				dmG[103]:Show()
+			end
+			if dmG[104] ~= nil then
+				dmG[104]:Show()
+			end
 		end
 		if fBtn[1]:IsVisible() then
 			if resursy[1] == nil then

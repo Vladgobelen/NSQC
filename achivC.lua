@@ -580,9 +580,8 @@ if kodMsg[1] == "oS" then
 end
 if kodMsg[1] == "gZ" then
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
-	local pet = mysplit(kodMsg[3])
-	if pet[2] == myNome then
-		testQ[myNome]["петы"][pet[1]] = 1
+	if kodMsg[4] == myNome then
+		testQ[myNome]["петы"][kodMsg[3]] = 1
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
 	end
 end
