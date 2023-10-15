@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=4
+versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -184,12 +184,18 @@ function vybor:configure(id)
 				vybor[1]:Show()
 				vybor[2]:Show()
 				vybor[3]:Show()
+				if vybor[7] ~= nil then
+					vybor[7]:Show()
+				end
 			end
 		end
 		if testQ["picon"] == "zt" and testFldh == 1 and testFldza == 1 then
 			if vybor[2] ~= nil then
 				vybor[2]:Show()
 				vybor[3]:Show()
+				if vybor[7] ~= nil then
+					vybor[7]:Show()
+				end
 			end
 		end
 		if testQ["picon"] == "zt" and testFldh == 1 and testFldza ~= 1 then
@@ -197,6 +203,9 @@ function vybor:configure(id)
 				vybor[2]:Show()
 				vybor[3]:Show()
 				vybor[4]:Show()
+				if vybor[7] ~= nil then
+					vybor[7]:Show()
+				end
 			end
 		end
 		if testQ["picon"] == "zt" and testFldh ~= 1 and testFldza ~= 1 then
@@ -205,6 +214,9 @@ function vybor:configure(id)
 				vybor[2]:Show()
 				vybor[3]:Show()
 				vybor[4]:Show()
+				if vybor[7] ~= nil then
+					vybor[7]:Show()
+				end
 			end
 		end
 		if testQ["picon"] == "z" and testQ["icon"] == "kopkop" then
@@ -221,12 +233,12 @@ function vybor:configure(id)
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 4 and tonumber(testQ["brevna"]) < 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:AddLine("Нужно 10 бревен")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 4 and tonumber(testQ["kamen"]) < 20 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше камня")
+			GameTooltip:AddLine("Нужно 20 камня")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 5 then
@@ -241,17 +253,17 @@ function vybor:configure(id)
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["brevna"]) < 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:AddLine("Нужно 10 бревен")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["kamen"]) < 5 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше камня")
+			GameTooltip:AddLine("Нужно 5 камня")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 1 and tonumber(testQ["stog"]) < 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше травы")
+			GameTooltip:AddLine("Нужно 10 травы")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 6 and tonumber(testQ["brevna"]) >= 10 then
@@ -261,12 +273,12 @@ function vybor:configure(id)
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 6 and tonumber(testQ["brevna"]) < 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:AddLine("Нужно 10 бревен")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 2 and tonumber(testQ["brevna"]) < 8 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:AddLine("Нужно 8 бревен")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 2 and tonumber(testQ["brevna"]) >= 8 then
@@ -276,12 +288,22 @@ function vybor:configure(id)
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 3 and tonumber(testQ["brevna"]) < 15 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно больше бревен")
+			GameTooltip:AddLine("Нужно 15 бревен")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 3 and tonumber(testQ["brevna"]) >= 15 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Построить склад камня")
+			GameTooltip:Show()
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 7 and tonumber(testQ["beton"]) >= 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Залить бетонный фундамент")
+			GameTooltip:Show()
+		end
+		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 7 and tonumber(testQ["beton"]) < 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Нужно 5 кубов бетона")
 			GameTooltip:Show()
 		end
 	end)
@@ -529,6 +551,49 @@ function vybor:configure(id)
 				end
 			end
 		end
+		if nome == myNome then
+			if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 7 then
+				if tonumber(testQ["beton"]) >= 5 then
+					if testQ["temp"] == nil then
+						vybor[7]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+						vybor[7]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+						testQ["temp"] = 1
+					elseif testQ["temp"] == 1 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
+						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
+						testQ["temp"] = nil
+						testQ["beton"] = tonumber(testQ["brevna"]) - 5
+						dmgText(testQ["beton"],resursy[1],101,13,"FF8C00")
+						for i=1,10 do
+							if vybor[i] ~= nil then
+								vybor[i]:Hide()
+							end
+						end
+					end
+				end
+			end
+		else
+			if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 7 then
+				if tonumber(testQ["beton"]) >= 20 then
+					if testQ["temp"] == nil then
+						vybor[7]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+						vybor[7]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+						testQ["temp"] = 1
+					elseif testQ["temp"] == 1 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
+						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
+						testQ["temp"] = nil
+						testQ["brevna"] = tonumber(testQ["brevna"]) - 20
+						dmgText(testQ["beton"],resursy[1],101,13,"FF8C00")
+						for i=1,10 do
+							if vybor[i] ~= nil and vybor[i]:IsVisible() then
+								vybor[i]:Hide()
+							end
+						end
+					end
+				end
+			end
+		end
 	end)
 end
 if myNome == "Хефе" or myNome == "Витинари" then
@@ -663,7 +728,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 							end
 						end
-						if testQ["hTimer"] == nil then
+						if testQ[myNome]["hTimer"] == nil then
 							if lvlTest ~= nil then
 								if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
 									local qx = math.random(1,4)
@@ -731,32 +796,60 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								SendChatMessage("Следущий квест на моем гильдлвле доступен завтра, однако я всегда могу принять немного новых игроков в гильдию и получить бонус.", "OFFICER", nil, 1)
 							end
 							if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
-								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 50400
+								if testQ[myNome]["hTimer"] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+										testQ[myNome]["hTimer"] = 50400
+									else
+										testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 2 then
-								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 25200
+								if testQ[myNome]["hTimer"] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+										testQ[myNome]["hTimer"] = 25200
+									else
+										testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 3 then
-								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 14500
+								if testQ[myNome]["hTimer"] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+										testQ[myNome]["hTimer"] = 14500
+									else
+										testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 4 then
-								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 11000
+								if testQ[myNome]["hTimer"] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+										testQ[myNome]["hTimer"] = 11000
+									else
+										testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 5 then
-								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 10500
+								if testQ[myNome]["hTimer"] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+										testQ[myNome]["hTimer"] = 10500
+									else
+										testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 6 then
-								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 7500
+								if testQ[myNome]["hTimer"] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+										testQ[myNome]["hTimer"] = 7500
+									else
+										testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 7 then
-								if testQ["hTimer"] == nil then
-									testQ["hTimer"] = 7200
+								if testQ[myNome]["hTimer"] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+										testQ[myNome]["hTimer"] = 7200
+									else
+										testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+									end
 								end
 							end
 						end
@@ -1070,6 +1163,22 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						testQ["idp"] = id
 						testQ["icon"] = "kopkop"
 						testQ["picon"] = "z"
+					end
+				end
+			end
+		end
+		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
+			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
+				if vybor[7] == nil or not vybor[7]:IsVisible() then
+					vybor:configure(7)
+					vybor[7]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*192), 96)
+					vybor[7]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+					vybor[7]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+					vybor[7]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "bn"
+						testQ["picon"] = "zt"
 					end
 				end
 			end
@@ -2488,7 +2597,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 			end
 		end
-		if testQ["hTimer"] ~= nil then
+		if testQ["dTimer"] == nil then
+			testQ["dTimer"] = {}
+		end
+		if testQ[myNome]["dTimer"][tonumber(date("%d"))] == nil then
+			testQ[myNome]["dTimer"][tonumber(date("%d"))] = 1
+		else
+			testQ[myNome]["dTimer"][tonumber(date("%d"))] = testQ[myNome]["dTimer"][tonumber(date("%d"))] + 1
+		end
+		if testQ[myNome]["hTimer"] ~= nil then
 			local nome
 			if testQ['sign'] ~= "1" then
 				nome = GuildFrame["selectedName"]
@@ -2498,14 +2615,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if fBtn[1] ~= nil and fBtn[1]:IsVisible() then
 				for i = 1, 100 do
 					if mioFld[nome]["объекты"][tostring(i)] == "h" then
-						dmgText(testQ["hTimer"],fBtn[i],i,13,"ff0000")
+						dmgText(testQ[myNome]["hTimer"],fBtn[i],i,13,"ff0000")
 						dmG[i]:Show()
 					end
 				end
 			end
-			testQ["hTimer"] = tonumber(testQ["hTimer"]) - 1
-			if tonumber(testQ["hTimer"]) <=1 then
-				testQ["hTimer"] = nil
+			testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 1
+			if tonumber(testQ[myNome]["hTimer"]) <=1 then
+				testQ[myNome]["hTimer"] = nil
 				if fBtn[1] ~= nil and fBtn[1]:IsVisible() then
 					for i = 1, 100 do
 						if mioFld[nome]["объекты"][tostring(i)] == "h" then

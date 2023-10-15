@@ -25,6 +25,9 @@ if kodMsg[1] == "построить" and kodMsg[2] == myNome then
 		end
 	end
 end
+if kodMsg[1] == "xTime" and kodMsg[2] == myNome and testGM ~= nil then
+	testQ[myNome]["hTimer"] = tonumber(message)
+end
 if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ[myNome]["взятый_квест_х"] = "9999"
 	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
@@ -523,6 +526,17 @@ if kodMsg[1] == "skS" then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "skc"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "bN" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bn"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный фундамент"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
