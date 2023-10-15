@@ -35,6 +35,13 @@ end
 if msg[1] == myNome .. "," and msg[2] == "покажи" and msg[3] == "свой" then
 	SendChatMessage("У меня " .. testQ[myNome]["dTimer"][tonumber(date("%d"))], "OFFICER", nil, 1)
 end
+if msg[1] == myNome .. "," and msg[2] == "покажи" and msg[3] == "свою" then
+	if testQ[myNome]["hTimer"] ~= nil then
+		SendChatMessage("У меня " .. testQ[myNome]["hTimer"], "OFFICER", nil, 1)
+	else
+		SendChatMessage("У меня нет...", "OFFICER", nil, 1)
+	end
+end
 if msg[1] == "!добавить" and msg[2] == "предмет" and testGM~=nil then
 	local nazvanie
 	local n
