@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=6
+versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -797,85 +797,141 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							end
 							if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
 								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
 										testQ[myNome]["hTimer"] = 50400
 									else
-										if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-											testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+										if tonumber(date("%d")) ~= 1 then
+											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										else
-											testQ[myNome]["hTimer"] = 3600
+											if testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										end
 									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 2 then
 								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
 										testQ[myNome]["hTimer"] = 25200
 									else
-										if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-											testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+										if tonumber(date("%d")) ~= 1 then
+											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										else
-											testQ[myNome]["hTimer"] = 3600
+											if testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										end
 									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 3 then
 								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
 										testQ[myNome]["hTimer"] = 14500
 									else
-										if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-											testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+										if tonumber(date("%d")) ~= 1 then
+											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										else
-											testQ[myNome]["hTimer"] = 3600
+											if testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										end
 									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 4 then
 								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
 										testQ[myNome]["hTimer"] = 11000
 									else
-										if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-											testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+										if tonumber(date("%d")) ~= 1 then
+											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										else
-											testQ[myNome]["hTimer"] = 3600
+											if testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										end
 									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 5 then
 								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
 										testQ[myNome]["hTimer"] = 10500
 									else
-										if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-											testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+										if tonumber(date("%d")) ~= 1 then
+											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										else
-											testQ[myNome]["hTimer"] = 3600
+											if testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										end
 									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 6 then
 								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
 										testQ[myNome]["hTimer"] = 7500
 									else
-										if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-											testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+										if tonumber(date("%d")) ~= 1 then
+											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										else
-											testQ[myNome]["hTimer"] = 3600
+											if testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										end
 									end
 								end
 							elseif tonumber(testQ["mioFldLvl"]) == 7 then
 								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
 										testQ[myNome]["hTimer"] = 7200
 									else
-										if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-											testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+										if tonumber(date("%d")) ~= 1 then
+											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										else
-											testQ[myNome]["hTimer"] = 3600
+											if testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											else
+												testQ[myNome]["hTimer"] = 3600
+											end
 										end
 									end
 								end
