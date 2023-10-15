@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=13
+versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -497,6 +497,8 @@ function vybor:configure(id)
 				SendAddonMessage("bB " .. testQ["idp"] .. " " .. 999, nome, "guild")
 				if nome ~= myNome then
 					testQ[myNome]["петы"]["bb"] = nome
+				else
+					testQ[myNome]["петы"]["bb"] = 0
 				end
 				testQ["temp"] = nil
 				for i=1,10 do
