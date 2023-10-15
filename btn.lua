@@ -2597,8 +2597,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 			end
 		end
-		if testQ["dTimer"] == nil then
-			testQ["dTimer"] = {}
+		if testQ[myNome]["dTimer"] == nil then
+			testQ[myNome]["dTimer"] = {}
 		end
 		if testQ[myNome]["dTimer"][tonumber(date("%d"))] == nil then
 			testQ[myNome]["dTimer"][tonumber(date("%d"))] = 1
