@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=11
+versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -528,7 +528,7 @@ function vybor:configure(id)
 			elseif testQ["temp"] == 1 then
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
 				print(mioFld[nome]["петы"][tostring(testQ["idp"])])
-				SendAddonMessage("gZ " .. testQ["idp"] .. " " .. mioFld[nome]["петы"][tostring(testQ["idp"])], nome, "guild")
+				SendAddonMessage("gZ " .. testQ["idp"] .. " " .. mioFld[nome]["петы"][tostring(testQ["idp"])] .. " " .. mioFld[nome]["хозяин"][tostring(testQ["idp"])], nome, "guild")
 				testQ["temp"] = nil
 				for i=1,10 do
 					if vybor[i] ~= nil then
@@ -1367,30 +1367,31 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if mioFld[nome]["петы"] ~= nil then
-			if mioFld[nome]["петы"][tostring(id)] ~= nil then
-				local pet = mysplit(mioFld[nome]["петы"][tostring(id)])
-				if pet[2] == myNome then
-					vybor:configure(9)
-					vybor[9]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
-					vybor[9]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\os.tga")
-					vybor[9]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\os.tga")
-					vybor[9]:Show()
-					if testQ ~= nil then
-						testQ["idp"] = id
-						testQ["icon"] = "os"
-						testQ["picon"] = "t"
-					end
-				else
-					if myNome == nome or myNome == pet[2] then
-						vybor:configure(10)
-						vybor[10]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
-						vybor[10]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
-						vybor[10]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
-						vybor[10]:Show()
+			if mioFld[nome]["хозяин"] ~= nil then
+				if mioFld[nome]["петы"][tostring(id)] ~= nil then
+					if mioFld[nome]["хозяин"][tostring(id)] == myNome then
+						vybor:configure(9)
+						vybor[9]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
+						vybor[9]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\os.tga")
+						vybor[9]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\os.tga")
+						vybor[9]:Show()
 						if testQ ~= nil then
 							testQ["idp"] = id
-							testQ["icon"] = "gz"
+							testQ["icon"] = "os"
 							testQ["picon"] = "t"
+						end
+					else
+						if myNome == nome or myNome == mioFld[nome]["хозяин"][tostring(id)] then
+							vybor:configure(10)
+							vybor[10]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
+							vybor[10]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
+							vybor[10]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
+							vybor[10]:Show()
+							if testQ ~= nil then
+								testQ["idp"] = id
+								testQ["icon"] = "gz"
+								testQ["picon"] = "t"
+							end
 						end
 					end
 				end

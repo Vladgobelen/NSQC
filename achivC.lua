@@ -239,7 +239,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				SendAddonMessage("MioFld2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
 				SendAddonMessage("MioFld3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
 			end
-			if k == "петы" then
+			if k == "хозяин" then
 				if rez[1] == nil then
 					if mioFld[myNome][k]["1"] ~= nil then
 						rez[1] = mioFld[myNome][k]["1"] .. " "
@@ -288,6 +288,56 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				SendAddonMessage("MioFldP1 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[1], "guild")
 				SendAddonMessage("MioFldP2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
 				SendAddonMessage("MioFldP3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
+			end
+			if k == "петы" then
+				if rez[1] == nil then
+					if mioFld[myNome][k]["1"] ~= nil then
+						rez[1] = mioFld[myNome][k]["1"] .. " "
+					else
+						rez[1] = "0" .. " "
+					end
+				end
+				for i = 2, 35 do
+					j = tostring(i)
+					if mioFld[myNome][k][j] ~= nil then
+						rez[1] = rez[1] .. mioFld[myNome][k][j] .. " "
+					else
+						rez[1] = rez[1] .. "0" .. " "
+					end
+				end
+				if rez[2] == nil then
+					if mioFld[myNome][k]["36"] ~= nil then
+						rez[2] = mioFld[myNome][k]["36"] .. " "
+					else
+						rez[2] = "0" .. " "
+					end
+				end
+				for i = 37, 70 do
+					j = tostring(i)
+					if mioFld[myNome][k][j] ~= nil then
+						rez[2] = rez[2] .. mioFld[myNome][k][j] .. " "
+					else
+						rez[2] = rez[2] .. "0" .. " "
+					end
+				end
+				if rez[3] == nil then
+					if mioFld[myNome][k]["71"] ~= nil then
+						rez[3] = mioFld[myNome][k]["71"] .. " "
+					else
+						rez[3] = "0" .. " "
+					end
+				end
+				for i = 72, 100 do
+					j = tostring(i)
+					if mioFld[myNome][k][j] ~= nil then
+						rez[3] = rez[3] .. mioFld[myNome][k][j] .. " "
+					else
+						rez[3] = rez[3] .. "0" .. " "
+					end
+				end
+				SendAddonMessage("MioFldH1 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[1], "guild")
+				SendAddonMessage("MioFldH2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
+				SendAddonMessage("MioFldH3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
 			end
 		end
 	else
@@ -458,11 +508,61 @@ if kodMsg[1] == "MioFldP3" then
 	testQ["fRandD3"] = 1
 	testQ["fRandD1nome"] = sender
 end
+if kodMsg[1] == "MioFldH1" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
+	for i = 1, 35 do
+		j = tostring(i)
+		if msg[i] ~= "0" then
+			mioFld[sender][kodMsg[3]][j] = msg[i]
+		else
+			mioFld[sender][kodMsg[3]][j] = nil
+		end
+	end
+	testQ["fRandD1"] = 1
+	testQ["fRandD1nome"] = sender
+end
+
+if kodMsg[1] == "MioFldH2" then
+	for i = 1, 35 do
+		j = tostring(i+35)
+		if msg[i] ~= "0" then
+			mioFld[sender][kodMsg[3]][j] = msg[i]
+		else
+			mioFld[sender][kodMsg[3]][j] = nil
+		end
+	end
+	testQ["fRandD2"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFldH3" then
+	for i = 1, 30 do
+		j = tostring(i+70)
+		if msg[i] ~= "0" then
+			mioFld[sender][kodMsg[3]][j] = msg[i]
+		else
+			mioFld[sender][kodMsg[3]][j] = nil
+		end
+	end
+	testQ["fRandD3"] = 1
+	testQ["fRandD1nome"] = sender
+end
 if kodMsg[1] == "bB" then
 	if mioFld[message]["петы"] == nil then
 		mioFld[message]["петы"] = {}
 	end
-	mioFld[message]["петы"][tostring(kodMsg[2])] = "bb " .. sender
+	if mioFld[message]["хозяин"] == nil then
+		mioFld[message]["хозяин"] = {}
+	end
+	mioFld[message]["петы"][tostring(kodMsg[2])] = "bb"
+	mioFld[message]["хозяин"][tostring(kodMsg[2])] = sender
 	testQ["fRandDb"] = 1
 	testQ["fRandDbnome"] = message
 	if message == myNome then
