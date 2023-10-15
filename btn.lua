@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=14
+versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -883,8 +883,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 												testQ[myNome]["hTimer"] = 3600
 											end
 										else
-											if testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][30]
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
@@ -898,13 +898,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									else
 										if tonumber(date("%d")) ~= 1 then
 											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
 										else
-											if testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][30])/2
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
@@ -918,13 +918,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									else
 										if tonumber(date("%d")) ~= 1 then
 											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
 										else
-											if testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][30])/3
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
@@ -938,13 +938,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									else
 										if tonumber(date("%d")) ~= 1 then
 											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
 										else
-											if testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][30])/4
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
@@ -958,13 +958,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									else
 										if tonumber(date("%d")) ~= 1 then
 											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
 										else
-											if testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][30])/5
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
@@ -978,13 +978,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									else
 										if tonumber(date("%d")) ~= 1 then
 											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
 										else
-											if testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][30])/6
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
@@ -998,13 +998,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									else
 										if tonumber(date("%d")) ~= 1 then
 											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
 										else
-											if testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+												testQ[myNome]["hTimer"] = (testQ[myNome]["dTimer"][30])/7
 											else
 												testQ[myNome]["hTimer"] = 3600
 											end
