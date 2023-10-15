@@ -1,5 +1,5 @@
 versAdd=277
-versAddDop=8
+versAddDop=9
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1366,15 +1366,17 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						testQ["picon"] = "t"
 					end
 				else
-					vybor:configure(10)
-					vybor[10]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
-					vybor[10]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
-					vybor[10]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
-					vybor[10]:Show()
-					if testQ ~= nil then
-						testQ["idp"] = id
-						testQ["icon"] = "gz"
-						testQ["picon"] = "t"
+					if myNome == nome or myNome == pet[2] then
+						vybor:configure(10)
+						vybor[10]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
+						vybor[10]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
+						vybor[10]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
+						vybor[10]:Show()
+						if testQ ~= nil then
+							testQ["idp"] = id
+							testQ["icon"] = "gz"
+							testQ["picon"] = "t"
+						end
 					end
 				end
 			end
@@ -2792,13 +2794,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 		for i = 1,100 do
 			local pet
-			if mioFld[myNome]["петы"][tostring(i)] ~= nil then
-				pet = mysplit(mioFld[myNome]["петы"][tostring(i)])
-			end
-			if pet ~= nil then
-				if mioFld[myNome]["объекты"][tostring(i)] == "t" and pet[1] == "bb" then
-					treeX(myNome,myNome,i)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+			if mioFld ~= nil then
+				if mioFld[myNome] ~= nil then
+					if mioFld[myNome]["петы"] ~= nil then
+						if mioFld[myNome]["петы"][tostring(i)] ~= nil then
+							pet = mysplit(mioFld[myNome]["петы"][tostring(i)])
+						end
+						if pet ~= nil then
+							if mioFld[myNome]["объекты"][tostring(i)] == "t" and pet[1] == "bb" then
+								treeX(myNome,myNome,i)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+							end
+						end
+					end
 				end
 			end
 		end
