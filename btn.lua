@@ -8,6 +8,15 @@ fBtn = {}
 resursy = {}
 vybor = {}
 okNo = {}
+if testQ == nil then
+	testQ = {}
+end
+if testQ[myNome] == nil then
+	testQ[myNome] = {}
+end
+if testQ[myNome]["петы"] == nil then
+	testQ[myNome]["петы"] = {}
+end
 function okNo:configure(id,sign)
 	if sign == "show" then
 		if testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend" then
