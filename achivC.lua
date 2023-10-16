@@ -186,6 +186,18 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if pQuest["items"][1] == nil then
 			pQuest["items"][1] = {}
 		end
+		if pQuest["items"][2] == nil then
+			pQuest["items"][2] = {}
+		end
+		if pQuest["items"][3] == nil then
+			pQuest["items"][3] = {}
+		end
+		if pQuest["items"][4] == nil then
+			pQuest["items"][4] = {}
+		end
+		if pQuest["items"][5] == nil then
+			pQuest["items"][5] = {}
+		end
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
