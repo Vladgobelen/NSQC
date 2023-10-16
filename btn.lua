@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3664,6 +3664,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							end
 							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
 							fBtn[i]:Show()
+							FriendsFrame:Hide()
 							if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" or mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" then
 								if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
 									dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
