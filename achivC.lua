@@ -77,7 +77,9 @@ if kodMsg[1] == "nMapPoint" then
 	mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])]["f"] = tonumber(kodMsg[7])
 	mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])]["p"] = message
 end
-
+if kodMsg[1] == "xTimex" and kodMsg[2] == myNome and testGM ~= nil then
+	testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - tonumber(message)
+end
 
 if kodMsg[1] == "FailPointEvent1" then
 	if iconRis[tonumber(testQ["event1"][tonumber(message)])] ~= nil then
@@ -185,6 +187,18 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
+		pQuest["items"][2]["itemNum"] = "1"
+		pQuest["items"][2]["itemEnStuck"] = "100"
+		pQuest["items"][2]["itemName"] = "Шерсть"
+		pQuest["items"][3]["itemNum"] = "3"
+		pQuest["items"][3]["itemEnStuck"] = "100"
+		pQuest["items"][3]["itemName"] = "Шерсть"
+		pQuest["items"][4]["itemNum"] = "4"
+		pQuest["items"][4]["itemEnStuck"] = "100"
+		pQuest["items"][4]["itemName"] = "Шерсть"
+		pQuest["items"][5]["itemNum"] = "5"
+		pQuest["items"][5]["itemEnStuck"] = "100"
+		pQuest["items"][5]["itemName"] = "Шерсть"
 		if mapTables["lokRasstoyanie"]["1"] == nil then
 			mapTables["lokRasstoyanie"]["1"] = {}
 		end
