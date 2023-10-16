@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1462,6 +1462,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
 						end
 					end
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "m" then
+					GameTooltip:AddLine("клик ЛКМ: добывать камень")
+					GameTooltip:AddLine("клик ПКМ: сломать рудник")
 				end
 			end
 		end
