@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=11
+versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1194,6 +1194,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		testQ["h"] = 0
 		testQ["za"] = 0
 		for i=1,100 do
+			if  mioFld[nome]["объекты"][tostring(i)] == "s" or mioFld[nome]["объекты"][tostring(i)] == "sx" then
+				testQ["s"] = testQ["s"]+1
+			end
 			if  mioFld[nome]["объекты"][tostring(i)] == "h" then
 				testQ["h"] = testQ["h"]+1
 			end
@@ -1374,6 +1377,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
+		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
+			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
+				if vybor[11] == nil or not vybor[11]:IsVisible() then
+					if tonumber(testQ["s"]) == 0 then
+						vybor:configure(11)
+						vybor[11]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
+						vybor[11]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\sx.tga")
+						vybor[11]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\sx.tga")
+						vybor[11]:Show()
+						if testQ ~= nil then
+							testQ["idp"] = id
+							testQ["icon"] = "sx"
+							testQ["picon"] = "bn"
+						end
+					end
+				end
+			end
+		end
 		if mioFld[nome]["петы"] ~= nil then
 			if mioFld[nome]["хозяин"] ~= nil then
 				if mioFld[nome]["петы"][tostring(id)] ~= nil then
@@ -1405,6 +1426,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
+
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("FULLSCREEN")
 		end
@@ -2846,10 +2868,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		local nome
+		if testQ['sign'] ~= "1" then
+			nome = GuildFrame["selectedName"]
+		else
+			nome = myNome
+		end
 		for i = 1,100 do
 			if mioFld[myNome]["объекты"][tostring(i)] == "bn" and tonumber(mioFld[myNome]["целостность"][tostring(i)]) < 999 then
 				mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
-				if fBtn[i]:IsVisible() then
+				if fBtn[i]:IsVisible() and nome == myNome then
 					dmgText(mioFld[myNome]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
 				end
 			end

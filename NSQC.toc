@@ -20,6 +20,7 @@ libs\clc.ogg
 libs\mx.ogg
 libs\t.ogg
 libs\f.ogg
+libs\sx.tga
 libs\z.tga
 libs\zs.tga
 libs\zx.tga

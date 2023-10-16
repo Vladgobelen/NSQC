@@ -1537,7 +1537,6 @@ function gKam(myNome)
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
-		print("500")
 	end
 end
 
