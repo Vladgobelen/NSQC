@@ -16,7 +16,7 @@ if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
 testGM=gmTest(sender)
-if kodMsg[1] == "построить" and kodMsg[2] == myNome then
+if kodMsg[1] == "построить" and kodMsg[2] == myNome and testGM ~= nil then
 	if mioFld ~= nil then
 		if mioFld[myNome] ~= nil then
 			if mioFld[myNome]["объекты"] ~= nil then
