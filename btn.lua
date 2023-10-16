@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=0
+versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -529,7 +529,6 @@ function vybor:configure(id)
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
-				print(mioFld[nome]["петы"][tostring(testQ["idp"])])
 				SendAddonMessage("gZ " .. testQ["idp"] .. " " .. mioFld[nome]["петы"][tostring(testQ["idp"])] .. " " .. mioFld[nome]["хозяин"][tostring(testQ["idp"])], nome, "guild")
 				testQ["temp"] = nil
 				for i=1,10 do
@@ -2787,7 +2786,7 @@ local i = 1
 WorldMapDetailFrame:SetScript("OnUpdate",function(self)
 	local uiScale, x, y = WorldMapDetailFrame:GetEffectiveScale(), GetCursorPosition()
 	frameTextu[i] = WorldMapDetailFrame:CreateTexture()
-	frameTextu[i]:SetTexture(1,1,1)
+	frameTextu[i]:SetNormalTexture(1,1,1)
 	frameTextu[i]:SetSize(4,4)
 	frameTextu[i]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame, "BOTTOMLEFT", x / uiScale, y / uiScale)
 	x,y,z,jj,k,l=frameTextu[i]:GetPoint()
@@ -3335,6 +3334,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
 		if testQ == nil then
 			testQ = {}
 		end
@@ -3616,7 +3616,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
 									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
 								end
+
 							end
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
+							fBtn[i]:Show()
+							btn[989]:ClearAllPoints()
+							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
 							if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" or mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" then
 								if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
 									dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
@@ -3657,6 +3662,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
 								end
 							end
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
+							fBtn[i]:Show()
 							if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" or mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" then
 								if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
 									dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
@@ -3697,6 +3704,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
 								end
 							end
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
+							fBtn[i]:Show()
 							if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" or mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" then
 								if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
 									dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")

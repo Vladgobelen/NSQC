@@ -492,7 +492,7 @@ if kodMsg[1] == "MioFldO1" then
 		j = tostring(i)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandD1"] = 1
+	testQ["fRandDO1"] = 1
 	testQ["fRandD1nome"] = sender
 end
 if kodMsg[1] == "MioFldO2" then
@@ -500,7 +500,7 @@ if kodMsg[1] == "MioFldO2" then
 		j = tostring(i+35)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandD2"] = 1
+	testQ["fRandDO2"] = 1
 	testQ["fRandD1nome"] = sender
 end
 if kodMsg[1] == "MioFldO3" then
@@ -508,7 +508,7 @@ if kodMsg[1] == "MioFldO3" then
 		j = tostring(i+70)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandD3"] = 1
+	testQ["fRandDO3"] = 1
 	testQ["fRandD1nome"] = sender
 end
 if kodMsg[1] == "MioFldP1" then
