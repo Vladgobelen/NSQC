@@ -112,7 +112,9 @@ if  kodMsg[1] == "NSGChatX" then
 		end
 	end
 end
-
+if kodMsg[1] == "bNx" then
+	mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) - tonumber(kodMsg[3])
+end
 if kodMsg[1] == "shMFld" and message == myNome then
 	local rez = {}
 	local x = nil

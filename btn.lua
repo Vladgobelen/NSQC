@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=8
+versAddDop=9
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1115,6 +1115,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					SendAddonMessage("zX " .. id, nome, "guild")
 					testQ["temp"] = nil
 				end
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+				local x = math.random(1,1800)
+				SendAddonMessage("bNx " .. id .. " " .. x, nome, "guild")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
 				resObj(id,myNome,nome)
@@ -2844,6 +2848,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		for i = 1,100 do
+			if mioFld[myNome]["объекты"][tostring(i)] == "bn" and tonumber(mioFld[myNome]["целостность"][tostring(i)]) < 999 then
+				mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
+				if fBtn[i]:IsVisible() then
+					dmgText(mioFld[myNome]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+				end
+			end
+		end
 		if testQ["zavod"] == 1 then
 			if testQ["beton"] == nil then
 				testQ["beton"] = 0.01
