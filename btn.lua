@@ -33,6 +33,9 @@ function okNo:configure(id,sign)
 					end
 				end
 			end
+			if testQ["itemQVzyat"] == 1 then
+				okNo[2]:Hide()
+			end
 		else
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
@@ -843,8 +846,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											btn[989]:Hide()
 											btn[989]:ClearAllPoints()
 											btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-										else
-											SendChatMessage("В хижине закончились задания", "OFFICER", nil, 1)
 										end
 									end
 								end
@@ -999,6 +1000,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
 							testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
 							testQ["okno"] = "itemQ"
+							testQ["itemQVzyat"] = 1
 							quesT("show")
 							okNo:configure(1,"show")
 							rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
@@ -1019,7 +1021,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if lvlTest ~= nil then
 							if testQ[myNome]["itemQend"] ~= 1 then
 								testQ["okno"] = "itemQ"
-								testQ["itemQVzyat"] = 1
 								quesT("show")
 								okNo:configure(1,"show")
 								rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
