@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=5
+versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -28,7 +28,9 @@ function okNo:configure(id,sign)
 			else
 				okNo[1]:Show()
 				if okNo[2] ~= nil then
-					okNo[2]:Show()
+					if testQ["itemQVzyat"] ~= 1 then
+						okNo[2]:Show()
+					end
 				end
 			end
 		else
@@ -56,6 +58,7 @@ function okNo:configure(id,sign)
 			hX()
 			testQ['sign'] = nil
 			testQ["okno"] = nil
+			testQ["itemQVzyat"] = nil
 		end
 		if testQ["okno"] == "itemQ" then
 			SendChatMessage("Скоро я пришлю Вождю многа многа стаков вот этого: " .. testQ[myNome]["itemName"], "OFFICER", nil, 1)
@@ -1016,6 +1019,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if lvlTest ~= nil then
 							if testQ[myNome]["itemQend"] ~= 1 then
 								testQ["okno"] = "itemQ"
+								testQ["itemQVzyat"] = 1
 								quesT("show")
 								okNo:configure(1,"show")
 								rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
