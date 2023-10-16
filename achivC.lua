@@ -202,17 +202,33 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		mapTables["lokRasstoyanie"]["2"]["14"] = 0.002
 		mapTables["lokRasstoyanie"]["1"]["34"] = 0.0021
 		for k, v in pairs(mioFld[myNome]) do
-			if k == "объекты" then
-				if rez[k] == nil then
-					rez[k] = mioFld[myNome][k]["1"] .. " "
-				end
-				for i = 2, 100 do
-					j = tostring(i)
-					rez[k] = rez[k] .. mioFld[myNome][k][j] .. " "
-				end
-				SendAddonMessage("MioFld " .. sender .. " " .. k .. " " .. kodMsg[2], rez[k], "guild")
-			end
 			rez={}
+			if k == "объекты" then
+				if rez[1] == nil then
+					rez[1] = mioFld[myNome][k]["1"] .. " "
+				end
+				for i = 2, 35 do
+					j = tostring(i)
+					rez[1] = rez[1] .. mioFld[myNome][k][j] .. " "
+				end
+				if rez[2] == nil then
+					rez[2] = mioFld[myNome][k]["36"] .. " "
+				end
+				for i = 37, 70 do
+					j = tostring(i)
+					rez[2] = rez[2] .. mioFld[myNome][k][j] .. " "
+				end
+				if rez[3] == nil then
+					rez[3] = mioFld[myNome][k]["71"] .. " "
+				end
+				for i = 72, 100 do
+					j = tostring(i)
+					rez[3] = rez[3] .. mioFld[myNome][k][j] .. " "
+				end
+				SendAddonMessage("MioFldO1 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[1], "guild")
+				SendAddonMessage("MioFldO2 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[2], "guild")
+				SendAddonMessage("MioFldO3 " .. sender .. " " .. k .. " " .. kodMsg[2], rez[3], "guild")
+			end
 			if k == "целостность" then
 				if rez[1] == nil then
 					rez[1] = mioFld[myNome][k]["1"] .. " "
@@ -455,6 +471,39 @@ if kodMsg[1] == "MioFld2" then
 	testQ["fRandD1nome"] = sender
 end
 if kodMsg[1] == "MioFld3" then
+	for i = 1, 30 do
+		j = tostring(i+70)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD3"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFldO1" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
+	for i = 1, 35 do
+		j = tostring(i)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD1"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFldO2" then
+	for i = 1, 35 do
+		j = tostring(i+35)
+		mioFld[sender][kodMsg[3]][j] = msg[i]
+	end
+	testQ["fRandD2"] = 1
+	testQ["fRandD1nome"] = sender
+end
+if kodMsg[1] == "MioFldO3" then
 	for i = 1, 30 do
 		j = tostring(i+70)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
