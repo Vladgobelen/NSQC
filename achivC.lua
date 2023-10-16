@@ -852,6 +852,34 @@ if kodMsg[1] == "sbS" then
 		end
 	end
 end
+if kodMsg[1] == "sX" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "sx"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+			if message == myNome then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+		end
+	end
+end
+if kodMsg[1] == "sXX" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Рыхлая земля и много много мусора..."
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+			if message == myNome then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+			end
+		end
+	end
+end
 if kodMsg[1] == "skcX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -988,6 +1016,9 @@ if kodMsg[1] == "resObj" then
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "skc" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "sx" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+		end
 	end
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -1035,6 +1066,12 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zx" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
+					end
+				end
+				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 29999 then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="sx" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "s"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Сельсовет"
 					end
 				end
 				testQ["fRand5"] = 1
