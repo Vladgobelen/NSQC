@@ -1464,15 +1464,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		print('1')
 		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
-		print('2')
 			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
-			print('3')
 				if vybor[11] == nil or not vybor[11]:IsVisible() then
-				print('4')
 					if tonumber(testQ["s"]) == 0 then
-					print('5')
 						vybor:configure(11)
 						vybor[11]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
 						vybor[11]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\sx.tga")
