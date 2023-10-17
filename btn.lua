@@ -4127,48 +4127,49 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												end
 											end
 										end
-									end
-									if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "hs" then
-										if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 9999 then
-											dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-											dmG[i]:Show()
-										else
-											if dmG[i]~=nil then
-												dmG[i]:Hide()
+
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "hs" then
+											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 9999 then
+												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											else
+												if dmG[i]~=nil then
+													dmG[i]:Hide()
+												end
 											end
 										end
-									end
-									if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "zx" then
-										if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 19999 then
-											dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-											dmG[i]:Show()
-										else
-											if dmG[i]~=nil then
-												dmG[i]:Hide()
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "zx" then
+											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 19999 then
+												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											else
+												if dmG[i]~=nil then
+													dmG[i]:Hide()
+												end
 											end
 										end
-									end
-									if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "zs" then
-										if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 19999 then
-											dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-											dmG[i]:Show()
-										else
-											if dmG[i]~=nil then
-												dmG[i]:Hide()
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "zs" then
+											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 19999 then
+												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											else
+												if dmG[i]~=nil then
+													dmG[i]:Hide()
+												end
 											end
 										end
-									end
-									if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "sx" then
-										if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
-											dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-											dmG[i]:Show()
-										else
-											if dmG[i]~=nil then
-												dmG[i]:Hide()
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "sx" then
+											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
+												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											else
+												if dmG[i]~=nil then
+													dmG[i]:Hide()
+												end
 											end
 										end
+										fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 									end
-									fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 								end
 							end
 						end
