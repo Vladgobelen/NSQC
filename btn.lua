@@ -3029,13 +3029,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
 								local x = math.random(1,5)
 								if x == 5 then
-									gKam(myNome)
+									gKam(myNome,x)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								end
 							end
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
 								local x = math.random(1,100)
-								gKam(myNome)
+								gKam(myNome,x)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								if x == 1 then
 									 SendAddonMessage("gobXm " .. i, myNome, "guild")
