@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=14
+versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1199,6 +1199,14 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
 				local x = math.random(1,1800)
 				SendAddonMessage("bNx " .. id .. " " .. x, nome, "guild")
+				local x = math.random(1,3)
+				if x == 1 then
+					SendChatMessage("Хмм... А что будет если оставить тут след от моей руки?", "OFFICER", nil, 1)
+				elseif x == 2 then
+					SendChatMessage("Хмм... А что будет если оставить тут след от моей ноги?", "OFFICER", nil, 1)
+				elseif x == 3 then
+					SendChatMessage("Хмм... А что будет если оставить тут след от моей задницы?", "OFFICER", nil, 1)
+				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
 				resObj(id,myNome,nome)
