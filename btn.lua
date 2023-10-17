@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=21
+versAddDop=22
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1210,7 +1210,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					dmgText(x,fBtn[id],999,13,"c10020")
 					dmG[999]:Show()
 				end
-				gKam(myNome)
+				gKam(myNome,x)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 				fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m.tga")
 				fBtn[id]:SetHighlightTexture("")

@@ -1545,8 +1545,7 @@ function resObj(id,myNome,nome)
 		end
 	end
 end
-function gKam(myNome)
-	local x = math.random(1,500)
+function gKam(myNome,x)
 	local testK = nil
 	if x == 500 then
 		for i = 1,100 do
