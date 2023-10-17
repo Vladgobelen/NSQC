@@ -1675,6 +1675,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("клик ЛКМ: добывать камень")
 					GameTooltip:AddLine("клик ПКМ: сломать рудник")
 				end
+				if testQ[myNome]["hTimer"] ~= nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
+					GameTooltip:ClearLines()
+					GameTooltip:AddLine("Вы что, не видите?! У нас обед!!!")
+				end
 			end
 		end
 		GameTooltip:Show()
