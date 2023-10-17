@@ -646,6 +646,21 @@ if kodMsg[1] == "bB" then
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
 	end
 end
+if kodMsg[1] == "goB" then
+	if mioFld[message]["петы"] == nil then
+		mioFld[message]["петы"] = {}
+	end
+	if mioFld[message]["хозяин"] == nil then
+		mioFld[message]["хозяин"] = {}
+	end
+	mioFld[message]["петы"][tostring(kodMsg[2])] = kodMsg[3]
+	mioFld[message]["хозяин"][tostring(kodMsg[2])] = sender
+	testQ["fRandDb"] = 1
+	testQ["fRandDbnome"] = message
+	if message == myNome then
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. kodMsg[3] .. ".ogg")
+	end
+end
 if kodMsg[1] == "MioFld" then
 	if mioFld == nil then
 		mioFld = {}
@@ -749,18 +764,38 @@ if kodMsg[1] == "travA" then
 	end
 end
 if kodMsg[1] == "oS" then
+	local petZ = mioFld[message]["петы"][tostring(kodMsg[2])]
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
+	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
 	if sender == myNome then
 		local pet = mysplit(kodMsg[3])
-		testQ[myNome]["петы"][pet[1]] = 1
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+		if petZ == "bb" then
+			testQ[myNome]["петы"][pet[1]] = 1
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+		elseif petZ == "gob" then
+			testQ[myNome]["петы"]["gg"] = petZ
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. petZ .. ".ogg")
+		elseif petZ == "gom" then
+			testQ[myNome]["петы"]["gg"] = petZ
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. petZ .. ".ogg")
+		end
 	end
 end
 if kodMsg[1] == "gZ" then
+	local petZ = mioFld[message]["петы"][tostring(kodMsg[2])]
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
+	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
 	if kodMsg[4] == myNome then
-		testQ[myNome]["петы"][kodMsg[3]] = 1
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+		if petZ == "bb" then
+			testQ[myNome]["петы"][kodMsg[3]] = 1
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+		elseif petZ == "gob" then
+			testQ[myNome]["петы"]["gg"] = petZ
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. petZ .. ".ogg")
+		elseif petZ == "gom" then
+			testQ[myNome]["петы"]["gg"] = petZ
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. petZ .. ".ogg")
+		end
 	end
 end
 if kodMsg[1] == "zemlYa" then
@@ -947,6 +982,17 @@ if kodMsg[1] == "mX" then
 		end
 	end
 end
+if kodMsg[1] == "gobXm" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "zX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -1066,12 +1112,18 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="hs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хижина"
+						if fBtn[1]:IsVisible() then
+							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+						end
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
+						if fBtn[1]:IsVisible() then
+							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+						end
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then

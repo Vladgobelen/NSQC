@@ -14,6 +14,8 @@ libs\UTF8\utf8.lua
 libs\ch.tga
 libs\map.tga
 libs\q.ogg
+libs\gob.ogg
+libs\gom.ogg
 libs\sh.ogg
 libs\tx.ogg
 libs\clc.ogg
@@ -41,6 +43,8 @@ libs\sb.tga
 libs\gz.tga
 libs\os.tga
 libs\s.tga
+libs\gob.tga
+libs\gom.tga
 libs\hr.ogg
 libs\hsS.tga
 libs\skS.tga

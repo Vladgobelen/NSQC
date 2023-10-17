@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=16
+versAddDop=17
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -234,7 +234,7 @@ function vybor:configure(id)
 				end
 			end
 		end
-		if testQ["picon"] == "t" then
+		if testQ["picon"] == "t" or testQ["icon"] == "gob" or testQ["icon"] == "gom" then
 			if vybor[8] ~= nil then
 				vybor[8]:Show()
 			end
@@ -527,7 +527,7 @@ function vybor:configure(id)
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bb.tga")
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bb.ogg")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
 				SendAddonMessage("bB " .. testQ["idp"] .. " " .. 999, nome, "guild")
 				if nome ~= myNome then
 					testQ[myNome]["петы"]["bb"] = nome
@@ -542,12 +542,30 @@ function vybor:configure(id)
 				end
 			end
 		end
+		if (mioFld[nome]["объекты"][tostring(testQ["idp"])] == "m" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "mx" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "hs" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "ms" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "uz" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zs" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zx" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "skc" or mioFld[nome]["объекты"][tostring(testQ["idp"])] == "sx") and id == 8 then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. testQ[myNome]["петы"]["gg"] .. ".tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				SendAddonMessage("goB " .. testQ["idp"] .. " " .. testQ[myNome]["петы"]["gg"], nome, "guild")
+				if nome ~= myNome then
+					testQ[myNome]["петы"]["gg"] = nome
+				else
+					testQ[myNome]["петы"]["gg"] = 0
+				end
+				testQ["temp"] = nil
+				for i=1,100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
 		if id == 9 then
 			if testQ["temp"] == nil then
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\os.tga")
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
 				SendAddonMessage("oS " .. testQ["idp"] .. " " .. mioFld[nome]["петы"][tostring(testQ["idp"])], nome, "guild")
 				testQ["temp"] = nil
 				for i=1,100 do
@@ -562,7 +580,6 @@ function vybor:configure(id)
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
 				SendAddonMessage("gZ " .. testQ["idp"] .. " " .. mioFld[nome]["петы"][tostring(testQ["idp"])] .. " " .. mioFld[nome]["хозяин"][tostring(testQ["idp"])], nome, "guild")
 				testQ["temp"] = nil
 				for i=1,100 do
@@ -808,6 +825,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["zavod"] = 1
 							testQ["kamen"] = tonumber(testQ["kamen"])-1
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+							fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
+							fBtn[id]:SetHighlightTexture("")
 						end
 						if arg2 == false then
 							testQ["zavod"] = nil
@@ -1179,6 +1198,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "sb" then
 				resObj(id,myNome,nome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+				fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\sb.tga")
+				fBtn[id]:SetHighlightTexture("")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
 				local x = math.random(1,500)
@@ -1489,6 +1510,43 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
+			if mioFld[nome]["объекты"][tostring(id)] == "m" or mioFld[nome]["объекты"][tostring(id)] == "mx" or mioFld[nome]["объекты"][tostring(id)] == "hs" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" or mioFld[nome]["объекты"][tostring(id)] == "zs" or mioFld[nome]["объекты"][tostring(id)] == "zx" or mioFld[nome]["объекты"][tostring(id)] == "skc" or mioFld[nome]["объекты"][tostring(id)] == "sx" then
+				if vybor[8] == nil or not vybor[8]:IsVisible() then
+					if testQ[myNome]["петы"] ~= nil then
+						if mioFld[nome]["петы"] == nil then
+							mioFld[nome]["петы"] = {}
+						end
+						if mioFld[nome]["петы"][tostring(id)] == nil then
+							if testQ[myNome]["петы"]["gg"] == "gob" then
+								vybor:configure(8)
+								vybor[8]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
+								vybor[8]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gob.tga")
+								vybor[8]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gob.tga")
+								vybor[8]:Show()
+								if testQ ~= nil then
+									testQ["idp"] = id
+									testQ["icon"] = "gob"
+									testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+								end
+							end
+							if testQ[myNome]["петы"]["gg"] == "gom" then
+								vybor:configure(8)
+								vybor[8]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
+								vybor[8]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gom.tga")
+								vybor[8]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gom.tga")
+								vybor[8]:Show()
+								if testQ ~= nil then
+									testQ["idp"] = id
+									testQ["icon"] = "gom"
+									testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
 				if vybor[11] == nil or not vybor[11]:IsVisible() then
 					if tonumber(testQ["s"]) == 0 then
@@ -1518,7 +1576,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if testQ ~= nil then
 							testQ["idp"] = id
 							testQ["icon"] = "os"
-							testQ["picon"] = "t"
+							testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
 						end
 					else
 						if myNome == nome or myNome == mioFld[nome]["хозяин"][tostring(id)] then
@@ -1530,7 +1588,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							if testQ ~= nil then
 								testQ["idp"] = id
 								testQ["icon"] = "gz"
-								testQ["picon"] = "t"
+								testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
 							end
 						end
 					end
@@ -1615,7 +1673,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				local pet
 				pet = mysplit(mioFld[nome]["петы"][tostring(id)])
 				fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["петы"][tostring(id)] .. ".ogg")
 			end
 		end
 	end)
@@ -2967,6 +3025,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if mioFld[myNome]["объекты"][tostring(i)] == "t" and pet[1] == "bb" then
 								treeX(myNome,myNome,i)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+							end
+							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
+								local x = math.random(1,5)
+								if x == 5 then
+									gKam(myNome)
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
+								end
+							end
+							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
+								local x = math.random(1,100)
+								gKam(myNome)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
+								if x == 1 then
+									 SendAddonMessage("gobXm " .. i, myNome, "guild")
+								end
 							end
 						end
 					end
