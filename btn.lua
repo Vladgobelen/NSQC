@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=2
+versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3862,9 +3862,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							j = tostring(i)
 							local pet
 							if testQ["fRandDbnome"] ~= nil then
-								if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
-									pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
-									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
+								if mioFld[testQ["fRandDbnome"]]["петы"] ~= nil then
+									if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
+										pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
+										fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
+									end
 								end
 
 							end
