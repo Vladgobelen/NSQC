@@ -3862,13 +3862,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							j = tostring(i)
 							local pet
 							if testQ["fRandDbnome"] ~= nil then
-								if mioFld[testQ["fRandDbnome"]]["петы"] ~= nil then
-									if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
-										pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
-										fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
+								if mioFld ~= nil then
+									if mioFld[testQ["fRandDbnome"]]["петы"] ~= nil then
+										if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
+											pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
+											fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
+										end
 									end
 								end
-
 							end
 							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
 							fBtn[i]:Show()
