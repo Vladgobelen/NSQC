@@ -1546,6 +1546,7 @@ function resObj(id,myNome,nome)
 	end
 end
 function gKam(myNome)
+	local x = math.random(1,500)
 	local testK = nil
 	if x == 500 then
 		for i = 1,100 do
@@ -1733,6 +1734,7 @@ function showFld(sign,myNome)
 		else
 			for i=1,100 do
 				fBtn[i]:Hide()
+				fBtn[i]:SetHighlightTexture("")
 				btn[989]:ClearAllPoints()
 				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 			end
@@ -1766,6 +1768,7 @@ function showFld(sign,myNome)
 			fBtn[i]:Hide()
 			btn[989]:ClearAllPoints()
 			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			fBtn[i]:SetHighlightTexture("")
 		end
 		if resursy[1] ~= nil then
 			resursy[1]:Hide()
