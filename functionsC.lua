@@ -1654,6 +1654,7 @@ function hX()
 	rtnTextF("fdsa",1,"hide")
 	for i=1,100 do
 		fBtn[i]:Hide()
+		fBtn[i]:SetHighlightTexture("")
 	end
 	if resursy[1] ~= nil then
 		resursy[1]:Hide()
