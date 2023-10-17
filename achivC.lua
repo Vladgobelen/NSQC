@@ -151,6 +151,11 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if x ~= nil then
 			mioFld[myNome]["объекты"][tostring(x)] = "h"
 		end
+		if mioFld[myNome]["объекты"][tostring(10)] ~= "h" then
+			mioFld[myNome]["объекты"][tostring(10)] = "s"
+		else
+			mioFld[myNome]["объекты"][tostring(20)] = "s"
+		end
 		if pQuest == nil then
 			pQuest = {}
 		end
