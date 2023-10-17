@@ -1,5 +1,5 @@
 versAdd=278
-versAddDop=15
+versAddDop=16
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1181,11 +1181,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
+				local x = math.random(1,500)
+				if x ~= 500 then
+					dmgText(x,fBtn[id],999,13,"bbbbbb")
+					dmG[999]:Show()
+				else
+					dmgText(x,fBtn[id],999,13,"c10020")
+					dmG[999]:Show()
+				end
 				gKam(myNome)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
+				fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m.tga")
+				fBtn[id]:SetHighlightTexture("")
 			end
 		end
 		if arg1 == "RightButton" then
+			if dmG[999] ~= nil then
+				dmG[999]:Hide()
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "za" then
 				if testQ["temp"] == nil then
 					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\zx.tga")
@@ -1607,6 +1620,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnLeave",function(self)
+		if dmG[999] ~= nil then
+			dmG[999]:Hide()
+		end
 		testQ["zavod"] = nil
 		testQ["temp"] = nil
 		local nome
