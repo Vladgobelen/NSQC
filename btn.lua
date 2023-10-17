@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=4
+versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3870,6 +3870,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										end
 									end
 								end
+								testQ["fRandDbnome"] = nil
 							end
 							if mioFld ~= nil then
 								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
