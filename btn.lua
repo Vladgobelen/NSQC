@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=0
+versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -11,7 +11,7 @@ okNo = {}
 
 function okNo:configure(id,sign)
 	if sign == "show" then
-		if testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend" then
+		if (testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend") or testQ["okno"] == "q33" then
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
 				self[1]:SetFrameStrata("TOOLTIP")
@@ -28,11 +28,19 @@ function okNo:configure(id,sign)
 			else
 				okNo[1]:Show()
 				if okNo[2] ~= nil then
-						okNo[2]:Show()
+					okNo[2]:Show()
 				end
 			end
 			if testQ["itemQVzyat"] == 1 and testQ[myNome]["hTimer"] ~= nil then
 				okNo[2]:Hide()
+			end
+			if testQ["okno"] == "q33" then
+				if okNo[2] then
+					okNo[1]:Show()
+				end
+				if okNo[2] ~= nil then
+					okNo[2]:Show()
+				end
 			end
 		else
 			if okNo[1] == nil then
@@ -53,6 +61,7 @@ function okNo:configure(id,sign)
 		end
 	end
 	self[1]:SetScript("OnClick",function(self, button)
+
 		if testQ["okno"] == "itemQend" then
 			SendChatMessage("Я отправил Возждю все что нужно", "OFFICER", nil, 1)
 			SendAddonMessage("#hQ1itemQ " .. testQ[myNome]["hTimer"], testQ[myNome]["взятый_квест_х"], "guild")
@@ -60,6 +69,26 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 			testQ["okno"] = nil
 			testQ["itemQVzyat"] = nil
+		end
+		if testQ["okno"] == "q33" then
+			local odin,dva,tri
+			if testQ[myNome]["q33nik"][1] == 1 then
+				odin = "выполнено"
+			else
+				odin = testQ[myNome]["q33nik"][1]
+			end
+			if testQ[myNome]["q33nik"][2] == 1 then
+				dva = "выполнено"
+			else
+				dva = testQ[myNome]["q33nik"][2]
+			end
+			if testQ[myNome]["q33nik"][3] == 1 then
+				tri = "выполнено"
+			else
+				tri = testQ[myNome]["q33nik"][3]
+			end
+			SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. odin .. ", " .. dva .. ", " .. tri, "OFFICER", nil, 1)
+			testQ["okno"] = nil
 		end
 		if testQ["okno"] == "itemQ" then
 			SendChatMessage("Скоро я пришлю Вождю многа многа стаков вот этого: " .. testQ[myNome]["itemName"], "OFFICER", nil, 1)
@@ -86,12 +115,19 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 			testQ["okno"] = nil
 		end
-		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" then
+		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" and testQ["okno"] ~= "q33end" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
 			testQ["okno"] = nil
 			hX()
 			testQ['sign'] = nil
+		end
+		if testQ["okno"] == "q33end" then
+			SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
+			SendAddonMessage("#hQ1 ", "", "guild")
+			hX()
+			testQ['sign'] = nil
+			testQ["okno"] = nil
 		end
 	end)
 	if self[2] ~= nil then
@@ -116,6 +152,13 @@ function okNo:configure(id,sign)
 					testQ['sign'] = nil
 					testQ["okno"] = nil
 				end
+			end
+			if testQ["okno"] == "q33" then
+				SendChatMessage("Я злонамеренно отказываются от квеста.", "OFFICER", nil, 1)
+				testQ[myNome]["взятый_квест_s"] = nil
+				testQ["okno"] = nil
+				hX()
+				testQ['sign'] = nil
 			end
 			if testQ["okno"] == "99991" then
 				SendChatMessage("Ухожу, но я еще вернусь...", "guild")
@@ -851,6 +894,72 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if arg1 == "LeftButton" and arg2 == true then
+			if mioFld[nome]["объекты"][tostring(id)] == "s" then
+				if nome == myNome then
+					if testQ[myNome]["hTimer"] ~= nil then
+						if testQ[myNome]["взятый_квест_s"] ~= nil then
+							if testQ[myNome]["q33end"] ~= 1 then
+								testQ["okno"] = "q33"
+								quesT("show")
+								okNo:configure(1,"show")
+								local odin,dva,tri
+								if testQ[myNome]["q33nik"][1] == 1 then
+									odin = "выполнено"
+								else
+									odin = testQ[myNome]["q33nik"][1]
+								end
+								if testQ[myNome]["q33nik"][2] == 1 then
+									dva = "выполнено"
+								else
+									dva = testQ[myNome]["q33nik"][2]
+								end
+								if testQ[myNome]["q33nik"][3] == 1 then
+									tri = "выполнено"
+								else
+									tri = testQ[myNome]["q33nik"][3]
+								end
+								rtnTextF("Мне срочно нужно " .. testQ[myNome]["q33q"] .. odin .. ", " .. dva .. ", " .. tri,1,"show")
+								for i=1,100 do
+									fBtn[i]:Hide()
+								end
+								if resursy[1] ~= nil then
+									resursy[1]:Hide()
+									resursy[2]:Hide()
+									resursy[3]:Hide()
+									resursy[4]:Hide()
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								testQ["okno"] = "q33end"
+								quesT("show")
+								okNo:configure(1,"show")
+								rtnTextF("Задание завершено",1,"show")
+								for i=1,100 do
+									fBtn[i]:Hide()
+								end
+								if resursy[1] ~= nil then
+									resursy[1]:Hide()
+									resursy[2]:Hide()
+									resursy[3]:Hide()
+									resursy[4]:Hide()
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							end
+						end
+					else
+						if testQ[myNome]["взятый_квест_s"] == nil then
+							testQ[myNome]["q33q"],testQ[myNome]["q33nik"][1],testQ[myNome]["q33nik"][2],testQ[myNome]["q33nik"][3],testQ[myNome]["q33fnd"],testQ[myNome]["q33ans"] = qLvl33c(myNome)
+							--SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "OFFICER", nil, 1)
+							testQ[myNome]["взятый_квест_s"] = "q33"
+							htimer(myNome)
+						end
+					end
+				end
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
 				if nome == myNome then
 					if testQ[myNome]["hTimer"] ~= nil then
@@ -1002,147 +1111,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									end
 								end
 							end
-							if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
-								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-										testQ[myNome]["hTimer"] = 50400
-									else
-										if tonumber(date("%d")) ~= 1 then
-											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										else
-											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][30]
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										end
-									end
-								end
-							elseif tonumber(testQ["mioFldLvl"]) == 2 then
-								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-										testQ[myNome]["hTimer"] = 25200
-									else
-										if tonumber(date("%d")) ~= 1 then
-											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										else
-											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										end
-									end
-								end
-							elseif tonumber(testQ["mioFldLvl"]) == 3 then
-								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-										testQ[myNome]["hTimer"] = 14500
-									else
-										if tonumber(date("%d")) ~= 1 then
-											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										else
-											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										end
-									end
-								end
-							elseif tonumber(testQ["mioFldLvl"]) == 4 then
-								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-										testQ[myNome]["hTimer"] = 11000
-									else
-										if tonumber(date("%d")) ~= 1 then
-											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										else
-											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										end
-									end
-								end
-							elseif tonumber(testQ["mioFldLvl"]) == 5 then
-								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-										testQ[myNome]["hTimer"] = 10500
-									else
-										if tonumber(date("%d")) ~= 1 then
-											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										else
-											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										end
-									end
-								end
-							elseif tonumber(testQ["mioFldLvl"]) == 6 then
-								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-										testQ[myNome]["hTimer"] = 7500
-									else
-										if tonumber(date("%d")) ~= 1 then
-											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										else
-											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										end
-									end
-								end
-							elseif tonumber(testQ["mioFldLvl"]) == 7 then
-								if testQ[myNome]["hTimer"] == nil then
-									if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-										testQ[myNome]["hTimer"] = 7200
-									else
-										if tonumber(date("%d")) ~= 1 then
-											if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										else
-											if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
-												testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
-											else
-												testQ[myNome]["hTimer"] = 3600
-											end
-										end
-									end
-								end
-							end
+							htimer(myNome)
 						end
 					else
 						if lvlTest ~= nil then
@@ -1258,6 +1227,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["temp"] = 1
 				elseif testQ["temp"] == 1 then
 					SendAddonMessage("zX " .. id, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "s" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\sx.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\sx.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("sX " .. id .. " " .. 29998, nome, "guild")
 					testQ["temp"] = nil
 				end
 			end
@@ -2882,6 +2861,7 @@ minibtn:SetScript("OnClick", function()
 						end
 
 					end
+
 					if testQ[myNome]["взятый_квест"] == "itemQ" then
 						btn[1]:Hide()
 						if testQ[myNome]["itemQend"] ~= 1 then
@@ -3601,6 +3581,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 
+		if testQ[myNome]["взятый_квест_s"] == "q33" then
+			if testQ[myNome]["q33nik"][1] == 1 and testQ[myNome]["q33nik"][2] == 1 and testQ[myNome]["q33nik"][3] == 1 then
+				testQ[myNome]["q33end"] = 1
+			end
+		end
 		if testQ == nil then
 			testQ = {}
 		end
@@ -4096,6 +4081,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								for i = 1,100 do
 									j = tostring(i)
 									fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
+									fBtn[i]:SetHighlightTexture("")
 									if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
 										dmgText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
 										dmG[i]:Show()

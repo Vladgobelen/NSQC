@@ -1793,6 +1793,190 @@ function showFld(sign,myNome)
 		testQ['sign'] = nil
 	end
 end
+function qLvl33c()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC)["айди"]
+	nomeNpc1 = npcListC[idNpc]["имя"]
+	idNpc = rndTblc(npcListC)["айди"]
+	nomeNpc2 = npcListC[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC)["айди"]
+			nomeNpc2 = npcListC[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC)["айди"]
+	nomeNpc3 = npcListC[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC)["айди"]
+			nomeNpc3 = npcListC[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function rndTblc(tb)
+    local keys = {}
+    for k in pairs(tb) do table.insert(keys, k) end
+    return tb[keys[math.random(#keys)]]
+end
+function htimer(myNome)
+	if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				testQ[myNome]["hTimer"] = 50400
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+						testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+						testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][30]
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 2 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				testQ[myNome]["hTimer"] = 25200
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 3 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				testQ[myNome]["hTimer"] = 14500
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 4 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				testQ[myNome]["hTimer"] = 11000
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 5 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				testQ[myNome]["hTimer"] = 10500
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 6 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				testQ[myNome]["hTimer"] = 7500
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 7 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				testQ[myNome]["hTimer"] = 7200
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+					else
+						testQ[myNome]["hTimer"] = 3600
+					end
+				end
+			end
+		end
+	end
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()

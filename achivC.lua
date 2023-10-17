@@ -30,10 +30,12 @@ if kodMsg[1] == "xTime" and kodMsg[2] == myNome and testGM ~= nil then
 end
 if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ[myNome]["взятый_квест_х"] = "9999"
+	testQ[myNome]["взятый_квест_s"] = nil
 	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
 	testQ[myNome]["взятый_квест"] = "9999"
 	testQ["okno"] = nil
 	testQ[myNome]["itemQend"] = nil
+	testQ[myNome]["q33end"] = nil
 end
 
 if kodMsg[1] == "rasstoyanie" then
@@ -904,7 +906,7 @@ if kodMsg[1] == "sX" then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "sx"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 			if message == myNome then
