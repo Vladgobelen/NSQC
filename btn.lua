@@ -1211,6 +1211,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
 				if testQ["temp"] == nil then
 					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. "x.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. "x.tga")
 					testQ["temp"] = 1
 				elseif testQ["temp"] == 1 then
 					SendAddonMessage("mX " .. id, nome, "guild")
@@ -1220,6 +1221,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
 				if testQ["temp"] == nil then
 					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
 					testQ["temp"] = 1
 				elseif testQ["temp"] == 1 then
 					SendAddonMessage("hS " .. id .. " " .. 9999, nome, "guild")
@@ -1229,6 +1231,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "sk" then
 				if testQ["temp"] == nil then
 					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\skS.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\skS.tga")
 					testQ["temp"] = 1
 				elseif testQ["temp"] == 1 then
 					SendAddonMessage("skc " .. id .. " " .. 999, nome, "guild")
@@ -1307,6 +1310,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							n = "hs"
 						end
 						vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+						vybor[1]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
 						vybor[1]:Show()
 						if testQ ~= nil then
 							testQ["idp"] = id
@@ -1336,6 +1340,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						n = n .. "sb"
 					end
 					vybor[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\sb.tga")
+					vybor[2]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\sb.tga")
 					vybor[2]:Show()
 					if testQ ~= nil then
 						testQ["idp"] = id
@@ -1364,6 +1369,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 					vybor[3]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\sk.tga")
+					vybor[3]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\sk.tga")
 					vybor[3]:Show()
 					if testQ ~= nil then
 						testQ["idp"] = id
@@ -1385,6 +1391,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							vybor[4]:SetPoint("CENTER", fBtn[id],"CENTER",1*192, 96)
 						end
 						vybor[4]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
+						vybor[4]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 						vybor[4]:Show()
 						if testQ ~= nil then
 							testQ["idp"] = id
@@ -1403,7 +1410,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					vybor[5]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
 					vybor[6]:SetPoint("CENTER", fBtn[id],"CENTER",1*64, 96)
 					vybor[5]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+					vybor[5]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
 					vybor[6]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+					vybor[6]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
 					vybor[5]:Show()
 					vybor[6]:Show()
 					if testQ ~= nil then
@@ -1420,6 +1429,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					vybor:configure(7)
 					vybor[7]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*192), 96)
 					vybor[7]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+					vybor[7]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
 					vybor[7]:Show()
 					if testQ ~= nil then
 						testQ["idp"] = id
@@ -1461,6 +1471,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						vybor:configure(11)
 						vybor[11]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
 						vybor[11]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\sx.tga")
+						vybor[11]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\sx.tga")
 						vybor[11]:Show()
 						if testQ ~= nil then
 							testQ["idp"] = id
@@ -1478,6 +1489,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						vybor:configure(9)
 						vybor[9]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
 						vybor[9]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\os.tga")
+						vybor[9]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\os.tga")
 						vybor[9]:Show()
 						if testQ ~= nil then
 							testQ["idp"] = id
@@ -1489,6 +1501,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							vybor:configure(10)
 							vybor[10]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
 							vybor[10]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
+							vybor[10]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gz.tga")
 							vybor[10]:Show()
 							if testQ ~= nil then
 								testQ["idp"] = id
@@ -3952,7 +3965,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								for i = 1,100 do
 									j = tostring(i)
 									fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
 									if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
 										dmgText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
 										dmG[i]:Show()
@@ -4033,7 +4045,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										end
 									end
 									fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
-									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
 								end
 							end
 						end
