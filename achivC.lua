@@ -991,6 +991,9 @@ if kodMsg[1] == "gobXm" then
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
+		if message == myNome then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
+		end
 	end
 end
 if kodMsg[1] == "zX" then
