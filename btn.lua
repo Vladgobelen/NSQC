@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=13
+versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -453,7 +453,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -477,7 +477,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -516,7 +516,7 @@ function vybor:configure(id)
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-					dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+					dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 					for i=1,100 do
 						if vybor[i] ~= nil then
 							vybor[i]:Hide()
@@ -540,7 +540,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -565,7 +565,7 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
@@ -743,7 +743,7 @@ function vybor:configure(id)
 						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["beton"] = tonumber(testQ["brevna"]) - 5
-						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
 								vybor[i]:Hide()
@@ -789,7 +789,7 @@ function vybor:configure(id)
 						testQ["beton"] = tonumber(testQ["beton"]) - 10
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
 								vybor[i]:Hide()
@@ -813,7 +813,7 @@ function vybor:configure(id)
 						testQ["beton"] = tonumber(testQ["beton"]) - 30
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
 								vybor[i]:Hide()
@@ -3090,7 +3090,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									mioFld[myNome]["целостность"][tostring(i)] = x
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 								elseif x >= 101 and x < 1000 then
-									mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%u", tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)))
+									mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%d", tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)))
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 								elseif x >= 1000 and x < 5000 then
 									resObj(i,myNome,myNome)
@@ -3145,7 +3145,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			else
 				testQ["beton"] = tonumber(testQ["beton"])+0.01
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
-				dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 			end
 		end
 		if testQ[myNome]["dTimer"] == nil then
@@ -3669,7 +3669,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-				dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 			end
 			if dmG[101] ~= nil then
 				dmG[101]:Show()
@@ -4260,7 +4260,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-							dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+							dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						end
 						testQ["fRand6"] = nil
 					end
