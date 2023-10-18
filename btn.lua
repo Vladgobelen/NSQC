@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=7
+versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -732,7 +732,7 @@ function vybor:configure(id)
 						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["beton"] = tonumber(testQ["brevna"]) - 5
-						dmgText(testQ["beton"],resursy[1],101,13,"FF8C00")
+						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
 								vybor[i]:Hide()
@@ -753,7 +753,7 @@ function vybor:configure(id)
 						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 20
-						dmgText(testQ["beton"],resursy[1],101,13,"FF8C00")
+						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
 								vybor[i]:Hide()
@@ -773,12 +773,12 @@ function vybor:configure(id)
 					elseif testQ["temp"] == 1 then
 						SendAddonMessage("sX " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
-						testQ["beton"] = tonumber(testQ["brevna"]) - 10
-						testQ["beton"] = tonumber(testQ["kamen"]) - 50
+						testQ["brevna"] = tonumber(testQ["brevna"]) - 10
+						testQ["kamen"] = tonumber(testQ["kamen"]) - 50
 						testQ["beton"] = tonumber(testQ["beton"]) - 10
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(testQ["beton"],resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
 								vybor[i]:Hide()
@@ -797,12 +797,12 @@ function vybor:configure(id)
 					elseif testQ["temp"] == 1 then
 						SendAddonMessage("sX " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
-						testQ["beton"] = tonumber(testQ["brevna"]) - 50
-						testQ["beton"] = tonumber(testQ["kamen"]) - 150
+						testQ["brevna"] = tonumber(testQ["brevna"]) - 50
+						testQ["kamen"] = tonumber(testQ["kamen"]) - 150
 						testQ["beton"] = tonumber(testQ["beton"]) - 30
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(testQ["beton"],resursy[4],104,13,"FF8C00")
+						dmgText(string.format("%u", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
 								vybor[i]:Hide()
@@ -3058,6 +3058,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								if x == 1 then
 									 SendAddonMessage("gobXm " .. i, myNome, "guild")
+								end
+							end
+							if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx") and pet[1] == "gom" then
+								local x = math.random(1,5)
+								if x == 5 then
+									resObj(i,myNome,myNome)
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+								end
+							end
+							if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx") and pet[1] == "gob" then
+								local x = math.random(1,5)
+								if x == 5 then
+
 								end
 							end
 						end

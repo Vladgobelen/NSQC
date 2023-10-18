@@ -32,6 +32,10 @@ if msg[1] == "\"трава" and msg[2] == myNome and testGM~=nil then
 	testQ["stog"] = tonumber(testQ["stog"])+tonumber(msg[3])
 	testQ["fRand6"] = 1
 end
+if msg[1] == "\"бетон" and msg[2] == myNome and testGM~=nil then
+	testQ["beton"] = tonumber(testQ["beton"])+tonumber(msg[3])
+	testQ["fRand6"] = 1
+end
 if msg[1] == myNome .. "," and msg[2] == "покажи" and msg[3] == "свой" then
 	SendChatMessage("У меня " .. testQ[myNome]["dTimer"][tonumber(date("%d"))], "OFFICER", nil, 1)
 end

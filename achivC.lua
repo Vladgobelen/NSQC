@@ -552,6 +552,22 @@ if kodMsg[1] == "MioFldO3" then
 	testQ["fRandDO3"] = 1
 	testQ["fRandD1nome"] = sender
 end
+if kodMsg[1] == "камни" and kodMsg[2] == myNome and testGM~=nil then
+	testQ["kamen"] = tonumber(message)
+	testQ["fRand6"] = 1
+end
+if kodMsg[1] == "бревна" and kodMsg[2] == myNome and testGM~=nil then
+	testQ["brevna"] = tonumber(message)
+	testQ["fRand6"] = 1
+end
+if kodMsg[1] == "трава" and kodMsg[2] == myNome and testGM~=nil then
+	testQ["stog"] = tonumber(message)
+	testQ["fRand6"] = 1
+end
+if kodMsg[1] == "бетон" and kodMsg[2] == myNome and testGM~=nil then
+	testQ["beton"] = tonumber(message)
+	testQ["fRand6"] = 1
+end
 if kodMsg[1] == "MioFldP1" then
 	if mioFld == nil then
 		mioFld = {}
