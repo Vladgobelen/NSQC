@@ -133,7 +133,7 @@ function okNo:configure(id,sign)
 	if self[2] ~= nil then
 		self[2]:SetScript("OnClick",function(self, button)
 			if testQ["okno"] == "itemQ" then
-				SendChatMessage("Я злонамеренно отказываются от квеста.", "OFFICER", nil, 1)
+				SendChatMessage("Я злонамеренно отказываюсь от квеста.", "OFFICER", nil, 1)
 				testQ[myNome]["взятый_квест"] = "9999"
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
