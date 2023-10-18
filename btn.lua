@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=8
+versAddDop=9
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3068,9 +3068,24 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								end
 							end
 							if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx") and pet[1] == "gob" then
-								local x = math.random(1,5)
-								if x == 5 then
-
+								local x = math.random(1,10000)
+								if x == 1 then
+									mioFld[myNome]["объекты"][tostring(i)] = "z"
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
+								elseif x >= 2 and x < 101 then
+									mioFld[myNome]["целостность"][tostring(i)] = x
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+								elseif x >= 101 and x < 1000 then
+									mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+								elseif x >= 1000 and x < 5000 then
+									resObj(i,myNome,myNome)
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+								elseif x >= 5000 and x < 10000 then
+									resObj(i,myNome,myNome)
+									resObj(i,myNome,myNome)
+									resObj(i,myNome,myNome)
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 								end
 							end
 						end
