@@ -425,6 +425,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				else
 					mioFld[myNome]["подсказки"][j] = "Хижина"
 				end
+				mapTables["lokRasstoyanie"] = {}
 			end
 		end
 		if x ~= nil then
@@ -456,7 +457,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		pQuest["х"][7]=1243
 		pQuest["х"][8]=153
 		pQuest["х"][9]=627
-		pQuest["х"][1]=621
+		pQuest["х"][10]=621
 		pQuest["х"][11]=776
 		pQuest["х"][12]=728
 		pQuest["х"][13]=736
@@ -475,6 +476,18 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
+		pQuest["items"][2]["itemNum"] = "1"
+		pQuest["items"][2]["itemEnStuck"] = "100"
+		pQuest["items"][2]["itemName"] = "Шерсть"
+		pQuest["items"][3]["itemNum"] = "3"
+		pQuest["items"][3]["itemEnStuck"] = "100"
+		pQuest["items"][3]["itemName"] = "Шерсть"
+		pQuest["items"][4]["itemNum"] = "4"
+		pQuest["items"][4]["itemEnStuck"] = "100"
+		pQuest["items"][4]["itemName"] = "Шерсть"
+		pQuest["items"][5]["itemNum"] = "5"
+		pQuest["items"][5]["itemEnStuck"] = "100"
+		pQuest["items"][5]["itemName"] = "Шерсть"
 		if pQuest["items"][1] == nil then
 			pQuest["items"][1] = {}
 		end
