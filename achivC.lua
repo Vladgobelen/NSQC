@@ -136,6 +136,7 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				mioFld[myNome]["объекты"][j] = "t"
 			end
 			x = math.random(1,100)
+			mapTables["lokRasstoyanie"] = {}
 		end
 		if mioFld[myNome]["целостность"] == nil then
 			mioFld[myNome]["целостность"] = {}
@@ -226,8 +227,8 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if mapTables["lokRasstoyanie"]["1"] == nil then
 			mapTables["lokRasstoyanie"]["1"] = {}
 		end
-		mapTables["lokRasstoyanie"]["1"]["19"] = 0.00087
-		mapTables["lokRasstoyanie"]["1"]["18"] = 0.000499
+		mapTables["lokRasstoyanie"]["1"]["18"] = 0.00087
+		mapTables["lokRasstoyanie"]["1"]["17"] = 0.000499
 		mapTables["lokRasstoyanie"]["1"]["4"] = 0.00067
 		mapTables["lokRasstoyanie"]["1"]["10"] = 0.003676
 		if mapTables["lokRasstoyanie"]["99"] == nil then
@@ -238,7 +239,8 @@ if kodMsg[1] == "shMFld" and message == myNome then
 			mapTables["lokRasstoyanie"]["2"] = {}
 		end
 		mapTables["lokRasstoyanie"]["2"]["14"] = 0.002
-		mapTables["lokRasstoyanie"]["1"]["34"] = 0.0021
+		mapTables["lokRasstoyanie"]["1"]["28"] = 0.0021
+		mapTables["lokRasstoyanie"]["3"]["2"] = 0.007
 		for k, v in pairs(mioFld[myNome]) do
 			rez={}
 			if k == "объекты" then

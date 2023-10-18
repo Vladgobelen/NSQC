@@ -1,5 +1,5 @@
 versAdd=280
-versAddDop=3
+versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4363,15 +4363,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				local tKont = testKont
 				local tLok = lok
 				print (mioCel)
-				if mapTables["lokRasstoyanie"][tKont][tLok] ~= nil then
-					if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
-						marSh()
-					end
-				else
-					if mioCel >= 0.9 then
-						marSh()
-					end
-				end
+				--if mapTables["lokRasstoyanie"][tKont][tLok] ~= nil then
+					--if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
+						--marSh()
+					--end
+				--else
+					--if mioCel >= 0.9 then
+						--marSh()
+					--end
+				--end
 			end
 		end
 		if testQ == nil then

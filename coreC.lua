@@ -20,6 +20,10 @@ end
 if message == "!повысить" and sender == myNome then
 	SendAddonMessage("gUp", "", "guild")
 end
+if msg[1] == "локация" and msg[2]=="удалить" and msg[3] == myNome and testGM~=nil then
+	mapTables["lokRasstoyanie"] = nil
+	krt["chernila"] = nil
+end
 if msg[1] == "\"камни" and msg[2] == myNome and testGM~=nil then
 	testQ["kamen"] = tonumber(testQ["kamen"])+tonumber(msg[3])
 	testQ["fRand6"] = 1
