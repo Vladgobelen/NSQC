@@ -154,7 +154,7 @@ function okNo:configure(id,sign)
 				end
 			end
 			if testQ["okno"] == "q33" then
-				SendChatMessage("Я злонамеренно отказываются от квеста.", "OFFICER", nil, 1)
+				SendChatMessage("Я злонамеренно отказываюсь от квеста.", "OFFICER", nil, 1)
 				testQ[myNome]["взятый_квест_s"] = nil
 				testQ["okno"] = nil
 				hX()
@@ -167,7 +167,7 @@ function okNo:configure(id,sign)
 				testQ['sign'] = nil
 			end
 			if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" then
-				SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
+				SendChatMessage("Я злонамеренно отказываюсь от ачивки " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
 				hX()
