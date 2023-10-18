@@ -2,6 +2,8 @@
 *
 
 # Do not ignore these files:
+!vers
+!versad
 !emblem.tga
 !Incarichi/
 !Incarichi/a.lua
