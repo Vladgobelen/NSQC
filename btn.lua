@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=5
+versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1687,7 +1687,11 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				local pet
 				pet = mysplit(mioFld[nome]["петы"][tostring(id)])
 				fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["петы"][tostring(id)] .. ".ogg")
+				if mioFld[nome]["петы"][tostring(id)] ~= "bb" then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["петы"][tostring(id)] .. ".ogg")
+				else
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
+				end
 			end
 		end
 	end)
