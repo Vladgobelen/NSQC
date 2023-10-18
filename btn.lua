@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=9
+versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3076,7 +3076,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									mioFld[myNome]["целостность"][tostring(i)] = x
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 								elseif x >= 101 and x < 1000 then
-									mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)
+									mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%u", tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)))
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 								elseif x >= 1000 and x < 5000 then
 									resObj(i,myNome,myNome)
