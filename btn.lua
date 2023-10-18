@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=12
+versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -11,7 +11,7 @@ okNo = {}
 
 function okNo:configure(id,sign)
 	if sign == "show" then
-		if (testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend") or testQ["okno"] == "q33" or testQ["okno"] == testQ[myNome]["взятый_квест_х"] then
+		if testQ["okno"] ~= "completed" or testQ["okno"] ~= "itemQend" or testQ["okno"] == "q33" or testQ["okno"] == testQ[myNome]["взятый_квест_х"] then
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
 				self[1]:SetFrameStrata("TOOLTIP")
@@ -31,9 +31,6 @@ function okNo:configure(id,sign)
 					okNo[2]:Show()
 				end
 			end
-			if testQ["itemQVzyat"] == 1 and testQ[myNome]["hTimer"] ~= nil then
-				okNo[2]:Hide()
-			end
 			if testQ["okno"] == "q33" then
 				if okNo[2] then
 					okNo[1]:Show()
@@ -49,6 +46,12 @@ function okNo:configure(id,sign)
 				if okNo[2] ~= nil then
 					okNo[2]:Show()
 				end
+			end
+			if testQ["itemQVzyat"] == 1 and testQ[myNome]["hTimer"] ~= nil then
+				okNo[2]:Hide()
+			end
+			if testQ["okno"] == "itemQ" and testQ[myNome]["hTimer"] ~= nil then
+				okNo[2]:Hide()
 			end
 		else
 			if okNo[1] == nil then
