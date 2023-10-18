@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=11
+versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -11,7 +11,7 @@ okNo = {}
 
 function okNo:configure(id,sign)
 	if sign == "show" then
-		if (testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend") or testQ["okno"] == "q33" then
+		if (testQ["okno"] ~= "completed" and testQ["okno"] ~= "itemQend") or testQ["okno"] == "q33" or testQ["okno"] == testQ[myNome]["взятый_квест_х"] then
 			if okNo[1] == nil then
 				self[1] = CreateFrame("Button", nil, UIParent, "");
 				self[1]:SetFrameStrata("TOOLTIP")
@@ -35,6 +35,14 @@ function okNo:configure(id,sign)
 				okNo[2]:Hide()
 			end
 			if testQ["okno"] == "q33" then
+				if okNo[2] then
+					okNo[1]:Show()
+				end
+				if okNo[2] ~= nil then
+					okNo[2]:Show()
+				end
+			end
+			if testQ["okno"] == testQ[myNome]["взятый_квест_х"] then
 				if okNo[2] then
 					okNo[1]:Show()
 				end
@@ -963,40 +971,42 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome]["объекты"][tostring(id)] == "h" then
 				if nome == myNome then
 					if testQ[myNome]["hTimer"] ~= nil then
-						if testQ[myNome]["itemQend"] ~= 1 then
-							testQ["okno"] = "itemQ"
-							quesT("show")
-							okNo:configure(1,"show")
-							rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
-							for i=1,100 do
-								fBtn[i]:Hide()
+						if testQ[myNome]["взятый_квест_х"] == "itemQ" then
+							if testQ[myNome]["itemQend"] ~= 1 then
+								testQ["okno"] = "itemQ"
+								quesT("show")
+								okNo:configure(1,"show")
+								rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+								for i=1,100 do
+									fBtn[i]:Hide()
+								end
+								if resursy[1] ~= nil then
+									resursy[1]:Hide()
+									resursy[2]:Hide()
+									resursy[3]:Hide()
+									resursy[4]:Hide()
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								testQ["okno"] = "itemQend"
+								quesT("show")
+								okNo:configure(1,"show")
+								rtnTextF("Я отправил Вождю, все что нужно",1,"show")
+								for i=1,100 do
+									fBtn[i]:Hide()
+								end
+								if resursy[1] ~= nil then
+									resursy[1]:Hide()
+									resursy[2]:Hide()
+									resursy[3]:Hide()
+									resursy[4]:Hide()
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 							end
-							if resursy[1] ~= nil then
-								resursy[1]:Hide()
-								resursy[2]:Hide()
-								resursy[3]:Hide()
-								resursy[4]:Hide()
-							end
-							btn[989]:Hide()
-							btn[989]:ClearAllPoints()
-							btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-						else
-							testQ["okno"] = "itemQend"
-							quesT("show")
-							okNo:configure(1,"show")
-							rtnTextF("Я отправил Вождю, все что нужно",1,"show")
-							for i=1,100 do
-								fBtn[i]:Hide()
-							end
-							if resursy[1] ~= nil then
-								resursy[1]:Hide()
-								resursy[2]:Hide()
-								resursy[3]:Hide()
-								resursy[4]:Hide()
-							end
-							btn[989]:Hide()
-							btn[989]:ClearAllPoints()
-							btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 						end
 						if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
 							local qq=math.random(1,#pQuest["items"])
@@ -1025,6 +1035,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					local lvlTemp = tonumber(testQ["mioFldLvl"])
 					local testDate = tonumber(string.sub(date(),4,5))
 					local lvlTest = 1
+
 					if testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
 						if testQ == nil then
 							testQ = {}
@@ -1038,7 +1049,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if testQ[myNome]["взятый_квест_х"] ~= nil and testQ[myNome]["взятый_квест_х"] ~= "9999" then
 							local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(testQ[myNome]["взятый_квест_х"]))
 							if completed == false then
-								testQ["okno"] = nil
+								testQ["okno"] = testQ[myNome]["взятый_квест_х"]
 								quesT("show")
 								okNo:configure(1,"show")
 								rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])),1,"show")
