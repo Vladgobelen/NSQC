@@ -3103,14 +3103,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								elseif x >= 1000 and x < 5000 then
 									resObj(i,myNome,myNome)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-								elseif x >= 5000 and x < 9000 then
+								elseif x >= 5000 and x < 9500 then
 									resObj(i,myNome,myNome)
 									resObj(i,myNome,myNome)
 									resObj(i,myNome,myNome)
 									resObj(i,myNome,myNome)
 									resObj(i,myNome,myNome)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-								elseif x >= 9000 and x < 9990 then
+								elseif x >= 9500 and x < 9990 then
 									mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+(x/10)
 									resObj(i,myNome,myNome)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
