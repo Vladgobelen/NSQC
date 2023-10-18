@@ -227,6 +227,15 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if mapTables["lokRasstoyanie"]["1"] == nil then
 			mapTables["lokRasstoyanie"]["1"] = {}
 		end
+		if mapTables["lokRasstoyanie"]["2"] == nil then
+			mapTables["lokRasstoyanie"]["2"] = {}
+		end
+		if mapTables["lokRasstoyanie"]["2"] == nil then
+			mapTables["lokRasstoyanie"]["2"] = {}
+		end
+		if mapTables["lokRasstoyanie"]["99"] == nil then
+			mapTables["lokRasstoyanie"]["99"] = {}
+		end
 		mapTables["lokRasstoyanie"]["1"]["18"] = 0.00087
 		mapTables["lokRasstoyanie"]["1"]["17"] = 0.000499
 		mapTables["lokRasstoyanie"]["1"]["4"] = 0.00067
@@ -466,8 +475,20 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
-		if mapTables["lokRasstoyanie"]["1"] == nil then
-			mapTables["lokRasstoyanie"]["1"] = {}
+		if pQuest["items"][1] == nil then
+			pQuest["items"][1] = {}
+		end
+		if pQuest["items"][2] == nil then
+			pQuest["items"][2] = {}
+		end
+		if pQuest["items"][3] == nil then
+			pQuest["items"][3] = {}
+		end
+		if pQuest["items"][4] == nil then
+			pQuest["items"][4] = {}
+		end
+		if pQuest["items"][5] == nil then
+			pQuest["items"][5] = {}
 		end
 		mapTables["lokRasstoyanie"]["1"]["19"] = 0.00087
 		mapTables["lokRasstoyanie"]["1"]["18"] = 0.000499
