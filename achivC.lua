@@ -80,7 +80,9 @@ if kodMsg[1] == "nMapPoint" then
 	mapTables["nMapPoint"][tostring(kodMsg[2])][tostring(kodMsg[3])][tostring(kodMsg[4])]["p"] = message
 end
 if kodMsg[1] == "xTimex" and kodMsg[2] == myNome and testGM ~= nil then
-	testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - tonumber(message)
+	if testQ[myNome]["hTimer"] ~= nil then
+		testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - tonumber(message)
+	end
 end
 
 if kodMsg[1] == "FailPointEvent1" then
