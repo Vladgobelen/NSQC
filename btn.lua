@@ -1,5 +1,5 @@
 versAdd=280
-versAddDop=0
+versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -51,6 +51,9 @@ function okNo:configure(id,sign)
 				okNo[2]:Hide()
 			end
 			if testQ["okno"] == "itemQ" and testQ[myNome]["hTimer"] ~= nil and testQ["okno"] == "itemQ" then
+				okNo[2]:Hide()
+			end
+			if testQ["okno"] == "itemQend" and testQ[myNome]["hTimer"] ~= nil then
 				okNo[2]:Hide()
 			end
 		else
