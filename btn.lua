@@ -1,5 +1,5 @@
 versAdd=279
-versAddDop=14
+versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -31,7 +31,7 @@ function okNo:configure(id,sign)
 					okNo[2]:Show()
 				end
 			end
-			if testQ["okno"] == "q33" then
+			if testQ["okno"] == "q33" and testQ["okno"] ~= "itemQ" then
 				if okNo[2] then
 					okNo[1]:Show()
 				end
@@ -47,10 +47,10 @@ function okNo:configure(id,sign)
 					okNo[2]:Show()
 				end
 			end
-			if testQ["itemQVzyat"] == 1 and testQ[myNome]["hTimer"] ~= nil then
+			if testQ["itemQVzyat"] == 1 and testQ[myNome]["hTimer"] ~= nil and testQ["okno"] == "itemQ" then
 				okNo[2]:Hide()
 			end
-			if testQ["okno"] == "itemQ" and testQ[myNome]["hTimer"] ~= nil then
+			if testQ["okno"] == "itemQ" and testQ[myNome]["hTimer"] ~= nil and testQ["okno"] == "itemQ" then
 				okNo[2]:Hide()
 			end
 		else
@@ -150,6 +150,7 @@ function okNo:configure(id,sign)
 				testQ["okno"] = nil
 				hX()
 				testQ['sign'] = nil
+				testQ["itemQVzyat"] = nil
 			elseif testQ["okno"] == nil then
 				if testQ[myNome]["взятый_квест_х"] ~= nil or testQ[myNome]["взятый_квест_х"] ~= "9999" or testQ[myNome]["взятый_квест_х"] ~= "itemQ" then
 					SendChatMessage("Я злонамеренно отказываются от ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])), "OFFICER", nil, 1)
