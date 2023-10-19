@@ -3075,8 +3075,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
 							end
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
-								local x = math.random(1,3)
-								if x == 3 then
+								local x = math.random(1,2)
+								if x == 2 then
 									gKam(myNome,x)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								end
