@@ -1,5 +1,5 @@
 versAdd=280;versAddDop=9
-bonusQuestF = 30
+bonusQuestF = 31
 local myNome = GetUnitName("player")
 btn = {};
 editB = {}
@@ -1375,6 +1375,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if  mioFld[nome]["объекты"][tostring(i)] == "za" then
 				testQ["za"] = testQ["za"]+1
 			end
+			if  mioFld[nome]["петы"][tostring(i)] == "gob" and id == i then
+				testQ["gob"] = 1
+			end
 		end
 		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if testQ["hs"] < 1 and testQ["h"] < 1 then
@@ -1717,6 +1720,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnLeave",function(self)
+		testQ["gob"] = nil
 		if dmG[999] ~= nil then
 			dmG[999]:Hide()
 		end
@@ -3091,11 +3095,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx") and pet[1] == "gob" then
 								local x = math.random(1,10000)
 								if x == 1 then
-									mioFld[myNome]["объекты"][tostring(i)] = "z"
-									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
+									if testQ["gob"] == nil then
+										mioFld[myNome]["объекты"][tostring(i)] = "z"
+										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
+									end
 								elseif x >= 2 and x < 101 then
-									mioFld[myNome]["целостность"][tostring(i)] = x
-									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+									if testQ["gob"] == nil then
+										mioFld[myNome]["целостность"][tostring(i)] = x
+										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+									end
 								elseif x >= 101 and x < 1000 then
 									mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%d", tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)))
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
