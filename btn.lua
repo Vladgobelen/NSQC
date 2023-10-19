@@ -1,4 +1,4 @@
-versAdd=280;versAddDop=15
+versAdd=280;versAddDop=16
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -1207,8 +1207,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
-				resObj(id,myNome,nome)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tr.ogg")
+				--resObj(id,myNome,nome)
+				--PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\tr.ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "mx" then
 				resObj(id,myNome,nome)
@@ -3073,12 +3073,81 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 100 then
+		timeElapsed = 0
+
+		for i = 1,100 do
+			local x = math.random(1,5)
+			if x == 5 then
+				if mioFld ~= nil then
+					if mioFld[myNome] ~= nil then
+						if mioFld[myNome]["объекты"][tostring(i)] == "f" then
+							resObj(i,myNome,myNome)
+						end
+					end
+				end
+			end
+		end
+	end
+end)
+local frameTime = CreateFrame("FRAME")
+local timeElapsed = 0
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 10 then
 		timeElapsed = 0
 		for i = 1,100 do
 			local pet
 			if mioFld ~= nil then
 				if mioFld[myNome] ~= nil then
+					local x = math.random(1,100)
+					if x == 100 then
+						if mioFld[myNome]["объекты"][tostring(i)] == "t" then
+							if math.fmod(i,10) == 0 then
+								if mioFld[myNome]["объекты"][tostring(math.fmod(i,100)-1)] == "z" then
+									SendAddonMessage("travA " .. math.fmod(i,100)-1, myNome, "guild")
+								end
+								if i == 10 then
+									if mioFld[myNome]["объекты"]["20"] == "z" then
+										SendAddonMessage("travA " .. 20, myNome, "guild")
+									end
+								end
+								if i == 100 then
+									if mioFld[myNome]["объекты"]["90"] == "z" then
+										SendAddonMessage("travA " .. 90, myNome, "guild")
+									end
+								end
+								if i ~= 100 and i ~= 10 then
+									if mioFld[myNome]["объекты"][tostring(i-10)] == "z" then
+										SendAddonMessage("travA " .. i-10, myNome, "guild")
+									end
+									if mioFld[myNome]["объекты"][tostring(i+10)] == "z" then
+										SendAddonMessage("travA " .. i+10, myNome, "guild")
+									end
+								end
+							else
+								if fBtn[math.fmod(i,100)-1] ~= nil and mioFld[myNome]["объекты"][tostring(math.fmod(i,100)-1)] == "z" then
+									SendAddonMessage("travA " .. math.fmod(i,100)-1, myNome, "guild")
+								end
+								if mioFld[myNome]["объекты"][tostring(math.fmod(i,100)+1)] == "z" then
+									SendAddonMessage("travA " .. math.fmod(i,100)+1, myNome, "guild")
+								end
+								if (i-10) >= 1 and mioFld[myNome]["объекты"][tostring(math.fmod(i,100)-10)] == "z" then
+									SendAddonMessage("travA " .. math.fmod(i,100)-10, myNome, "guild")
+								end
+								if (i+10) <= 100 and mioFld[myNome]["объекты"][tostring(math.fmod(i,100)+10)] == "z" then
+									SendAddonMessage("travA " .. math.fmod(i,100)+10, myNome, "guild")
+								end
+								if (i-10) <= 0 and mioFld[myNome]["объекты"][tostring(math.fmod(i,100)+10)] == "z" then
+									SendAddonMessage("travA " .. math.fmod(i,100)+10, myNome, "guild")
+								end
+								if (i+10) >= 101 and mioFld[myNome]["объекты"][tostring(math.fmod(i,100)-10)] == "z" then
+									SendAddonMessage("travA " .. math.fmod(i,100)-10, myNome, "guild")
+								end
+							end
+						end
+					end
+
 					if mioFld[myNome]["петы"] ~= nil then
 						if mioFld[myNome]["петы"][tostring(i)] ~= nil then
 							pet = mysplit(mioFld[myNome]["петы"][tostring(i)])

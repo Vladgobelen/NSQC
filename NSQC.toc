@@ -38,6 +38,11 @@ libs\za.tga
 libs\zak.tga
 libs\zp.tga
 libs\bi.tga
+libs\bh.tga
+libs\to.tga
+libs\bs.tga
+libs\bx.tga
+libs\bc.tga
 libs\bb.tga
 libs\sk.tga
 libs\sb.tga

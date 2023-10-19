@@ -823,7 +823,7 @@ if kodMsg[1] == "travA" then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Густая трава. Ну видно же!"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
 			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -833,7 +833,7 @@ end
 if kodMsg[1] == "oS" then
 	local petZ = mioFld[message]["петы"][tostring(kodMsg[2])]
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
-	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
 	if sender == myNome then
 		local pet = mysplit(kodMsg[3])
 		if petZ == "bb" then
@@ -851,7 +851,7 @@ end
 if kodMsg[1] == "gZ" then
 	local petZ = mioFld[message]["петы"][tostring(kodMsg[2])]
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
-	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
 	if kodMsg[4] == myNome then
 		if petZ == "bb" then
 			testQ[myNome]["петы"][kodMsg[3]] = 1
@@ -1183,7 +1183,7 @@ if kodMsg[1] == "resObj" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хижина"
 						if fBtn[1]:IsVisible() then
-							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
 						end
 					end
 				end
@@ -1192,7 +1192,7 @@ if kodMsg[1] == "resObj" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
 						if fBtn[1]:IsVisible() then
-							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
 						end
 					end
 				end
