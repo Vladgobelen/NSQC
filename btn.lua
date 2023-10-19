@@ -3090,10 +3090,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								end
 							end
 							if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx") and pet[1] == "gom" then
+							print(testQ["gom"])
 								local x = math.random(1,10000)
 								local xx
 								local xxx = math.random(1,5)
-								if xxx = 5 then
+								if xxx == 5 then
 									if x == 1 then
 										if testQ["gom"] == nil then
 											xx = math.random(1,4)
