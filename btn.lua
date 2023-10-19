@@ -1,4 +1,4 @@
-versAdd=280;versAddDop=11
+versAdd=280;versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3093,7 +3093,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							print(testQ["gom"])
 								local x = math.random(1,10000)
 								local xx
-								local xxx = math.random(1,5)
+								local xxx = math.random(1,2)
 								if xxx == 5 then
 									if x == 1 then
 										if testQ["gom"] == nil then
