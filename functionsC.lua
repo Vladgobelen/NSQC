@@ -1319,6 +1319,9 @@ function resObj(id,myNome,nome)
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
 							else
+								if mioFld[myNome]["объекты"][tostring(id)] == "f" then
+									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
+								end
 								mioFld[myNome]["целостность"][tostring(id)] = 999
 							end
 						end
@@ -1355,6 +1358,9 @@ function resObj(id,myNome,nome)
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
 							else
+								if mioFld[myNome]["объекты"][tostring(id)] == "f" then
+									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
+								end
 								mioFld[myNome]["целостность"][tostring(id)] = 999
 							end
 						end

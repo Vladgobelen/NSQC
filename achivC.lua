@@ -830,6 +830,18 @@ if kodMsg[1] == "travA" then
 		end
 	end
 end
+if kodMsg[1] == "tree" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Определенно это дерево..."
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "oS" then
 	local petZ = mioFld[message]["петы"][tostring(kodMsg[2])]
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
