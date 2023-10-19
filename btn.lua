@@ -1,4 +1,4 @@
-versAdd=280;versAddDop=17
+versAdd=280;versAddDop=18
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -4121,7 +4121,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							end
 							if mioFld ~= nil then
 								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
-
+								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
 								fBtn[i]:Show()
 								btn[989]:ClearAllPoints()
 								btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
@@ -4177,6 +4177,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									end
 								end
 								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
+								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
 								fBtn[i]:Show()
 								FriendsFrame:Hide()
 								if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "sx"  then
@@ -4231,6 +4232,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									end
 								end
 								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
+								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
 								fBtn[i]:Show()
 								if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "sx" then
 									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
