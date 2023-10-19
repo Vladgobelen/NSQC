@@ -1,4 +1,4 @@
-versAdd=280;versAddDop=12
+versAdd=280;versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3075,8 +3075,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
 							end
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
-								local x = math.random(1,5)
-								if x == 5 then
+								local x = math.random(1,3)
+								if x == 3 then
 									gKam(myNome,x)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								end
@@ -3094,7 +3094,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								local x = math.random(1,10000)
 								local xx
 								local xxx = math.random(1,2)
-								if xxx == 5 then
+								if xxx == 2 then
 									if x == 1 then
 										if testQ["gom"] == nil then
 											xx = math.random(1,4)
@@ -3104,10 +3104,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 											if xx == 2 then
 												testQ["stog"] = tonumber(testQ["stog"])-50
 											end
-											if xx == 1 then
+											if xx == 3 then
 												testQ["kamen"] = tonumber(testQ["kamen"])-50
 											end
-											if xx == 1 then
+											if xx == 4 then
 												testQ["beton"] = tonumber(testQ["beton"])-50
 											end
 										end
@@ -3120,10 +3120,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 											if xx == 2 then
 												testQ["stog"] = 0
 											end
-											if xx == 1 then
+											if xx == 3 then
 												testQ["kamen"] = 0
 											end
-											if xx == 1 then
+											if xx == 4 then
 												testQ["beton"] = 0
 											end
 										end
@@ -3136,10 +3136,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 											if xx == 2 then
 												testQ["stog"] = tonumber(testQ["stog"])-10
 											end
-											if xx == 1 then
+											if xx == 3 then
 												testQ["kamen"] = tonumber(testQ["kamen"])-10
 											end
-											if xx == 1 then
+											if xx == 4 then
 												testQ["beton"] = tonumber(testQ["beton"])-10
 											end
 										end
@@ -3156,10 +3156,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										if xx == 2 then
 											testQ["stog"] = tonumber(testQ["stog"])+1
 										end
-										if xx == 1 then
+										if xx == 3 then
 											testQ["kamen"] = tonumber(testQ["kamen"])+1
 										end
-										if xx == 1 then
+										if xx == 4 then
 											testQ["beton"] = tonumber(testQ["beton"])+1
 										end
 									elseif x >= 9991 and x <= 10000 then
@@ -3172,10 +3172,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										if xx == 2 then
 											testQ["stog"] = tonumber(testQ["stog"])+10
 										end
-										if xx == 1 then
+										if xx == 3 then
 											testQ["kamen"] = tonumber(testQ["kamen"])+10
 										end
-										if xx == 1 then
+										if xx == 4 then
 											testQ["beton"] = tonumber(testQ["beton"])+10
 										end
 									end
