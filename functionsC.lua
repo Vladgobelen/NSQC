@@ -1654,7 +1654,7 @@ function hX()
 	rtnTextF("fdsa",1,"hide")
 	for i=1,100 do
 		fBtn[i]:Hide()
-		fBtn[i]:SetHighlightTexture("")
+		--fBtn[i]:SetHighlightTexture("")
 	end
 	if resursy[1] ~= nil then
 		resursy[1]:Hide()
@@ -1733,7 +1733,7 @@ function showFld(sign,myNome)
 		else
 			for i=1,100 do
 				fBtn[i]:Hide()
-				fBtn[i]:SetHighlightTexture("")
+				--fBtn[i]:SetHighlightTexture("")
 				btn[989]:ClearAllPoints()
 				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 			end
@@ -1767,7 +1767,7 @@ function showFld(sign,myNome)
 			fBtn[i]:Hide()
 			btn[989]:ClearAllPoints()
 			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-			fBtn[i]:SetHighlightTexture("")
+			--fBtn[i]:SetHighlightTexture("")
 		end
 		if resursy[1] ~= nil then
 			resursy[1]:Hide()
