@@ -1,4 +1,4 @@
-versAdd=280;versAddDop=22
+versAdd=280;versAddDop=23
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -4077,7 +4077,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								fBtn[i]:Show()
 								btn[989]:ClearAllPoints()
 								btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
+								if mioFld ~= nil then
+									if mioFld[nome] ~= nil then
+										if mioFld[nome]["объекты"] ~= nil then
+											fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
+										end
+									end
+								end
 							end
 						end
 					end
