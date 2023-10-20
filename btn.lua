@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=0
+versAdd=281;versAddDop=1
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -3834,6 +3834,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if not fBtn[1]:IsVisible() then
+			if dmG[101] ~= nil and dmG[101]:IsVisible() then
+				for i = 1, 100 do
+					if dmG[i] ~= nil then
+						dmG[i]:Hide()
+					end
+				end
+			end
+		end
 
 		if testQ[myNome]["взятый_квест_s"] == "q33" then
 			if testQ[myNome]["q33nik"][1] == 1 and testQ[myNome]["q33nik"][2] == 1 and testQ[myNome]["q33nik"][3] == 1 then
