@@ -168,16 +168,12 @@ if msg[1] == "\"пет" and msg[2] == myNome and testGM ~= nil then
 	end
 	if msg[3] == "гоблин" then
 		if testQ[myNome]["петы"]["gg"] ~= 0 then
-			if testQ[myNome]["петы"]["gg"] == nil then
-				testQ[myNome]["петы"]["gg"] = "gob"
-			end
+			testQ[myNome]["петы"]["gg"] = "gob"
 		end
 	end
 	if msg[3] == "гном" then
 		if testQ[myNome]["петы"]["gg"] ~= 0 then
-			if testQ[myNome]["петы"]["gg"] == nil then
-				testQ[myNome]["петы"]["gg"] = "gom"
-			end
+			testQ[myNome]["петы"]["gg"] = "gom"
 		end
 	end
 end
