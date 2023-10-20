@@ -1847,16 +1847,16 @@ function htimer(myNome)
 				testQ[myNome]["hTimer"] = 50400
 			else
 				if tonumber(date("%d")) ~= 1 then
-					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				else
-					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][30]
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				end
 			end
@@ -1867,16 +1867,16 @@ function htimer(myNome)
 				testQ[myNome]["hTimer"] = 25200
 			else
 				if tonumber(date("%d")) ~= 1 then
-					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				else
-					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				end
 			end
@@ -1887,16 +1887,16 @@ function htimer(myNome)
 				testQ[myNome]["hTimer"] = 14500
 			else
 				if tonumber(date("%d")) ~= 1 then
-					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				else
-					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				end
 			end
@@ -1907,16 +1907,16 @@ function htimer(myNome)
 				testQ[myNome]["hTimer"] = 11000
 			else
 				if tonumber(date("%d")) ~= 1 then
-					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				else
-					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				end
 			end
@@ -1927,16 +1927,16 @@ function htimer(myNome)
 				testQ[myNome]["hTimer"] = 10500
 			else
 				if tonumber(date("%d")) ~= 1 then
-					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				else
-					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				end
 			end
@@ -1947,16 +1947,16 @@ function htimer(myNome)
 				testQ[myNome]["hTimer"] = 7500
 			else
 				if tonumber(date("%d")) ~= 1 then
-					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				else
-					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				end
 			end
@@ -1964,19 +1964,19 @@ function htimer(myNome)
 	elseif tonumber(testQ["mioFldLvl"]) == 7 then
 		if testQ[myNome]["hTimer"] == nil then
 			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
-				testQ[myNome]["hTimer"] = 7200
+				testQ[myNome]["hTimer"] = 10800
 			else
 				if tonumber(date("%d")) ~= 1 then
-					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 3600 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				else
-					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 3600 then
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
 					else
-						testQ[myNome]["hTimer"] = 3600
+						testQ[myNome]["hTimer"] = 10800
 					end
 				end
 			end
