@@ -431,6 +431,9 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				else
 					mioFld[myNome]["подсказки"][j] = "Хижина"
 				end
+				if mapTables == nil then
+					mapTables = {}
+				end
 				mapTables["lokRasstoyanie"] = {}
 			end
 		end
