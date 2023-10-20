@@ -233,6 +233,9 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if mapTables["lokRasstoyanie"]["2"] == nil then
 			mapTables["lokRasstoyanie"]["2"] = {}
 		end
+		if mapTables["lokRasstoyanie"]["3"] == nil then
+			mapTables["lokRasstoyanie"]["3"] = {}
+		end
 		if mapTables["lokRasstoyanie"]["99"] == nil then
 			mapTables["lokRasstoyanie"]["99"] = {}
 		end
@@ -502,6 +505,15 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		end
 		if pQuest["items"][5] == nil then
 			pQuest["items"][5] = {}
+		end
+		if mapTables["lokRasstoyanie"]["1"] == nil then
+			mapTables["lokRasstoyanie"]["1"] = {}
+		end
+		if mapTables["lokRasstoyanie"]["3"] == nil then
+			mapTables["lokRasstoyanie"]["3"] = {}
+		end
+		if mapTables["lokRasstoyanie"]["2"] == nil then
+			mapTables["lokRasstoyanie"]["2"] = {}
 		end
 		mapTables["lokRasstoyanie"]["1"]["19"] = 0.00087
 		mapTables["lokRasstoyanie"]["1"]["18"] = 0.000499
