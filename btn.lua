@@ -1,4 +1,4 @@
-versAdd=280;versAddDop=20
+versAdd=280;versAddDop=21
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -1371,29 +1371,36 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		testQ["za"] = 0
 		testQ["s"] = 0
 		for i=1,100 do
-			if  mioFld[nome]["объекты"][tostring(i)] == "s" or mioFld[nome]["объекты"][tostring(i)] == "sx" then
-				testQ["s"] = testQ["s"]+1
-			end
-			if  mioFld[nome]["объекты"][tostring(i)] == "h" then
-				testQ["h"] = testQ["h"]+1
-			end
-			if  mioFld[nome]["объекты"][tostring(i)] == "hs" then
-				testQ["hs"] = testQ["hs"]+1
-			end
-			if  mioFld[nome]["объекты"][tostring(i)] == "zx" then
-				testQ["za"] = testQ["za"]+1
-			end
-			if  mioFld[nome]["объекты"][tostring(i)] == "zs" then
-				testQ["za"] = testQ["za"]+1
-			end
-			if  mioFld[nome]["объекты"][tostring(i)] == "za" then
-				testQ["za"] = testQ["za"]+1
-			end
-			if  mioFld[nome]["петы"][tostring(i)] == "gob" and id == i then
-				testQ["gob"] = 1
-			end
-			if  mioFld[nome]["петы"][tostring(i)] == "gom" and id == i then
-				testQ["gom"] = 1
+			if mioFld ~= nil then
+				if mioFld[nome] ~= nil then
+					if mioFld[nome]["петы"] == nil then
+						mioFld[nome]["петы"] = {}
+					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "s" or mioFld[nome]["объекты"][tostring(i)] == "sx" then
+						testQ["s"] = testQ["s"]+1
+					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "h" then
+						testQ["h"] = testQ["h"]+1
+					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "hs" then
+						testQ["hs"] = testQ["hs"]+1
+					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "zx" then
+						testQ["za"] = testQ["za"]+1
+					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "zs" then
+						testQ["za"] = testQ["za"]+1
+					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "za" then
+						testQ["za"] = testQ["za"]+1
+					end
+					if  mioFld[nome]["петы"][tostring(i)] == "gob" and id == i then
+						testQ["gob"] = 1
+					end
+					if  mioFld[nome]["петы"][tostring(i)] == "gom" and id == i then
+						testQ["gom"] = 1
+					end
+				end
 			end
 		end
 		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
