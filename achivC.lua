@@ -136,6 +136,9 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				mioFld[myNome]["объекты"][j] = "t"
 			end
 			x = math.random(1,100)
+			if mapTables == nil then
+				mapTables = {}
+			end
 			mapTables["lokRasstoyanie"] = {}
 		end
 		if mioFld[myNome]["целостность"] == nil then
