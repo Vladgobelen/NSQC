@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=1
+versAdd=281;versAddDop=2
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -3327,10 +3327,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		for i = 1,100 do
 			if mioFld ~= nil then
-				if mioFld[myNome]["объекты"][tostring(i)] == "bn" and tonumber(mioFld[myNome]["целостность"][tostring(i)]) < 999 then
-					mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
-					if fBtn[i]:IsVisible() and nome == myNome then
-						dmgText(mioFld[myNome]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+				if mioFld[myNome] ~= nil then
+					if if mioFld[myNome]["объекты"] ~= nil then
+						if mioFld[myNome]["объекты"][tostring(i)] == "bn" and tonumber(mioFld[myNome]["целостность"][tostring(i)]) < 999 then
+							mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
+							if fBtn[i]:IsVisible() and nome == myNome then
+								dmgText(mioFld[myNome]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+							end
+						end
 					end
 				end
 			end
