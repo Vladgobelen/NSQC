@@ -1985,13 +1985,19 @@ end
 end
 function ml()
 	if BrowseBuyoutButton ~= nil then
+		if aucBtn == nil then
+			aucBtn = CreateFrame("Button", nil, UIParent, "");
+			aucBtn:SetFrameStrata("TOOLTIP")
+			aucBtn:SetSize(222, 32)
+			aucBtn:SetPoint("CENTER", BrowseBidButton,"CENTER",22, 0)
+			aucBtn:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\auk.tga")
+			aucBtn:Hide()
+		end
 		name, texture, count, quality, canUse, level, levelColHeader, minBid, minIncrement, buyoutPrice, bidAmount, highBidder, owner, saleStatus, itemId, hasAllInfo = GetAuctionItemInfo("list",tonumber(GetSelectedAuctionItem("list")))
 		if name == "Обычное письмо" then
-			BrowseBidButton:Disable()
-			BrowseBuyoutButton:Disable()
+			aucBtn:Show()
 			if highBidder == "Хефе" then
-				BrowseBidButton:Enable()
-				BrowseBuyoutButton:Enable()
+				aucBtn:Hide()
 			end
 		end
 	end

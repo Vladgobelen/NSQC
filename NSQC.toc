@@ -29,6 +29,7 @@ libs\zs.tga
 libs\zx.tga
 libs\t.tga
 libs\f.tga
+libs\auc.tga
 libs\bt.tga
 libs\bt.ogg
 libs\k.ogg
