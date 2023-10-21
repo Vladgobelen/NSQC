@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=19
+versAdd=281;versAddDop=20
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -1458,18 +1458,20 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if testQ[myNome]["hTimer"] ~= nil then
-			if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
-				if mioFld[nome]["объекты"][tostring(id)] == "h" then
-					vybor:configure(12)
-					vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
-					vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-					vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-					vybor[12]:Show()
-					if testQ ~= nil then
-						testQ["idp"] = id
-						testQ["icon"] = "smg"
-						testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+		if nome == myNome then
+			if testQ[myNome]["hTimer"] ~= nil then
+				if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
+					if mioFld[nome]["объекты"][tostring(id)] == "h" then
+						vybor:configure(12)
+						vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
+						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+						vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+						vybor[12]:Show()
+						if testQ ~= nil then
+							testQ["idp"] = id
+							testQ["icon"] = "smg"
+							testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+						end
 					end
 				end
 			end
@@ -1723,15 +1725,17 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							end
 						end
 					end
-					vybor:configure(12)
-					vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
-					vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-					vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-					vybor[12]:Show()
-					if testQ ~= nil then
-						testQ["idp"] = id
-						testQ["icon"] = "smg"
-						testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+					if nome == myNome then
+						vybor:configure(12)
+						vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
+						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+						vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+						vybor[12]:Show()
+						if testQ ~= nil then
+							testQ["idp"] = id
+							testQ["icon"] = "smg"
+							testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+						end
 					end
 				end
 			end
