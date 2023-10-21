@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=18
+versAdd=281;versAddDop=19
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -669,6 +669,7 @@ function vybor:configure(id)
 			elseif testQ["temp"] == 1 then
 				testQ["zarplata"] = 10000
 				testQ["smg"] = tonumber(testQ["smg"])-1
+				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 				testQ["temp"] = nil
 				testQ["picon"] = nil
 				for i=1,100 do
