@@ -13,6 +13,8 @@ iconRisEvent3 = {}
 iconRisEvent3Tex={}
 iconQ = {}
 iconQText = {}
+mgznIcon = {}
+mgznText = {}
 --1-16   17-32   33-48 49-64
 function iconCh:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
@@ -35,6 +37,9 @@ function chMuestro(iCh,X0,Y0)
 	iconCh[iCh]:SetFrameStrata("TOOLTIP")
 	iconChText[iCh]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", X0, Y0)
 end
+function mgznIcon:configure()
+	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+end
 function iconQ:configure()
 	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
 	self[1]:SetSize(512, 396)
@@ -46,6 +51,11 @@ function iconQText:configure()
 	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
 end
 
+function mgznText:configure()
+	self[1] = mgznIcon[1]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\quest.tga")
+	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
+end
 function iconRis:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
 	self[id]:SetSize(Rx, Ry)
@@ -98,6 +108,25 @@ function quesT(sign)
 	else
 		if iconQ[1] ~= nil then
 			iconQ[1]:Hide()
+		end
+	end
+end
+function mgzn(sign)
+	if sign == "show" then
+		if mgznIcon[1] == nil then
+			mgznIcon:configure()
+			mgznText:configure()
+			mgznIcon[1]:SetFrameStrata("FULLSCREEN")
+			mgznText[1]:SetPoint("TOPLEFT", MailFrame,"TOPRIGHT",0,0)
+			local x,y = MailFrame:GetSize()
+			mgznIcon[1]:SetSize(768,y)
+			mgznText[1]:SetSize(768,y)
+		else
+			mgznIcon[1]:Show()
+		end
+	else
+		if mgznIcon[1] ~= nil then
+			mgznIcon[1]:Hide()
 		end
 	end
 end

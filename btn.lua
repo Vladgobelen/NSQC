@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=7
+versAdd=281;versAddDop=8
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -8,6 +8,7 @@ fBtn = {}
 resursy = {}
 vybor = {}
 okNo = {}
+magazin = {}
 
 function okNo:configure(id,sign)
 	if sign == "show" then
@@ -216,17 +217,10 @@ function vybor:configure(id)
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("FULLSCREEN")
 		end
-		if resursy[1] ~= nil then
-			resursy[1]:SetFrameStrata("FULLSCREEN")
-		end
-		if resursy[2] ~= nil then
-			resursy[2]:SetFrameStrata("FULLSCREEN")
-		end
-		if resursy[3] ~= nil then
-			resursy[3]:SetFrameStrata("FULLSCREEN")
-		end
-		if resursy[4] ~= nil then
-			resursy[4]:SetFrameStrata("FULLSCREEN")
+		for i = 1, 100 do
+			if resursy[i] ~= nil then
+				resursy[i]:SetFrameStrata("FULLSCREEN")
+			end
 		end
 		for i = 1,100 do
 			if mioFld[nome]["объекты"][tostring(i)] == "s" then
@@ -463,9 +457,7 @@ function vybor:configure(id)
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 10
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 20
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -488,9 +480,7 @@ function vybor:configure(id)
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 50
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 100
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -529,9 +519,6 @@ function vybor:configure(id)
 					testQ["temp"] = nil
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 10
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-					dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 					for i=1,100 do
 						if vybor[i] ~= nil then
 							vybor[i]:Hide()
@@ -556,7 +543,6 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -582,7 +568,6 @@ function vybor:configure(id)
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
@@ -676,8 +661,6 @@ function vybor:configure(id)
 						SendAddonMessage("sbS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"])-10
-						testQ["stog"] = tonumber(testQ["stog"])-10
-						testQ["kamen"] = tonumber(testQ["kamen"])-5
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -784,8 +767,8 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
 						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
 						testQ["temp"] = nil
-						testQ["brevna"] = tonumber(testQ["brevna"]) - 20
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+						testQ["beton"] = tonumber(testQ["brevna"]) - 20
+						dmgText(testQ["beton"],resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
 								vybor[i]:Hide()
@@ -954,11 +937,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -971,11 +953,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -1004,11 +985,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -1021,11 +1001,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -1045,11 +1024,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							for i=1,100 do
 								fBtn[i]:Hide()
 							end
-							if resursy[1] ~= nil then
-								resursy[1]:Hide()
-								resursy[2]:Hide()
-								resursy[3]:Hide()
-								resursy[4]:Hide()
+							for i = 1, 100 do
+								if resursy[i] ~= nil then
+									resursy[i]:Hide()
+								end
 							end
 							btn[989]:Hide()
 							btn[989]:ClearAllPoints()
@@ -1080,11 +1058,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -1097,11 +1074,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -1134,11 +1110,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										for i=1,100 do
 											fBtn[i]:Hide()
 										end
-										if resursy[1] ~= nil then
-											resursy[1]:Hide()
-											resursy[2]:Hide()
-											resursy[3]:Hide()
-											resursy[4]:Hide()
+										for i = 1, 100 do
+											if resursy[i] ~= nil then
+												resursy[i]:Hide()
+											end
 										end
 										btn[989]:Hide()
 										btn[989]:ClearAllPoints()
@@ -1158,11 +1133,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -1175,11 +1149,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								for i=1,100 do
 									fBtn[i]:Hide()
 								end
-								if resursy[1] ~= nil then
-									resursy[1]:Hide()
-									resursy[2]:Hide()
-									resursy[3]:Hide()
-									resursy[4]:Hide()
+								for i = 1, 100 do
+									if resursy[i] ~= nil then
+										resursy[i]:Hide()
+									end
 								end
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
@@ -1655,19 +1628,14 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 
 		for i = 1,100 do
-			fBtn[i]:SetFrameStrata("FULLSCREEN")
+			if fBtn[i] ~= nil then
+				fBtn[i]:SetFrameStrata("FULLSCREEN")
+			end
 		end
-		if resursy[1] ~= nil then
-			resursy[1]:SetFrameStrata("FULLSCREEN")
-		end
-		if resursy[2] ~= nil then
-			resursy[2]:SetFrameStrata("FULLSCREEN")
-		end
-		if resursy[3] ~= nil then
-			resursy[3]:SetFrameStrata("FULLSCREEN")
-		end
-		if resursy[4] ~= nil then
-			resursy[4]:SetFrameStrata("FULLSCREEN")
+		for i = 1,100 do
+			if resursy[i] ~= nil then
+				resursy[i]:SetFrameStrata("FULLSCREEN")
+			end
 		end
 		local nome
 		if testQ['sign'] ~= "1" then
@@ -1767,7 +1735,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("BACKGROUND")
 		end
-		for i = 1, 10 do
+		for i = 1, 100 do
 			if resursy[i] ~= nil then
 				if resursy[i]:IsVisible() then
 					resursy[i]:SetFrameStrata("BACKGROUND")
@@ -1878,6 +1846,91 @@ fBtn:configure(97,64,-256,64,64,"","");
 fBtn:configure(98,128,-256,64,64,"","");
 fBtn:configure(99,192,-256,64,64,"","");
 fBtn:configure(100,256,-256,64,64,"","");
+function resursy:configure(id)
+	self[id] = CreateFrame("Button", nil, fBtn[10], "");
+	self[id]:SetFrameStrata("FULLSCREEN")
+	if id == 1 then
+		self[id]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, 0)
+	end
+	if id == 2 then
+		self[id]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -64)
+	end
+	if id == 3 then
+		self[id]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -128)
+	end
+	if id == 4 then
+		self[id]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -192)
+	end
+	if id == 5 then
+		self[id]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -256)
+	end
+	self[id]:SetSize(64, 64)
+	if id == 1 then
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
+	end
+	if id == 2 then
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\stog.tga")
+	end
+	if id == 3 then
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
+	end
+	if id == 4 then
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bt.tga")
+	end
+	if id == 5 then
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+	end
+	self[id]:SetScript("OnEnter",function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		if id == 1 then
+			GameTooltip:AddLine("|c0099ff99Бревна")
+		end
+		if id == 2 then
+			GameTooltip:AddLine("|c0099ff99Трава")
+		end
+		if id == 3 then
+			GameTooltip:AddLine("|c0099ff99Камень")
+		end
+		if id == 4 then
+			GameTooltip:AddLine("|c0099ff99Бетон")
+		end
+		if id == 5 then
+			GameTooltip:AddLine("|c0099ff99Валюта")
+		end
+		GameTooltip:Show()
+	end)
+end
+resursy:configure(1)
+resursy:configure(2)
+resursy:configure(3)
+resursy:configure(4)
+resursy:configure(5)
+function magazin:configure(id)
+	if self[id] == nil then
+		self[id] = CreateFrame("Button", nil, UIParent, "");
+	end
+	self[id]:SetSize(64, 64)
+	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	if id == 1 then
+		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",64, -48)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+	end
+	self[id]:SetScript("OnEnter",function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		if id == 1 then
+			GameTooltip:AddLine("|c0099ff99Валюта")
+		end
+		GameTooltip:Show()
+	end)
+	self[id]:SetScript("OnClick",function(self)
+		SendMail("Хефе", "Валюта", "")
+		if tonumber(testQ["smg"]) == 0 then
+			testQ["smg"] = 1
+		else
+			testQ["smg"] = tonumber(testQ["smg"])+1
+		end
+	end)
+end
 
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
@@ -3167,13 +3220,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
 								local x = math.random(1,2)
 								if x == 2 then
-									gKam(myNome,x)
+									local xx = math.random(1,100)
+									gKam(myNome,xx)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								end
 							end
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
-								local x = math.random(1,100)
-								gKam(myNome,x)
+								local xx = math.random(1,100)
+								gKam(myNome,xx)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								if x == 1 then
 									 SendAddonMessage("gobXm " .. i, myNome, "guild")
@@ -3534,6 +3588,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myMap:Hide()
 			end
 		end--]]
+
 		if mapTables ~= nil then
 			if mapTables["nMapPoint"] ~= nil then
 				if testQ ~= nil then
@@ -3838,7 +3893,22 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-
+		if SendMailMoneyFrame:IsVisible() and not OpenMailFrame:IsVisible() then
+			mgzn("show")
+			magazin:configure(1)
+			magazin[1]:Show()
+			local money = SendMailMoneyGold:GetText()
+			if tonumber(money) == 100 then
+				magazin[1]:Enable()
+			else
+				magazin[1]:Disable()
+			end
+		else
+			mgzn("hide")
+			if magazin[1] ~= nil then
+				magazin[1]:Hide()
+			end
+		end
 		if not fBtn[1]:IsVisible() then
 			if dmG[101] ~= nil and dmG[101]:IsVisible() then
 				for i = 1, 100 do
@@ -3880,58 +3950,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 			end
-			if dmG[101] ~= nil then
-				dmG[101]:Show()
-			end
-			if dmG[102] ~= nil then
-				dmG[102]:Show()
-			end
-			if dmG[103] ~= nil then
-				dmG[103]:Show()
-			end
-			if dmG[104] ~= nil then
-				dmG[104]:Show()
+			for i = 101, 200 do
+				if dmG[i] ~= nil then
+					dmG[i]:Show()
+				end
 			end
 		end
 		if fBtn[1]:IsVisible() then
-			if resursy[1] == nil then
-				resursy[1] = CreateFrame("Button", nil, fBtn[10], "");
-				resursy[1]:SetFrameStrata("FULLSCREEN")
-				resursy[1]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, 0)
-				resursy[1]:SetSize(64, 64)
-				resursy[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
-				resursy[1]:SetHighlightTexture("")
-			end
-			if resursy[2] == nil then
-				resursy[2] = CreateFrame("Button", nil, fBtn[10], "");
-				resursy[2]:SetFrameStrata("FULLSCREEN")
-				resursy[2]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -64)
-				resursy[2]:SetSize(64, 64)
-				resursy[2]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\stog.tga")
-				resursy[2]:SetHighlightTexture("")
-			end
-			if resursy[3] == nil then
-				resursy[3] = CreateFrame("Button", nil, fBtn[10], "");
-				resursy[3]:SetFrameStrata("FULLSCREEN")
-				resursy[3]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -128)
-				resursy[3]:SetSize(64, 64)
-				resursy[3]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
-				resursy[3]:SetHighlightTexture("")
-			end
-			if resursy[4] == nil then
-				resursy[4] = CreateFrame("Button", nil, fBtn[10], "");
-				resursy[4]:SetFrameStrata("FULLSCREEN")
-				resursy[4]:SetPoint("TOPLEFT", fBtn[10],"TOPLEFT",64, -192)
-				resursy[4]:SetSize(64, 64)
-				resursy[4]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bt.tga")
-				resursy[4]:SetHighlightTexture("")
-			end
-			if not resursy[1]:IsVisible() then
-				resursy[1]:Show()
-				resursy[2]:Show()
-				resursy[3]:Show()
-				resursy[4]:Show()
+			for i = 1, 100 do
+				if resursy[i] ~= nil then
+					if not resursy[i]:IsVisible() then
+						resursy:Show()
+					end
+				end
 			end
 			if testQ ~= nil then
 				if testQ["brevna"] == nil then
@@ -3953,160 +3986,77 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					testQ["beton"] = 0
 				end
 			end
+			if testQ ~= nil then
+				if testQ["smg"] == nil then
+					testQ["smg"] = 0
+				end
+			end
 
-
-			resursy[1]:SetScript("OnEnter",function(self)
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("FULLSCREEN")
+			for i = 1,100 do
+				if resursy[i] ~= nil then
+					for j = 1,100 do
+						fBtn[i]:SetFrameStrata("FULLSCREEN")
+					end
+					resursy[i]:SetFrameStrata("FULLSCREEN")
 				end
-				resursy[1]:SetFrameStrata("FULLSCREEN")
-				resursy[2]:SetFrameStrata("FULLSCREEN")
-				resursy[3]:SetFrameStrata("FULLSCREEN")
-				resursy[4]:SetFrameStrata("FULLSCREEN")
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				GameTooltip:AddLine("|c0099ff99Бревна")
-				GameTooltip:Show()
-			end)
-			resursy[2]:SetScript("OnEnter",function(self)
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("FULLSCREEN")
-				end
-				resursy[1]:SetFrameStrata("FULLSCREEN")
-				resursy[2]:SetFrameStrata("FULLSCREEN")
-				resursy[3]:SetFrameStrata("FULLSCREEN")
-				resursy[4]:SetFrameStrata("FULLSCREEN")
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				GameTooltip:AddLine("|c0099ff99Трава")
-				GameTooltip:Show()
-			end)
-			resursy[3]:SetScript("OnEnter",function(self)
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("FULLSCREEN")
-				end
-				resursy[1]:SetFrameStrata("FULLSCREEN")
-				resursy[2]:SetFrameStrata("FULLSCREEN")
-				resursy[3]:SetFrameStrata("FULLSCREEN")
-				resursy[4]:SetFrameStrata("FULLSCREEN")
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				GameTooltip:AddLine("|c0099ff99Камень")
-				GameTooltip:Show()
-			end)
-			resursy[4]:SetScript("OnEnter",function(self)
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("FULLSCREEN")
-				end
-				resursy[1]:SetFrameStrata("FULLSCREEN")
-				resursy[2]:SetFrameStrata("FULLSCREEN")
-				resursy[3]:SetFrameStrata("FULLSCREEN")
-				resursy[4]:SetFrameStrata("FULLSCREEN")
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				GameTooltip:AddLine("|c0099ff99Бетон")
-				GameTooltip:Show()
-			end)
-			resursy[1]:SetScript("OnLeave",function(self)
-				GameTooltip:Hide();
-				local str = fBtn[1]:GetFrameStrata()
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("BACKGROUND")
-				end
-				resursy[1]:SetFrameStrata("BACKGROUND")
-				resursy[2]:SetFrameStrata("BACKGROUND")
-				resursy[3]:SetFrameStrata("BACKGROUND")
-				resursy[4]:SetFrameStrata("BACKGROUND")
-				GameTooltip:Hide()
-			end)
-			resursy[2]:SetScript("OnLeave",function(self)
-				GameTooltip:Hide();
-				local str = fBtn[1]:GetFrameStrata()
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("BACKGROUND")
-				end
-				resursy[1]:SetFrameStrata("BACKGROUND")
-				resursy[2]:SetFrameStrata("BACKGROUND")
-				resursy[3]:SetFrameStrata("BACKGROUND")
-				resursy[4]:SetFrameStrata("BACKGROUND")
-				GameTooltip:Hide()
-			end)
-			resursy[3]:SetScript("OnLeave",function(self)
-				GameTooltip:Hide();
-				local str = fBtn[1]:GetFrameStrata()
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("BACKGROUND")
-				end
-				resursy[1]:SetFrameStrata("BACKGROUND")
-				resursy[2]:SetFrameStrata("BACKGROUND")
-				resursy[3]:SetFrameStrata("BACKGROUND")
-				resursy[4]:SetFrameStrata("BACKGROUND")
-				GameTooltip:Hide()
-			end)
-			resursy[4]:SetScript("OnLeave",function(self)
-				GameTooltip:Hide();
-				local str = fBtn[1]:GetFrameStrata()
-				for i = 1,100 do
-					fBtn[i]:SetFrameStrata("BACKGROUND")
-				end
-				resursy[1]:SetFrameStrata("BACKGROUND")
-				resursy[2]:SetFrameStrata("BACKGROUND")
-				resursy[3]:SetFrameStrata("BACKGROUND")
-				resursy[4]:SetFrameStrata("BACKGROUND")
-				GameTooltip:Hide()
-			end)
+			end
 		else
-			if resursy[1] ~= nil then
-				if resursy[1]:IsVisible() then
-					resursy[1]:Hide()
-					resursy[2]:Hide()
-					resursy[3]:Hide()
-					resursy[4]:Hide()
+			for i = 1, 100 do
+				if resursy[i] ~= nil then
+					if resursy[i]:IsVisible() then
+						resursy[i]:Hide()
+					end
 				end
 			end
 		end
 
-
-			if GuildFrame:IsVisible() and not GuildMemberDetailFrame:IsVisible() and fBtn[1]:IsVisible() then
-				for i=1,100 do
-					fBtn[i]:Hide()
-				end
-				resursy[1]:Hide()
-				resursy[2]:Hide()
-				resursy[3]:Hide()
-				resursy[4]:Hide()
-				btn[989]:ClearAllPoints()
-				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-				btn[989]:Hide()
-				testQ['sign'] = nil
+		if GuildFrame:IsVisible() and not GuildMemberDetailFrame:IsVisible() and fBtn[1]:IsVisible() then
+			for i=1,100 do
+				fBtn[i]:Hide()
 			end
-			if testQ["fRand2"] ~= nil and testQ["fRand2name"] == myNome then
-				local nome
-				if GuildFrame:IsVisible() or testQ['sign'] == "1" then
-					if not GuildFrameLFGButton:GetChecked() or testQ['sign'] == "1" then
-						if testQ['sign'] ~= "1" then
-							nome = GuildFrame["selectedName"]
-						else
-							nome = myNome
-						end
-						if not fBtn[1]:IsVisible() then
-							for i=1,100 do
-								j = tostring(i)
-								fBtn[i]:Show()
-								btn[989]:ClearAllPoints()
-								btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-								if mioFld ~= nil then
-									if mioFld[nome] ~= nil then
-										if mioFld[nome]["объекты"] ~= nil then
-											fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
-										end
+			for i = 1, 100 do
+				if resursy[i] ~= nil then
+					if resursy[i]:IsVisible() then
+						resursy[i]:Hide()
+					end
+				end
+			end
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			btn[989]:Hide()
+			testQ['sign'] = nil
+		end
+		if testQ["fRand2"] ~= nil and testQ["fRand2name"] == myNome then
+			local nome
+			if GuildFrame:IsVisible() or testQ['sign'] == "1" then
+				if not GuildFrameLFGButton:GetChecked() or testQ['sign'] == "1" then
+					if testQ['sign'] ~= "1" then
+						nome = GuildFrame["selectedName"]
+					else
+						nome = myNome
+					end
+					if not fBtn[1]:IsVisible() then
+						for i=1,100 do
+							j = tostring(i)
+							fBtn[i]:Show()
+							btn[989]:ClearAllPoints()
+							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
+							if mioFld ~= nil then
+								if mioFld[nome] ~= nil then
+									if mioFld[nome]["объекты"] ~= nil then
+										fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
 									end
 								end
 							end
 						end
 					end
 				end
-				testQ["fRand2"] = nil
-				testQ["fRand1"] = nil
-				testQ["fRand2name"] = nil
-				FriendsFrame:Hide()
 			end
+			testQ["fRand2"] = nil
+			testQ["fRand1"] = nil
+			testQ["fRand2name"] = nil
+			FriendsFrame:Hide()
+		end
 			if (GuildFrame["selectedName"] ~= nil and testQ["fRandDbnome"] ~= nil) or testQ['sign'] == "1" then
 				if (GuildFrame["selectedName"] == testQ["fRandDbnome"]) or (testQ['sign'] == "1" and testQ["fRandDbnome"] == myNome) then
 					if testQ["fRandDb"] ~= nil then
@@ -4480,6 +4430,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 							dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+							dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 						end
 						testQ["fRand6"] = nil
 					end
