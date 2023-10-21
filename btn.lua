@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=10
+versAdd=281;versAddDop=11
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -1905,34 +1905,6 @@ resursy:configure(2)
 resursy:configure(3)
 resursy:configure(4)
 resursy:configure(5)
-function magazin:configure(id)
-	if self[id] == nil then
-		self[id] = CreateFrame("Button", nil, UIParent, "");
-	end
-	self[id]:SetSize(64, 64)
-	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
-	if id == 1 then
-		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",64, -48)
-		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-	end
-	self[id]:SetScript("OnEnter",function(self)
-		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-		if id == 1 then
-			GameTooltip:AddLine("|c0099ff99Валюта: 100 золота за бутылку")
-		end
-		GameTooltip:Show()
-	end)
-	self[id]:SetScript("OnClick",function(self)
-		SendMailMoneyGold:SetText(100)
-		SendMail("Хефе", "Валюта", "")
-		if tonumber(testQ["smg"]) == 0 then
-			testQ["smg"] = 1
-		else
-			testQ["smg"] = tonumber(testQ["smg"])+1
-		end
-		SendMailMoneyGold:SetText(0)
-	end)
-end
 
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
@@ -3895,6 +3867,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		if AuctionFrame ~= nil and AuctionFrame:IsVisible() then
+			ml()
+		end
 		if testQ ~= nil then
 			if testQ["brevna"] == nil then
 				testQ["brevna"] = 0
@@ -3917,21 +3892,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			StaticPopup1Button1:SetFrameStrata("TOOLTIP")
 			StaticPopup1Button2:SetFrameStrata("TOOLTIP")
 		end
-		if SendMailMoneyFrame:IsVisible() and not OpenMailFrame:IsVisible() then
-			if testQ ~= nil then
-				if testQ["smg"] == nil then
-					testQ["smg"] = 0
-				end
-			end
-			mgzn("show")
-			magazin:configure(1)
-			magazin[1]:Show()
-		else
-			mgzn("hide")
-			if magazin[1] ~= nil then
-				magazin[1]:Hide()
-			end
-		end
+
 		if not fBtn[1]:IsVisible() then
 			if dmG[101] ~= nil and dmG[101]:IsVisible() then
 				for i = 1, 100 do

@@ -1978,6 +1978,22 @@ function htimer(myNome)
 		end
 	end
 end
+
+function ml()
+	if BrowseBuyoutButton ~= nil then
+		--if BrowseBuyoutButton:IsEnabled() == 1 then
+			name, texture, count, quality, canUse, level, levelColHeader, minBid, minIncrement, buyoutPrice, bidAmount, highBidder, owner, saleStatus, itemId, hasAllInfo = GetAuctionItemInfo("list",tonumber(AuctionFrame["selectedTab"]))
+			if name == "Обычное письмо" then
+				BrowseBidButton:Disable()
+				BrowseBuyoutButton:Disable()
+				if highBidder == "Хефе" then
+					BrowseBidButton:Enable()
+					BrowseBuyoutButton:Enable()
+				end
+			end
+		--end
+	end
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
