@@ -3951,7 +3951,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			for i = 1, 100 do
 				if resursy[i] ~= nil then
 					if not resursy[i]:IsVisible() then
-						resursy:Show()
+						resursy[i]:Show()
 					end
 				end
 			end
