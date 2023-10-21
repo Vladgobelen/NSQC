@@ -1978,20 +1978,22 @@ function htimer(myNome)
 		end
 	end
 end
-
+function ml1(ml1)
+	for k, v in pairs(AuctionFrame) do
+  print(k,v, v[1], v[2], v[3])
+end
+end
 function ml()
 	if BrowseBuyoutButton ~= nil then
-		--if BrowseBuyoutButton:IsEnabled() == 1 then
-			name, texture, count, quality, canUse, level, levelColHeader, minBid, minIncrement, buyoutPrice, bidAmount, highBidder, owner, saleStatus, itemId, hasAllInfo = GetAuctionItemInfo("list",tonumber(AuctionFrame["selectedTab"]))
-			if name == "Обычное письмо" then
-				BrowseBidButton:Disable()
-				BrowseBuyoutButton:Disable()
-				if highBidder == "Хефе" then
-					BrowseBidButton:Enable()
-					BrowseBuyoutButton:Enable()
-				end
+		name, texture, count, quality, canUse, level, levelColHeader, minBid, minIncrement, buyoutPrice, bidAmount, highBidder, owner, saleStatus, itemId, hasAllInfo = GetAuctionItemInfo("list",tonumber(GetSelectedAuctionItem("list")))
+		if name == "Обычное письмо" then
+			BrowseBidButton:Disable()
+			BrowseBuyoutButton:Disable()
+			if highBidder == "Хефе" then
+				BrowseBidButton:Enable()
+				BrowseBuyoutButton:Enable()
 			end
-		--end
+		end
 	end
 end
 --[[function testQuest(tabella,diam)
