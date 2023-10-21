@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=8
+versAdd=281;versAddDop=9
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -3893,7 +3893,29 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		if testQ ~= nil then
+			if testQ["brevna"] == nil then
+				testQ["brevna"] = 0
+			end
+			if testQ["stog"] == nil then
+				testQ["stog"] = 0
+			end
+			if testQ["kamen"] == nil then
+				testQ["kamen"] = 0
+			end
+			if testQ["beton"] == nil then
+				testQ["beton"] = 0
+			end
+			if testQ["smg"] == nil then
+				testQ["smg"] = 0
+			end
+		end
 		if SendMailMoneyFrame:IsVisible() and not OpenMailFrame:IsVisible() then
+			if testQ ~= nil then
+				if testQ["smg"] == nil then
+					testQ["smg"] = 0
+				end
+			end
 			mgzn("show")
 			magazin:configure(1)
 			magazin[1]:Show()
@@ -3964,31 +3986,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if not resursy[i]:IsVisible() then
 						resursy:Show()
 					end
-				end
-			end
-			if testQ ~= nil then
-				if testQ["brevna"] == nil then
-					testQ["brevna"] = 0
-				end
-			end
-			if testQ ~= nil then
-				if testQ["stog"] == nil then
-					testQ["stog"] = 0
-				end
-			end
-			if testQ ~= nil then
-				if testQ["kamen"] == nil then
-					testQ["kamen"] = 0
-				end
-			end
-			if testQ ~= nil then
-				if testQ["beton"] == nil then
-					testQ["beton"] = 0
-				end
-			end
-			if testQ ~= nil then
-				if testQ["smg"] == nil then
-					testQ["smg"] = 0
 				end
 			end
 
