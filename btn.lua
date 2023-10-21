@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=16
+versAdd=281;versAddDop=17
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -321,12 +321,24 @@ function vybor:configure(id)
 				end
 			end
 		end
-		if testQ["icon"] == "smg" then
+		if testQ["icon"] == "smg" and testQ["picon"] == "m" then
 			if vybor[12] ~= nil then
 				vybor[12]:Show()
 				for i = 1, 100 do
 					if i ~= 12 and i ~= 9 and i ~= 10 and vybor[i] ~= nil then
 						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if testQ["icon"] == "smg" and testQ["picon"] == "h" then
+			if vybor[12] ~= nil then
+				vybor[12]:Show()
+				for i = 1, 100 do
+					if i ~= 12 then
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
 					end
 				end
 			end
@@ -649,7 +661,7 @@ function vybor:configure(id)
 				end
 			end
 		end
-		if id == 12 and tonumber(testQ["smg"]) >= 1 then
+		if id == 12 and tonumber(testQ["smg"]) >= 1 and testQ["picon"] == "m" then
 			if testQ["temp"] == nil then
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
 				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
@@ -658,9 +670,51 @@ function vybor:configure(id)
 				testQ["zarplata"] = 10000
 				testQ["smg"] = tonumber(testQ["smg"])-1
 				testQ["temp"] = nil
+				testQ["picon"] = nil
 				for i=1,100 do
 					if vybor[i] ~= nil then
 						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if id == 12 and tonumber(testQ["smg"]) >= 1 and testQ["picon"] == "h" then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				if testQ[myNome]["hTimer"] ~= nil then
+					local x = math.random(1,5)
+					if x == 1 then
+						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 100
+						SendChatMessage("...незаметно пролетают аж 100 секунд", "OFFICER", nil, 1)
+						testQ["smg"] = tonumber(testQ["smg"])-1
+						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					end
+					if x == 2 then
+						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 200
+						SendChatMessage("...незаметно пролетают аж 200 секунд", "OFFICER", nil, 1)
+						testQ["smg"] = tonumber(testQ["smg"])-1
+						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					end
+					if x == 3 then
+						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 500
+						SendChatMessage("...незаметно пролетают аж 500 секунд", "OFFICER", nil, 1)
+						testQ["smg"] = tonumber(testQ["smg"])-1
+						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					end
+					if x == 4 then
+						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 1000
+						SendChatMessage("...незаметно пролетают аж 1000 секунд", "OFFICER", nil, 1)
+						testQ["smg"] = tonumber(testQ["smg"])-1
+						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					end
+					if x == 5 then
+						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 3800
+						SendChatMessage("...незаметно пролетают аж 3800 секунд", "OFFICER", nil, 1)
+						testQ["smg"] = tonumber(testQ["smg"])-1
+						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					end
 				end
 			end
@@ -1407,6 +1461,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
+		if testQ[myNome]["hTimer"] ~= nil then
+			if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
+				if mioFld[nome]["объекты"][tostring(id)] == "h" then
+					vybor:configure(12)
+					vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
+					vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+					vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+					vybor[12]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "smg"
+						testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+					end
+				end
+			end
+		end
+
+
 		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if testQ["hs"] < 1 and testQ["h"] < 1 then
 				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
