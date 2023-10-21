@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=17
+versAdd=281;versAddDop=18
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -691,26 +691,22 @@ function vybor:configure(id)
 						SendChatMessage("...незаметно пролетают аж 100 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					end
-					if x == 2 then
+					elseif x == 2 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 200
 						SendChatMessage("...незаметно пролетают аж 200 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					end
-					if x == 3 then
+					elseif x == 3 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 500
 						SendChatMessage("...незаметно пролетают аж 500 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					end
-					if x == 4 then
+					elseif x == 4 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 1000
 						SendChatMessage("...незаметно пролетают аж 1000 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					end
-					if x == 5 then
+					elseif x == 5 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 3800
 						SendChatMessage("...незаметно пролетают аж 3800 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
