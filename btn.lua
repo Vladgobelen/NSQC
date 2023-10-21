@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=15
+versAdd=281;versAddDop=16
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -301,21 +301,31 @@ function vybor:configure(id)
 				vybor[6]:Show()
 			end
 		end
-		if testQ["icon"] == "gz" then
+		if testQ["icon"] == "gz" or testQ["icon"] == "smg" then
 			if vybor[10] ~= nil then
 				vybor[10]:Show()
 				for i = 1, 100 do
-					if i ~= 10 and vybor[i] ~= nil then
+					if i ~= 10 and i ~= 12 and vybor[i] ~= nil then
 						vybor[i]:Hide()
 					end
 				end
 			end
 		end
-		if testQ["icon"] == "os" then
+		if testQ["icon"] == "os" or testQ["icon"] == "smg" then
 			if vybor[9] ~= nil then
 				vybor[9]:Show()
 				for i = 1, 100 do
-					if i ~= 9 and vybor[i] ~= nil then
+					if i ~= 9 and i~= 12 and vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if testQ["icon"] == "smg" then
+			if vybor[12] ~= nil then
+				vybor[12]:Show()
+				for i = 1, 100 do
+					if i ~= 12 and i ~= 9 and i ~= 10 and vybor[i] ~= nil then
 						vybor[i]:Hide()
 					end
 				end
@@ -419,6 +429,11 @@ function vybor:configure(id)
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "bn" and id == 11 and tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["kamen"]) >= 50 and tonumber(testQ["beton"]) >= 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Построить сельсовет")
+			GameTooltip:Show()
+		end
+		if id == 12 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Зарплата")
 			GameTooltip:Show()
 		end
 	end)
@@ -626,6 +641,22 @@ function vybor:configure(id)
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
 				SendAddonMessage("oS " .. testQ["idp"] .. " " .. mioFld[nome]["петы"][tostring(testQ["idp"])], nome, "guild")
+				testQ["temp"] = nil
+				for i=1,100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if id == 12 and tonumber(testQ["smg"]) >= 1 then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				testQ["zarplata"] = 10000
+				testQ["smg"] = tonumber(testQ["smg"])-1
 				testQ["temp"] = nil
 				for i=1,100 do
 					if vybor[i] ~= nil then
@@ -1622,6 +1653,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
 							end
 						end
+					end
+					vybor:configure(12)
+					vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
+					vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+					vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+					vybor[12]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "smg"
+						testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
 					end
 				end
 			end
@@ -3867,6 +3908,47 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
+		if testQ["zarplata"] ~= nil then
+			for i = 1, 100 do
+				if mioFld[myNome]["петы"] ~= nil then
+					if mioFld[myNome]["петы"][tostring(i)] ~= nil then
+						pet = mysplit(mioFld[myNome]["петы"][tostring(i)])
+					end
+					if pet ~= nil then
+						if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
+							local x = math.random(1,2)
+							if x == 2 then
+								local xx = math.random(1,500)
+								gKam(myNome,xx)
+								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gomZ.tga")
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
+							local xx = math.random(1,500)
+							gKam(myNome,xx)
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gobZ.tga")
+							if x == 1 then
+									SendAddonMessage("gobXm " .. i, myNome, "guild")
+							end
+						end
+					end
+				end
+			end
+			testQ["zarplata"] = tonumber(testQ["zarplata"])-1
+			if tonumber(testQ["zarplata"]) <= 0 then
+				testQ["zarplata"] = nil
+				for i = 1, 100 do
+					if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m.tga")
+					end
+					if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m.tga")
+					end
+				end
+			end
+		end
+
 		if AuctionFrame ~= nil and AuctionFrame:IsVisible() then
 			ml()
 		else
