@@ -1999,6 +1999,10 @@ function ml()
 			if highBidder == "Хефе" then
 				aucBtn:Hide()
 			end
+		else
+			if aucBtn ~= nil then
+				aucBtn:Hide()
+			end
 		end
 	end
 end

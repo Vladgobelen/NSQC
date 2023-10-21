@@ -84,6 +84,9 @@ if ginv ~= nil then
 		end
 	end
 end
+if string.find(message,"Вы выиграли торги") and string.find(message,"Обычное письмо") then
+	testQ["smg"] = tonumber(testQ["smg"])+1
+end
 local nome = GuildFrame["selectedGuildMemberName"]
 if nome ~= nil then
 	if string.find(message, "выходит из игрового") and string.find(message,nome) then

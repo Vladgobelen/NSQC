@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=13
+versAdd=281;versAddDop=14
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -3869,7 +3869,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 		if AuctionFrame ~= nil and AuctionFrame:IsVisible() then
 			ml()
+		else
+			if aucBtn ~= nil then
+				aucBtn:Hide()
+			end
 		end
+
 		if testQ ~= nil then
 			if testQ["brevna"] == nil then
 				testQ["brevna"] = 0
