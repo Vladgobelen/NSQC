@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=9
+versAdd=281;versAddDop=10
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -1918,17 +1918,19 @@ function magazin:configure(id)
 	self[id]:SetScript("OnEnter",function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if id == 1 then
-			GameTooltip:AddLine("|c0099ff99Валюта")
+			GameTooltip:AddLine("|c0099ff99Валюта: 100 золота за бутылку")
 		end
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnClick",function(self)
+		SendMailMoneyGold:SetText(100)
 		SendMail("Хефе", "Валюта", "")
 		if tonumber(testQ["smg"]) == 0 then
 			testQ["smg"] = 1
 		else
 			testQ["smg"] = tonumber(testQ["smg"])+1
 		end
+		SendMailMoneyGold:SetText(0)
 	end)
 end
 
@@ -3910,6 +3912,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				testQ["smg"] = 0
 			end
 		end
+		if StaticPopup1~= nil then
+			StaticPopup1:SetFrameStrata("TOOLTIP")
+			StaticPopup1Button1:SetFrameStrata("TOOLTIP")
+			StaticPopup1Button2:SetFrameStrata("TOOLTIP")
+		end
 		if SendMailMoneyFrame:IsVisible() and not OpenMailFrame:IsVisible() then
 			if testQ ~= nil then
 				if testQ["smg"] == nil then
@@ -3919,12 +3926,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			mgzn("show")
 			magazin:configure(1)
 			magazin[1]:Show()
-			local money = SendMailMoneyGold:GetText()
-			if tonumber(money) == 100 then
-				magazin[1]:Enable()
-			else
-				magazin[1]:Disable()
-			end
 		else
 			mgzn("hide")
 			if magazin[1] ~= nil then
