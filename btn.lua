@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=20
+versAdd=281;versAddDop=21
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -742,7 +742,7 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("sbS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["temp"] = nil
-						testQ["brevna"] = tonumber(testQ["brevna"])-10
+						testQ["brevna"] = tonumber(testQ["brevna"])-8
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
