@@ -956,6 +956,12 @@ end
 if kodMsg[1] == "hS" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "hs"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])

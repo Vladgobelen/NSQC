@@ -1,4 +1,4 @@
-versAdd=281;versAddDop=22
+versAdd=281;versAddDop=23
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -990,7 +990,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if arg1 == "LeftButton" and arg2 == true then
+		if arg1 == "LeftButton" then
 			if mioFld[nome]["объекты"][tostring(id)] == "s" then
 				if nome == myNome then
 					if testQ[myNome]["hTimer"] ~= nil then
