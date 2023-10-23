@@ -381,6 +381,7 @@ function npcXY(k,l,x,y,u)
 		end
 
 end
+
 function testNpc ( NpcID )
 	local r
 	CreateFrame( "GameTooltip", "MyScanningTooltip", nil, "GameTooltipTemplate" );
@@ -462,7 +463,9 @@ function pM(nik)
 		end
 		return r
 	end
-
+function testN()
+	testNpc(UnitGUID("target"))
+end
 function tblAllFail(mm,nik)
 	if mmList[mm] ~= nil then
 		for i=1, mmList[mm]["количество_боссов"] do

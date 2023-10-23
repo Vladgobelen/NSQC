@@ -482,6 +482,18 @@ if kodMsg[1] == "shMFld" and message == myNome then
 		if pQuest["items"][1] == nil then
 			pQuest["items"][1] = {}
 		end
+		if pQuest["items"][2] == nil then
+			pQuest["items"][2] = {}
+		end
+		if pQuest["items"][3] == nil then
+			pQuest["items"][3] = {}
+		end
+		if pQuest["items"][4] == nil then
+			pQuest["items"][4] = {}
+		end
+		if pQuest["items"][5] == nil then
+			pQuest["items"][5] = {}
+		end
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
@@ -1604,167 +1616,169 @@ if kod == "gKick" and sender == myNome then
 		if ii == 10 then
 			break
 		end
-		if level <= 29 then
-			if officerNote == "" and publicNote == "" then
-				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
-				if daysOffline ~= nil then
-					daysOffline = tonumber(daysOffline)
-					if daysOffline >= 3 then
-						if yearsOffline ~= nil then
-							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-							if kickList == nil then
-								kickList = "/guildremove " .. name .. "\n"
-								SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
-								ii = ii +1
-							else
-								if not string.find(kickList,name) then
-									kickList = kickList .. "/guildremove " .. name .. "\n"
-									SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+		if rankName == "Мл. Констебль" then
+			if level <= 29 then
+				if officerNote == "" and publicNote == "" then
+					yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+					if daysOffline ~= nil then
+						daysOffline = tonumber(daysOffline)
+						if daysOffline >= 3 then
+							if yearsOffline ~= nil then
+								--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+								if kickList == nil then
+									kickList = "/guildremove " .. name .. "\n"
+									SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 									ii = ii +1
+								else
+									if not string.find(kickList,name) then
+										kickList = kickList .. "/guildremove " .. name .. "\n"
+										SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+										ii = ii +1
+									end
 								end
 							end
 						end
 					end
 				end
 			end
-		end
-		if level <= 39 then
-			if officerNote == "" and publicNote == "" then
-				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
-				if daysOffline ~= nil then
-					daysOffline = tonumber(daysOffline)
-					if daysOffline >= 4 then
-						if yearsOffline ~= nil then
-							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-							if kickList == nil then
-								kickList = "/guildremove " .. name .. "\n"
-								SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
-								ii = ii +1
-							else
-								if not string.find(kickList,name) then
-									kickList = kickList .. "/guildremove " .. name .. "\n"
-									SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+			if level <= 39 then
+				if officerNote == "" and publicNote == "" then
+					yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+					if daysOffline ~= nil then
+						daysOffline = tonumber(daysOffline)
+						if daysOffline >= 4 then
+							if yearsOffline ~= nil then
+								--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+								if kickList == nil then
+									kickList = "/guildremove " .. name .. "\n"
+									SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 									ii = ii +1
+								else
+									if not string.find(kickList,name) then
+										kickList = kickList .. "/guildremove " .. name .. "\n"
+										SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+										ii = ii +1
+									end
 								end
 							end
 						end
 					end
 				end
 			end
-		end
-		if level <= 49 then
-			if officerNote == "" and publicNote == "" then
-				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
-				if daysOffline ~= nil then
-					daysOffline = tonumber(daysOffline)
-					if daysOffline >= 5 then
-						if yearsOffline ~= nil then
-							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-							if kickList == nil then
-								kickList = "/guildremove " .. name .. "\n"
-								SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
-								ii = ii +1
-							else
-								if not string.find(kickList,name) then
-									kickList = kickList .. "/guildremove " .. name .. "\n"
-									SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+			if level <= 49 then
+				if officerNote == "" and publicNote == "" then
+					yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+					if daysOffline ~= nil then
+						daysOffline = tonumber(daysOffline)
+						if daysOffline >= 5 then
+							if yearsOffline ~= nil then
+								--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+								if kickList == nil then
+									kickList = "/guildremove " .. name .. "\n"
+									SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 									ii = ii +1
+								else
+									if not string.find(kickList,name) then
+										kickList = kickList .. "/guildremove " .. name .. "\n"
+										SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+										ii = ii +1
+									end
 								end
 							end
 						end
 					end
 				end
 			end
-		end
-		if level <= 59 then
-			if officerNote == "" and publicNote == "" then
-				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
-				if daysOffline ~= nil then
-					daysOffline = tonumber(daysOffline)
-					if daysOffline >= 6 then
-						if yearsOffline ~= nil then
-							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-							if kickList == nil then
-								kickList = "/guildremove " .. name .. "\n"
-								SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
-								ii = ii +1
-							else
-								if not string.find(kickList,name) then
-									kickList = kickList .. "/guildremove " .. name .. "\n"
-									SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+			if level <= 59 then
+				if officerNote == "" and publicNote == "" then
+					yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+					if daysOffline ~= nil then
+						daysOffline = tonumber(daysOffline)
+						if daysOffline >= 6 then
+							if yearsOffline ~= nil then
+								--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+								if kickList == nil then
+									kickList = "/guildremove " .. name .. "\n"
+									SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 									ii = ii +1
+								else
+									if not string.find(kickList,name) then
+										kickList = kickList .. "/guildremove " .. name .. "\n"
+										SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+										ii = ii +1
+									end
 								end
 							end
 						end
 					end
 				end
 			end
-		end
-		if level <= 69 then
-			if officerNote == "" and publicNote == "" then
-				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
-				if daysOffline ~= nil then
-					daysOffline = tonumber(daysOffline)
-					if daysOffline >= 7 then
-						if yearsOffline ~= nil then
-							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-							if kickList == nil then
-								kickList = "/guildremove " .. name .. "\n"
-								SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
-								ii = ii +1
-							else
-								if not string.find(kickList,name) then
-									kickList = kickList .. "/guildremove " .. name .. "\n"
-									SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+			if level <= 69 then
+				if officerNote == "" and publicNote == "" then
+					yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+					if daysOffline ~= nil then
+						daysOffline = tonumber(daysOffline)
+						if daysOffline >= 7 then
+							if yearsOffline ~= nil then
+								--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+								if kickList == nil then
+									kickList = "/guildremove " .. name .. "\n"
+									SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 									ii = ii +1
+								else
+									if not string.find(kickList,name) then
+										kickList = kickList .. "/guildremove " .. name .. "\n"
+										SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+										ii = ii +1
+									end
 								end
 							end
 						end
 					end
 				end
 			end
-		end
-		if level <= 79 then
-			if officerNote == "" and publicNote == "" then
-				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
-				if daysOffline ~= nil then
-					daysOffline = tonumber(daysOffline)
-					if daysOffline >= 8 then
-						if yearsOffline ~= nil then
-							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-							if kickList == nil then
-								kickList = "/guildremove " .. name .. "\n"
-								SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
-								ii = ii +1
-							else
-								if not string.find(kickList,name) then
-									kickList = kickList .. "/guildremove " .. name .. "\n"
-									SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+			if level <= 79 then
+				if officerNote == "" and publicNote == "" then
+					yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+					if daysOffline ~= nil then
+						daysOffline = tonumber(daysOffline)
+						if daysOffline >= 8 then
+							if yearsOffline ~= nil then
+								--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+								if kickList == nil then
+									kickList = "/guildremove " .. name .. "\n"
+									SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 									ii = ii +1
+								else
+									if not string.find(kickList,name) then
+										kickList = kickList .. "/guildremove " .. name .. "\n"
+										SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+										ii = ii +1
+									end
 								end
 							end
 						end
 					end
 				end
 			end
-		end
-		if level == 80 then
-			if officerNote == "" and publicNote == "" then
-				yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
-				if daysOffline ~= nil then
-					daysOffline = tonumber(daysOffline)
-					if daysOffline >= 14 then
-						if yearsOffline ~= nil then
-							--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-							if kickList == nil then
-								kickList = "/guildremove " .. name .. "\n"
-								SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
-								ii = ii +1
-							else
-								if not string.find(kickList,name) then
-									kickList = kickList .. "/guildremove " .. name .. "\n"
-									SendChatMessage(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+			if level == 80 then
+				if officerNote == "" and publicNote == "" then
+					yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(Zc)
+					if daysOffline ~= nil then
+						daysOffline = tonumber(daysOffline)
+						if daysOffline >= 14 then
+							if yearsOffline ~= nil then
+								--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
+								if kickList == nil then
+									kickList = "/guildremove " .. name .. "\n"
+									SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
 									ii = ii +1
+								else
+									if not string.find(kickList,name) then
+										kickList = kickList .. "/guildremove " .. name .. "\n"
+										SendChatMessage(rankName .. " " .. name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов", "OFFICER", nil, 1)
+										ii = ii +1
+									end
 								end
 							end
 						end
