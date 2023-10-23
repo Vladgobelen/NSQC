@@ -956,10 +956,10 @@ end
 if kodMsg[1] == "hS" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			mioFld[message]["подсказки"] == nil then
+			if mioFld[message]["подсказки"] == nil then
 				mioFld[message]["подсказки"] = {}
 			end
-			mioFld[message]["целостность"] == nil then
+			if mioFld[message]["целостность"] == nil then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "hs"
