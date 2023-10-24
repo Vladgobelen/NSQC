@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=5
+versAdd=282;versAddDop=6
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
