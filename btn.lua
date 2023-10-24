@@ -2799,7 +2799,7 @@ minibtn:SetScript("OnClick", function()
 		end
 	end
 	testQ["lvlProv"] = lvl
-	if lvl ~= nil and lvl ~= "" and lvl ~= "0" then
+	if lvl ~= nil and lvl ~= "" and lvl ~= "0" and lvl ~= "0.5" and lvl ~= "0.9" then
 		if arg1=="LeftButton" then
 			if testQ==nil then
 				testQ={}
@@ -3143,7 +3143,7 @@ minibtn:SetScript("OnClick", function()
 		if arg1=="RightButton" then
 			showRB(myNome)
 		end
-	else
+	elseif lvl == "0.5" or lvl == "0.9" then
 		if arg1=="LeftButton" then
 			showFld("1",myNome)
 		end
