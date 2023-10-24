@@ -874,6 +874,15 @@ if kodMsg[1] == "tree" then
 	end
 end
 if kodMsg[1] == "oS" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[message] == nil then
+		mioFld[message] = {}
+	end
+	if mioFld[message["петы"]] == nil then
+		mioFld[message]["петы"] = {}
+	end
 	local petZ = mioFld[message]["петы"][tostring(kodMsg[2])]
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
 	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
