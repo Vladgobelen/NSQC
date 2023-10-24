@@ -1682,30 +1682,42 @@ function showFld(sign,myNome)
 			for Zc=1,GetNumGuildMembers(true) do
 				local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 				if nome ~= myNome then
+					if name == nome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
+							testQ["fldLvl"] = tonumber(proverkaLvla)
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "1" then
+							testQ["fldLvl"] = 0.9
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "0" then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						elseif proverkaLvla == "" then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+					end
 					if name == myNome then
 						proverkaLvla = string.sub(officerNote,1,1)
-						if officerNote ~= "" and proverkaLvla ~= "1" then
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
 							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
 						elseif proverkaLvla == "1" then
 							testQ["mioFldLvl"] = 0.9
-						else
+						elseif proverkaLvla == "0" then
 							testQ["mioFldLvl"] = 0.5
-						end
-					end
-					if name == nome then
-						proverkaLvla = string.sub(officerNote,1,1)
-						if officerNote ~= "" and proverkaLvla ~= "1" then
-							testQ["fldLvl"] = string.sub(officerNote,1,1)
-						elseif proverkaLvla == "1" then
-							testQ["mioFldLvl"] = 0.9
-						else
-							testQ["fldLvl"] = 0.5
+						elseif proverkaLvla == "" then
+							testQ["mioFldLvl"] = 0.5
 						end
 					end
 				else
 					if name == myNome then
 						proverkaLvla = string.sub(officerNote,1,1)
-						if officerNote ~= "" and proverkaLvla ~= "1" then
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
 							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
 							testQ["fldLvl"] = testQ["mioFldLvl"]
 							testQ["qNum"] = string.sub(officerNote,8,8)
@@ -1715,7 +1727,12 @@ function showFld(sign,myNome)
 							testQ["fldLvl"] = testQ["mioFldLvl"]
 							testQ["qNum"] = string.sub(officerNote,8,8)
 							testQ["qDay"] = string.sub(officerNote,6,7)
-						else
+						elseif proverkaLvla == "0" then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						elseif proverkaLvla == "" then
 							testQ["mioFldLvl"] = 0.5
 							testQ["fldLvl"] = testQ["mioFldLvl"]
 							testQ["qNum"] = 0
