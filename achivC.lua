@@ -54,10 +54,11 @@ if kodMsg[1] == "event1" then
 	if testQ ~= nil then
 		testQ["event1"] = {}
 		for i=1,100 do
-			testQ["event1"][i] = msg[i]
+			testQ["event1"][i] = i
 		end
 	end
 end
+
 if kodMsg[1] == "nMapPoint" then
 	if mapTables == nil then
 		mapTables = {}
@@ -103,7 +104,7 @@ if  kodMsg[1] == "NSGaddChatKL" then
 end
 if  kodMsg[1] == "NSGChatX" then
 	local kk=1
-	for i=1+(tonumber(kodMsg[2])-1)*200,tonumber(kodMsg[2])*200 do
+	for i=1+(tonumber(kodMsg[2])-1)*50,tonumber(kodMsg[2])*50 do
 		j = tostring(i)
 		if msg[kk] ~= nil then
 			if mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j] == nil then
@@ -1265,7 +1266,7 @@ end
 
 if  kodMsg[1] == "NSGChatY" then
 	local kk=1
-	for i=1+(tonumber(kodMsg[2])-1)*200,tonumber(kodMsg[2])*200 do
+	for i=1+(tonumber(kodMsg[2])-1)*50,tonumber(kodMsg[2])*50 do
 		j = tostring(i)
 		if msg[kk] ~= nil then
 			if mapTables[kodMsg[3]][tostring(testQ["tempTabKont"])][tostring(testQ["tempTabLok"])][j] == nil then

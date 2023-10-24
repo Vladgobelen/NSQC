@@ -80,7 +80,7 @@ function iconRisText:configure(id,Rx,Ry,x,y,nRis)
 end
 function iconRisBO:configure(id,Rx,Ry,x,y,nRis)
 	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
-	self[id]:SetTexture("Interface/COMMON/Indicator-Green.png")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\121212.tga")
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
 end

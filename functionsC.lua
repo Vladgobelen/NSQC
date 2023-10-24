@@ -1201,7 +1201,6 @@ function treeX(nome,myNome,id)
 					mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 				end
 			end
-			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.1
 			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
 		end
 		if testQ ~= nil then
