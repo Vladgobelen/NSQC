@@ -984,6 +984,23 @@ if kodMsg[1] == "hS" then
 		end
 	end
 end
+if kodMsg[1] == "tC" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "tc"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 400
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "skS" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then

@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=3
+versAdd=282;versAddDop=4
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -214,6 +214,7 @@ function vybor:configure(id)
 		local testFldhs = nil
 		local testFldza = nil
 		local testFldh = nil
+		local testFldts = nil
 		for i = 1,100 do
 			fBtn[i]:SetFrameStrata("FULLSCREEN")
 		end
@@ -244,6 +245,9 @@ function vybor:configure(id)
 			if mioFld[nome]["объекты"][tostring(i)] == "zs" then
 				testFldza = 1
 			end
+			if mioFld[nome]["объекты"][tostring(i)] == "ts" then
+				testFldts = 1
+			end
 		end
 		if testQ["picon"] == "bn" and testFlds ~= 1 then
 			if vybor[11] ~= nil then
@@ -258,6 +262,11 @@ function vybor:configure(id)
 				if vybor[7] ~= nil then
 					vybor[7]:Show()
 				end
+			end
+		end
+		if testQ["picon"] == "zt" and testFldts ~= 1 then
+			if vybor[13] ~= nil then
+				vybor[13]:Show()
 			end
 		end
 		if testQ["picon"] == "zt" and testFldh == 1 and testFldza == 1 then
@@ -448,6 +457,37 @@ function vybor:configure(id)
 			GameTooltip:AddLine("Зарплата")
 			GameTooltip:Show()
 		end
+		if id == 13 and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 5 and tonumber(testQ["stog"]) >= 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Товарный склад")
+			GameTooltip:AddLine("Требуется для выбора награды на лвлапе")
+			GameTooltip:AddLine("5 камня, 5 бревен, 5 травы")
+			GameTooltip:Show()
+		end
+		if id == 13 and tonumber(testQ["brevna"]) < 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Товарный склад")
+			GameTooltip:AddLine("Требуется для выбора награды на лвлапе")
+			GameTooltip:AddLine("5 камня, 5 бревен, 5 травы")
+			GameTooltip:AddLine("|cffff2b2bНужно больше бревен")
+			GameTooltip:Show()
+		end
+		if id == 13 and tonumber(testQ["stog"]) < 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Товарный склад")
+			GameTooltip:AddLine("Требуется для выбора награды на лвлапе")
+			GameTooltip:AddLine("5 камня, 5 бревен, 5 травы")
+			GameTooltip:AddLine("|cffff2b2bНужно больше травы")
+			GameTooltip:Show()
+		end
+		if id == 13 and tonumber(testQ["kamen"]) < 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Товарный склад")
+			GameTooltip:AddLine("Требуется для выбора награды на лвлапе")
+			GameTooltip:AddLine("5 камня, 5 бревен, 5 травы")
+			GameTooltip:AddLine("|cffff2b2bНужно больше камня")
+			GameTooltip:Show()
+		end
 	end)
 	vybor[id]:SetScript("OnLeave",function(self)
 		for i=1,100 do
@@ -471,6 +511,57 @@ function vybor:configure(id)
 		GameTooltip:Show()
 	end)
 	vybor[id]:SetScript("OnClick",function(self)
+		if nome == myNome then
+			if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 13 then
+				if tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 5 and tonumber(testQ["stog"]) >= 5 then
+					if testQ["temp"] == nil then
+						vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\tc.tga")
+						vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\tc.tga")
+						testQ["temp"] = 1
+					elseif testQ["temp"] == 1 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+						SendAddonMessage("tC " .. testQ["idp"], nome, "guild")
+						testQ["brevna"] = tonumber(testQ["brevna"]) - 5
+						testQ["kamen"] = tonumber(testQ["kamen"]) - 5
+						testQ["stog"] = tonumber(testQ["stog"]) - 5
+						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+						testQ["temp"] = nil
+						for i=1,100 do
+							if vybor[i] ~= nil then
+								vybor[i]:Hide()
+							end
+						end
+					end
+				end
+			end
+		else
+			if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 13 then
+				if tonumber(testQ["brevna"]) >= 25 and tonumber(testQ["kamen"]) >= 25 and tonumber(testQ["stog"]) >= 25 then
+					if testQ["temp"] == nil then
+						vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\tc.tga")
+						vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\tc.tga")
+						testQ["temp"] = 1
+					elseif testQ["temp"] == 1 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+						SendAddonMessage("tC " .. testQ["idp"], nome, "guild")
+						testQ["brevna"] = tonumber(testQ["brevna"]) - 25
+						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
+						testQ["stog"] = tonumber(testQ["stog"]) - 25
+						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+						testQ["temp"] = nil
+						for i=1,100 do
+							if vybor[i] ~= nil then
+								vybor[i]:Hide()
+							end
+						end
+					end
+				end
+			end
+		end
 		if nome == myNome then
 			if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 4 then
 				if tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["kamen"]) >= 20 then
@@ -828,7 +919,7 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
 						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
 						testQ["temp"] = nil
-						testQ["beton"] = tonumber(testQ["brevna"]) - 5
+						testQ["beton"] = tonumber(testQ["beton"]) - 5
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1442,6 +1533,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		testQ["h"] = 0
 		testQ["za"] = 0
 		testQ["s"] = 0
+		testQ["ts"] = 0
 		for i=1,100 do
 			if mioFld ~= nil then
 				if mioFld[nome] ~= nil then
@@ -1466,12 +1558,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					if  mioFld[nome]["объекты"][tostring(i)] == "za" then
 						testQ["za"] = testQ["za"]+1
 					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "ts" then
+						testQ["ts"] = testQ["ts"]+1
+					end
 					if  mioFld[nome]["петы"][tostring(i)] == "gob" and id == i then
 						testQ["gob"] = 1
 					end
 					if  mioFld[nome]["петы"][tostring(i)] == "gom" and id == i then
 						testQ["gom"] = 1
 					end
+
 				end
 			end
 		end
@@ -1540,6 +1636,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					if testQ ~= nil then
 						testQ["idp"] = id
 						testQ["icon"] = "sb"
+						testQ["picon"] = "zt"
+					end
+				end
+			end
+		end
+		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
+			if mioFld[nome]["объекты"][tostring(id)] == "zt" then
+				if vybor[13] == nil or not vybor[13]:IsVisible() then
+					vybor:configure(13)
+					if tonumber(testQ["ts"]) == 0 then
+						vybor[13]:SetPoint("CENTER", fBtn[id],"CENTER",0, -96)
+					end
+					vybor[13]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ts.tga")
+					vybor[13]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ts.tga")
+					vybor[13]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "ts"
 						testQ["picon"] = "zt"
 					end
 				end
@@ -1696,6 +1810,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
+
 		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 then
 			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
 				if vybor[11] == nil or not vybor[11]:IsVisible() then

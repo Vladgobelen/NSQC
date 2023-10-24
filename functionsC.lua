@@ -1056,7 +1056,7 @@ function showRB(nome)
 			end
 		end
 		btn[991]:Show()
-		if testQ["lvlProv"] ~= "0" and testQ["lvlProv"] ~= "" and testQ["lvlProv"] ~= nil then
+		if tonumber(testQ["mioFldLvl"]) ~= 0.5 and tonumber(testQ["mioFldLvl"]) ~= 0.9 and tonumber(testQ["mioFldLvl"]) ~= nil then
 			btn[14]:Show()
 		end
 		myCheckButton1:Show()
@@ -1094,7 +1094,7 @@ function showRB(nome)
 		pokazatChk=1
 	elseif pokazat == 0 then
 		btn[991]:Hide()
-		if testQ["lvlProv"] ~= "0" and testQ["lvlProv"] ~= "" and testQ["lvlProv"] ~= nil then
+		if tonumber(testQ["mioFldLvl"]) ~= 0.5 and tonumber(testQ["mioFldLvl"]) ~= 0.9 and tonumber(testQ["mioFldLvl"]) ~= nil then
 			for ii=1,15 do
 				if btn[ii] ~= nil then
 					btn[ii]:Show();
