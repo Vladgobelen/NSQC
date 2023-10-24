@@ -177,6 +177,17 @@ if msg[1] == "\"пет" and msg[2] == myNome and testGM ~= nil then
 		end
 	end
 end
+if msg[1] == "\"пет" and msg[2] == myNome and msg[4] == "убить" and testGM ~= nil then
+	if msg[3] == "бобер" then
+		testQ[myNome]["петы"]["bb"] = nil
+	end
+	if msg[3] == "гоблин" then
+			testQ[myNome]["петы"]["gg"] = nil
+	end
+	if msg[3] == "гном" then
+			testQ[myNome]["петы"]["gg"] = nil
+	end
+end
 if message == "ТестГМ" then
 	local MySlider = CreateFrame("Slider", "MySliderGlobalName", WorldMapFrame, "OptionsSliderTemplate")
 	MySlider:SetWidth(20)
