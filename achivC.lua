@@ -637,6 +637,10 @@ if kodMsg[1] == "бетон" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["beton"] = tonumber(message)
 	testQ["fRand6"] = 1
 end
+if kodMsg[1] == "самогон" and kodMsg[2] == myNome and testGM~=nil then
+	testQ["smg"] = tonumber(message)
+	testQ["fRand6"] = 1
+end
 if kodMsg[1] == "MioFldP1" then
 	if mioFld == nil then
 		mioFld = {}
