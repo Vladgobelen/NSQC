@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=4
+versAdd=282;versAddDop=5
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -1083,6 +1083,11 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 		if arg1 == "LeftButton" then
 			if arg2 == false then
+				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
+					if testQ["vyborNagrady"] == 1 then
+						SendAddonMessage("vyborNagrady", testQ["mioFldLvl"], "guild")
+					end
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "s" then
 					if nome == myNome then
 						if testQ[myNome]["hTimer"] ~= nil then
@@ -1360,6 +1365,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 				end
+				if mioFld[nome]["объекты"][tostring(id)] == "tc" then
+					resObj(id,myNome,nome)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "sx" then
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
@@ -1491,7 +1500,21 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["temp"] = nil
 				end
 			end
+			if mioFld[nome]["объекты"][tostring(id)] == "ts" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\tc.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\tc.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("tsX " .. id .. " " .. 4998, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "tc" then
 				treeX(nome,myNome,id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 			end
@@ -1936,6 +1959,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome]["объекты"][tostring(id)] == "m" then
 					GameTooltip:AddLine("клик ЛКМ: добывать камень")
 					GameTooltip:AddLine("клик ПКМ: сломать рудник")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
+					GameTooltip:AddLine("|cffff2b2bЛКМ: Отказаться от стандартной награды за лвлап и получить рандомные ресурсы")
+					GameTooltip:AddLine("Шанс получить пета")
 				end
 				if testQ[myNome]["hTimer"] ~= nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
 					GameTooltip:ClearLines()
@@ -4530,6 +4557,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												dmG[i]:Show()
 											end
 										end
+										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "tc" then
+											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 4999 then
+												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											end
+										end
 										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "zx" then
 											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 19999 then
 												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
@@ -4615,7 +4648,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												end
 											end
 										end
-
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "tc" then
+											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 4999 then
+												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											else
+												if dmG[i]~=nil then
+													dmG[i]:Hide()
+												end
+											end
+										end
 										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "hs" then
 											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 9999 then
 												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")

@@ -6,6 +6,7 @@ testLvlUp=mysplit(message)
 
 if  testLvlUp[1] == "Поздравляем" and testLvlUp[3] == "c" and testLvlUp[2] == myNome then
 	PlaySoundFile("Interface\\AddOns\\NSQC\\lvlUp.ogg")
+	testQ["vyborNagrady"] = 1
 end
 
 if string.find (message, "#zzl") and string.find (message, myNome) and testGM ~= nil then
