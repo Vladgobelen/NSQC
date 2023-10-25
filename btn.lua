@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=8
+versAdd=282;versAddDop=9
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -3630,7 +3630,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
-
+		--print(Minimap:GetPingPosition())
 		local nome
 		if testQ['sign'] ~= "1" then
 			nome = GuildFrame["selectedName"]
@@ -4157,6 +4157,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		if WorldMapFrame:IsVisible() then
+			local zon = GetZoneText()
+			if zon == "Огненная пропасть" then
+				local mx,my = Minimap:GetPingPosition()
+				op(1,625-(mx*165),580-(my*165),"show")
+				PlayerArrowFrame:Show()
+				PlayerArrowFrame:SetFrameStrata("TOOLTIP")
+			else
+				op(1,0,0,"hide")
+			end
+		end
 		if MailFrame:IsVisible() and not SendMailFrame:IsVisible() then
 			if not btn[988]:IsVisible() then
 				btn[988]:Show()
