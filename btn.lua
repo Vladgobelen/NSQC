@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=6
+versAdd=282;versAddDop=7
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -2190,8 +2190,8 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		self[id]:SetPoint("BOTTOMLEFT", SendMailMailButton,"TOPLEFT",posex, posey)
 	elseif id == 991 then
 		self[id]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
-	elseif id == 990 then
-
+	elseif id == 988 then
+		self[id]:SetPoint("TOPRIGHT", MailFrame,"TOPRIGHT",posex, posey)
 	else
 		self[id]:SetPoint("CENTER",posex, posey)
 	end
@@ -2216,6 +2216,15 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		self[id]:SetScript("OnClick",function(self, button)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 			RandomRoll(1, 111)
+		end)
+	end
+	if id == 988 then
+		self[id]:SetScript("OnClick",function(self, button)
+			if testQ["mail"] == nil then
+				testQ["mail"] = 1
+			else
+				testQ["mail"] = nil
+			end
 		end)
 	end
 	if id==7 or id==1 or id==2 then
@@ -2447,6 +2456,7 @@ btn:configure(992,64,-3,32,32,"","О");
 btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
 btn:configure(989,96,-3,32,32,"","Б");
+btn:configure(988,-40,-40,128,32,"","ЗАБРАТЬ ВСЕ");
 
 btn[989]:SetScript("OnClick",function(self, button)
 	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
@@ -3620,6 +3630,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+
 		local nome
 		if testQ['sign'] ~= "1" then
 			nome = GuildFrame["selectedName"]
@@ -3787,6 +3798,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
+		if testQ["mail"] ~= nil then
+			AutoLootMailItem(1)
+			MailItem1Button:Click()
+			OpenMailDeleteButton:Click()
+			StaticPopup1Button2:Click()
+		end
 		--[[if WorldMapFrame:IsVisible() then
 			if myMap == nil then
 				myMap = CreateFrame("Button")
@@ -4140,7 +4157,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-
+		if MailFrame:IsVisible() and not SendMailFrame:IsVisible() then
+			if not btn[988]:IsVisible() then
+				btn[988]:Show()
+			end
+		else
+			if btn[988]:IsVisible() then
+				btn[988]:Hide()
+			end
+			testQ["mail"] = nil
+		end
 		if testQ["zarplata"] ~= nil then
 			for i = 1, 100 do
 				if mioFld[myNome]["петы"] ~= nil then
