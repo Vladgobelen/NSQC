@@ -74,7 +74,7 @@ function op(id,x,y,sign)
 		iconOP[1]:SetFrameStrata("FULLSCREEN")
 		iconOPArr[1]:SetFrameStrata("FULLSCREEN_DIALOG")
 	else
-		if iconOP[1]:IsVisible() then
+		if iconOP[1] ~= nil and iconOP[1]:IsVisible() then
 			iconOP[1]:Hide()
 		end
 	end

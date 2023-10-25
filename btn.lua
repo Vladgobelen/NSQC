@@ -4166,6 +4166,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				PlayerArrowFrame:SetFrameStrata("TOOLTIP")
 			else
 				op(1,0,0,"hide")
+				if iconOPArr[1] ~= nil then
+					iconOPArr[1]:Hide()
+				end
 			end
 		end
 		if MailFrame:IsVisible() and not SendMailFrame:IsVisible() then
