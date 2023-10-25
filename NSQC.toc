@@ -37,7 +37,6 @@ libs\b.tga
 libs\bn.tga
 libs\za.tga
 libs\ts.tga
-libs\op.tga
 libs\zak.tga
 libs\zp.tga
 libs\bi.tga
