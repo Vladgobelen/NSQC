@@ -4161,7 +4161,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			local zon = GetZoneText()
 			if zon == "Огненная пропасть" then
 				local mx,my = Minimap:GetPingPosition()
-				op(1,625-(mx*165),580-(my*165),"show")
+				op(1,625-(mx*165),590-(my*165),"show")
 				PlayerArrowFrame:Show()
 				PlayerArrowFrame:SetFrameStrata("TOOLTIP")
 			else
