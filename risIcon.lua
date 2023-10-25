@@ -15,70 +15,21 @@ iconQ = {}
 iconQText = {}
 mgznIcon = {}
 mgznText = {}
-iconOP = {}
-iconOPText = {}
-iconOPArr = {}
-iconOPArrText = {}
+
 --1-16   17-32   33-48 49-64
 function iconCh:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
 	self[id]:SetSize(Rx, Ry)
 	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
 end
-function iconOP:configure(id,Rx,Ry)
-	if self[id] == nil then
-		self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
-	end
-	self[id]:SetSize(Rx, Ry)
-	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
-end
-function iconOPText:configure(id,Rx,Ry,x,y)
-	if self[id] == nil then
-		self[id] = iconOP[id]:CreateTexture("myAddonIcon", "OVERLAY")
-	end
-	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\op.tga")
-	self[id]:SetSize(Rx, Ry)
-	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
-end
-function iconOPArr:configure(id,Rx,Ry)
-	if self[id] == nil then
-		self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
-	end
-	self[id]:SetSize(Rx, Ry)
-	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
-end
-function iconOPArrText:configure(id,Rx,Ry,x,y)
-	if self[id] == nil then
-		self[id] = iconOPArr[id]:CreateTexture("myAddonIcon", "OVERLAY")
-	end
-	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\ch.tga")
-	self[id]:SetSize(Rx, Ry)
-	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
-end
+
 function iconChText:configure(id,Rx,Ry,x,y)
 	self[id] = iconCh[id]:CreateTexture("myAddonIcon", "OVERLAY")
 	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\ch.png")
 	self[id]:SetSize(Rx, Ry)
 	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
 end
-function op(id,x,y,sign)
-	if sign == "show" then
-		local rx,ry = WorldMapDetailFrame:GetSize()
-		iconOP:configure(1,rx,ry)
-		iconOPText:configure(1,rx,ry,0,0)
-		iconOPArr:configure(1,16,16)
-		iconOPArrText:configure(1,16,16,x,y)
-		if not iconOP[1]:IsVisible() then
-			iconOP[1]:Show()
-		end
-		iconOP[1]:SetFrameStrata("FULLSCREEN")
-		iconOPArr[1]:SetFrameStrata("FULLSCREEN_DIALOG")
-	else
-		if iconOP[1] ~= nil and iconOP[1]:IsVisible() then
-			iconOP[1]:Hide()
-		end
-	end
-end
+
 function chMuestro(iCh,X0,Y0)
 	iconCh:configure(iCh,576,384)
 	iconChText:configure(iCh,32,32,X0,Y0)
