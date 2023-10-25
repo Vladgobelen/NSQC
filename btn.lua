@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=15
+versAdd=282;versAddDop=16
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -2456,7 +2456,7 @@ btn:configure(992,64,-3,32,32,"","О");
 btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
 btn:configure(989,96,-3,32,32,"","Б");
-btn:configure(988,-40,-40,128,32,"","ЗАБРАТЬ ВСЕ");
+btn:configure(988,-55,-13,128,23,"","ЗАБРАТЬ ВСЕ");
 
 btn[989]:SetScript("OnClick",function(self, button)
 	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
@@ -3799,10 +3799,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 		if testQ["mail"] ~= nil then
-			AutoLootMailItem(1)
-			MailItem1Button:Click()
-			OpenMailDeleteButton:Click()
-			StaticPopup1Button2:Click()
+			local x = GetInboxHeaderInfo(1)
+			if x ~= nil then
+				AutoLootMailItem(1)
+				MailItem1Button:Click()
+				OpenMailDeleteButton:Click()
+				StaticPopup1Button2:Click()
+			else
+				testQ["mail"] = nil
+			end
 		end
 		--[[if WorldMapFrame:IsVisible() then
 			if myMap == nil then
