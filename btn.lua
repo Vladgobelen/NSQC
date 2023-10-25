@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=7
+versAdd=282;versAddDop=8
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -4166,6 +4166,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[988]:Hide()
 			end
 			testQ["mail"] = nil
+		end
+		if testQ["mail"] == 1 then
+			if btn[988]:IsVisible() then
+				btn[988]:SetText("..сбор..")
+			end
+		else
+			if btn[988]:IsVisible() then
+				btn[988]:SetText("ЗАБРАТЬ ВСЕ")
+			end
 		end
 		if testQ["zarplata"] ~= nil then
 			for i = 1, 100 do
