@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=16
+versAdd=282;versAddDop=17
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -1084,8 +1084,12 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if arg1 == "LeftButton" then
 			if arg2 == false then
 				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
-					if testQ["vyborNagrady"] == 1 then
-						SendAddonMessage("vyborNagrady", testQ["mioFldLvl"], "guild")
+					if nome == myNome then
+						if testQ["vyborNagrady"] == 1 then
+							SendAddonMessage("vyborNagrady", testQ["mioFldLvl"], "guild")
+						end
+					else
+						SendChatMessage("Дорогой дневник, сегодня я пытался украсть награду " .. nome .. " за лвлап. Не получилось...", "OFFICER", nil, 1)
 					end
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "s" then
