@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=13
+versAdd=282;versAddDop=14
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -2816,7 +2816,7 @@ btn[3]:SetScript("OnLeave", function(self)
 end)
 
 btnF = CreateFrame("CheckButton", "myCheckButton_GlobalName", parentFrame, "ChatConfigCheckButtonTemplate");
-btnF:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",-5,-18)
+btnF:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT",0,0)
 btnF:SetText("CheckBox Name");
 btnF:SetFrameStrata("TOOLTIP")
 btnF:SetScript("OnClick",  function()
