@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=10
+versAdd=282;versAddDop=11
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -4164,6 +4164,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				op(1,625-(mx*165),590-(my*165),"show")
 				PlayerArrowFrame:Show()
 				PlayerArrowFrame:SetFrameStrata("TOOLTIP")
+				if iconOPArr[1] ~= nil then
+					iconOPArr[1]:Show()
+				end
 			else
 				op(1,0,0,"hide")
 				if iconOPArr[1] ~= nil then
