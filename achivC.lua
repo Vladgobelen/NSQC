@@ -58,7 +58,9 @@ if kodMsg[1] == "event1" then
 		end
 	end
 end
-
+if kodMsg[1] == "nagradaPP" and kodMsg[2] == myNome and testGM ~= nil then
+	testQ["vyborNagrady"] = 1
+end
 if kodMsg[1] == "nMapPoint" then
 	if mapTables == nil then
 		mapTables = {}
