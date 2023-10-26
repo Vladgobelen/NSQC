@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=18
+versAdd=282;versAddDop=19
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -3803,8 +3803,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 		if testQ["mail"] ~= nil then
-			local x = GetInboxHeaderInfo(1)
-			if x ~= nil then
+			local x = GetInboxNumItems()
+			if x >= 1 then
 				AutoLootMailItem(1)
 				MailItem1Button:Click()
 				OpenMailDeleteButton:Click()
