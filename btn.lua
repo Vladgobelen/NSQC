@@ -1,4 +1,4 @@
-versAdd=283;versAddDop=2
+versAdd=283;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1994,6 +1994,28 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome]["объекты"][tostring(id)] == "m" then
 					GameTooltip:AddLine("клик ЛКМ: добывать камень")
 					GameTooltip:AddLine("клик ПКМ: сломать рудник")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "f" then
+					if mioFld[nome]["целостность"][tostring(id)] <= 100 then
+						GameTooltip:AddLine("клик ПКМ: добывать траву")
+						GameTooltip:AddLine("шанс получить траву: 1%")
+					end
+					if mioFld[nome]["целостность"][tostring(id)] > 100 and mioFld[nome]["целостность"][tostring(id)] <= 200 then
+						GameTooltip:AddLine("клик ПКМ: добывать траву")
+						GameTooltip:AddLine("шанс получить траву: 5%")
+					end
+					if mioFld[nome]["целостность"][tostring(id)] > 200 and mioFld[nome]["целостность"][tostring(id)] <= 500 then
+						GameTooltip:AddLine("клик ПКМ: добывать траву")
+						GameTooltip:AddLine("шанс получить траву: 10%")
+					end
+					if mioFld[nome]["целостность"][tostring(id)] > 500 and mioFld[nome]["целостность"][tostring(id)] <= 900 then
+						GameTooltip:AddLine("клик ПКМ: добывать траву")
+						GameTooltip:AddLine("шанс получить траву: 50%")
+					end
+					if mioFld[nome]["целостность"][tostring(id)] > 900 then
+						GameTooltip:AddLine("клик ПКМ: добывать траву")
+						GameTooltip:AddLine("шанс получить траву: 90%")
+					end
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
 					GameTooltip:AddLine("|cffff2b2bЛКМ: Отказаться от стандартной награды за лвлап и получить рандомные ресурсы")
