@@ -861,6 +861,9 @@ end
 if kodMsg[1] == "travA" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Густая трава. Ну видно же!"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
@@ -873,6 +876,9 @@ end
 if kodMsg[1] == "tree" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Определенно это дерево..."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
