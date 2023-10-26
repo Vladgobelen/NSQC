@@ -41,6 +41,8 @@ libs\zak.tga
 libs\zp.tga
 libs\bi.tga
 libs\tc.tga
+libs\ar.tga
+libs\as.tga
 libs\bh.tga
 libs\to.tga
 libs\smg.tga

@@ -850,7 +850,7 @@ if kodMsg[1] == "obgIz" then
 				testQ["fRand3"] = 1
 				testQ["fRand3Nome"] = message
 				if sender ~= myNome and message == myNome then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" then
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 					else
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
@@ -895,11 +895,9 @@ if kodMsg[1] == "oS" then
 	if mioFld[message] == nil then
 		mioFld[message] = {}
 	end
-	print(mioFld[message["петы"]])
 	if mioFld[message]["петы"] == nil then
 		mioFld[message]["петы"] = {}
 	end
-	print(kodMsg[2])
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
 	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
 	if sender == myNome then
@@ -910,7 +908,6 @@ if kodMsg[1] == "oS" then
 			testQ[myNome]["петы"]["gg"] = kodMsg[3]
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. kodMsg[3] .. ".ogg")
 		elseif kodMsg[3] == "gom" then
-		print('1')
 			testQ[myNome]["петы"]["gg"] = kodMsg[3]
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. kodMsg[3] .. ".ogg")
 		end
@@ -1015,6 +1012,12 @@ end
 if kodMsg[1] == "skS" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "skc"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
@@ -1026,8 +1029,99 @@ end
 if kodMsg[1] == "bN" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bn"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный фундамент"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "aS" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "as"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "bS" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bs"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "bH" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bx"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "tO" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bc"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "aS" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "as"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1037,6 +1131,12 @@ end
 if kodMsg[1] == "skc" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "skc"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
@@ -1048,6 +1148,12 @@ end
 if kodMsg[1] == "sbS" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "sb"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Склад бревен"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1061,7 +1167,10 @@ if kodMsg[1] == "sX" then
 		if mioFld[message] ~= nil then
 			if mioFld[message] ~= nil then
 				if mioFld[message]["подсказки"] == nil then
-					mioFld[message]["подсказки"] = {}
+				mioFld[message]["подсказки"] = {}
+				end
+				if mioFld[message]["целостность"] == nil then
+					mioFld[message]["целостность"] = {}
 				end
 				mioFld[message]["объекты"][tostring(kodMsg[2])] = "sx"
 				mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
@@ -1078,6 +1187,12 @@ end
 if kodMsg[1] == "tsX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "tc"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
@@ -1092,6 +1207,12 @@ end
 if kodMsg[1] == "sXX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Рыхлая земля и много много мусора..."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1106,6 +1227,12 @@ end
 if kodMsg[1] == "tcX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Рыхлая земля и много много мусора..."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1120,6 +1247,12 @@ end
 if kodMsg[1] == "skcX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1128,10 +1261,32 @@ if kodMsg[1] == "skcX" then
 		end
 	end
 end
-
+if kodMsg[1] == "bX" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Здесь копали?"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "sbX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1143,6 +1298,12 @@ end
 if kodMsg[1] == "uZ" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1154,6 +1315,12 @@ end
 if kodMsg[1] == "mS" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1165,6 +1332,12 @@ end
 if kodMsg[1] == "mX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1178,6 +1351,9 @@ if kodMsg[1] == "gobXm" then
 		if mioFld[message] ~= nil then
 			if mioFld[message]["подсказки"] == nil then
 				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
@@ -1226,6 +1402,12 @@ end
 if kodMsg[1] == "zX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zx"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный бетонный завод"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 19999
@@ -1237,6 +1419,12 @@ end
 if kodMsg[1] == "zXx" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1248,6 +1436,12 @@ end
 if kodMsg[1] == "zSx" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1267,6 +1461,12 @@ end
 if kodMsg[1] == "mXx" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Чистая слегка рыхлая земля.."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
@@ -1310,9 +1510,15 @@ if kodMsg[1] == "resObj" then
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+		end
 	end
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
 			if mioFld[message]["целостность"] ~= nil then
 				mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 999 then
@@ -1378,6 +1584,24 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="sx" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "s"
 						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Сельсовет"
+					end
+				end
+				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 14999 then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ar"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Архив"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "bi"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Библиотека"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "to"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Логистический отдел"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "bh"
+						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бухгалтерия"
 					end
 				end
 				testQ["fRand5"] = 1
