@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=20
+versAdd=282;versAddDop=21
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -331,6 +331,16 @@ function vybor:configure(id)
 			end
 		end
 		if testQ["icon"] == "smg" and testQ["picon"] == "m" then
+			if vybor[12] ~= nil then
+				vybor[12]:Show()
+				for i = 1, 100 do
+					if i ~= 12 and i ~= 9 and i ~= 10 and vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if testQ["icon"] == "smg" and testQ["picon"] == "t" then
 			if vybor[12] ~= nil then
 				vybor[12]:Show()
 				for i = 1, 100 do
@@ -759,6 +769,24 @@ function vybor:configure(id)
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
 				testQ["zarplata"] = 10000
+				testQ["smg"] = tonumber(testQ["smg"])-1
+				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+				testQ["temp"] = nil
+				testQ["picon"] = nil
+				for i=1,100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if id == 12 and tonumber(testQ["smg"]) >= 1 and testQ["picon"] == "t" then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				testQ["zarplatab"] = 20
 				testQ["smg"] = tonumber(testQ["smg"])-1
 				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 				testQ["temp"] = nil
@@ -1887,8 +1915,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					if nome == myNome then
 						vybor:configure(12)
 						vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
-						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-						vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+						vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
 						vybor[12]:Show()
 						if testQ ~= nil then
 							testQ["idp"] = id
@@ -3417,6 +3445,58 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 10 then
 		timeElapsed = 0
+		if testQ["zarplatab"] ~= nil then
+			for i = 1, 100 do
+				if mioFld[myNome]["петы"] ~= nil then
+					if mioFld[myNome]["объекты"][tostring(i)] == "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
+						SendAddonMessage("travA " .. i, myNome, "guild")
+						mioFld[myNome]["целостность"][tostring(i)] = 1
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+						testQ["zarplatab"] = tonumber(testQ["zarplatab"])-1
+						if tonumber(testQ["zarplatab"]) <= 0 then
+							testQ["zarplatab"] = nil
+						end
+						if testQ ~= nil then
+							local testB = nil
+							for i = 1,100 do
+								if mioFld[myNome]["объекты"][tostring(i)] == "sb" then
+									if testB == nil then
+										testB = 1
+									else
+										testB = testB + 1
+									end
+								end
+							end
+							if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
+								testQ["brevna"] = testQ["brevna"]+1
+								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+							end
+							if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
+								testQ["brevna"] = testQ["brevna"]+1
+								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+							end
+							if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
+								testQ["brevna"] = testQ["brevna"]+1
+								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+							end
+							if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
+								testQ["brevna"] = testQ["brevna"]+1
+								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+							end
+							if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
+								testQ["brevna"] = testQ["brevna"]+1
+								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+							end
+							if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
+								testQ["brevna"] = testQ["brevna"]+1
+								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+							end
+						end
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[myNome]["объекты"][tostring(i)] .."x.ogg")
+					end
+				end
+			end
+		end
 		for i = 1,100 do
 			local pet
 			if mioFld ~= nil then
@@ -3475,19 +3555,27 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 						if pet ~= nil then
 							if mioFld[myNome]["объекты"][tostring(i)] == "t" and pet[1] == "bb" then
+								local x = math.random(1,500)
+								if x == 1 then
+									testQ["brevna"] = tonumber(testQ["brevna"])-1
+									dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+								end
 								treeX(myNome,myNome,i)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
 							end
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
 								local x = math.random(1,2)
 								if x == 2 then
-									local xx = math.random(1,100)
+									local xx = math.random(1,500)
 									gKam(myNome,xx)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
+									if x == 1 then
+										SendAddonMessage("gomXm " .. i, myNome, "guild")
+									end
 								end
 							end
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
-								local xx = math.random(1,100)
+								local xx = math.random(1,500)
 								gKam(myNome,xx)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 								if x == 1 then
@@ -4205,9 +4293,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							local xx = math.random(1,500)
 							gKam(myNome,xx)
 							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gobZ.tga")
-							if x == 1 then
-									SendAddonMessage("gobXm " .. i, myNome, "guild")
-							end
 						end
 					end
 				end

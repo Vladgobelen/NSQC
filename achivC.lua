@@ -1176,11 +1176,47 @@ end
 if kodMsg[1] == "gobXm" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
+		end
+		if message == myNome then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
+		end
+	end
+end
+if kodMsg[1] == "gomXm" and message == myNome then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			local xx = math.random(1,5)
+			local x = math.random(1,5)
+			if xx == 1 then
+				if x == 1 then
+					testQ["brevna"] = tonumber(testQ["brevna"]) - 1
+				elseif x == 2 then
+					testQ["stog"] = tonumber(testQ["stog"]) - 1
+				elseif x == 3 then
+					testQ["kamen"] = tonumber(testQ["kamen"]) - 1
+				elseif x == 4 then
+					testQ["beton"] = tonumber(testQ["beton"]) - 1
+				elseif x == 3 then
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["zarplata"] = 10000
+				end
+			end
+			dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+			dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+			dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+			dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+			dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 		end
 		if message == myNome then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
