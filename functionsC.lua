@@ -1752,6 +1752,7 @@ end
 function showFld(sign,myNome)
 	local nome
 	local proverkaLvla
+	local proverkaLvla1
 	if not fBtn[1]:IsVisible() then
 		if not GuildFrameLFGButton:GetChecked() or sign == "1" then
 			if sign == "0" then
@@ -1759,11 +1760,13 @@ function showFld(sign,myNome)
 			else
 				nome = myNome
 			end
+			print(nome)
 			for Zc=1,GetNumGuildMembers(true) do
 				local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 				if nome ~= myNome then
 					if name == nome then
 						proverkaLvla = string.sub(officerNote,1,1)
+						proverkaLvla1 = string.sub(officerNote,2,2)
 						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
 							testQ["fldLvl"] = tonumber(proverkaLvla)
 							testQ["qNum"] = string.sub(officerNote,8,8)
@@ -1777,6 +1780,11 @@ function showFld(sign,myNome)
 							testQ["qNum"] = 0
 							testQ["qDay"] = 0
 						elseif proverkaLvla == "" then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+						if proverkaLvla1 == nil then
 							testQ["fldLvl"] = 0.5
 							testQ["qNum"] = 0
 							testQ["qDay"] = 0
@@ -1797,6 +1805,7 @@ function showFld(sign,myNome)
 				else
 					if name == myNome then
 						proverkaLvla = string.sub(officerNote,1,1)
+						proverkaLvla1 = string.sub(officerNote,2,2)
 						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
 							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
 							testQ["fldLvl"] = testQ["mioFldLvl"]
@@ -1813,6 +1822,12 @@ function showFld(sign,myNome)
 							testQ["qNum"] = 0
 							testQ["qDay"] = 0
 						elseif proverkaLvla == "" then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+						if proverkaLvla1 == nil then
 							testQ["mioFldLvl"] = 0.5
 							testQ["fldLvl"] = testQ["mioFldLvl"]
 							testQ["qNum"] = 0

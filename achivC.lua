@@ -833,26 +833,28 @@ end
 if kodMsg[1] == "obgIz" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
-			if mioFld[message]["влияние"] == nil then
-				mioFld[message]["влияние"] = {}
-			end
-			if mioFld[message]["подсказки"] == nil then
-				mioFld[message]["подсказки"] = {}
-			end
-			if kodMsg[5] ~= nil then
-				local podskazka = sender .. " " .. kodMsg[5]
-				mioFld[message]["влияние"][tostring(kodMsg[2])] = podskazka
-			else
-				mioFld[message]["влияние"][tostring(kodMsg[2])] = sender
-			end
-			testQ["fRand3"] = 1
-			testQ["fRand3Nome"] = message
-			if sender ~= myNome and message == myNome then
-				if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" then
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+			if mioFld[message]["целостность"] ~= nil then
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+				if mioFld[message]["влияние"] == nil then
+					mioFld[message]["влияние"] = {}
+				end
+				if mioFld[message]["подсказки"] == nil then
+					mioFld[message]["подсказки"] = {}
+				end
+				if kodMsg[5] ~= nil then
+					local podskazka = sender .. " " .. kodMsg[5]
+					mioFld[message]["влияние"][tostring(kodMsg[2])] = podskazka
 				else
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
+					mioFld[message]["влияние"][tostring(kodMsg[2])] = sender
+				end
+				testQ["fRand3"] = 1
+				testQ["fRand3Nome"] = message
+				if sender ~= myNome and message == myNome then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+					else
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
+					end
 				end
 			end
 		end

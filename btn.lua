@@ -1,4 +1,4 @@
-versAdd=283;versAddDop=9
+versAdd=283;versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3024,6 +3024,9 @@ minibtn:SetScript("OnClick", function()
 			end
 			if tonumber(lvl) == 1 then
 				testQ["mioFldLvl"] = 0.9
+			end
+			if lvl == "" then
+				testQ["mioFldLvl"] = 0.5
 			end
 		end
 	end
