@@ -1,4 +1,4 @@
-versAdd=283;versAddDop=7
+versAdd=283;versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2000,15 +2000,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 1%")
 					end
-					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and mioFld[nome]["целостность"][tostring(id)] <= 200 then
+					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 200 then
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 5%")
 					end
-					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and mioFld[nome]["целостность"][tostring(id)] <= 500 then
+					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 500 then
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 10%")
 					end
-					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and mioFld[nome]["целостность"][tostring(id)] <= 900 then
+					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 900 then
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 50%")
 					end
