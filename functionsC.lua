@@ -1257,11 +1257,40 @@ function treeX(nome,myNome,id)
 		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .."x.ogg")
 	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "f" then
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 and mioFld[nome]["объекты"][tostring(id)] == "f" then
 		SendAddonMessage("zemlYa " .. id, nome, "guild")
-		if testQ["stog"] ~= nil and testQ["stog"] < 1000 then
-			testQ["stog"] = testQ["stog"]+1
-			dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+		if testQ["stog"] ~= nil and testQ["stog"] < 99999 then
+			local x
+			if tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 100 then
+				x = math.random(1,100)
+				if x == 100 then
+				testQ["stog"] = testQ["stog"]+1
+				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+			end
+			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 200 then
+				x = math.random(1,20)
+				if x == 20 then
+				testQ["stog"] = testQ["stog"]+1
+				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+			end
+			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 500 then
+				x = math.random(1,10)
+				if x == 10 then
+				testQ["stog"] = testQ["stog"]+1
+				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+			end
+			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 900 then
+				x = math.random(1,2)
+				if x == 2 then
+				testQ["stog"] = testQ["stog"]+1
+				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+			end
+			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 900 then
+				x = math.random(1,10)
+				if x ~= 1 then
+				testQ["stog"] = testQ["stog"]+1
+				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+			end
 		end
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
