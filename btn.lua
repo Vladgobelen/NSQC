@@ -1,4 +1,4 @@
-versAdd=283;versAddDop=5
+versAdd=283;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3517,7 +3517,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 							end
 						end
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[myNome]["объекты"][tostring(i)] .."x.ogg")
 					end
 				end
 			end
