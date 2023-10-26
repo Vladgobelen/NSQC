@@ -1264,35 +1264,41 @@ function treeX(nome,myNome,id)
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 100 then
 				x = math.random(1,100)
 				if x == 100 then
-				testQ["stog"] = testQ["stog"]+1
-				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					testQ["stog"] = testQ["stog"]+1
+					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 200 then
 				x = math.random(1,20)
 				if x == 20 then
-				testQ["stog"] = testQ["stog"]+1
-				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					testQ["stog"] = testQ["stog"]+1
+					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 500 then
 				x = math.random(1,10)
 				if x == 10 then
-				testQ["stog"] = testQ["stog"]+1
-				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					testQ["stog"] = testQ["stog"]+1
+					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 900 then
 				x = math.random(1,2)
 				if x == 2 then
-				testQ["stog"] = testQ["stog"]+1
-				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					testQ["stog"] = testQ["stog"]+1
+					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 900 then
 				x = math.random(1,10)
 				if x ~= 1 then
-				testQ["stog"] = testQ["stog"]+1
-				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					testQ["stog"] = testQ["stog"]+1
+					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+				end
 			end
 		end
 	end
+
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
 		SendAddonMessage("uZ " .. id, nome, "guild")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
