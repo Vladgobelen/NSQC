@@ -255,6 +255,7 @@ if string.find (message, "покажи предмет") and string.find(message,
 		if itemName ~= nil and string.lower(predmet) == string.lower(itemName) then
 			 if itemLink ~= nil then
 				SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
+				break
 			else
 				SendChatMessage("* предмет " .. predmet .. " не существует", "OFFICER", nil, 1)
 			end
