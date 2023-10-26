@@ -1861,6 +1861,7 @@ function showFld(sign,myNome)
 				FriendsFrame:Show()
 			end
 			testQ['sign'] = nil
+			testQ["fRandD1nome"] = nil
 		end
 	else
 		for i=1,100 do

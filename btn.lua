@@ -1,4 +1,4 @@
-versAdd=283;versAddDop=8
+versAdd=283;versAddDop=9
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2024,6 +2024,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if testQ[myNome]["hTimer"] ~= nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
 					GameTooltip:ClearLines()
 					GameTooltip:AddLine("Вы что, не видите?! У нас обед!!!")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+					GameTooltip:AddLine("|cffff2b2bКаждая попытка мародерства: минус рандомный ресурс")
 				end
 			end
 		end
