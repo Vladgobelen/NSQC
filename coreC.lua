@@ -249,13 +249,16 @@ if string.find (message, "покажи предмет") and string.find(message,
 	lenCosa=mysplit(message)
 	tblLensCosa=tablelength(lenCosa)
 	predmet=table.concat(lenCosa, " ", 4,tblLensCosa)
-	itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType,
-itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice =
-    GetItemInfo(predmet)
-    if itemLink~=nil then
-		SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
-	else
-		SendChatMessage("* предмет " .. predmet .. " не существует", "OFFICER", nil, 1)
+	local x,y
+	for i = 1, 52034 do
+		itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice = GetItemInfo(i)
+		if itemName ~= nil and string.lower(predmet) == string.lower(itemName) then
+			 if itemLink ~= nil then
+				SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
+			else
+				SendChatMessage("* предмет " .. predmet .. " не существует", "OFFICER", nil, 1)
+			end
+		end
 	end
 end
 
