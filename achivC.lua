@@ -867,7 +867,6 @@ if kodMsg[1] == "travA" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Густая трава. Ну видно же!"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -882,7 +881,6 @@ if kodMsg[1] == "tree" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Определенно это дерево..."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
@@ -895,23 +893,24 @@ if kodMsg[1] == "oS" then
 	if mioFld[message] == nil then
 		mioFld[message] = {}
 	end
-	if mioFld[message["петы"]] == nil then
+	print(mioFld[message["петы"]])
+	if mioFld[message]["петы"] == nil then
 		mioFld[message]["петы"] = {}
 	end
-	local petZ = kodMsg[3]
+	print(kodMsg[2])
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
 	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
 	if sender == myNome then
-		local pet = mysplit(kodMsg[3])
-		if petZ == "bb" then
-			testQ[myNome]["петы"][pet[1]] = 1
+		if kodMsg[3] == "bb" then
+			testQ[myNome]["петы"][kodMsg[3]] = 1
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hr.ogg")
-		elseif petZ == "gob" then
-			testQ[myNome]["петы"]["gg"] = petZ
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. petZ .. ".ogg")
-		elseif petZ == "gom" then
-			testQ[myNome]["петы"]["gg"] = petZ
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. petZ .. ".ogg")
+		elseif kodMsg[3] == "gob" then
+			testQ[myNome]["петы"]["gg"] = kodMsg[3]
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. kodMsg[3] .. ".ogg")
+		elseif kodMsg[3] == "gom" then
+		print('1')
+			testQ[myNome]["петы"]["gg"] = kodMsg[3]
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. kodMsg[3] .. ".ogg")
 		end
 	end
 end
@@ -938,7 +937,6 @@ if kodMsg[1] == "zemlYa" then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
 			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Чистая слегка рыхлая земля.."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			SendAddonMessage("podSkazka " .. kodMsg[2] .. " " .. message, mioFld[message]["подсказки"][tostring(kodMsg[2])], "guild")
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end

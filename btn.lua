@@ -1,4 +1,4 @@
-versAdd=282;versAddDop=21
+versAdd=283;versAddDop=0
 local zloykakash
 bonusQuestF = 30
 local myNome = GetUnitName("player")
@@ -9,7 +9,11 @@ resursy = {}
 vybor = {}
 okNo = {}
 magazin = {}
-
+function skll()
+	for k, v in pairs(SkillTypeLabel5) do
+		print(k,v, v[1], v[2], v[3])
+	end
+end
 function okNo:configure(id,sign)
 	if sign == "show" then
 		if testQ["okno"] ~= "completed" or testQ["okno"] ~= "itemQend" or testQ["okno"] == "q33" or testQ["okno"] == testQ[myNome]["взятый_квест_х"] then
