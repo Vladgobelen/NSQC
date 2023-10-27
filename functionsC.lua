@@ -981,7 +981,9 @@ function rtnTextF(text,id,show)
 	end
 end
 function versFail(num)
-	VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	if VerF == nil then
+		VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	end
 	VerF:SetSize(1111, 888)
 	VerF:SetFrameStrata("HIGH")
 	if testQ["VerF"] == nil then
