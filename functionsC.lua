@@ -1385,9 +1385,11 @@ function resObj(id,myNome,nome)
 						end
 						if mioFld[myNome]["объекты"][tostring(id)] == "as" or mioFld[myNome]["объекты"][tostring(id)] == "bc" or mioFld[myNome]["объекты"][tostring(id)] == "bs" or mioFld[myNome]["объекты"][tostring(id)] == "bx" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 14999 then
+							print('тут')
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
 								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
+							print('тут3')
 								mioFld[myNome]["целостность"][tostring(id)] = 14999
 							end
 						end
@@ -1442,9 +1444,11 @@ function resObj(id,myNome,nome)
 							end
 						end
 						if mioFld[myNome]["объекты"][tostring(id)] == "as" or mioFld[myNome]["объекты"][tostring(id)] == "bc" or mioFld[myNome]["объекты"][tostring(id)] == "bs" or mioFld[myNome]["объекты"][tostring(id)] == "bx" then
-							mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
-						else
-							mioFld[myNome]["целостность"][tostring(id)] = 14999
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 14999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 14999
+							end
 						end
 						if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
