@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=1
+versAdd=284;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1974,8 +1974,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					if mioFld[nome]["объекты"][tostring(id)] == "h" then
 						vybor:configure(12)
 						vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
-						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-						vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+						vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
 						vybor[12]:Show()
 						if testQ ~= nil then
 							testQ["idp"] = id
@@ -2369,43 +2369,49 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("Потребление: 1-5 камня за попытку")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "m" then
-					GameTooltip:AddLine("клик ЛКМ: добывать камень")
-					GameTooltip:AddLine("клик ПКМ: сломать рудник")
+					GameTooltip:AddLine("Каменьломня. Тут можно добывать камень.")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40добывать камень |cff99ff99(шансы: 1 из 500 кликов)")
+					GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40сломать рудник")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "f" then
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 100 then
 						GameTooltip:AddLine("Густая трава. Ну видно же!")
-						GameTooltip:AddLine("клик ПКМ: добывать траву")
-						GameTooltip:AddLine("шанс получить траву: 1%")
+						GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40добывать траву")
+						GameTooltip:AddLine("шанс получить траву: |cff99ff991%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 200 then
 						GameTooltip:AddLine("Густая трава. Ну видно же!")
-						GameTooltip:AddLine("клик ПКМ: добывать траву")
-						GameTooltip:AddLine("шанс получить траву: 5%")
+						GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40добывать траву")
+						GameTooltip:AddLine("шанс получить траву: |cff99ff995%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 500 then
 						GameTooltip:AddLine("Густая трава. Ну видно же!")
-						GameTooltip:AddLine("клик ПКМ: добывать траву")
-						GameTooltip:AddLine("шанс получить траву: 10%")
+						GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40добывать траву")
+						GameTooltip:AddLine("шанс получить траву: |cff99ff9910%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 900 then
 						GameTooltip:AddLine("Густая трава. Ну видно же!")
-						GameTooltip:AddLine("клик ПКМ: добывать траву")
-						GameTooltip:AddLine("шанс получить траву: 50%")
+						GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40добывать траву")
+						GameTooltip:AddLine("шанс получить траву: |cff99ff9950%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 900 then
 						GameTooltip:AddLine("Густая трава. Ну видно же!")
-						GameTooltip:AddLine("клик ПКМ: добывать траву")
-						GameTooltip:AddLine("шанс получить траву: 90%")
+						GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40добывать траву")
+						GameTooltip:AddLine("шанс получить траву: |cff99ff9990%")
 					end
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
 					GameTooltip:AddLine("|cffff2b2bЛКМ: Отказаться от стандартной награды за лвлап и получить рандомные ресурсы")
-					GameTooltip:AddLine("Шанс получить пета")
+					GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40сломать склад")
+					GameTooltip:AddLine("|cff99ff99Шанс получить пета")
 				end
 				if testQ[myNome]["hTimer"] ~= nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
 					GameTooltip:ClearLines()
-					GameTooltip:AddLine("Вы что, не видите?! У нас обед!!!")
+					GameTooltip:AddLine("|cffff2b2bВы что, не видите?! У нас обед!!!")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40получить квест")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+					GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - квест на эмоции")
+					GameTooltip:AddLine("|cffFFCF40если есть таймер - сдать |cff99ff99магическую ткань|cffFFCF40 (не реализовано)")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
 					GameTooltip:AddLine("Бетонный фундамент под здание")
@@ -2419,14 +2425,56 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "t" then
 					GameTooltip:AddLine("Определенно это дерево... Может у него спросить чего?")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Рубить дерево")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "sb" then
 					GameTooltip:AddLine("Кладбище невинно убиенных деревьев, огороженное их трупами. Иначе: склад бревен.")
-					GameTooltip:AddLine("Каждый склад расширяет хранилище бревен на 100")
+					GameTooltip:AddLine("Каждый склад расширяет хранилище бревен на |cff99ff99100")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "sk" then
 					GameTooltip:AddLine("Склад камней. Или правильно - сад камней? Хм..")
-					GameTooltip:AddLine("Каждый склад расширяет хранилище камней на 100")
+					GameTooltip:AddLine("Каждый склад расширяет хранилище камней на |cff99ff99100")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ar" then
+					GameTooltip:AddLine("Архив. Тут можно узнать многие тайны..или не узнать.")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Узнать свой прогресс")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "bi" then
+					GameTooltip:AddLine("|cffFFCF40Библиотека: плюс |cff99ff99единица опыта|cffFFCF40 к квестам в хижине")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Здесь нельзя шуметь!")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "to" then
+					GameTooltip:AddLine("|cffFFCF40Логистический отдел: ускоряет таймер вдвое! И это как минимум! Мы очень быстрые...")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "bh" then
+					GameTooltip:AddLine("Бухгалтерия. Если существует (но сомневается в этом, как и все мы), квесты на шерсть и прочие товары принесут |cff99ff99единицу опыта.")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Кликать бесполезно")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "uz" then
+					GameTooltip:AddLine("Еще не доконца утоптанная земля. Неровности там всякие.. Ну, воон там.")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Топтать. Хм.. Или утаптывать?")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Портить все что утоптал")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
+					GameTooltip:AddLine("Очень хорошо утоптанная земля, молодец.")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ms" then
+					GameTooltip:AddLine("Эта дырка в земле очень хорошо демонстрирует, что такое заготовка под рудник")
+					GameTooltip:AddLine("А может все бросить и ну его нафиг?")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40копать до упора")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40все портить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "h" then
+					GameTooltip:AddLine("Хижина, дом, бла бла. Тут можно получить квест.")
+					GameTooltip:AddLine("Я серьезно: |cff99ff99ЛКМ: " .. "|cffFFCF40получить квест")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+					GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - получить достижение")
+					GameTooltip:AddLine("|cffFFCF40если есть таймер - сдать |cff99ff99шерсть")
+					GameTooltip:AddLine("|cff99ff99Сдача шерсти: |cffFFCF40снижает таймер на рандомное время, дает рандомные плюшки")
 				end
 				if mioFld[nome]["влияние"] ~= nil then
 					if mioFld[nome]["влияние"][tostring(id)] ~= nil then
@@ -2436,7 +2484,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
 							end
 						else
-							GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
+							GameTooltip:AddLine("|cffcd00cdСледы: " .. mioFld[nome]["влияние"][tostring(id)])
 						end
 					end
 				end
