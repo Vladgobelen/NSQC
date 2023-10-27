@@ -2413,6 +2413,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - квест на эмоции")
 					GameTooltip:AddLine("|cffFFCF40если есть таймер - сдать |cff99ff99магическую ткань|cffFFCF40 (не реализовано)")
 				end
+				if testQ[myNome]["hTimer"] == nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
+					GameTooltip:ClearLines()
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40получить квест")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+					GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - квест на эмоции")
+					GameTooltip:AddLine("|cffFFCF40если есть таймер - сдать |cff99ff99магическую ткань|cffFFCF40 (не реализовано)")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
 					GameTooltip:AddLine("Бетонный фундамент под здание")
 				end
