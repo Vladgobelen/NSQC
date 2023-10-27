@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=6
+versAdd=284;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1659,6 +1659,14 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						okNo:configure(1,"show")
 						rtnTextF("Ты кто такой? Я тебя не знаю.",1,"show")
 						testQ["okno"] = "99991"
+					end
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ar" then
+					if testQ["infTimer"] == nil then
+						testQ["infTimer"] = 60
+						SendAddonMessage("#zMYzt", "#zMYzt", "guild")
+					else
+						dmgText(testQ["infTimer"],fBtn[id],888,13,"ff0000")
 					end
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "hs" then
@@ -4270,6 +4278,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			nome = GuildFrame["selectedName"]
 		else
 			nome = myNome
+		end
+		if testQ["infTimer"] ~= nil then
+			testQ["infTimer"] = tonumber(testQ["infTimer"])-1
+			dmgText(testQ["infTimer"],fBtn[id],888,13,"ff0000")
+			if tonumber(testQ["infTimer"]) <= 0 then
+				testQ["infTimer"] = nil
+			end
 		end
 		for i = 1,100 do
 			if mioFld ~= nil then

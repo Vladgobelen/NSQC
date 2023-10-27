@@ -122,6 +122,64 @@ if  kodMsg[1] == "NSGChatX" then
 		end
 	end
 end
+local guokInf = string.gsub(message, "%s+", "")
+if kodMsg[1] == "#zMYzt" and sender == myNome then
+	for guok=1,GetNumGuildMembers(true) do
+		local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(guok)
+		if name == sender then
+			local test=string.sub(officerNote,2,2)
+			if test~="" then
+			local gildLvl = string.utf8sub(officerNote, 1, 1)
+			local gildExp = string.utf8sub(officerNote, 2, 5)
+			SendChatMessage("*" .. sender .. ": " .. gildLvl .. " гильдлвл" .. " и " .. gildExp .. " опыта", "officer", nil, 1)
+			local gildLvlN = tonumber (gildLvl)
+			local gildExpN = tonumber (gildExp)
+			if gildLvl == "0" then
+				local gildExpN = 4 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+				SendChatMessage("Доступен 1 квест в сутки. При лвлапе: сумка из ткани пустоты." , "officer", nil, 1)
+			elseif gildLvl == "1" then
+				local gildExpN = 8 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+				SendChatMessage("Доступен 1 квест в сутки. При лвлапе: две сумки из ткани пустоты" , "officer", nil, 1)
+			elseif gildLvl == "2" then
+				local gildExpN = 16 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+				SendChatMessage("Доступны 2 квеста в сутки. При лвлапе 4 сумки из ткани пустоты" , "officer", nil, 1)
+				--SendChatMessage("*При лвлапе: повышение до Констебля. Что то одно из пятой ячейки ГБ, кроме серой кошки, письма и маунтов ИЛИ лотерейный билет. " , "officer", nil, 1)
+			elseif gildLvl == "3" then
+				local gildExpN = 32 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+				SendChatMessage("*Сейчас награда 80 золота за квест и доступны 3 квеста в сутки. При лвлапе: повышение до Мл. Капрала. 2 ледовые сумки или три лотерейных билета. " , "officer", nil, 1)
+			elseif gildLvl == "4" then
+				local gildExpN = 64 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+				SendChatMessage("*Сейчас награда 90 золота за квест и доступны 4 квеста в сутки. При лвлапе: Повышение до Капрала. 4 ледовые сумки или четыре лотерейных билета. " , "officer", nil, 1)
+			elseif gildLvl == "5" then
+				local gildExpN = 128 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+				SendChatMessage("*Сейчас награда 100 золота за квест и доступны 5 квестов в сутки. При лвлапе: повышение до Сержанта. 7500 золота или 7 лотерейных билетов." , "officer", nil, 1)
+			elseif gildLvl == "6" then
+				local gildExpN = 256 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+				SendChatMessage("*Сейчас награда 110 золота за квест и доступны 6 квестов в сутки. При лвлапе: 15000 золота или 15 лотерейных билетов. " , "officer", nil, 1)
+			elseif gildLvl == "7" then
+				local gildExpN = 512 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+			elseif gildLvl == "8" then
+				local gildExpN = 1024 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+			elseif gildLvl == "9" then
+				local gildExpN = 2048 - gildExpN
+				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
+			end
+			else
+				SendChatMessage("*" .. sender .. ", ты еще не делал квестов", "officer", nil, 1)
+			end
+		else
+		end
+	end
+end
 if kodMsg[1] == "bNx" then
 	mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) - tonumber(kodMsg[3])
 end
