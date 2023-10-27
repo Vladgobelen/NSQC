@@ -1481,7 +1481,7 @@ if kodMsg[1] == "resObj" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="f" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="skc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "sk"
@@ -1491,7 +1491,7 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ts"
 						if fBtn[1]:IsVisible() then
-							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ts.tga")
 						end
 					end
 				end
@@ -1499,7 +1499,7 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="hs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
 						if fBtn[1]:IsVisible() then
-							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\h.tga")
 						end
 					end
 				end
@@ -1507,7 +1507,7 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
 						if fBtn[1]:IsVisible() then
-							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
+							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 						end
 					end
 				end
