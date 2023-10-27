@@ -1173,35 +1173,37 @@ function treeX(nome,myNome,id)
 			testQ["трудовые_ресурсы"] = {}
 			testQ["трудовые_ресурсы"] = 0
 		end
-		if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-			if nome == myNome then
-				mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-50
-			else
-				if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
-					local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
-					if x == 9 then
+		if mioFld[nome]["объекты"][tostring(id)] ~= "f" then
+			if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+				if nome == myNome then
+					mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-50
+				else
+					if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+						local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+						if x == 9 then
+							mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+						end
+					else
 						mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 					end
-				else
-					mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 				end
-			end
-			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-			testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.1
-		else
-			if nome == myNome then
-				mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+				--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
+				testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.1
 			else
-				if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
-					local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
-					if x == 9 then
+				if nome == myNome then
+					mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+				else
+					if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+						local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+						if x == 9 then
+							mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+						end
+					else
 						mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 					end
-				else
-					mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
 				end
+				--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
 			end
-			--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
 		end
 		if testQ ~= nil then
 			if testQ[myNome] ~= nil then
