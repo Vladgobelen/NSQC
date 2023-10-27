@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=11
+versAdd=284;versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4281,13 +4281,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
-		if FriendsFrame:IsVisible() then
-			if not gtg:IsVisible() then
-				gtg:Show()
-			end
-		else
-			if gtg:IsVisible() then
-				gtg:Hide()
+		if gtg ~= nil then
+			if FriendsFrame:IsVisible() then
+				if not gtg:IsVisible() then
+					gtg:Show()
+				end
+			else
+				if gtg:IsVisible() then
+					gtg:Hide()
+				end
 			end
 		end
 		--print(Minimap:GetPingPosition())
