@@ -1877,7 +1877,7 @@ function showFld(sign,myNome)
 			end
 			testQ["fRand1"] = math.random(1,1000000)
 			testQ['sign'] = sign
-			SendAddonMessage("shMFld " .. testQ["fRand1"], nome, "guild")
+			SendAddonMessage("shMFld " .. testQ["fRand1"], nome .. " " .. myNome, "guild")
 		else
 			for i=1,100 do
 				fBtn[i]:Hide()

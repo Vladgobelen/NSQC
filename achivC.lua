@@ -125,7 +125,7 @@ end
 if kodMsg[1] == "bNx" then
 	mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) - tonumber(kodMsg[3])
 end
-if kodMsg[1] == "shMFld" and message == myNome then
+if kodMsg[1] == "shMFld" and msg[1] == myNome then
 	local rez = {}
 	local x = nil
 	if sender ~= myNome then
@@ -569,24 +569,30 @@ if kodMsg[1] == "MioFld1" then
 		j = tostring(i)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandD1"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD1"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFld2" then
 	for i = 1, 35 do
 		j = tostring(i+35)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandD2"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD2"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFld3" then
 	for i = 1, 30 do
 		j = tostring(i+70)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandD3"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD3"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFldO1" then
 	if mioFld == nil then
@@ -602,24 +608,30 @@ if kodMsg[1] == "MioFldO1" then
 		j = tostring(i)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandDO1"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandDO1"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFldO2" then
 	for i = 1, 35 do
 		j = tostring(i+35)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandDO2"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandDO2"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFldO3" then
 	for i = 1, 30 do
 		j = tostring(i+70)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
 	end
-	testQ["fRandDO3"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandDO3"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "камни" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["kamen"] = tonumber(message)
@@ -659,8 +671,10 @@ if kodMsg[1] == "MioFldP1" then
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
 	end
-	testQ["fRandD1"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD1"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 
 if kodMsg[1] == "MioFldP2" then
@@ -672,8 +686,10 @@ if kodMsg[1] == "MioFldP2" then
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
 	end
-	testQ["fRandD2"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD2"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFldP3" then
 	for i = 1, 30 do
@@ -684,8 +700,10 @@ if kodMsg[1] == "MioFldP3" then
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
 	end
-	testQ["fRandD3"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD3"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFldH1" then
 	if mioFld == nil then
@@ -705,8 +723,10 @@ if kodMsg[1] == "MioFldH1" then
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
 	end
-	testQ["fRandD1"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD1"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 
 if kodMsg[1] == "MioFldH2" then
@@ -718,8 +738,10 @@ if kodMsg[1] == "MioFldH2" then
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
 	end
-	testQ["fRandD2"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD2"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "MioFldH3" then
 	for i = 1, 30 do
@@ -730,8 +752,10 @@ if kodMsg[1] == "MioFldH3" then
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
 	end
-	testQ["fRandD3"] = 1
-	testQ["fRandD1nome"] = sender
+	if kodMsg[2] == myNome then
+		testQ["fRandD3"] = 1
+		testQ["fRandD1nome"] = sender
+	end
 end
 if kodMsg[1] == "bB" then
 	if mioFld[message]["петы"] == nil then
