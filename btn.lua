@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=10
+versAdd=284;versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2756,6 +2756,8 @@ function resursy:configure(id)
 		end
 		if id == 5 then
 			GameTooltip:AddLine("|cff99ff99Валюта")
+			GameTooltip:AddLine("|cffFFCF40Иногда падает с квеста на шерсть и прочую ткань")
+			GameTooltip:AddLine("|cffFFCF40Можно купить на аукционе: |cff99ff99\"Обычное письмо\" |cffFFCF40от персонажа \"Хефе\"")
 		end
 		GameTooltip:Show()
 	end)
@@ -4279,6 +4281,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if FriendsFrame:IsVisible() then
+			if not gtg:IsVisible() then
+				gtg:Show()
+			end
+		else
+			if gtg:IsVisible() then
+				gtg:Hide()
+			end
+		end
 		--print(Minimap:GetPingPosition())
 		local nome
 		if testQ['sign'] ~= "1" then
@@ -4371,6 +4382,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			gtg:SetText("")
 			gtg:Enable()
 			testQ["gTimer"] = nil
+			gtg:Click()
 		end
 
 		if testQ["эвент3"] == 0 then
