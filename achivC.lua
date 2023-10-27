@@ -932,6 +932,9 @@ if kodMsg[1] == "oS" then
 	if mioFld[message]["петы"] == nil then
 		mioFld[message]["петы"] = {}
 	end
+	if mioFld[message]["объекты"] == nil then
+		mioFld[message]["объекты"] = {}
+	end
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
 	fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
 	if sender == myNome then
