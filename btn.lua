@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=5
+versAdd=284;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -79,14 +79,19 @@ function okNo:configure(id,sign)
 		end
 	end
 	self[1]:SetScript("OnClick",function(self, button)
-
+		local testBH = 0
+		local testBI = 0
+		for i = 1, 100 do
+			if mioFld[nome]["объекты"][tostring(i)] == "bh" then
+				testBH = "bh"
+			end
+			if mioFld[nome]["объекты"][tostring(i)] == "bi" then
+				testBI = "bi"
+			end
+		end
 		if testQ["okno"] == "itemQend" then
 			SendChatMessage("Я отправил Возждю все что нужно", "OFFICER", nil, 1)
-			if testQ[myNome]["hTimer"] ~= nil then
-				SendAddonMessage("#hQ1itemQ " .. testQ[myNome]["hTimer"], testQ[myNome]["взятый_квест_х"], "guild")
-			else
-				SendAddonMessage("#hQ1itemQ ", testQ[myNome]["взятый_квест_х"], "guild")
-			end
+			SendAddonMessage("#hQ1itemQ " .. testBH, testQ[myNome]["взятый_квест_х"], "guild")
 			hX()
 			testQ['sign'] = nil
 			testQ["okno"] = nil
@@ -121,7 +126,7 @@ function okNo:configure(id,sign)
 		end
 		if testQ["okno"] == "completed" then
 			SendChatMessage("ВОЖДЬ, я выполнил ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])), "OFFICER", nil, 1)
-			SendAddonMessage("#hQ1", testQ[myNome]["взятый_квест_х"], "guild")
+			SendAddonMessage("#hQ1 " .. testBI, testQ[myNome]["взятый_квест_х"], "guild")
 			testQ["okno"] = nil
 			hX()
 			testQ['sign'] = nil
