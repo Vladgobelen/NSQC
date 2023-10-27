@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=9
+versAdd=284;versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -82,10 +82,10 @@ function okNo:configure(id,sign)
 		local testBH = 0
 		local testBI = 0
 		for i = 1, 100 do
-			if mioFld[nome]["объекты"][tostring(i)] == "bh" then
+			if mioFld[myNome]["объекты"][tostring(i)] == "bh" then
 				testBH = "bh"
 			end
-			if mioFld[nome]["объекты"][tostring(i)] == "bi" then
+			if mioFld[myNome]["объекты"][tostring(i)] == "bi" then
 				testBI = "bi"
 			end
 		end
@@ -1675,9 +1675,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					else
 						dmgText(testQ["infTimer"],fBtn[id],888,13,"ff0000")
 					end
-				end
-				else
-
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "hs" then
 					resObj(id,myNome,nome)
