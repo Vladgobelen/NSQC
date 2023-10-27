@@ -13,6 +13,7 @@ lib\lib_table.lua
 libs\UTF8\utf8.lua
 libs\ch.tga
 libs\map.tga
+libs\smgb.tga
 libs\q.ogg
 libs\gob.ogg
 libs\gobXm.ogg

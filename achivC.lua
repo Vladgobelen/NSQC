@@ -432,11 +432,6 @@ if kodMsg[1] == "shMFld" and message == myNome then
 				mioFld[myNome]["объекты"][j] = "t"
 				mioFld[myNome]["целостность"][j] = 999
 				x = math.random(1,100)
-				if i ~= x then
-					mioFld[myNome]["подсказки"][j] = "Определенно это дерево..."
-				else
-					mioFld[myNome]["подсказки"][j] = "Хижина"
-				end
 				if mapTables == nil then
 					mapTables = {}
 				end
@@ -785,47 +780,6 @@ if kodMsg[1] == "MioFld" then
 	if mioFld[sender]["подсказки"] == nil then
 		mioFld[sender]["подсказки"] = {}
 	end
-	for i = 1, 100 do
-		j = tostring(i)
-		if mioFld[sender]["объекты"] ~= nil then
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "t" then
-				mioFld[sender]["подсказки"][j] = "Определенно это дерево.."
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "f" then
-				mioFld[sender]["подсказки"][j] = "Густая трава! Ну видно же!"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "m" then
-				mioFld[sender]["подсказки"][j] = "Каменоломня"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "z" then
-				mioFld[sender]["подсказки"][j] = "Чистая слегка рыхлая земля"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "zt" then
-				mioFld[sender]["подсказки"][j] = "Хорошо утрамбованная земля"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "h" then
-				mioFld[sender]["подсказки"][j] = "Хижина"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "uz" then
-				mioFld[sender]["подсказки"][j] = "Еще трамбовать и трамбовать"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "ms" then
-				mioFld[sender]["подсказки"][j] = "Дыра в земле"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "mx" then
-				mioFld[sender]["подсказки"][j] = "Полуразрушенная каменоломня"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "hs" then
-				mioFld[sender]["подсказки"][j] = "Стройка"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "za" then
-				mioFld[sender]["подсказки"][j] = "Бетонный завод>"
-			end
-			if mioFld[sender]["объекты"][j] ~= nil and mioFld[sender]["объекты"][j] == "zs" then
-				mioFld[sender]["подсказки"][j] = "Бетонный завод>"
-			end
-		end
-	end
 	testQ["fRand2"] = kodMsg[4]
 	testQ["fRand2name"] = kodMsg[2]
 end
@@ -867,7 +821,6 @@ if kodMsg[1] == "travA" then
 				mioFld[message]["подсказки"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Густая трава. Ну видно же!"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -881,7 +834,6 @@ if kodMsg[1] == "tree" then
 				mioFld[message]["подсказки"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Определенно это дерево..."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -934,7 +886,6 @@ if kodMsg[1] == "zemlYa" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Чистая слегка рыхлая земля.."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -946,7 +897,6 @@ if kodMsg[1] == "TopTop" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Несколько следов на рыхлой земле"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -957,7 +907,6 @@ if kodMsg[1] == "za" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zs"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -968,7 +917,6 @@ if kodMsg[1] == "KopKop" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Дыра в земле"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -985,7 +933,6 @@ if kodMsg[1] == "hS" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "hs"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1002,7 +949,6 @@ if kodMsg[1] == "tC" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "tc"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 400
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1019,7 +965,6 @@ if kodMsg[1] == "skS" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "skc"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1036,7 +981,6 @@ if kodMsg[1] == "bN" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bn"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный фундамент"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1053,7 +997,6 @@ if kodMsg[1] == "aS" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "as"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1070,7 +1013,6 @@ if kodMsg[1] == "bS" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bs"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1087,7 +1029,6 @@ if kodMsg[1] == "bH" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bx"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1104,7 +1045,6 @@ if kodMsg[1] == "tO" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "bc"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1121,7 +1061,6 @@ if kodMsg[1] == "aS" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "as"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1138,7 +1077,6 @@ if kodMsg[1] == "skc" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "skc"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1155,7 +1093,6 @@ if kodMsg[1] == "sbS" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "sb"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Склад бревен"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1173,7 +1110,6 @@ if kodMsg[1] == "sX" then
 					mioFld[message]["целостность"] = {}
 				end
 				mioFld[message]["объекты"][tostring(kodMsg[2])] = "sx"
-				mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 				mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 				testQ["fRand4"] = 1
 				testQ["fRand4Nome"] = message
@@ -1194,7 +1130,6 @@ if kodMsg[1] == "tsX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "tc"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Стройка"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1214,7 +1149,6 @@ if kodMsg[1] == "sXX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Рыхлая земля и много много мусора..."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1234,7 +1168,6 @@ if kodMsg[1] == "tcX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Рыхлая земля и много много мусора..."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1254,7 +1187,6 @@ if kodMsg[1] == "skcX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1271,7 +1203,6 @@ if kodMsg[1] == "bX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Здесь копали?"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1288,7 +1219,6 @@ if kodMsg[1] == "sbX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1305,7 +1235,6 @@ if kodMsg[1] == "uZ" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1322,7 +1251,6 @@ if kodMsg[1] == "mS" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1339,7 +1267,6 @@ if kodMsg[1] == "mX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1356,7 +1283,6 @@ if kodMsg[1] == "gobXm" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный каменный рудник"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1409,7 +1335,6 @@ if kodMsg[1] == "zX" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zx"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Полуразрушенный бетонный завод"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 19999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1426,7 +1351,6 @@ if kodMsg[1] == "zXx" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1443,7 +1367,6 @@ if kodMsg[1] == "zSx" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zt"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хорошо утрамбованная земля"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1468,7 +1391,6 @@ if kodMsg[1] == "mXx" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
-			mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Чистая слегка рыхлая земля.."
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1524,33 +1446,26 @@ if kodMsg[1] == "resObj" then
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "mx" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "uz" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Дыра в земле"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ms" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Каменоломня"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="t" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Определенно это дерево.."
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="f" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Это трава! Ну видно же!!!"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="skc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "sk"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Склад камня"
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 4999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ts"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Товарный склад"
 						if fBtn[1]:IsVisible() then
 							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
 						end
@@ -1559,7 +1474,6 @@ if kodMsg[1] == "resObj" then
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 9999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="hs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Хижина"
 						if fBtn[1]:IsVisible() then
 							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
 						end
@@ -1568,7 +1482,6 @@ if kodMsg[1] == "resObj" then
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
 						if fBtn[1]:IsVisible() then
 							--fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("")
 						end
@@ -1577,31 +1490,25 @@ if kodMsg[1] == "resObj" then
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zx" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бетонный завод"
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 29999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="sx" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "s"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Сельсовет"
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 14999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ar"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Архив"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "bi"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Библиотека"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "to"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Логистический отдел"
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "bh"
-						mioFld[message]["подсказки"][tostring(kodMsg[2])] = "Бухгалтерия"
 					end
 				end
 				testQ["fRand5"] = 1

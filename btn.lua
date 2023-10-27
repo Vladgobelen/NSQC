@@ -1,4 +1,4 @@
-versAdd=283;versAddDop=14
+versAdd=283;versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2368,45 +2368,33 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome]["объекты"][tostring(id)] == "za" and tonumber(testQ["kamen"]) >= 1 then
 					GameTooltip:AddLine("Потребление: 1-5 камня за попытку")
 				end
-				if mioFld[nome]["подсказки"] ~= nil then
-					if mioFld[nome]["подсказки"][tostring(id)] ~= nil then
-						GameTooltip:AddLine(mioFld[nome]["подсказки"][tostring(id)])
-					end
-				end
-				if mioFld[nome]["влияние"] ~= nil then
-					if mioFld[nome]["влияние"][tostring(id)] ~= nil then
-						local skryt = mysplit(mioFld[nome]["влияние"][tostring(id)])
-						if skryt[2] ~= nil then
-							if tonumber(skryt[2]) <= testQ[myNome]["характеристики"]["внимательность"] then
-								GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
-							end
-						else
-							GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
-						end
-					end
-				end
 				if mioFld[nome]["объекты"][tostring(id)] == "m" then
 					GameTooltip:AddLine("клик ЛКМ: добывать камень")
 					GameTooltip:AddLine("клик ПКМ: сломать рудник")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "f" then
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 100 then
+						GameTooltip:AddLine("Густая трава. Ну видно же!")
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 1%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 200 then
+						GameTooltip:AddLine("Густая трава. Ну видно же!")
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 5%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 500 then
+						GameTooltip:AddLine("Густая трава. Ну видно же!")
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 10%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 900 then
+						GameTooltip:AddLine("Густая трава. Ну видно же!")
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 50%")
 					end
 					if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 900 then
+						GameTooltip:AddLine("Густая трава. Ну видно же!")
 						GameTooltip:AddLine("клик ПКМ: добывать траву")
 						GameTooltip:AddLine("шанс получить траву: 90%")
 					end
@@ -2419,8 +2407,38 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:ClearLines()
 					GameTooltip:AddLine("Вы что, не видите?! У нас обед!!!")
 				end
-				if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+				if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
+					GameTooltip:AddLine("Бетонный фундамент под здание")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+					GameTooltip:AddLine("Только что залитый сырой бетонный фундамент, а что если тыкнуть в него..мм.. пальцем?")
 					GameTooltip:AddLine("|cffff2b2bКаждая попытка мародерства: минус рандомный ресурс")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "z" then
+					GameTooltip:AddLine("Слегка рыхлая сырая земля..ее что, копали?")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "t" then
+					GameTooltip:AddLine("Определенно это дерево... Может у него спросить чего?")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "sb" then
+					GameTooltip:AddLine("Кладбище невинно убиенных деревьев, огороженное их трупами. Иначе: склад бревен.")
+					GameTooltip:AddLine("Каждый склад расширяет хранилище бревен на 100")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "sk" then
+					GameTooltip:AddLine("Склад камней. Или правильно - сад камней? Хм..")
+					GameTooltip:AddLine("Каждый склад расширяет хранилище камней на 100")
+				end
+				if mioFld[nome]["влияние"] ~= nil then
+					if mioFld[nome]["влияние"][tostring(id)] ~= nil then
+						local skryt = mysplit(mioFld[nome]["влияние"][tostring(id)])
+						if skryt[2] ~= nil then
+							if tonumber(skryt[2]) <= testQ[myNome]["характеристики"]["внимательность"] then
+								GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
+							end
+						else
+							GameTooltip:AddLine("Следы: " .. mioFld[nome]["влияние"][tostring(id)])
+						end
+					end
 				end
 			end
 		end
@@ -2469,7 +2487,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".tga")
+		if fBtn[id] ~= nil then
+			fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".tga")
+		end
 	end)
 end
 
