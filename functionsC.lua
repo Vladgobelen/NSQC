@@ -1190,7 +1190,7 @@ function treeX(nome,myNome,id)
 					end
 				end
 				--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-				testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.1
+				testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 			else
 				if nome == myNome then
 					mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
@@ -1367,6 +1367,7 @@ function resObj(id,myNome,nome)
 						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
 								if mioFld[myNome]["объекты"][tostring(id)] == "f" then
 									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
@@ -1377,6 +1378,7 @@ function resObj(id,myNome,nome)
 						if mioFld[myNome]["объекты"][tostring(id)] == "hs" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
 								mioFld[myNome]["целостность"][tostring(id)] = 9999
 							end
@@ -1384,6 +1386,7 @@ function resObj(id,myNome,nome)
 						if mioFld[myNome]["объекты"][tostring(id)] == "as" or mioFld[myNome]["объекты"][tostring(id)] == "bc" or mioFld[myNome]["объекты"][tostring(id)] == "bs" or mioFld[myNome]["объекты"][tostring(id)] == "bx" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 14999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
 								mioFld[myNome]["целостность"][tostring(id)] = 14999
 							end
@@ -1391,6 +1394,7 @@ function resObj(id,myNome,nome)
 						if mioFld[myNome]["объекты"][tostring(id)] == "zs" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
 								mioFld[myNome]["целостность"][tostring(id)] = 19999
 							end
@@ -1398,6 +1402,7 @@ function resObj(id,myNome,nome)
 						if 	mioFld[myNome]["объекты"][tostring(id)] == "tc" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 4999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
 								mioFld[myNome]["целостность"][tostring(id)] = 4999
 							end
@@ -1405,6 +1410,7 @@ function resObj(id,myNome,nome)
 						if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
 								mioFld[myNome]["целостность"][tostring(id)] = 19999
 							end
@@ -1412,6 +1418,7 @@ function resObj(id,myNome,nome)
 						if 	mioFld[myNome]["объекты"][tostring(id)] == "sx" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
 							else
 								mioFld[myNome]["целостность"][tostring(id)] = 29999
 							end

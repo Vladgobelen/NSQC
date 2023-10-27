@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=4
+versAdd=284;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2723,19 +2723,19 @@ function resursy:configure(id)
 	self[id]:SetScript("OnEnter",function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if id == 1 then
-			GameTooltip:AddLine("|c0099ff99Бревна")
+			GameTooltip:AddLine("|cff99ff99Бревна")
 		end
 		if id == 2 then
-			GameTooltip:AddLine("|c0099ff99Трава")
+			GameTooltip:AddLine("|cff99ff99Трава")
 		end
 		if id == 3 then
-			GameTooltip:AddLine("|c0099ff99Камень")
+			GameTooltip:AddLine("|cff99ff99Камень")
 		end
 		if id == 4 then
-			GameTooltip:AddLine("|c0099ff99Бетон")
+			GameTooltip:AddLine("|cff99ff99Бетон")
 		end
 		if id == 5 then
-			GameTooltip:AddLine("|c0099ff99Валюта")
+			GameTooltip:AddLine("|cff99ff99Валюта")
 		end
 		GameTooltip:Show()
 	end)
@@ -3189,7 +3189,7 @@ btn[994]:SetScript("OnEnter",function(self)
 				editB[1]:SetText(zametka)
 			end
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|c006495ED" .. zametka)
+			GameTooltip:AddLine("|cff6495ED" .. zametka)
 			GameTooltip:Show()
 		end
 	end
@@ -3224,7 +3224,7 @@ btn[992]:SetScript("OnEnter",function(self)
 			zametka = "Отзывы об игроке. Заполняются кем угодно, видит кто угодно. Пока отзывов об этом персонаже нет."
 		end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-		GameTooltip:AddLine("|c0099ff99" .. zametka)
+		GameTooltip:AddLine("|cff99ff99" .. zametka)
 		GameTooltip:Show()
 	end
 end)
@@ -3235,7 +3235,7 @@ btn[989]:SetScript("OnEnter",function(self)
 	btn[992]:Show()
 	btn[989]:Show()
 	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-	GameTooltip:AddLine("|c0099ff99Бонусы")
+	GameTooltip:AddLine("|cff99ff99Бонусы")
 	GameTooltip:Show()
 end)
 
@@ -3255,7 +3255,7 @@ btn[993]:SetScript("OnEnter",function(self)
 			editB[2]:SetText(zametka)
 		end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-		GameTooltip:AddLine("|c00F4A460" .. zametka)
+		GameTooltip:AddLine("|cffF4A460" .. zametka)
 		GameTooltip:Show()
 	end
 end)
@@ -3365,13 +3365,13 @@ end)
 
 btn[3]:SetScript("OnEnter",function(self)
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-	GameTooltip:AddLine("|c006495EDБонусный квест. Доступен всегда.")
-	GameTooltip:AddLine("|c00FFFFE0Каждые 30 принятых игроков принесут 3 опыта и кусок карты")
-	GameTooltip:AddLine("|c00FFFFE0По пометкам на карте можно найти клад: в кладе Механоцикл")
-	GameTooltip:AddLine("|c00F4A460Нажми \"Щ\". Затем выбери внизу вкладку \"Кто\"")
-	GameTooltip:AddLine("|c00F4A460В строке поиска снизу напиши диапазон лвлов (лучше всего по 5: 1-5, 6-10 итд)")
-	GameTooltip:AddLine("|c00F4A460Затем выбирай ники без гильдии и пиши в чате: |cff99ff99/ginvite ник")
-	GameTooltip:AddLine("|c00FFFFE0Для удобства команду |cff99ff99/ginvite |c00FFFFE0лучше скопировать в буфер обмена")
+	GameTooltip:AddLine("|cff6495EDБонусный квест. Доступен всегда.")
+	GameTooltip:AddLine("|cffFFFFE0Каждые 30 принятых игроков принесут 3 опыта и кусок карты")
+	GameTooltip:AddLine("|cffFFFFE0По пометкам на карте можно найти клад: в кладе Механоцикл")
+	GameTooltip:AddLine("|cffF4A460Нажми \"Щ\". Затем выбери внизу вкладку \"Кто\"")
+	GameTooltip:AddLine("|cffF4A460В строке поиска снизу напиши диапазон лвлов (лучше всего по 5: 1-5, 6-10 итд)")
+	GameTooltip:AddLine("|cffF4A460Затем выбирай ники без гильдии и пиши в чате: |cff99ff99/ginvite ник")
+	GameTooltip:AddLine("|cffFFFFE0Для удобства команду |cff99ff99/ginvite |cffFFFFE0лучше скопировать в буфер обмена")
 	GameTooltip:Show()
 end)
 btn[3]:SetScript("OnLeave", function(self)
