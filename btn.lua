@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=3
+versAdd=284;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2366,10 +2366,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("Нужно больше камня")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "za" and tonumber(testQ["kamen"]) >= 1 then
+					GameTooltip:AddLine("|cFF6495EDБетонный завод")
+					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("Потребление: 1-5 камня за попытку")
+					GameTooltip:AddLine("|cff99ff99Держать ЛКМ: |cffFFCF40добывать бетон")
+					GameTooltip:AddLine("|cff99ff99Не держать ЛКМ: |cffFFCF40не добывать добывать бетон. Хм, что логично..")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "m" then
-					GameTooltip:AddLine("Каменьломня. Тут можно добывать камень.")
+					GameTooltip:AddLine("|cFF6495EDКаменоломня")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Тут можно добывать камень.")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40добывать камень |cff99ff99(шансы: 1 из 500 кликов)")
 					GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40сломать рудник")
 				end
@@ -2401,12 +2407,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					end
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
+					GameTooltip:AddLine("|cFF6495EDТоварный склад")
+					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("|cffff2b2bЛКМ: Отказаться от стандартной награды за лвлап и получить рандомные ресурсы")
 					GameTooltip:AddLine("|cff99ff99ПКМ: |cffFFCF40сломать склад")
 					GameTooltip:AddLine("|cff99ff99Шанс получить пета")
 				end
 				if testQ[myNome]["hTimer"] ~= nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
 					GameTooltip:ClearLines()
+					GameTooltip:AddLine("|cFF6495EDСельсовет")
+					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("|cffff2b2bВы что, не видите?! У нас обед!!!")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40получить квест")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
@@ -2421,6 +2431,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 				if testQ[myNome]["hTimer"] == nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
 					GameTooltip:ClearLines()
+					GameTooltip:AddLine("|cFF6495EDСельсовет")
+					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40получить квест")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 					GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - квест на эмоции")
@@ -2447,29 +2459,41 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Рубить дерево")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "sb" then
-					GameTooltip:AddLine("Кладбище невинно убиенных деревьев, огороженное их трупами. Иначе: склад бревен.")
+					GameTooltip:AddLine("|cFF6495EDСклад бревен")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Кладбище невинно убиенных деревьев, огороженное их трупами.")
 					GameTooltip:AddLine("Каждый склад расширяет хранилище бревен на |cff99ff99100")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "sk" then
-					GameTooltip:AddLine("Склад камней. Или правильно - сад камней? Хм..")
+					GameTooltip:AddLine("|cFF6495EDСклад камней")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Склад камней или правильно - сад камней? Хм..")
 					GameTooltip:AddLine("Каждый склад расширяет хранилище камней на |cff99ff99100")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "ar" then
-					GameTooltip:AddLine("Архив. Тут можно узнать многие тайны..или не узнать.")
+					GameTooltip:AddLine("|cFF6495EDАрхив")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Тут можно узнать многие тайны..или не узнать.")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Узнать свой прогресс")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "bi" then
-					GameTooltip:AddLine("|cffFFCF40Библиотека: плюс |cff99ff99единица опыта|cffFFCF40 к квестам в хижине")
+					GameTooltip:AddLine("|cFF6495EDБиблиотека")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("|cffFFCF40Плюс |cff99ff99единица опыта|cffFFCF40 к квестам в хижине")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Здесь нельзя шуметь!")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "to" then
-					GameTooltip:AddLine("|cffFFCF40Логистический отдел: ускоряет таймер вдвое! И это как минимум! Мы очень быстрые...")
+					GameTooltip:AddLine("|cFF6495EDОтдел логистики")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("|cffFFCF40Ускоряет таймер вдвое! И это как минимум! Мы очень быстрые...")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "bh" then
-					GameTooltip:AddLine("Бухгалтерия. Если существует (но сомневается в этом, как и все мы), квесты на шерсть и прочие товары принесут |cff99ff99единицу опыта.")
+					GameTooltip:AddLine("|cFF6495EDБухгалтерия")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Если существует (но сомневается в этом, как и все мы), квесты на шерсть и прочие товары принесут |cff99ff99единицу опыта.")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Кликать бесполезно")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40Разрушить")
 				end
@@ -2488,6 +2512,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40все портить")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "h" then
+					GameTooltip:AddLine("|cFF6495EDХижина")
+					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("Хижина, дом, бла бла. Тут можно получить квест.")
 					GameTooltip:AddLine("Я серьезно: |cff99ff99ЛКМ: " .. "|cffFFCF40получить квест")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
