@@ -1,4 +1,4 @@
-versAdd=285;versAddDop=1
+versAdd=285;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1569,10 +1569,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								end
 							end
 							if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
-								local qq=math.random(1,#pQuest["items"])
-								testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
-								testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
-								testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
+								local qq
+									while true do
+										qq=math.random(1,#pQuest["items"])
+										if tostring(pQuest["items"][qq]["itemName"]) == "Шерсть" then
+											testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
+											testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
+											testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
+											break
+										end
+									end
 								testQ["okno"] = "itemQ"
 								testQ["itemQVzyat"] = 1
 								quesT("show")
