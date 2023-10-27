@@ -1,4 +1,4 @@
-versAdd=284;versAddDop=7
+versAdd=284;versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4282,8 +4282,20 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ["infTimer"] ~= nil then
 			testQ["infTimer"] = tonumber(testQ["infTimer"])-1
 			dmgText(testQ["infTimer"],fBtn[id],888,13,"ff0000")
+			if fBtn[1]:IsVisible() then
+				if dmG[888]	~= nil then
+					dmG[888]:Show()
+				end
+			else
+				if dmG[888]	~= nil then
+					dmG[888]:Hide()
+				end
+			end
 			if tonumber(testQ["infTimer"]) <= 0 then
 				testQ["infTimer"] = nil
+				if dmG[888]	~= nil then
+					dmG[888]:Hide()
+				end
 			end
 		end
 		for i = 1,100 do
