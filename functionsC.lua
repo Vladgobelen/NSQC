@@ -1781,22 +1781,6 @@ function hX()
 	btn[989]:Hide()
 	btn[989]:ClearAllPoints()
 	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-	testQ["fRand2"] = nil
-	testQ["fRand1"] = nil
-	testQ["fRand2name"] = nil
-	testQ["fRandDbnome"] = nil
-	testQ["fRandDb"] = nil
-	testQ["fRandD1nome"] = nil
-	testQ["fRandD1"] = nil
-	testQ["fRandD2"] = nil
-	testQ["fRandD3"] = nil
-	testQ["fRand3Nome"] = nil
-	testQ["fRand3"] = nil
-	testQ["fRand4Nome"] = nil
-	testQ["fRand4"] = nil
-	testQ["fRand5Nome"] = nil
-	testQ["fRand5"] = nil
-	testQ["fRand6"] = nil
 end
 
 function showFld(sign,myNome)
@@ -1925,22 +1909,7 @@ function showFld(sign,myNome)
 				FriendsFrame:Show()
 			end
 			testQ['sign'] = nil
-			testQ["fRand2"] = nil
-			testQ["fRand1"] = nil
-			testQ["fRand2name"] = nil
-			testQ["fRandDbnome"] = nil
-			testQ["fRandDb"] = nil
 			testQ["fRandD1nome"] = nil
-			testQ["fRandD1"] = nil
-			testQ["fRandD2"] = nil
-			testQ["fRandD3"] = nil
-			testQ["fRand3Nome"] = nil
-			testQ["fRand3"] = nil
-			testQ["fRand4Nome"] = nil
-			testQ["fRand4"] = nil
-			testQ["fRand5Nome"] = nil
-			testQ["fRand5"] = nil
-			testQ["fRand6"] = nil
 		end
 	else
 		for i=1,100 do
@@ -1971,22 +1940,6 @@ function showFld(sign,myNome)
 			FriendsFrame:Show()
 		end
 		testQ['sign'] = nil
-		testQ["fRand2"] = nil
-		testQ["fRand1"] = nil
-		testQ["fRand2name"] = nil
-		testQ["fRandDbnome"] = nil
-		testQ["fRandDb"] = nil
-		testQ["fRandD1nome"] = nil
-		testQ["fRandD1"] = nil
-		testQ["fRandD2"] = nil
-		testQ["fRandD3"] = nil
-		testQ["fRand3Nome"] = nil
-		testQ["fRand3"] = nil
-		testQ["fRand4Nome"] = nil
-		testQ["fRand4"] = nil
-		testQ["fRand5Nome"] = nil
-		testQ["fRand5"] = nil
-		testQ["fRand6"] = nil
 	end
 end
 function qLvl33c()
