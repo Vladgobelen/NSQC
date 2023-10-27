@@ -991,7 +991,7 @@ function versFail(num)
 	end
 	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
 	VerF:SetBackdropColor(0, 103, 51, 1)
-	VerF:SetFont('Fonts\\FRIZQT__.TTF', num);
+	VerF:SetFont('Fonts\\FRIZQT__.TTF', num+10);
 	VerF:SetText("<html><body><p>|cffff0000ОБНОВИ АДДОН</p></body></html>");
 end
 

@@ -1,4 +1,4 @@
-versAdd=283;versAddDop=13
+versAdd=283;versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4428,10 +4428,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					versFail(testQ["fontVers"])
 					btn[990]:SetPoint("CENTER", VerF, "CENTER", -400, 470)
 					btn[990]:Show()
+					VerF:Show()
 				end
 				if VerF ~= nil and VerF:IsVisible() then
 					if testQ["VerF"] ~= nil and testQ["VerF"] ~= 600 then
 						testQ["VerF"] = testQ["VerF"] - 1
+						VerF:Show()
 						VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
 						VerF:SetFont('Fonts\\FRIZQT__.TTF', testQ["fontVers"])
 					end
