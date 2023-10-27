@@ -2015,7 +2015,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
 						else
-							testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",tonumber(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2029,7 +2029,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][30]
 						else
-							testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["dTimer"][30])/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",tonumber(testQ[myNome]["dTimer"][30])/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2055,7 +2055,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2069,7 +2069,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2095,7 +2095,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2109,7 +2109,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2135,7 +2135,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2149,7 +2149,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2175,7 +2175,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2189,7 +2189,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2215,7 +2215,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2229,7 +2229,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2255,7 +2255,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
 						end
 					else
 						if testTO ~= "to" then
@@ -2269,7 +2269,7 @@ function htimer(myNome)
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
 						else
-							testQ[myNome]["hTimer"] = (tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
 						end
 					else
 						if testTO ~= "to" then

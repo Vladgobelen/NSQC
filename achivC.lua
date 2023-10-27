@@ -276,6 +276,21 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 		if pQuest["items"][5] == nil then
 			pQuest["items"][5] = {}
 		end
+		if pQuest["items"][6] == nil then
+			pQuest["items"][6] = {}
+		end
+		if pQuest["items"][7] == nil then
+			pQuest["items"][7] = {}
+		end
+		if pQuest["items"][8] == nil then
+			pQuest["items"][8] = {}
+		end
+		if pQuest["items"][9] == nil then
+			pQuest["items"][9] = {}
+		end
+		if pQuest["items"][10] == nil then
+			pQuest["items"][10] = {}
+		end
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
@@ -291,6 +306,21 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 		pQuest["items"][5]["itemNum"] = "5"
 		pQuest["items"][5]["itemEnStuck"] = "100"
 		pQuest["items"][5]["itemName"] = "Шерсть"
+		pQuest["items"][6]["itemNum"] = "1"
+		pQuest["items"][6]["itemEnStuck"] = "100"
+		pQuest["items"][6]["itemName"] = "Магическая ткань"
+		pQuest["items"][7]["itemNum"] = "2"
+		pQuest["items"][7]["itemEnStuck"] = "100"
+		pQuest["items"][7]["itemName"] = "Магическая ткань"
+		pQuest["items"][8]["itemNum"] = "3"
+		pQuest["items"][8]["itemEnStuck"] = "100"
+		pQuest["items"][8]["itemName"] = "Магическая ткань"
+		pQuest["items"][9]["itemNum"] = "4"
+		pQuest["items"][9]["itemEnStuck"] = "100"
+		pQuest["items"][9]["itemName"] = "Магическая ткань"
+		pQuest["items"][10]["itemNum"] = "5"
+		pQuest["items"][10]["itemEnStuck"] = "100"
+		pQuest["items"][10]["itemName"] = "Магическая ткань"
 		if mapTables["lokRasstoyanie"]["1"] == nil then
 			mapTables["lokRasstoyanie"]["1"] = {}
 		end
@@ -553,6 +583,21 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 		if pQuest["items"][5] == nil then
 			pQuest["items"][5] = {}
 		end
+		if pQuest["items"][6] == nil then
+			pQuest["items"][6] = {}
+		end
+		if pQuest["items"][7] == nil then
+			pQuest["items"][7] = {}
+		end
+		if pQuest["items"][8] == nil then
+			pQuest["items"][8] = {}
+		end
+		if pQuest["items"][9] == nil then
+			pQuest["items"][9] = {}
+		end
+		if pQuest["items"][10] == nil then
+			pQuest["items"][10] = {}
+		end
 		pQuest["items"][1]["itemNum"] = "2"
 		pQuest["items"][1]["itemEnStuck"] = "100"
 		pQuest["items"][1]["itemName"] = "Шерсть"
@@ -568,6 +613,21 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 		pQuest["items"][5]["itemNum"] = "5"
 		pQuest["items"][5]["itemEnStuck"] = "100"
 		pQuest["items"][5]["itemName"] = "Шерсть"
+		pQuest["items"][6]["itemNum"] = "1"
+		pQuest["items"][6]["itemEnStuck"] = "100"
+		pQuest["items"][6]["itemName"] = "Магическая ткань"
+		pQuest["items"][7]["itemNum"] = "2"
+		pQuest["items"][7]["itemEnStuck"] = "100"
+		pQuest["items"][7]["itemName"] = "Магическая ткань"
+		pQuest["items"][8]["itemNum"] = "3"
+		pQuest["items"][8]["itemEnStuck"] = "100"
+		pQuest["items"][8]["itemName"] = "Магическая ткань"
+		pQuest["items"][9]["itemNum"] = "4"
+		pQuest["items"][9]["itemEnStuck"] = "100"
+		pQuest["items"][9]["itemName"] = "Магическая ткань"
+		pQuest["items"][10]["itemNum"] = "5"
+		pQuest["items"][10]["itemEnStuck"] = "100"
+		pQuest["items"][10]["itemName"] = "Магическая ткань"
 		if pQuest["items"][1] == nil then
 			pQuest["items"][1] = {}
 		end
