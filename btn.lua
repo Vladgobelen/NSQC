@@ -1,4 +1,4 @@
-versAdd=285;versAddDop=2
+versAdd=285;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6296,7 +6296,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			myCheckButton1:SetScript("OnKeyDown",function(self,key)
 				if GetBindingFromClick(key)=="TOGGLEGAMEMENU" then
 				for ii=1,15 do
-					btn[ii]:Hide();
+					if btn[ii] ~= nil then
+						btn[ii]:Hide();
+					end
 				end
 				showRB(myNome)
 				myCheckButton1:Hide()
