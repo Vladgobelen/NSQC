@@ -1,4 +1,4 @@
-versAdd=286;versAddDop=0
+versAdd=286;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1382,7 +1382,17 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
 					if nome == myNome then
 						if testQ["vyborNagrady"] == 1 then
-							SendAddonMessage("vyborNagrady", testQ["mioFldLvl"], "guild")
+							if testQ["infTimer"] == nil then
+								if nome == myNome then
+									testQ["infTimer"] = 60
+									dmgText(testQ["infTimer"],fBtn[id],888,13,"ff0000")
+									SendAddonMessage("vyborNagrady", testQ["mioFldLvl"], "guild")
+								else
+									SendChatMessage("Дорогой дневник, сегодня я пытался украсть награду " .. nome .. " за лвлап. Не получилось...", "OFFICER", nil, 1)
+								end
+							else
+								dmgText(testQ["infTimer"],fBtn[id],888,13,"ff0000")
+							end
 						end
 					else
 						SendChatMessage("Дорогой дневник, сегодня я пытался украсть награду " .. nome .. " за лвлап. Не получилось...", "OFFICER", nil, 1)
@@ -1417,8 +1427,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1433,8 +1450,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1452,8 +1476,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											fBtn[i]:Hide()
 										end
 										for i = 1, 100 do
-											if resursy[i] ~= nil then
-												resursy[i]:Hide()
+											if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+												if resursy[i] ~= nil then
+													if i == 5 then
+														if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+														end
+													else
+														resursy[i]:Hide()
+													end
+												end
 											end
 										end
 										btn[989]:Hide()
@@ -1468,8 +1499,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											fBtn[i]:Hide()
 										end
 										for i = 1, 100 do
-											if resursy[i] ~= nil then
-												resursy[i]:Hide()
+											if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+												if resursy[i] ~= nil then
+													if i == 5 then
+														if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+														end
+													else
+														resursy[i]:Hide()
+													end
+												end
 											end
 										end
 										btn[989]:Hide()
@@ -1496,8 +1534,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1519,8 +1564,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									fBtn[i]:Hide()
 								end
 								for i = 1, 100 do
-									if resursy[i] ~= nil then
-										resursy[i]:Hide()
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
 									end
 								end
 								btn[989]:Hide()
@@ -1543,8 +1595,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1559,8 +1618,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1588,8 +1654,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									fBtn[i]:Hide()
 								end
 								for i = 1, 100 do
-									if resursy[i] ~= nil then
-										resursy[i]:Hide()
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
 									end
 								end
 								btn[989]:Hide()
@@ -1622,8 +1695,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1638,8 +1718,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1674,8 +1761,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 												fBtn[i]:Hide()
 											end
 											for i = 1, 100 do
-												if resursy[i] ~= nil then
-													resursy[i]:Hide()
+												if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+													if resursy[i] ~= nil then
+														if i == 5 then
+															if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+															end
+														else
+															resursy[i]:Hide()
+														end
+													end
 												end
 											end
 											btn[989]:Hide()
@@ -1697,8 +1791,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -1713,8 +1814,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
-										if resursy[i] ~= nil then
-											resursy[i]:Hide()
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
 										end
 									end
 									btn[989]:Hide()
@@ -2827,8 +2935,27 @@ function resursy:configure(id)
 			GameTooltip:AddLine("|cff99ff99Валюта")
 			GameTooltip:AddLine("|cffFFCF40Иногда падает с квеста на шерсть и прочую ткань")
 			GameTooltip:AddLine("|cffFFCF40Можно купить на аукционе: |cff99ff99\"Обычное письмо\" |cffFFCF40от персонажа \"Хефе\"")
+			GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40Открыть/Закрыть магазин")
 		end
 		GameTooltip:Show()
+	end)
+	self[id]:SetScript("OnClick",function(self)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+		if id == 5 then
+			if testQ["magSign"] == nil then
+				magazin("show")
+				testQ["magSign"] = 1
+				for i = 1, 100 do
+					fBtn[i]:Hide()
+				end
+			else
+				magazin("hide")
+				testQ["magSign"] = nil
+				for i = 1, 100 do
+					fBtn[i]:Show()
+				end
+			end
+		end
 	end)
 end
 resursy:configure(1)
@@ -4920,7 +5047,27 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
-
+		if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+			if resursy[5] ~= nil then
+				resursy[5]:Show()
+			end
+			if mgznZ ~= nil then
+				dmgText1(testQ["smg"],mgznZ,105,22,"FF8C00")
+				if dmG1[1005] ~= nil then
+					dmG1[1005]:SetFrameStrata("TOOLTIP")
+					mgznZ:SetFrameStrata("LOW")
+					dmG1[1005]:SetFont('Fonts\\FRIZQT__.TTF', 11,"OUTLINE", "MONOCHROME")
+				end
+				mgznZ:Show()
+			end
+		else
+			if mgznZ ~= nil then
+				mgznZ:Hide()
+			end
+		end
+		if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+			testQ["magSign"] = nil
+		end
 		if MailFrame:IsVisible() and not SendMailFrame:IsVisible() then
 			if not btn[988]:IsVisible() then
 				btn[988]:Show()
@@ -5075,9 +5222,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		else
 			for i = 1, 100 do
-				if resursy[i] ~= nil then
-					if resursy[i]:IsVisible() then
-						resursy[i]:Hide()
+				if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+					if resursy[i] ~= nil then
+						if i == 5 then
+							if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+								resursy[i]:Show()
+							end
+						else
+							resursy[i]:Hide()
+						end
 					end
 				end
 			end
@@ -5088,9 +5241,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				fBtn[i]:Hide()
 			end
 			for i = 1, 100 do
-				if resursy[i] ~= nil then
-					if resursy[i]:IsVisible() then
-						resursy[i]:Hide()
+				if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+					if resursy[i] ~= nil then
+						if i == 5 then
+							if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+								resursy[i]:Show()
+							end
+						else
+							resursy[i]:Hide()
+						end
 					end
 				end
 			end

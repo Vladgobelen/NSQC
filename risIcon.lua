@@ -38,9 +38,6 @@ function chMuestro(iCh,X0,Y0)
 	iconCh[iCh]:SetFrameStrata("TOOLTIP")
 	iconChText[iCh]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", X0, Y0)
 end
-function mgznIcon:configure()
-	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
-end
 function iconQ:configure()
 	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
 	self[1]:SetSize(512, 396)
@@ -51,11 +48,81 @@ function iconQText:configure()
 	self[1]:SetSize(512, 396)
 	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
 end
-
+function mgznIcon:configure()
+	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	self[1]:SetSize(768, 512)
+end
 function mgznText:configure()
 	self[1] = mgznIcon[1]:CreateTexture("myAddonIcon", "OVERLAY")
 	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\quest.tga")
 	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
+	self[1]:SetSize(768, 700)
+end
+function magazin(sign)
+	GameTooltip:Hide()
+	if sign == "show" then
+		if mgznIcon[1] == nil then
+			mgznIcon:configure()
+			mgznText:configure()
+			mgznIcon[1]:SetFrameStrata("FULLSCREEN_DIALOG")
+			mgznText[1]:SetPoint("CENTER", UIParent,"CENTER",-80,48)
+			if mgznZ == nil then
+				mgznZ = CreateFrame("Button", nil, UIParent, "");
+				mgznZ:SetFrameStrata("TOOLTIP")
+				mgznZ:SetPoint("BOTTOMLEFT", resursy[5],"BOTTOMLEFT",0, 0)
+				mgznZ:SetSize(64, 64)
+				mgznZ:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				mgznZ:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				mgznZ:SetFrameStrata("LOW")
+				mgznZ:SetScript("OnEnter",function(self)
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+					GameTooltip:AddLine("|cff99ff99Валюта")
+					GameTooltip:AddLine("|cffFFCF40Иногда падает с квеста на шерсть и прочую ткань")
+					GameTooltip:AddLine("|cffFFCF40Можно купить на аукционе: |cff99ff99\"Обычное письмо\" |cffFFCF40от персонажа \"Хефе\"")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40Открыть/Закрыть магазин")
+					GameTooltip:Show()
+				end)
+				mgznZ:SetScript("OnLeave",function(self)
+					GameTooltip:Hide()
+				end)
+				mgznZ:SetScript("OnClick",function(self)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+					if testQ["magSign"] == nil then
+						dmgText1(testQ["smg"],mgznZ,1005,11,"FF8C00")
+						dmG1[1005]:Show()
+						dmG1[1005]:SetFrameStrata("TOOLTIP")
+						mgznIcon[1]:Show()
+						for i = 1, 100 do
+							fBtn[i]:Hide()
+						end
+						resursy[5]:Hide()
+						mgznZ:Show()
+						mgznZ:SetFrameStrata("LOW")
+					else
+						dmgText1("",mgznZ,1005,22,"FF8C00")
+						mgznIcon[1]:Hide()
+						for i = 1, 100 do
+							fBtn[i]:Show()
+						end
+						resursy[5]:Show()
+					end
+					GameTooltip:Hide()
+				end)
+			else
+				dmgText1(testQ["smg"],mgznZ,1005,22,"FF8C00")
+				dmG1[1005]:Show()
+				dmG1[1005]:SetFrameStrata("TOOLTIP")
+				mgznZ:Show()
+				GameTooltip:Hide()
+			end
+		else
+			mgznIcon[1]:Show()
+		end
+	else
+		if mgznIcon[1] ~= nil then
+			mgznIcon[1]:Hide()
+		end
+	end
 end
 function iconRis:configure(id,Rx,Ry)
 	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
@@ -112,25 +179,7 @@ function quesT(sign)
 		end
 	end
 end
-function mgzn(sign)
-	if sign == "show" then
-		if mgznIcon[1] == nil then
-			mgznIcon:configure()
-			mgznText:configure()
-			mgznIcon[1]:SetFrameStrata("FULLSCREEN")
-			mgznText[1]:SetPoint("TOPLEFT", MailFrame,"TOPRIGHT",0,0)
-			local x,y = MailFrame:GetSize()
-			mgznIcon[1]:SetSize(768,y)
-			mgznText[1]:SetSize(768,y)
-		else
-			mgznIcon[1]:Show()
-		end
-	else
-		if mgznIcon[1] ~= nil then
-			mgznIcon[1]:Hide()
-		end
-	end
-end
+
 function bo(n,n1)
 	for k, v in pairs(mapTables[testQ["эвент1"]]) do
 		if type(k)=="string" then

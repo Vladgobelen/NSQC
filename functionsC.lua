@@ -959,7 +959,31 @@ function dmgText(text,obj,id,raz,cvet)
 		end
 		dmG[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
 end
-
+dmG1 = {}
+function dmgText1(text,obj,id,raz,cvet)
+	if dmG1[id] == nil then
+		dmG1[id] = CreateFrame("SimpleHTML", "dmG", obj)
+		dmG1[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+		dmG1[id]:ClearAllPoints()
+		dmG1[id]:SetBackdropColor(0, 103, 51, 1)
+		dmG1[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	end
+		if text ~= "" then
+			if tonumber(text) <= 9999 then
+				dmG1[id]:SetSize(48, 48)
+			end
+			if tonumber(text) > 9999 then
+				dmG1[id]:SetSize(54, 48)
+			end
+			if tonumber(text) <= 9999 then
+				dmG1[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+			end
+			if tonumber(text) > 9999 then
+				dmG1[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+			end
+		end
+		dmG1[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+end
 rtnText = {}
 function rtnTextF(text,id,show)
 	if show == "show" then
@@ -1907,8 +1931,15 @@ function showFld(sign,myNome)
 				end
 			end
 			for i = 1,3 do
-				if resursy[i] ~= nil then
-					resursy[i]:Hide()
+				if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+					if resursy[i] ~= nil then
+						if i == 5 then
+							if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+							end
+						else
+							resursy[i]:Hide()
+						end
+					end
 				end
 			end
 			for i=101,103 do
@@ -1939,8 +1970,17 @@ function showFld(sign,myNome)
 				dmG[i]:Hide()
 			end
 		end
-		for i = 1,3 do
-			resursy[i]:Hide()
+		for i = 1,100 do
+			if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+				if resursy[i] ~= nil then
+					if i == 5 then
+						if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+						end
+					else
+						resursy[i]:Hide()
+					end
+				end
+			end
 		end
 		for i=101,103 do
 			if dmG[i] ~= nil then
