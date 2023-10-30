@@ -1,4 +1,4 @@
-versAdd=285;versAddDop=3
+versAdd=285;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5012,12 +5012,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
-
-		if testQ[myNome]["взятый_квест_s"] == "q33" then
-			if testQ[myNome]["q33nik"][1] == 1 and testQ[myNome]["q33nik"][2] == 1 and testQ[myNome]["q33nik"][3] == 1 then
-				testQ[myNome]["q33end"] = 1
-			end
-		end
 		if testQ == nil then
 			testQ = {}
 		end
@@ -5026,6 +5020,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if testQ[myNome]["петы"] == nil then
 			testQ[myNome]["петы"] = {}
+		end
+		if testQ[myNome]["взятый_квест_s"] == "q33" then
+			if testQ[myNome]["q33nik"][1] == 1 and testQ[myNome]["q33nik"][2] == 1 and testQ[myNome]["q33nik"][3] == 1 then
+				testQ[myNome]["q33end"] = 1
+			end
 		end
 		--bdf(myNome)
 		--if UnitAffectingCombat("player") == 1 then
