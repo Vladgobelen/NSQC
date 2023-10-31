@@ -1,4 +1,4 @@
-versAdd=286;versAddDop=2
+versAdd=286;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2890,30 +2890,37 @@ function mBtn:configure(id)
 	if id == 1 then
 		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",64, -64)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
 	end
 	if id == 2 then
 		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",136, -64)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\stog.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\stog.tga")
 	end
 	if id == 3 then
 		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",208, -64)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
 	end
 	if id == 4 then
 		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",280, -64)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bt.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bt.tga")
 	end
 	if id == 5 then
 		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",64, -136)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bb.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bb.tga")
 	end
 	if id == 6 then
 		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",136, -136)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gob.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gob.tga")
 	end
 	if id == 7 then
 		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",208, -136)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gom.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gom.tga")
 	end
 
 	self[id]:SetScript("OnClick",function(self)
