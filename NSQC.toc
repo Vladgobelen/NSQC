@@ -46,6 +46,7 @@ libs\ar.tga
 libs\as.tga
 libs\bh.tga
 libs\to.tga
+libs\smg.ogg
 libs\smg.tga
 libs\bs.tga
 libs\bx.tga

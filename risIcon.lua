@@ -64,7 +64,7 @@ function magazin(sign)
 		if mgznIcon[1] == nil then
 			mgznIcon:configure()
 			mgznText:configure()
-			mgznIcon[1]:SetFrameStrata("FULLSCREEN_DIALOG")
+			mgznIcon[1]:SetFrameStrata("FULLSCREEN")
 			mgznText[1]:SetPoint("CENTER", UIParent,"CENTER",-80,48)
 			if mgznZ == nil then
 				mgznZ = CreateFrame("Button", nil, UIParent, "");
@@ -103,8 +103,17 @@ function magazin(sign)
 						mgznIcon[1]:Hide()
 						for i = 1, 100 do
 							fBtn[i]:Show()
+							if mBtn[i] ~= nil then
+								mBtn[i]:Hide()
+							end
 						end
+						dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+						dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+						dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+						dmgText(testQ["smg"],resursy[5],105,22,"FF8C00")
 						resursy[5]:Show()
+						btn[989]:Show()
 					end
 					GameTooltip:Hide()
 				end)
