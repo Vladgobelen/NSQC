@@ -1,4 +1,4 @@
-versAdd=286;versAddDop=4
+versAdd=286;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3079,7 +3079,11 @@ function mBtn:configure(id)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gom.tga")
 		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\gom.tga")
 	end
-
+	if id == 8 then
+		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",352, -64)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
+	end
 	self[id]:SetScript("OnClick",function(self)
 		if tonumber(testQ["smg"]) >= 1 then
 			if id == 1 then
@@ -3112,6 +3116,14 @@ function mBtn:configure(id)
 				testQ["beton"] = tonumber(testQ["beton"]) + x
 				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 				print("Получено: " .. x .. " бетона")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			end
+			if id == 8 then
+				local x = math.random(1,5)
+				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["kirpich"] = tonumber(testQ["kirpich"]) + x
+				dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+				print("Получено: " .. x .. " кирпичей")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
 		end
@@ -3200,6 +3212,22 @@ function mBtn:configure(id)
 				GameTooltip:AddLine("|cff99ff99Бетон:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
+			end
+		end
+
+		if tonumber(testQ["smg"]) < 1 then
+			if id == 8 then
+				GameTooltip:AddLine("|cff99ff99Кирпич:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-5")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff00001 бутылка")
+			end
+		else
+			if id == 8 then
+				GameTooltip:AddLine("|cff99ff99Кирпич:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-5")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
 			end
 		end
@@ -3344,6 +3372,7 @@ function resursy:configure(id)
 				mBtn:configure(5)
 				mBtn:configure(6)
 				mBtn:configure(7)
+				mBtn:configure(8)
 				btn[989]:Hide()
 			else
 				magazin("hide")
