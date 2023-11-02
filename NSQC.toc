@@ -30,11 +30,13 @@ libs\zs.tga
 libs\zx.tga
 libs\t.tga
 libs\f.tga
+libs\zc.tga
 libs\auc.tga
 libs\bt.tga
 libs\bt.ogg
 libs\k.ogg
 libs\b.tga
+libs\kirpich.tga
 libs\bn.tga
 libs\za.tga
 libs\ts.tga

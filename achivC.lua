@@ -946,7 +946,7 @@ if kodMsg[1] == "obgIz" then
 				testQ["fRand3"] = 1
 				testQ["fRand3Nome"] = message
 				if sender ~= myNome and message == myNome then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zc" then
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 					else
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
@@ -1284,6 +1284,26 @@ if kodMsg[1] == "tsX" then
 		end
 	end
 end
+if kodMsg[1] == "zPx" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zc"
+			print(tonumber(kodMsg[3]))
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+			if message == myNome then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+			end
+		end
+	end
+end
 if kodMsg[1] == "sXX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -1486,6 +1506,22 @@ if kodMsg[1] == "zX" then
 		end
 	end
 end
+if kodMsg[1] == "zP" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zc"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "zXx" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -1617,10 +1653,16 @@ if kodMsg[1] == "resObj" then
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 9999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="hs" then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
 						if fBtn[1]:IsVisible() then
 							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\h.tga")
+						end
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "zc" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "zp"
+						if fBtn[1]:IsVisible() then
+							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\zp.tga")
 						end
 					end
 				end
