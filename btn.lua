@@ -1,4 +1,4 @@
-versAdd=286;versAddDop=5
+versAdd=286;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -399,6 +399,35 @@ function vybor:configure(id)
 				end
 			end
 		end
+
+		if id == 19 then
+			if vybor[19] ~= nil then
+				vybor[19]:Show()
+				for i = 1, 100 do
+					if i ~= 19 then
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		end
+		if id == 19 and testQ["brevna"] >= 50 and testQ["stog"] >= 25 and testQ["smg"] >= 10 and testQ["kirpich"] >= 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Построить таверну")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Выдает квесты на получение пунктов ачивок")
+			GameTooltip:AddLine("Стоимость: 50 бревен, 25 травы, 10 бутылок самогона, 5 кирпичей")
+			GameTooltip:Show()
+		end
+		if id == 19 and (testQ["brevna"] < 50 or testQ["stog"] < 25 or testQ["smg"] < 10 or testQ["kirpich"] < 5) then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Построить таверну")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Выдает квесты на получение пунктов ачивок")
+			GameTooltip:AddLine("|cffff0000Стоимость: 50 бревен, 25 травы, 10 бутылок самогона, 5 кирпичей")
+			GameTooltip:Show()
+		end
 		if testQ["icon"] == "zc" and testQ["picon"] == "bn" and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 10  then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Кирпичный цех")
@@ -633,6 +662,57 @@ function vybor:configure(id)
 					testQ["kamen"] = tonumber(testQ["kamen"]) - 50
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					testQ["temp"] = nil
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		end
+		if nome == myNome then
+			if id == 19 and testQ["brevna"] >= 50 and testQ["stog"] >= 25 and testQ["smg"] >= 10 and testQ["kirpich"] >= 5 then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\tv.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\tv.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("tV " .. testQ["idp"], nome, "guild")
+					testQ["brevna"] = tonumber(testQ["brevna"]) - 50
+					testQ["stog"] = tonumber(testQ["stog"]) - 25
+					testQ["smg"] = tonumber(testQ["smg"]) - 10
+					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 5
+					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+					testQ["temp"] = nil
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		else
+			if id == 19 and testQ["brevna"] >= 150 and testQ["stog"] >= 75 and testQ["smg"] >= 20 and testQ["kirpich"] >= 15 then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\tv.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\tv.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("tV " .. testQ["idp"], nome, "guild")
+					testQ["brevna"] = tonumber(testQ["brevna"]) - 150
+					testQ["stog"] = tonumber(testQ["stog"]) - 75
+					testQ["smg"] = tonumber(testQ["smg"]) - 20
+					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 15
+					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1387,9 +1467,11 @@ if myNome == "Хефе" or myNome == "Витинари" or myNome == "Люцзе
 			end
 			if gTest1 ~= nil then
 				if ChatFrame1:IsVisible() then
-					ChatFrame1EditBox:Show()
-					ChatFrame1EditBox:SetFocus()
-					ChatFrame1EditBox:SetText("/ginvite " .. gTest1)
+					--ChatFrame1EditBox:Show()
+					--ChatFrame1EditBox:SetFocus()
+					GuildInvite(gTest1)
+					--ChatFrame1EditBox:SetText("/ginvite " .. gTest1)
+					table.insert(testQ["ginvXXX"],gTest1)
 					gTest[gTest2]=nil
 					gTest1 = nil
 				end
@@ -1971,6 +2053,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 				end
+				if mioFld[nome]["объекты"][tostring(id)] == "tz" then
+					resObj(id,myNome,nome)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "tc" then
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
@@ -1983,6 +2069,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 				end
+
 				if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
 					treeX(nome,myNome,id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
@@ -2003,10 +2090,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 				end
-				if mioFld[nome]["объекты"][tostring(id)] == "zx" then
-					resObj(id,myNome,nome)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-				end
+
 				if mioFld[nome]["объекты"][tostring(id)] == "skc" then
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
@@ -2186,7 +2270,21 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["temp"] = nil
 				end
 			end
+			if mioFld[nome]["объекты"][tostring(id)] == "tv" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\tz.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\tz.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("tVxx " .. id .. " " .. 29998, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "tz" then
 				treeX(nome,myNome,id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 			end
@@ -2256,6 +2354,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		testQ["bi"] = 0
 		testQ["ar"] = 0
 		testQ["zp"] = 0
+		testQ["tv"] = 0
 		for i=1,100 do
 			if mioFld ~= nil then
 				if mioFld[nome] ~= nil then
@@ -2285,6 +2384,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					end
 					if  mioFld[nome]["объекты"][tostring(i)] == "zp" then
 						testQ["zp"] = testQ["zp"]+1
+					end
+					if  mioFld[nome]["объекты"][tostring(i)] == "tv" or mioFld[nome]["объекты"][tostring(i)] == "tz" then
+						testQ["tv"] = testQ["tv"]+1
 					end
 					if  mioFld[nome]["объекты"][tostring(i)] == "ar" or mioFld[nome]["объекты"][tostring(i)] == "as" then
 						testQ["ar"] = testQ["ar"]+1
@@ -2320,7 +2422,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 
-
 		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
 			if testQ["hs"] < 1 and testQ["h"] < 1 then
 				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
@@ -2337,6 +2438,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["idp"] = id
 							testQ["icon"] = "hs"
 							testQ["picon"] = "zt"
+						end
+					end
+				end
+			end
+		end
+		if tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
+			if testQ["tv"] < 1 then
+				if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+					if vybor[1] == nil or not vybor[1]:IsVisible() then
+						vybor:configure(19)
+						vybor[19]:SetPoint("CENTER", fBtn[id],"CENTER",1*64, 96)
+						vybor[19]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\tv.tga")
+						vybor[19]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\tv.tga")
+						vybor[19]:Show()
+						if testQ ~= nil then
+							testQ["idp"] = id
+							testQ["icon"] = "tv"
+							testQ["picon"] = "bn"
 						end
 					end
 				end
@@ -2873,6 +2992,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - получить достижение")
 					GameTooltip:AddLine("|cffFFCF40если есть таймер - сдать |cff99ff99шерсть")
 					GameTooltip:AddLine("|cff99ff99Сдача шерсти: |cffFFCF40снижает таймер на рандомное время, дает рандомные плюшки")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "zp" then
+					GameTooltip:AddLine("|cFF6495EDКирпичный цех")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Можно производить кирпичи, а можно не производить")
+					GameTooltip:AddLine("|cff99ff99Зажать ЛКМ или поставить пета: " .. "|cffFFCF40производить кирпичи.")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+					GameTooltip:AddLine("Для производства кирпича требуется одновременно работающий завод бетона")
+					GameTooltip:AddLine("Периодически потребляет бревна и траву..хм.. И бетон, ведь это силикатные кирпичи.")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "tv" then
+					GameTooltip:AddLine("|cFF6495EDТаверна \"Ухо Гоблина\"")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Выдает квесты на получение пунктов ачивок")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Получить квест")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+					GameTooltip:AddLine("|cff99ff99Сдача ткани пустоты: |cffFFCF40снижает таймер на рандомное время, дает рандомные плюшки")
+					GameTooltip:AddLine("Когда то один гоблин поспорил на свое ухо и проиграл...")
 				end
 				if mioFld[nome]["влияние"] ~= nil then
 					if mioFld[nome]["влияние"][tostring(id)] ~= nil then
@@ -4604,13 +4741,17 @@ WorldMapDetailFrame:SetScript("OnUpdate",function(self)
 		frameTextu[j]:Hide()
 	end
 end)--]]
+
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 100 then
 		timeElapsed = 0
-
+		if myNome == "Витинари" or myNome == "Хефе" or myNome == "Люцзе" then
+			--gtest()
+			--gtg:Click()
+		end
 		for i = 1,100 do
 			local x = math.random(1,5)
 			if x == 5 then
@@ -4907,17 +5048,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
-		if gtg ~= nil then
-			if FriendsFrame:IsVisible() then
-				if not gtg:IsVisible() then
-					gtg:Show()
-				end
-			else
-				if gtg:IsVisible() then
-					gtg:Hide()
-				end
-			end
-		end
+		--if gtg ~= nil then
+			--if FriendsFrame:IsVisible() then
+				--if not gtg:IsVisible() then
+					--gtg:Show()
+				--end
+			--else
+				--if gtg:IsVisible() then
+					--gtg:Hide()
+				--end
+			--end
+		--end
 		--print(Minimap:GetPingPosition())
 		local nome
 		if testQ['sign'] ~= "1" then
@@ -5957,7 +6098,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							if testQ["fRand3Nome"] == nome then
 								if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
 									for i = 1,100 do
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "hs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "sx" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zc" then
+										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "hs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "sx" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zc" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "tz" then
 											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
 												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
 												dmG[i]:Show()
@@ -5971,6 +6112,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										end
 										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "zc" then
 											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 9999 then
+												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											end
+										end
+										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "tz" then
+											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 29999 then
 												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
 												dmG[i]:Show()
 											end
@@ -6080,7 +6227,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								for i = 1,100 do
 									j = tostring(i)
 									if mioFld ~= nil then
-										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "hs" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zs" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zx" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "sx" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zc" then
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "hs" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zs" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zx" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "sx" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zc" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "tz" then
 											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
 												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
 												dmG[i]:Show()
@@ -6092,6 +6239,26 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										end
 										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "tc" then
 											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 4999 then
+												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											else
+												if dmG[i]~=nil then
+													dmG[i]:Hide()
+												end
+											end
+										end
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "tz" then
+											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
+												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+												dmG[i]:Show()
+											else
+												if dmG[i]~=nil then
+													dmG[i]:Hide()
+												end
+											end
+										end
+										if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "tz" then
+											if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
 												dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
 												dmG[i]:Show()
 											else

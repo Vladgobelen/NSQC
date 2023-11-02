@@ -20,6 +20,8 @@ libs\gobXm.ogg
 libs\gom.ogg
 libs\sh.ogg
 libs\tx.ogg
+libs\tv.tga
+libs\tz.tga
 libs\clc.ogg
 libs\mx.ogg
 libs\t.ogg
