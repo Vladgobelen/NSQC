@@ -1882,8 +1882,6 @@ function bdf(myNome)
 	end
 end
 function gtest()
-	SendWho(tonumber(date("%M")))
-	FriendsFrame:Hide()
 	gTest = nil
 	gTest = {}
 	for i = 1, 50 do
@@ -1894,7 +1892,6 @@ function gtest()
 			end
 		end
 	end
-	print("1")
 end
 
 function hX()

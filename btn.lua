@@ -1,4 +1,4 @@
-versAdd=286;versAddDop=6
+versAdd=286;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1471,7 +1471,7 @@ if myNome == "Хефе" or myNome == "Витинари" or myNome == "Люцзе
 					--ChatFrame1EditBox:SetFocus()
 					GuildInvite(gTest1)
 					--ChatFrame1EditBox:SetText("/ginvite " .. gTest1)
-					table.insert(testQ["ginvXXX"],gTest1)
+					--table.insert(testQ["ginvXXX"],gTest1)
 					gTest[gTest2]=nil
 					gTest1 = nil
 				end
@@ -4748,10 +4748,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 100 then
 		timeElapsed = 0
-		if myNome == "Витинари" or myNome == "Хефе" or myNome == "Люцзе" then
-			--gtest()
-			--gtg:Click()
-		end
 		for i = 1,100 do
 			local x = math.random(1,5)
 			if x == 5 then
@@ -5745,6 +5741,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			if testQ["smg"] == nil then
 				testQ["smg"] = 0
+			end
+			if testQ["kirpich"] == nil then
+				testQ["kirpich"] = 0
 			end
 		end
 		if StaticPopup1~= nil then
