@@ -1,4 +1,4 @@
-versAdd=286;versAddDop=7
+versAdd=286;versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3405,7 +3405,6 @@ function mBtn:configure(id)
 			if id == 7 then
 				GameTooltip:AddLine("|cff99ff99Гном:")
 				GameTooltip:AddLine(" ")
-				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000050 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ ГНОМА И ГОБЛИНА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
 			end
