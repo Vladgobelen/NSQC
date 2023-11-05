@@ -796,10 +796,21 @@ if kodMsg[1] == "MioFldP1" then
 end
 
 if kodMsg[1] == "MioFldP2" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
 	for i = 1, 35 do
 		j = tostring(i+35)
 		if msg[i] ~= "0" then
+		if mioFld[sender][kodMsg[3]][j] ~= nil then
 			mioFld[sender][kodMsg[3]][j] = msg[i]
+		end
 		else
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
@@ -810,10 +821,21 @@ if kodMsg[1] == "MioFldP2" then
 	end
 end
 if kodMsg[1] == "MioFldP3" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
 	for i = 1, 30 do
 		j = tostring(i+70)
 		if msg[i] ~= "0" then
-			mioFld[sender][kodMsg[3]][j] = msg[i]
+			if mioFld[sender][kodMsg[3]][j] ~= nil then
+				mioFld[sender][kodMsg[3]][j] = msg[i]
+			end
 		else
 			mioFld[sender][kodMsg[3]][j] = nil
 		end
@@ -1328,7 +1350,6 @@ if kodMsg[1] == "zPx" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zc"
-			print(tonumber(kodMsg[3]))
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
@@ -1348,7 +1369,6 @@ if kodMsg[1] == "tVxx" then
 				mioFld[message]["целостность"] = {}
 			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "tz"
-			print(tonumber(kodMsg[3]))
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
