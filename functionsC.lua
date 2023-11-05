@@ -2135,6 +2135,12 @@ function htimer(myNome)
 			testTO = "to"
 		end
 	end
+	if testQ[myNome]["dTimer"][30] == nil then
+		testQ[myNome]["dTimer"][30] = 26000
+	end
+	if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+		testQ[myNome]["dTimer"][tonumber(date("%d"))-1] = 26000
+	end
 	if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
 		if testQ[myNome]["hTimer"] == nil then
 			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
