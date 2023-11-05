@@ -1109,10 +1109,16 @@ if kodMsg[1] == "bbM" then
 			if mioFld[message]["целостность"] == nil then
 				mioFld[message]["целостность"] = {}
 			end
+			print(kodMsg[2])
+			print(kodMsg[3])
+			print(mioFld[message]["петы"][tostring(kodMsg[3])])
+			print(mioFld[message]["петы"][tostring(kodMsg[2])])
 			mioFld[message]["петы"][tostring(kodMsg[3])] = mioFld[message]["петы"][tostring(kodMsg[2])]
 			mioFld[message]["хозяин"][tostring(kodMsg[3])] = mioFld[message]["хозяин"][tostring(kodMsg[2])]
 			mioFld[message]["хозяин"][tostring(kodMsg[2])] = nil
 			mioFld[message]["петы"][tostring(kodMsg[2])] = nil
+			print(mioFld[message]["петы"][tostring(kodMsg[3])])
+			print(mioFld[message]["петы"][tostring(kodMsg[2])])
 			testQ["fRand4"] = 1
 			testQ["fRand4Nome"] = message
 		end
