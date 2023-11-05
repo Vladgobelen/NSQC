@@ -1540,7 +1540,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if arg2 == true then
 							testQ["zavodp"] = 1
 							testQ["zavodpc"] = 1
-							print('1')
 							testQ["brevna"] = tonumber(testQ["brevna"])-1
 							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							testQ["stog"] = tonumber(testQ["stog"])-1
@@ -4978,7 +4977,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									testQ["поиск_пути_бобром"] = 1
 								end
 								if mioFld[myNome]["объекты"][tostring(i-10)] ~= nil and mioFld[myNome]["объекты"][tostring(i-10)] == "t" and testQ["поиск_пути_бобром"] == nil then
-								print('1')
 									SendAddonMessage("bbM " .. i .. " " .. i-10, myNome, "guild")
 									testQ["поиск_пути_бобром"] = 1
 								end
