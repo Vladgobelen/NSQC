@@ -4881,22 +4881,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 					if mioFld[myNome]["объекты"][tostring(i)] ~= "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
 						if mioFld[myNome]["объекты"][tostring(i-1)] ~= nil and mioFld[myNome]["объекты"][tostring(i-1)] == "t" then
-						print('1')
 							SendAddonMessage("bbM " .. i .. " " .. i-1, myNome, "guild")
 							testQ["поиск_пути_бобром"] = 1
 						end
 						if mioFld[myNome]["объекты"][tostring(i+1)] ~= nil and mioFld[myNome]["объекты"][tostring(i+1)] == "t" and testQ["поиск_пути_бобром"] == nil then
-						print('2')
 							SendAddonMessage("bbM " .. i .. " " .. i+1, myNome, "guild")
 							testQ["поиск_пути_бобром"] = 1
 						end
 						if mioFld[myNome]["объекты"][tostring(i-10)] ~= nil and mioFld[myNome]["объекты"][tostring(i-10)] == "t" and testQ["поиск_пути_бобром"] == nil then
-						print('3')
 							SendAddonMessage("bbM " .. i .. " " .. i-10, myNome, "guild")
 							testQ["поиск_пути_бобром"] = 1
 						end
 						if mioFld[myNome]["объекты"][tostring(i+10)] ~= nil and mioFld[myNome]["объекты"][tostring(i+10)] == "t" and testQ["поиск_пути_бобром"] == nil then
-						print('4')
 							SendAddonMessage("bbM " .. i .. " " .. i+10, myNome, "guild")
 							testQ["поиск_пути_бобром"] = 1
 						end
