@@ -1,4 +1,4 @@
-versAdd=286;versAddDop=8
+versAdd=287;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -153,6 +153,7 @@ function okNo:configure(id,sign)
 		if testQ["okno"] == "q33end" then
 			SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
 			SendAddonMessage("#hQ1 ", "", "guild")
+			--htimer(myNome)
 			hX()
 			testQ['sign'] = nil
 			testQ["okno"] = nil
@@ -1774,6 +1775,70 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								btn[989]:Hide()
 								btn[989]:ClearAllPoints()
 								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								if testQ[myNome]["q33end"] ~= 1 then
+									testQ["okno"] = "q33"
+									quesT("show")
+									okNo:configure(1,"show")
+									local odin,dva,tri
+									if testQ[myNome]["q33nik"][1] == 1 then
+										odin = "выполнено"
+									else
+										odin = testQ[myNome]["q33nik"][1]
+									end
+									if testQ[myNome]["q33nik"][2] == 1 then
+										dva = "выполнено"
+									else
+										dva = testQ[myNome]["q33nik"][2]
+									end
+									if testQ[myNome]["q33nik"][3] == 1 then
+										tri = "выполнено"
+									else
+										tri = testQ[myNome]["q33nik"][3]
+									end
+									rtnTextF("Мне срочно нужно " .. testQ[myNome]["q33q"] .. odin .. ", " .. dva .. ", " .. tri,1,"show")
+									for i=1,100 do
+										fBtn[i]:Hide()
+									end
+									for i = 1, 100 do
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
+										end
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								else
+									testQ["okno"] = "q33end"
+									quesT("show")
+									okNo:configure(1,"show")
+									rtnTextF("Задание завершено",1,"show")
+									for i=1,100 do
+										fBtn[i]:Hide()
+									end
+									for i = 1, 100 do
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
+										end
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								end
 							end
 						end
 					end
@@ -4815,6 +4880,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							end
 						end
 					end
+					if mioFld[myNome]["объекты"][tostring(i)] ~= "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
+						if mioFld[myNome]["объекты"][tostring(i-1)] ~= nil and mioFld[myNome]["объекты"][tostring(i-1)] == "t" then
+							SendAddonMessage("bbM " .. i .. " " .. i-1, myNome, "guild")
+							testQ["поиск_пути_бобром"] = 1
+						end
+						if mioFld[myNome]["объекты"][tostring(i+1)] ~= nil and mioFld[myNome]["объекты"][tostring(i+1)] == "t" and testQ["поиск_пути_бобром"] == nil then
+							SendAddonMessage("bbM " .. i .. " " .. i+1, myNome, "guild")
+							testQ["поиск_пути_бобром"] = 1
+						end
+						if mioFld[myNome]["объекты"][tostring(i-10)] ~= nil and mioFld[myNome]["объекты"][tostring(i-10)] == "t" and testQ["поиск_пути_бобром"] == nil then
+							SendAddonMessage("bbM " .. i .. " " .. i-10, myNome, "guild")
+							testQ["поиск_пути_бобром"] = 1
+						end
+						if mioFld[myNome]["объекты"][tostring(i+10)] ~= nil and mioFld[myNome]["объекты"][tostring(i+10)] == "t" and testQ["поиск_пути_бобром"] == nil then
+							SendAddonMessage("bbM " .. i .. " " .. i+10, myNome, "guild")
+							testQ["поиск_пути_бобром"] = 1
+						end
+						testQ["поиск_пути_бобром"] = nil
+					end
 				end
 			end
 		end
@@ -4883,6 +4967,26 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 								end
 								treeX(myNome,myNome,i)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+							end
+							if mioFld[myNome]["объекты"][tostring(i)] ~= "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
+								if mioFld[myNome]["объекты"][tostring(i-1)] ~= nil and mioFld[myNome]["объекты"][tostring(i-1)] == "t" then
+									SendAddonMessage("bbM " .. i .. " " .. i-1, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								if mioFld[myNome]["объекты"][tostring(i+1)] ~= nil and mioFld[myNome]["объекты"][tostring(i+1)] == "t" and testQ["поиск_пути_бобром"] == nil then
+									SendAddonMessage("bbM " .. i .. " " .. i+1, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								if mioFld[myNome]["объекты"][tostring(i-10)] ~= nil and mioFld[myNome]["объекты"][tostring(i-10)] == "t" and testQ["поиск_пути_бобром"] == nil then
+								print('1')
+									SendAddonMessage("bbM " .. i .. " " .. i-10, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								if mioFld[myNome]["объекты"][tostring(i+10)] ~= nil and mioFld[myNome]["объекты"][tostring(i+10)] == "t" and testQ["поиск_пути_бобром"] == nil then
+									SendAddonMessage("bbM " .. i .. " " .. i+10, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								testQ["поиск_пути_бобром"] = nil
 							end
 							if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
 								local x = math.random(1,2)
