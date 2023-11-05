@@ -898,6 +898,12 @@ if kodMsg[1] == "MioFldH3" then
 	end
 end
 if kodMsg[1] == "bB" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[message] == nil then
+		mioFld[message] = {}
+	end
 	if mioFld[message]["петы"] == nil then
 		mioFld[message]["петы"] = {}
 	end
