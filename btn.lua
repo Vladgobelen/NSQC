@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=2
+versAdd=290;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3419,7 +3419,28 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			nome = myNome
 		end
 		if arg1 == "LeftButton" then
-
+			if mioFld == nil then
+				mioFld = {}
+			end
+			if mioFld[nome] == nil then
+				mioFld[nome] = {}
+			end
+			if mioFld[nome][testQ["domZ"]] == nil then
+				mioFld[nome][testQ["domZ"]] = {}
+			end
+			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
+				testQ["domZ"] = "crt"
+				for i = 1, 100 do
+					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+				end
+			end
+		end
+		if arg1 == "RightButton" then
+			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
+				SendAddonMessage("#yImx " .. id, nome, "guild")
+				testQ["yi"] = tonumber(testQ["yi"])+1
+			end
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self, button)
@@ -3429,6 +3450,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		else
 			nome = myNome
 		end
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if testQ["domZ"] == "mf" and mioFld[nome][testQ["domZ"]][tostring(id)] == "bn" then
 			if vybor[21] == nil or not vybor[21]:IsVisible() then
 				vybor:configure(21)
@@ -3444,6 +3466,14 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 
 		end
+		if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
+			GameTooltip:AddLine("|cFF6495EDЯщик с инструментами:")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Какие забавные внутри винтики и всякие отверточки")
+			GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40создать Шедевр!")
+			GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40забрать")
+		end
+		GameTooltip:Show()
 		btn[989]:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self, button)

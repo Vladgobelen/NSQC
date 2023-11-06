@@ -29,6 +29,20 @@ if kodMsg[1] == "#yIm" then
 	testQ["mf"] = 1
 	testQ["mfNome"] = sender
 end
+if kodMsg[1] == "#yImx" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[message] == nil then
+		mioFld[message] = {}
+	end
+	if mioFld[message]["mf"] == nil then
+		mioFld[message]["mf"] = {}
+	end
+	mioFld[message]["mf"][tostring(kodMsg[2])] = "bn"
+	testQ["mf"] = 1
+	testQ["mfNome"] = sender
+end
 if kodMsg[1] == "#domtv" and msg[1] == myNome then
 	if mioFld == nil then
 		mioFld = {}
