@@ -15,6 +15,20 @@ end
 if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
+if kodMsg[1] == "#yIm" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[message] == nil then
+		mioFld[message] = {}
+	end
+	if mioFld[message]["mf"] == nil then
+		mioFld[message]["mf"] = {}
+	end
+	mioFld[message]["mf"][tostring(kodMsg[2])] = "my"
+	testQ["mf"] = 1
+	testQ["mfNome"] = sender
+end
 if kodMsg[1] == "#domtv" and msg[1] == myNome then
 	if mioFld == nil then
 		mioFld = {}
@@ -29,10 +43,29 @@ if kodMsg[1] == "#domtv" and msg[1] == myNome then
 		end
 	end
 	local tv = mioFld[myNome]["taverna"]["1"]
-	for i = 1, 100 do
+	for i = 2, 100 do
 		tv = tv .. mioFld[myNome]["taverna"][tostring(i)]
 	end
 	SendAddonMessage("#mioTV " .. msg[2], tv, "guild")
+end
+if kodMsg[1] == "#dommf" and msg[1] == myNome then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[myNome] == nil then
+		mioFld[myNome] = {}
+	end
+	if mioFld[myNome]["mf"] == nil then
+		mioFld[myNome]["mf"] = {}
+		for i = 1, 100 do
+			mioFld[myNome]["mf"][tostring(i)] = "bn"
+		end
+	end
+	local tv = mioFld[myNome]["mf"]["1"]
+	for i = 2, 100 do
+		tv = tv .. mioFld[myNome]["mf"][tostring(i)]
+	end
+	SendAddonMessage("#mioMF " .. msg[2], tv, "guild")
 end
 if kodMsg[1] == "#mioTV" and kodMsg[2] == myNome then
 	if mioFld == nil then
@@ -49,6 +82,23 @@ if kodMsg[1] == "#mioTV" and kodMsg[2] == myNome then
 	end
 	testQ["dom"] = 1
 	testQ["domZ"] = "taverna"
+	testQ["domNome"] = sender
+end
+if kodMsg[1] == "#mioMF" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender]["mf"] == nil then
+		mioFld[sender]["mf"] = {}
+	end
+	for i = 1, 100 do
+		mioFld[sender]["mf"][tostring(i)] = message:sub((i*2)-1,i*2)
+	end
+	testQ["dom"] = 1
+	testQ["domZ"] = "mf"
 	testQ["domNome"] = sender
 end
 testGM=gmTest(sender)

@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=1
+versAdd=290;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -406,7 +406,11 @@ function vybor:configure(id)
 				end
 			end
 		end
-
+		if id == 21 then
+			if vybor[21] ~= nil then
+				vybor[21]:Show()
+			end
+		end
 		if id == 19 then
 			if vybor[19] ~= nil then
 				vybor[19]:Show()
@@ -628,6 +632,19 @@ function vybor:configure(id)
 			GameTooltip:AddLine("|cffff2b2bНужно больше камня")
 			GameTooltip:Show()
 		end
+		if id == 21 and testQ["yi"] >= 1 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Поставить ящик с инструментами")
+			GameTooltip:AddLine("Требуется для работы с деревом")
+			GameTooltip:Show()
+		end
+		if id == 21 and testQ["yi"] < 1 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Поставить ящик с инструментами")
+			GameTooltip:AddLine("Требуется для работы с деревом")
+			GameTooltip:AddLine("|cffff2b2bИнструменты можно купить в магазине")
+			GameTooltip:Show()
+		end
 	end)
 	vybor[id]:SetScript("OnLeave",function(self)
 		for i=1,100 do
@@ -651,6 +668,23 @@ function vybor:configure(id)
 		GameTooltip:Show()
 	end)
 	vybor[id]:SetScript("OnClick",function(self)
+		if id == 21 and testQ["yi"] >= 1 then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
+				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+				SendAddonMessage("#yIm " .. testQ["idp"], nome, "guild")
+				testQ["yi"] = tonumber(testQ["yi"])-1
+				testQ["temp"] = nil
+				for i=1,100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
 		if nome == myNome then
 			if testQ["icon"] == "zc" and testQ["picon"] == "bn" and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 10  then
 				if testQ["temp"] == nil then
@@ -1650,6 +1684,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if arg2 == false then
 				if mioFld[nome]["объекты"][tostring(id)] == "tv" then
 					SendAddonMessage("#domtv", nome .. " " .. myNome, "guild")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "mf" then
+					SendAddonMessage("#dommf", nome .. " " .. myNome, "guild")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
 					if nome == myNome then
@@ -3185,10 +3222,17 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cFF6495EDТаверна \"Ухо Гоблина\"")
 					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("Выдает квесты на получение пунктов ачивок")
-					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Получить квест")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Зайти внутрь")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 					GameTooltip:AddLine("|cff99ff99Сдача ткани пустоты: |cffFFCF40снижает таймер на рандомное время, дает рандомные плюшки")
 					GameTooltip:AddLine("Когда то один гоблин поспорил на свое ухо и проиграл...")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "mf" then
+					GameTooltip:AddLine("|cFF6495EDМебельная фабрика")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Позволяет создавать всякое деревянное. И перерабатывать.")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Зайти внутрь")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 				end
 				if mioFld[nome]["влияние"] ~= nil then
 					if mioFld[nome]["влияние"][tostring(id)] ~= nil then
@@ -3379,9 +3423,37 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self, button)
+		local nome
+		if testQ['sign'] ~= "1" then
+			nome = GuildFrame["selectedName"]
+		else
+			nome = myNome
+		end
+		if testQ["domZ"] == "mf" and mioFld[nome][testQ["domZ"]][tostring(id)] == "bn" then
+			if vybor[21] == nil or not vybor[21]:IsVisible() then
+				vybor:configure(21)
+				vybor[21]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
+				vybor[21]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
+				vybor[21]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
+				vybor[21]:Show()
+				if testQ ~= nil then
+					testQ["idp"] = id
+					testQ["icon"] = "yi"
+					testQ["picon"] = "bn"
+				end
+			end
+
+		end
 		btn[989]:Show()
 	end)
-
+	self[id]:SetScript("OnLeave",function(self, button)
+		for i = 1,100 do
+			if vybor[i]~= nil and vybor[i]:IsVisible() then
+				vybor[i]:Hide()
+			end
+		end
+		GameTooltip:Hide();
+	end)
 end
 
 dBtn:configure(1,-320,320,64,64,"","");
@@ -3527,6 +3599,11 @@ function mBtn:configure(id)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
 		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
 	end
+	if id == 9 then
+		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",64, -208)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
+	end
 	self[id]:SetScript("OnClick",function(self)
 		if tonumber(testQ["smg"]) >= 1 then
 			if id == 1 then
@@ -3575,6 +3652,14 @@ function mBtn:configure(id)
 				testQ[myNome]["петы"]["bb"] = 1
 				testQ["smg"] = tonumber(testQ["smg"]) - 10
 				print("Получен: бобер")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			end
+		end
+		if tonumber(testQ["smg"]) >= 10 then
+			if id == 9 then
+				testQ["yi"] = 1
+				testQ["smg"] = tonumber(testQ["smg"]) - 10
+				print("Получен: Ящик с инструментами")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
 		end
@@ -3722,6 +3807,19 @@ function mBtn:configure(id)
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ ГНОМА И ГОБЛИНА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
 			end
 		end
+		if tonumber(testQ["smg"]) < 10 then
+			if id == 9 then
+				GameTooltip:AddLine("|cff99ff99Ящик с инструментами:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000010 бутылок")
+			end
+		else
+			if id == 7 then
+				GameTooltip:AddLine("|cff99ff99Ящик с инструментами:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF10 бутылок")
+			end
+		end
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self)
@@ -3815,6 +3913,7 @@ function resursy:configure(id)
 				mBtn:configure(6)
 				mBtn:configure(7)
 				mBtn:configure(8)
+				mBtn:configure(9)
 				btn[989]:Hide()
 			else
 				magazin("hide")
@@ -5994,14 +6093,39 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
 		if testQ["dom"] == 1 then
-			for i = 1, 100 do
-				fBtn[i]:Hide()
-				dBtn[i]:Show()
-				dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["domNome"]][testQ["domZ"]][tostring(i)] ..".tga")
-				dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["domNome"]][testQ["domZ"]][tostring(i)] ..".tga")
+			local nome
+			if testQ['sign'] ~= "1" then
+				nome = GuildFrame["selectedName"]
+			else
+				nome = myNome
+			end
+			if nome == testQ["domNome"] then
+				for i = 1, 100 do
+					fBtn[i]:Hide()
+					dBtn[i]:Show()
+					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["domNome"]][testQ["domZ"]][tostring(i)] ..".tga")
+					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["domNome"]][testQ["domZ"]][tostring(i)] ..".tga")
+				end
 			end
 			testQ["dom"] = nil
 			testQ["domNome"] = nil
+		end
+		if testQ["mf"] == 1 then
+			local nome
+			if testQ['sign'] ~= "1" then
+				nome = GuildFrame["selectedName"]
+			else
+				nome = myNome
+			end
+			if nome == testQ["mfNome"] then
+				for i = 1, 100 do
+					dBtn[i]:Show()
+					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["mfNome"]]["mf"][tostring(i)] ..".tga")
+					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["mfNome"]]["mf"][tostring(i)] ..".tga")
+				end
+			end
+			testQ["mf"] = nil
+			testQ["mfNome"] = nil
 		end
 		if not dBtn[1]:IsVisible() then
 			testQ["domZ"] = nil
