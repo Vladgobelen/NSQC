@@ -15,6 +15,9 @@ end
 if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
+if kodMsg[1] == "#dom" then
+print (message)
+end
 testGM=gmTest(sender)
 if kodMsg[1] == "построить" and kodMsg[2] == myNome and testGM ~= nil then
 	if mioFld ~= nil then
