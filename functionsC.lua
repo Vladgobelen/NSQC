@@ -2450,6 +2450,24 @@ function ml()
 			end
 		end
 	end
+	if Atr_Buy1_Button ~= nil and Atr_Buy1_Button:IsVisible() then
+		if aucBtn == nil then
+			aucBtn = CreateFrame("Button", nil, UIParent, "");
+			aucBtn:SetFrameStrata("TOOLTIP")
+			aucBtn:SetSize(222, 32)
+			aucBtn:SetPoint("CENTER", BrowseBidButton,"CENTER",22, 0)
+			aucBtn:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\auk.tga")
+			aucBtn:Hide()
+		end
+		if Atr_Search_Box:IsVisible() and Atr_Search_Box:GetText() == "Обычное письмо" then
+			aucBtn:Show()
+			aucBtn:SetSize(422, 32)
+		else
+			if aucBtn ~= nil then
+				aucBtn:Hide()
+			end
+		end
+	end
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()

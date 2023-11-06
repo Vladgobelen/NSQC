@@ -1,4 +1,4 @@
-versAdd=289;versAddDop=1
+versAdd=289;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -80,8 +80,8 @@ function okNo:configure(id,sign)
 		end
 	end
 	self[1]:SetScript("OnClick",function(self, button)
-		local testBH = 0
-		local testBI = 0
+		local testBH = "bh0"
+		local testBI = "bi0"
 		for i = 1, 100 do
 			if mioFld[myNome]["объекты"][tostring(i)] == "bh" then
 				testBH = "bh"
@@ -152,7 +152,7 @@ function okNo:configure(id,sign)
 		end
 		if testQ["okno"] == "q33end" then
 			SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
-			SendAddonMessage("#hQ1 ", "", "guild")
+			SendAddonMessage("#hQ1 " .. testBI, "", "guild")
 			--htimer(myNome)
 			hX()
 			testQ['sign'] = nil
