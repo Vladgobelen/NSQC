@@ -1376,6 +1376,10 @@ function treeX(nome,myNome,id)
 		SendAddonMessage("tVx " .. id, nome, "guild")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "m0" then
+		SendAddonMessage("mFX " .. id, nome, "guild")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and (mioFld[nome]["объекты"][tostring(id)] == "as" or mioFld[nome]["объекты"][tostring(id)] == "bx" or mioFld[nome]["объекты"][tostring(id)] == "bc" or mioFld[nome]["объекты"][tostring(id)] == "bs") then
 		SendAddonMessage("bX " .. id, nome, "guild")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
@@ -1397,7 +1401,7 @@ function resObj(id,myNome,nome)
 			if mioFld[myNome] ~= nil then
 				if mioFld[myNome]["целостность"] ~= nil then
 					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" then
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" and mioFld[myNome]["объекты"][tostring(id)] ~= "mf" and mioFld[myNome]["объекты"][tostring(id)] ~= "m0" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
 								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
@@ -1406,6 +1410,14 @@ function resObj(id,myNome,nome)
 									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
 								end
 								mioFld[myNome]["целостность"][tostring(id)] = 999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "m0" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
 							end
 						end
 						if mioFld[myNome]["объекты"][tostring(id)] == "hs" then
@@ -1475,7 +1487,7 @@ function resObj(id,myNome,nome)
 							end
 						end
 					else
-						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" then
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" and mioFld[myNome]["объекты"][tostring(id)] ~= "mf" and mioFld[myNome]["объекты"][tostring(id)] ~= "m0" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
 							else
@@ -1493,6 +1505,13 @@ function resObj(id,myNome,nome)
 							end
 						end
 						if 	mioFld[myNome]["объекты"][tostring(id)] == "tz" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "m0" then
 							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
 								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
 							else
@@ -1551,7 +1570,7 @@ function resObj(id,myNome,nome)
 			if mioFld[nome] ~= nil then
 				if mioFld[nome]["целостность"] ~= nil then
 						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" then
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" and mioFld[nome]["объекты"][tostring(id)] ~= "m0" and mioFld[nome]["объекты"][tostring(id)] ~= "mf" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
 									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1580,6 +1599,20 @@ function resObj(id,myNome,nome)
 								end
 							end
 							if 	mioFld[nome]["объекты"][tostring(id)] == "tz" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "m0" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
 									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1678,7 +1711,7 @@ function resObj(id,myNome,nome)
 								end
 							end
 						else
-							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" then
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" and mioFld[nome]["объекты"][tostring(id)] ~= "m0" and mioFld[nome]["объекты"][tostring(id)] ~= "mf" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
 									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
@@ -1707,6 +1740,20 @@ function resObj(id,myNome,nome)
 								end
 							end
 							if 	mioFld[nome]["объекты"][tostring(id)] == "tz" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "m0" then
 								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
 									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
 										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
