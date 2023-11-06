@@ -1,4 +1,4 @@
-versAdd=289;versAddDop=3
+versAdd=290;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -9,6 +9,7 @@ vybor = {}
 okNo = {}
 magazin = {}
 mBtn = {}
+dBtn = {}
 function skll()
 	for k, v in pairs(SkillTypeLabel5) do
 		print(k,v, v[1], v[2], v[3])
@@ -1575,6 +1576,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
 		if arg1 == "LeftButton" then
 			if arg2 == false then
+				if mioFld[nome]["объекты"][tostring(id)] == "tv" then
+					SendAddonMessage("#domtv", nome .. " " .. myNome, "guild")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "ts" then
 					if nome == myNome then
 						if testQ["vyborNagrady"] == 1 then
@@ -3242,6 +3246,133 @@ fBtn:configure(97,64,-256,64,64,"","");
 fBtn:configure(98,128,-256,64,64,"","");
 fBtn:configure(99,192,-256,64,64,"","");
 fBtn:configure(100,256,-256,64,64,"","");
+
+function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
+	if self[id] == nil then
+		self[id] = CreateFrame("Button", nil, UIParent, "");
+	end
+	self[id]:SetFrameStrata("FULLSCREEN")
+	self[id]:SetPoint("CENTER",posex, posey)
+	self[id]:SetSize(sizex, sizey)
+	self[id]:Hide();
+	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown","LeftButtonUp")
+	self[id]:SetScript("OnClick",function(self, button)
+		local nome
+		if testQ['sign'] ~= "1" then
+			nome = GuildFrame["selectedName"]
+		else
+			nome = myNome
+		end
+		if arg1 == "LeftButton" then
+
+		end
+	end)
+	self[id]:SetScript("OnEnter",function(self, button)
+		btn[989]:Show()
+	end)
+
+end
+
+dBtn:configure(1,-320,320,64,64,"","");
+dBtn:configure(2,-256,320,64,64,"","");
+dBtn:configure(3,-192,320,64,64,"","");
+dBtn:configure(4,-128,320,64,64,"","");
+dBtn:configure(5,-64,320,64,64,"","");
+dBtn:configure(6,0,320,64,64,"","");
+dBtn:configure(7,64,320,64,64,"","");
+dBtn:configure(8,128,320,64,64,"","");
+dBtn:configure(9,192,320,64,64,"","");
+dBtn:configure(10,256,320,64,64,"","");
+dBtn:configure(11,-320,256,64,64,"","");
+dBtn:configure(12,-256,256,64,64,"","");
+dBtn:configure(13,-192,256,64,64,"","");
+dBtn:configure(14,-128,256,64,64,"","");
+dBtn:configure(15,-64,256,64,64,"","");
+dBtn:configure(16,-0,256,64,64,"","");
+dBtn:configure(17,64,256,64,64,"","");
+dBtn:configure(18,128,256,64,64,"","");
+dBtn:configure(19,192,256,64,64,"","");
+dBtn:configure(20,256,256,64,64,"","");
+dBtn:configure(21,-320,192,64,64,"","");
+dBtn:configure(22,-256,192,64,64,"","");
+dBtn:configure(23,-192,192,64,64,"","");
+dBtn:configure(24,-128,192,64,64,"","");
+dBtn:configure(25,-64,192,64,64,"","");
+dBtn:configure(26,0,192,64,64,"","");
+dBtn:configure(27,64,192,64,64,"","");
+dBtn:configure(28,128,192,64,64,"","");
+dBtn:configure(29,192,192,64,64,"","");
+dBtn:configure(30,256,192,64,64,"","");
+dBtn:configure(31,-320,128,64,64,"","");
+dBtn:configure(32,-256,128,64,64,"","");
+dBtn:configure(33,-192,128,64,64,"","");
+dBtn:configure(34,-128,128,64,64,"","");
+dBtn:configure(35,-64,128,64,64,"","");
+dBtn:configure(36,0,128,64,64,"","");
+dBtn:configure(37,64,128,64,64,"","");
+dBtn:configure(38,128,128,64,64,"","");
+dBtn:configure(39,192,128,64,64,"","");
+dBtn:configure(40,256,128,64,64,"","");
+dBtn:configure(41,-320,64,64,64,"","");
+dBtn:configure(42,-256,64,64,64,"","");
+dBtn:configure(43,-192,64,64,64,"","");
+dBtn:configure(44,-128,64,64,64,"","");
+dBtn:configure(45,-64,64,64,64,"","");
+dBtn:configure(46,0,64,64,64,"","");
+dBtn:configure(47,64,64,64,64,"","");
+dBtn:configure(48,128,64,64,64,"","");
+dBtn:configure(49,192,64,64,64,"","");
+dBtn:configure(50,256,64,64,64,"","");
+dBtn:configure(51,-320,0,64,64,"","");
+dBtn:configure(52,-256,0,64,64,"","");
+dBtn:configure(53,-192,0,64,64,"","");
+dBtn:configure(54,-128,0,64,64,"","");
+dBtn:configure(55,-64,0,64,64,"","");
+dBtn:configure(56,0,0,64,64,"","");
+dBtn:configure(57,64,0,64,64,"","");
+dBtn:configure(58,128,0,64,64,"","");
+dBtn:configure(59,192,0,64,64,"","");
+dBtn:configure(60,256,0,64,64,"","");
+dBtn:configure(61,-320,-64,64,64,"","");
+dBtn:configure(62,-256,-64,64,64,"","");
+dBtn:configure(63,-192,-64,64,64,"","");
+dBtn:configure(64,-128,-64,64,64,"","");
+dBtn:configure(65,-64,-64,64,64,"","");
+dBtn:configure(66,0,-64,64,64,"","");
+dBtn:configure(67,64,-64,64,64,"","");
+dBtn:configure(68,128,-64,64,64,"","");
+dBtn:configure(69,192,-64,64,64,"","");
+dBtn:configure(70,256,-64,64,64,"","");
+dBtn:configure(71,-320,-128,64,64,"","");
+dBtn:configure(72,-256,-128,64,64,"","");
+dBtn:configure(73,-192,-128,64,64,"","");
+dBtn:configure(74,-128,-128,64,64,"","");
+dBtn:configure(75,-64,-128,64,64,"","");
+dBtn:configure(76,0,-128,64,64,"","");
+dBtn:configure(77,64,-128,64,64,"","");
+dBtn:configure(78,128,-128,64,64,"","");
+dBtn:configure(79,192,-128,64,64,"","");
+dBtn:configure(80,256,-128,64,64,"","");
+dBtn:configure(81,-320,-192,64,64,"","");
+dBtn:configure(82,-256,-192,64,64,"","");
+dBtn:configure(83,-192,-192,64,64,"","");
+dBtn:configure(84,-128,-192,64,64,"","");
+dBtn:configure(85,-64,-192,64,64,"","");
+dBtn:configure(86,0,-192,64,64,"","");
+dBtn:configure(87,64,-192,64,64,"","");
+dBtn:configure(88,128,-192,64,64,"","");
+dBtn:configure(89,192,-192,64,64,"","");
+dBtn:configure(90,256,-192,64,64,"","");
+dBtn:configure(91,-320,-256,64,64,"","");
+dBtn:configure(92,-256,-256,64,64,"","");
+dBtn:configure(93,-192,-256,64,64,"","");
+dBtn:configure(94,-128,-256,64,64,"","");
+dBtn:configure(95,-64,-256,64,64,"","");
+dBtn:configure(96,0,-256,64,64,"","");
+dBtn:configure(97,64,-256,64,64,"","");
+dBtn:configure(98,128,-256,64,64,"","");
+dBtn:configure(99,192,-256,64,64,"","");
+dBtn:configure(100,256,-256,64,64,"","");
 function mBtn:configure(id)
 	self[id] = CreateFrame("Button", nil, UIParent, "")
 	self[id]:SetSize(64, 64)
@@ -3874,9 +4005,17 @@ btn:configure(989,96,-3,32,32,"","Б");
 btn:configure(988,-55,-13,128,23,"","ЗАБРАТЬ ВСЕ");
 
 btn[989]:SetScript("OnClick",function(self, button)
-	btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
-	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-	showFld("0",myNome)
+	if testQ["domZ"] == nil then
+		btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+		showFld("0",myNome)
+	else
+		for i = 1, 100 do
+			dBtn[i]:Hide()
+			fBtn[i]:Show()
+		end
+		testQ["domZ"] = nil
+	end
 end)
 
 btn[1]:Hide()
@@ -5743,6 +5882,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		if testQ["dom"] == 1 then
+			for i = 1, 100 do
+				fBtn[i]:Hide()
+				dBtn[i]:Show()
+				dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["domNome"]][testQ["domZ"]][tostring(i)] ..".tga")
+				dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["domNome"]][testQ["domZ"]][tostring(i)] ..".tga")
+			end
+			testQ["dom"] = nil
+			testQ["domNome"] = nil
+		end
+		if not dBtn[1]:IsVisible() then
+			testQ["domZ"] = nil
+		end
 		if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
 			if resursy[5] ~= nil then
 				resursy[5]:Show()

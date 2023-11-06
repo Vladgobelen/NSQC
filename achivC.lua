@@ -15,8 +15,41 @@ end
 if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
-if kodMsg[1] == "#dom" then
-print (message)
+if kodMsg[1] == "#domtv" and msg[1] == myNome then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[myNome] == nil then
+		mioFld[myNome] = {}
+	end
+	if mioFld[myNome]["taverna"] == nil then
+		mioFld[myNome]["taverna"] = {}
+		for i = 1, 100 do
+			mioFld[myNome]["taverna"][tostring(i)] = "pl"
+		end
+	end
+	local tv = mioFld[myNome]["taverna"]["1"]
+	for i = 1, 100 do
+		tv = tv .. mioFld[myNome]["taverna"][tostring(i)]
+	end
+	SendAddonMessage("#mioTV " .. msg[2], tv, "guild")
+end
+if kodMsg[1] == "#mioTV" and kodMsg[2] == myNome then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender]["taverna"] == nil then
+		mioFld[sender]["taverna"] = {}
+	end
+	for i = 1, 100 do
+		mioFld[sender]["taverna"][tostring(i)] = message:sub((i*2)-1,i*2)
+	end
+	testQ["dom"] = 1
+	testQ["domZ"] = "taverna"
+	testQ["domNome"] = sender
 end
 testGM=gmTest(sender)
 if kodMsg[1] == "построить" and kodMsg[2] == myNome and testGM ~= nil then

@@ -42,6 +42,12 @@ libs\kirpich.tga
 libs\bn.tga
 libs\za.tga
 libs\ts.tga
+libs\pl.tga
+libs\b0.tga
+libs\mf.tga
+libs\m0.tga
+libs\lp.tga
+libs\lx.tga
 libs\zak.tga
 libs\zp.tga
 libs\bi.tga
