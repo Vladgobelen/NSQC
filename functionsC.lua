@@ -2241,8 +2241,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2255,8 +2261,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2281,8 +2293,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2295,8 +2313,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2321,8 +2345,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2335,8 +2365,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2361,8 +2397,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2375,8 +2417,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2401,8 +2449,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2415,8 +2469,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2441,8 +2501,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then
@@ -2455,8 +2521,14 @@ function htimer(myNome)
 					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
 						if testTO ~= "to" then
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
 						else
 							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
 						end
 					else
 						if testTO ~= "to" then

@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=9
+versAdd=290;versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -411,6 +411,13 @@ function vybor:configure(id)
 				vybor[21]:Show()
 			end
 		end
+		if id == 22 or id == 23 or id == 24 or id == 25 or id == 26 or id == 27 then
+			if vybor[21] ~= nil then
+				for i = 22, 27 do
+					vybor[i]:Show()
+				end
+			end
+		end
 		if id == 19 then
 			if vybor[19] ~= nil then
 				vybor[19]:Show()
@@ -668,6 +675,20 @@ function vybor:configure(id)
 		GameTooltip:Show()
 	end)
 	vybor[id]:SetScript("OnClick",function(self)
+		if id == 22 then
+			local sch
+			for i = 1, #shRec do
+				for j = 1,100 do
+					if shRec[i][j] ~= test['icon'] then
+						SendChatMessage("Мне нужно больше практиковаться..", "officer", nil, 1)
+						break
+					end
+					if i == 100 and shRec[i][j] == test['icon'] then
+						SendChatMessage("Сообщение тест1", "officer", nil, 1)
+					end
+				end
+			end
+		end
 		if id == 21 and testQ["yi"] ~= nil and tonumber(testQ["yi"]) >= 1 then
 			if testQ["temp"] == nil then
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
@@ -3431,8 +3452,8 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
 				testQ["domZ"] = "crt"
 				for i = 1, 100 do
-					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
-					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\st.tga")
+					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\st.tga")
 				end
 			end
 		end
@@ -3453,6 +3474,62 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			nome = GuildFrame["selectedName"]
 		else
 			nome = myNome
+		end
+		if testQ["domZ"] == "crt" then
+			if vybor[22] == nil or not vybor[22]:IsVisible() then
+				vybor:configure(22)
+				vybor[22]:SetPoint("CENTER", dBtn[id],"CENTER",-192, 96)
+				vybor[22]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
+				vybor[22]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
+				vybor[22]:Show()
+				testQ["idp"] = id
+				testQ["icon"] = "b"
+			end
+			if vybor[23] == nil or not vybor[23]:IsVisible() then
+				vybor:configure(23)
+				vybor[23]:SetPoint("CENTER", dBtn[id],"CENTER",-64, 96)
+				vybor[23]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
+				vybor[23]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
+				vybor[23]:Show()
+				testQ["idp"] = id
+				testQ["icon"] = "f"
+			end
+			if vybor[24] == nil or not vybor[24]:IsVisible() then
+				vybor:configure(24)
+				vybor[24]:SetPoint("CENTER", dBtn[id],"CENTER",64, 96)
+				vybor[24]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
+				vybor[24]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
+				vybor[24]:Show()
+				testQ["idp"] = id
+				testQ["icon"] = "kamen"
+			end
+			if vybor[25] == nil or not vybor[25]:IsVisible() then
+				vybor:configure(25)
+				vybor[25]:SetPoint("CENTER", dBtn[id],"CENTER",192, 96)
+				vybor[25]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+				vybor[25]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+				vybor[25]:Show()
+				testQ["idp"] = id
+				testQ["icon"] = "bn"
+			end
+			if vybor[26] == nil or not vybor[26]:IsVisible() then
+				vybor:configure(26)
+				vybor[26]:SetPoint("CENTER", dBtn[id],"CENTER",320, 96)
+				vybor[26]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				vybor[26]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				vybor[26]:Show()
+				testQ["idp"] = id
+				testQ["icon"] = "smg"
+			end
+			if vybor[27] == nil or not vybor[27]:IsVisible() then
+				vybor:configure(27)
+				vybor[27]:SetPoint("CENTER", dBtn[id],"CENTER",448, 96)
+				vybor[27]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
+				vybor[27]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
+				vybor[27]:Show()
+				testQ["idp"] = id
+				testQ["icon"] = "kirpich"
+			end
 		end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if testQ["domZ"] == "mf" and mioFld[nome][testQ["domZ"]][tostring(id)] == "bn" then
