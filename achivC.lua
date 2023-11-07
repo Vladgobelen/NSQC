@@ -27,7 +27,7 @@ if kodMsg[1] == "#yIm" then
 	end
 	mioFld[message]["mf"][tostring(kodMsg[2])] = "my"
 	testQ["mf"] = 1
-	testQ["mfNome"] = sender
+	testQ["mfNome"] = message
 end
 if kodMsg[1] == "#yImx" then
 	if mioFld == nil then

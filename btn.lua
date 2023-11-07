@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=3
+versAdd=290;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -632,13 +632,13 @@ function vybor:configure(id)
 			GameTooltip:AddLine("|cffff2b2bНужно больше камня")
 			GameTooltip:Show()
 		end
-		if id == 21 and testQ["yi"] >= 1 then
+		if id == 21 and testQ["yi"] ~= nil and tonumber(testQ["yi"]) >= 1 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Поставить ящик с инструментами")
 			GameTooltip:AddLine("Требуется для работы с деревом")
 			GameTooltip:Show()
 		end
-		if id == 21 and testQ["yi"] < 1 then
+		if id == 21 and testQ["yi"] ~= nil and tonumber(testQ["yi"]) < 1 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Поставить ящик с инструментами")
 			GameTooltip:AddLine("Требуется для работы с деревом")
@@ -668,7 +668,7 @@ function vybor:configure(id)
 		GameTooltip:Show()
 	end)
 	vybor[id]:SetScript("OnClick",function(self)
-		if id == 21 and testQ["yi"] >= 1 then
+		if id == 21 and testQ["yi"] ~= nil and tonumber(testQ["yi"]) >= 1 then
 			if testQ["temp"] == nil then
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
 				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
@@ -3439,7 +3439,11 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if arg1 == "RightButton" then
 			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
 				SendAddonMessage("#yImx " .. id, nome, "guild")
-				testQ["yi"] = tonumber(testQ["yi"])+1
+				if testQ["yi"] ~= nil then
+					testQ["yi"] = tonumber(testQ["yi"])+1
+				else
+					testQ["yi"] = 1
+				end
 			end
 		end
 	end)
@@ -5385,7 +5389,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									end
 								end
 								if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and pet[1] == "gom" then
-								print(testQ["gom"])
 									local x = math.random(1,10000)
 									local xx
 									local xxx = math.random(1,2)
