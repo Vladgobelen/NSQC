@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=6
+versAdd=290;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4257,6 +4257,7 @@ btn[989]:SetScript("OnClick",function(self, button)
 	if testQ["domZ"] == nil then
 		btn[989]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+		print('5 ' .. myNome)
 		showFld("0",myNome)
 	else
 		for i = 1, 100 do
