@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=5
+versAdd=290;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3472,7 +3472,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 		if testQ["domZ"] ~= nil then
 			if mioFld[nome][testQ["domZ"]] == nil then
-				if mioFld[nome][testQ["domZ"]] {}
+				mioFld[nome][testQ["domZ"]] {}
 			end
 			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
 				GameTooltip:AddLine("|cFF6495EDЯщик с инструментами:")
