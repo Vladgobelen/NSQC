@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=4
+versAdd=290;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3470,12 +3470,17 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 
 		end
-		if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
-			GameTooltip:AddLine("|cFF6495EDЯщик с инструментами:")
-			GameTooltip:AddLine(" ")
-			GameTooltip:AddLine("Какие забавные внутри винтики и всякие отверточки")
-			GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40создать Шедевр!")
-			GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40забрать")
+		if testQ["domZ"] ~= nil then
+			if mioFld[nome][testQ["domZ"]] == nil then
+				if mioFld[nome][testQ["domZ"]] {}
+			end
+			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
+				GameTooltip:AddLine("|cFF6495EDЯщик с инструментами:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("Какие забавные внутри винтики и всякие отверточки")
+				GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40создать Шедевр!")
+				GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40забрать")
+			end
 		end
 		GameTooltip:Show()
 		btn[989]:Show()
