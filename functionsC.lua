@@ -938,26 +938,26 @@ dmG = {}
 function dmgText(text,obj,id,raz,cvet)
 	if dmG[id] == nil then
 		dmG[id] = CreateFrame("SimpleHTML", "dmG", obj)
-		dmG[id]:SetFrameStrata("FULLSCREEN_DIALOG")
-		dmG[id]:ClearAllPoints()
-		dmG[id]:SetBackdropColor(0, 103, 51, 1)
-		dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', raz,"OUTLINE", "MONOCHROME");
 	end
-		if text ~= "" then
-			if tonumber(text) <= 9999 then
-				dmG[id]:SetSize(48, 48)
-			end
-			if tonumber(text) > 9999 then
-				dmG[id]:SetSize(54, 48)
-			end
-			if tonumber(text) <= 9999 then
-				dmG[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
-			end
-			if tonumber(text) > 9999 then
-				dmG[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
-			end
+	dmG[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	dmG[id]:ClearAllPoints()
+	dmG[id]:SetBackdropColor(0, 103, 51, 1)
+	dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	if text ~= "" then
+		if tonumber(text) <= 9999 then
+			dmG[id]:SetSize(48, 48)
 		end
-		dmG[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+		if tonumber(text) > 9999 then
+			dmG[id]:SetSize(54, 48)
+		end
+		if tonumber(text) <= 9999 then
+			dmG[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+		end
+		if tonumber(text) > 9999 then
+			dmG[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+		end
+	end
+	dmG[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
 end
 dmG1 = {}
 function dmgText1(text,obj,id,raz,cvet)
@@ -983,6 +983,31 @@ function dmgText1(text,obj,id,raz,cvet)
 			end
 		end
 		dmG1[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+end
+dmG2 = {}
+function dmgText2(text,obj,id,raz,cvet)
+	if dmG2[id] == nil then
+		dmG2[id] = CreateFrame("SimpleHTML", "dmG", obj)
+		dmG2[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+		dmG2[id]:ClearAllPoints()
+		dmG2[id]:SetBackdropColor(0, 103, 51, 1)
+		dmG2[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	end
+	if text ~= "" then
+		if tonumber(text) <= 9999 then
+			dmG2[id]:SetSize(48, 48)
+		end
+		if tonumber(text) > 9999 then
+			dmG2[id]:SetSize(54, 48)
+		end
+		if tonumber(text) <= 9999 then
+			dmG2[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+		end
+		if tonumber(text) > 9999 then
+			dmG2[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+		end
+	end
+	dmG2[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
 end
 rtnText = {}
 function rtnTextF(text,id,show)

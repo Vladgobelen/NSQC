@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=11
+versAdd=290;versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -423,6 +423,15 @@ function vybor:configure(id)
 					vybor[i]:Show()
 				end
 			end
+		end
+		if id == 9 then
+			vybor[9]:Show()
+		end
+		if id == 10 then
+			vybor[10]:Show()
+		end
+		if id == 12 then
+			vybor[12]:Show()
 		end
 		if id == 19 then
 			if vybor[19] ~= nil then
@@ -3759,7 +3768,8 @@ function mBtn:configure(id)
 				local x = math.random(1,10)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
 				testQ["brevna"] = tonumber(testQ["brevna"]) + x
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+				dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
 				print("Получено: " .. x .. " бревен")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3767,7 +3777,8 @@ function mBtn:configure(id)
 				local x = math.random(1,10)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
 				testQ["stog"] = tonumber(testQ["stog"]) + x
-				dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+				dmgText2(testQ["stog"],mBtn[2],802,13,"FF8C00")
 				print("Получено: " .. x .. " травы")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3775,7 +3786,8 @@ function mBtn:configure(id)
 				local x = math.random(1,10)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
 				testQ["kamen"] = tonumber(testQ["kamen"]) + x
-				dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+				dmgText2(testQ["kamen"],mBtn[3],803,13,"FF8C00")
 				print("Получено: " .. x .. " камня")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3784,6 +3796,7 @@ function mBtn:configure(id)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
 				testQ["beton"] = tonumber(testQ["beton"]) + x
 				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+				dmgText2(string.format("%d", tonumber(testQ["beton"])),mBtn[4],804,13,"FF8C00")
 				print("Получено: " .. x .. " бетона")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3792,6 +3805,7 @@ function mBtn:configure(id)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
 				testQ["kirpich"] = tonumber(testQ["kirpich"]) + x
 				dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+				dmgText2(string.format("%d", tonumber(testQ["kirpich"])),mBtn[8],808,13,"FF8C00")
 				print("Получено: " .. x .. " кирпичей")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3800,6 +3814,7 @@ function mBtn:configure(id)
 			if id == 5 then
 				testQ[myNome]["петы"]["bb"] = 1
 				testQ["smg"] = tonumber(testQ["smg"]) - 10
+				dmgText2(testQ[myNome]["петы"]["bb"],mBtn[5],805,13,"FF8C00")
 				print("Получен: бобер")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3808,6 +3823,7 @@ function mBtn:configure(id)
 			if id == 9 then
 				testQ["yi"] = 1
 				testQ["smg"] = tonumber(testQ["smg"]) - 10
+				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
 				print("Получен: Ящик с инструментами")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3815,13 +3831,42 @@ function mBtn:configure(id)
 		if tonumber(testQ["smg"]) >= 50 then
 			if id == 6 then
 				testQ[myNome]["петы"]["gg"] = "gob"
+				if testQ[myNome]["петы"]["gg"] == "gob" then
+					gobT = 1
+					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+				else
+					gobT = 0
+					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+				end
+				if testQ[myNome]["петы"]["gg"] == "gom" then
+					gomT = 1
+					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+				else
+					gomT = 0
+					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+				end
 				testQ["smg"] = tonumber(testQ["smg"]) - 50
 				print("Получен: гоблин")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
 			if id == 7 then
 				testQ[myNome]["петы"]["gg"] = "gom"
+				if testQ[myNome]["петы"]["gg"] == "gom" then
+					gomT = 1
+					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+				else
+					gomT = 0
+					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+				end
+				if testQ[myNome]["петы"]["gg"] == "gob" then
+					gobT = 1
+					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+				else
+					gobT = 0
+					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+				end
 				testQ["smg"] = tonumber(testQ["smg"]) - 50
+				dmgText2(gomT,mBtn[7],807,13,"FF8C00")
 				print("Получен: гном")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -3831,14 +3876,14 @@ function mBtn:configure(id)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if tonumber(testQ["smg"]) < 1 then
 			if id == 1 then
-				GameTooltip:AddLine("|cff99ff99Бревна:")
+				GameTooltip:AddLine("|cff99ff99Купить бревна:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff00001 бутылка")
 			end
 		else
 			if id == 1 then
-				GameTooltip:AddLine("|cff99ff99Бревна:")
+				GameTooltip:AddLine("|cff99ff99Купить бревна:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
@@ -3847,14 +3892,14 @@ function mBtn:configure(id)
 
 		if tonumber(testQ["smg"]) < 1 then
 			if id == 2 then
-				GameTooltip:AddLine("|cff99ff99Трава:")
+				GameTooltip:AddLine("|cff99ff99Купить траву:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff00001 бутылка")
 			end
 		else
 			if id == 2 then
-				GameTooltip:AddLine("|cff99ff99Трава:")
+				GameTooltip:AddLine("|cff99ff99Купить траву:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
@@ -3863,14 +3908,14 @@ function mBtn:configure(id)
 
 		if tonumber(testQ["smg"]) < 1 then
 			if id == 3 then
-				GameTooltip:AddLine("|cff99ff99Камень:")
+				GameTooltip:AddLine("|cff99ff99Купить камень:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff00001 бутылка")
 			end
 		else
 			if id == 3 then
-				GameTooltip:AddLine("|cff99ff99Камень:")
+				GameTooltip:AddLine("|cff99ff99Купить камень:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
@@ -3879,14 +3924,14 @@ function mBtn:configure(id)
 
 		if tonumber(testQ["smg"]) < 1 then
 			if id == 4 then
-				GameTooltip:AddLine("|cff99ff99Бетон:")
+				GameTooltip:AddLine("|cff99ff99Купить бетон:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff00001 бутылка")
 			end
 		else
 			if id == 4 then
-				GameTooltip:AddLine("|cff99ff99Бетон:")
+				GameTooltip:AddLine("|cff99ff99Купить бетон:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-10")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
@@ -3895,14 +3940,14 @@ function mBtn:configure(id)
 
 		if tonumber(testQ["smg"]) < 1 then
 			if id == 8 then
-				GameTooltip:AddLine("|cff99ff99Кирпич:")
+				GameTooltip:AddLine("|cff99ff99Купить кирпич:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-5")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff00001 бутылка")
 			end
 		else
 			if id == 8 then
-				GameTooltip:AddLine("|cff99ff99Кирпич:")
+				GameTooltip:AddLine("|cff99ff99Купить кирпич:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-5")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
@@ -3911,14 +3956,14 @@ function mBtn:configure(id)
 
 		if tonumber(testQ["smg"]) < 10 then
 			if id == 5 then
-				GameTooltip:AddLine("|cff99ff99Бобер:")
+				GameTooltip:AddLine("|cff99ff99Купить бобра:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000010 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ БОБРА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
 			end
 		else
 			if id == 5 then
-				GameTooltip:AddLine("|cff99ff99Бобер:")
+				GameTooltip:AddLine("|cff99ff99Купить бобра:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF10 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ БОБРА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
@@ -3927,14 +3972,14 @@ function mBtn:configure(id)
 
 		if tonumber(testQ["smg"]) < 50 then
 			if id == 6 then
-				GameTooltip:AddLine("|cff99ff99Гоблин:")
+				GameTooltip:AddLine("|cff99ff99Купить Гоблина:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000050 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ ГНОМА И ГОБЛИНА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
 			end
 		else
 			if id == 6 then
-				GameTooltip:AddLine("|cff99ff99Гоблин:")
+				GameTooltip:AddLine("|cff99ff99Купить Гоблина:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF50 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ ГНОМА И ГОБЛИНА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
@@ -3943,14 +3988,14 @@ function mBtn:configure(id)
 
 		if tonumber(testQ["smg"]) < 50 then
 			if id == 7 then
-				GameTooltip:AddLine("|cff99ff99Гном:")
+				GameTooltip:AddLine("|cff99ff99Купить гнома:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000050 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ ГНОМА И ГОБЛИНА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
 			end
 		else
 			if id == 7 then
-				GameTooltip:AddLine("|cff99ff99Гном:")
+				GameTooltip:AddLine("|cff99ff99Купить гнома:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF50 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ ГНОМА И ГОБЛИНА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
@@ -3958,13 +4003,13 @@ function mBtn:configure(id)
 		end
 		if tonumber(testQ["smg"]) < 10 then
 			if id == 9 then
-				GameTooltip:AddLine("|cff99ff99Ящик с инструментами:")
+				GameTooltip:AddLine("|cff99ff99Купить ящик с инструментами:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000010 бутылок")
 			end
 		else
-			if id == 7 then
-				GameTooltip:AddLine("|cff99ff99Ящик с инструментами:")
+			if id == 9 then
+				GameTooltip:AddLine("|cff99ff99Купить ящик с инструментами:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF10 бутылок")
 			end
@@ -3974,7 +4019,7 @@ function mBtn:configure(id)
 	self[id]:SetScript("OnLeave",function(self)
 		GameTooltip:Hide()
 	end)
-	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	self[id]:SetFrameStrata("FULLSCREEN")
 end
 
 function resursy:configure(id)
@@ -4054,15 +4099,73 @@ function resursy:configure(id)
 				for i = 1, 100 do
 					fBtn[i]:Hide()
 				end
-				mBtn:configure(1)
-				mBtn:configure(2)
-				mBtn:configure(3)
-				mBtn:configure(4)
-				mBtn:configure(5)
-				mBtn:configure(6)
-				mBtn:configure(7)
-				mBtn:configure(8)
-				mBtn:configure(9)
+				if mBtn[1] == nil then
+					mBtn:configure(1)
+				else
+					mBtn[1]:Show()
+				end
+				dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
+				if mBtn[2] == nil then
+					mBtn:configure(2)
+				else
+					mBtn[2]:Show()
+				end
+				dmgText2(testQ["stog"],mBtn[2],802,13,"FF8C00")
+				if mBtn[3] == nil then
+					mBtn:configure(3)
+				else
+					mBtn[3]:Show()
+				end
+				dmgText2(testQ["kamen"],mBtn[3],803,13,"FF8C00")
+				if mBtn[4] == nil then
+					mBtn:configure(4)
+				else
+					mBtn[4]:Show()
+				end
+				dmgText2(string.format("%d", tonumber(testQ["beton"])),mBtn[4],804,13,"FF8C00")
+				if mBtn[5] == nil then
+					mBtn:configure(5)
+				else
+					mBtn[5]:Show()
+				end
+				dmgText2(testQ[myNome]["петы"]["bb"],mBtn[5],805,13,"FF8C00")
+				if mBtn[6] == nil then
+					mBtn:configure(6)
+				else
+					mBtn[6]:Show()
+				end
+				local gobT
+				if testQ[myNome]["петы"]["gg"] == "gob" then
+					gobT = 1
+					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+				else
+					gobT = 0
+					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+				end
+				if mBtn[7] == nil then
+					mBtn:configure(7)
+				else
+					mBtn[7]:Show()
+				end
+				if testQ[myNome]["петы"]["gg"] == "gom" then
+					gomT = 1
+					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+				else
+					gomT = 0
+					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+				end
+				if mBtn[8] == nil then
+					mBtn:configure(8)
+				else
+					mBtn[8]:Show()
+				end
+				dmgText2(string.format("%d", tonumber(testQ["kirpich"])),mBtn[8],808,13,"FF8C00")
+				if mBtn[9] == nil then
+					mBtn:configure(9)
+				else
+					mBtn[9]:Show()
+				end
+				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
 				btn[989]:Hide()
 			else
 				magazin("hide")
@@ -4071,6 +4174,11 @@ function resursy:configure(id)
 					fBtn[i]:Show()
 					if mBtn[i] ~= nil then
 						mBtn[i]:Hide()
+					end
+				end
+				for i = 1, 1000 do
+					if dmG1[i] ~= nil then
+						dmG1[i]:Hide()
 					end
 				end
 			end
@@ -5353,27 +5461,27 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
 								testQ["brevna"] = testQ["brevna"]+1
-								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
 								testQ["brevna"] = testQ["brevna"]+1
-								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
 								testQ["brevna"] = testQ["brevna"]+1
-								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
 								testQ["brevna"] = testQ["brevna"]+1
-								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
 								testQ["brevna"] = testQ["brevna"]+1
-								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
 								testQ["brevna"] = testQ["brevna"]+1
-								dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
+								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 						end
 					end
@@ -6283,7 +6391,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[5]:Show()
 			end
 			if mgznZ ~= nil then
-				dmgText1(testQ["smg"],mgznZ,105,22,"FF8C00")
+				dmgText1(testQ["smg"],mgznZ,105,13,"FF8C00")
 				if dmG1[1005] ~= nil then
 					dmG1[1005]:SetFrameStrata("TOOLTIP")
 					mgznZ:SetFrameStrata("LOW")
