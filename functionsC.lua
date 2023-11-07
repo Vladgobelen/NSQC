@@ -2055,7 +2055,7 @@ function showFld(sign,myNome)
 			end
 			testQ["fRand1"] = math.random(1,1000000)
 			testQ['sign'] = sign
-			print('3 ' .. myNome .. " " nome)
+			print('3 ' .. myNome .. " " .. nome)
 			SendAddonMessage("shMFld " .. testQ["fRand1"], nome .. " " .. myNome, "guild")
 		else
 			for i=1,100 do
