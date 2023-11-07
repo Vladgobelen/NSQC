@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=14
+versAdd=290;versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -331,7 +331,7 @@ function vybor:configure(id)
 				end
 			end
 		end
-		if testQ["picon"] == "t" or testQ["icon"] == "gob" or testQ["icon"] == "gom" then
+		if (testQ["picon"] == "t" or testQ["icon"] == "gob" or testQ["icon"] == "gom") and mioFld[nome]["петы"][tostring(testQ["idp"])] ~= "bb" then
 			if vybor[8] ~= nil then
 				vybor[8]:Show()
 			end
