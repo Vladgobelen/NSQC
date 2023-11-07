@@ -1963,7 +1963,6 @@ function showFld(sign,myNome)
 	local nome
 	local proverkaLvla
 	local proverkaLvla1
-	print('1 ' .. myNome)
 	if not fBtn[1]:IsVisible() then
 		if not GuildFrameLFGButton:GetChecked() or sign == "1" then
 			if sign == "0" then
@@ -1971,7 +1970,6 @@ function showFld(sign,myNome)
 			else
 				nome = myNome
 			end
-			print('2 ' .. myNome .. " " .. nome)
 			for Zc=1,GetNumGuildMembers(true) do
 				local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 				if nome ~= myNome then
@@ -2055,7 +2053,6 @@ function showFld(sign,myNome)
 			end
 			testQ["fRand1"] = math.random(1,1000000)
 			testQ['sign'] = sign
-			print('3 ' .. myNome .. " " .. nome)
 			SendAddonMessage("shMFld " .. testQ["fRand1"], nome .. " " .. myNome, "guild")
 		else
 			for i=1,100 do
