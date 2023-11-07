@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=13
+versAdd=290;versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -336,10 +336,8 @@ function vybor:configure(id)
 				vybor[8]:Show()
 			end
 		end
-		for i = 1, 26 do
-			if id == i then
-				vybor[id]:Show()
-			end
+		if id == 8 then
+			vybor[8]:Show()
 		end
 		if testQ["picon"] == "z" and testQ["icon"] == "kopkop" then
 			if vybor[5] ~= nil then
@@ -357,16 +355,7 @@ function vybor:configure(id)
 				end
 			end
 		end
-		if testQ["icon"] == "os" or testQ["icon"] == "smg" then
-			if vybor[9] ~= nil then
-				vybor[9]:Show()
-				for i = 1, 100 do
-					if i ~= 9 and i~= 12 and vybor[i] ~= nil then
-						vybor[i]:Hide()
-					end
-				end
-			end
-		end
+
 		if testQ["icon"] == "smg" and testQ["picon"] == "m" then
 			if vybor[12] ~= nil then
 				vybor[12]:Show()
@@ -3595,6 +3584,9 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
 		end
 		if testQ["domZ"] ~= nil then
+			if mioFld[nome] == nil then
+				mioFld[nome] = {}
+			end
 			if mioFld[nome][testQ["domZ"]] == nil then
 				mioFld[nome][testQ["domZ"]] {}
 			end
