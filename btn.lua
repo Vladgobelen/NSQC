@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=10
+versAdd=290;versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -394,6 +394,12 @@ function vybor:configure(id)
 				end
 			end
 		end
+		if id == 5 or id == 6 then
+			if vybor[5] ~= nil then
+				vybor[5]:Show()
+				vybor[6]:Show()
+			end
+		end
 		if testQ["icon"] == "zc" and testQ["picon"] == "bn" then
 			if vybor[18] ~= nil then
 				vybor[18]:Show()
@@ -411,9 +417,9 @@ function vybor:configure(id)
 				vybor[21]:Show()
 			end
 		end
-		if id == 22 or id == 23 or id == 24 or id == 25 or id == 26 or id == 27 then
-			if vybor[21] ~= nil then
-				for i = 22, 27 do
+		if id == 22 or id == 23 or id == 24 or id == 25 or id == 26 then
+			if vybor[22] ~= nil then
+				for i = 22, 26 do
 					vybor[i]:Show()
 				end
 			end
@@ -652,6 +658,21 @@ function vybor:configure(id)
 			GameTooltip:AddLine("|cffff2b2bИнструменты можно купить в магазине")
 			GameTooltip:Show()
 		end
+		if id == 22 then
+			testQ['icon'] = "b"
+		end
+		if id == 23 then
+			testQ['icon'] = "f"
+		end
+		if id == 24 then
+			testQ['icon'] = "kamen"
+		end
+		if id == 25 then
+			testQ['icon'] = "bn"
+		end
+		if id == 26 then
+			testQ['icon'] = "kirpich"
+		end
 	end)
 	vybor[id]:SetScript("OnLeave",function(self)
 		for i=1,100 do
@@ -675,17 +696,38 @@ function vybor:configure(id)
 		GameTooltip:Show()
 	end)
 	vybor[id]:SetScript("OnClick",function(self)
-		if id == 22 then
-			local sch
+		if id >= 22 and id <= 26 then
+			dBtn[tonumber(testQ["idp"])]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. testQ['icon'] .. ".tga")
+			dBtn[tonumber(testQ["idp"])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. testQ['icon'] .. ".tga")
+			local sch=0
 			for i = 1, #shRec do
-				for j = 1,100 do
-					if shRec[i][j] ~= test['icon'] then
-						SendChatMessage("Мне нужно больше практиковаться..", "officer", nil, 1)
-						break
+				if shRec[i][tonumber(testQ["idp"])] ~= testQ['icon'] then
+					if sch == nil then
+						sch = 1
+					else
+						sch = sch+1
 					end
-					if i == 100 and shRec[i][j] == test['icon'] then
-						SendChatMessage("Сообщение тест1", "officer", nil, 1)
+				end
+			end
+			if sch >= tonumber(#shRec) then
+				SendChatMessage("Видимо такого рецепта не существует и я просто испортил хорошие ресурсы...", "officer", nil, 1)
+				for i = 1, 100 do
+					dBtn[i]:Hide()
+				end
+				btn[989]:Hide()
+				btn[989]:ClearAllPoints()
+				btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+				for i = 1, 100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
 					end
+				end
+			else
+				testQ["diffT"][tonumber(testQ["idp"])] = testQ['icon']
+			end
+			for i = 1, #shRec do
+				if diffT(testQ["diffT"],shRec[i]) == true then
+					SendChatMessage("тест3", "officer", nil, 1)
 				end
 			end
 		end
@@ -3293,6 +3335,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		testQ["zavodp"] = nil
 		testQ["zavodpc"] = nil
 		testQ["temp"] = nil
+		testQ['icon'] = nil
 		local nome
 		if testQ['sign'] ~= "1" then
 			nome = GuildFrame["selectedName"]
@@ -3465,6 +3508,10 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				else
 					testQ["yi"] = 1
 				end
+				testQ["diffT"] = {}
+				for i = 1,100 do
+					testQ["diffT"][i] = "st"
+				end
 			end
 		end
 	end)
@@ -3483,7 +3530,6 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				vybor[22]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\b.tga")
 				vybor[22]:Show()
 				testQ["idp"] = id
-				testQ["icon"] = "b"
 			end
 			if vybor[23] == nil or not vybor[23]:IsVisible() then
 				vybor:configure(23)
@@ -3492,7 +3538,6 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				vybor[23]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\f.tga")
 				vybor[23]:Show()
 				testQ["idp"] = id
-				testQ["icon"] = "f"
 			end
 			if vybor[24] == nil or not vybor[24]:IsVisible() then
 				vybor:configure(24)
@@ -3501,7 +3546,6 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				vybor[24]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kamen.tga")
 				vybor[24]:Show()
 				testQ["idp"] = id
-				testQ["icon"] = "kamen"
 			end
 			if vybor[25] == nil or not vybor[25]:IsVisible() then
 				vybor:configure(25)
@@ -3510,25 +3554,14 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				vybor[25]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
 				vybor[25]:Show()
 				testQ["idp"] = id
-				testQ["icon"] = "bn"
 			end
 			if vybor[26] == nil or not vybor[26]:IsVisible() then
 				vybor:configure(26)
 				vybor[26]:SetPoint("CENTER", dBtn[id],"CENTER",320, 96)
-				vybor[26]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
-				vybor[26]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				vybor[26]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
+				vybor[26]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
 				vybor[26]:Show()
 				testQ["idp"] = id
-				testQ["icon"] = "smg"
-			end
-			if vybor[27] == nil or not vybor[27]:IsVisible() then
-				vybor:configure(27)
-				vybor[27]:SetPoint("CENTER", dBtn[id],"CENTER",448, 96)
-				vybor[27]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
-				vybor[27]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kirpich.tga")
-				vybor[27]:Show()
-				testQ["idp"] = id
-				testQ["icon"] = "kirpich"
 			end
 		end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")

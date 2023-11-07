@@ -1,6 +1,6 @@
 shRec = {
 [1] = {"st","st","st","st","st","st","st","st","st","st","b","b","b","b","b","b","b","b","b","b","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","stol"},
-[2] = {"b","st","st","st","st","st","st","st","st","st","b","b","b","b","b","b","b","b","b","b","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","b","stul"},
+[2] = {"kamen","f","kirpich","st","st","st","st","st","st","st","b","b","b","b","b","b","b","b","b","b","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","st","st","b","st","st","st","st","st","st","b","b","stul"},
 }
 npcListC = {
 	["0xF1300046E2002720"] = {

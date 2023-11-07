@@ -2588,6 +2588,14 @@ function ml()
 		end
 	end
 end
+function diffT(t,t1)
+	for i = 1, 100 do
+		if t[i] ~= t1[i] then
+			return false
+		end
+	end
+	return true
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
