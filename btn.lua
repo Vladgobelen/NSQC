@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=21
+versAdd=290;versAddDop=22
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5739,7 +5739,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										local xx = math.random(1,500)
 										gKam(myNome,xx)
 										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
-										if x == 1 then
+										if xx == 1 then
 											SendAddonMessage("gomXm " .. i, myNome, "guild")
 										end
 									end
@@ -5748,7 +5748,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									local xx = math.random(1,500)
 									gKam(myNome,xx)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
-									if x == 1 then
+									if xx == 1 then
 										SendAddonMessage("gobXm " .. i, myNome, "guild")
 									end
 								end
