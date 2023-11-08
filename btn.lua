@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=22
+versAdd=290;versAddDop=23
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5733,149 +5733,151 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									end
 									testQ["поиск_пути_бобром"] = nil
 								end
-								if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
-									local x = math.random(1,2)
-									if x == 2 then
+								if testQ["zarplata"] == nil then
+									if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
+										local x = math.random(1,2)
+										if x == 2 then
+											local xx = math.random(1,500)
+											gKam(myNome,xx)
+											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
+											if xx == 1 then
+												SendAddonMessage("gomXm " .. i, myNome, "guild")
+											end
+										end
+									end
+									if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
 										local xx = math.random(1,500)
 										gKam(myNome,xx)
 										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 										if xx == 1 then
-											SendAddonMessage("gomXm " .. i, myNome, "guild")
+											SendAddonMessage("gobXm " .. i, myNome, "guild")
 										end
 									end
-								end
-								if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
-									local xx = math.random(1,500)
-									gKam(myNome,xx)
-									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
-									if xx == 1 then
-										SendAddonMessage("gobXm " .. i, myNome, "guild")
-									end
-								end
-								if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and pet[1] == "gom" then
-									local x = math.random(1,10000)
-									local xx
-									local xxx = math.random(1,2)
-									if xxx == 2 then
-										if x == 1 then
-											if testQ["gom"] == nil then
+									if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and pet[1] == "gom" then
+										local x = math.random(1,10000)
+										local xx
+										local xxx = math.random(1,2)
+										if xxx == 2 then
+											if x == 1 then
+												if testQ["gom"] == nil then
+													xx = math.random(1,4)
+													if xx == 1 then
+														testQ["brevna"] = tonumber(testQ["brevna"])-50
+													end
+													if xx == 2 then
+														testQ["stog"] = tonumber(testQ["stog"])-50
+													end
+													if xx == 3 then
+														testQ["kamen"] = tonumber(testQ["kamen"])-50
+													end
+													if xx == 4 then
+														testQ["beton"] = tonumber(testQ["beton"])-50
+													end
+												end
+											elseif x >= 2 and x < 101 then
+												if testQ["gom"] == nil then
+													xx = math.random(1,4)
+													if xx == 1 then
+														testQ["brevna"] = 0
+													end
+													if xx == 2 then
+														testQ["stog"] = 0
+													end
+													if xx == 3 then
+														testQ["kamen"] = 0
+													end
+													if xx == 4 then
+														testQ["beton"] = 0
+													end
+												end
+											elseif x >= 101 and x < 1000 then
+												if testQ["gom"] == nil then
+													xx = math.random(1,4)
+													if xx == 1 then
+														testQ["brevna"] = tonumber(testQ["brevna"])-10
+													end
+													if xx == 2 then
+														testQ["stog"] = tonumber(testQ["stog"])-10
+													end
+													if xx == 3 then
+														testQ["kamen"] = tonumber(testQ["kamen"])-10
+													end
+													if xx == 4 then
+														testQ["beton"] = tonumber(testQ["beton"])-10
+													end
+												end
+											elseif x >= 1000 and x < 9500 then
+												resObj(i,myNome,myNome)
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+											elseif x >= 9500 and x < 9990 then
+												resObj(i,myNome,myNome)
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 												xx = math.random(1,4)
 												if xx == 1 then
-													testQ["brevna"] = tonumber(testQ["brevna"])-50
+													testQ["brevna"] = tonumber(testQ["brevna"])+1
 												end
 												if xx == 2 then
-													testQ["stog"] = tonumber(testQ["stog"])-50
+													testQ["stog"] = tonumber(testQ["stog"])+1
 												end
 												if xx == 3 then
-													testQ["kamen"] = tonumber(testQ["kamen"])-50
+													testQ["kamen"] = tonumber(testQ["kamen"])+1
 												end
 												if xx == 4 then
-													testQ["beton"] = tonumber(testQ["beton"])-50
+													testQ["beton"] = tonumber(testQ["beton"])+1
 												end
+											elseif x >= 9991 and x <= 10000 then
+												resObj(i,myNome,myNome)
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+												xx = math.random(1,4)
+												if xx == 1 then
+													testQ["brevna"] = tonumber(testQ["brevna"])+10
+												end
+												if xx == 2 then
+													testQ["stog"] = tonumber(testQ["stog"])+10
+												end
+												if xx == 3 then
+													testQ["kamen"] = tonumber(testQ["kamen"])+10
+												end
+												if xx == 4 then
+													testQ["beton"] = tonumber(testQ["beton"])+10
+												end
+											end
+										end
+									end
+									if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and pet[1] == "gob" then
+										local x = math.random(1,10000)
+										if x == 1 then
+											if testQ["gob"] == nil then
+												mioFld[myNome]["объекты"][tostring(i)] = "z"
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
 											end
 										elseif x >= 2 and x < 101 then
-											if testQ["gom"] == nil then
-												xx = math.random(1,4)
-												if xx == 1 then
-													testQ["brevna"] = 0
-												end
-												if xx == 2 then
-													testQ["stog"] = 0
-												end
-												if xx == 3 then
-													testQ["kamen"] = 0
-												end
-												if xx == 4 then
-													testQ["beton"] = 0
-												end
+											if testQ["gob"] == nil then
+												mioFld[myNome]["целостность"][tostring(i)] = x
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 											end
 										elseif x >= 101 and x < 1000 then
-											if testQ["gom"] == nil then
-												xx = math.random(1,4)
-												if xx == 1 then
-													testQ["brevna"] = tonumber(testQ["brevna"])-10
-												end
-												if xx == 2 then
-													testQ["stog"] = tonumber(testQ["stog"])-10
-												end
-												if xx == 3 then
-													testQ["kamen"] = tonumber(testQ["kamen"])-10
-												end
-												if xx == 4 then
-													testQ["beton"] = tonumber(testQ["beton"])-10
-												end
-											end
-										elseif x >= 1000 and x < 9500 then
+											mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%d", tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)))
+											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+										elseif x >= 1000 and x < 5000 then
+											resObj(i,myNome,myNome)
+											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+										elseif x >= 5000 and x < 9500 then
+											resObj(i,myNome,myNome)
+											resObj(i,myNome,myNome)
+											resObj(i,myNome,myNome)
+											resObj(i,myNome,myNome)
 											resObj(i,myNome,myNome)
 											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 										elseif x >= 9500 and x < 9990 then
+											mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%d", tonumber(mioFld[myNome]["целостность"][tostring(i)]) + (x/10)))
 											resObj(i,myNome,myNome)
 											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-											xx = math.random(1,4)
-											if xx == 1 then
-												testQ["brevna"] = tonumber(testQ["brevna"])+1
-											end
-											if xx == 2 then
-												testQ["stog"] = tonumber(testQ["stog"])+1
-											end
-											if xx == 3 then
-												testQ["kamen"] = tonumber(testQ["kamen"])+1
-											end
-											if xx == 4 then
-												testQ["beton"] = tonumber(testQ["beton"])+1
-											end
 										elseif x >= 9991 and x <= 10000 then
+											mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+tonumber(mioFld[myNome]["целостность"][tostring(i)])
 											resObj(i,myNome,myNome)
 											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-											xx = math.random(1,4)
-											if xx == 1 then
-												testQ["brevna"] = tonumber(testQ["brevna"])+10
-											end
-											if xx == 2 then
-												testQ["stog"] = tonumber(testQ["stog"])+10
-											end
-											if xx == 3 then
-												testQ["kamen"] = tonumber(testQ["kamen"])+10
-											end
-											if xx == 4 then
-												testQ["beton"] = tonumber(testQ["beton"])+10
-											end
 										end
-									end
-								end
-								if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and pet[1] == "gob" then
-									local x = math.random(1,10000)
-									if x == 1 then
-										if testQ["gob"] == nil then
-											mioFld[myNome]["объекты"][tostring(i)] = "z"
-											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
-										end
-									elseif x >= 2 and x < 101 then
-										if testQ["gob"] == nil then
-											mioFld[myNome]["целостность"][tostring(i)] = x
-											PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-										end
-									elseif x >= 101 and x < 1000 then
-										mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%d", tonumber(mioFld[myNome]["целостность"][tostring(i)]) - (x/10)))
-										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-									elseif x >= 1000 and x < 5000 then
-										resObj(i,myNome,myNome)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-									elseif x >= 5000 and x < 9500 then
-										resObj(i,myNome,myNome)
-										resObj(i,myNome,myNome)
-										resObj(i,myNome,myNome)
-										resObj(i,myNome,myNome)
-										resObj(i,myNome,myNome)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-									elseif x >= 9500 and x < 9990 then
-										mioFld[myNome]["целостность"][tostring(i)] = tonumber(string.format("%d", tonumber(mioFld[myNome]["целостность"][tostring(i)]) + (x/10)))
-										resObj(i,myNome,myNome)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-									elseif x >= 9991 and x <= 10000 then
-										mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+tonumber(mioFld[myNome]["целостность"][tostring(i)])
-										resObj(i,myNome,myNome)
-										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 									end
 								end
 							end
