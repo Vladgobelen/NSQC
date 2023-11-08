@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=18
+versAdd=290;versAddDop=19
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6610,10 +6610,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if tonumber(testQ["zarplata"]) <= 0 then
 				testQ["zarplata"] = nil
 				for i = 1, 100 do
-					if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
+					if mioFld[myNome]["объекты"][tostring(i)] == "m" then
 						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m.tga")
 					end
-					if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
+					if mioFld[myNome]["объекты"][tostring(i)] == "m" then
 						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m.tga")
 					end
 				end
