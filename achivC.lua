@@ -1074,7 +1074,7 @@ if kodMsg[1] == "obgIz" then
 				testQ["fRand3"] = 1
 				testQ["fRand3Nome"] = message
 				if sender ~= myNome and message == myNome then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "m0" then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "tc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "zc" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "m0" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "lx" then
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 					else
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".ogg")
@@ -1760,6 +1760,22 @@ if kodMsg[1] == "zX" then
 		end
 	end
 end
+if kodMsg[1] == "lP" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "lx"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 400
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "zP" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -1889,6 +1905,9 @@ if kodMsg[1] == "resObj" then
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "m0" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "lx" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+		end
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 		end
@@ -1953,6 +1972,11 @@ if kodMsg[1] == "resObj" then
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zx" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
+					end
+				end
+				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="lx" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "lp"
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 29999 then
