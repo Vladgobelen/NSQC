@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=16
+versAdd=290;versAddDop=17
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -592,29 +592,52 @@ function vybor:configure(id)
 			GameTooltip:AddLine("Нужно 5 кубов бетона")
 			GameTooltip:Show()
 		end
-		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "bn" and id == 11 and tonumber(testQ["beton"]) < 10 then
+		if id == 11 and (tonumber(testQ["brevna"]) < 10 or tonumber(testQ["kamen"]) < 50 or tonumber(testQ["beton"])<10) then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно 10 кубов бетона")
+			GameTooltip:ClearLines()
+			GameTooltip:AddLine("|cFF6495EDПостроить сельсовет")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - квест на эмоции")
+			GameTooltip:AddLine("|cffFFCF40если есть таймер - сдать |cff99ff99магическую ткань")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cffFFCF40Доступно 4 пристройки:")
+			GameTooltip:AddLine("|cff99ff99Библиотека: |cffFFCF40увеличивает опыт для квеста в хижине")
+			GameTooltip:AddLine("|cff99ff99Бухгалтерия: |cffFFCF40дает единицу опыта к товарным квестам")
+			GameTooltip:AddLine("|cff99ff99Отдел логистики: |cffFFCF40ускоряет таймер")
+			GameTooltip:AddLine("|cff99ff99Архив: |cffFFCF40информация о прогрессе")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cffff0000Стоимость: 10 бревен, 50 камня, 10 кубов бетона")
 			GameTooltip:Show()
 		end
-		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "bn" and id == 11 and tonumber(testQ["kamen"]) < 50 then
+		if id == 11 and tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["kamen"]) >= 50 and tonumber(testQ["beton"]) >= 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно 50 камня")
+			GameTooltip:ClearLines()
+			GameTooltip:AddLine("|cFF6495EDПостроить сельсовет")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cff99ff99Доступные квесты: " .. "|cffFFCF40если нет таймера - квест на эмоции")
+			GameTooltip:AddLine("|cffFFCF40если есть таймер - сдать |cff99ff99магическую ткань")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cffFFCF40Доступно 4 пристройки:")
+			GameTooltip:AddLine("|cff99ff99Библиотека: |cffFFCF40увеличивает опыт для квеста в хижине")
+			GameTooltip:AddLine("|cff99ff99Бухгалтерия: |cffFFCF40дает единицу опыта к товарным квестам")
+			GameTooltip:AddLine("|cff99ff99Отдел логистики: |cffFFCF40ускоряет таймер")
+			GameTooltip:AddLine("|cff99ff99Архив: |cffFFCF40информация о прогрессе")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cff99ff99Стоимость: 10 бревен, 50 камня, 10 кубов бетона")
 			GameTooltip:Show()
 		end
-		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "bn" and id == 11 and tonumber(testQ["brevna"]) < 10 then
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Нужно 10 бревен")
-			GameTooltip:Show()
-		end
-		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "bn" and id == 11 and tonumber(testQ["brevna"]) >= 10 and tonumber(testQ["kamen"]) >= 50 and tonumber(testQ["beton"]) >= 10 then
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Построить сельсовет")
-			GameTooltip:Show()
-		end
+
 		if id == 12 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Зарплата")
+			if testQ["picon"] == "sx" then
+				GameTooltip:AddLine("Дать бутылку строителям, чтобы они сровняли все в землей")
+			end
+			if testQ["picon"] == "h" then
+				GameTooltip:AddLine("Дать бутылку жителям, чтобы время пролетело незаметно")
+			end
+			if testQ["picon"] == "m" or testQ["picon"] == "t" then
+				GameTooltip:AddLine("Дать бутылку пету, чтобы он работал охотнее")
+			end
 			GameTooltip:Show()
 		end
 		if id == 13 and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 5 and tonumber(testQ["stog"]) >= 5 then
@@ -3218,6 +3241,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cff99ff99Бухгалтерия: |cffFFCF40дает единицу опыта к товарным квестам")
 					GameTooltip:AddLine("|cff99ff99Отдел логистики: |cffFFCF40ускоряет таймер")
 					GameTooltip:AddLine("|cff99ff99Архив: |cffFFCF40информация о прогрессе")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "sx" then
+					GameTooltip:ClearLines()
+					GameTooltip:AddLine("|cFF6495EDСтройка: Будущий сельсовет")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40строить")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 				end
 				if testQ[myNome]["hTimer"] == nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
 					GameTooltip:ClearLines()
