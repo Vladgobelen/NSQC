@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=24
+versAdd=290;versAddDop=25
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -847,6 +847,9 @@ function vybor:configure(id)
 						local x = math.random(1,5)
 						testQ["doska"] = tonumber(testQ["doska"])+x
 						dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
+						print("Получено " .. x .. " досок")
+						dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					end
 				end
 			else
@@ -2542,6 +2545,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				for i = 1, 100 do
 					testQ["diffT"][i] = "st"
 				end
+				testQ["brevna"] = tonumber(testQ["brevna"])-1
+				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				testQ["domZ"] = "crt"
 				local nome
 				if testQ['sign'] ~= "1" then
