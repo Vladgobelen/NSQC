@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=26
+versAdd=290;versAddDop=27
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3530,6 +3530,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("Позволяет создавать всякое деревянное. И перерабатывать.")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Зайти внутрь")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "lp" then
+					GameTooltip:AddLine("|cFF6495EDЛесопилка")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Позволяет распиливать деревья и не только...")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Зайти внутрь: расходует |cff99ff991 |cffFFCF40бревно")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 				end
 				if mioFld[nome]["влияние"] ~= nil then
