@@ -1871,7 +1871,7 @@ function resObj(id,myNome,nome)
 end
 function gKam(myNome,x)
 	local testK = nil
-	if x == 500 then
+	if tonumber(x) == 500 then
 		for i = 1,100 do
 			if mioFld[myNome]["объекты"][tostring(i)] == "sk" then
 				if testK == nil then

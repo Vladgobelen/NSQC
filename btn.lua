@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=17
+versAdd=290;versAddDop=18
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -426,6 +426,12 @@ function vybor:configure(id)
 		end
 		if id == 12 then
 			vybor[12]:Show()
+		end
+		if id == 28 then
+			vybor[28]:Show()
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Дать бутылку пету для ускорения строительства")
+			GameTooltip:Show()
 		end
 		if id == 19 then
 			if vybor[19] ~= nil then
@@ -1161,6 +1167,24 @@ function vybor:configure(id)
 			end
 		end
 		if id == 12 and tonumber(testQ["smg"]) >= 1 and testQ["picon"] == "m" then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				testQ["zarplata"] = 10000
+				testQ["smg"] = tonumber(testQ["smg"])-1
+				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+				testQ["temp"] = nil
+				testQ["picon"] = nil
+				for i=1,100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if id == 28 and tonumber(testQ["smg"]) >= 1 then
 			if testQ["temp"] == nil then
 				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
 				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
@@ -2723,6 +2747,20 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
 						end
 					end
+				end
+			end
+		end
+		if nome == myNome then
+			if mioFld[nome]["объекты"][tostring(id)] == "sx" and (mioFld[nome]["петы"][tostring(id)] == "gob" or mioFld[nome]["петы"][tostring(id)] == "gom") then
+				vybor:configure(28)
+				vybor[28]:SetPoint("CENTER", fBtn[id],"CENTER",-96, 0)
+				vybor[28]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+				vybor[28]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+				vybor[28]:Show()
+				if testQ ~= nil then
+					testQ["idp"] = id
+					testQ["icon"] = "smg"
+					testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
 				end
 			end
 		end
@@ -6532,24 +6570,40 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ["zarplata"] ~= nil then
 			for i = 1, 100 do
 				if mioFld[myNome]["петы"] ~= nil then
-					if mioFld[myNome]["петы"][tostring(i)] ~= nil then
-						pet = mysplit(mioFld[myNome]["петы"][tostring(i)])
-					end
-					if pet ~= nil then
-						if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gom" then
-							local x = math.random(1,2)
-							if x == 2 then
-								local xx = math.random(1,500)
-								gKam(myNome,xx)
-								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gomZ.tga")
-							end
-						end
-						if mioFld[myNome]["объекты"][tostring(i)] == "m" and pet[1] == "gob" then
+					if mioFld[myNome]["объекты"][tostring(i)] == "m" and mioFld[myNome]["петы"][tostring(i)] == "gom" then
+						local x = math.random(1,2)
+						if x == 2 then
 							local xx = math.random(1,500)
 							gKam(myNome,xx)
-							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gobZ.tga")
+							fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gomZ.tga")
 						end
 					end
+					if mioFld[myNome]["объекты"][tostring(i)] == "m" and mioFld[myNome]["петы"][tostring(i)] == "gob" then
+						local xx = math.random(1,500)
+						gKam(myNome,xx)
+						fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\gobZ.tga")
+					end
+				end
+				if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and mioFld[myNome]["петы"][tostring(i)] == "gom" then
+					local xxx = math.random(1,2)
+					if xxx == 2 then
+						for j = 1, 500 do
+							if j == 500 then
+								resObj(i,myNome,myNome)
+							end
+						end
+						mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
+						--PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+					end
+				end
+				if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and mioFld[myNome]["петы"][tostring(i)] == "gob" then
+					for j = 1, 500 do
+						if j == 500 then
+							resObj(i,myNome,myNome)
+						end
+					end
+					mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
+					--PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
 				end
 			end
 			testQ["zarplata"] = tonumber(testQ["zarplata"])-1
