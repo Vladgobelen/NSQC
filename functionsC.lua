@@ -993,7 +993,7 @@ function dmgText2(text,obj,id,raz,cvet)
 		dmG2[id]:SetBackdropColor(0, 103, 51, 1)
 		dmG2[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
 	end
-	if text ~= "" then
+	if text ~= nil and text ~= "" then
 		if tonumber(text) <= 9999 then
 			dmG2[id]:SetSize(48, 48)
 		end
