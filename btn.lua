@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=15
+versAdd=290;versAddDop=16
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1164,6 +1164,24 @@ function vybor:configure(id)
 				testQ["zarplatab"] = 20
 				testQ["smg"] = tonumber(testQ["smg"])-1
 				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+				testQ["temp"] = nil
+				testQ["picon"] = nil
+				for i=1,100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if id == 12 and tonumber(testQ["smg"]) >= 1 and testQ["picon"] == "sx" then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				testQ["smg"] = tonumber(testQ["smg"])-1
+				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+				SendAddonMessage("sXX " .. testQ["idp"], nome, "guild")
 				testQ["temp"] = nil
 				testQ["picon"] = nil
 				for i=1,100 do
@@ -2670,7 +2688,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if nome == myNome then
 			if testQ[myNome]["hTimer"] ~= nil then
 				if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
-					if mioFld[nome]["объекты"][tostring(id)] == "h" then
+					if mioFld[nome]["объекты"][tostring(id)] == "h" or mioFld[nome]["объекты"][tostring(id)] == "sx" then
 						vybor:configure(12)
 						vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
 						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
@@ -2719,6 +2737,24 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if testQ ~= nil then
 							testQ["idp"] = id
 							testQ["icon"] = "tv"
+							testQ["picon"] = "bn"
+						end
+					end
+				end
+			end
+		end
+		if tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
+			if mioFld[nome]["объекты"][tostring(id+1)] == "mf" then
+				if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+					if vybor[27] == nil or not vybor[27]:IsVisible() then
+						vybor:configure(27)
+						vybor[27]:SetPoint("CENTER", fBtn[id],"CENTER",64, -96)
+						vybor[27]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lp.tga")
+						vybor[27]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lp.tga")
+						vybor[27]:Show()
+						if testQ ~= nil then
+							testQ["idp"] = id
+							testQ["icon"] = "lp"
 							testQ["picon"] = "bn"
 						end
 					end
@@ -3759,6 +3795,11 @@ function mBtn:configure(id)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
 		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\yi.tga")
 	end
+	if id == 10 then
+		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",136, -208)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\stanok.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\stanok.tga")
+	end
 	self[id]:SetScript("OnClick",function(self)
 		if tonumber(testQ["smg"]) >= 1 then
 			if id == 1 then
@@ -3822,6 +3863,16 @@ function mBtn:configure(id)
 				testQ["smg"] = tonumber(testQ["smg"]) - 10
 				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
 				print("Получен: Ящик с инструментами")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			end
+		end
+		if tonumber(testQ["smg"]) >= 30 then
+			if id == 10 then
+				testQ["yi"] = 1
+				testQ["smg"] = tonumber(testQ["smg"]) - 30
+				testQ["stanok"] = tonumber(testQ["stanok"])+1
+				dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
+				print("Получен: Распиловочный станок")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
 		end
@@ -4011,6 +4062,19 @@ function mBtn:configure(id)
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF10 бутылок")
 			end
 		end
+		if tonumber(testQ["smg"]) < 30 then
+			if id == 10 then
+				GameTooltip:AddLine("|cff99ff99Купить распиловочный станок:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000030 бутылок")
+			end
+		else
+			if id == 10 then
+				GameTooltip:AddLine("|cff99ff99Купить распиловочный станок:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF30 бутылок")
+			end
+		end
 		GameTooltip:Show()
 	end)
 	self[id]:SetScript("OnLeave",function(self)
@@ -4162,6 +4226,12 @@ function resursy:configure(id)
 				else
 					mBtn[9]:Show()
 				end
+				if mBtn[10] == nil then
+					mBtn:configure(10)
+				else
+					mBtn[10]:Show()
+				end
+				dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
 				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
 				btn[989]:Hide()
 			else
@@ -4875,7 +4945,7 @@ btn[14]:SetScript("OnLeave", function(self)
 end)
 
 minibtn = CreateFrame("Button", nil, Minimap)
-minibtn:RegisterForClicks("LeftButtonUp", "RightButtonDown")
+minibtn:RegisterForClicks("LeftButtonUp", "RightButtonDown", "MiddleButtonUp")
 minibtn:SetScript("OnEnter",function(self)
 	MainMenuMicroButton["hover"]=1
 	MainMenuMicroButton.updateInterval = 5
@@ -4888,7 +4958,8 @@ minibtn:SetScript("OnEnter",function(self)
 	end
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddLine("|cffFF8C00ЛКМ|cffFFFFE0 - открыть аддон")
-	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки (когда аддон открыт)")
+	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки")
+	GameTooltip:AddLine("|cffF4A460СКМ|cffFFFFE0 - открыть новую версию аддона")
 	GameTooltip:AddLine("|cffFFFFE0Тягать кнопку можно, когда аддон открыт")
 	GameTooltip:Show()
 end)
@@ -5331,7 +5402,9 @@ minibtn:SetScript("OnClick", function()
 			end
 		end
 		if arg1=="RightButton" then
-			showRB(myNome)
+			if pokazat == 1 then
+				showRB(myNome)
+			end
 		end
 	elseif testQ["mioFldLvl"] == 0.5 or testQ["mioFldLvl"] == 0.9 then
 		if arg1=="LeftButton" then
@@ -5343,6 +5416,9 @@ minibtn:SetScript("OnClick", function()
 			end
 			showRB(myNome)
 		end
+	end
+	if arg1 == "MiddleButton" then
+		showFld("1",myNome)
 	end
 end)
 
@@ -6486,6 +6562,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			if testQ["kirpich"] == nil then
 				testQ["kirpich"] = 0
+			end
+			if testQ["yi"] == nil then
+				testQ["yi"] = 0
+			end
+			if testQ["stanok"] == nil then
+				testQ["stanok"] = 0
 			end
 		end
 		if StaticPopup1~= nil then

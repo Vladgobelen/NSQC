@@ -27,6 +27,7 @@ libs\mx.ogg
 libs\t.ogg
 libs\f.ogg
 libs\sx.tga
+libs\stanok.tga
 libs\st.tga
 libs\my.tga
 libs\z.tga
