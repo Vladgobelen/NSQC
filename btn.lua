@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=25
+versAdd=290;versAddDop=26
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6873,6 +6873,13 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				--SetRaidTarget("mouseover",4)
 			--end
 		--end
+		if resursy[1] ~= nil and not resursy[1]:IsVisible() then
+			for i = 100, 1000 do
+				if dmG[i] ~= nil then
+					dmG[i]:Hide()
+				end
+			end
+		end
 		if resursy[1] ~= nil and resursy[1]:IsVisible() then
 			if dmG[101] == nil or not dmG[101]:IsVisible() then
 				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
