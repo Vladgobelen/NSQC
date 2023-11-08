@@ -1007,7 +1007,9 @@ function dmgText2(text,obj,id,raz,cvet)
 			dmG2[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
 		end
 	end
-	dmG2[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+	if text ~= nil then
+		dmG2[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+	end
 end
 rtnText = {}
 function rtnTextF(text,id,show)
