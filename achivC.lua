@@ -81,6 +81,15 @@ if kodMsg[1] == "#dommf" and msg[1] == myNome then
 	end
 	SendAddonMessage("#mioMF " .. msg[2], tv, "guild")
 end
+if kodMsg[1] == "#resursy" and message == myNome then
+	SendAddonMessage("#resursy1", "Бревна: " .. testQ["brevna"], "guild")
+	SendAddonMessage("#resursy1", "Трава: " .. testQ["stog"], "guild")
+	SendAddonMessage("#resursy1", "Камень: " .. testQ["kamen"], "guild")
+	SendAddonMessage("#resursy1", "Бетон: " .. testQ["beton"], "guild")
+	SendAddonMessage("#resursy1", "Самогон: " .. testQ["smg"], "guild")
+	SendAddonMessage("#resursy1", "Кирпич: " .. testQ["kirpich"], "guild")
+end
+
 if kodMsg[1] == "#mioTV" and kodMsg[2] == myNome then
 	if mioFld == nil then
 		mioFld = {}
