@@ -32,6 +32,10 @@ if msg[1] == "\"кирпич" and msg[2] == myNome and testGM~=nil then
 	testQ["kirpich"] = tonumber(testQ["kirpich"])+tonumber(msg[3])
 	testQ["fRand6"] = 1
 end
+if msg[1] == "\"доска" and msg[2] == myNome and testGM~=nil then
+	testQ["doska"] = tonumber(testQ["doska"])+tonumber(msg[3])
+	testQ["fRand6"] = 1
+end
 if msg[1] == "\"бревна" and msg[2] == myNome and testGM~=nil then
 	testQ["brevna"] = tonumber(testQ["brevna"])+tonumber(msg[3])
 	testQ["fRand6"] = 1
