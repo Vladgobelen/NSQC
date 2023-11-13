@@ -106,7 +106,7 @@ end
 for i = 1, #testQ["chs"] do
 	if testQ["chs"][i] ~= nil then
 		if string.find(message,testQ["chs"][i]) then
-		print(testQ["chs"][i])
+			SendChatMessage(testQ["chs"][i] .. " исключен из гильдии" , "OFFICER", nil, 1)
 			GuildUninvite(testQ["chs"][i])
 		end
 	end
