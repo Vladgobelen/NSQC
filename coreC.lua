@@ -40,6 +40,7 @@ if msg[1] == "\"чсв" and (myNome == "Хефе" or myNome == "Дервин" or
 	end
 	for i = 1, #testQ["chs"] do
 		if testQ["chs"][i] == msg[2] then
+			SendChatMessage(testQ["chs"][i] .. " был удален из черного списка" , "OFFICER", nil, 1)
 			testQ["chs"][i] = nil
 		end
 	end
