@@ -1934,21 +1934,27 @@ function gKam(myNome,x)
 		end
 		if testQ["kamen"] ~= nil and testQ["kamen"] < 10 and testK == nil then
 			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 100 and testK == 1 then
 			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 200 and testK == 2 then
 			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 300 and testK == 3 then
 			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 400 and testK == 4 then
 			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 500 and testK == 5 then
 			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		end
