@@ -1,4 +1,4 @@
-versAdd=293;versAddDop=0
+versAdd=294;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1062,7 +1062,7 @@ function vybor:configure(id)
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 5
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["stog"] = tonumber(testQ["stog"]) - 5
-						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
