@@ -1,4 +1,4 @@
-versAdd=290;versAddDop=30
+versAdd=290;versAddDop=31
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5200,6 +5200,7 @@ minibtn:SetScript("OnEnter",function(self)
 	MainMenuMicroButton.updateInterval = 5
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	SendAddonMessage("NSGadd", "#ver", "guild")
+	SendAddonMessage("#gmlist", myNome, "guild")
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:AddLine("|cFF6495EDNSQC|cFF808080-|cff00BFFF".. versAdd .. "." .. versAddDop .. " |cffbbbbbbОЗУ: |cff00BFFF" .. string.format("%.0f", GetAddOnMemoryUsage("NSQC")) .. " |cffbbbbbbкб")
 	if testQ["vers"] ~= nil then
@@ -7613,16 +7614,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				local mioCel=sqrt((x-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["x"])^2+(y-marsh[testQ["marshK"]][testQ["marshL"]][testQ["marshN"]]["y"])^2)
 				local tKont = testKont
 				local tLok = lok
-				print (mioCel)
-				--if mapTables["lokRasstoyanie"][tKont][tLok] ~= nil then
-					--if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
-						--marSh()
-					--end
-				--else
+				--print (mioCel)
+				if mapTables["lokRasstoyanie"][tKont][tLok] ~= nil then
+					if mioCel >= tonumber(mapTables["lokRasstoyanie"][tKont][tLok])*2 then
+						marSh()
+					end
+				else
 					--if mioCel >= 0.9 then
 						--marSh()
 					--end
-				--end
+				end
 			end
 		end
 		if testQ == nil then
