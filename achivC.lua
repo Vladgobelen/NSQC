@@ -1143,7 +1143,7 @@ if kodMsg[1] == "oS" then
 		mioFld[message]["объекты"] = {}
 	end
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
-	if fBtn[tonumber(kodMsg[2])] ~= nil then
+	if fBtn[tonumber(kodMsg[2])]:IsVisible() then
 		fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
 	end
 	if sender == myNome then
@@ -1162,7 +1162,7 @@ end
 if kodMsg[1] == "gZ" then
 	local petZ = mioFld[message]["петы"][tostring(kodMsg[2])]
 	mioFld[message]["петы"][tostring(kodMsg[2])] = nil
-	if fBtn[tonumber(kodMsg[2])] ~= nil then
+	if fBtn[tonumber(kodMsg[2])]:IsVisible() then
 		fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[message]["объекты"][tostring(kodMsg[2])] .. ".tga")
 	end
 	if kodMsg[4] == myNome then
