@@ -21,7 +21,18 @@ if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or s
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end
-	table.insert(testQ["chs"],msg[2])
+	local prov = nil
+	for i = 1, #testQ["chs"] do
+		if testQ["chs"][i] == msg[2] then
+			prov = 1
+		end
+	end
+	if prov ~= 1 then
+		table.insert(testQ["chs"],msg[2])
+		SendChatMessage(msg[2] .. " был добавлен в черный список" , "OFFICER", nil, 1)
+	else
+		SendChatMessage(msg[2] .. " уже есть в черном списке" , "OFFICER", nil, 1)
+	end
 end
 if msg[1] == "\"чсв" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга") then
 	if testQ["chs"] == nil then
