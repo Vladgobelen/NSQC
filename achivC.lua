@@ -867,22 +867,27 @@ if kodMsg[1] == "MioFldO3" then
 end
 if kodMsg[1] == "камни" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["kamen"] = tonumber(message)
+	testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 	testQ["fRand6"] = 1
 end
 if kodMsg[1] == "бревна" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["brevna"] = tonumber(message)
+	testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 	testQ["fRand6"] = 1
 end
 if kodMsg[1] == "трава" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["stog"] = tonumber(message)
+	testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 	testQ["fRand6"] = 1
 end
 if kodMsg[1] == "бетон" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["beton"] = tonumber(message)
+	testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 	testQ["fRand6"] = 1
 end
 if kodMsg[1] == "самогон" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["smg"] = tonumber(message)
+	testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 	testQ["fRand6"] = 1
 end
 if kodMsg[1] == "MioFldP1" then
@@ -1736,14 +1741,19 @@ if kodMsg[1] == "gomXm" and message == myNome then
 			if xx == 1 then
 				if x == 1 then
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 1
+					testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 				elseif x == 2 then
 					testQ["stog"] = tonumber(testQ["stog"]) - 1
+					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 				elseif x == 3 then
 					testQ["kamen"] = tonumber(testQ["kamen"]) - 1
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 				elseif x == 4 then
 					testQ["beton"] = tonumber(testQ["beton"]) - 1
+					testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 				elseif x == 3 then
 					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["zarplata"] = 10000
 				end
 			end

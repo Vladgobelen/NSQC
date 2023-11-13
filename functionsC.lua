@@ -1287,26 +1287,32 @@ function treeX(nome,myNome,id)
 			end
 			if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
 				testQ["brevna"] = testQ["brevna"]+1
+				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
 			if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
 				testQ["brevna"] = testQ["brevna"]+1
+				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
 			if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
 				testQ["brevna"] = testQ["brevna"]+1
+				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
 			if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
 				testQ["brevna"] = testQ["brevna"]+1
+				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
 			if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
 				testQ["brevna"] = testQ["brevna"]+1
+				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
 			if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
 				testQ["brevna"] = testQ["brevna"]+1
+				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 			end
 		end
@@ -2665,6 +2671,16 @@ function diffT(t,t1)
 		end
 	end
 	return true
+end
+function antc(kol)
+	shablon="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'()"
+	myB=string.find(shablon,tostring(kol):sub(1,1),1,true)
+	if tonumber(#tostring(kol)) >= 2 then
+		for i = 2, #tostring(kol) do
+			myB = myB .. string.find(shablon,tostring(kol):sub(i,i),1,true)
+		end
+	end
+	return myB
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()

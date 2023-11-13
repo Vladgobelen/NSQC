@@ -53,30 +53,37 @@ if msg[1] == "локация" and msg[2]=="удалить" and msg[3] == myNome 
 end
 if msg[1] == "\"камни" and msg[2] == myNome and testGM~=nil then
 	testQ["kamen"] = tonumber(testQ["kamen"])+tonumber(msg[3])
+	testQ["nikQK"] = antc(testQ["kamen"])
 	testQ["fRand6"] = 1
 end
 if msg[1] == "\"кирпич" and msg[2] == myNome and testGM~=nil then
 	testQ["kirpich"] = tonumber(testQ["kirpich"])+tonumber(msg[3])
+	testQ["nikQKR"] = antc(testQ["kirpich"])
 	testQ["fRand6"] = 1
 end
 if msg[1] == "\"доска" and msg[2] == myNome and testGM~=nil then
 	testQ["doska"] = tonumber(testQ["doska"])+tonumber(msg[3])
+	testQ["nikQD"] = antc(testQ["doska"])
 	testQ["fRand6"] = 1
 end
 if msg[1] == "\"бревна" and msg[2] == myNome and testGM~=nil then
 	testQ["brevna"] = tonumber(testQ["brevna"])+tonumber(msg[3])
+	testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 	testQ["fRand6"] = 1
 end
 if msg[1] == "\"трава" and msg[2] == myNome and testGM~=nil then
 	testQ["stog"] = tonumber(testQ["stog"])+tonumber(msg[3])
+	testQ["nikQF"] = antc(testQ["stog"])
 	testQ["fRand6"] = 1
 end
 if msg[1] == "\"бетон" and msg[2] == myNome and testGM~=nil then
 	testQ["beton"] = tonumber(testQ["beton"])+tonumber(msg[3])
+	testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 	testQ["fRand6"] = 1
 end
 if msg[1] == "\"самогон" and msg[2] == myNome and testGM~=nil then
 	testQ["smg"] = tonumber(testQ["smg"])+tonumber(msg[3])
+	testQ["nikQS"] = antc(testQ["smg"])
 	testQ["fRand6"] = 1
 end
 if msg[1] == myNome .. "," and msg[2] == "покажи" and msg[3] == "свой" then

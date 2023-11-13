@@ -1,4 +1,4 @@
-versAdd=291;versAddDop=6
+versAdd=291;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -760,9 +760,13 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("lP " .. testQ["idp"], nome, "guild")
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 30
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["stog"] = tonumber(testQ["stog"]) - 15
+						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 10
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						testQ["stanok"] = tonumber(testQ["stanok"]) - 1
+						testQ["nikQST"] = antc(testQ["stanok"])
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -784,9 +788,13 @@ function vybor:configure(id)
 							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 							SendAddonMessage("lP " .. testQ["idp"], nome, "guild")
 							testQ["brevna"] = tonumber(testQ["brevna"]) - 90
+							testQ["nikQB"] = antc(testQ["brevna"])
 							testQ["stog"] = tonumber(testQ["stog"]) - 45
+							testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 							testQ["smg"] = tonumber(testQ["smg"]) - 30
+							testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 							testQ["stanok"] = tonumber(testQ["stanok"]) - 1
+							testQ["nikQST"] = antc(testQ["stanok"])
 							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 							dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -846,6 +854,7 @@ function vybor:configure(id)
 						testQ["domZ"] = nil
 						local x = math.random(1,5)
 						testQ["doska"] = tonumber(testQ["doska"])+x
+						testQ["nikQD"] = antc(tonumber(testQ["doska"]))
 						dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
 						print("Получено " .. x .. " досок")
 						dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
@@ -883,7 +892,9 @@ function vybor:configure(id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 					SendAddonMessage("zP " .. testQ["idp"], nome, "guild")
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 5
+					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["kamen"] = tonumber(testQ["kamen"]) - 10
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 					testQ["temp"] = nil
@@ -904,7 +915,9 @@ function vybor:configure(id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 					SendAddonMessage("zP " .. testQ["idp"], nome, "guild")
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 25
+					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 					testQ["temp"] = nil
@@ -926,9 +939,13 @@ function vybor:configure(id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 					SendAddonMessage("tV " .. testQ["idp"], nome, "guild")
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 50
+					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["stog"] = tonumber(testQ["stog"]) - 25
+					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					testQ["smg"] = tonumber(testQ["smg"]) - 10
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 5
+					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -951,9 +968,13 @@ function vybor:configure(id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 					SendAddonMessage("tV " .. testQ["idp"], nome, "guild")
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 150
+					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["stog"] = tonumber(testQ["stog"]) - 75
+					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					testQ["smg"] = tonumber(testQ["smg"]) - 20
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 15
+					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -977,9 +998,13 @@ function vybor:configure(id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 					SendAddonMessage("mF " .. testQ["idp"], nome, "guild")
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 50
+					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["stog"] = tonumber(testQ["stog"]) - 25
+					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					testQ["smg"] = tonumber(testQ["smg"]) - 10
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 15
+					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -1002,9 +1027,13 @@ function vybor:configure(id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 					SendAddonMessage("mF " .. testQ["idp"], nome, "guild")
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 150
+					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["stog"] = tonumber(testQ["stog"]) - 75
+					testQ["nikQF"] = antc(testQ["stop"])
 					testQ["smg"] = tonumber(testQ["smg"]) - 20
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 45
+					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -1029,8 +1058,11 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("tC " .. testQ["idp"], nome, "guild")
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 5
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 5
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["stog"] = tonumber(testQ["stog"]) - 5
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
@@ -1054,8 +1086,11 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("tC " .. testQ["idp"], nome, "guild")
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 25
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["stog"] = tonumber(testQ["stog"]) - 25
+						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
@@ -1080,7 +1115,9 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("za " .. testQ["idp"], nome, "guild")
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 10
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 20
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
@@ -1103,7 +1140,9 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("za " .. testQ["idp"], nome, "guild")
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 50
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 100
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
@@ -1143,6 +1182,7 @@ function vybor:configure(id)
 					SendAddonMessage("KopKop " .. testQ["idp"], nome, "guild")
 					testQ["temp"] = nil
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 10
+					testQ["nikQB"] = antc(testQ["brevna"])
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1163,8 +1203,11 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("hS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 10
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["stog"] = tonumber(testQ["stog"]) - 10
+						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 5
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
@@ -1188,8 +1231,11 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 						SendAddonMessage("hS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 50
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["stog"] = tonumber(testQ["stog"]) - 50
+						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
@@ -1267,6 +1313,7 @@ function vybor:configure(id)
 			elseif testQ["temp"] == 1 then
 				testQ["zarplata"] = 10000
 				testQ["smg"] = tonumber(testQ["smg"])-1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 				testQ["temp"] = nil
 				testQ["picon"] = nil
@@ -1285,6 +1332,7 @@ function vybor:configure(id)
 			elseif testQ["temp"] == 1 then
 				testQ["zarplata"] = 10000
 				testQ["smg"] = tonumber(testQ["smg"])-1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 				testQ["temp"] = nil
 				testQ["picon"] = nil
@@ -1303,6 +1351,7 @@ function vybor:configure(id)
 			elseif testQ["temp"] == 1 then
 				testQ["zarplatab"] = 20
 				testQ["smg"] = tonumber(testQ["smg"])-1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 				testQ["temp"] = nil
 				testQ["picon"] = nil
@@ -1320,6 +1369,7 @@ function vybor:configure(id)
 				testQ["temp"] = 1
 			elseif testQ["temp"] == 1 then
 				testQ["smg"] = tonumber(testQ["smg"])-1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 				SendAddonMessage("sXX " .. testQ["idp"], nome, "guild")
 				testQ["temp"] = nil
@@ -1343,26 +1393,31 @@ function vybor:configure(id)
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 100
 						SendChatMessage("...незаметно пролетают аж 100 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					elseif x == 2 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 200
 						SendChatMessage("...незаметно пролетают аж 200 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					elseif x == 3 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 500
 						SendChatMessage("...незаметно пролетают аж 500 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					elseif x == 4 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 1000
 						SendChatMessage("...незаметно пролетают аж 1000 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					elseif x == 5 then
 						testQ[myNome]["hTimer"] = tonumber(testQ[myNome]["hTimer"]) - 3800
 						SendChatMessage("...незаметно пролетают аж 3800 секунд", "OFFICER", nil, 1)
 						testQ["smg"] = tonumber(testQ["smg"])-1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					end
 				end
@@ -1395,6 +1450,7 @@ function vybor:configure(id)
 						SendAddonMessage("sbS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"])-8
+						testQ["nikQB"] = antc(testQ["brevna"])
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1416,6 +1472,7 @@ function vybor:configure(id)
 						SendAddonMessage("sbS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"])-30
+						testQ["nikQB"] = antc(testQ["brevna"])
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
@@ -1438,6 +1495,7 @@ function vybor:configure(id)
 						SendAddonMessage("skS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"])-15
+						testQ["nikQB"] = antc(testQ["brevna"])
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1459,6 +1517,7 @@ function vybor:configure(id)
 						SendAddonMessage("skS " .. testQ["idp"] .. " " .. 99, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"])-50
+						testQ["nikQB"] = antc(testQ["brevna"])
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
@@ -1481,6 +1540,7 @@ function vybor:configure(id)
 						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["beton"] = tonumber(testQ["beton"]) - 5
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1501,7 +1561,8 @@ function vybor:configure(id)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
 						SendAddonMessage("bN " .. testQ["idp"] .. " " .. -999, nome, "guild")
 						testQ["temp"] = nil
-						testQ["beton"] = tonumber(testQ["brevna"]) - 20
+						testQ["beton"] = tonumber(testQ["beton"]) - 20
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						dmgText(testQ["beton"],resursy[4],104,13,"FF8C00")
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
@@ -1524,9 +1585,13 @@ function vybor:configure(id)
 						SendAddonMessage("aS " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 5
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 5
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1551,9 +1616,13 @@ function vybor:configure(id)
 						SendAddonMessage("aS " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 25
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 25
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1579,9 +1648,13 @@ function vybor:configure(id)
 						SendAddonMessage("bS " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 5
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 5
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1606,9 +1679,13 @@ function vybor:configure(id)
 						SendAddonMessage("bS " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 25
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 25
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1634,9 +1711,13 @@ function vybor:configure(id)
 						SendAddonMessage("bH " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 5
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 5
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1661,9 +1742,13 @@ function vybor:configure(id)
 						SendAddonMessage("bH " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 25
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 25
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1689,9 +1774,13 @@ function vybor:configure(id)
 						SendAddonMessage("tO " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 5
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 5
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1716,9 +1805,13 @@ function vybor:configure(id)
 						SendAddonMessage("tO " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 25
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 25
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
+						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1743,8 +1836,11 @@ function vybor:configure(id)
 						SendAddonMessage("sX " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 10
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 10
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1767,8 +1863,11 @@ function vybor:configure(id)
 						SendAddonMessage("sX " .. testQ["idp"] .. " " .. 999, nome, "guild")
 						testQ["temp"] = nil
 						testQ["brevna"] = tonumber(testQ["brevna"]) - 50
+						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 150
+						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 30
+						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -1838,6 +1937,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if arg2 == true then
 							testQ["zavod"] = 1
 							testQ["kamen"] = tonumber(testQ["kamen"])-1
+							testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 							fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 							fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
@@ -1855,6 +1955,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						if arg2 == true then
 							testQ["zavod"] = 1
 							testQ["kamen"] = tonumber(testQ["kamen"])-5
+							testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						end
 						if arg2 == false then
@@ -1872,8 +1973,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["zavodp"] = 1
 							testQ["zavodpc"] = 1
 							testQ["brevna"] = tonumber(testQ["brevna"])-1
+							testQ["nikQB"] = antc(testQ["brevna"])
 							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							testQ["stog"] = tonumber(testQ["stog"])-1
+							testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 							dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						end
 						if arg2 == false then
@@ -1891,8 +1994,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["zavodp"] = 1
 							testQ["zavodpc"] = 1
 							testQ["brevna"] = tonumber(testQ["brevna"])-5
+							testQ["nikQB"] = antc(testQ["brevna"])
 							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							testQ["stog"] = tonumber(testQ["stog"])-5
+							testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 							dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						end
 						if arg2 == false then
@@ -2546,6 +2651,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["diffT"][i] = "st"
 				end
 				testQ["brevna"] = tonumber(testQ["brevna"])-1
+				testQ["nikQB"] = antc(testQ["brevna"])
 				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				testQ["domZ"] = "crt"
 				local nome
@@ -2599,12 +2705,15 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if x == 1 then
 					SendChatMessage("Хмм... А что будет если оставить тут след от моей руки?", "OFFICER", nil, 1)
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 1
+					testQ["nikQB"] = antc(testQ["brevna"])
 				elseif x == 2 then
 					SendChatMessage("Хмм... А что будет если оставить тут след от моей ноги?", "OFFICER", nil, 1)
 					testQ["beton"] = tonumber(testQ["beton"]) - 1
+					testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 				elseif x == 3 then
 					SendChatMessage("Хмм... А что будет если оставить тут след от моей задницы?", "OFFICER", nil, 1)
 					testQ["kamen"] = tonumber(testQ["kamen"]) - 1
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" then
@@ -4013,7 +4122,9 @@ function mBtn:configure(id)
 			if id == 1 then
 				local x = math.random(1,10)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["brevna"] = tonumber(testQ["brevna"]) + x
+				testQ["nikQB"] = antc(testQ["brevna"])
 				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
 				print("Получено: " .. x .. " бревен")
@@ -4022,7 +4133,9 @@ function mBtn:configure(id)
 			if id == 2 then
 				local x = math.random(1,10)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["stog"] = tonumber(testQ["stog"]) + x
+				testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 				dmgText2(testQ["stog"],mBtn[2],802,13,"FF8C00")
 				print("Получено: " .. x .. " травы")
@@ -4031,7 +4144,9 @@ function mBtn:configure(id)
 			if id == 3 then
 				local x = math.random(1,10)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["kamen"] = tonumber(testQ["kamen"]) + x
+				testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 				dmgText2(testQ["kamen"],mBtn[3],803,13,"FF8C00")
 				print("Получено: " .. x .. " камня")
@@ -4040,7 +4155,9 @@ function mBtn:configure(id)
 			if id == 4 then
 				local x = math.random(1,10)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["beton"] = tonumber(testQ["beton"]) + x
+				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 				dmgText2(string.format("%d", tonumber(testQ["beton"])),mBtn[4],804,13,"FF8C00")
 				print("Получено: " .. x .. " бетона")
@@ -4049,7 +4166,9 @@ function mBtn:configure(id)
 			if id == 8 then
 				local x = math.random(1,5)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["kirpich"] = tonumber(testQ["kirpich"]) + x
+				testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 				dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
 				dmgText2(string.format("%d", tonumber(testQ["kirpich"])),mBtn[8],808,13,"FF8C00")
 				print("Получено: " .. x .. " кирпичей")
@@ -4058,7 +4177,9 @@ function mBtn:configure(id)
 			if id == 11 then
 				local x = math.random(1,5)
 				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["doska"] = tonumber(testQ["doska"]) + x
+				testQ["nikQD"] = antc(tonumber(testQ["doska"]))
 				dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
 				dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
 				print("Получено досок: " .. x)
@@ -4069,6 +4190,7 @@ function mBtn:configure(id)
 			if id == 5 then
 				testQ[myNome]["петы"]["bb"] = 1
 				testQ["smg"] = tonumber(testQ["smg"]) - 10
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText2(testQ[myNome]["петы"]["bb"],mBtn[5],805,13,"FF8C00")
 				print("Получен: бобер")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -4078,6 +4200,7 @@ function mBtn:configure(id)
 			if id == 9 then
 				testQ["yi"] = 1
 				testQ["smg"] = tonumber(testQ["smg"]) - 10
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
 				print("Получен: Ящик с инструментами")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -4087,8 +4210,8 @@ function mBtn:configure(id)
 			if id == 10 then
 				testQ["yi"] = 1
 				testQ["smg"] = tonumber(testQ["smg"]) - 30
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["stanok"] = tonumber(testQ["stanok"])+1
-
 				print("Получен: Распиловочный станок")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -4111,6 +4234,7 @@ function mBtn:configure(id)
 					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
 				end
 				testQ["smg"] = tonumber(testQ["smg"]) - 50
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				print("Получен: гоблин")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
@@ -4131,6 +4255,7 @@ function mBtn:configure(id)
 					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
 				end
 				testQ["smg"] = tonumber(testQ["smg"]) - 50
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText2(gomT,mBtn[7],807,13,"FF8C00")
 				print("Получен: гном")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -5784,26 +5909,32 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
 								testQ["brevna"] = testQ["brevna"]+1
+								testQ["nikQB"] = antc(testQ["brevna"])
 								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
 								testQ["brevna"] = testQ["brevna"]+1
+								testQ["nikQB"] = antc(testQ["brevna"])
 								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
 								testQ["brevna"] = testQ["brevna"]+1
+								testQ["nikQB"] = antc(testQ["brevna"])
 								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
 								testQ["brevna"] = testQ["brevna"]+1
+								testQ["nikQB"] = antc(testQ["brevna"])
 								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
 								testQ["brevna"] = testQ["brevna"]+1
+								testQ["nikQB"] = antc(testQ["brevna"])
 								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 							if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
 								testQ["brevna"] = testQ["brevna"]+1
+								testQ["nikQB"] = antc(testQ["brevna"])
 								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							end
 						end
@@ -5891,6 +6022,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									local x = math.random(1,500)
 									if x == 1 then
 										testQ["brevna"] = tonumber(testQ["brevna"])-1
+										testQ["nikQB"] = antc(testQ["brevna"])
 										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 									treeX(myNome,myNome,i)
@@ -5945,15 +6077,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 													xx = math.random(1,4)
 													if xx == 1 then
 														testQ["brevna"] = tonumber(testQ["brevna"])-50
+														testQ["nikQB"] = antc(testQ["brevna"])
 													end
 													if xx == 2 then
 														testQ["stog"] = tonumber(testQ["stog"])-50
+														testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 													end
 													if xx == 3 then
 														testQ["kamen"] = tonumber(testQ["kamen"])-50
+														testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 													end
 													if xx == 4 then
 														testQ["beton"] = tonumber(testQ["beton"])-50
+														testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 													end
 												end
 											elseif x >= 2 and x < 101 then
@@ -5961,15 +6097,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 													xx = math.random(1,4)
 													if xx == 1 then
 														testQ["brevna"] = 0
+														testQ["nikQB"] = antc(testQ["brevna"])
 													end
 													if xx == 2 then
 														testQ["stog"] = 0
+														testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 													end
 													if xx == 3 then
 														testQ["kamen"] = 0
+														testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 													end
 													if xx == 4 then
 														testQ["beton"] = 0
+														testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 													end
 												end
 											elseif x >= 101 and x < 1000 then
@@ -5977,15 +6117,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 													xx = math.random(1,4)
 													if xx == 1 then
 														testQ["brevna"] = tonumber(testQ["brevna"])-10
+														testQ["nikQB"] = antc(testQ["brevna"])
 													end
 													if xx == 2 then
 														testQ["stog"] = tonumber(testQ["stog"])-10
+														testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 													end
 													if xx == 3 then
 														testQ["kamen"] = tonumber(testQ["kamen"])-10
+														testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 													end
 													if xx == 4 then
 														testQ["beton"] = tonumber(testQ["beton"])-10
+														testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 													end
 												end
 											elseif x >= 1000 and x < 9500 then
@@ -5997,15 +6141,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												xx = math.random(1,4)
 												if xx == 1 then
 													testQ["brevna"] = tonumber(testQ["brevna"])+1
+													testQ["nikQB"] = antc(testQ["brevna"])
 												end
 												if xx == 2 then
 													testQ["stog"] = tonumber(testQ["stog"])+1
+													testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 												end
 												if xx == 3 then
 													testQ["kamen"] = tonumber(testQ["kamen"])+1
+													testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 												end
 												if xx == 4 then
 													testQ["beton"] = tonumber(testQ["beton"])+1
+													testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 												end
 											elseif x >= 9991 and x <= 10000 then
 												resObj(i,myNome,myNome)
@@ -6013,15 +6161,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												xx = math.random(1,4)
 												if xx == 1 then
 													testQ["brevna"] = tonumber(testQ["brevna"])+10
+													testQ["nikQB"] = antc(testQ["brevna"])
 												end
 												if xx == 2 then
 													testQ["stog"] = tonumber(testQ["stog"])+10
+													testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 												end
 												if xx == 3 then
 													testQ["kamen"] = tonumber(testQ["kamen"])+10
+													testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 												end
 												if xx == 4 then
 													testQ["beton"] = tonumber(testQ["beton"])+10
+													testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 												end
 											end
 										end
@@ -6136,8 +6288,10 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ["zavod"] == 1 then
 			if testQ["beton"] == nil then
 				testQ["beton"] = 0.01
+				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 			else
 				testQ["beton"] = tonumber(testQ["beton"])+0.01
+				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
 				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 			end
@@ -6145,20 +6299,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ["zavodp"] == 1 and testQ["zavodp"] == 1 then
 			if testQ["kirpich"] == nil then
 				testQ["kirpich"] = 0.01
+				testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 			else
 				local x = math.random(1,100)
 				if x == 100 then
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 1
+					testQ["nikQB"] = antc(testQ["brevna"])
 					print("Кирпичный цех расходует 1 бревно")
 				end
 				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				if x == 1 then
 					testQ["stog"] = tonumber(testQ["stog"]) - 1
+					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					print("Кирпичный цех расходует 1 стог травы")
 				end
 				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 				testQ["kirpich"] = tonumber(testQ["kirpich"]) + 0.01
+				testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 				testQ["beton"] = tonumber(testQ["beton"]) - 0.01
+				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\bt.ogg")
 				dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
 			end
@@ -6815,21 +6974,27 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ ~= nil then
 			if testQ["brevna"] == nil then
 				testQ["brevna"] = 0
+				testQ["nikQB"] = antc(testQ["brevna"])
 			end
 			if testQ["stog"] == nil then
 				testQ["stog"] = 0
+				testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 			end
 			if testQ["kamen"] == nil then
 				testQ["kamen"] = 0
+				testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 			end
 			if testQ["beton"] == nil then
 				testQ["beton"] = 0
+				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 			end
 			if testQ["smg"] == nil then
 				testQ["smg"] = 0
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 			end
 			if testQ["kirpich"] == nil then
 				testQ["kirpich"] = 0
+				testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 			end
 			if testQ["yi"] == nil then
 				testQ["yi"] = 0
@@ -6839,6 +7004,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			if testQ["doska"] == nil then
 				testQ["doska"] = 0
+				testQ["nikQD"] = antc(tonumber(testQ["doska"]))
 			end
 		end
 		if StaticPopup1~= nil then
@@ -6903,6 +7069,41 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					dmG[i]:Show()
 				end
 			end
+		end
+		if testQ["nikQB"] ~= antc(testQ["brevna"]) then
+			testQ["brevna"] = 0
+			testQ["nikQB"] = antc(testQ["brevna"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQF"] ~= antc(testQ["stog"]) then
+			testQ["stog"] = 0
+			testQ["nikQF"] = antc(testQ["stog"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
+			testQ["kamen"] = 0
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
+			testQ["beton"] = 0
+			testQ["nikQBT"] = antc(testQ["beton"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQS"] ~= antc(testQ["smg"]) then
+			testQ["smg"] = 0
+			testQ["nikQS"] = antc(testQ["smg"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
+			testQ["kirpich"] = 0
+			testQ["nikQKR"] = antc(testQ["kirpich"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQD"] ~= antc(testQ["doska"]) then
+			testQ["doska"] = 0
+			testQ["nikQD"] = antc(testQ["doska"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
 		end
 		if fBtn[1]:IsVisible() then
 			for i = 1, 100 do
