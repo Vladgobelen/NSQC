@@ -15,6 +15,7 @@ end
 if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
+
 if kodMsg[1] == "#yIm" then
 	if mioFld == nil then
 		mioFld = {}

@@ -100,6 +100,14 @@ if nome ~= nil then
 		end
 	end
 end
+for i = 1, #testQ["chs"] do
+	if testQ["chs"][i] ~= nil then
+		if string.find(message,testQ["chs"][i]) then
+		print(testQ["chs"][i])
+			GuildUninvite(testQ["chs"][i])
+		end
+	end
+end
 end
 )
 local GC_Sniffer = CreateFrame("Frame")
