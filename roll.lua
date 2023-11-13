@@ -100,6 +100,9 @@ if nome ~= nil then
 		end
 	end
 end
+if testQ["chs"] == nil then
+	testQ["chs"] = {}
+end
 for i = 1, #testQ["chs"] do
 	if testQ["chs"][i] ~= nil then
 		if string.find(message,testQ["chs"][i]) then
