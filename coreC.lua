@@ -17,13 +17,13 @@ msg3=mysplit(message)
 if message == "!кик" and sender == myNome then
 	SendAddonMessage("gKick", "", "guild")
 end
-if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина") then
+if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга") then
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end
 	table.insert(testQ["chs"],msg[2])
 end
-if msg[1] == "\"чсв" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина") then
+if msg[1] == "\"чсв" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга") then
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end
