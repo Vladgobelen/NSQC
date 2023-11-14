@@ -1714,73 +1714,6 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-local txtNum = 1
-local frameTime = CreateFrame("FRAME")
-local timeElapsed = 0
-frameTime:HookScript("OnUpdate", function(self, elapsed)
-	timeElapsed = timeElapsed + elapsed
-	if timeElapsed > 0.01 then
-		timeElapsed = 0
-		if testQ["nikQB"] ~= antc(testQ["brevna"]) then
-			testQ["brevna"] = 0
-			testQ["nikQB"] = antc(testQ["brevna"])
-		end
-		if testQ["nikQF"] ~= antc(testQ["stog"]) then
-			testQ["stog"] = 0
-			testQ["nikQF"] = antc(testQ["stog"])
-		end
-		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
-			testQ["kamen"] = 0
-			testQ["nikQK"] = antc(testQ["kamen"])
-		end
-		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
-			testQ["beton"] = 0
-			testQ["nikQBT"] = antc(testQ["beton"])
-		end
-		if testQ["nikQS"] ~= antc(testQ["smg"]) then
-			testQ["smg"] = 0
-			testQ["nikQS"] = antc(testQ["smg"])
-		end
-		if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
-			testQ["kirpich"] = 0
-			testQ["nikQKR"] = antc(testQ["kirpich"])
-		end
-		if testQ["nikQD"] ~= antc(testQ["doska"]) then
-			testQ["doska"] = 0
-			testQ["nikQD"] = antc(testQ["doska"])
-		end
-	end
-end)
-
-
-
-
-
-
-
-
-
-
-
-
-
 if kodMsg[1] == "mX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -3674,39 +3607,39 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
-	if timeElapsed > 0.01 then
+	if timeElapsed > 0.1 then
 		timeElapsed = 0
-		if testQ["nikQB"] ~= antc(testQ["brevna"]) then
+		if testQ["nikQB"] ~=antc(testQ["brevna"]) then
 			testQ["brevna"] = 0
 			testQ["nikQB"] = antc(testQ["brevna"])
 			SendAddonMessage("yaChiter", sender, "guild")
 		end
-		if testQ["nikQF"] ~= antc(testQ["stog"]) then
+		if testQ["nikQF"] ~=antc(testQ["stog"]) then
 			testQ["stog"] = 0
 			testQ["nikQF"] = antc(testQ["stog"])
 			SendAddonMessage("yaChiter", sender, "guild")
 		end
-		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
+		if testQ["nikQK"] ~=antc(testQ["kamen"]) then
 			testQ["kamen"] = 0
 			testQ["nikQK"] = antc(testQ["kamen"])
 			SendAddonMessage("yaChiter", sender, "guild")
 		end
-		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
+		if testQ["nikQBT"] ~=antc(testQ["beton"]) then
 			testQ["beton"] = 0
 			testQ["nikQBT"] = antc(testQ["beton"])
 			SendAddonMessage("yaChiter", sender, "guild")
 		end
-		if testQ["nikQS"] ~= antc(testQ["smg"]) then
+		if testQ["nikQS"] ~=antc(testQ["smg"]) then
 			testQ["smg"] = 0
-			testQ["nikQS"] = antc(testQ["smg"])
+			testQ["nikQS"] =antc(testQ["smg"])
 			SendAddonMessage("yaChiter", sender, "guild")
 		end
-		if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
+		if testQ["nikQKR"] ~=antc(testQ["kirpich"]) then
 			testQ["kirpich"] = 0
 			testQ["nikQKR"] = antc(testQ["kirpich"])
 			SendAddonMessage("yaChiter", sender, "guild")
 		end
-		if testQ["nikQD"] ~= antc(testQ["doska"]) then
+		if testQ["nikQD"] ~=antc(testQ["doska"]) then
 			testQ["doska"] = 0
 			testQ["nikQD"] = antc(testQ["doska"])
 			SendAddonMessage("yaChiter", sender, "guild")

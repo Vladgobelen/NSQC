@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=9
+versAdd=295;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -144,7 +144,6 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 			testQ["okno"] = nil
 		end
-
 		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" and testQ["okno"] ~= "q33end" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
@@ -2901,7 +2900,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 	end)
-
 	self[id]:SetScript("OnEnter",function(self)
 		local nome
 		local n = nil
@@ -7517,13 +7515,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				end
 			end
-			if testQ["nikQB"] ~= antc(testQ["brevna"]) then
-				testQ["brevna"] = 0
-				testQ["nikQB"] = antc(testQ["brevna"])
-			end
-
-
-
 			if (GuildFrame["selectedName"] ~= nil and testQ["fRand5Nome"] ~= nil) or testQ['sign'] == "1" then
 				if (GuildFrame["selectedName"] == testQ["fRand5Nome"]) or (testQ['sign'] == "1" and testQ["fRand5Nome"] == myNome) then
 					if testQ["fRand5"] == 1 then
@@ -7699,10 +7690,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				end
 			end
-			if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
-				testQ["kirpich"] = 0
-				testQ["nikQKR"] = antc(testQ["kirpich"])
-			end
+
 			if GuildFrame["selectedName"] ~= nil or testQ['sign'] == "1" then
 				local nome
 				if testQ['sign'] ~= "1" then
@@ -7794,10 +7782,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
-		if testQ["nikQD"] ~= antc(testQ["doska"]) then
-			testQ["doska"] = 0
-			testQ["nikQD"] = antc(testQ["doska"])
-		end
+
 		if testQ["marshS"] == 1 then
 			local x,y = GetPlayerMapPosition("player")
 			if testQ["marshK"] == nil then
@@ -7827,10 +7812,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					--end
 				end
 			end
-		end
-		if testQ["nikQS"] ~= antc(testQ["smg"]) then
-			testQ["smg"] = 0
-			testQ["nikQS"] = antc(testQ["smg"])
 		end
 		if testQ == nil then
 			testQ = {}
@@ -7865,11 +7846,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 			end
 		end
-		if testQ["nikQF"] ~= antc(testQ["stog"]) then
-			testQ["stog"] = 0
-			testQ["nikQF"] = antc(testQ["stog"])
-		end
-
 		if btn[991]:IsVisible() then
 			if buffBTN == 1 then
 				local x, y = GetCursorPosition()
@@ -7890,11 +7866,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			btn[991]:ClearAllPoints()
 			btn[991]:SetPoint("CENTER", UIParent,"BOTTOMLEFT",testQ["buffX"], testQ["buffY"])
 		end
-		if testQ["nikQB"] ~= antc(testQ["brevna"]) then
-			testQ["brevna"] =0
-			testQ["nikQB"] = antc(testQ["brevna"])
-		end
-
 		if testQ["cmbtTime"] ~= nil then
 			if bcsQuickFrame[txtNum-1] ~= nil then
 				bcsQuickFrame[txtNum-1]:Hide()
@@ -8080,10 +8051,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
-		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
-			testQ["kamen"] = 0
-			testQ["nikQK"] = antc(testQ["kamen"])
-		end
 
 		if testQ["timerID2"] ~= nil then
 			testQ["timerID2"] = tonumber(testQ["timerID2"])
@@ -8102,10 +8069,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				btn[1]:SetText("Взять квест")
 				btn[1]:Enable()
 			end
-		end
-		if testQ["nikQF"] ~= antc(testQ["stog"]) then
-			testQ["stog"]= 0
-			testQ["nikQF"] = antc(testQ["stog"])
 		end
 		if pokazat == 0 then
 			if testQ["miniMapConf"] ~= nil then
@@ -8350,10 +8313,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		else
 			btnF:Hide()
 		end
-		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
-			testQ["beton"] = 0
-			testQ["nikQBT"] = antc(testQ["beton"])
-		end
+
 		if testQ[myNome]["сброс"] ==  nil then
 			btn[998]:Disable()
 		else
@@ -8422,12 +8382,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ[myNome]["настройки"]["err"]=="Enable" then
 			myCheckButton6:SetChecked(true)
 		end
-
-		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
-			testQ["kamen"] = 0
-			testQ["nikQK"] = antc(testQ["kamen"])
-		end
-
 		if debuffChkB ~= nil then
 			for k, v in pairs(debuffChkB) do
 				if debuffChkB[k] ~= nil then
@@ -8445,14 +8399,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end
 
-		if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
-			testQ["kirpich"] = 0
-			testQ["nikQKR"] = antc(testQ["kirpich"])
-		end
-		if testQ["nikQD"] ~= antc(testQ["doska"]) then
-			testQ["doska"] = 0
-			testQ["nikQD"] = antc(testQ["doska"])
-		end
 		if testQ[myNome]["настройки"]["esc"]==nil or testQ[myNome]["настройки"]["esc"]=="Disable" then
 			btn[3]:EnableKeyboard(0);
 			myCheckButton1:EnableKeyboard(0);
@@ -8523,12 +8469,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			btn[10]:Disable()
 			btn[11]:SetText("Нет билетов")
 		end
-
-		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
-			testQ["beton"] = 0
-			testQ["nikQBT"] = antc(testQ["beton"])
-		end
-
 		if testQ[myNome]["лотерея"]~=nil and testModLtr~=0 then
 			if testQ[myNome]["лотерея"]>=1 and testQ[myNome]["лотерея"]<3 then
 				btn[10]:SetText("Нет билетов")
@@ -8557,12 +8497,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			btn[99]:SetText("тут")
 			btn[99]:Enable()
 		end
-
-		if testQ["nikQS"] ~= antc(testQ["smg"]) then
-			testQ["smg"] = 0
-			testQ["nikQS"] = antc(testQ["smg"])
-		end
-
 		if mioKont==nKont then
 			if mioLok==nLok then
 				if nXres ~= nil then
@@ -8720,4 +8654,3 @@ myCheckButton2:SetScript("OnClick",
 
 	end
 );
-
