@@ -3,6 +3,7 @@ GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
 GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, sender, hernya, name, instanceID)
 --команды для управления квестами
 local nik=sender
+
 local myNome = GetUnitName("player")
 local msg = mysplit(message)
 local kodMsg = mysplit(kod)
