@@ -897,8 +897,8 @@ if kodMsg[1] == "доска" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["fRand6"] = 1
 end
 if kodMsg[1] == "кирпич" and kodMsg[2] == myNome and testGM~=nil then
-	testQ["kamen"] = tonumber(message)
-	testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+	testQ["kirpich"] = tonumber(message)
+	testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
 	testQ["fRand6"] = 1
 end
 if kodMsg[1] == "MioFldP1" then
