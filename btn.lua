@@ -144,6 +144,7 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 			testQ["okno"] = nil
 		end
+
 		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" and testQ["okno"] ~= "q33end" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
