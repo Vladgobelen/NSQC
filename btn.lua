@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=5
+versAdd=295;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6287,7 +6287,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if testQ["zavod"] == 1 then
 			if testQ["beton"] == nil then
-				testQ["beton"] = 0.01
+				testQ["beton"] = 0.1
 				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 			else
 				testQ["beton"] = tonumber(testQ["beton"])+0.01
