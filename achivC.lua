@@ -10,6 +10,7 @@ local kodMsg = mysplit(kod)
 if testQ==nil then
 	testQ={}
 end
+
 if testQ[myNome]==nil then
 	testQ[myNome]={}
 end
