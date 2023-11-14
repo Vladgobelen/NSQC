@@ -3679,37 +3679,37 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if testQ["nikQB"] ~= antc(testQ["brevna"]) then
 			testQ["brevna"] = 0
 			testQ["nikQB"] = antc(testQ["brevna"])
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+			SendAddonMessage("yaChiter", sender, "guild")
 		end
 		if testQ["nikQF"] ~= antc(testQ["stog"]) then
 			testQ["stog"] = 0
 			testQ["nikQF"] = antc(testQ["stog"])
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+			SendAddonMessage("yaChiter", sender, "guild")
 		end
 		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
 			testQ["kamen"] = 0
 			testQ["nikQK"] = antc(testQ["kamen"])
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+			SendAddonMessage("yaChiter", sender, "guild")
 		end
 		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
 			testQ["beton"] = 0
 			testQ["nikQBT"] = antc(testQ["beton"])
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+			SendAddonMessage("yaChiter", sender, "guild")
 		end
 		if testQ["nikQS"] ~= antc(testQ["smg"]) then
 			testQ["smg"] = 0
 			testQ["nikQS"] = antc(testQ["smg"])
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+			SendAddonMessage("yaChiter", sender, "guild")
 		end
 		if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
 			testQ["kirpich"] = 0
 			testQ["nikQKR"] = antc(testQ["kirpich"])
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+			SendAddonMessage("yaChiter", sender, "guild")
 		end
 		if testQ["nikQD"] ~= antc(testQ["doska"]) then
 			testQ["doska"] = 0
 			testQ["nikQD"] = antc(testQ["doska"])
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+			SendAddonMessage("yaChiter", sender, "guild")
 		end
 	end
 end)
