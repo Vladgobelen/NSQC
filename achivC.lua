@@ -3669,7 +3669,50 @@ end
 end
 end
 )
-
+local txtNum = 1
+local frameTime = CreateFrame("FRAME")
+local timeElapsed = 0
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 0.01 then
+		timeElapsed = 0
+		if testQ["nikQB"] ~= antc(testQ["brevna"]) then
+			testQ["brevna"] = 0
+			testQ["nikQB"] = antc(testQ["brevna"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQF"] ~= antc(testQ["stog"]) then
+			testQ["stog"] = 0
+			testQ["nikQF"] = antc(testQ["stog"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
+			testQ["kamen"] = 0
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
+			testQ["beton"] = 0
+			testQ["nikQBT"] = antc(testQ["beton"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQS"] ~= antc(testQ["smg"]) then
+			testQ["smg"] = 0
+			testQ["nikQS"] = antc(testQ["smg"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
+			testQ["kirpich"] = 0
+			testQ["nikQKR"] = antc(testQ["kirpich"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+		if testQ["nikQD"] ~= antc(testQ["doska"]) then
+			testQ["doska"] = 0
+			testQ["nikQD"] = antc(testQ["doska"])
+			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
+		end
+	end
+end)
 local function OnEvent(self, event, isLogin, isReload)
 	--SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	SendAddonMessage("NSGadd", "#ver", "guild")
