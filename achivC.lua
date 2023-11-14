@@ -89,6 +89,7 @@ if kodMsg[1] == "#resursy" and message == myNome then
 	SendAddonMessage("#resursy1", "Бетон: " .. testQ["beton"], "guild")
 	SendAddonMessage("#resursy1", "Самогон: " .. testQ["smg"], "guild")
 	SendAddonMessage("#resursy1", "Кирпич: " .. testQ["kirpich"], "guild")
+	SendAddonMessage("#resursy1", "Доска: " .. testQ["doska"], "guild")
 end
 
 if kodMsg[1] == "#gmlist" and message == myNome then
