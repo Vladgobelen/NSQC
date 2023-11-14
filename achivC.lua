@@ -15,7 +15,6 @@ end
 if testQ[myNome]["q33nik"]==nil then
 	testQ[myNome]["q33nik"]={}
 end
-
 if kodMsg[1] == "#yIm" then
 	if mioFld == nil then
 		mioFld = {}
@@ -90,6 +89,7 @@ if kodMsg[1] == "#resursy" and message == myNome then
 	SendAddonMessage("#resursy1", "Самогон: " .. testQ["smg"], "guild")
 	SendAddonMessage("#resursy1", "Кирпич: " .. testQ["kirpich"], "guild")
 end
+
 if kodMsg[1] == "#gmlist" and message == myNome then
 	for i = 1, #gmList do
 		SendAddonMessage("#yanegm", gmList[i], "guild")

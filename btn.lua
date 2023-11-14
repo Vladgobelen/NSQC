@@ -1,4 +1,5 @@
-versAdd=295;versAddDop=4
+versAdd=295;versAddDop=5
+
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2900,6 +2901,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 	end)
+
 	self[id]:SetScript("OnEnter",function(self)
 		local nome
 		local n = nil
