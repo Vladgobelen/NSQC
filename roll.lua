@@ -18,7 +18,6 @@ hshStran3=hshSenderNomeC(myNome)
 				end
 		end
 	end
-
 gInv = mysplit(message)
 if string.find (message, "приглашается в вашу гильдию") then
 	if ginv == nil then
