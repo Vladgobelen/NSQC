@@ -9,7 +9,6 @@ vybor = {}
 okNo = {}
 magazin = {}
 mBtn = {}
-
 dBtn = {}
 function skll()
 	for k, v in pairs(SkillTypeLabel5) do
