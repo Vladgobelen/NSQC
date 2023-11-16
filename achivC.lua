@@ -3602,6 +3602,237 @@ end
 end
 end
 )
+tblIcons = {
+	["Удар грома"] = "Interface\\Icons\\Spell_Nature_ThunderClap",
+	["Кровавая ярость"] = "Interface\\Icons\\Ability_Racial_BloodRage",
+	["Реванш"] = "Interface\\Icons\\Ability_Warrior_Revenge",
+	["Кровопускание"] = "Interface\\Icons\\Ability_Gouge",
+	["Деморализующий крик"] = "Interface\\Icons\\Ability_Warrior_WarCry",
+	["Боевой крик"] = "Interface\\Icons\\Ability_Warrior_BattleShout",
+}
+
+local frameTime = CreateFrame("FRAME")
+local timeElapsed = 0
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 0.1 then
+		timeElapsed = 0
+		if testQ["skills"] == nil then
+			testQ["skills"] = {}
+		end
+		if UnitPower("player") < 10 and GetSpellCooldown("Кровавая ярость") == 0 then
+			local kya = 0
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Кровавая ярость" then
+					kya = 1
+				end
+			end
+			if kya ~= 1 then
+				table.insert(testQ["skills"],1, "Кровавая ярость")
+			end
+		else
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Кровавая ярость" then
+					testQ["skills"][i] = nil
+				end
+			end
+		end
+
+		if UnitPower("player") >= 10 and GetSpellCooldown("Кровопускание") == 0 then
+			local krv = 0
+			for i = 1,16 do
+				x = UnitDebuff("target",i)
+				if x ~= nil then
+					if x == "Кровопускание" then
+						krv = 1
+					end
+				end
+			end
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Кровопускание" then
+					krv = 1
+				end
+			end
+			if krv ~= 1 then
+				table.insert(testQ["skills"],1, "Кровопускание")
+			end
+		else
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Кровопускание" then
+					testQ["skills"][i] = nil
+				end
+			end
+		end
+		if UnitPower("player") >= 10 and GetSpellCooldown("Деморализующий крик") == 0 then
+			local dkr = 0
+			for i = 1,16 do
+				x = UnitDebuff("target",i)
+				if x ~= nil then
+					if x == "Деморализующий крик" then
+						dkr = 1
+					end
+				end
+			end
+			for k, v in pairs(testQ["skills"]) do
+				if testQ["skills"][k] == "Деморализующий крик" then
+					dkr = 1
+				end
+			end
+			if dkr ~= 1 then
+				table.insert(testQ["skills"], "Деморализующий крик")
+			end
+		else
+			for k, v in pairs(testQ["skills"]) do
+				if testQ["skills"][k] == "Деморализующий крик" then
+					testQ["skills"][k] = nil
+				end
+			end
+		end
+		if UnitPower("player") >= 10 and GetSpellCooldown("Боевой крик") == 0 then
+			local bkr = 0
+			for i = 1,16 do
+				x = UnitBuff("player",i)
+				if x ~= nil then
+					if x == "Боевой крик" then
+						bkr = 1
+					end
+				end
+			end
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Боевой крик" then
+					bkr = 1
+				end
+			end
+			if bkr ~= 1 then
+				table.insert(testQ["skills"],1, "Боевой крик")
+			end
+		else
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Боевой крик" then
+					testQ["skills"][i] = nil
+				end
+			end
+		end
+		if UnitPower("player") >= 5 and IsUsableSpell("Реванш") and GetSpellCooldown("Реванш") == 0 then
+			local rvn = 0
+			for i = 1,16 do
+				x = UnitDebuff("target",i)
+				if x ~= nil then
+					if x == "Реванш" then
+						rvn = 1
+					end
+				end
+			end
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Реванш" then
+					rvn = 1
+				end
+			end
+			if rvn ~= 1 then
+				table.insert(testQ["skills"],1, "Реванш")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+			end
+		else
+			for i = 1, #testQ["skills"] do
+				if testQ["skills"][i] == "Реванш" then
+					testQ["skills"][i] = nil
+				end
+			end
+		end
+		local __,__,__,kd = GetSpellInfo("Удар грома")
+		if kd ~= nil then
+			if UnitPower("player") >= tonumber(kd) then
+				local ugr = 0
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] == "Удар грома" then
+						ugr = 1
+					end
+				end
+
+				if ugr == 0 then
+					table.insert(testQ["skills"],"Удар грома")
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] == "Удар грома" then
+						testQ["skills"][k] = nil
+					end
+				end
+			end
+		end
+		i = 1
+		for k, v in pairs(testQ["skills"]) do
+			local x,y,z = GetSpellCooldown(v)
+			if testQ["skills"][k] ~= nil then
+				if sBtn[i] ~= nil then
+
+					sBtn[i]:SetNormalTexture(tblIcons[v])
+					if x ~= nil and x ~= 0 then
+						--print(x)
+						--print(GetTime())
+						--print (x,testQ["skills"][k])
+						if tonumber((string.format("%u",(tonumber(x) - tonumber(GetTime() - tonumber(y)))))) ~= 0 then
+							sBtn[i]:SetText(string.format("%u",(tonumber(x) - tonumber(GetTime() - tonumber(y)))))
+						else
+							sBtn[i]:SetText("")
+						end
+					else
+						sBtn[i]:SetText("")
+					end
+					sBtn[i]:Show()
+					i = i + 1
+				end
+			else
+				if sBtn[i] ~= nil then
+					sBtn[i]:SetNormalTexture("")
+					sBtn[i]:Hide()
+					i = i +1
+				end
+			end
+		end
+
+		if tablelength(testQ["skills"]) < 4 then
+			for i = tablelength(testQ["skills"])+1, 4 do
+				if sBtn[i] ~= nil then
+					sBtn[i]:Hide()
+				end
+			end
+		end
+		--[[if IsUsableSpell("Реванш") then
+			sBtn[1]:SetNormalTexture("Interface\\Icons\\Ability_Warrior_Revenge")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+		else
+			if IsUsableSpell("Удар грома") then
+
+			else
+				sBtn[1]:SetNormalTexture("")
+			end
+		end
+		if IsUsableSpell("Удар грома") then
+			if IsUsableSpell("Реванш") then
+				if GetSpellCooldown("Удар грома") == 0 then
+					sBtn[2]:SetNormalTexture("Interface\\Icons\\Spell_Nature_ThunderClap")
+				else
+					sBtn[2]:SetNormalTexture("")
+				end
+			else
+				sBtn[2]:SetNormalTexture("")
+				if GetSpellCooldown("Удар грома") == 0 then
+					sBtn[1]:SetNormalTexture("Interface\\Icons\\Spell_Nature_ThunderClap")
+				else
+					sBtn[1]:SetNormalTexture("")
+				end
+			end
+		else
+			if IsUsableSpell("Реванш") then
+				sBtn[2]:SetNormalTexture("")
+			else
+				sBtn[1]:SetNormalTexture("")
+				sBtn[2]:SetNormalTexture("")
+			end
+		end--]]
+	end
+end)
 local txtNum = 1
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
@@ -3609,6 +3840,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.1 then
 		timeElapsed = 0
+
+
 		if testQ["nikQB"] ~=antc(testQ["brevna"]) then
 			testQ["brevna"] = 0
 			testQ["nikQB"] = antc(testQ["brevna"])

@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=6
+versAdd=295;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -10,6 +10,7 @@ okNo = {}
 magazin = {}
 mBtn = {}
 dBtn = {}
+sBtn = {}
 function skll()
 	for k, v in pairs(SkillTypeLabel5) do
 		print(k,v, v[1], v[2], v[3])
@@ -4440,7 +4441,28 @@ function mBtn:configure(id)
 	end)
 	self[id]:SetFrameStrata("FULLSCREEN")
 end
-
+function sBtn:configure(id)
+	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+	self[id]:SetSize(32, 32)
+	if id == 1 then
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",128, 128)
+	end
+	if id == 2 then
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",160, 128)
+	end
+	if id == 3 then
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",192, 128)
+	end
+	if id == 4 then
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",224, 128)
+	end
+	self[id]:EnableMouse(false)
+	self[id]:Hide()
+end
+sBtn:configure(1)
+sBtn:configure(2)
+sBtn:configure(3)
+sBtn:configure(4)
 function resursy:configure(id)
 	self[id] = CreateFrame("Button", nil, fBtn[10], "");
 	self[id]:SetFrameStrata("FULLSCREEN")
@@ -6832,6 +6854,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+
 		if testQ["dom"] == 1 then
 			local nome
 			if testQ['sign'] ~= "1" then
