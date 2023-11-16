@@ -2693,6 +2693,85 @@ function antc(kol)
 	end
 	return myB
 end
+function ochered(spell,pos,debuf,buf,prok,srav,seiv)
+	local kya = 0
+	for i = 1, 24 do
+		if debuf == 1 then
+			x = UnitDebuff("target",i)
+		end
+		if buf == 1 then
+			x = UnitBuff("player",i)
+		end
+		if x ~= nil then
+			if x == spell then
+				kya = 1
+			end
+		end
+	end
+	for k, v in pairs(testQ["skills"]) do
+		if testQ["skills"][k] == spell then
+			kya = 1
+		end
+	end
+	local __,__,__,mana = GetSpellInfo(spell)
+	if srav == "m" then
+		if UnitPower("player") < mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
+			if kya ~= 1 then
+				if pos == 0 then
+					table.insert(testQ["skills"],pos, spell)
+				end
+				if pos == 1 then
+					table.insert(testQ["skills"], spell)
+				end
+			end
+		else
+			for k, v in pairs(testQ["skills"]) do
+				if testQ["skills"][k] ~= nil then
+					if testQ["skills"][k] == spell then
+						testQ["skills"][k] = nil
+					end
+				end
+			end
+		end
+	end
+	if srav == "b" then
+		if UnitPower("player") >= mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
+			if kya ~= 1 then
+				if pos == 0 then
+					table.insert(testQ["skills"],1, spell)
+				end
+				if pos == 1 then
+					table.insert(testQ["skills"], spell)
+				end
+			end
+		else
+			for k, v in pairs(testQ["skills"]) do
+				if testQ["skills"][k] ~= nil then
+					if testQ["skills"][k] == spell then
+						testQ["skills"][k] = nil
+					end
+				end
+			end
+		end
+	end
+	if prok ~= nil and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 and seiv == nil then
+		PlaySoundFile(prok)
+	end
+	if seiv == 1 then
+		if UnitHealth("player") <= (tonumber(UnitHealthMax("player"))/2) and GetSpellCooldown(spell) == 0 then
+			table.insert(testQ["skills"],pos, spell)
+			PlaySoundFile(prok)
+		else
+			for k, v in pairs(testQ["skills"]) do
+				if testQ["skills"][k] ~= nil then
+					if testQ["skills"][k] == spell then
+						testQ["skills"][k] = nil
+					end
+				end
+			end
+		end
+	end
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()

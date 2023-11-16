@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=7
+versAdd=295;versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8631,8 +8631,8 @@ myCheckButton4:SetScript("OnClick",
 	end
 );
 
-myCheckButton5 = createCheckbutton(UIParent, -100, 270, "Более удобная скупка товара на аукционе");
-myCheckButton5.tooltip = "Более удобная скупка товара на аукционе";
+myCheckButton5 = createCheckbutton(UIParent, -100, 270, "Отображать очередь скиллов протовара");
+myCheckButton5.tooltip = "Отображать очередь скиллов протовара";
 myCheckButton5:SetScript("OnClick",
 	function()
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
