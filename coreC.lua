@@ -45,6 +45,14 @@ if msg[1] == "\"чсв" and (myNome == "Хефе" or myNome == "Дервин" or
 		end
 	end
 end
+if msg[1] == "\"кик" and sender == myNome then
+	GuildUninvite(msg[2])
+	SendChatMessage(msg[2] .. " был исключен  из гильдии" , "OFFICER", nil, 1)
+end
+if msg[1] == "\"принизить" and sender == myNome then
+	GuildDemote(msg[2])
+	SendChatMessage(msg[2] .. " минус звание" , "OFFICER", nil, 1)
+end
 if message == "!повысить" and sender == myNome then
 	SendAddonMessage("gUp", "", "guild")
 end
