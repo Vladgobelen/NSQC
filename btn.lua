@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=10
+versAdd=295;versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -276,7 +276,7 @@ function vybor:configure(id)
 				vybor[20]:Show()
 			end
 		end
-		if testQ["picon"] == "bn" and (testQ["icon"] == "bi" or testQ["icon"] == "bh" or testQ["icon"] == "to") then
+		if id == 14 or id == 15 or id == 16 then
 			if vybor[14] ~= nil then
 				vybor[14]:Show()
 			end
@@ -6041,7 +6041,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							end
 							if pet ~= nil then
 								if mioFld[myNome]["объекты"][tostring(i)] == "t" and pet[1] == "bb" then
-									local x = math.random(1,500)
+									local x = math.random(1,1000)
 									if x == 1 then
 										testQ["brevna"] = tonumber(testQ["brevna"])-1
 										testQ["nikQB"] = antc(testQ["brevna"])
