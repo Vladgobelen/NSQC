@@ -3705,6 +3705,16 @@ tblIcons = {
 		["seiv"] = 1,
 		["prok"] = "Interface\\AddOns\\NSQC\\gob.ogg",
 	},
+	["Мощный удар щитом"] = {
+		["icon"] = "Interface\\Icons\\INV_Shield_05",
+		["name"] = "Мощный удар щитом",
+		["pos"] = 0,
+		["buf"] = nil,
+		["debuf"] = nil,
+		["prok"] = nil,
+		["srav"] = "b",
+		["seiv"] = nil,
+	},
 }
 
 local frameTime = CreateFrame("FRAME")
@@ -3714,54 +3724,56 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.1 then
 		timeElapsed = 0
 		local myNome = GetUnitName("player")
-		if testQ[myNome]["настройки"]["auk"] == "Enable" then
-			if testQ["skills"] == nil then
-				testQ["skills"] = {}
-			end
-			for k, v in pairs(tblIcons) do
-				ochered(tblIcons[k]["name"],tblIcons[k]["pos"],tblIcons[k]["debuf"],tblIcons[k]["buf"],tblIcons[k]["prok"],tblIcons[k]["srav"],tblIcons[k]["seiv"])
-			end
-			i = 1
-			for k, v in pairs(testQ["skills"]) do
-				local x,y,z = GetSpellCooldown(v)
-				if testQ["skills"][k] ~= nil then
-					if sBtn[i] ~= nil then
-						sBtn[i]:SetNormalTexture(tblIcons[v]["icon"])
-						if x ~= nil and x ~= 0 then
-							--print(x)
-							--print(GetTime())
-							--print (x,testQ["skills"][k])
-							if tonumber((string.format("%u",(tonumber(x) - tonumber(GetTime() - tonumber(y)))))) ~= 0 then
-								sBtn[i]:SetText(string.format("%u",(tonumber(x) - tonumber(GetTime() - tonumber(y)))))
+		if UnitAffectingCombat("player") == 1 then
+			if testQ[myNome]["настройки"]["auk"] == "Enable" then
+				if testQ["skills"] == nil then
+					testQ["skills"] = {}
+				end
+				for k, v in pairs(tblIcons) do
+					ochered(tblIcons[k]["name"],tblIcons[k]["pos"],tblIcons[k]["debuf"],tblIcons[k]["buf"],tblIcons[k]["prok"],tblIcons[k]["srav"],tblIcons[k]["seiv"])
+				end
+				i = 1
+				for k, v in pairs(testQ["skills"]) do
+					local x,y,z = GetSpellCooldown(v)
+					if testQ["skills"][k] ~= nil then
+						if sBtn[i] ~= nil then
+							sBtn[i]:SetNormalTexture(tblIcons[v]["icon"])
+							if x ~= nil and x ~= 0 then
+								--print(x)
+								--print(GetTime())
+								--print (x,testQ["skills"][k])
+								if tonumber((string.format("%u",(tonumber(x) - tonumber(GetTime() - tonumber(y)))))) ~= 0 then
+									sBtn[i]:SetText(string.format("%u",(tonumber(x) - tonumber(GetTime() - tonumber(y)))))
+								else
+									sBtn[i]:SetText("")
+								end
 							else
 								sBtn[i]:SetText("")
 							end
-						else
-							sBtn[i]:SetText("")
+							sBtn[i]:Show()
+							i = i + 1
 						end
-						sBtn[i]:Show()
-						i = i + 1
-					end
-				else
-					if sBtn[i] ~= nil then
-						sBtn[i]:SetNormalTexture("")
-						sBtn[i]:Hide()
-						i = i +1
+					else
+						if sBtn[i] ~= nil then
+							sBtn[i]:SetNormalTexture("")
+							sBtn[i]:Hide()
+							i = i +1
+						end
 					end
 				end
-			end
 
-			if tablelength(testQ["skills"]) < 4 then
-				for i = tablelength(testQ["skills"])+1, 4 do
-					if sBtn[i] ~= nil then
-						sBtn[i]:SetNormalTexture("")
+				if tablelength(testQ["skills"]) < 4 then
+					for i = tablelength(testQ["skills"])+1, 4 do
+						if sBtn[i] ~= nil then
+							sBtn[i]:SetNormalTexture("")
+						end
 					end
 				end
-			end
-		else
-			for i = 1, 4 do
-				if sBtn[1] ~= nil then
-					sBtn[i]:SetNormalTexture("")
+			else
+				for i = 1, 4 do
+					if sBtn[1] ~= nil then
+						sBtn[i]:SetNormalTexture("")
+					end
 				end
 			end
 		end
