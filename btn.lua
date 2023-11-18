@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=13
+versAdd=295;versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6254,6 +6254,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if testQ[myNome]["настройки"]["debuff"] == "Disable" then
+			if UnitAffectingCombat("player") == 1 then
+				if GetRaidTargetIndex("target") ~= 8 then
+					SetRaidTarget("target",8)
+				end
+			end
+			if UnitAffectingCombat("player") == 1 then
+				if GetRaidTargetIndex("mouseover") ~= 4 and GetRaidTargetIndex("mouseover") ~= 8 then
+					SetRaidTarget("mouseover",4)
+				end
+			end
+			if resursy[1] ~= nil and not resursy[1]:IsVisible() then
+				for i = 100, 1000 do
+					if dmG[i] ~= nil then
+						dmG[i]:Hide()
+					end
+				end
+			end
+		end
 		--if gtg ~= nil then
 			--if FriendsFrame:IsVisible() then
 				--if not gtg:IsVisible() then
@@ -7064,23 +7083,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end
 		--bdf(myNome)
-		if UnitAffectingCombat("player") == 1 then
-			if GetRaidTargetIndex("target") ~= 8 then
-				SetRaidTarget("target",8)
-			end
-		end
-		if UnitAffectingCombat("player") == 1 then
-			if GetRaidTargetIndex("mouseover") ~= 4 and GetRaidTargetIndex("mouseover") ~= 8 then
-				SetRaidTarget("mouseover",4)
-			end
-		end
-		if resursy[1] ~= nil and not resursy[1]:IsVisible() then
-			for i = 100, 1000 do
-				if dmG[i] ~= nil then
-					dmG[i]:Hide()
-				end
-			end
-		end
+
 		if resursy[1] ~= nil and resursy[1]:IsVisible() then
 			if dmG[101] == nil or not dmG[101]:IsVisible() then
 				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
