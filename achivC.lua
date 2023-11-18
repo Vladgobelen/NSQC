@@ -3633,9 +3633,9 @@ tblIcons = {
 		["seiv"] = nil,
 		["prok"] = "Interface\\AddOns\\NSQC\\punto.ogg"
 	},
-	["Кровопускание"] = {
-		["icon"] = "Interface\\Icons\\Ability_Gouge",
-		["name"] = "Кровопускание",
+	["Раскол брони"] = {
+		["icon"] = "Interface\\Icons\\Ability_Warrior_Sunder",
+		["name"] = "Раскол брони",
 		["pos"] = 0,
 		["buf"] = nil,
 		["debuf"] = 1,
@@ -3672,7 +3672,38 @@ tblIcons = {
 		["prok"] = nil,
 		["srav"] = nil,
 		["seiv"] = 1,
-		["prok"] = "Interface\\AddOns\\NSQC\\gob.ogg"
+		["prok"] = "Interface\\AddOns\\NSQC\\gob.ogg",
+	},
+	["Победный раш"] = {
+		["icon"] = "Interface\\Icons\\Ability_Warrior_Devastate",
+		["name"] = "Победный раш",
+		["pos"] = 1,
+		["buf"] = nil,
+		["debuf"] = nil,
+		["prok"] = 1,
+		["srav"] = "b",
+		["seiv"] = nil,
+	},
+	["Рассекающий удар"] = {
+		["icon"] = "Interface\\Icons\\Ability_Warrior_Cleave",
+		["name"] = "Рассекающий удар",
+		["pos"] = 1,
+		["buf"] = nil,
+		["debuf"] = nil,
+		["prok"] = nil,
+		["srav"] = "b",
+		["seiv"] = nil,
+	},
+	["Возмездие"] = {
+		["icon"] = "Interface\\Icons\\Ability_Warrior_Challange",
+		["name"] = "Возмездие",
+		["pos"] = 1,
+		["buf"] = 1,
+		["debuf"] = 0,
+		["prok"] = nil,
+		["srav"] = nil,
+		["seiv"] = 1,
+		["prok"] = "Interface\\AddOns\\NSQC\\gob.ogg",
 	},
 }
 

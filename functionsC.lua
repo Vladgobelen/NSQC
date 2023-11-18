@@ -2714,6 +2714,9 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv)
 		end
 	end
 	local __,__,__,mana = GetSpellInfo(spell)
+	if mana == nil then
+		mana = 0
+	end
 	if srav == "m" then
 		if UnitPower("player") < mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
 			if kya ~= 1 then
