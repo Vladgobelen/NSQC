@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=12
+versAdd=295;versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5909,76 +5909,80 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 		if testQ["zarplatab"] ~= nil then
 			for i = 1, 100 do
-				if mioFld[myNome]["петы"] ~= nil then
-					if mioFld[myNome]["объекты"][tostring(i)] == "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
-						SendAddonMessage("travA " .. i, myNome, "guild")
-						mioFld[myNome]["целостность"][tostring(i)] = 1
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
-						testQ["zarplatab"] = tonumber(testQ["zarplatab"])-1
-						if tonumber(testQ["zarplatab"]) <= 0 then
-							testQ["zarplatab"] = nil
-						end
-						if testQ ~= nil then
-							local testB = nil
-							for i = 1,100 do
-								if mioFld[myNome]["объекты"][tostring(i)] == "sb" then
-									if testB == nil then
-										testB = 1
-									else
-										testB = testB + 1
+				if mioFld == nil then
+					if mioFld[myNome] ~= nil then
+						if mioFld[myNome]["петы"] ~= nil then
+							if mioFld[myNome]["объекты"][tostring(i)] == "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
+								SendAddonMessage("travA " .. i, myNome, "guild")
+								mioFld[myNome]["целостность"][tostring(i)] = 1
+								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+								testQ["zarplatab"] = tonumber(testQ["zarplatab"])-1
+								if tonumber(testQ["zarplatab"]) <= 0 then
+									testQ["zarplatab"] = nil
+								end
+								if testQ ~= nil then
+									local testB = nil
+									for i = 1,100 do
+										if mioFld[myNome]["объекты"][tostring(i)] == "sb" then
+											if testB == nil then
+												testB = 1
+											else
+												testB = testB + 1
+											end
+										end
+									end
+									if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
+										testQ["brevna"] = testQ["brevna"]+1
+										testQ["nikQB"] = antc(testQ["brevna"])
+										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+									end
+									if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
+										testQ["brevna"] = testQ["brevna"]+1
+										testQ["nikQB"] = antc(testQ["brevna"])
+										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+									end
+									if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
+										testQ["brevna"] = testQ["brevna"]+1
+										testQ["nikQB"] = antc(testQ["brevna"])
+										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+									end
+									if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
+										testQ["brevna"] = testQ["brevna"]+1
+										testQ["nikQB"] = antc(testQ["brevna"])
+										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+									end
+									if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
+										testQ["brevna"] = testQ["brevna"]+1
+										testQ["nikQB"] = antc(testQ["brevna"])
+										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+									end
+									if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
+										testQ["brevna"] = testQ["brevna"]+1
+										testQ["nikQB"] = antc(testQ["brevna"])
+										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 								end
 							end
-							if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
-								testQ["brevna"] = testQ["brevna"]+1
-								testQ["nikQB"] = antc(testQ["brevna"])
-								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-							end
-							if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
-								testQ["brevna"] = testQ["brevna"]+1
-								testQ["nikQB"] = antc(testQ["brevna"])
-								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-							end
-							if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
-								testQ["brevna"] = testQ["brevna"]+1
-								testQ["nikQB"] = antc(testQ["brevna"])
-								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-							end
-							if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
-								testQ["brevna"] = testQ["brevna"]+1
-								testQ["nikQB"] = antc(testQ["brevna"])
-								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-							end
-							if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
-								testQ["brevna"] = testQ["brevna"]+1
-								testQ["nikQB"] = antc(testQ["brevna"])
-								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-							end
-							if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
-								testQ["brevna"] = testQ["brevna"]+1
-								testQ["nikQB"] = antc(testQ["brevna"])
-								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+							if mioFld[myNome]["объекты"][tostring(i)] ~= "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
+								if mioFld[myNome]["объекты"][tostring(i-1)] ~= nil and mioFld[myNome]["объекты"][tostring(i-1)] == "t" then
+									SendAddonMessage("bbM " .. i .. " " .. i-1, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								if mioFld[myNome]["объекты"][tostring(i+1)] ~= nil and mioFld[myNome]["объекты"][tostring(i+1)] == "t" and testQ["поиск_пути_бобром"] == nil then
+									SendAddonMessage("bbM " .. i .. " " .. i+1, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								if mioFld[myNome]["объекты"][tostring(i-10)] ~= nil and mioFld[myNome]["объекты"][tostring(i-10)] == "t" and testQ["поиск_пути_бобром"] == nil then
+									SendAddonMessage("bbM " .. i .. " " .. i-10, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								if mioFld[myNome]["объекты"][tostring(i+10)] ~= nil and mioFld[myNome]["объекты"][tostring(i+10)] == "t" and testQ["поиск_пути_бобром"] == nil then
+									SendAddonMessage("bbM " .. i .. " " .. i+10, myNome, "guild")
+									testQ["поиск_пути_бобром"] = 1
+								end
+								testQ["поиск_пути_бобром"] = nil
 							end
 						end
-					end
-					if mioFld[myNome]["объекты"][tostring(i)] ~= "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
-						if mioFld[myNome]["объекты"][tostring(i-1)] ~= nil and mioFld[myNome]["объекты"][tostring(i-1)] == "t" then
-							SendAddonMessage("bbM " .. i .. " " .. i-1, myNome, "guild")
-							testQ["поиск_пути_бобром"] = 1
-						end
-						if mioFld[myNome]["объекты"][tostring(i+1)] ~= nil and mioFld[myNome]["объекты"][tostring(i+1)] == "t" and testQ["поиск_пути_бобром"] == nil then
-							SendAddonMessage("bbM " .. i .. " " .. i+1, myNome, "guild")
-							testQ["поиск_пути_бобром"] = 1
-						end
-						if mioFld[myNome]["объекты"][tostring(i-10)] ~= nil and mioFld[myNome]["объекты"][tostring(i-10)] == "t" and testQ["поиск_пути_бобром"] == nil then
-							SendAddonMessage("bbM " .. i .. " " .. i-10, myNome, "guild")
-							testQ["поиск_пути_бобром"] = 1
-						end
-						if mioFld[myNome]["объекты"][tostring(i+10)] ~= nil and mioFld[myNome]["объекты"][tostring(i+10)] == "t" and testQ["поиск_пути_бобром"] == nil then
-							SendAddonMessage("bbM " .. i .. " " .. i+10, myNome, "guild")
-							testQ["поиск_пути_бобром"] = 1
-						end
-						testQ["поиск_пути_бобром"] = nil
 					end
 				end
 			end
@@ -7060,16 +7064,16 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end
 		--bdf(myNome)
-		--if UnitAffectingCombat("player") == 1 then
-			--if GetRaidTargetIndex("target") ~= 8 then
-				--SetRaidTarget("target",8)
-			--end
-		--end
-		--if UnitAffectingCombat("player") == 1 then
-			--if GetRaidTargetIndex("mouseover") ~= 4 and GetRaidTargetIndex("mouseover") ~= 8 then
-				--SetRaidTarget("mouseover",4)
-			--end
-		--end
+		if UnitAffectingCombat("player") == 1 then
+			if GetRaidTargetIndex("target") ~= 8 then
+				SetRaidTarget("target",8)
+			end
+		end
+		if UnitAffectingCombat("player") == 1 then
+			if GetRaidTargetIndex("mouseover") ~= 4 and GetRaidTargetIndex("mouseover") ~= 8 then
+				SetRaidTarget("mouseover",4)
+			end
+		end
 		if resursy[1] ~= nil and not resursy[1]:IsVisible() then
 			for i = 100, 1000 do
 				if dmG[i] ~= nil then
