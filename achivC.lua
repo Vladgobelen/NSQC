@@ -3776,6 +3776,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					end
 				end
 			end
+		else
+			for i = 1, 4 do
+				if sBtn[1] ~= nil then
+					sBtn[i]:SetNormalTexture("")
+				end
+			end
 		end
 		--[[if IsUsableSpell("Реванш") then
 			sBtn[1]:SetNormalTexture("Interface\\Icons\\Ability_Warrior_Revenge")
