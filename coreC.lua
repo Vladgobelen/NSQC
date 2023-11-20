@@ -17,7 +17,7 @@ msg3=mysplit(message)
 if message == "!кик" and sender == myNome then
 	SendAddonMessage("gKick", "", "guild")
 end
-if msg[1] == "\"чс" and (myNome == "Хефе" or myNome == "Дервин" or myNome == "Люцзе" or myNome == "Посети" or myNome == "Витинари" or myNome == "Злойкакаш" or myNome == "Разбредовина" or myNome == "Qoshadows" or myNome == "Хилялко" or myNome == "Сантанигга" or myNome == "Кусяо" or myNome == "Колон") then
+if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон") then
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end
@@ -34,7 +34,7 @@ if msg[1] == "\"чс" and (myNome == "Хефе" or myNome == "Дервин" or m
 		SendChatMessage(msg[2] .. " уже есть в черном списке" , "OFFICER", nil, 1)
 	end
 end
-if msg[1] == "\"чсв" and (myNome == "Хефе" or myNome == "Дервин" or myNome == "Люцзе" or myNome == "Посети" or myNome == "Витинари" or myNome == "Злойкакаш" or myNome == "Разбредовина" or myNome == "Qoshadows" or myNome == "Хилялко" or myNome == "Сантанигга" or myNome == "Кусяо") then
+if msg[1] == "\"чсв" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо") then
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end

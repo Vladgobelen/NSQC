@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=17
+versAdd=295;versAddDop=18
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6732,7 +6732,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										else
 											krt["999"] = krt["999"]+1
 										end
-										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\q.ogg")
+										PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+										SendAddonMessage("#hQ1itemQ 11", "ававыфав", "guild")
 										testQ["chD"][j] = 1
 										btnF.tooltip = "Подсказки:\n"
 									end
