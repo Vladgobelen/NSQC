@@ -1422,6 +1422,14 @@ function treeX(nome,myNome,id)
 		SendAddonMessage("bX " .. id, nome, "guild")
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ox" then
+		SendAddonMessage("oX " .. id, nome, "guild")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+	end
+	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ob" then
+		SendAddonMessage("oXX " .. id, nome, "guild")
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+	end
 end
 function resObj(id,myNome,nome)
 	if krt == nil then

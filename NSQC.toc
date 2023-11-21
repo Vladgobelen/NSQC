@@ -31,6 +31,8 @@ libs\stanok.tga
 libs\st.tga
 libs\my.tga
 libs\z.tga
+libs\ob.tga
+libs\ox.tga
 libs\zs.tga
 libs\zx.tga
 libs\t.tga

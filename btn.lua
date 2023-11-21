@@ -1,4 +1,4 @@
-versAdd=295;versAddDop=18
+versAdd=295;versAddDop=19
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -339,6 +339,21 @@ function vybor:configure(id)
 		end
 		if id == 8 then
 			vybor[8]:Show()
+		end
+		if id == 29 then
+			vybor[29]:Show()
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Построить обелиск")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Какой он..черный...")
+			GameTooltip:AddLine("На табличке выгравирован Устав гильдии")
+			if testQ["kamen"] < 10 then
+				GameTooltip:AddLine("|cffff0000Стоимость: 10 камня")
+			end
+			if testQ["kamen"] >= 10 then
+				GameTooltip:AddLine("|cffFFCF40Стоимость: 10 камня")
+			end
+			GameTooltip:Show()
 		end
 		if testQ["picon"] == "z" and testQ["icon"] == "kopkop" then
 			if vybor[5] ~= nil then
@@ -769,7 +784,7 @@ function vybor:configure(id)
 						testQ["stanok"] = tonumber(testQ["stanok"]) - 1
 						testQ["nikQST"] = antc(testQ["stanok"])
 						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						dmgText(testQ["stog"],resursy[3],103,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 						dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
 						testQ["temp"] = nil
@@ -797,9 +812,52 @@ function vybor:configure(id)
 							testQ["stanok"] = tonumber(testQ["stanok"]) - 1
 							testQ["nikQST"] = antc(testQ["stanok"])
 							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+							dmgText(testQ["stog"],resursy[3],103,13,"FF8C00")
 							dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 							dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
+							testQ["temp"] = nil
+							for i=1,100 do
+								if vybor[i] ~= nil then
+									vybor[i]:Hide()
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+		if id == 29 then
+			if testQ["kamen"] >= 10 then
+				if nome == myNome then
+					if testQ["temp"] == nil then
+						vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ox.tga")
+						vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ox.tga")
+						testQ["temp"] = 1
+					elseif testQ["temp"] == 1 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+						SendAddonMessage("oB " .. testQ["idp"], nome, "guild")
+						testQ["kamen"] = tonumber(testQ["kamen"]) - 10
+						testQ["nikQK"] = antc(testQ["kamen"])
+						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+						testQ["temp"] = nil
+						for i=1,100 do
+							if vybor[i] ~= nil then
+								vybor[i]:Hide()
+							end
+						end
+					end
+				else
+					if testQ["kamen"] >= 50 then
+						if testQ["temp"] == nil then
+							vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ox.tga")
+							vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ox.tga")
+							testQ["temp"] = 1
+						elseif testQ["temp"] == 1 then
+							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+							SendAddonMessage("oB " .. testQ["idp"], nome, "guild")
+							testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+							testQ["nikQK"] = antc(testQ["kamen"])
+							dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 							testQ["temp"] = nil
 							for i=1,100 do
 								if vybor[i] ~= nil then
@@ -2556,6 +2614,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						dmgText(testQ["infTimer"],fBtn[id],888,13,"ff0000")
 					end
 				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ox" then
+					resObj(id,myNome,nome)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "hs" then
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
@@ -2834,6 +2896,20 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					SendAddonMessage("tVxx " .. id .. " " .. 29998, nome, "guild")
 					testQ["temp"] = nil
 				end
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "ob" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ox.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ox.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("oXX " .. id .. " " .. 998, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "ox" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "hs" then
 				treeX(nome,myNome,id)
@@ -3139,6 +3215,22 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						testQ["idp"] = id
 						testQ["icon"] = "ts"
 						testQ["picon"] = "zt"
+					end
+				end
+			end
+		end
+		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
+			if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+				if vybor[29] == nil or not vybor[29]:IsVisible() then
+					vybor:configure(29)
+					vybor[29]:SetPoint("CENTER", fBtn[id],"CENTER",64, -96)
+					vybor[29]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ob.tga")
+					vybor[29]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ob.tga")
+					vybor[29]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "ob"
+						testQ["picon"] = "bn"
 					end
 				end
 			end
@@ -3641,6 +3733,59 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("Позволяет создавать всякое деревянное. И перерабатывать.")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Зайти внутрь")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ox" then
+					GameTooltip:AddLine("|cFF6495EDСтройка")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Этот обелиск такой..черный...")
+					GameTooltip:AddLine("Нужно больше камней положить друг на друга")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40положить еще один камень")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ob" then
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+					GameTooltip:AddLine("|cffFF8C001. |cffFFFFE0Управление гильдией осуществляется путем прямой демократии: 1 игрок - 1 голос*.")
+					GameTooltip:AddLine("|cffFFFFE0*глава гильдии - тот самый игрок, который имеет единственный голос.")
+					GameTooltip:AddLine ("|cffFF8C001.1. |cffFFFFE0Орнелла Мути законодательно является лучше Моники Белуччи и любых других актрис (или альтернативных актеров")
+					GameTooltip:AddLine ("|cffFF8C001.2. |cffFFFFE0Незнание устава не освобождает от ответственности и является отягчающим обстоятельством")
+					GameTooltip:AddLine ("|cffFF8C002. |cffFFFFE0Торговля в гильдии запрещена")
+					GameTooltip:AddLine ("|cffFF8C003. |cffFFFFE0Попрошайничество в гильдии запрещено. Наказание - смерть. Или исключение из гильдии до возможности исполнить приговор")
+					GameTooltip:AddLine ("|cffFF8C003.0. |cffFFFFE0Офицеры могут исключать и понижать в звании, исходя из принципа гуманности")
+					GameTooltip:AddLine ("|cffFF8C003.1 |cffFFFFE0Строго не рекомендуется давать деньги званиям ниже капитана")
+					GameTooltip:AddLine ("|cffFF8C003.2 |cffFFFFE0Прохождение подземелий с новичками ниже вас на 10 уровней или с илвлом на 80 от вашего молчаливо порицается")
+					GameTooltip:AddLine ("|cffFFFFE0\(офицеры, не стесняйтесь использовать молчаливое порицание для слишком настырных\)")
+					GameTooltip:AddLine ("|cffFF8C004. |cffFFFFE0Каждый член гильдии имеет право попросить квест и получить за выполнение этого квеста награду")
+					GameTooltip:AddLine ("|cffFF8C004.1. |cffFFFFE0Каждый член гильдии имеет право отказаться от квеста и получить следующий квест гораздо сложнее за ту же награду.")
+					GameTooltip:AddLine ("|cffFFFFE0(Количество доступных квестов на сутки обнуляется)")
+					GameTooltip:AddLine ("|cffFF8C004.2. |cffFFFFE0Гоблины имеют бонусную единицу опыта на каждый гильдлвл ")
+					GameTooltip:AddLine ("|cffFF8C004.2.1. |cffFFFFE0Вульперы получают половину гоблинского бонуса")
+					GameTooltip:AddLine ("|cffFF8C004.3. |cffFFFFE0Каждый член гильдии имеет право ничего не делать, если не хочет")
+					GameTooltip:AddLine ("|cffFF8C004.4 |cffFFFFE0Запрещается навязывать другим игрокам свои ценности, насколько бы хороши они ни были. На усмотрение модерации")
+					GameTooltip:AddLine ("|cffFF8C004.4.1. |cffFFFFE0Запрещается продолжать беседу на тему, которая не нравится любому участнику чата")
+					GameTooltip:AddLine ("|cffFF8C005. |cffFFFFE0Каждый член гильдии имеет право на три необоснованных мата в час.")
+					GameTooltip:AddLine ("|cffFFFFE0Каждый последующий мат: понижение в звании до исполняющего обязанности констебля на один час")
+					GameTooltip:AddLine ("|cffFF8C005.1 |cffFFFFE0Если женщина или прочий какой беременный ребенок младше 25 лет жалуется на мат, матерящийся понижается в звании")
+					GameTooltip:AddLine ("|cffFFFFE0до первого звания на срок пока пожаловавшийся не попросит повысить или не уйдет из гильдии")
+					GameTooltip:AddLine ("|cffFF8C005.1.1. |cffFFFFE0За уместностью матов следят офицеры")
+					GameTooltip:AddLine ("|cffFF8C005.2 |cffFFFFE0Грамматические ошибки считаются за половину мата")
+					GameTooltip:AddLine ("|cffFF8C005.2.1 |cffFFFFE0Персонаж с \"правильным\" уникальным ником имеет право на бонус \(на усмотрение ГМа\): ")
+					GameTooltip:AddLine ("|cffFFFFE0- Полностью кириллический односложный ник: 5 опыта")
+					GameTooltip:AddLine ("|cffFFFFE0- Односложный ник на латинице 1 опыта")
+					GameTooltip:AddLine ("|cffFF8C005.3. |cffFFFFE0Штрафы для офицеров утроены")
+					GameTooltip:AddLine ("|cffFF8C005.4. |cffFFFFE0Все ушедшие в добровольный отпуск, получают запись об этом и на время отпуска понижаются в до минимального звания ")
+					GameTooltip:AddLine ("|cffFF8C006.1. |cffFFFFE0Офицер всегда прав")
+					GameTooltip:AddLine ("|cffFF8C006.3. |cffFFFFE0Верующих может исключать только их персональное божество или глава гильдии лично")
+					GameTooltip:AddLine ("|cffFF8C007. |cffFFFFE0АУЕ запрещено \(Кик по желанию офицера\). \(Закон Леджаго\)")
+					GameTooltip:AddLine ("|cffFF8C007.1. |cffFFFFE0Политика запрещена. Вся, целиком. Все что не относится к игровому миру в данном контексте")
+					GameTooltip:AddLine ("|cffFF8C008. |cffFFFFE0Действия направленные на подрыв экономической и политической безопасности гильдии запрещены")
+					GameTooltip:AddLine ("|cffFF8C008.2. |cffFFFFE0Необоснованные обвинения вышестоящего офицера запрещены, если вас не поддерживают еще двое игроков вашего ранга или выше")
+					GameTooltip:AddLine ("|cffFF8C0013.4. |cffFFFFE0Оскорбление члена гильдии считается клеветой, если оскорбляющего не поддержат минимум двое членов гильдии рангом не ниже оскорбляемого")
+					GameTooltip:AddLine ("|cffFFFFE0Наказание назначает оскорбляемый")
+					GameTooltip:AddLine ("|cffFF8C0013.4.1. |cffFFFFE0Если оскорбляющего поддерживают двое равных рангом оскорбляемому или выше, все трое понижаются на одно звание")
+					GameTooltip:AddLine ("|cffFF8C0013.4.2. |cffFFFFE0Провоцирующий нарушение получат наказание равное нарушившему")
+					GameTooltip:AddLine ("|cffFF8C0013.4.3. |cffFFFFE0Офицер имеет право исключить самозванца, маскирующегося под его ник")
+					GameTooltip:AddLine ("|cffFF8C0015. |cffFFFFE0Закон обратной силы не имеет")
+					GameTooltip:Show()
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "lp" then
 					GameTooltip:AddLine("|cFF6495EDЛесопилка")
