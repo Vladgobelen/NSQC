@@ -2768,6 +2768,11 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv)
 	if prok ~= nil and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 and seiv == nil then
 		PlaySoundFile(prok)
 	end
+	if spell == "Мясорубка" then
+		if tonumber(GetComboPoints("player", target)) == 5 and kya ~= 1 then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+		end
+	end
 	if seiv == 1 then
 		if UnitHealth("player") <= (tonumber(UnitHealthMax("player"))/2) and GetSpellCooldown(spell) == 0 then
 			table.insert(testQ["skills"],pos, spell)

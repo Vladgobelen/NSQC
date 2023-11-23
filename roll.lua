@@ -85,6 +85,7 @@ if ginv ~= nil then
 end
 if string.find(message,"Вы выиграли торги") and string.find(message,"Обычное письмо") then
 	testQ["smg"] = tonumber(testQ["smg"])+1
+	testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 end
 local nome = GuildFrame["selectedGuildMemberName"]
 if nome ~= nil then

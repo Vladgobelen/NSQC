@@ -17,7 +17,7 @@ msg3=mysplit(message)
 if message == "!кик" and sender == myNome then
 	SendAddonMessage("gKick", "", "guild")
 end
-if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон") then
+if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес") then
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end
