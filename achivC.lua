@@ -823,6 +823,15 @@ if kodMsg[1] == "MioFld1" then
 	end
 end
 if kodMsg[1] == "MioFld2" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
 	for i = 1, 35 do
 		j = tostring(i+35)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
@@ -833,6 +842,15 @@ if kodMsg[1] == "MioFld2" then
 	end
 end
 if kodMsg[1] == "MioFld3" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[sender] == nil then
+		mioFld[sender] = {}
+	end
+	if mioFld[sender][kodMsg[3]] == nil then
+		mioFld[sender][kodMsg[3]] = {}
+	end
 	for i = 1, 30 do
 		j = tostring(i+70)
 		mioFld[sender][kodMsg[3]][j] = msg[i]
