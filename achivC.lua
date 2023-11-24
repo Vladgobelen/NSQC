@@ -3836,11 +3836,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.1 then
 		timeElapsed = 0
 		local myNome = GetUnitName("player")
-		if UnitHealth("player") == 0 then
-			if StaticPopup1Button2:IsVisible() then
-				StaticPopup1Button1:Hide()
-			end
-		end
+		--if UnitHealth("player") == 0 then
+			--if StaticPopup1Button2:IsVisible() then
+				--StaticPopup1Button1:ClearAllPoints()
+				--StaticPopup1Button1:SetPoint("CENTER", UIParent,"CENTER",333, 333)
+			--end
+		--end
 
 		if UnitAffectingCombat("player") == 1 then
 			if testQ[myNome]["настройки"]["auk"] == "Enable" then
