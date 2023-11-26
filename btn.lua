@@ -427,6 +427,16 @@ function vybor:configure(id)
 				vybor[21]:Show()
 			end
 		end
+		if id == 30 then
+			if vybor[30] ~= nil then
+				vybor[30]:Show()
+			end
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Поставить барную стойку")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Выдача квестов всяким мутным личностям, зашедшим в таверну")
+			GameTooltip:Show()
+		end
 		if id == 27 then
 			if vybor[27] ~= nil then
 				vybor[27]:Show()
@@ -933,6 +943,23 @@ function vybor:configure(id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 				SendAddonMessage("#yIm " .. testQ["idp"], nome, "guild")
 				testQ["yi"] = tonumber(testQ["yi"])-1
+				testQ["temp"] = nil
+				for i=1,100 do
+					if vybor[i] ~= nil then
+						vybor[i]:Hide()
+					end
+				end
+			end
+		end
+		if id == 30 and testQ["b0"] ~= nil and tonumber(testQ["b0"]) >= 1 then
+			if testQ["temp"] == nil then
+				vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
+				vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
+				testQ["temp"] = 1
+			elseif testQ["temp"] == 1 then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+				SendAddonMessage("#b0 " .. testQ["idp"], nome, "guild")
+				testQ["b0"] = tonumber(testQ["b0"])-1
 				testQ["temp"] = nil
 				for i=1,100 do
 					if vybor[i] ~= nil then
@@ -4061,6 +4088,18 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				testQ["idp"] = id
 			end
 		end
+		if testQ["domZ"] == "taverna" then
+			if testQ["b0"] ~= nil and testQ["b0"] >= 1 then
+				if vybor[30] == nil or not vybor[30]:IsVisible() then
+					vybor:configure(30)
+					vybor[30]:SetPoint("CENTER", dBtn[id],"CENTER",-64, 96)
+					vybor[30]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
+					vybor[30]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
+					vybor[30]:Show()
+					testQ["idp"] = id
+				end
+			end
+		end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if testQ["domZ"] == "mf" and mioFld[nome][testQ["domZ"]][tostring(id)] == "bn" then
 			if vybor[21] == nil or not vybor[21]:IsVisible() then
@@ -4263,6 +4302,11 @@ function mBtn:configure(id)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\doska.tga")
 		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\doska.tga")
 	end
+	if id == 12 then
+		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",64, -280)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
+	end
 	self[id]:SetScript("OnClick",function(self)
 		if tonumber(testQ["smg"]) >= 1 then
 			if id == 1 then
@@ -4344,17 +4388,25 @@ function mBtn:configure(id)
 		end
 		if tonumber(testQ["smg"]) >= 10 then
 			if id == 9 then
-				testQ["yi"] = 1
+				testQ["yi"] = tonumber(testQ["yi"])+1
 				testQ["smg"] = tonumber(testQ["smg"]) - 10
 				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
 				print("Получен: Ящик с инструментами")
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
+			if id == 12 then
+				testQ["b0"] = tonumber(testQ["b0"])+1
+				testQ["smg"] = tonumber(testQ["smg"]) - 10
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+				dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
+				print("Полученf: Барная стойка")
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			end
 		end
 		if tonumber(testQ["smg"]) >= 30 then
 			if id == 10 then
-				testQ["yi"] = 1
+				testQ["stanok"] = tonumber(testQ["stanok"])+1
 				testQ["smg"] = tonumber(testQ["smg"]) - 30
 				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 				testQ["stanok"] = tonumber(testQ["stanok"])+1
@@ -4513,12 +4565,22 @@ function mBtn:configure(id)
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000010 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ БОБРА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
 			end
+			if id == 12 then
+				GameTooltip:AddLine("|cff99ff99Купить барную стойку:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000010 бутылок")
+			end
 		else
 			if id == 5 then
 				GameTooltip:AddLine("|cff99ff99Купить бобра:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF10 бутылок")
 				GameTooltip:AddLine("|cffff0000ДОМ ДЛЯ БОБРА ВСЕГО ОДИН. Если в доме будет пет, он будет заменен на купленного.")
+			end
+			if id == 12 then
+				GameTooltip:AddLine("|cff99ff99Купить барную стойку:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF10 бутылок")
 			end
 		end
 
@@ -4770,6 +4832,12 @@ function resursy:configure(id)
 				else
 					mBtn[11]:Show()
 				end
+				if mBtn[12] == nil then
+					mBtn:configure(12)
+				else
+					mBtn[12]:Show()
+				end
+				dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
 				dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
 				dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
 				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
@@ -7059,6 +7127,24 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			testQ["mf"] = nil
 			testQ["mfNome"] = nil
 		end
+		if testQ["b0Show"] == 1 then
+			local nome
+			if testQ['sign'] ~= "1" then
+				nome = GuildFrame["selectedName"]
+			else
+				nome = myNome
+			end
+			if nome == testQ["b0Nome"] then
+				for i = 1, 100 do
+					dBtn[i]:Show()
+
+					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["b0Nome"]]["taverna"][tostring(i)] ..".tga")
+					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["b0Nome"]]["taverna"][tostring(i)] ..".tga")
+				end
+			end
+			testQ["b0Show"] = nil
+			testQ["b0Nome"] = nil
+		end
 		if not dBtn[1]:IsVisible() then
 			testQ["domZ"] = nil
 		end
@@ -7197,6 +7283,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			if testQ["doska"] == nil then
 				testQ["doska"] = 0
 				testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+			end
+			if testQ["b0"] == nil then
+				testQ["b0"] = 0
 			end
 		end
 		if StaticPopup1~= nil then

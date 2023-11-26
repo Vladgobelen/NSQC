@@ -30,6 +30,20 @@ if kodMsg[1] == "#yIm" then
 	testQ["mf"] = 1
 	testQ["mfNome"] = message
 end
+if kodMsg[1] == "#b0" then
+	if mioFld == nil then
+		mioFld = {}
+	end
+	if mioFld[message] == nil then
+		mioFld[message] = {}
+	end
+	if mioFld[message]["taverna"] == nil then
+		mioFld[message]["taverna"] = {}
+	end
+	mioFld[message]["taverna"][tostring(kodMsg[2])] = "b0"
+	testQ["b0Show"] = 1
+	testQ["b0Nome"] = message
+end
 if kodMsg[1] == "#yImx" then
 	if mioFld == nil then
 		mioFld = {}
