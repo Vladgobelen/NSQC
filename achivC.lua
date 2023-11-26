@@ -75,7 +75,15 @@ if kodMsg[1] == "#domtv" and msg[1] == myNome then
 	for i = 2, 100 do
 		tv = tv .. mioFld[myNome]["taverna"][tostring(i)]
 	end
-	SendAddonMessage("#mioTV " .. msg[2], tv, "guild")
+	if sender == myNome then
+		SendAddonMessage("#mioTV " .. msg[2], tv, "guild")
+	else
+		if testQ["traktirshik"] == 1 then
+			SendAddonMessage("#mioTV " .. msg[2], tv, "guild")
+		else
+			SendChatMessage("Закрыто", "OFFICER", nil, 1)
+		end
+	end
 end
 if kodMsg[1] == "#dommf" and msg[1] == myNome then
 	if mioFld == nil then
@@ -160,6 +168,8 @@ if kodMsg[1] == "xTime" and kodMsg[2] == myNome and testGM ~= nil then
 end
 if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ[myNome]["взятый_квест_х"] = "9999"
+	testQ[myNome]["взятый_квест_t"] = nil
+	testQ["taverna_num_q"] = nil
 	testQ[myNome]["взятый_квест_s"] = nil
 	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
 	testQ[myNome]["взятый_квест"] = "9999"

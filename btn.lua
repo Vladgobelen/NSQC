@@ -1,4 +1,4 @@
-versAdd=296;versAddDop=2
+versAdd=296;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -120,6 +120,12 @@ function okNo:configure(id,sign)
 			SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. odin .. ", " .. dva .. ", " .. tri, "OFFICER", nil, 1)
 			testQ["okno"] = nil
 		end
+		if testQ["okno"] == "tavernaQ" then
+			SendChatMessage("Мне нужно выполнить " .. tonumber(testQ["taverna_num_q"])+3 .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_t"])) .. " или получить ее", "OFFICER", nil, 1)
+			testQ["okno"] = nil
+			testQ['sign'] = nil
+			hX()
+		end
 		if testQ["okno"] == "itemQ" then
 			SendChatMessage("Скоро я пришлю Вождю многа многа стаков вот этого: " .. testQ[myNome]["itemName"], "OFFICER", nil, 1)
 			testQ[myNome]["взятый_квест"] = "itemQ"
@@ -145,7 +151,7 @@ function okNo:configure(id,sign)
 			testQ['sign'] = nil
 			testQ["okno"] = nil
 		end
-		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" and testQ["okno"] ~= "q33end" then
+		if testQ["okno"] ~= nil and testQ["okno"] ~= "99991" and testQ["okno"] ~= "itemQ" and testQ["okno"] ~= "itemQend" and testQ["okno"] ~= "q33end" and testQ["okno"] ~= "tavernaQ" then
 			SendChatMessage("Мне нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])), "OFFICER", nil, 1)
 			testQ[myNome]["взятый_квест_х"] = testQ["okno"]
 			testQ["okno"] = nil
@@ -188,6 +194,14 @@ function okNo:configure(id,sign)
 			if testQ["okno"] == "q33" then
 				SendChatMessage("Я злонамеренно отказываюсь от квеста.", "OFFICER", nil, 1)
 				testQ[myNome]["взятый_квест_s"] = nil
+				testQ["okno"] = nil
+				hX()
+				testQ['sign'] = nil
+			end
+			if testQ["okno"] == "tavernaQ" then
+				SendChatMessage("Я злонамеренно отказываюсь от квеста.", "OFFICER", nil, 1)
+				testQ[myNome]["взятый_квест_t"] = nil
+				testQ["taverna_num_q"] = nil
 				testQ["okno"] = nil
 				hX()
 				testQ['sign'] = nil
@@ -2275,7 +2289,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								end
 							end
 						else
-							if testQ[myNome]["взятый_квест_s"] == nil then
+							if testQ[myNome]["взятый_квест_s"] == nil and (testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999") then
 								testQ[myNome]["q33q"],testQ[myNome]["q33nik"][1],testQ[myNome]["q33nik"][2],testQ[myNome]["q33nik"][3],testQ[myNome]["q33fnd"],testQ[myNome]["q33ans"] = qLvl33c(myNome)
 								--SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "OFFICER", nil, 1)
 								testQ["okno"] = "q33"
@@ -2303,68 +2317,70 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								btn[989]:ClearAllPoints()
 								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 							else
-								if testQ[myNome]["q33end"] ~= 1 then
-									testQ["okno"] = "q33"
-									quesT("show")
-									okNo:configure(1,"show")
-									local odin,dva,tri
-									if testQ[myNome]["q33nik"][1] == 1 then
-										odin = "выполнено"
-									else
-										odin = testQ[myNome]["q33nik"][1]
-									end
-									if testQ[myNome]["q33nik"][2] == 1 then
-										dva = "выполнено"
-									else
-										dva = testQ[myNome]["q33nik"][2]
-									end
-									if testQ[myNome]["q33nik"][3] == 1 then
-										tri = "выполнено"
-									else
-										tri = testQ[myNome]["q33nik"][3]
-									end
-									rtnTextF("Мне срочно нужно " .. testQ[myNome]["q33q"] .. odin .. ", " .. dva .. ", " .. tri,1,"show")
-									for i=1,100 do
-										fBtn[i]:Hide()
-									end
-									for i = 1, 100 do
-										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
-											if resursy[i] ~= nil then
-												if i == 5 then
-													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+								if testQ[myNome]["взятый_квест_s"] ~= nil then
+									if testQ[myNome]["q33end"] ~= 1 then
+										testQ["okno"] = "q33"
+										quesT("show")
+										okNo:configure(1,"show")
+										local odin,dva,tri
+										if testQ[myNome]["q33nik"][1] == 1 then
+											odin = "выполнено"
+										else
+											odin = testQ[myNome]["q33nik"][1]
+										end
+										if testQ[myNome]["q33nik"][2] == 1 then
+											dva = "выполнено"
+										else
+											dva = testQ[myNome]["q33nik"][2]
+										end
+										if testQ[myNome]["q33nik"][3] == 1 then
+											tri = "выполнено"
+										else
+											tri = testQ[myNome]["q33nik"][3]
+										end
+										rtnTextF("Мне срочно нужно " .. testQ[myNome]["q33q"] .. odin .. ", " .. dva .. ", " .. tri,1,"show")
+										for i=1,100 do
+											fBtn[i]:Hide()
+										end
+										for i = 1, 100 do
+											if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+												if resursy[i] ~= nil then
+													if i == 5 then
+														if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+														end
+													else
+														resursy[i]:Hide()
 													end
-												else
-													resursy[i]:Hide()
 												end
 											end
 										end
-									end
-									btn[989]:Hide()
-									btn[989]:ClearAllPoints()
-									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-								else
-									testQ["okno"] = "q33end"
-									quesT("show")
-									okNo:configure(1,"show")
-									rtnTextF("Задание завершено",1,"show")
-									for i=1,100 do
-										fBtn[i]:Hide()
-									end
-									for i = 1, 100 do
-										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
-											if resursy[i] ~= nil then
-												if i == 5 then
-													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+										btn[989]:Hide()
+										btn[989]:ClearAllPoints()
+										btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+									else
+										testQ["okno"] = "q33end"
+										quesT("show")
+										okNo:configure(1,"show")
+										rtnTextF("Задание завершено",1,"show")
+										for i=1,100 do
+											fBtn[i]:Hide()
+										end
+										for i = 1, 100 do
+											if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+												if resursy[i] ~= nil then
+													if i == 5 then
+														if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+														end
+													else
+														resursy[i]:Hide()
 													end
-												else
-													resursy[i]:Hide()
 												end
 											end
 										end
+										btn[989]:Hide()
+										btn[989]:ClearAllPoints()
+										btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 									end
-									btn[989]:Hide()
-									btn[989]:ClearAllPoints()
-									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 								end
 							end
 						end
@@ -3998,7 +4014,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetPoint("CENTER",posex, posey)
 	self[id]:SetSize(sizex, sizey)
 	self[id]:Hide();
-	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown","LeftButtonUp")
+	self[id]:RegisterForClicks("RightButtonDown","LeftButtonUp")
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome
 		if testQ['sign'] ~= "1" then
@@ -4016,6 +4032,241 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome][testQ["domZ"]] == nil then
 				mioFld[nome][testQ["domZ"]] = {}
 			end
+			if testQ["domZ"] == "taverna" then
+				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
+					if testQ[myNome]["hTimer"] ~= nil then
+						if testQ[myNome]["взятый_квест_t"] == nil then
+							if testQ[myNome]["взятый_квест_х"] == nil then
+								local qq
+								while true do
+									qq=math.random(1,#pQuest["items"])
+									if tostring(pQuest["items"][qq]["itemName"]) == "Ткань пустоты" then
+										testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
+										testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
+										testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
+										break
+									end
+								end
+								testQ["okno"] = "itemQ"
+								testQ["itemQVzyat"] = 1
+								quesT("show")
+								okNo:configure(1,"show")
+								rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+								for i=1,100 do
+									fBtn[i]:Hide()
+								end
+								for i = 1, 100 do
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
+									end
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								if testQ[myNome]["itemQend"] ~= 1 then
+									testQ["okno"] = "itemQ"
+									quesT("show")
+									okNo:configure(1,"show")
+									rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+									for i=1,100 do
+										dBtn[i]:Hide()
+									end
+									for i = 1, 100 do
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
+										end
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								else
+									testQ["okno"] = "itemQend"
+									quesT("show")
+									okNo:configure(1,"show")
+									rtnTextF("Я отправил Вождю, все что нужно",1,"show")
+									for i=1,100 do
+										dBtn[i]:Hide()
+									end
+									for i = 1, 100 do
+										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+											if resursy[i] ~= nil then
+												if i == 5 then
+													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+													end
+												else
+													resursy[i]:Hide()
+												end
+											end
+										end
+									end
+									btn[989]:Hide()
+									btn[989]:ClearAllPoints()
+									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								end
+							end
+						else
+							local count = nil
+							count = GetAchievementNumCriteria(tonumber(testQ[myNome]["взятый_квест_t"]))
+							local ii = 0
+							for j = 1, count do
+								local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["взятый_квест_t"]), j);
+								if completed == true then
+									ii = ii + 1
+								end
+							end
+							if ii < tonumber(testQ["taverna_num_q"])+3 then
+								testQ["okno"] = "tavernaQ"
+								rtnTextF("Мне нужно получить " .. tonumber(testQ["taverna_num_q"])+3 .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_t"])) .. " или выполнить ее",1,"show")
+								quesT("show")
+								okNo:configure(1,"show")
+								for i=1,100 do
+									dBtn[i]:Hide()
+								end
+								for i = 1, 100 do
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
+									end
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
+								SendAddonMessage("#hQ1 " .. "", "", "guild")
+								--htimer(myNome)
+								hX()
+								testQ['sign'] = nil
+								testQ["okno"] = nil
+							end
+						end
+					else
+						if testQ[myNome]["взятый_квест_t"] == nil then
+							local count = nil
+							local q = nil
+							local i = 1
+							while true do
+								local x = math.random(1,#tQuest)
+								count = GetAchievementNumCriteria(tQuest[x])
+								for j = 1, count do
+									local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(tQuest[x], j);
+									if completed == false then
+										q = tQuest[x]
+										break
+									end
+								end
+								if q == nil then
+									i = i + 1
+									if i >= #tQuest then
+										count = nil
+										break
+									end
+								else
+									break
+								end
+							end
+							if count ~= nil then
+								local ii = 0
+								for j = 1, count do
+									local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(q, j);
+									if completed == true then
+										ii = ii + 1
+									end
+								end
+								testQ["taverna_num_q"] = ii
+								testQ["okno"] = "tavernaQ"
+								testQ[myNome]["взятый_квест_t"] = q
+								htimer(myNome)
+								rtnTextF("Мне нужно получить " .. tonumber(testQ["taverna_num_q"])+3 .. " пунктов ачивки " .. GetAchievementLink(q) .. " или выполнить ее",1,"show")
+								quesT("show")
+								okNo:configure(1,"show")
+								for i=1,100 do
+									dBtn[i]:Hide()
+								end
+								for i = 1, 100 do
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
+									end
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								SendChatMessage("В таверне больше нет квестов для меня", "OFFICER", nil, 1)
+							end
+						else
+							local count = nil
+							count = GetAchievementNumCriteria(tonumber(testQ[myNome]["взятый_квест_t"]))
+							local ii = 0
+							for j = 1, count do
+								local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["взятый_квест_t"]), j);
+								if completed == true then
+									ii = ii + 1
+								end
+							end
+							if ii < tonumber(testQ["taverna_num_q"])+3 then
+								testQ["okno"] = "tavernaQ"
+								rtnTextF("Мне нужно получить " .. tonumber(testQ["taverna_num_q"])+3 .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_t"])) .. " или выполнить ее",1,"show")
+								quesT("show")
+								okNo:configure(1,"show")
+								for i=1,100 do
+									dBtn[i]:Hide()
+								end
+								for i = 1, 100 do
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
+									end
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+							else
+								SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
+								SendAddonMessage("#hQ1 " .. "", "", "guild")
+								--htimer(myNome)
+								hX()
+								testQ['sign'] = nil
+								testQ["okno"] = nil
+							end
+						end
+					end
+				end
+			end
 			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
 				testQ["domZ"] = "crt"
 				for i = 1, 100 do
@@ -4025,6 +4276,11 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if arg1 == "RightButton" then
+			if testQ["domZ"] == "taverna" then
+				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
+					--mioFld[nome]["taverna"][tostring(i)] = "pl"
+				end
+			end
 			if mioFld[nome][testQ["domZ"]][tostring(id)] == "my" then
 				SendAddonMessage("#yImx " .. id, nome, "guild")
 				if testQ["yi"] ~= nil then
@@ -4100,7 +4356,6 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if testQ["domZ"] == "mf" and mioFld[nome][testQ["domZ"]][tostring(id)] == "bn" then
 			if vybor[21] == nil or not vybor[21]:IsVisible() then
 				vybor:configure(21)
@@ -4116,6 +4371,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 
 		end
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if testQ["domZ"] ~= nil then
 			if mioFld[nome] == nil then
 				mioFld[nome] = {}
@@ -4129,6 +4385,19 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				GameTooltip:AddLine("Какие забавные внутри винтики и всякие отверточки")
 				GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40создать Шедевр!")
 				GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40забрать")
+			end
+		end
+		if testQ["domZ"] == "taverna" then
+			if mioFld ~= nil then
+				if mioFld[nome] ~= nil then
+					if mioFld[nome][testQ["domZ"]] ~= nil then
+						if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
+							GameTooltip:AddLine("|cFF6495EDБарная стойка:")
+							GameTooltip:AddLine(" ")
+							GameTooltip:AddLine("Взять квест")
+						end
+					end
+				end
 			end
 		end
 		GameTooltip:Show()
