@@ -1,4 +1,4 @@
-versAdd=296;versAddDop=5
+versAdd=296;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4036,11 +4036,12 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
 					if testQ[myNome]["hTimer"] ~= nil then
 						if testQ[myNome]["взятый_квест_t"] == nil then
-							if testQ[myNome]["взятый_квест_х"] == nil then
+							if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
 								local qq
 								while true do
 									qq=math.random(1,#pQuest["items"])
-									if tostring(pQuest["items"][qq]["itemName"]) == "Ткань пустоты" then
+									if tostring(pQuest["items"][qq]["itemName"]) == "Ткань Пустоты" then
+									print(tostring(pQuest["items"][qq]["itemName"]))
 										testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
 										testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
 										testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
