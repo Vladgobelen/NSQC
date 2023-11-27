@@ -1,4 +1,4 @@
-versAdd=296;versAddDop=4
+versAdd=296;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -199,7 +199,7 @@ function okNo:configure(id,sign)
 				testQ['sign'] = nil
 			end
 			if testQ["okno"] == "tavernaQ" then
-				SendChatMessage("Я злонамеренно отказываюсь от квеста.", "OFFICER", nil, 1)
+				SendChatMessage("Я злонамеренно отказываюсь от ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_t"])), "OFFICER", nil, 1)
 				testQ[myNome]["взятый_квест_t"] = nil
 				testQ["taverna_num_q"] = nil
 				testQ["okno"] = nil
