@@ -1,4 +1,4 @@
-versAdd=296;versAddDop=6
+versAdd=296;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1982,7 +1982,7 @@ function vybor:configure(id)
 		end
 	end)
 end
-if myNome == "Хефе" or myNome == "Витинари" or myNome == "Люцзе" or myNome == "Посети" or myNome == "Колон" or myNome == "Кербес" then
+if myNome == "Хефе" or myNome == "Витинари" or myNome == "Люцзе" or myNome == "Посети" or myNome == "Колон" or myNome == "Кербес" or myNome == "Аффа" or myNome == "Маздам" then
 	local gTest1,gTest2
 	gtg = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	gtg:SetPoint("BOTTOMLEFT",350, 370)
