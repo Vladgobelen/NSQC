@@ -2745,6 +2745,7 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv)
 			end
 		end
 	end
+
 	if srav == "b" then
 		if UnitPower("player") >= mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
 			if kya ~= 1 then
@@ -2753,6 +2754,14 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv)
 				end
 				if pos == 1 then
 					table.insert(testQ["skills"], spell)
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == spell then
+							testQ["skills"][k] = nil
+						end
+					end
 				end
 			end
 		else

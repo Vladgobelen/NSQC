@@ -1,4 +1,4 @@
-versAdd=296;versAddDop=7
+versAdd=296;versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6983,28 +6983,41 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	end
 end)
 
+
+local frameTime = CreateFrame("FRAME")
+local timeElapsed = 0
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+	if MailFrame:IsVisible() then
+		timeElapsed = timeElapsed + elapsed
+		if timeElapsed > 0.2 then
+			timeElapsed = 0
+			if testQ["mail"] ~= nil then
+				local x = GetInboxNumItems()
+				if x >= 1 then
+					local l1,l2,l3,l4,l5,l6=GetInboxHeaderInfo(1)
+					if tonumber(l6) == 0 then
+						if testQ["mail"] then
+							AutoLootMailItem(1)
+							MailItem1Button:Click()
+							OpenMailDeleteButton:Click()
+							StaticPopup1Button2:Click()
+						end
+					end
+				else
+					testQ["mail"] = nil
+				end
+			end
+		end
+	end
+end)
+
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
-		if testQ["mail"] ~= nil then
-			local x = GetInboxNumItems()
-			if x >= 1 then
-				local l1,l2,l3,l4,l5,l6=GetInboxHeaderInfo(1)
-				if tonumber(l6) == 0 then
-					if testQ["mail"] then
-						AutoLootMailItem(1)
-						MailItem1Button:Click()
-						OpenMailDeleteButton:Click()
-						StaticPopup1Button2:Click()
-					end
-				end
-			else
-				testQ["mail"] = nil
-			end
-		end
+
 		--[[if WorldMapFrame:IsVisible() then
 			if myMap == nil then
 				myMap = CreateFrame("Button")

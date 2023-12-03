@@ -3913,6 +3913,44 @@ if classUnit == "Разбойник" then
 		},
 	}
 end
+if classUnit == "Рыцарь смерти" then
+	tblIcons = {
+		["Озноб"] = {
+			["icon"] = "Interface\\Icons\\Spell_DeathKnight_IceTouch",
+			["name"] = "Озноб",
+			["pos"] = 1,
+			["buf"] = 0,
+			["debuf"] = 1,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Кровавая чума"] = {
+			["icon"] = "Interface\\Icons\\Spell_DeathKnight_EmpowerRuneBlade",
+			["name"] = "Кровавая чума",
+			["pos"] = 1,
+			["buf"] = 0,
+			["debuf"] = 1,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+	}
+end
+if classUnit == "Жрец" then
+	tblIcons = {
+		["Внутренний огонь"] = {
+			["icon"] = "Interface\\Icons\\Spell_Holy_InnerFire",
+			["name"] = "Внутренний огонь",
+			["pos"] = 1,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+	}
+end
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
