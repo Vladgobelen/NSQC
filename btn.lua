@@ -1,4 +1,4 @@
-versAdd=296;versAddDop=8
+versAdd=297;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -289,6 +289,22 @@ function vybor:configure(id)
 			if vybor[20] ~= nil then
 				vybor[20]:Show()
 			end
+		end
+		if id == 31 then
+			if vybor[31] ~= nil then
+				vybor[31]:Show()
+			end
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Построить колодец")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Если кинуть в колодец лотерейный билет, можно получить награду")
+			GameTooltip:AddLine("Хм.. Почему в нем нет воды?")
+			if testQ["kirpich"] >= 10 and testQ["smg"] >= 5 and testQ["kamen"] >= 10 and testQ["doska"] >= 5 then
+				GameTooltip:AddLine("|cffFFCF40Стоимость: 10 кирпича, 5 самогона, 10 камня, 5 досок")
+			else
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 кирпича, 5 самогона, 10 камня, 5 досок")
+			end
+			GameTooltip:Show()
 		end
 		if id == 14 or id == 15 or id == 16 then
 			if vybor[14] ~= nil then
@@ -1020,6 +1036,65 @@ function vybor:configure(id)
 					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					testQ["temp"] = nil
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		end
+		if nome == myNome then
+			if id == 31 and tonumber(testQ["kirpich"]) >= 10 and tonumber(testQ["kamen"]) >= 10 and tonumber(testQ["smg"]) >= 5 and tonumber(testQ["doska"]) >= 5  then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kx.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kx.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("kO " .. testQ["idp"], nome, "guild")
+					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 10
+					testQ["nikQKR"] = antc(testQ["kirpich"])
+					testQ["kamen"] = tonumber(testQ["kamen"]) - 10
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+					testQ["smg"] = tonumber(testQ["smg"]) - 5
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["doska"] = tonumber(testQ["doska"]) - 5
+					testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+					testQ["temp"] = nil
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		else
+			if id == 31 and tonumber(testQ["kirpich"]) >= 50 and tonumber(testQ["kamen"]) >= 50 and tonumber(testQ["smg"]) >= 25 and tonumber(testQ["doska"]) >= 25  then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kx.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kx.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("kO " .. testQ["idp"], nome, "guild")
+					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 50
+					testQ["nikQKR"] = antc(testQ["kirpich"])
+					testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+					testQ["smg"] = tonumber(testQ["smg"]) - 25
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["doska"] = tonumber(testQ["doska"]) - 25
+					testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -2204,9 +2279,68 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 								end
 							else
-								if testQ[myNome]["взятый_квест_х"] == "itemQ" then
-									if testQ[myNome]["itemQend"] ~= 1 then
+								if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" or testQ[myNome]["взятый_квест_х"] == "itemQ" then
+									if testQ[myNome]["взятый_квест_х"] == "itemQ" then
+										if testQ[myNome]["itemQend"] ~= 1 then
+											testQ["okno"] = "itemQ"
+											quesT("show")
+											okNo:configure(1,"show")
+											rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
+											for i=1,100 do
+												fBtn[i]:Hide()
+											end
+											for i = 1, 100 do
+												if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+													if resursy[i] ~= nil then
+														if i == 5 then
+															if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+															end
+														else
+															resursy[i]:Hide()
+														end
+													end
+												end
+											end
+											btn[989]:Hide()
+											btn[989]:ClearAllPoints()
+											btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+										else
+											testQ["okno"] = "itemQend"
+											quesT("show")
+											okNo:configure(1,"show")
+											rtnTextF("Я отправил Вождю, все что нужно",1,"show")
+											for i=1,100 do
+												fBtn[i]:Hide()
+											end
+											for i = 1, 100 do
+												if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+													if resursy[i] ~= nil then
+														if i == 5 then
+															if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+															end
+														else
+															resursy[i]:Hide()
+														end
+													end
+												end
+											end
+											btn[989]:Hide()
+											btn[989]:ClearAllPoints()
+											btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+										end
+									else
+										local qq
+										while true do
+											qq=math.random(1,#pQuest["items"])
+											if tostring(pQuest["items"][qq]["itemName"]) == "Магическая ткань" then
+												testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
+												testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
+												testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
+												break
+											end
+										end
 										testQ["okno"] = "itemQ"
+										testQ["itemQVzyat"] = 1
 										quesT("show")
 										okNo:configure(1,"show")
 										rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
@@ -2228,64 +2362,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										btn[989]:Hide()
 										btn[989]:ClearAllPoints()
 										btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-									else
-										testQ["okno"] = "itemQend"
-										quesT("show")
-										okNo:configure(1,"show")
-										rtnTextF("Я отправил Вождю, все что нужно",1,"show")
-										for i=1,100 do
-											fBtn[i]:Hide()
-										end
-										for i = 1, 100 do
-											if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
-												if resursy[i] ~= nil then
-													if i == 5 then
-														if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
-														end
-													else
-														resursy[i]:Hide()
-													end
-												end
-											end
-										end
-										btn[989]:Hide()
-										btn[989]:ClearAllPoints()
-										btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 									end
-								else
-									local qq
-									while true do
-										qq=math.random(1,#pQuest["items"])
-										if tostring(pQuest["items"][qq]["itemName"]) == "Магическая ткань" then
-											testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
-											testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
-											testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
-											break
-										end
-									end
-									testQ["okno"] = "itemQ"
-									testQ["itemQVzyat"] = 1
-									quesT("show")
-									okNo:configure(1,"show")
-									rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
-									for i=1,100 do
-										fBtn[i]:Hide()
-									end
-									for i = 1, 100 do
-										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
-											if resursy[i] ~= nil then
-												if i == 5 then
-													if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
-													end
-												else
-													resursy[i]:Hide()
-												end
-											end
-										end
-									end
-									btn[989]:Hide()
-									btn[989]:ClearAllPoints()
-									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 								end
 							end
 						else
@@ -2438,7 +2515,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 								end
 							end
-							if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
+							if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" and testQ[myNome]["взятый_квест_s"] == nil then
 								local qq
 									while true do
 										qq=math.random(1,#pQuest["items"])
@@ -3118,6 +3195,23 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["idp"] = id
 					testQ["icon"] = "smg"
 					testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
+				end
+			end
+		end
+
+		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
+			if mioFld[nome]["объекты"][tostring(id)] == "z" then
+				if vybor[31] == nil or not vybor[31]:IsVisible() then
+					vybor:configure(31)
+					vybor[31]:SetPoint("CENTER", fBtn[id],"CENTER",0, -96)
+					vybor[31]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ko.tga")
+					vybor[31]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ko.tga")
+					vybor[31]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "ko"
+						testQ["picon"] = "z"
+					end
 				end
 			end
 		end

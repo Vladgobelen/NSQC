@@ -2756,10 +2756,13 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv)
 					table.insert(testQ["skills"], spell)
 				end
 			else
-				for k, v in pairs(testQ["skills"]) do
-					if testQ["skills"][k] ~= nil then
-						if testQ["skills"][k] == spell then
-							testQ["skills"][k] = nil
+				local classUnit = UnitClass("player")
+				if classUnit == "Рыцарь смерти" then
+					for k, v in pairs(testQ["skills"]) do
+						if testQ["skills"][k] ~= nil then
+							if testQ["skills"][k] == spell then
+								testQ["skills"][k] = nil
+							end
 						end
 					end
 				end

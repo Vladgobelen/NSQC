@@ -1613,6 +1613,25 @@ if kodMsg[1] == "tsX" then
 		end
 	end
 end
+if kodMsg[1] == "kO" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "kx"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 99
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+			if message == myNome then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+			end
+		end
+	end
+end
 if kodMsg[1] == "zPx" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
