@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=0
+versAdd=297;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2097,7 +2097,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
 	self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\z.tga")
 	self[id]:Hide();
-	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown","LeftButtonUp")
+	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown","LeftButtonUp","MiddleButtonUp")
 	self[id]:SetScript("OnClick",function(self, button)
 		local nome
 		if testQ['sign'] ~= "1" then
@@ -2183,7 +2183,19 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
+		if arg1 == "MiddleButton" then
+			if nome == myNome then
+				if mioFld[nome]["объекты"][tostring(id)] == "ko" then
+					if tonumber(testQ[myNome]["лотерея"]) >= 1 then
+						RandomRoll(1, 111)
+					end
+				end
+			else
+				if mioFld[nome]["объекты"][tostring(id)] == "ko" then
 
+				end
+			end
+		end
 		if arg1 == "LeftButton" then
 			if arg2 == false then
 				if mioFld[nome]["объекты"][tostring(id)] == "tv" then
@@ -2211,6 +2223,18 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						SendChatMessage("Дорогой дневник, сегодня я пытался украсть награду " .. nome .. " за лвлап. Не получилось...", "OFFICER", nil, 1)
 					end
 				end
+				if nome == myNome then
+					if mioFld[nome]["объекты"][tostring(id)] == "ko" then
+						if tonumber(testQ[myNome]["лотерея"]) >= 3 then
+							RandomRoll(1, 333)
+						end
+					end
+				else
+					if mioFld[nome]["объекты"][tostring(id)] == "ko" then
+
+					end
+				end
+
 				if mioFld[nome]["объекты"][tostring(id)] == "s" then
 					if nome == myNome then
 						if testQ[myNome]["hTimer"] ~= nil then
@@ -2738,6 +2762,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 				end
+				if mioFld[nome]["объекты"][tostring(id)] == "kx" then
+					resObj(id,myNome,nome)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "hs" then
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
@@ -2947,6 +2975,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["temp"] = nil
 				end
 			end
+			if mioFld[nome]["объекты"][tostring(id)] == "ko" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kx.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kx.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("kX " .. id .. " " .. 14990, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "bh" then
 				if testQ["temp"] == nil then
 					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bx.tga")
@@ -3028,6 +3066,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "ox" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "kx" then
 				treeX(nome,myNome,id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 			end
@@ -3680,6 +3722,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if mioFld[nome] ~= nil then
 				if mioFld[nome]["объекты"][tostring(id)] == "za" and tonumber(testQ["kamen"]) < 1 then
 					GameTooltip:AddLine("Нужно больше камня")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "ko" then
+					GameTooltip:AddLine("Колодец желаний")
+					GameTooltip:AddLine("А что будет, если кинуть в колодец лотерейный билет? Может он размокнет?")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40Скинуть в колодец лотерейный билет")
+					GameTooltip:AddLine("|cff99ff99СКМ: |cffFFCF40Скинуть в колодец треть лотерейного билета")
+
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "za" and tonumber(testQ["kamen"]) >= 1 then
 					GameTooltip:AddLine("|cFF6495EDБетонный завод")

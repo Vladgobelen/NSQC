@@ -1797,6 +1797,38 @@ if kodMsg[1] == "bX" then
 		end
 	end
 end
+if kodMsg[1] == "kX" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "kx"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 998
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
+if kodMsg[1] == "kXX" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = 998
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "oX" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
@@ -2136,6 +2168,9 @@ if kodMsg[1] == "resObj" then
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "ox" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 		end
+		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "kx" then
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+		end
 		if mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" or mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 		end
@@ -2168,6 +2203,9 @@ if kodMsg[1] == "resObj" then
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ox" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ob"
+					end
+					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="kx" then
+						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ko"
 					end
 				end
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 4999 then
