@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=1
+versAdd=297;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2186,7 +2186,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if arg1 == "MiddleButton" then
 			if nome == myNome then
 				if mioFld[nome]["объекты"][tostring(id)] == "ko" then
-					if tonumber(testQ[myNome]["лотерея"]) >= 1 then
+					if testQ[myNome]["лотерея"] ~= nil and tonumber(testQ[myNome]["лотерея"]) >= 1 then
 						RandomRoll(1, 111)
 					end
 				end
@@ -2225,7 +2225,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 				if nome == myNome then
 					if mioFld[nome]["объекты"][tostring(id)] == "ko" then
-						if tonumber(testQ[myNome]["лотерея"]) >= 3 then
+						if testQ[myNome]["лотерея"] ~= nil and tonumber(testQ[myNome]["лотерея"]) >= 3 then
 							RandomRoll(1, 333)
 						end
 					end
