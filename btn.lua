@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=5
+versAdd=297;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6046,7 +6046,7 @@ minibtn = CreateFrame("Button", nil, Minimap)
 minibtn:RegisterForClicks("LeftButtonUp", "RightButtonDown", "MiddleButtonUp")
 minibtn:SetScript("OnEnter",function(self)
 	MainMenuMicroButton["hover"]=1
-	MainMenuMicroButton.updateInterval = 5
+	MainMenuMicroButton.updateInterval = 10
 	SendAddonMessage("NSGadd", "#qUpdate", "guild")
 	SendAddonMessage("NSGadd", "#ver", "guild")
 	SendAddonMessage("#gmlist", myNome, "guild")
