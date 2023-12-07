@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=3
+versAdd=297;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5971,7 +5971,7 @@ local SPECID_FURY = 72 -- Fury's specialisation ID, as returned by GetInspectSpe
 -- Calculate and return a unit's average item level using the formula described on this page:
 -- http://www.wowpedia.org/API_GetAverageItemLevel
 -- Should only be called after INSPECT_READY fired for the unit
-local function CalculateAverageItemLevel(unit)
+function CalculateAverageItemLevel(unit)
 	local totalIlvl = 0
 	local mainHandEquipLoc, offHandEquipLoc
 
@@ -6056,6 +6056,9 @@ minibtn:SetScript("OnEnter",function(self)
 		GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
 	end
 	GameTooltip:AddLine("|cFF6495EDСредний уровень предметов: |cff00BFFF" .. CalculateAverageItemLevel(myNome))
+	if GS_Data ~= nil then
+		GameTooltip:AddLine("|cFF6495EDGearScore: |cff00BFFF" .. GS_Data[GetRealmName()].Players["Витинари"].GearScore)
+	end
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddLine("|cffFF8C00ЛКМ|cffFFFFE0 - открыть аддон")
 	GameTooltip:AddLine("|cffF4A460ПКМ|cffFFFFE0 - показать настройки")
