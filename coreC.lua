@@ -36,7 +36,9 @@ if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or s
 end
 if msg[1] == "\"илвл" and msg[2] == myNome then
 	if GS_Data ~= nil then
-		SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore, "OFFICER", nil, 1)
+		if GS_Data[GetRealmName()].Players[myNome] ~= nil then
+			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore, "OFFICER", nil, 1)
+		end
 	else
 		SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)), "OFFICER", nil, 1)
 	end
