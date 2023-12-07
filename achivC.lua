@@ -1309,10 +1309,12 @@ end
 if kodMsg[1] == "zemlYa" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			testQ["fRand4"] = 1
-			testQ["fRand4Nome"] = message
+			if mioFld[message]["объекты"] ~= nil then
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+				testQ["fRand4"] = 1
+				testQ["fRand4Nome"] = message
+			end
 		end
 	end
 end
@@ -1320,30 +1322,36 @@ end
 if kodMsg[1] == "TopTop" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			testQ["fRand4"] = 1
-			testQ["fRand4Nome"] = message
+			if mioFld[message]["объекты"] ~= nil then
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+				testQ["fRand4"] = 1
+				testQ["fRand4Nome"] = message
+			end
 		end
 	end
 end
 if kodMsg[1] == "za" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			mioFld[message]["объекты"][tostring(kodMsg[2])] = "zs"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			testQ["fRand4"] = 1
-			testQ["fRand4Nome"] = message
+			if mioFld[message]["объекты"] ~= nil then
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "zs"
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+				testQ["fRand4"] = 1
+				testQ["fRand4Nome"] = message
+			end
 		end
 	end
 end
 if kodMsg[1] == "KopKop" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			testQ["fRand4"] = 1
-			testQ["fRand4Nome"] = message
+			if mioFld[message]["объекты"] ~= nil then
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+				testQ["fRand4"] = 1
+				testQ["fRand4Nome"] = message
+			end
 		end
 	end
 end
