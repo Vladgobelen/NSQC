@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=6
+versAdd=297;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6055,9 +6055,9 @@ minibtn:SetScript("OnEnter",function(self)
 	if testQ["vers"] ~= nil then
 		GameTooltip:AddLine("|cFF6495EDАктуальная версия аддона: |cff00BFFF" .. testQ["vers"]["2"])
 	end
-	GameTooltip:AddLine("|cFF6495EDСредний уровень предметов: |cff00BFFF" .. CalculateAverageItemLevel(myNome))
+	GameTooltip:AddLine("|cFF6495EDСредний уровень предметов: |cff00BFFF" .. string.format("%d", CalculateAverageItemLevel(myNome)))
 	if GS_Data ~= nil then
-		GameTooltip:AddLine("|cFF6495EDGearScore: |cff00BFFF" .. GS_Data[GetRealmName()].Players["Витинари"].GearScore)
+		GameTooltip:AddLine("|cFF6495EDGearScore: |cff00BFFF" .. string.format("%d", GS_Data[GetRealmName()].Players["Витинари"].GearScore))
 	end
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddLine("|cffFF8C00ЛКМ|cffFFFFE0 - открыть аддон")
