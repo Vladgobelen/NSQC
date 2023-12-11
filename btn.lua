@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=10
+versAdd=297;versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -777,7 +777,7 @@ function vybor:configure(id)
 			testQ['icon'] = "kamen"
 		end
 		if id == 25 then
-			testQ['icon'] = "bn"
+			testQ['icon'] = "doska"
 		end
 		if id == 26 then
 			testQ['icon'] = "kirpich"
@@ -942,22 +942,41 @@ function vybor:configure(id)
 				for i = 1, #shRec do
 					if diffT(testQ["diffT"],shRec[i]) == true then
 						SendChatMessage(shRec[i][101], "officer", nil, 1)
-						testQ["diffT"] = {}
-						for i = 1, 100 do
-							dBtn[i]:Hide()
-							fBtn[i]:Show()
-							if vybor[i] ~= nil then
-								vybor[i]:Hide()
+						if shRec[i][101] == "Я распилил бревно" then
+							testQ["diffT"] = {}
+							for i = 1, 100 do
+								dBtn[i]:Hide()
+								fBtn[i]:Show()
+								if vybor[i] ~= nil then
+									vybor[i]:Hide()
+								end
 							end
+							testQ["domZ"] = nil
+							local x = math.random(1,5)
+							testQ["doska"] = tonumber(testQ["doska"])+x
+							testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+							dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
+							print("Получено " .. x .. " досок")
+							dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						end
-						testQ["domZ"] = nil
-						local x = math.random(1,5)
-						testQ["doska"] = tonumber(testQ["doska"])+x
-						testQ["nikQD"] = antc(tonumber(testQ["doska"]))
-						dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
-						print("Получено " .. x .. " досок")
-						dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+						if shRec[i][101] == "Я собрал барную стойку" then
+							SendChatMessage(shRec[i][101], "officer", nil, 1)
+							for i = 1, 100 do
+								dBtn[i]:Hide()
+								fBtn[i]:Show()
+								if vybor[i] ~= nil then
+									vybor[i]:Hide()
+								end
+							end
+							testQ["domZ"] = nil
+							if testQ["b0"] == nil then
+								testQ["b0"] = 1
+							else
+								testQ["b0"] = tonumber(testQ["b0"])+1
+							end
+							print("Получена барная стойка")
+						end
 					end
 				end
 			else
@@ -4474,8 +4493,8 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if vybor[25] == nil or not vybor[25]:IsVisible() then
 				vybor:configure(25)
 				vybor[25]:SetPoint("CENTER", dBtn[id],"CENTER",192, 96)
-				vybor[25]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
-				vybor[25]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bn.tga")
+				vybor[25]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\doska.tga")
+				vybor[25]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\doska.tga")
 				vybor[25]:Show()
 				testQ["idp"] = id
 			end
