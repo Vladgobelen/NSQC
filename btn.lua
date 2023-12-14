@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=14
+versAdd=297;versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -954,6 +954,7 @@ function vybor:configure(id)
 			end
 			local xx = math.random(1,5)
 			testQ["lom"] = tonumber(testQ["lom"]) - xx
+			print("Прочность лома: " .. testQ["lom"])
 			if testQ["lom"] <= 0 then
 				testQ["lom"] = nil
 			end
