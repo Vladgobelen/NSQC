@@ -2041,6 +2041,28 @@ if kodMsg[1] == "oB" then
 		end
 	end
 end
+if kodMsg[1] == "lom" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) - tonumber(kodMsg[3])
+			if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) <= -1000 then
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+			end
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+	print(sender,myNome)
+	if message == myNome or sender == myNome then
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+	end
+end
 if kodMsg[1] == "zP" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then

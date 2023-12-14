@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=12
+versAdd=297;versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -283,6 +283,11 @@ function vybor:configure(id)
 		if id==17 then
 			if vybor[17] ~= nil then
 				vybor[17]:Show()
+			end
+		end
+		if id == 32 then
+			if vybor[32] ~= nil then
+				vybor[32]:Show()
 			end
 		end
 		if id == 20 then
@@ -675,6 +680,12 @@ function vybor:configure(id)
 			GameTooltip:AddLine("Нужно 5 кубов бетона")
 			GameTooltip:Show()
 		end
+		if id == 32 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Лом Дервина. Вес 5кг.")
+			GameTooltip:AddLine("Каждый удар: сила +1. Шанс нанести урон бетону.")
+			GameTooltip:Show()
+		end
 		if id == 11 and (tonumber(testQ["brevna"]) < 10 or tonumber(testQ["kamen"]) < 50 or tonumber(testQ["beton"])<10) then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:ClearLines()
@@ -908,6 +919,40 @@ function vybor:configure(id)
 					end
 				end
 			end
+		end
+		if id == 32 then
+			local x = 0
+			local x1 = 0
+			x1 = math.random(1,10)
+			if testQ["lom"] ~= nil and testQ["lom"] >= 1 then
+
+				if testQ[myNome]["сила"] == nil then
+					testQ[myNome]["сила"] = 1
+				else
+					testQ[myNome]["сила"] = tonumber(testQ[myNome]["сила"]) + 1
+				end
+				if tonumber(testQ[myNome]["сила"]) < 50 then
+					print("Сила: " .. testQ[myNome]["сила"])
+					x = math.random(1,100)
+				end
+				if tonumber(testQ[myNome]["сила"]) >= 50 and tonumber(testQ[myNome]["сила"]) < 200 then
+					print("Сила: " .. testQ[myNome]["сила"])
+					x = math.random(90,100)
+				end
+				if tonumber(testQ[myNome]["сила"]) >= 200 and tonumber(testQ[myNome]["сила"]) < 300 then
+					print("Сила: " .. testQ[myNome]["сила"])
+					x = math.random(99,100)
+				end
+				if tonumber(testQ[myNome]["сила"]) >= 200 and tonumber(testQ[myNome]["сила"]) >= 300 then
+					print("Сила: " .. testQ[myNome]["сила"])
+					x = 100
+					x1 = math.random(10,50)
+				end
+			end
+			if x == 100 then
+				SendAddonMessage("lom " .. testQ["idp"] .. " " .. x1, nome, "guild")
+			end
+			vybor[32]:Hide()
 		end
 		if id >= 22 and id <= 26 then
 			dBtn[tonumber(testQ["idp"])]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. testQ['icon'] .. ".tga")
@@ -3658,6 +3703,22 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
+		if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+			if testQ["lom"] ~= nil and testQ["lom"] >= 1 then
+				vybor:configure(32)
+				local x = math.random(-100,100)
+				local x1 = math.random(-100,100)
+				vybor[32]:SetPoint("CENTER", fBtn[id],"CENTER",x,x1)
+				vybor[32]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
+				vybor[32]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
+				vybor[32]:Show()
+				if testQ ~= nil then
+					testQ["idp"] = id
+					testQ["icon"] = "lom"
+					testQ["picon"] = "bn"
+				end
+			end
+		end
 		if mioFld[nome]["петы"] ~= nil then
 			if mioFld[nome]["хозяин"] ~= nil then
 				if mioFld[nome]["петы"][tostring(id)] ~= nil then
@@ -4739,6 +4800,11 @@ function mBtn:configure(id)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
 		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\b0.tga")
 	end
+	if id == 13 then
+		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",280, -208)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
+	end
 	self[id]:SetScript("OnClick",function(self)
 		if tonumber(testQ["smg"]) >= 1 then
 			if id == 1 then
@@ -4805,6 +4871,19 @@ function mBtn:configure(id)
 				dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
 				dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
 				print("Получено досок: " .. x)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			end
+			if id == 13 then
+				local x = math.random(1,100)
+				testQ["smg"] = tonumber(testQ["smg"]) - 1
+				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+				if testQ["lom"] == nil then
+					testQ["lom"] = x
+				else
+					testQ["lom"] = tonumber(testQ["lom"]) + x
+				end
+				dmgText2(testQ["lom"],mBtn[13],813,13,"FF8C00")
+				print("Прочность лома: " .. testQ["lom"])
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
 		end
@@ -4906,6 +4985,21 @@ function mBtn:configure(id)
 				GameTooltip:AddLine("|cff99ff99Купить досок:")
 				GameTooltip:AddLine(" ")
 				GameTooltip:AddLine("|cff99ff99Количество: |cff00BFFF1-5")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
+			end
+		end
+		if tonumber(testQ["smg"]) < 1 then
+			if id == 13 then
+				GameTooltip:AddLine("|cff99ff99Купить лом или восстановить имеющийся:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Прочность: |cff00BFFF1-100")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff00001 бутылка")
+			end
+		else
+			if id == 13 then
+				GameTooltip:AddLine("|cff99ff99Купить лом или восстановить имеющийся:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Прочность: |cff00BFFF1-100")
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
 			end
 		end
@@ -5269,6 +5363,12 @@ function resursy:configure(id)
 				else
 					mBtn[12]:Show()
 				end
+				if mBtn[13] == nil then
+					mBtn:configure(13)
+				else
+					mBtn[13]:Show()
+				end
+				dmgText2(testQ["lom"],mBtn[13],813,13,"FF8C00")
 				dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
 				dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
 				dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
@@ -5737,22 +5837,24 @@ btn[994]:SetScript("OnEnter",function(self)
 	btn[993]:Show()
 	btn[992]:Show()
 	btn[989]:Show()
-	local nome = GuildFrame["selectedName"]
-	local zametka
-	SendAddonMessage("#получить_заметку", nome, "guild")
-	if testQ~=nil then
-		if testQ["tempZametka"] ~= nil then
-			if testQ["tempZametka"][nome] == nil or testQ["tempZametka"][nome] == "" then
-				editB[1]:SetText("")
-				testQ["tempZametka"][nome] = ""
-				zametka = "Персональные заметки о своем персонаже. Заполняются самим игроком. Пока тут пусто."
-			else
-				zametka = testQ["tempZametka"][nome]
-				editB[1]:SetText(zametka)
+	if GuildFrame:IsVisible() then
+		local nome = GuildFrame["selectedName"]
+		local zametka
+		SendAddonMessage("#получить_заметку", nome, "guild")
+		if testQ~=nil then
+			if testQ["tempZametka"] ~= nil then
+				if testQ["tempZametka"][nome] == nil or testQ["tempZametka"][nome] == "" then
+					editB[1]:SetText("")
+					testQ["tempZametka"][nome] = ""
+					zametka = "Персональные заметки о своем персонаже. Заполняются самим игроком. Пока тут пусто."
+				else
+					zametka = testQ["tempZametka"][nome]
+					editB[1]:SetText(zametka)
+				end
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("|cff6495ED" .. zametka)
+				GameTooltip:Show()
 			end
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|cff6495ED" .. zametka)
-			GameTooltip:Show()
 		end
 	end
 end)

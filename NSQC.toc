@@ -30,6 +30,7 @@ libs\sx.tga
 libs\kx.tga
 libs\stanok.tga
 libs\st.tga
+libs\lom.tga
 libs\my.tga
 libs\z.tga
 libs\ob.tga

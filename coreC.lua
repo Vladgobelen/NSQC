@@ -224,6 +224,7 @@ if string.find (message, "покажи мне ачивку")  and string.find(me
 end
 if msg[1] == "\"пет" and msg[2] == myNome and testGM ~= nil then
 	if msg[3] == "бобер" then
+	print('1')
 		if testQ[myNome]["петы"]["bb"] ~= 0 then
 			if testQ[myNome]["петы"]["bb"] == nil then
 				testQ[myNome]["петы"]["bb"] = 1
