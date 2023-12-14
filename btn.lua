@@ -1,4 +1,4 @@
-versAdd=297;versAddDop=13
+versAdd=297;versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -952,6 +952,12 @@ function vybor:configure(id)
 			if x == 100 then
 				SendAddonMessage("lom " .. testQ["idp"] .. " " .. x1, nome, "guild")
 			end
+			local xx = math.random(1,5)
+			testQ["lom"] = tonumber(testQ["lom"]) - xx
+			if testQ["lom"] <= 0 then
+				testQ["lom"] = nil
+			end
+			dmgText2(testQ["lom"],mBtn[13],813,13,"FF8C00")
 			vybor[32]:Hide()
 		end
 		if id >= 22 and id <= 26 then
