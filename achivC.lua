@@ -1237,10 +1237,12 @@ if kodMsg[1] == "travA" then
 			if mioFld[message]["подсказки"] == nil then
 				mioFld[message]["подсказки"] = {}
 			end
-			mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
-			testQ["fRand4"] = 1
-			testQ["fRand4Nome"] = message
+			if mioFld[message]["объекты"] ~= nil then
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
+				testQ["fRand4"] = 1
+				testQ["fRand4Nome"] = message
+			end
 		end
 	end
 end
@@ -1250,10 +1252,12 @@ if kodMsg[1] == "tree" then
 			if mioFld[message]["подсказки"] == nil then
 				mioFld[message]["подсказки"] = {}
 			end
-			mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-			testQ["fRand4"] = 1
-			testQ["fRand4Nome"] = message
+			if mioFld[message]["объекты"] ~= nil then
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+				testQ["fRand4"] = 1
+				testQ["fRand4Nome"] = message
+			end
 		end
 	end
 end

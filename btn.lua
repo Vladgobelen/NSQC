@@ -1,4 +1,4 @@
-versAdd=298;versAddDop=0
+versAdd=298;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2131,7 +2131,7 @@ end
 if myNome == "Хефе" or myNome == "Витинари" or myNome == "Люцзе" or myNome == "Посети" or myNome == "Колон" or myNome == "Кербес" or myNome == "Аффа" or myNome == "Маздам" then
 	local gTest1,gTest2
 	gtg = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
-	gtg:SetPoint("BOTTOMLEFT",350, 370)
+	gtg:SetPoint("BOTTOMLEFT",350, 670)
 	gtg:SetSize(32, 32)
 	gtg:RegisterForClicks("RightButtonDown", "LeftButtonDown")
 	gtg:SetScript("OnClick",function(self,button)
@@ -7089,8 +7089,43 @@ local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
 frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
+	if timeElapsed > 6 then
+		timeElapsed = 0
+		if testQ["gtg"] ~= nil and gTest == nil then
+			gtest()
+			testQ["gtgi"] = 1
+		end
+		if gTest ~= nil then
+			if tonumber(testQ["gtgi"]) <= tablelength(gTest) then
+				if gTest[tonumber(testQ["gtgi"])] ~= nil then
+					GuildInvite(gTest[tonumber(testQ["gtgi"])])
+					print("Приглашается игрок номер: " .. testQ["gtgi"] .. " " .. gTest[tonumber(testQ["gtgi"])])
+					testQ["gtgi"] = tonumber(testQ["gtgi"]) + 1
+					SendWho(tonumber(testQ["gtg"]))
+				else
+					testQ["gtgi"] = tonumber(testQ["gtgi"]) + 1
+				end
+			else
+				gTest = nil
+				testQ["gtgi"] = nil
+				if tonumber(testQ["gtg"]) <= 79 then
+					testQ["gtg"] = tonumber(testQ["gtg"]) + 1
+				else
+					testQ["gtg"] = nil
+					gTest = nil
+					testQ["gtgi"] = nil
+				end
+			end
+		end
+	end
+end)
+local frameTime = CreateFrame("FRAME")
+local timeElapsed = 0
+frameTime:HookScript("OnUpdate", function(self, elapsed)
+	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+
 		if testQ[myNome]["настройки"]["debuff"] == "Disable" then
 			--if UnitAffectingCombat("player") == 1 then
 				--if GetRaidTargetIndex("target") ~= 8 then
@@ -7110,17 +7145,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
-		--if gtg ~= nil then
-			--if FriendsFrame:IsVisible() then
-				--if not gtg:IsVisible() then
-					--gtg:Show()
-				--end
-			--else
-				--if gtg:IsVisible() then
-					--gtg:Hide()
-				--end
-			--end
-		--end
+		if gtg ~= nil then
+			if FriendsFrame:IsVisible() then
+				if not gtg:IsVisible() then
+					gtg:Show()
+				end
+			else
+				if gtg:IsVisible() then
+					gtg:Hide()
+				end
+			end
+		end
 		--print(Minimap:GetPingPosition())
 		local nome
 		if testQ['sign'] ~= "1" then

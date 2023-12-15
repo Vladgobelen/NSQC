@@ -2034,7 +2034,7 @@ function gtest()
 		local t1,t2,g,r,t3,t4,t= GetWhoInfo(i)
 		if t2 == "" then
 			if r ~= "Дреней" and r ~= "Ночная эльфийка" and r ~= "Человек" and r ~= "Ночной эльф" and r ~= "Гном" and r ~= "Дворф" then
-				gTest[i] = t1
+				table.insert(gTest,t1)
 			end
 		end
 	end
