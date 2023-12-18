@@ -1,4 +1,4 @@
-versAdd=298;versAddDop=1
+versAdd=298;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2128,7 +2128,7 @@ function vybor:configure(id)
 		end
 	end)
 end
-if myNome == "Хефе" or myNome == "Витинари" or myNome == "Люцзе" or myNome == "Посети" or myNome == "Колон" or myNome == "Кербес" or myNome == "Аффа" or myNome == "Маздам" then
+if myNome == "Хефе" or myNome == "Витинари" or myNome == "Люцзе" or myNome == "Посети" or myNome == "Колон" or myNome == "Кербес" or myNome == "Аффа" or myNome == "Маздам" or myNome == "Нугган" then
 	local gTest1,gTest2
 	gtg = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
 	gtg:SetPoint("BOTTOMLEFT",350, 670)
@@ -7092,6 +7092,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 6 then
 		timeElapsed = 0
 		if testQ["gtg"] ~= nil and gTest == nil then
+			SendWho(tonumber(testQ["gtg"]))
 			gtest()
 			testQ["gtgi"] = 1
 		end
@@ -7101,7 +7102,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					GuildInvite(gTest[tonumber(testQ["gtgi"])])
 					print("Приглашается игрок номер: " .. testQ["gtgi"] .. " " .. gTest[tonumber(testQ["gtgi"])])
 					testQ["gtgi"] = tonumber(testQ["gtgi"]) + 1
-					SendWho(tonumber(testQ["gtg"]))
+
 				else
 					testQ["gtgi"] = tonumber(testQ["gtgi"]) + 1
 				end
