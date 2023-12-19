@@ -1118,6 +1118,7 @@ function showRB(nome)
 		myCheckButton4:Show()
 		myCheckButton5:Show()
 		myCheckButton6:Show()
+		myCheckButton7:Show()
 		btn[998]:Show()
 		btn[997]:Show()
 
@@ -1171,6 +1172,7 @@ function showRB(nome)
 		myCheckButton4:Hide()
 		myCheckButton5:Hide()
 		myCheckButton6:Hide()
+		myCheckButton7:Show()
 		for k, v in pairs(debuffChkB) do
 			if debuffChkB[k] ~= nil then
 				debuffChkB[k]:Hide()
@@ -2801,6 +2803,14 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv)
 					end
 				end
 			end
+		end
+	end
+end
+function partyFrameHide()
+	for i = 1, 25 do
+		local prtyF = _G["PartyMemberFrame"..i]
+		if prtyF ~= nil and prtyF:IsVisible() then
+			prtyF:Hide()
 		end
 	end
 end

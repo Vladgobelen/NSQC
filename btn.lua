@@ -1,4 +1,4 @@
-versAdd=298;versAddDop=2
+versAdd=298;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5673,8 +5673,8 @@ btn:configure(12,-22225,350,150,30,"#opn","Включить поиск");
 btn:configure(13,-22225,320,150,30,"#crtPoint","Создать точку");
 btn:configure(14,-133,332,32,32,"#ver","*");
 btn:configure(15,-101,332,32,32,"#u","У");
-btn:configure(998,-83,220,70,32,"#ahtng","СБРОС");
-btn:configure(997,-13,220,70,32,"#zzp","ОТМЕНА");
+btn:configure(998,-83,190,70,32,"#ahtng","СБРОС");
+btn:configure(997,-13,190,70,32,"#zzp","ОТМЕНА");
 btn:configure(996,-5,19,32,32,"#krt","К");
 btn:configure(777,-300,-75,200,32,"#marsh","");
 btn:configure(999999,635,310,32,32,"#","");
@@ -6630,6 +6630,7 @@ minibtn:SetScript("OnClick", function()
 				myCheckButton4:Hide()
 				myCheckButton5:Hide()
 				myCheckButton6:Hide()
+				myCheckButton7:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 				pokazatChk=0
@@ -8769,6 +8770,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				UIErrorsFrame:Show()
 			end
 		end
+		if testQ[myNome]["настройки"]["err"] == "Enable" then
+			if PartyMemberFrame1:IsVisible() then
+				partyFrameHide()
+			end
+		end
 		if testQ[myNome]["настройки"]["auk"] == "Enable" then
 			if AuctionHouseFrameItemBuyFrameItemListScrollFrameButton1 ~= nil then
 
@@ -9282,6 +9288,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton4:Hide()
 				myCheckButton5:Hide()
 				myCheckButton6:Hide()
+				myCheckButton7:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 		end
@@ -9319,6 +9326,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if testQ[myNome]["настройки"]["err"]=="Enable" then
 			myCheckButton6:SetChecked(true)
+		end
+		if testQ[myNome]["настройки"]["party"]==nil or testQ[myNome]["настройки"]["party"]=="Disable" then
+			myCheckButton7:SetChecked(false)
+		end
+		if testQ[myNome]["настройки"]["party"]=="Enable" then
+			myCheckButton7:SetChecked(true)
 		end
 		if debuffChkB ~= nil then
 			for k, v in pairs(debuffChkB) do
@@ -9374,6 +9387,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				myCheckButton4:Hide()
 				myCheckButton5:Hide()
 				myCheckButton6:Hide()
+				myCheckButton7:Hide()
 				btn[998]:Hide()
 				btn[997]:Hide()
 				btn[991]:Hide()
@@ -9560,6 +9574,21 @@ myCheckButton5:SetScript("OnClick",
 		end
 	end
 );
+myCheckButton7 = createCheckbutton(UIParent, -100, 230, "Скрывать фреймы пати или рейда");
+myCheckButton7.tooltip = "Скрывать фреймы пати или рейда";
+myCheckButton7:SetScript("OnClick",
+	function()
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+		if testQ[myNome]["настройки"]["party"]=="Disable" or testQ[myNome]["настройки"]["party"]==nil then
+			testQ[myNome]["настройки"]["party"]="Enable"
+			myCheckButton7:SetChecked(true)
+		elseif testQ[myNome]["настройки"]["party"]=="Enable" then
+			testQ[myNome]["настройки"]["party"]="Disable"
+			myCheckButton7:SetChecked(false)
+		end
+	end
+);
+
 myCheckButton6 = createCheckbutton(UIParent, -100, 250, "Скрывать сообщения об ошибках");
 myCheckButton6.tooltip = "Не показывать сообщения о недостигших цели атаках, недостаточности ярости итд";
 myCheckButton6:SetScript("OnClick",

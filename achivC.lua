@@ -3915,9 +3915,9 @@ if classUnit == "Воин" then
 			["srav"] = "b",
 			["seiv"] = nil,
 		},
-		["Боевой крик"] = {
+		["Командирский крик"] = {
 			["icon"] = "Interface\\Icons\\Ability_Warrior_BattleShout",
-			["name"] = "Боевой крик",
+			["name"] = "Командирский крик",
 			["pos"] = 1,
 			["buf"] = 1,
 			["debuf"] = 0,
