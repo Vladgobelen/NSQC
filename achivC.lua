@@ -3915,9 +3915,9 @@ if classUnit == "Воин" then
 			["srav"] = "b",
 			["seiv"] = nil,
 		},
-		["Командирский крик"] = {
+		["Боевой крик"] = {
 			["icon"] = "Interface\\Icons\\Ability_Warrior_BattleShout",
-			["name"] = "Командирский крик",
+			["name"] = "Боевой крик",
 			["pos"] = 1,
 			["buf"] = 1,
 			["debuf"] = 0,
@@ -4015,6 +4015,9 @@ if classUnit == "Рыцарь смерти" then
 			["prok"] = nil,
 			["srav"] = "b",
 			["seiv"] = nil,
+			["runyk"] = nil,
+			["runyl"] = 1,
+			["runyn"] = nil,
 		},
 		["Кровавая чума"] = {
 			["icon"] = "Interface\\Icons\\Spell_DeathKnight_EmpowerRuneBlade",
@@ -4025,6 +4028,49 @@ if classUnit == "Рыцарь смерти" then
 			["prok"] = nil,
 			["srav"] = "b",
 			["seiv"] = nil,
+			["runyk"] = nil,
+			["runyl"] = nil,
+			["runyn"] = 1,
+		},
+		["Удар смерти"] = {
+			["icon"] = "Interface\\Icons\\Spell_DeathKnight_Butcher2",
+			["name"] = "Удар смерти",
+			["pos"] = 1,
+			["buf"] = nil,
+			["debuf"] = nil,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+			["runyk"] = nil,
+			["runyl"] = 1,
+			["runyn"] = 1,
+		},
+		["Незыблемость льда"] = {
+			["icon"] = "Interface\\Icons\\Spell_DeathKnight_IceBoundFortitude",
+			["name"] = "Незыблемость льда",
+			["pos"] = 1,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = nil,
+			["seiv"] = 1,
+			["prok"] = "Interface\\AddOns\\NSQC\\gob.ogg",
+			["runyk"] = nil,
+			["runyl"] = nil,
+			["runyn"] = nil,
+		},
+		["Зимний горн"] = {
+			["icon"] = "Interface\\Icons\\INV_Misc_Horn_02",
+			["name"] = "Зимний горн",
+			["pos"] = 1,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+			["runyk"] = nil,
+			["runyl"] = nil,
+			["runyn"] = nil,
 		},
 	}
 end
@@ -4062,7 +4108,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					testQ["skills"] = {}
 				end
 				for k, v in pairs(tblIcons) do
-					ochered(tblIcons[k]["name"],tblIcons[k]["pos"],tblIcons[k]["debuf"],tblIcons[k]["buf"],tblIcons[k]["prok"],tblIcons[k]["srav"],tblIcons[k]["seiv"])
+					ochered(tblIcons[k]["name"],tblIcons[k]["pos"],tblIcons[k]["debuf"],tblIcons[k]["buf"],tblIcons[k]["prok"],tblIcons[k]["srav"],tblIcons[k]["seiv"],tblIcons[k]["runyk"],tblIcons[k]["runyl"],tblIcons[k]["runyn"])
 				end
 				i = 1
 				for k, v in pairs(testQ["skills"]) do

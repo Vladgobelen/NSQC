@@ -2707,7 +2707,7 @@ function antc(kol)
 	end
 	return myB
 end
-function ochered(spell,pos,debuf,buf,prok,srav,seiv)
+function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 	local kya = 0
 	for i = 1, 24 do
 		if debuf == 1 then
@@ -2724,6 +2724,36 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv)
 	end
 	for k, v in pairs(testQ["skills"]) do
 		if testQ["skills"][k] == spell then
+			kya = 1
+		end
+	end
+	local numr = 0
+	if runyk ~= nil then
+		numr = numr + 1
+	end
+	if runyl ~= nil then
+		numr = numr + 1
+	end
+	if runyn ~= nil then
+		numr = numr + 1
+	end
+	if classUnit == "Рыцарь смерти" then
+		local rune = nil
+		for i = 1, 6 do
+			if GetRuneCooldown(i) == 0 and (GetRuneType(i) == tonumber(runy) or GetRuneType(i) == 4) then
+				if rune == nil then
+					rune = 1
+				else
+					rune = rune + 1
+				end
+				if rune == tonumber(numr) then
+					break
+				end
+			end
+		end
+		if rune == numr then
+			kya = 0
+		else
 			kya = 1
 		end
 	end

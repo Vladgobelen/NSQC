@@ -1,4 +1,4 @@
-versAdd=298;versAddDop=4
+versAdd=298;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8771,7 +8771,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end
 		if testQ[myNome]["настройки"]["party"] == "Enable" then
-			if PartyMemberFrame1:IsVisible() then
+			if PartyMemberFrame1:IsVisible() or PartyMemberFrame3:IsVisible() or PartyMemberFrame2:IsVisible() or PartyMemberFrame4:IsVisible() then
 				partyFrameHide()
 			end
 		end
