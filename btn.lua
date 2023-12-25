@@ -1,4 +1,4 @@
-versAdd=298;versAddDop=5
+versAdd=299;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2462,7 +2462,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							end
 						else
 							if testQ[myNome]["взятый_квест_s"] == nil and (testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999") then
-								testQ[myNome]["q33q"],testQ[myNome]["q33nik"][1],testQ[myNome]["q33nik"][2],testQ[myNome]["q33nik"][3],testQ[myNome]["q33fnd"],testQ[myNome]["q33ans"] = qLvl33c(myNome)
+								testQ[myNome]["q33q"],testQ[myNome]["q33nik"][1],__,__,testQ[myNome]["q33fnd"],testQ[myNome]["q33ans"] = qLvl33c1(myNome)
+								__,__,testQ[myNome]["q33nik"][2],__,__,__ = qLvl33c2(myNome)
+								__,__,__,testQ[myNome]["q33nik"][3],__,__ = qLvl33c3(myNome)
 								--SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "OFFICER", nil, 1)
 								testQ["okno"] = "q33"
 								testQ[myNome]["взятый_квест_s"] = "q33"

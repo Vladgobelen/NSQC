@@ -2235,7 +2235,7 @@ function showFld(sign,myNome)
 		testQ['sign'] = nil
 	end
 end
-function qLvl33c()
+function qLvl33c1()
 	local idNpc
 	local nomeNpc1
 	local nomeNpc2
@@ -2247,24 +2247,96 @@ function qLvl33c()
 	print(emotQ)
 	emotQ1 = eMotC[emotQ]["поиск"]
 	emotQ2 = eMotC[emotQ]["ответ"]
-	idNpc = rndTblc(npcListC)["айди"]
-	nomeNpc1 = npcListC[idNpc]["имя"]
-	idNpc = rndTblc(npcListC)["айди"]
-	nomeNpc2 = npcListC[idNpc]["имя"]
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc1 = npcListC1[idNpc]["имя"]
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc2 = npcListC1[idNpc]["имя"]
 	while true do
 		if nomeNpc1 == nomeNpc2 then
-			idNpc = rndTblc(npcListC)["айди"]
-			nomeNpc2 = npcListC[idNpc]["имя"]
+			idNpc = rndTblc(npcListC1)["айди"]
+			nomeNpc2 = npcListC1[idNpc]["имя"]
 		else
 			break
 		end
 	end
-	idNpc = rndTblc(npcListC)["айди"]
-	nomeNpc3 = npcListC[idNpc]["имя"]
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc3 = npcListC1[idNpc]["имя"]
 	while true do
 		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
-			idNpc = rndTblc(npcListC)["айди"]
-			nomeNpc3 = npcListC[idNpc]["имя"]
+			idNpc = rndTblc(npcListC1)["айди"]
+			nomeNpc3 = npcListC1[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function qLvl33c2()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc1 = npcListC2[idNpc]["имя"]
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc2 = npcListC2[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC2)["айди"]
+			nomeNpc2 = npcListC2[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc3 = npcListC2[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC2)["айди"]
+			nomeNpc3 = npcListC2[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function qLvl33c3()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc1 = npcListC3[idNpc]["имя"]
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc2 = npcListC3[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC3)["айди"]
+			nomeNpc2 = npcListC3[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc3 = npcListC3[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC3)["айди"]
+			nomeNpc3 = npcListC3[idNpc]["имя"]
 		else
 			break
 		end
