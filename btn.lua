@@ -1,4 +1,4 @@
-versAdd=299;versAddDop=1
+versAdd=300;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8860,6 +8860,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					else
 						btn[995]:Hide()
 					end
+				else
+					btn[995]:Hide()
 				end
 			else
 				btn[995]:Hide()
