@@ -106,7 +106,7 @@ libs\ms.tga
 libs\topto.tga
 libs\kopko.tga
 ##################
-
+mm.lua
 emblem.tga
 Incarichi\a.lua
 Incarichi\incTab.lua
