@@ -4045,6 +4045,19 @@ if classUnit == "Рыцарь смерти" then
 			["runyl"] = 1,
 			["runyn"] = 1,
 		},
+		["Кровавый удар"] = {
+			["icon"] = "Interface\\Icons\\Spell_Deathknight_DeathStrike",
+			["name"] = "Кровавый удар",
+			["pos"] = 1,
+			["buf"] = nil,
+			["debuf"] = nil,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+			["runyk"] = 1,
+			["runyl"] = nil,
+			["runyn"] = nil,
+		},
 		["Незыблемость льда"] = {
 			["icon"] = "Interface\\Icons\\Spell_DeathKnight_IceBoundFortitude",
 			["name"] = "Незыблемость льда",
@@ -4062,7 +4075,7 @@ if classUnit == "Рыцарь смерти" then
 		["Зимний горн"] = {
 			["icon"] = "Interface\\Icons\\INV_Misc_Horn_02",
 			["name"] = "Зимний горн",
-			["pos"] = 1,
+			["pos"] = 0,
 			["buf"] = 1,
 			["debuf"] = 0,
 			["prok"] = nil,
