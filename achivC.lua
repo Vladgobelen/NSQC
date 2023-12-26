@@ -4009,7 +4009,7 @@ if classUnit == "Рыцарь смерти" then
 		["Озноб"] = {
 			["icon"] = "Interface\\Icons\\Spell_DeathKnight_IceTouch",
 			["name"] = "Озноб",
-			["pos"] = 1,
+			["pos"] = 0,
 			["buf"] = 0,
 			["debuf"] = 1,
 			["prok"] = nil,
@@ -4022,7 +4022,7 @@ if classUnit == "Рыцарь смерти" then
 		["Кровавая чума"] = {
 			["icon"] = "Interface\\Icons\\Spell_DeathKnight_EmpowerRuneBlade",
 			["name"] = "Кровавая чума",
-			["pos"] = 1,
+			["pos"] = 0,
 			["buf"] = 0,
 			["debuf"] = 1,
 			["prok"] = nil,
