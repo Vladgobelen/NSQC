@@ -2781,6 +2781,7 @@ function antc(kol)
 end
 function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 	local kya = 0
+	local x
 	for i = 1, 24 do
 		if debuf == 1 then
 			x = UnitDebuff("target",i)

@@ -4116,6 +4116,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		--end
 
 		if UnitAffectingCombat("player") == 1 then
+			testQ["skills"] = {}
 			if testQ[myNome]["настройки"]["auk"] == "Enable" then
 				if testQ["skills"] == nil then
 					testQ["skills"] = {}
