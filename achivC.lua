@@ -3863,6 +3863,91 @@ end
 end
 )
 local classUnit = UnitClass("player")
+if classUnit == "Паладин" then
+	tblIcons = {
+		["Щит небес"] = {
+			["icon"] = "Interface\\Icons\\Spell_Holy_BlessingOfProtection",
+			["name"] = "Щит небес",
+			["pos"] = 0,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Священный щит"] = {
+			["icon"] = "Interface\\Icons\\Ability_Paladin_BlessedMending",
+			["name"] = "Священный щит",
+			["pos"] = 0,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Благословение неприкосновенности"] = {
+			["icon"] = "Interface\\Icons\\Spell_Nature_LightningShield",
+			["name"] = "Благословение неприкосновенности",
+			["pos"] = 0,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Печать повиновения"] = {
+			["icon"] = "Interface\\Icons\\Ability_Warrior_InnerRage",
+			["name"] = "Печать повиновения",
+			["pos"] = 0,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Правосудие света"] = {
+				["icon"] = "Interface\\Icons\\Spell_Holy_RighteousFury",
+				["name"] = "Правосудие света",
+				["pos"] = 0,
+				["buf"] = nil,
+				["debuf"] = 1,
+				["prok"] = nil,
+				["srav"] = "b",
+				["seiv"] = nil,
+		},
+		["Щит мстителя"] = {
+				["icon"] = "Interface\\Icons\\Spell_Holy_AvengersShield",
+				["name"] = "Щит мстителя",
+				["pos"] = 0,
+				["buf"] = nil,
+				["debuf"] = nil,
+				["prok"] = nil,
+				["srav"] = "b",
+				["seiv"] = nil,
+		},
+		["Щит праведности"] = {
+				["icon"] = "Interface\\Icons\\Ability_Paladin_ShieldofVengeance",
+				["name"] = "Щит праведности",
+				["pos"] = 0,
+				["buf"] = nil,
+				["debuf"] = nil,
+				["prok"] = nil,
+				["srav"] = "b",
+				["seiv"] = nil,
+		},
+		["Освящение"] = {
+				["icon"] = "Interface\\Icons\\Spell_Holy_InnerFire",
+				["name"] = "Освящение",
+				["pos"] = 1,
+				["buf"] = nil,
+				["debuf"] = nil,
+				["prok"] = nil,
+				["srav"] = "b",
+				["seiv"] = nil,
+		},
+	}
+
+end
 if classUnit == "Воин" then
 	tblIcons = {
 		["Удар грома"] = {
