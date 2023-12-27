@@ -1,4 +1,4 @@
-versAdd=300;versAddDop=3
+versAdd=300;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -295,6 +295,11 @@ function vybor:configure(id)
 				vybor[20]:Show()
 			end
 		end
+		if id == 18 then
+			if vybor[18] ~= nil then
+				vybor[18]:Show()
+			end
+		end
 		if id == 31 then
 			if vybor[31] ~= nil then
 				vybor[31]:Show()
@@ -559,21 +564,31 @@ function vybor:configure(id)
 			GameTooltip:AddLine("|cffff0000Стоимость: 50 бревен, 25 травы, 10 бутылок самогона, 5 кирпичей")
 			GameTooltip:Show()
 		end
-		if testQ["icon"] == "zc" and testQ["picon"] == "bn" and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 10  then
+		if id == 18 and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 10 and tonumber(testQ["smg"]) >= 3  then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("Кирпичный цех")
+			GameTooltip:AddLine("|cFF6495EDКирпичный цех: 5 бревен, 10 камня, 3 самогона")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Можно производить кирпичи, а можно не производить")
+			GameTooltip:AddLine("Для производства кирпича требуется одновременно работающий завод бетона")
+			GameTooltip:AddLine("Периодически потребляет бревна и траву..хм.. И бетон, ведь это силикатные кирпичи.")
 			GameTooltip:Show()
 		end
-		if testQ["icon"] == "zc" and testQ["picon"] == "bn" and tonumber(testQ["brevna"]) < 5 then
+		if id == 18 and testQ["picon"] == "bn" and tonumber(testQ["brevna"]) < 5 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Кирпичный цех")
-			GameTooltip:AddLine("|cffff0000Нужно 5 бревен и 10 камня")
+			GameTooltip:AddLine("|cffff0000Нужно 5 бревен, 10 камня и 3 самогона")
 			GameTooltip:Show()
 		end
-		if testQ["icon"] == "zc" and testQ["picon"] == "bn" and tonumber(testQ["kamen"]) < 10 then
+		if id == 18 and testQ["picon"] == "bn" and tonumber(testQ["smg"]) < 3 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Кирпичный цех")
-			GameTooltip:AddLine("|cffff0000Нужно 5 бревен и 10 камня")
+			GameTooltip:AddLine("|cffff0000Нужно 5 бревен, 10 камня и 3 самогона")
+			GameTooltip:Show()
+		end
+		if id == 18 and testQ["picon"] == "bn" and tonumber(testQ["kamen"]) < 10 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Кирпичный цех")
+			GameTooltip:AddLine("|cffff0000Нужно 5 бревен, 10 камня и 3 самогона")
 			GameTooltip:Show()
 		end
 		if testQ["picon"] == "bn" and id == 17 then
@@ -1070,7 +1085,7 @@ function vybor:configure(id)
 			end
 		end
 		if nome == myNome then
-			if testQ["icon"] == "zc" and testQ["picon"] == "bn" and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 10  then
+			if id == 18 and tonumber(testQ["brevna"]) >= 5 and tonumber(testQ["kamen"]) >= 10 and tonumber(testQ["smg"]) >= 3  then
 				if testQ["temp"] == nil then
 					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\zp.tga")
 					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\zp.tga")
@@ -1082,6 +1097,8 @@ function vybor:configure(id)
 					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["kamen"] = tonumber(testQ["kamen"]) - 10
 					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+					testQ["smg"] = tonumber(testQ["smg"]) - 3
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 					testQ["temp"] = nil
@@ -1093,7 +1110,7 @@ function vybor:configure(id)
 				end
 			end
 		else
-			if testQ["icon"] == "zc" and testQ["picon"] == "bn" and tonumber(testQ["brevna"]) >= 25 and tonumber(testQ["kamen"]) >= 50 then
+			if id == 18 and tonumber(testQ["brevna"]) >= 25 and tonumber(testQ["kamen"]) >= 50 then
 				if testQ["temp"] == nil then
 					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\zp.tga")
 					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\zp.tga")
@@ -3408,7 +3425,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 		if tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
 			if testQ["zp"] < 1 then
-				if mioFld[nome]["объекты"][tostring(id)] == "bn" and mioFld[nome]["объекты"][tostring(id+1)] == "za" then
+				if mioFld[nome]["объекты"][tostring(id)] == "bn" and mioFld[nome]["объекты"][tostring(id+1)] == "za" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
 					if vybor[18] == nil or not vybor[18]:IsVisible() then
 						vybor:configure(18)
 						vybor[18]:SetPoint("CENTER", fBtn[id],"CENTER",0, 96)
@@ -3472,7 +3489,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
-			if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
 				if vybor[29] == nil or not vybor[29]:IsVisible() then
 					vybor:configure(29)
 					vybor[29]:SetPoint("CENTER", fBtn[id],"CENTER",64, -96)
@@ -3933,6 +3950,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("Склад камней или правильно - сад камней? Хм..")
 					GameTooltip:AddLine("Каждый склад расширяет хранилище камней на |cff99ff99100")
 				end
+
 				if mioFld[nome]["объекты"][tostring(id)] == "ar" then
 					GameTooltip:AddLine("|cFF6495EDАрхив")
 					GameTooltip:AddLine(" ")
@@ -3992,6 +4010,13 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 					GameTooltip:AddLine("Для производства кирпича требуется одновременно работающий завод бетона")
 					GameTooltip:AddLine("Периодически потребляет бревна и траву..хм.. И бетон, ведь это силикатные кирпичи.")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "zc" then
+					GameTooltip:AddLine("|cFF6495EDКирпичный цех")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("Можно производить кирпичи, а можно не производить")
+					GameTooltip:AddLine("|cff99ff99ЛКМ или поставить пета: " .. "|cffFFCF40строить.")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 				end
 				if mioFld[nome]["объекты"][tostring(id)] == "tv" then
 					GameTooltip:AddLine("|cFF6495EDТаверна \"Ухо Гоблина\"")
