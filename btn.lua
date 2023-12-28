@@ -1,4 +1,4 @@
-versAdd=300;versAddDop=7
+versAdd=300;versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7436,6 +7436,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
 
+		if InboxPrevPageButton:IsEnabled() ~= 0 then
+			if btn[988]:IsEnabled() then
+				btn[988]:Disable()
+			end
+		else
+			if btn[988]:IsEnabled() == 0 then
+				btn[988]:Enable()
+			end
+		end
 		--[[if WorldMapFrame:IsVisible() then
 			if myMap == nil then
 				myMap = CreateFrame("Button")
