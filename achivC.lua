@@ -3885,6 +3885,16 @@ if classUnit == "Паладин" then
 			["srav"] = "b",
 			["seiv"] = nil,
 		},
+		["Праведное неистовство"] = {
+			["icon"] = "Interface\\Icons\\Spell_Holy_SealOfFury",
+			["name"] = "Праведное неистовство",
+			["pos"] = 0,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
 		["Благословение неприкосновенности"] = {
 			["icon"] = "Interface\\Icons\\Spell_Nature_LightningShield",
 			["name"] = "Благословение неприкосновенности",
