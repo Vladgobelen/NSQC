@@ -3894,6 +3894,7 @@ if classUnit == "Паладин" then
 			["prok"] = nil,
 			["srav"] = "b",
 			["seiv"] = nil,
+			["prok"] = "Interface\\AddOns\\NSQC\\gob.ogg"
 		},
 		["Благословение неприкосновенности"] = {
 			["icon"] = "Interface\\Icons\\Spell_Nature_LightningShield",

@@ -2780,6 +2780,7 @@ function antc(kol)
 	return myB
 end
 function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
+	local classUnit = UnitClass("player")
 	local kya = 0
 	local x
 	for i = 1, 24 do
@@ -2810,26 +2811,26 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 	if runyn ~= nil then
 		numr = numr + 1
 	end
-	if classUnit == "Рыцарь смерти" then
-		local rune = nil
-		for i = 1, 6 do
-			if GetRuneCooldown(i) == 0 and (GetRuneType(i) == tonumber(runy) or GetRuneType(i) == 4) then
-				if rune == nil then
-					rune = 1
-				else
-					rune = rune + 1
-				end
-				if rune == tonumber(numr) then
-					break
-				end
-			end
-		end
-		if rune == numr then
-			kya = 0
-		else
-			kya = 1
-		end
-	end
+	--if classUnit == "Рыцарь смерти" then
+		--local rune = nil
+		--for i = 1, 6 do
+			--if GetRuneCooldown(i) == 0 and (GetRuneType(i) == tonumber(runy) or GetRuneType(i) == 4) then
+				--if rune == nil then
+					--rune = 1
+				--else
+					--rune = rune + 1
+				--end
+				--if rune == tonumber(numr) then
+					--break
+				--end
+			--end
+		--end
+		--if rune == numr then
+			--kya = 0
+		--else
+			--kya = 1
+		--end
+	--end
 	local __,__,__,mana = GetSpellInfo(spell)
 	if mana == nil then
 		mana = 0
@@ -2887,7 +2888,15 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 		end
 	end
 	if prok ~= nil and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 and seiv == nil then
-		PlaySoundFile(prok)
+		if classUnit == "Паладин" then
+			if spell == "Праведное неистовство" then
+				if kya ~= 1 then
+					PlaySoundFile(prok)
+				end
+			end
+		else
+			PlaySoundFile(prok)
+		end
 	end
 	if spell == "Мясорубка" then
 		if tonumber(GetComboPoints("player", target)) == 5 and kya ~= 1 then
