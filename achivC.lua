@@ -4220,19 +4220,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				--StaticPopup1Button1:SetPoint("CENTER", UIParent,"CENTER",333, 333)
 			--end
 		--end
-		if classUnit == "Воин" or classUnit == "Паладин" or classUnit == "Рыцарь смерти" or classUnit == "Друид" then
-			if UnitAffectingCombat("player") == 1 then
-				local __,mt = UnitDetailedThreatSituation("player", "target")
-				if tonumber(mt) ~= 3 then
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-				end
-				local __,p1 = UnitDetailedThreatSituation("party1", "target")
-				local __,p2 = UnitDetailedThreatSituation("party1", "target")
-				local __,p3 = UnitDetailedThreatSituation("party1", "target")
-				local __,p4 = UnitDetailedThreatSituation("party1", "target")
-				local __,p5 = UnitDetailedThreatSituation("party1", "target")
-				if tonumber(p1) == 3 or tonumber(p1) == 2 or tonumber(p2) == 3 or tonumber(p2) == 2 or tonumber(p3) == 3 or tonumber(p3) == 2 or tonumber(p4) == 3 or tonumber(p4) == 2 or tonumber(p5) == 3 or tonumber(p5) == 2 then
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+		if testQ[myNome]["настройки"]["auk"] == "Enable" then
+			if classUnit == "Воин" or classUnit == "Паладин" or classUnit == "Рыцарь смерти" or classUnit == "Друид" then
+				if UnitAffectingCombat("player") == 1 then
+					local __,mt = UnitDetailedThreatSituation("player", "target")
+					if tonumber(mt) ~= 3 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+					end
+					local __,p1 = UnitDetailedThreatSituation("party1", "target")
+					local __,p2 = UnitDetailedThreatSituation("party1", "target")
+					local __,p3 = UnitDetailedThreatSituation("party1", "target")
+					local __,p4 = UnitDetailedThreatSituation("party1", "target")
+					local __,p5 = UnitDetailedThreatSituation("party1", "target")
+					if tonumber(p1) == 3 or tonumber(p1) == 2 or tonumber(p2) == 3 or tonumber(p2) == 2 or tonumber(p3) == 3 or tonumber(p3) == 2 or tonumber(p4) == 3 or tonumber(p4) == 2 or tonumber(p5) == 3 or tonumber(p5) == 2 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+					end
 				end
 			end
 		end
