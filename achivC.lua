@@ -4228,12 +4228,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 					end
 					local __,p1 = UnitDetailedThreatSituation("party1", "target")
-					local __,p2 = UnitDetailedThreatSituation("party1", "target")
-					local __,p3 = UnitDetailedThreatSituation("party1", "target")
-					local __,p4 = UnitDetailedThreatSituation("party1", "target")
-					local __,p5 = UnitDetailedThreatSituation("party1", "target")
-					if tonumber(p1) == 3 or tonumber(p1) == 2 or tonumber(p2) == 3 or tonumber(p2) == 2 or tonumber(p3) == 3 or tonumber(p3) == 2 or tonumber(p4) == 3 or tonumber(p4) == 2 or tonumber(p5) == 3 or tonumber(p5) == 2 then
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+					local __,p2 = UnitDetailedThreatSituation("party2", "target")
+					local __,p3 = UnitDetailedThreatSituation("party3", "target")
+					local __,p4 = UnitDetailedThreatSituation("party4", "target")
+					local __,p5 = UnitDetailedThreatSituation("party5", "target")
+					local tankNS = nil
+					if tankNS ~= nil then
+						if GetUnitName("party1") ~= tankNS and GetUnitName("party2") ~= tankNS and GetUnitName("party3") ~= tankNS and GetUnitName("party4") ~= tankNS and GetUnitName("party5") ~= tankNS then
+							if tonumber(p1) == 3 or tonumber(p1) == 2 or tonumber(p2) == 3 or tonumber(p2) == 2 or tonumber(p3) == 3 or tonumber(p3) == 2 or tonumber(p4) == 3 or tonumber(p4) == 2 or tonumber(p5) == 3 or tonumber(p5) == 2 then
+								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+							end
+						end
 					end
 				end
 			end

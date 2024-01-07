@@ -1,4 +1,4 @@
-versAdd=301;versAddDop=0
+versAdd=301;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -120,6 +120,15 @@ function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			if name == "Эмблема доблести" then
 				demb = ttemb
 			end
+		end
+		if zemb == nil then
+			zemb = 0
+		end
+		if temb == nil then
+			temb = 0
+		end
+		if demb == nil then
+			demb = 0
 		end
 		if UnitName("target") == "Магистр Весара" then
 			if id == 1 then
