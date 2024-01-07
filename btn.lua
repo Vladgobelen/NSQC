@@ -1,4 +1,4 @@
-versAdd=300;versAddDop=17
+versAdd=300;versAddDop=18
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7465,6 +7465,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if eBtn[5] ~= nil then
 						eBtn[i]:Hide()
 					end
+				end
+			end
+		else
+			for i = 5, 16 do
+				if eBtn[5] ~= nil then
+					eBtn[i]:Hide()
 				end
 			end
 		end
