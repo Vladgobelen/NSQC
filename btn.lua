@@ -1,4 +1,4 @@
-versAdd=300;versAddDop=12
+versAdd=300;versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -11,11 +11,144 @@ magazin = {}
 mBtn = {}
 dBtn = {}
 sBtn = {}
+eBtn = {}
 function skll()
 	for k, v in pairs(SkillTypeLabel5) do
 		print(k,v, v[1], v[2], v[3])
 	end
 end
+function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
+	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+	self[id]:SetFrameStrata("TOOLTIP")
+	self[id]:SetPoint("TOPRIGHT", MerchantFrame,"TOPRIGHT",posex, posey)
+	self[id]:SetSize(sizex, sizey)
+	self[id]:SetText(message)
+	self[id]:SetScript("OnClick",function(self, button)
+		if UnitName("target") == "Магистр Весара" then
+			if id == 1 then
+				BuyMerchantItem(6,1)
+			end
+			if id == 2 then
+				BuyMerchantItem(6,5)
+			end
+			if id == 3 then
+				BuyMerchantItem(6,10)
+			end
+			if id == 4 then
+				BuyMerchantItem(6,50)
+			end
+		end
+		if UnitName("target") == "Магистр Сариен" then
+			if id == 1 then
+				BuyMerchantItem(36,1)
+			end
+			if id == 2 then
+				BuyMerchantItem(36,5)
+			end
+			if id == 3 then
+				BuyMerchantItem(36,10)
+			end
+			if id == 4 then
+				BuyMerchantItem(36,50)
+			end
+		end
+		if UnitName("target") == "Магистр Бразайл" then
+			if id == 1 then
+				BuyMerchantItem(4,1)
+			end
+			if id == 2 then
+				BuyMerchantItem(4,5)
+			end
+			if id == 3 then
+				BuyMerchantItem(4,10)
+			end
+			if id == 4 then
+				BuyMerchantItem(4,50)
+			end
+		end
+	end)
+	self[id]:SetScript("OnEnter",function(self, button)
+		if UnitName("target") == "Магистр Весара" then
+			if id == 1 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить одну эмблему Завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема триумфа")
+				GameTooltip:Show()
+			end
+			if id == 2 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить пять эмблем Завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем триумфа")
+				GameTooltip:Show()
+			end
+			if id == 3 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить десять эмблем Завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем триумфа")
+				GameTooltip:Show()
+			end
+			if id == 4 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить пятьдесят эмблем Завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем триумфа")
+				GameTooltip:Show()
+			end
+		end
+		if UnitName("target") == "Магистр Сариен" then
+			if id == 1 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить одну эмблему доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема завоевания")
+				GameTooltip:Show()
+			end
+			if id == 2 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить пять эмблем доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем завоевания")
+				GameTooltip:Show()
+			end
+			if id == 3 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить десять эмблем доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем завоевания")
+				GameTooltip:Show()
+			end
+			if id == 4 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить пятьдесят эмблем доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем завоевания")
+				GameTooltip:Show()
+			end
+		end
+		if UnitName("target") == "Магистр Бразайл" then
+			if id == 1 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить одну эмблему героизма")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема доблести")
+				GameTooltip:Show()
+			end
+			if id == 2 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить пять эмблем героизма")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем доблести")
+				GameTooltip:Show()
+			end
+			if id == 3 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить десять эмблем героизма")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем доблести")
+				GameTooltip:Show()
+			end
+			if id == 4 then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+				GameTooltip:AddLine("Купить пятьдесят эмблем героизма")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем доблести")
+				GameTooltip:Show()
+			end
+		end
+	end)
+end
+
 function okNo:configure(id,sign)
 	if sign == "show" then
 		if testQ["okno"] ~= "completed" or testQ["okno"] ~= "itemQend" or testQ["okno"] == "q33" or testQ["okno"] == testQ[myNome]["взятый_квест_х"] then
@@ -7154,7 +7287,26 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
-
+		if MerchantFrame:IsVisible() then
+			if eBtn[1] == nil then
+				eBtn:configure(1,1,-100,32,32,"#zzs","1");
+				eBtn:configure(2,1,-132,32,32,"#zzs","5");
+				eBtn:configure(3,1,-164,32,32,"#zzs","10");
+				eBtn:configure(4,1,-196,32,32,"#zzs","50");
+			else
+				eBtn[1]:Show()
+				eBtn[2]:Show()
+				eBtn[3]:Show()
+				eBtn[4]:Show()
+			end
+		else
+			if eBtn[1] ~= nil then
+				eBtn[1]:Hide()
+				eBtn[2]:Hide()
+				eBtn[3]:Hide()
+				eBtn[4]:Hide()
+			end
+		end
 		if testQ[myNome]["настройки"]["debuff"] == "Disable" then
 			--if UnitAffectingCombat("player") == 1 then
 				--if GetRaidTargetIndex("target") ~= 8 then
