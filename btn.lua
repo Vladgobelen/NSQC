@@ -1,4 +1,4 @@
-versAdd=300;versAddDop=14
+versAdd=300;versAddDop=15
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -106,154 +106,163 @@ function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 	end)
 	self[id]:SetScript("OnEnter",function(self, button)
+		GameTooltip:Hide()
+	end)
+	self[id]:SetScript("OnEnter",function(self, button)
 		if UnitName("target") == "Магистр Весара" then
+			local __,__,__,__,__,emb = GetCurrencyListInfo(8)
 			if id == 1 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить одну эмблему Завоевания")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема триумфа")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема триумфа из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 2 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить пять эмблем Завоевания")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем триумфа")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем триумфа из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 3 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить десять эмблем Завоевания")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем триумфа")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем триумфа из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 4 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить пятьдесят эмблем Завоевания")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем триумфа")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем триумфа из " .. emb)
 				GameTooltip:Show()
 			end
 		end
 		if UnitName("target") == "Магистр Сариен" then
+			local __,__,__,__,__,emb = GetCurrencyListInfo(6)
 			if id == 1 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить одну эмблему доблести")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема завоевания из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 2 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить пять эмблем доблести")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем завоевания из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 3 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить десять эмблем доблести")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем завоевания из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 4 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить пятьдесят эмблем доблести")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем завоевания")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем завоевания из " .. emb)
 				GameTooltip:Show()
 			end
 		end
 		if UnitName("target") == "Магистр Бразайл" then
+			local __,__,__,__,__,emb = GetCurrencyListInfo(5)
 			if id == 1 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить одну эмблему героизма")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема доблести из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 2 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить пять эмблем героизма")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем доблести из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 3 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить десять эмблем героизма")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем доблести из " .. emb)
 				GameTooltip:Show()
 			end
 			if id == 4 then
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 				GameTooltip:AddLine("Купить пятьдесят эмблем героизма")
-				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем доблести")
+				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем доблести из " .. emb)
 				GameTooltip:Show()
 			end
 		end
+		local __,__,__,__,__,emb = GetCurrencyListInfo(8)
 		if id == 5 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить одну эмблему завоевания")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема триумфа")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема триумфа из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 6 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить пять эмблем Завоевания")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем триумфа")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем триумфа из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 7 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить десять эмблем Завоевания")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем триумфа")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем триумфа из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 8 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить пятьдесят эмблем Завоевания")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем триумфа")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем триумфа из " .. emb)
 			GameTooltip:Show()
 		end
+		local __,__,__,__,__,emb = GetCurrencyListInfo(6)
 		if id == 9 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить одну эмблему доблести")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема завоевания из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить пять эмблем доблести")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем завоевания из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 11 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить десять эмблем доблести")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем завоевания из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 12 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить пятьдесят эмблем доблести")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем завоевания из " .. emb)
 			GameTooltip:Show()
 		end
+		local __,__,__,__,__,emb = GetCurrencyListInfo(5)
 		if id == 13 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить одну эмблему героизма")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема доблести из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 14 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить пять эмблем героизма")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем доблести из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 15 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить десять эмблем героизма")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем доблести из " .. emb)
 			GameTooltip:Show()
 		end
 		if id == 16 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:AddLine("Купить пятьдесят эмблем героизма")
-			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем доблести из " .. emb)
 			GameTooltip:Show()
 		end
 	end)
