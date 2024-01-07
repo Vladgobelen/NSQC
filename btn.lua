@@ -1,4 +1,4 @@
-versAdd=300;versAddDop=13
+versAdd=300;versAddDop=14
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -19,7 +19,7 @@ function skll()
 end
 function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
-	self[id]:SetFrameStrata("TOOLTIP")
+	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
 	self[id]:SetPoint("TOPRIGHT", MerchantFrame,"TOPRIGHT",posex, posey)
 	self[id]:SetSize(sizex, sizey)
 	self[id]:SetText(message)
@@ -64,6 +64,44 @@ function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if id == 4 then
 				BuyMerchantItem(4,50)
+			end
+		end
+		if UnitName("target") == "Усури Златоблям" then
+			if id == 5 then
+				BuyMerchantItem(1,1)
+			end
+			if id == 6 then
+				BuyMerchantItem(1,5)
+			end
+			if id == 7 then
+				BuyMerchantItem(1,10)
+			end
+			if id == 8 then
+				BuyMerchantItem(1,50)
+			end
+			if id == 9 then
+				BuyMerchantItem(2,1)
+			end
+			if id == 10 then
+				BuyMerchantItem(2,5)
+			end
+			if id == 1 then
+				BuyMerchantItem(2,10)
+			end
+			if id == 12 then
+				BuyMerchantItem(2,50)
+			end
+			if id == 13 then
+				BuyMerchantItem(3,1)
+			end
+			if id == 14 then
+				BuyMerchantItem(3,5)
+			end
+			if id == 15 then
+				BuyMerchantItem(3,10)
+			end
+			if id == 15 then
+				BuyMerchantItem(3,50)
 			end
 		end
 	end)
@@ -145,6 +183,78 @@ function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем доблести")
 				GameTooltip:Show()
 			end
+		end
+		if id == 5 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить одну эмблему завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема триумфа")
+			GameTooltip:Show()
+		end
+		if id == 6 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить пять эмблем Завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем триумфа")
+			GameTooltip:Show()
+		end
+		if id == 7 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить десять эмблем Завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем триумфа")
+			GameTooltip:Show()
+		end
+		if id == 8 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить пятьдесят эмблем Завоевания")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем триумфа")
+			GameTooltip:Show()
+		end
+		if id == 9 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить одну эмблему доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема завоевания")
+			GameTooltip:Show()
+		end
+		if id == 10 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить пять эмблем доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем завоевания")
+			GameTooltip:Show()
+		end
+		if id == 11 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить десять эмблем доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем завоевания")
+			GameTooltip:Show()
+		end
+		if id == 12 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить пятьдесят эмблем доблести")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем завоевания")
+			GameTooltip:Show()
+		end
+		if id == 13 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить одну эмблему героизма")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 1 эмблема доблести")
+			GameTooltip:Show()
+		end
+		if id == 14 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить пять эмблем героизма")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 5 эмблем доблести")
+			GameTooltip:Show()
+		end
+		if id == 15 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить десять эмблем героизма")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 10 эмблем доблести")
+			GameTooltip:Show()
+		end
+		if id == 16 then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Купить пятьдесят эмблем героизма")
+			GameTooltip:AddLine("|cffFF0000Стоимость: 50 эмблем доблести")
+			GameTooltip:Show()
 		end
 	end)
 end
@@ -7287,24 +7397,60 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
-		if MerchantFrame:IsVisible() then
-			if eBtn[1] == nil then
-				eBtn:configure(1,1,-100,32,32,"#zzs","1");
-				eBtn:configure(2,1,-132,32,32,"#zzs","5");
-				eBtn:configure(3,1,-164,32,32,"#zzs","10");
-				eBtn:configure(4,1,-196,32,32,"#zzs","50");
+		if UnitName("target") ~= "Усури Златоблям" then
+			if MerchantFrame:IsVisible() then
+				if eBtn[1] == nil then
+					eBtn:configure(1,1,-100,32,32,"#zzs","1");
+					eBtn:configure(2,1,-132,32,32,"#zzs","5");
+					eBtn:configure(3,1,-164,32,32,"#zzs","10");
+					eBtn:configure(4,1,-196,32,32,"#zzs","50");
+				else
+					eBtn[1]:Show()
+					eBtn[2]:Show()
+					eBtn[3]:Show()
+					eBtn[4]:Show()
+				end
 			else
-				eBtn[1]:Show()
-				eBtn[2]:Show()
-				eBtn[3]:Show()
-				eBtn[4]:Show()
+				if eBtn[1] ~= nil then
+					eBtn[1]:Hide()
+					eBtn[2]:Hide()
+					eBtn[3]:Hide()
+					eBtn[4]:Hide()
+				end
 			end
-		else
-			if eBtn[1] ~= nil then
-				eBtn[1]:Hide()
-				eBtn[2]:Hide()
-				eBtn[3]:Hide()
-				eBtn[4]:Hide()
+		end
+		if UnitName("target") == "Усури Златоблям" then
+			if MerchantFrame:IsVisible() then
+				if eBtn[1] ~= nil then
+					eBtn[1]:Hide()
+					eBtn[2]:Hide()
+					eBtn[3]:Hide()
+					eBtn[4]:Hide()
+				end
+				if eBtn[5] == nil then
+					eBtn:configure(5,1,-100,32,32,"#zzs","1");
+					eBtn:configure(6,1,-132,32,32,"#zzs","5");
+					eBtn:configure(7,1,-164,32,32,"#zzs","10");
+					eBtn:configure(8,1,-196,32,32,"#zzs","50");
+					eBtn:configure(9,32,-100,32,32,"#zzs","1");
+					eBtn:configure(10,32,-132,32,32,"#zzs","5");
+					eBtn:configure(11,32,-164,32,32,"#zzs","10");
+					eBtn:configure(12,32,-196,32,32,"#zzs","50");
+					eBtn:configure(13,64,-100,32,32,"#zzs","1");
+					eBtn:configure(14,64,-132,32,32,"#zzs","5");
+					eBtn:configure(15,64,-164,32,32,"#zzs","10");
+					eBtn:configure(16,64,-196,32,32,"#zzs","50");
+				else
+					for i = 5, 16 do
+						eBtn[i]:Show()
+					end
+				end
+			else
+				for i = 5, 16 do
+					if eBtn[5] ~= nil then
+						eBtn[i]:Hide()
+					end
+				end
 			end
 		end
 		if testQ[myNome]["настройки"]["debuff"] == "Disable" then
