@@ -4085,6 +4085,90 @@ if classUnit == "Воин" then
 		},
 	}
 end
+if classUnit == "Друид" then
+	tblIcons = {
+		["Размах (медведь)"] = {
+			["icon"] = "Interface\\Icons\\INV_Misc_MonsterClaw_03",
+			["name"] = "Размах (медведь)",
+			["pos"] = 1,
+			["buf"] = nil,
+			["debuf"] = nil,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Исступление"] = {
+			["icon"] = "Interface\\Icons\\Ability_Druid_Enrage",
+			["name"] = "Исступление",
+			["pos"] = 0,
+			["buf"] = 1,
+			["prok"] = nil,
+			["srav"] = "m",
+			["seiv"] = nil,
+		},
+		["Растерзать"] = {
+			["icon"] = "Interface\\Icons\\Ability_Druid_Lacerate",
+			["name"] = "Растерзать",
+			["pos"] = 0,
+			["buf"] = nil,
+			["debuf"] = 1,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Устрашающий рев"] = {
+			["icon"] = "Interface\\Icons\\Ability_Druid_DemoralizingRoar",
+			["name"] = "Устрашающий рев",
+			["pos"] = 1,
+			["buf"] = 0,
+			["debuf"] = 1,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Волшебный огонь (зверь)"] = {
+			["icon"] = "Interface\\Icons\\Spell_Nature_FaerieFire",
+			["name"] = "Волшебный огонь (зверь)",
+			["pos"] = 1,
+			["buf"] = 0,
+			["debuf"] = 1,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Шипы"] = {
+			["icon"] = "Interface\\Icons\\Spell_Nature_Thorns",
+			["name"] = "Шипы",
+			["pos"] = 1,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+		["Дубовая кожа"] = {
+			["icon"] = "Interface\\Icons\\Spell_Nature_StoneClawTotem",
+			["name"] = "Дубовая кожа",
+			["pos"] = 1,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = nil,
+			["seiv"] = 1,
+			["prok"] = "Interface\\AddOns\\NSQC\\gob.ogg",
+		},
+		["Увечье (медведь)"] = {
+			["icon"] = "Interface\\Icons\\Ability_Druid_Mangle2",
+			["name"] = "Увечье (медведь)",
+			["pos"] = 0,
+			["buf"] = nil,
+			["debuf"] = nil,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+	}
+end
 if classUnit == "Разбойник" then
 	tblIcons = {
 		["Мясорубка"] = {
@@ -4220,23 +4304,26 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				--StaticPopup1Button1:SetPoint("CENTER", UIParent,"CENTER",333, 333)
 			--end
 		--end
-		if testQ[myNome]["настройки"]["auk"] == "Enable" then
-			if classUnit == "Воин" or classUnit == "Паладин" or classUnit == "Рыцарь смерти" or classUnit == "Друид" then
-				if UnitAffectingCombat("player") == 1 then
-					local __,mt = UnitDetailedThreatSituation("player", "target")
-					if tonumber(mt) ~= 3 then
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-					end
-					local __,p1 = UnitDetailedThreatSituation("party1", "target")
-					local __,p2 = UnitDetailedThreatSituation("party2", "target")
-					local __,p3 = UnitDetailedThreatSituation("party3", "target")
-					local __,p4 = UnitDetailedThreatSituation("party4", "target")
-					local __,p5 = UnitDetailedThreatSituation("party5", "target")
-					local tankNS = nil
-					if tankNS ~= nil then
-						if GetUnitName("party1") ~= tankNS and GetUnitName("party2") ~= tankNS and GetUnitName("party3") ~= tankNS and GetUnitName("party4") ~= tankNS and GetUnitName("party5") ~= tankNS then
-							if tonumber(p1) == 3 or tonumber(p1) == 2 or tonumber(p2) == 3 or tonumber(p2) == 2 or tonumber(p3) == 3 or tonumber(p3) == 2 or tonumber(p4) == 3 or tonumber(p4) == 2 or tonumber(p5) == 3 or tonumber(p5) == 2 then
-								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+		if UnitName("target") ~= "Хранитель энергии Эрегос" then
+			if testQ[myNome]["настройки"]["auk"] == "Enable" then
+				if classUnit == "Воин" or classUnit == "Паладин" or classUnit == "Рыцарь смерти" or classUnit == "Друид" then
+					if UnitAffectingCombat("player") == 1 then
+						local __,mt = UnitDetailedThreatSituation("player", "target")
+						if UnitName("target") ~= nil then
+							if tonumber(mt) ~= 3 then
+								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+							end
+						end
+						local __,p1 = UnitDetailedThreatSituation("party1", "target")
+						local __,p2 = UnitDetailedThreatSituation("party2", "target")
+						local __,p3 = UnitDetailedThreatSituation("party3", "target")
+						local __,p4 = UnitDetailedThreatSituation("party4", "target")
+						local __,p5 = UnitDetailedThreatSituation("party5", "target")
+						if tankNS ~= nil then
+							if GetUnitName("party1") ~= tankNS and GetUnitName("party2") ~= tankNS and GetUnitName("party3") ~= tankNS and GetUnitName("party4") ~= tankNS and GetUnitName("party5") ~= tankNS then
+								if tonumber(p1) == 3 or tonumber(p1) == 2 or tonumber(p2) == 3 or tonumber(p2) == 2 or tonumber(p3) == 3 or tonumber(p3) == 2 or tonumber(p4) == 3 or tonumber(p4) == 2 or tonumber(p5) == 3 or tonumber(p5) == 2 then
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+								end
 							end
 						end
 					end

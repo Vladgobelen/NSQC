@@ -2835,6 +2835,9 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 	if mana == nil then
 		mana = 0
 	end
+	if classUnit == "Друид" then
+		mana = 30
+	end
 	if srav == "m" then
 		if UnitPower("player") < mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
 			if kya ~= 1 then
@@ -2855,7 +2858,7 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 			end
 		end
 	end
-
+	local __,__,__,mana = GetSpellInfo(spell)
 	if srav == "b" then
 		if UnitPower("player") >= mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
 			if kya ~= 1 then
