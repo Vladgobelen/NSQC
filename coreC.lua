@@ -34,19 +34,21 @@ if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or s
 		SendChatMessage(msg[2] .. " уже есть в черном списке" , "OFFICER", nil, 1)
 	end
 end
-if msg[1] == "\"илвл" and msg[2] == myNome then
-	local test = nil
-	if GS_Data ~= nil then
-		if GS_Data[GetRealmName()].Players[myNome] ~= nil then
-			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore, "OFFICER", nil, 1)
+if msg[1] == "\"илвл" then
+	if msg[2] == myNome or sender == myNome then
+		local test = nil
+		if GS_Data ~= nil then
+			if GS_Data[GetRealmName()].Players[myNome] ~= nil then
+				SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore, "OFFICER", nil, 1)
+				test = 1
+			end
+		else
+			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)), "OFFICER", nil, 1)
 			test = 1
 		end
-	else
-		SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)), "OFFICER", nil, 1)
-		test = 1
-	end
-	if test ~= 1 then
-		SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)), "OFFICER", nil, 1)
+		if test ~= 1 then
+			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)), "OFFICER", nil, 1)
+		end
 	end
 end
 if msg[1] == "\"чсв" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес" or sender == "Аффа" or sender == "Маздам" or sender == "Нугган") then
