@@ -1,4 +1,4 @@
-versAdd=301;versAddDop=2
+versAdd=301;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7421,25 +7421,27 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
-		if UnitName("target") ~= "Усури Златоблям" then
-			if MerchantFrame:IsVisible() then
-				if eBtn[1] == nil then
-					eBtn:configure(1,1,-100,32,32,"#zzs","1");
-					eBtn:configure(2,1,-132,32,32,"#zzs","5");
-					eBtn:configure(3,1,-164,32,32,"#zzs","10");
-					eBtn:configure(4,1,-196,32,32,"#zzs","50");
+		if UnitName("target") == "Магистр Весара" or UnitName("target") == "Магистр Сариен" or UnitName("target") == "Магистр Бразайл" then
+			if UnitName("target") ~= "Усури Златоблям" then
+				if MerchantFrame:IsVisible() then
+					if eBtn[1] == nil then
+						eBtn:configure(1,1,-100,32,32,"#zzs","1");
+						eBtn:configure(2,1,-132,32,32,"#zzs","5");
+						eBtn:configure(3,1,-164,32,32,"#zzs","10");
+						eBtn:configure(4,1,-196,32,32,"#zzs","50");
+					else
+						eBtn[1]:Show()
+						eBtn[2]:Show()
+						eBtn[3]:Show()
+						eBtn[4]:Show()
+					end
 				else
-					eBtn[1]:Show()
-					eBtn[2]:Show()
-					eBtn[3]:Show()
-					eBtn[4]:Show()
-				end
-			else
-				if eBtn[1] ~= nil then
-					eBtn[1]:Hide()
-					eBtn[2]:Hide()
-					eBtn[3]:Hide()
-					eBtn[4]:Hide()
+					if eBtn[1] ~= nil then
+						eBtn[1]:Hide()
+						eBtn[2]:Hide()
+						eBtn[3]:Hide()
+						eBtn[4]:Hide()
+					end
 				end
 			end
 		end
