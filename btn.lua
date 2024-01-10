@@ -1,4 +1,4 @@
-versAdd=302;versAddDop=2
+versAdd=302;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8131,6 +8131,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.01 then
 		timeElapsed = 0
+		if NSdebuf == 1 then
+			for i=1, 32 do
+				local name,__,__,__,__,__,__,__ = UnitBuff("player",i)
+				local name1,__,__,__,__,__,__,__ = UnitDebuff("player",i)
+				local buff = _G["BuffButton"..i]
+					if buff ~= nil then
+						buff:Hide()
+					end
+				local debuff = _G["DebuffButton"..i]
+				if debuff ~= nil then
+					debuff:Hide()
+				end
+			end
+			Minimap:Hide()
+		end
 
 		if testQ["dom"] == 1 then
 			local nome
