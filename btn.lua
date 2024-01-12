@@ -1,4 +1,4 @@
-versAdd=302;versAddDop=6
+versAdd=303;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -435,6 +435,8 @@ function okNo:configure(id,sign)
 			testQ["okno"] = nil
 			hX()
 			testQ['sign'] = nil
+			okNo[1]:Hide()
+			okNo[2]:Hide()
 		end
 		if testQ["okno"] == "q33end" then
 			SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
@@ -453,6 +455,8 @@ function okNo:configure(id,sign)
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
 				hX()
+				okNo[1]:Hide()
+				okNo[2]:Hide()
 				testQ['sign'] = nil
 				testQ["itemQVzyat"] = nil
 			elseif testQ["okno"] == nil then
@@ -463,6 +467,8 @@ function okNo:configure(id,sign)
 					hX()
 					testQ['sign'] = nil
 					testQ["okno"] = nil
+					okNo[1]:Hide()
+					okNo[2]:Hide()
 				else
 					hX()
 					testQ['sign'] = nil
@@ -474,6 +480,8 @@ function okNo:configure(id,sign)
 				testQ[myNome]["взятый_квест_s"] = nil
 				testQ["okno"] = nil
 				hX()
+				okNo[1]:Hide()
+				okNo[2]:Hide()
 				testQ['sign'] = nil
 			end
 			if testQ["okno"] == "tavernaQ" then
@@ -482,6 +490,8 @@ function okNo:configure(id,sign)
 				testQ["taverna_num_q"] = nil
 				testQ["okno"] = nil
 				hX()
+				okNo[1]:Hide()
+				okNo[2]:Hide()
 				testQ['sign'] = nil
 			end
 			if testQ["okno"] == "99991" then
@@ -495,6 +505,8 @@ function okNo:configure(id,sign)
 				testQ[myNome]["взятый_квест_х"] = "9999"
 				testQ["okno"] = nil
 				hX()
+				okNo[1]:Hide()
+				okNo[2]:Hide()
 				testQ['sign'] = nil
 			end
 		end)
