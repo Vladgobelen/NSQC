@@ -1,4 +1,4 @@
-versAdd=302;versAddDop=4
+versAdd=302;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3252,6 +3252,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\st.tga")
 				end
 			end
+
 		end
 		if arg1 == "RightButton" then
 			if dmG[999] ~= nil then
@@ -4844,6 +4845,10 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				for i = 1, 100 do
 					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\st.tga")
 					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\st.tga")
+				end
+				testQ["diffT"] = {}
+				for i = 1, 100 do
+					testQ["diffT"][i] = "st"
 				end
 			end
 		end
