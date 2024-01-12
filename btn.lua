@@ -1,4 +1,4 @@
-versAdd=302;versAddDop=5
+versAdd=302;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4850,6 +4850,9 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				for i = 1, 100 do
 					testQ["diffT"][i] = "st"
 				end
+				testQ["brevna"] = tonumber(testQ["brevna"])-1
+				testQ["nikQB"] = antc(testQ["brevna"])
+				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 			end
 		end
 		if arg1 == "RightButton" then
