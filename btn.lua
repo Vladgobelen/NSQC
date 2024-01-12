@@ -1,4 +1,4 @@
-versAdd=302;versAddDop=3
+versAdd=302;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -343,9 +343,13 @@ function okNo:configure(id,sign)
 			end
 		end
 	else
-		okNo[1]:Hide()
-		if okNo[2]~= nil then
-			okNo[2]:Hide()
+		if okno ~= nil then
+			if okno[1] ~= nil then
+				okNo[1]:Hide()
+			end
+			if okNo[2]~= nil then
+				okNo[2]:Hide()
+			end
 		end
 	end
 	self[1]:SetScript("OnClick",function(self, button)
@@ -391,7 +395,8 @@ function okNo:configure(id,sign)
 			SendChatMessage("Мне нужно выполнить " .. tonumber(testQ["taverna_num_q"])+3 .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_t"])) .. " или получить ее", "OFFICER", nil, 1)
 			testQ["okno"] = nil
 			testQ['sign'] = nil
-			hX()
+			okNo[1]:Hide()
+			okNo[2]:Hide()
 		end
 		if testQ["okno"] == "itemQ" then
 			SendChatMessage("Скоро я пришлю Вождю многа многа стаков вот этого: " .. testQ[myNome]["itemName"], "OFFICER", nil, 1)
@@ -399,6 +404,12 @@ function okNo:configure(id,sign)
 			testQ[myNome]["взятый_квест_х"] = "itemQ"
 			testQ[myNome]["itemQend"]=nil
 			testQ["okno"] = nil
+			for i = 1, 100 do
+				if dBtn[1] ~= nil then
+					dBtn[i]:Hide()
+				end
+			end
+			okNo[1]:Hide()
 		end
 		if testQ["okno"] == "completed" then
 			SendChatMessage("ВОЖДЬ, я выполнил ачивку " .. GetAchievementLink(tonumber(testQ[myNome]["взятый_квест_х"])), "OFFICER", nil, 1)
@@ -4561,7 +4572,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
 					if testQ[myNome]["hTimer"] ~= nil then
 						if testQ[myNome]["взятый_квест_t"] == nil then
-							if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
+							if testQ[myNome]["взятый_квест_t"] == nil or testQ[myNome]["взятый_квест_t"] == "9999" then
 								local qq
 								while true do
 									qq=math.random(1,#pQuest["items"])
@@ -4625,7 +4636,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									quesT("show")
 									okNo:configure(1,"show")
 									rtnTextF("Я отправил Вождю, все что нужно",1,"show")
-									for i=1,100 do
+									for i = 1, 100 do
 										dBtn[i]:Hide()
 									end
 									for i = 1, 100 do
@@ -4680,9 +4691,26 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 							else
 								SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
-								SendAddonMessage("#hQ1 " .. "", "", "guild")
+								SendAddonMessage("#hQ1 " .. "b0", "", "guild")
 								--htimer(myNome)
-								hX()
+								for i=1,100 do
+									dBtn[i]:Hide()
+								end
+								for i = 1, 100 do
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
+									end
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 								testQ['sign'] = nil
 								testQ["okno"] = nil
 							end
@@ -4785,6 +4813,24 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								SendChatMessage("ВОЖДЬ, я выполнил квест", "OFFICER", nil, 1)
 								SendAddonMessage("#hQ1 " .. "", "", "guild")
 								--htimer(myNome)
+								for i=1,100 do
+									dBtn[i]:Hide()
+								end
+								for i = 1, 100 do
+									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+										if resursy[i] ~= nil then
+											if i == 5 then
+												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+												end
+											else
+												resursy[i]:Hide()
+											end
+										end
+									end
+								end
+								btn[989]:Hide()
+								btn[989]:ClearAllPoints()
+								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
 								hX()
 								testQ['sign'] = nil
 								testQ["okno"] = nil
@@ -4898,6 +4944,11 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 
 		end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		if testQ['sign'] ~= "1" then
+			nome = GuildFrame["selectedName"]
+		else
+			nome = myNome
+		end
 		if testQ["domZ"] ~= nil then
 			if mioFld[nome] == nil then
 				mioFld[nome] = {}
