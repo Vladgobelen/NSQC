@@ -2055,6 +2055,10 @@ function hX()
 		resursy[2]:Hide()
 		resursy[3]:Hide()
 	end
+	if okNo ~= nil then
+		okNo[1]:Hide()
+		okNo[2]:Hide()
+	end
 	btn[989]:Hide()
 	btn[989]:ClearAllPoints()
 	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)

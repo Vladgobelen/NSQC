@@ -321,7 +321,13 @@ if kodMsg[1] == "#zMYzt" and sender == myNome then
 	end
 end
 if kodMsg[1] == "bNx" then
-	mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) - tonumber(kodMsg[3])
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["целостность"] ~= nil then
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) - tonumber(kodMsg[3])
+			end
+		end
+	end
 end
 if kodMsg[1] == "shMFld" and msg[1] == myNome then
 	local rez = {}
