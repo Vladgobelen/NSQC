@@ -34,6 +34,120 @@ if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or s
 		SendChatMessage(msg[2] .. " уже есть в черном списке" , "OFFICER", nil, 1)
 	end
 end
+if msg[1] == "!устав" then
+	if sender == myNome or msg[3] == myNome then
+		if msg[2] == nil or msg[2] == "1" then
+			SendChatMessage(ustav["1"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["2"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "2" then
+			SendChatMessage(ustav["3"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "3" then
+			SendChatMessage(ustav["4"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4" then
+			SendChatMessage(ustav["5"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5" then
+			SendChatMessage(ustav["6"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "6" then
+			SendChatMessage(ustav["7"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "7" then
+			SendChatMessage(ustav["8"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "8" then
+			SendChatMessage(ustav["9"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["10"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "9" then
+			SendChatMessage(ustav["11"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "10" then
+			SendChatMessage(ustav["12"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["13"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "11" then
+			SendChatMessage(ustav["14"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "12" then
+			SendChatMessage(ustav["15"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "13" then
+			SendChatMessage(ustav["16"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "14" then
+			SendChatMessage(ustav["17"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "15" then
+			SendChatMessage(ustav["18"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "16" then
+			SendChatMessage(ustav["19"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["20"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "17" then
+			SendChatMessage(ustav["21"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["22"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "18" then
+			SendChatMessage(ustav["23"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "19" then
+			SendChatMessage(ustav["24"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "20" then
+			SendChatMessage(ustav["25"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["26"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["27"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "21" then
+			SendChatMessage(ustav["28"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "22" then
+			SendChatMessage(ustav["29"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "23" then
+			SendChatMessage(ustav["30"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "24" then
+			SendChatMessage(ustav["31"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "25" then
+			SendChatMessage(ustav["32"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "26" then
+			SendChatMessage(ustav["33"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "27" then
+			SendChatMessage(ustav["34"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "28" then
+			SendChatMessage(ustav["35"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "29" then
+			SendChatMessage(ustav["36"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "30" then
+			SendChatMessage(ustav["37"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["38"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "31" then
+			SendChatMessage(ustav["39"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "32" then
+			SendChatMessage(ustav["39"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "33" then
+			SendChatMessage(ustav["41"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "34" then
+			SendChatMessage(ustav["42"], "OFFICER", nil, 1)
+		end
+	end
+end
 if msg[1] == "\"илвл" then
 	if sender == myNome then
 		local test = nil
