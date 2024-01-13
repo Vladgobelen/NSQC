@@ -277,32 +277,32 @@ if kodMsg[1] == "#zMYzt" and sender == myNome then
 			if gildLvl == "0" then
 				local gildExpN = 4 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
-				SendChatMessage("Доступен 1 квест в сутки. При лвлапе: сумка из ткани пустоты." , "officer", nil, 1)
+				SendChatMessage("Доступен 1 квест в сутки. При лвлапе: 4 сумки из ткани пустоты или ресурсы." , "officer", nil, 1)
 			elseif gildLvl == "1" then
 				local gildExpN = 8 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
-				SendChatMessage("Доступен 1 квест в сутки. При лвлапе: две сумки из ткани пустоты" , "officer", nil, 1)
+				SendChatMessage("Доступен 1 квест в сутки. При лвлапе: две сумки из ледяной ткани или ресурсы" , "officer", nil, 1)
 			elseif gildLvl == "2" then
 				local gildExpN = 16 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
-				SendChatMessage("Доступны 2 квеста в сутки. При лвлапе 4 сумки из ткани пустоты" , "officer", nil, 1)
+				SendChatMessage("Доступны 2 квеста в сутки. При лвлапе 4 сумки из ледяной ткани или ресурсы" , "officer", nil, 1)
 				--SendChatMessage("*При лвлапе: повышение до Констебля. Что то одно из пятой ячейки ГБ, кроме серой кошки, письма и маунтов ИЛИ лотерейный билет. " , "officer", nil, 1)
 			elseif gildLvl == "3" then
 				local gildExpN = 32 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
-				SendChatMessage("*Сейчас награда 80 золота за квест и доступны 3 квеста в сутки. При лвлапе: повышение до Мл. Капрала. 2 ледовые сумки или три лотерейных билета. " , "officer", nil, 1)
+				SendChatMessage("*Доступны 3 квеста в сутки. При лвлапе: повышение до Мл. Капрала. Ледовая сумка или три лотерейных билета. " , "officer", nil, 1)
 			elseif gildLvl == "4" then
 				local gildExpN = 64 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
-				SendChatMessage("*Сейчас награда 90 золота за квест и доступны 4 квеста в сутки. При лвлапе: Повышение до Капрала. 4 ледовые сумки или четыре лотерейных билета. " , "officer", nil, 1)
+				SendChatMessage("*Доступны 4 квеста в сутки. При лвлапе: Повышение до Капрала. 2 ледовые сумки или четыре лотерейных билета. " , "officer", nil, 1)
 			elseif gildLvl == "5" then
 				local gildExpN = 128 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
-				SendChatMessage("*Сейчас награда 100 золота за квест и доступны 5 квестов в сутки. При лвлапе: повышение до Сержанта. 7500 золота или 7 лотерейных билетов." , "officer", nil, 1)
+				SendChatMessage("*Доступны 5 квестов в сутки. При лвлапе: повышение до Сержанта. 4 ледовые сумки или 5 лотерейных билетов." , "officer", nil, 1)
 			elseif gildLvl == "6" then
 				local gildExpN = 256 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
-				SendChatMessage("*Сейчас награда 110 золота за квест и доступны 6 квестов в сутки. При лвлапе: 15000 золота или 15 лотерейных билетов. " , "officer", nil, 1)
+				SendChatMessage("*Доступны 6 квестов в сутки. При лвлапе: ??? или ??? " , "officer", nil, 1)
 			elseif gildLvl == "7" then
 				local gildExpN = 512 - gildExpN
 				SendChatMessage("*" .. sender .. ": до лвлапа осталось " .. gildExpN .. " опыта" , "officer", nil, 1)
