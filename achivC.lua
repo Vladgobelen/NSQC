@@ -119,6 +119,9 @@ if kodMsg[1] == "#gmlist" and message == myNome then
 		SendAddonMessage("#yanegm", gmList[i], "guild")
 	end
 end
+if kodMsg[1] == "награда" and kodMsg[2] == myNome then
+	SendAddonMessage("#hQ1itemQ ", "1", "guild")
+end
 if kodMsg[1] == "#mioTV" and kodMsg[2] == myNome then
 	if mioFld == nil then
 		mioFld = {}

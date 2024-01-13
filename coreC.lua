@@ -207,6 +207,7 @@ if msg[1] == "локация" and msg[2]=="удалить" and msg[3] == myNome 
 	mapTables["lokRasstoyanie"] = nil
 	krt["chernila"] = nil
 end
+
 if msg[1] == "\"камни" and msg[2] == myNome and testGM~=nil then
 	testQ["kamen"] = tonumber(testQ["kamen"])+tonumber(msg[3])
 	testQ["nikQK"] = antc(testQ["kamen"])
