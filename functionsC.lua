@@ -395,20 +395,7 @@ function testNpc ( NpcID )
     r=EnumerateTooltipLines(MyScanningTooltip)
     return r
 end
---GameTooltip:HookScript("OnShow", function(self)
-	--local classUnit = UnitClass("mouseover")
-	--if classUnit == "Жрец" then
-		--GameTooltip:AddLine("First line")
-		--GameTooltip:Show()
 
-	--end
-
-
-	--print("|cff00ff00------")
-	--for i=1, self:NumLines() do
-		--print(_G["GameTooltipTextLeft"..i]:GetText())
-	--end
---end)
 
 
 local function EnumerateTooltipLines_helper(...)
@@ -2973,9 +2960,9 @@ function bs()
 	if classUnit == "Жрец" or classUnit == "Жрица" then
 		local __,__,__,__,tma = GetTalentInfo(3, 27)
 		if tma >= 1 then
-			bs = vyn+(int*2)+duh+cast+hit+crit+mana+def
+			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
 		else
-			bs = vyn+(int*2)+duh+cast+crit+mana+def
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+def
 		end
 	end
 	if classUnit == "Паладин" then
@@ -2983,21 +2970,21 @@ function bs()
 		local __,__,__,__,ppal = GetTalentInfo(2, 26)
 		local __,__,__,__,rpal = GetTalentInfo(3, 26)
 		if xpal >= 1 then
-			bs = vyn+(int*2)+duh+cast+crit+mana+(def*0.5)
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
 		end
 		if ppal >= 1 then
-			bs = (sil*2)+lov+(vyn*2)+hit+crit+rpb+def+attak
+			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
 		end
 		if rpal >= 1 then
-			bs = (sil*2)+lov+vyn+hit+crit+rpb+(def*0.5)+attak
+			bs = (sil*2)+lov+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
 		end
 	end
 	if classUnit == "Воин" then
 		local __,__,__,__,pwar = GetTalentInfo(3, 7)
 		if pwar >= 1 then
-			bs = sil+lov+(vyn*2)+hit+crit+mast+def+ukl+par+block+rpb+attak
+			bs = sil+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
 		else
-			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+rpb+attak
+			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
 		end
 	end
 	if classUnit == "Друид" then
@@ -3009,10 +2996,10 @@ function bs()
 			bs = vyn+(int*2)+(duh*1.5)+(cast*2)+crit+mana+(def*0.5)
 		end
 		if pdru >= 1 then
-			bs = sil+(lov*2)+(vyn*2)+hit+crit+mast+(def+ukl+rpb+attak
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+rpb+attak
 		end
 		if sova >= 1 then
-			bs = vyn+(int*2)+duh+cast+hit+crit+mana+(def*0.5)
+			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+(def*0.5)
 		end
 		if kot >= 1 then
 			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
@@ -3022,7 +3009,37 @@ function bs()
 		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
 	end
 	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
-		bs = vyn+(int*2)+duh+cast+hit+crit+mana+def
+		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+	end
+	if classUnit == "Шаман" then
+		local __,__,__,__,elem = GetTalentInfo(1, 3)
+		local __,__,__,__,enh = GetTalentInfo(2, 9)
+		local __,__,__,__,rsham = GetTalentInfo(3, 1)
+		if elem >= 1 then
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+		end
+		if enh >= 1 then
+			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		end
+		if rsham >= 1 then
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+		end
+	end
+	if classUnit == "Охотник" or classUnit == "Охотница" then
+		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+	end
+	if classUnit == "Рыцарь смерти" then
+		local __,__,__,__,pwar = GetTalentInfo(1, 7)
+		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
+		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
+		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
+			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+(mast*1.5)+(def*1.5)+(ukl*1.5)+(par*1.5)+rpb+attak
+		else
+			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
+		end
+	end
+	if classUnit == "Маг" then
+		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
 	end
 	return string.format("%d",bs)
 end
