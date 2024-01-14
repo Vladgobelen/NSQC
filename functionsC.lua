@@ -395,6 +395,20 @@ function testNpc ( NpcID )
     r=EnumerateTooltipLines(MyScanningTooltip)
     return r
 end
+--GameTooltip:HookScript("OnShow", function(self)
+	--local classUnit = UnitClass("mouseover")
+	--if classUnit == "Жрец" then
+		--GameTooltip:AddLine("First line")
+		--GameTooltip:Show()
+
+	--end
+
+
+	--print("|cff00ff00------")
+	--for i=1, self:NumLines() do
+		--print(_G["GameTooltipTextLeft"..i]:GetText())
+	--end
+--end)
 
 
 local function EnumerateTooltipLines_helper(...)
@@ -2935,6 +2949,82 @@ function partyFrameHide()
 			prtyF:Hide()
 		end
 	end
+end
+function bs()
+	local bs
+	local classUnit = UnitClass("player")
+	local sil = UnitStat("player", 1)
+	local lov = UnitStat("player", 2)
+	local vyn = UnitStat("player", 3)
+	local int = UnitStat("player", 4)
+	local duh = UnitStat("player", 5)
+	local cast = GetSpellBonusHealing()
+	local hit = GetCombatRating(6)
+	local crit = GetCombatRating(9)
+	local mast = GetCombatRating(24)
+	local def = GetCombatRating(2)
+	local ukl = GetCombatRating(3)
+	local par = GetCombatRating(4)
+	local block = GetCombatRating(5)
+	local mana = GetManaRegen()
+	local rpb = GetCombatRating(25)
+	local x,y = UnitAttackPower("player")
+	local attak = x+y
+	if classUnit == "Жрец" or classUnit == "Жрица" then
+		local __,__,__,__,tma = GetTalentInfo(3, 27)
+		if tma >= 1 then
+			bs = vyn+(int*2)+duh+cast+hit+crit+mana+def
+		else
+			bs = vyn+(int*2)+duh+cast+crit+mana+def
+		end
+	end
+	if classUnit == "Паладин" then
+		local __,__,__,__,xpal = GetTalentInfo(1, 26)
+		local __,__,__,__,ppal = GetTalentInfo(2, 26)
+		local __,__,__,__,rpal = GetTalentInfo(3, 26)
+		if xpal >= 1 then
+			bs = vyn+(int*2)+duh+cast+crit+mana+(def*0.5)
+		end
+		if ppal >= 1 then
+			bs = (sil*2)+lov+(vyn*2)+hit+crit+rpb+def+attak
+		end
+		if rpal >= 1 then
+			bs = (sil*2)+lov+vyn+hit+crit+rpb+(def*0.5)+attak
+		end
+	end
+	if classUnit == "Воин" then
+		local __,__,__,__,pwar = GetTalentInfo(3, 7)
+		if pwar >= 1 then
+			bs = sil+lov+(vyn*2)+hit+crit+mast+def+ukl+par+block+rpb+attak
+		else
+			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+rpb+attak
+		end
+	end
+	if classUnit == "Друид" then
+		local __,__,__,__,rdru = GetTalentInfo(3, 27)
+		local __,__,__,__,pdru = GetTalentInfo(2, 5)
+		local __,__,__,__,sova = GetTalentInfo(1, 13)
+		local __,__,__,__,kot = GetTalentInfo(2, 9)
+		if rdru >= 1 then
+			bs = vyn+(int*2)+(duh*1.5)+(cast*2)+crit+mana+(def*0.5)
+		end
+		if pdru >= 1 then
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+mast+(def+ukl+rpb+attak
+		end
+		if sova >= 1 then
+			bs = vyn+(int*2)+duh+cast+hit+crit+mana+(def*0.5)
+		end
+		if kot >= 1 then
+			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		end
+	end
+	if classUnit == "Разбойник" or classUnit == "Разбойница" then
+		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+	end
+	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
+		bs = vyn+(int*2)+duh+cast+hit+crit+mana+def
+	end
+	return string.format("%d",bs)
 end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()

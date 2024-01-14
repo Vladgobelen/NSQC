@@ -153,15 +153,15 @@ if msg[1] == "\"илвл" then
 		local test = nil
 		if GS_Data ~= nil then
 			if GS_Data[GetRealmName()].Players[myNome] ~= nil then
-				SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore, "OFFICER", nil, 1)
+				SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore .. " " .. "бс: " .. bs(), "OFFICER", nil, 1)
 				test = 1
 			end
 		else
-			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)), "OFFICER", nil, 1)
+			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " " .. "бс: " .. bs(), "OFFICER", nil, 1)
 			test = 1
 		end
 		if test ~= 1 then
-			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)), "OFFICER", nil, 1)
+			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " " .. "бс: " .. bs(), "OFFICER", nil, 1)
 		end
 	else
 		if msg[2] == myNome then
