@@ -3067,22 +3067,99 @@ GameTooltip:HookScript("OnShow", function(self)
 	local attak = 0
 	--print("|cff00ff00------")
 	for i=1, self:NumLines() do
-		if _G["GameTooltipTextLeft"..i]:GetText():sub(1,1) == "+" then
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "+" or string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "|"  then
 			bstemp = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
-			if string.utf8sub(bstemp[3],1,3) == "вын" then
+			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "вын" then
 				vyn = tonumber(bstemp[1]:sub(2))
+				if vyn == nil then
+					vyn = tonumber(bstemp[1]:sub(11))
+				end
 			end
-			if string.utf8sub(bstemp[3],1,3) == "лов" then
+			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "лов" then
 				lov = tonumber(bstemp[1]:sub(2))
+				if lov == nil then
+					lov = tonumber(bstemp[1]:sub(11))
+				end
 			end
-			if string.utf8sub(bstemp[3],1,3) == "сил" then
-				sil = tonumber(bstemp[1]:sub(2))
+			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "сил" then
+				if bstemp[4] == nil then
+					sil = tonumber(bstemp[1]:sub(2))
+					if sil == nil then
+						sil = tonumber(bstemp[1]:sub(11))
+					end
+				end
 			end
-			if string.utf8sub(bstemp[3],1,3) == "инт" then
+			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "инт" then
 				int = tonumber(bstemp[1]:sub(2))
+				if int == nil then
+					int = tonumber(bstemp[1]:sub(11))
+				end
 			end
-			if string.utf8sub(bstemp[3],1,3) == "дух" then
+			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "дух" then
 				duh = tonumber(bstemp[1]:sub(2))
+				if duh == nil then
+					duh = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ата" then
+				attak = tonumber(bstemp[1]:sub(2))
+				if attak == nil then
+					attak = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "кри" then
+				crit = tonumber(bstemp[1]:sub(2))
+				if crit == nil then
+					crit = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мас" then
+				mast = tonumber(bstemp[1]:sub(2))
+				if mast == nil then
+					mast = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "зак" then
+				cast = tonumber(bstemp[1]:sub(2))
+				if cast == nil then
+					cast = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мет" then
+				hit = tonumber(bstemp[1]:sub(2))
+				if hit == nil then
+					hit = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "защ" then
+				def = tonumber(bstemp[1]:sub(2))
+				if def == nil then
+					def = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "укл" then
+				ukl = tonumber(bstemp[1]:sub(2))
+				if ukl == nil then
+					ukl = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "пар" then
+				par = tonumber(bstemp[1]:sub(2))
+				if par == nil then
+					par = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "бло" then
+				block = tonumber(bstemp[1]:sub(2))
+				if block == nil then
+					block = tonumber(bstemp[1]:sub(11))
+				end
+			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "про" then
+				rpb = tonumber(bstemp[1]:sub(2))
+				if rpb == nil then
+					rpb = tonumber(bstemp[1]:sub(11))
+				end
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
@@ -3145,6 +3222,21 @@ GameTooltip:HookScript("OnShow", function(self)
 	end
 	if attak == nil then
 		attak = 0
+	end
+	if sil == nil then
+		sil = 0
+	end
+	if lov == nil then
+		lov = 0
+	end
+	if vyn == nil then
+		vyn = 0
+	end
+	if int == nil then
+		int = 0
+	end
+	if duh == nil then
+		duh = 0
 	end
 	if cast == nil then
 		cast = 0
