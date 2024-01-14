@@ -2957,6 +2957,7 @@ function bs()
 	local rpb = GetCombatRating(25)
 	local x,y = UnitAttackPower("player")
 	local attak = x+y
+	local str
 	if classUnit == "Жрец" or classUnit == "Жрица" then
 		local __,__,__,__,tma = GetTalentInfo(3, 27)
 		if tma >= 1 then
@@ -3041,8 +3042,227 @@ function bs()
 	if classUnit == "Маг" then
 		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
 	end
+
 	return string.format("%d",bs)
 end
+GameTooltip:HookScript("OnShow", function(self)
+	local classUnit = UnitClass("player")
+	local bs = 0
+	local bstemp
+	local sil = 0
+	local lov = 0
+	local vyn = 0
+	local int = 0
+	local duh = 0
+	local cast = 0
+	local hit = 0
+	local crit = 0
+	local mast = 0
+	local def = 0
+	local ukl = 0
+	local par = 0
+	local block = 0
+	local mana = 0
+	local rpb = 0
+	local attak = 0
+	--print("|cff00ff00------")
+	for i=1, self:NumLines() do
+		if _G["GameTooltipTextLeft"..i]:GetText():sub(1,1) == "+" then
+			bstemp = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+			if string.utf8sub(bstemp[3],1,3) == "вын" then
+				vyn = tonumber(bstemp[1]:sub(2))
+			end
+			if string.utf8sub(bstemp[3],1,3) == "лов" then
+				lov = tonumber(bstemp[1]:sub(2))
+			end
+			if string.utf8sub(bstemp[3],1,3) == "сил" then
+				sil = tonumber(bstemp[1]:sub(2))
+			end
+			if string.utf8sub(bstemp[3],1,3) == "инт" then
+				int = tonumber(bstemp[1]:sub(2))
+			end
+			if string.utf8sub(bstemp[3],1,3) == "дух" then
+				duh = tonumber(bstemp[1]:sub(2))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"атаки") then
+				attak = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"критического") then
+				crit = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"мастерства") then
+				mast = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"заклинаний") then
+				cast = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"меткости") then
+				hit = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"защиты") then
+				def = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"уклонения") then
+				ukl = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"парирования") then
+				par = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"блокирования") then
+				block = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"Восполнение") then
+				mana = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+				mana = tonumber(mana[5])
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"пробивания") then
+				rpb = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		--print(_G["GameTooltipTextLeft"..i]:GetText())
+	end
+	if attak == nil then
+		attak = 0
+	end
+	if cast == nil then
+		cast = 0
+	end
+	if hit == nil then
+		hit = 0
+	end
+	if crit == nil then
+		crit = 0
+	end
+	if mast == nil then
+		mast = 0
+	end
+	if def == nil then
+		def = 0
+	end
+	if ukl == nil then
+		ukl = 0
+	end
+	if par == nil then
+		par = 0
+	end
+	if block == nil then
+		block = 0
+	end
+	if mana == nil then
+		mana = 0
+	end
+	if rpb == nil then
+		rpb = 0
+	end
+	if classUnit == "Жрец" or classUnit == "Жрица" then
+		local __,__,__,__,tma = GetTalentInfo(3, 27)
+		if tma >= 1 then
+			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+		else
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+def
+		end
+	end
+	if classUnit == "Паладин" then
+		local __,__,__,__,xpal = GetTalentInfo(1, 26)
+		local __,__,__,__,ppal = GetTalentInfo(2, 26)
+		local __,__,__,__,rpal = GetTalentInfo(3, 26)
+		if xpal >= 1 then
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+		end
+		if ppal >= 1 then
+			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
+		end
+		if rpal >= 1 then
+			bs = (sil*2)+lov+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		end
+	end
+	if classUnit == "Воин" then
+		local __,__,__,__,pwar = GetTalentInfo(3, 7)
+		if pwar >= 1 then
+			bs = sil+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
+		else
+			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
+		end
+	end
+	if classUnit == "Друид" then
+		local __,__,__,__,rdru = GetTalentInfo(3, 27)
+		local __,__,__,__,pdru = GetTalentInfo(2, 5)
+		local __,__,__,__,sova = GetTalentInfo(1, 13)
+		local __,__,__,__,kot = GetTalentInfo(2, 9)
+		if rdru >= 1 then
+			bs = vyn+(int*2)+(duh*1.5)+(cast*2)+crit+mana+(def*0.5)
+		end
+		if pdru >= 1 then
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+rpb+attak
+		end
+		if sova >= 1 then
+			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+(def*0.5)
+		end
+		if kot >= 1 then
+			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		end
+	end
+	if classUnit == "Разбойник" or classUnit == "Разбойница" then
+		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+	end
+	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
+		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+	end
+	if classUnit == "Шаман" then
+		local __,__,__,__,elem = GetTalentInfo(1, 3)
+		local __,__,__,__,enh = GetTalentInfo(2, 9)
+		local __,__,__,__,rsham = GetTalentInfo(3, 1)
+		if elem >= 1 then
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+		end
+		if enh >= 1 then
+			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		end
+		if rsham >= 1 then
+			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+		end
+	end
+	if classUnit == "Охотник" or classUnit == "Охотница" then
+		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+	end
+	if classUnit == "Рыцарь смерти" then
+		local __,__,__,__,pwar = GetTalentInfo(1, 7)
+		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
+		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
+		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
+			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+(mast*1.5)+(def*1.5)+(ukl*1.5)+(par*1.5)+rpb+attak
+		else
+			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
+		end
+	end
+	if classUnit == "Маг" then
+		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+	end
+	GameTooltip:AddLine("|cff00BFFFбс: |cffFF8C00" .. bs)
+	GameTooltip:Show()
+end)
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
