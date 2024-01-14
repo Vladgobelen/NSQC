@@ -3070,35 +3070,80 @@ GameTooltip:HookScript("OnShow", function(self)
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "+" or string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "|"  then
 			bstemp = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
 			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "вын" then
-				vyn = tonumber(bstemp[1]:sub(2))
+				if vyn == 0 then
+					vyn = tonumber(string.utf8sub(bstemp[1],2))
+				end
 				if vyn == nil then
-					vyn = tonumber(bstemp[1]:sub(11))
+					vyn = tonumber(string.utf8sub(bstemp[1],11))
+				end
+				if vyn ~= 0 then
+					if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+					else
+						vyn = vyn + tonumber(bstemp[1]:sub(11))
+					end
 				end
 			end
 			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "лов" then
-				lov = tonumber(bstemp[1]:sub(2))
+				if lov == 0 then
+					lov = tonumber(string.utf8sub(bstemp[1],2))
+				end
 				if lov == nil then
-					lov = tonumber(bstemp[1]:sub(11))
+					lov = tonumber(string.utf8sub(bstemp[1],11))
+				end
+				if lov ~= 0 then
+					if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+					else
+						lov = lov + tonumber(bstemp[1]:sub(11))
+					end
 				end
 			end
 			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "сил" then
 				if bstemp[4] == nil then
-					sil = tonumber(bstemp[1]:sub(2))
+					if sil == 0 then
+						sil = tonumber(string.utf8sub(bstemp[1],2))
+					end
 					if sil == nil then
-						sil = tonumber(bstemp[1]:sub(11))
+						sil = tonumber(string.utf8sub(bstemp[1],11))
+					end
+					if sil ~= 0 then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							sil = sil + tonumber(bstemp[1]:sub(11))
+						end
 					end
 				end
 			end
 			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "инт" then
-				int = tonumber(bstemp[1]:sub(2))
+				if int == 0 then
+					int = tonumber(string.utf8sub(bstemp[1],2))
+				end
 				if int == nil then
-					int = tonumber(bstemp[1]:sub(11))
+					int = tonumber(string.utf8sub(bstemp[1],11))
+				end
+				if int ~= 0 then
+					if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+					else
+						int = int + tonumber(bstemp[1]:sub(11))
+					end
 				end
 			end
 			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "дух" then
-				duh = tonumber(bstemp[1]:sub(2))
+				if duh == 0 then
+					duh = tonumber(string.utf8sub(bstemp[1],2))
+				end
 				if duh == nil then
-					duh = tonumber(bstemp[1]:sub(11))
+					duh = tonumber(string.utf8sub(bstemp[1],11))
+				end
+				if duh ~= 0 then
+					if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+					else
+						duh = duh + tonumber(bstemp[1]:sub(11))
+					end
 				end
 			end
 			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ата" then
