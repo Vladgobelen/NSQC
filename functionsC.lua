@@ -2959,12 +2959,15 @@ function bs()
 	local sco = GetCombatRating(18)
 	local attak = x+y
 	local str
+	local khit = 0
 	if classUnit == "Жрец" or classUnit == "Жрица" then
 		local __,__,__,__,tma = GetTalentInfo(3, 27)
 		if tma >= 1 then
 			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
+			khit = hit .. "/" .. "446"
 		else
 			bs = int+(duh*1.5)+(cast*2)+crit+(mana*1.5)+sco
+			khit = hit .. "/" .. "0"
 		end
 	end
 	if classUnit == "Паладин" then
@@ -2973,20 +2976,25 @@ function bs()
 		local __,__,__,__,rpal = GetTalentInfo(3, 26)
 		if xpal >= 1 then
 			bs = (int*2)+duh+(cast*1.5)+crit+mana+(sco*1.5)
+			khit = hit .. "/" .. "0"
 		end
 		if ppal >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
+			khit = hit .. "/" .. "263"
 		end
 		if rpal >= 1 then
 			bs = (sil*2)+lov+hit+crit+attak+sco+mast
+			khit = hit .. "/" .. "263"
 		end
 	end
 	if classUnit == "Воин" then
 		local __,__,__,__,pwar = GetTalentInfo(3, 7)
 		if pwar >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
+			khit = hit .. "/" .. "263"
 		else
 			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
+			khit = hit .. "/" .. "263"
 		end
 	end
 	if classUnit == "Друид" then
@@ -2996,22 +3004,28 @@ function bs()
 		local __,__,__,__,kot = GetTalentInfo(2, 9)
 		if rdru >= 1 then
 			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)
+			khit = hit .. "/" .. "0"
 		end
 		if pdru >= 1 then
 			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+(rpb*1.5)
+			khit = hit .. "/" .. "263"
 		end
 		if sova >= 1 then
 			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
+			khit = hit .. "/" .. "263"
 		end
 		if kot >= 1 then
 			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
+			khit = hit .. "/" .. "263"
 		end
 	end
 	if classUnit == "Разбойник" or classUnit == "Разбойница" then
 		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco
+		khit = hit .. "/" .. "263" .. "/" .. "722"
 	end
 	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
 		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)
+		khit = hit .. "/" .. "446"
 	end
 	if classUnit == "Шаман" then
 		local __,__,__,__,elem = GetTalentInfo(1, 3)
@@ -3019,16 +3033,20 @@ function bs()
 		local __,__,__,__,rsham = GetTalentInfo(3, 1)
 		if elem >= 1 then
 			bs = int+(cast*2)+crit+hit+(sco*1.5)
+			khit = hit .. "/" .. "368"
 		end
 		if enh >= 1 then
 			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+(cast*0.5)
+			khit = hit .. "/" .. "386" .. "/" .. "689"
 		end
 		if rsham >= 1 then
 			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)
+			khit = hit .. "/" .. "0"
 		end
 	end
 	if classUnit == "Охотник" or classUnit == "Охотница" then
 		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco
+		khit = hit .. "/" .. "263"
 	end
 	if classUnit == "Рыцарь смерти" then
 		local __,__,__,__,pwar = GetTalentInfo(1, 7)
@@ -3036,15 +3054,17 @@ function bs()
 		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
 		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
+			khit = hit .. "/" .. "263"
 		else
 			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak
+			khit = hit .. "/" .. "263"
 		end
 	end
 	if classUnit == "Маг" then
 		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)
+		khit = hit .. "/" .. "446"
 	end
-
-	return string.format("%d",bs)
+	return string.format("%d",bs) .. " хит/кап " .. khit
 end
 GameTooltip:HookScript("OnShow", function(self)
 	local classUnit = UnitClass("player")
