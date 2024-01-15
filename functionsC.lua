@@ -2956,14 +2956,15 @@ function bs()
 	local mana = GetManaRegen()
 	local rpb = GetCombatRating(25)
 	local x,y = UnitAttackPower("player")
+	local sco = GetCombatRating(18)
 	local attak = x+y
 	local str
 	if classUnit == "Жрец" or classUnit == "Жрица" then
 		local __,__,__,__,tma = GetTalentInfo(3, 27)
 		if tma >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
 		else
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+def
+			bs = int+(duh*1.5)+(cast*2)+crit+(mana*1.5)+sco
 		end
 	end
 	if classUnit == "Паладин" then
@@ -2971,21 +2972,21 @@ function bs()
 		local __,__,__,__,ppal = GetTalentInfo(2, 26)
 		local __,__,__,__,rpal = GetTalentInfo(3, 26)
 		if xpal >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+			bs = (int*2)+duh+(cast*1.5)+crit+mana+(sco*1.5)
 		end
 		if ppal >= 1 then
-			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
 		end
 		if rpal >= 1 then
-			bs = (sil*2)+lov+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+			bs = (sil*2)+lov+hit+crit+attak+sco+mast
 		end
 	end
 	if classUnit == "Воин" then
 		local __,__,__,__,pwar = GetTalentInfo(3, 7)
 		if pwar >= 1 then
-			bs = sil+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
 		else
-			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
+			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
 		end
 	end
 	if classUnit == "Друид" then
@@ -2994,53 +2995,53 @@ function bs()
 		local __,__,__,__,sova = GetTalentInfo(1, 13)
 		local __,__,__,__,kot = GetTalentInfo(2, 9)
 		if rdru >= 1 then
-			bs = vyn+(int*2)+(duh*1.5)+(cast*2)+crit+mana+(def*0.5)
+			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)
 		end
 		if pdru >= 1 then
-			bs = sil+(lov*2)+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+rpb+attak
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+(rpb*1.5)
 		end
 		if sova >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+(def*0.5)
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
 		end
 		if kot >= 1 then
-			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
 		end
 	end
 	if classUnit == "Разбойник" or classUnit == "Разбойница" then
-		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco
 	end
 	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
-		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)
 	end
 	if classUnit == "Шаман" then
 		local __,__,__,__,elem = GetTalentInfo(1, 3)
 		local __,__,__,__,enh = GetTalentInfo(2, 9)
 		local __,__,__,__,rsham = GetTalentInfo(3, 1)
 		if elem >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+			bs = int+(cast*2)+crit+hit+(sco*1.5)
 		end
 		if enh >= 1 then
-			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+(cast*0.5)
 		end
 		if rsham >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)
 		end
 	end
 	if classUnit == "Охотник" or classUnit == "Охотница" then
-		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco
 	end
 	if classUnit == "Рыцарь смерти" then
 		local __,__,__,__,pwar = GetTalentInfo(1, 7)
 		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
 		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
 		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
-			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+(mast*1.5)+(def*1.5)+(ukl*1.5)+(par*1.5)+rpb+attak
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
 		else
-			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
+			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak
 		end
 	end
 	if classUnit == "Маг" then
-		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)
 	end
 
 	return string.format("%d",bs)
@@ -3065,6 +3066,19 @@ GameTooltip:HookScript("OnShow", function(self)
 	local mana = 0
 	local rpb = 0
 	local attak = 0
+	local sco = 0
+	local cast1 = 0
+	local hit1 = 0
+	local crit1 = 0
+	local mast1 = 0
+	local def1 = 0
+	local ukl1 = 0
+	local par1 = 0
+	local block1 = 0
+	local mana1 = 0
+	local rpb1 = 0
+	local attak1 = 0
+	local sco1 = 0
 	local ii
 	--print("|cff00ff00------")
 	for i=1, self:NumLines() do
@@ -3183,6 +3197,12 @@ GameTooltip:HookScript("OnShow", function(self)
 					hit = tonumber(bstemp[1]:sub(11))
 				end
 			end
+			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ско" then
+				hit = tonumber(bstemp[1]:sub(2))
+				if hit == nil then
+					hit = tonumber(bstemp[1]:sub(11))
+				end
+			end
 			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "защ" then
 				def = tonumber(bstemp[1]:sub(2))
 				if def == nil then
@@ -3216,58 +3236,63 @@ GameTooltip:HookScript("OnShow", function(self)
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"атаки") then
-				attak = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				attak1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"критического") then
-				crit = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				crit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"мастерства") then
-				mast = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				mast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"заклинаний") then
-				cast = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				cast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"меткости") then
-				hit = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				hit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+			end
+		end
+		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"скорости") then
+				sco1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"защиты") then
-				def = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				def1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"уклонения") then
-				ukl = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				ukl1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"парирования") then
-				par = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				par1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"блокирования") then
-				block = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				block1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"Восполнение") then
-				mana = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
-				mana = tonumber(mana[5])
+				mana1 = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+				mana1 = tonumber(mana1[5])
 			end
 		end
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
 			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"пробивания") then
-				rpb = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				rpb1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		--print(_G["GameTooltipTextLeft"..i]:GetText())
@@ -3320,12 +3345,45 @@ GameTooltip:HookScript("OnShow", function(self)
 	if rpb == nil then
 		rpb = 0
 	end
+	if attak1 == nil then
+		attak1 = 0
+	end
+	if cast1 == nil then
+		cast1 = 0
+	end
+	if hit1 == nil then
+		hit1 = 0
+	end
+	if crit1 == nil then
+		crit1 = 0
+	end
+	if mast1 == nil then
+		mast1 = 0
+	end
+	if def1 == nil then
+		def1 = 0
+	end
+	if ukl1 == nil then
+		ukl1 = 0
+	end
+	if par1 == nil then
+		par1 = 0
+	end
+	if block1 == nil then
+		block1 = 0
+	end
+	if mana1 == nil then
+		mana1 = 0
+	end
+	if rpb1 == nil then
+		rpb1 = 0
+	end
 	if classUnit == "Жрец" or classUnit == "Жрица" then
 		local __,__,__,__,tma = GetTalentInfo(3, 27)
 		if tma >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+			bs = int+(duh*0.5)+(cast*2)+(cast1*2)+hit+hit1+(crit*2)+(crit1*2)+(mana*0.5)+(mana1*0.5)+sco+sco1
 		else
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+def
+			bs = int+(duh*1.5)+(cast*2)+crit+(mana*1.5)+sco+(cast1*2)+crit1+(mana1*1.5)+sco1
 		end
 	end
 	if classUnit == "Паладин" then
@@ -3333,21 +3391,21 @@ GameTooltip:HookScript("OnShow", function(self)
 		local __,__,__,__,ppal = GetTalentInfo(2, 26)
 		local __,__,__,__,rpal = GetTalentInfo(3, 26)
 		if xpal >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+			bs = (int*2)+duh+(cast*1.5)+crit+mana+(sco*1.5)+(cast1*1.5)+crit1+mana1+(sco1*1.5)
 		end
 		if ppal >= 1 then
-			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)+(par1*1.5)+(block1*1.5)
 		end
 		if rpal >= 1 then
-			bs = (sil*2)+lov+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+			bs = (sil*2)+lov+hit+crit+attak+sco+mast+hit1+crit1+attak1+sco1+mast1
 		end
 	end
 	if classUnit == "Воин" then
 		local __,__,__,__,pwar = GetTalentInfo(3, 7)
 		if pwar >= 1 then
-			bs = sil+lov+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+rpb+attak
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)+(par1*1.5)+(block1*1.5)
 		else
-			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
+			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco+hit1+(crit1*1.5)+mast1+(rpb1*2)+attak1+sco1
 		end
 	end
 	if classUnit == "Друид" then
@@ -3356,53 +3414,53 @@ GameTooltip:HookScript("OnShow", function(self)
 		local __,__,__,__,sova = GetTalentInfo(1, 13)
 		local __,__,__,__,kot = GetTalentInfo(2, 9)
 		if rdru >= 1 then
-			bs = vyn+(int*2)+(duh*1.5)+(cast*2)+crit+mana+(def*0.5)
+			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)+(cast1*2)+(sco1*1.5)+crit1+(mana1*1.5)
 		end
 		if pdru >= 1 then
-			bs = sil+(lov*2)+(vyn*2)+hit+crit+mast+(def*1.5)+(ukl*1.5)+rpb+attak
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+(rpb*1.5)+hit1+crit1+(sco1*1.5)+mast1+(def1*1.5)+(ukl1*2)+(rpb1*1.5)
 		end
 		if sova >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+(def*0.5)
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco+(cast1*2)+hit1+(crit1*2)+(mana1*0.5)+sco1
 		end
 		if kot >= 1 then
-			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco+hit1+(crit1*1.5)+mast1+(rpb1*2)+attak1+sco1
 		end
 	end
 	if classUnit == "Разбойник" or classUnit == "Разбойница" then
-		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco+hit1+crit1+(rpb1*2)+mast1+attak1+sco1
 	end
 	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
-		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)+(cast1*2)+hit1+(crit1*1.5)+(mana1*0.5)+(sco1*1.5)
 	end
 	if classUnit == "Шаман" then
 		local __,__,__,__,elem = GetTalentInfo(1, 3)
 		local __,__,__,__,enh = GetTalentInfo(2, 9)
 		local __,__,__,__,rsham = GetTalentInfo(3, 1)
 		if elem >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+			bs = int+(cast*2)+crit+hit+(sco*1.5)(cast1*2)+crit1+hit1+(sco1*1.5)
 		end
 		if enh >= 1 then
-			bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+cast+hit1+(crit1*1.5)+rpb1+attak1+(sco1*1.5)+mast1+cast1
 		end
 		if rsham >= 1 then
-			bs = vyn+(int*2)+duh+(cast*2)+crit+mana+(def*0.5)
+			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)+(cast1*2)+crit1+(mana1*2)+(sco1*2)
 		end
 	end
 	if classUnit == "Охотник" or classUnit == "Охотница" then
-		bs = sil+(lov*2)+vyn+hit+crit+(rpb*2)+(def*0.5)+attak
+		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco+hit1+crit1+(rpb1*2)+attak1+sco1
 	end
 	if classUnit == "Рыцарь смерти" then
 		local __,__,__,__,pwar = GetTalentInfo(1, 7)
 		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
 		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
 		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
-			bs = (sil*1.5)+lov+(vyn*2)+hit+crit+(mast*1.5)+(def*1.5)+(ukl*1.5)+(par*1.5)+rpb+attak
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)
 		else
-			bs = (sil*2)+lov+vyn+hit+crit+mast+(def*0.5)+(rpb*2)+attak
+			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak+hit1+crit1+mast1+(rpb1*2)+attak1
 		end
 	end
 	if classUnit == "Маг" then
-		bs = vyn+(int*2)+duh+(cast*2)+hit+crit+mana+def
+		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)+(cast1*2)+hit1+(crit1*1.5)+(sco1*1.5)
 	end
 	GameTooltip:AddLine("|cff00BFFFбс: |cffFF8C00" .. bs)
 	GameTooltip:Show()

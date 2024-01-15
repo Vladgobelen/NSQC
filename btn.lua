@@ -1,4 +1,4 @@
-versAdd=303;versAddDop=11
+versAdd=303;versAddDop=13
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
