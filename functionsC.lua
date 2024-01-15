@@ -3065,6 +3065,7 @@ GameTooltip:HookScript("OnShow", function(self)
 	local mana = 0
 	local rpb = 0
 	local attak = 0
+	local ii
 	--print("|cff00ff00------")
 	for i=1, self:NumLines() do
 		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "+" or string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "|"  then
@@ -3075,14 +3076,16 @@ GameTooltip:HookScript("OnShow", function(self)
 				end
 				if vyn == nil then
 					vyn = tonumber(string.utf8sub(bstemp[1],11))
+					ii = i
 				end
-				if vyn ~= 0 then
+				if vyn ~= 0 and ii ~= i then
 					if tonumber(bstemp[1]:sub(2)) ~= nil then
 
 					else
 						vyn = vyn + tonumber(bstemp[1]:sub(11))
 					end
 				end
+
 			end
 			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "лов" then
 				if lov == 0 then
@@ -3090,8 +3093,9 @@ GameTooltip:HookScript("OnShow", function(self)
 				end
 				if lov == nil then
 					lov = tonumber(string.utf8sub(bstemp[1],11))
+					ii = i
 				end
-				if lov ~= 0 then
+				if lov ~= 0 and ii ~= i then
 					if tonumber(bstemp[1]:sub(2)) ~= nil then
 
 					else
@@ -3106,8 +3110,9 @@ GameTooltip:HookScript("OnShow", function(self)
 					end
 					if sil == nil then
 						sil = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
 					end
-					if sil ~= 0 then
+					if sil ~= 0 and ii ~= i then
 						if tonumber(bstemp[1]:sub(2)) ~= nil then
 
 						else
@@ -3122,8 +3127,9 @@ GameTooltip:HookScript("OnShow", function(self)
 				end
 				if int == nil then
 					int = tonumber(string.utf8sub(bstemp[1],11))
+					ii = i
 				end
-				if int ~= 0 then
+				if int ~= 0 and ii ~= i then
 					if tonumber(bstemp[1]:sub(2)) ~= nil then
 
 					else
@@ -3137,8 +3143,9 @@ GameTooltip:HookScript("OnShow", function(self)
 				end
 				if duh == nil then
 					duh = tonumber(string.utf8sub(bstemp[1],11))
+					ii = i
 				end
-				if duh ~= 0 then
+				if duh ~= 0 and ii ~= i then
 					if tonumber(bstemp[1]:sub(2)) ~= nil then
 
 					else
