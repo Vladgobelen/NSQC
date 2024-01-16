@@ -3025,7 +3025,7 @@ function bs()
 	end
 	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
 		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)
-		khit = hit .. "/" .. "446"
+		khit = hit .. "/" .. "290"
 	end
 	if classUnit == "Шаман" then
 		local __,__,__,__,elem = GetTalentInfo(1, 3)

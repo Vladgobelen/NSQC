@@ -1,4 +1,4 @@
-versAdd=304;versAddDop=1
+versAdd=304;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3884,7 +3884,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
+		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
 			if mioFld[nome]["объекты"][tostring(id)] == "t" then
 				if vybor[8] == nil or not vybor[8]:IsVisible() then
 					if testQ[myNome]["петы"] ~= nil then
@@ -3909,7 +3909,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
+		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
 			if mioFld[nome]["объекты"][tostring(id)] == "m" or mioFld[nome]["объекты"][tostring(id)] == "mx" or mioFld[nome]["объекты"][tostring(id)] == "hs" or mioFld[nome]["объекты"][tostring(id)] == "ms" or mioFld[nome]["объекты"][tostring(id)] == "uz" or mioFld[nome]["объекты"][tostring(id)] == "zs" or mioFld[nome]["объекты"][tostring(id)] == "zx" or mioFld[nome]["объекты"][tostring(id)] == "skc" or mioFld[nome]["объекты"][tostring(id)] == "sx" or mioFld[nome]["объекты"][tostring(id)] == "zp" or mioFld[nome]["объекты"][tostring(id)] == "bc" then
 				if vybor[8] == nil or not vybor[8]:IsVisible() then
 					if testQ[myNome]["петы"] ~= nil then
@@ -8262,10 +8262,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 			if nome == testQ["b0Nome"] then
 				for i = 1, 100 do
-					dBtn[i]:Show()
+					if mioFld ~= nil then
+						if mioFld[testQ["b0Nome"]] ~= nil then
+							if mioFld[testQ["b0Nome"]]["taverna"] ~= nil then
 
-					dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["b0Nome"]]["taverna"][tostring(i)] ..".tga")
-					dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["b0Nome"]]["taverna"][tostring(i)] ..".tga")
+								dBtn[i]:Show()
+
+								dBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["b0Nome"]]["taverna"][tostring(i)] ..".tga")
+								dBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["b0Nome"]]["taverna"][tostring(i)] ..".tga")
+							end
+						end
+					end
 				end
 			end
 			testQ["b0Show"] = nil
