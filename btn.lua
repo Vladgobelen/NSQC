@@ -1,4 +1,4 @@
-versAdd=304;versAddDop=4
+versAdd=304;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4585,49 +4585,26 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
 					if testQ[myNome]["hTimer"] ~= nil then
 						if testQ[myNome]["взятый_квест_t"] == nil then
-							if testQ[myNome]["взятый_квест_t"] == nil or testQ[myNome]["взятый_квест_t"] == "9999" then
-								local qq
-								while true do
-									qq=math.random(1,#pQuest["items"])
-									if tostring(pQuest["items"][qq]["itemName"]) == "Ткань Пустоты" then
-									print(tostring(pQuest["items"][qq]["itemName"]))
-										testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
-										testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
-										testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
-										break
-									end
-								end
-								testQ["okno"] = "itemQ"
-								testQ["itemQVzyat"] = 1
-								quesT("show")
-								okNo:configure(1,"show")
-								rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
-								for i=1,100 do
-									fBtn[i]:Hide()
-								end
-								for i = 1, 100 do
-									if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
-										if resursy[i] ~= nil then
-											if i == 5 then
-												if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
-												end
-											else
-												resursy[i]:Hide()
-											end
+							if testQ[myNome]["взятый_квест_t"] == nil or testQ[myNome]["взятый_квест_t"] ~= "9999" then
+								if testQ[myNome]["itemQend"] ~= 1 then
+									local qq
+									while true do
+										qq=math.random(1,#pQuest["items"])
+										if tostring(pQuest["items"][qq]["itemName"]) == "Ткань Пустоты" then
+										print(tostring(pQuest["items"][qq]["itemName"]))
+											testQ[myNome]["itemName"]=tostring(pQuest["items"][qq]["itemName"])
+											testQ[myNome]["itemNum"]=tonumber(pQuest["items"][qq]["itemNum"])
+											testQ[myNome]["itemEnStuck"]=tonumber(pQuest["items"][qq]["itemEnStuck"])
+											break
 										end
 									end
-								end
-								btn[989]:Hide()
-								btn[989]:ClearAllPoints()
-								btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
-							else
-								if testQ[myNome]["itemQend"] ~= 1 then
 									testQ["okno"] = "itemQ"
+									testQ["itemQVzyat"] = 1
 									quesT("show")
 									okNo:configure(1,"show")
 									rtnTextF("Нужно прислать Вождю " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"],1,"show")
 									for i=1,100 do
-										dBtn[i]:Hide()
+										fBtn[i]:Hide()
 									end
 									for i = 1, 100 do
 										if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
@@ -4667,6 +4644,12 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 									btn[989]:Hide()
 									btn[989]:ClearAllPoints()
 									btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+								end
+							else
+								if testQ[myNome]["взятый_квест_t"] ~= nil then
+
+								else
+
 								end
 							end
 						else

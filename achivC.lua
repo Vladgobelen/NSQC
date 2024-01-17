@@ -1248,7 +1248,9 @@ if kodMsg[1] == "travA" then
 			end
 			if mioFld[message]["объекты"] ~= nil then
 				mioFld[message]["объекты"][tostring(kodMsg[2])] = "f"
-				mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
+				if mioFld[message]["целостность"] ~= nil then
+					mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
+				end
 				testQ["fRand4"] = 1
 				testQ["fRand4Nome"] = message
 			end
