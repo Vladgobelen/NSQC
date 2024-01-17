@@ -1,4 +1,4 @@
-versAdd=304;versAddDop=3
+versAdd=304;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7112,7 +7112,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		timeElapsed = 0
 		if testQ["zarplatab"] ~= nil then
 			for i = 1, 100 do
-				if mioFld == nil then
+				if mioFld ~= nil then
 					if mioFld[myNome] ~= nil then
 						if mioFld[myNome]["петы"] ~= nil then
 							if mioFld[myNome]["объекты"][tostring(i)] == "t" and mioFld[myNome]["петы"][tostring(i)] == "bb" then
