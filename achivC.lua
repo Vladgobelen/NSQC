@@ -85,6 +85,23 @@ if kodMsg[1] == "#domtv" and msg[1] == myNome then
 		end
 	end
 end
+if kodMsg[1] == "#munusItem" and message == myNome then
+	krt["podskazki"] = tonumber(krt["podskazki"]) - 1
+	testQ["kamen"] = tonumber(testQ["kamen"]) - 1
+	testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+	testQ["brevna"] = tonumber(testQ["brevna"]) - 1
+	testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
+	testQ["stog"] = tonumber(testQ["stog"]) - 1
+	testQ["nikQF"] = antc(tonumber(testQ["stog"]))
+	testQ["beton"] = tonumber(testQ["beton"]) - 1
+	testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
+	testQ["smg"] = tonumber(testQ["smg"]) - 1
+	testQ["nikQS"] = antc(testQ["smg"])
+	testQ["doska"] = tonumber(testQ["doska"]) - 1
+	testQ["nikQD"] = antc(testQ["doska"])
+	testQ["kirpich"] = tonumber(testQ["kirpich"]) - 1
+	testQ["nikQKR"] = antc(testQ["kirpich"])
+end
 if kodMsg[1] == "#dommf" and msg[1] == myNome then
 	if mioFld == nil then
 		mioFld = {}

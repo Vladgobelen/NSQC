@@ -111,6 +111,9 @@ for i = 1, #testQ["chs"] do
 		end
 	end
 end
+if string.find(message, "право пользования каналами и почтой временно приостановлено до завершения рассмотрения запроса") then
+	SendAddonMessage("#hQ2itemQ ", "1", "guild")
+end
 end
 )
 local GC_Sniffer = CreateFrame("Frame")
