@@ -2980,21 +2980,21 @@ function bs()
 		end
 		if ppal >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/185"
 		end
 		if rpal >= 1 then
 			bs = (sil*2)+lov+hit+crit+attak+sco+mast
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/148"
 		end
 	end
 	if classUnit == "Воин" then
 		local __,__,__,__,pwar = GetTalentInfo(3, 7)
 		if pwar >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/164"
 		else
 			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/164"
 		end
 	end
 	if classUnit == "Друид" then
@@ -3008,7 +3008,7 @@ function bs()
 		end
 		if pdru >= 1 then
 			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+(rpb*1.5)
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132"
 		end
 		if sova >= 1 then
 			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
@@ -3016,12 +3016,12 @@ function bs()
 		end
 		if kot >= 1 then
 			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132"
 		end
 	end
 	if classUnit == "Разбойник" or classUnit == "Разбойница" then
 		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco
-		khit = hit .. "/" .. "263" .. "/" .. "722"
+		khit = hit .. "/" .. "263" .. "/" .. "722" .. " маст./кап: " .. mast .. "/132"
 	end
 	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
 		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)
@@ -3037,7 +3037,7 @@ function bs()
 		end
 		if enh >= 1 then
 			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+(cast*0.5)
-			khit = hit .. "/" .. "386" .. "/" .. "689"
+			khit = hit .. "/" .. "386" .. "/" .. "689"  .. " маст./кап: " .. mast .. "/140"
 		end
 		if rsham >= 1 then
 			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)
@@ -3054,17 +3054,17 @@ function bs()
 		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
 		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170"
 		else
 			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak
-			khit = hit .. "/" .. "263"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170"
 		end
 	end
 	if classUnit == "Маг" then
 		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)
 		khit = hit .. "/" .. "446"
 	end
-	return string.format("%d",bs) .. " хит/кап " .. khit
+	return string.format("%d",bs) .. " хит/кап: " .. khit
 end
 GameTooltip:HookScript("OnShow", function(self)
 	local classUnit = UnitClass("player")
