@@ -45,6 +45,7 @@ libs\zc.tga
 libs\yi.tga
 libs\auc.tga
 libs\doska.tga
+libs\ba.tga
 libs\bt.tga
 libs\ko.tga
 libs\bt.ogg

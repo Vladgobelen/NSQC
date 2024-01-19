@@ -3398,6 +3398,12 @@ GameTooltip:HookScript("OnShow", function(self)
 	if rpb1 == nil then
 		rpb1 = 0
 	end
+	if sco1 == nil then
+		sco1 = 0
+	end
+	if sco == nil then
+		sco = 0
+	end
 	if classUnit == "Жрец" or classUnit == "Жрица" then
 		local __,__,__,__,tma = GetTalentInfo(3, 27)
 		if tma >= 1 then

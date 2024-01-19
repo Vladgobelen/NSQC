@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=0
+versAdd=305;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -585,6 +585,21 @@ function vybor:configure(id)
 				vybor[20]:Show()
 			end
 		end
+		if id == 33 then
+			if vybor[33] ~= nil then
+				vybor[33]:Show()
+			end
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Добавить армирование в бетон")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Серьезно?! Деревяшкой?")
+			if testQ["doska"] >= 1 and testQ["smg"] >= 1 then
+				GameTooltip:AddLine("|cffFFCF40Стоимость: 1 самогона, 1 доска")
+			else
+				GameTooltip:AddLine("|cffFF0000Стоимость: 1 самогона, 1 доска")
+			end
+			GameTooltip:Show()
+		end
 		if id == 18 then
 			if vybor[18] ~= nil then
 				vybor[18]:Show()
@@ -1121,6 +1136,12 @@ function vybor:configure(id)
 		GameTooltip:Show()
 	end)
 	vybor[id]:SetScript("OnClick",function(self)
+	local nome
+	if testQ['sign'] ~= "1" then
+		nome = GuildFrame["selectedName"]
+	else
+		nome = myNome
+	end
 		if id == 27 then
 			if testQ["brevna"] >= 30 and testQ["stog"] >= 15 and testQ["smg"] >= 10 and testQ["stanok"] >= 1 then
 				if nome == myNome then
@@ -1177,6 +1198,30 @@ function vybor:configure(id)
 									vybor[i]:Hide()
 								end
 							end
+						end
+					end
+				end
+			end
+		end
+		if id == 33 then
+			if testQ["doska"] >= 1 and testQ["smg"] >= 1 then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ba.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ba.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("dB " .. testQ["idp"] .. " " .. mioFld[nome]["целостность"][tostring(testQ["idp"])], nome, "guild")
+					testQ["doska"] = tonumber(testQ["doska"]) - 1
+					testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					testQ["temp"] = nil
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
 						end
 					end
 				end
@@ -1389,6 +1434,7 @@ function vybor:configure(id)
 					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 					testQ["smg"] = tonumber(testQ["smg"]) - 3
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 					testQ["temp"] = nil
@@ -4020,19 +4066,39 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
-		if mioFld[nome]["объекты"][tostring(id)] == "bn" then
-			if testQ["lom"] ~= nil and testQ["lom"] >= 1 then
-				vybor:configure(32)
-				local x = math.random(-100,100)
-				local x1 = math.random(-100,100)
-				vybor[32]:SetPoint("CENTER", fBtn[id],"CENTER",x,x1)
-				vybor[32]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
-				vybor[32]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
-				vybor[32]:Show()
-				if testQ ~= nil then
-					testQ["idp"] = id
-					testQ["icon"] = "lom"
-					testQ["picon"] = "bn"
+		if testQ["logConfig"] == 1 then
+			if mioFld[nome]["объекты"][tostring(id)] == "bn" then
+				if testQ["lom"] ~= nil and testQ["lom"] >= 1 then
+					vybor:configure(32)
+					local x = math.random(-100,100)
+					local x1 = math.random(-100,100)
+					vybor[32]:SetPoint("CENTER", fBtn[id],"CENTER",x,x1)
+					vybor[32]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
+					vybor[32]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
+					vybor[32]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "lom"
+						testQ["picon"] = "bn"
+					end
+				end
+			end
+		end
+		if testQ["doskaConfig"] == 1 then
+			if mioFld[nome]["объекты"][tostring(id)] == "bn" and mioFld[nome]["целостность"][tostring(id)] <= -1 then
+				if testQ["doska"] ~= nil and testQ["doska"] >= 1 then
+					vybor:configure(33)
+					local x = math.random(-100,100)
+					local x1 = math.random(-100,100)
+					vybor[33]:SetPoint("CENTER", fBtn[id],"CENTER",x,x1)
+					vybor[33]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\doska.tga")
+					vybor[33]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\doska.tga")
+					vybor[33]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "doska"
+						testQ["picon"] = "bn"
+					end
 				end
 			end
 		end
@@ -5161,169 +5227,193 @@ function mBtn:configure(id)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
 		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
 	end
+	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown")
+
 	self[id]:SetScript("OnClick",function(self)
-		if tonumber(testQ["smg"]) >= 1 then
-			if id == 1 then
-				local x = math.random(1,10)
-				testQ["smg"] = tonumber(testQ["smg"]) - 1
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				testQ["brevna"] = tonumber(testQ["brevna"]) + x
-				testQ["nikQB"] = antc(testQ["brevna"])
-				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-				dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
-				print("Получено: " .. x .. " бревен")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+		if arg1 == "LeftButton" then
+			if tonumber(testQ["smg"]) >= 1 then
+				if id == 1 then
+					local x = math.random(1,10)
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["brevna"] = tonumber(testQ["brevna"]) + x
+					testQ["nikQB"] = antc(testQ["brevna"])
+					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+					dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
+					print("Получено: " .. x .. " бревен")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 2 then
+					local x = math.random(1,10)
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["stog"] = tonumber(testQ["stog"]) + x
+					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
+					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+					dmgText2(testQ["stog"],mBtn[2],802,13,"FF8C00")
+					print("Получено: " .. x .. " травы")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 3 then
+					local x = math.random(1,10)
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["kamen"] = tonumber(testQ["kamen"]) + x
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					dmgText2(testQ["kamen"],mBtn[3],803,13,"FF8C00")
+					print("Получено: " .. x .. " камня")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 4 then
+					local x = math.random(1,10)
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["beton"] = tonumber(testQ["beton"]) + x
+					testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
+					dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+					dmgText2(string.format("%d", tonumber(testQ["beton"])),mBtn[4],804,13,"FF8C00")
+					print("Получено: " .. x .. " бетона")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 8 then
+					local x = math.random(1,5)
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["kirpich"] = tonumber(testQ["kirpich"]) + x
+					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
+					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+					dmgText2(string.format("%d", tonumber(testQ["kirpich"])),mBtn[8],808,13,"FF8C00")
+					print("Получено: " .. x .. " кирпичей")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 11 then
+					local x = math.random(1,5)
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["doska"] = tonumber(testQ["doska"]) + x
+					testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+					dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
+					dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+					print("Получено досок: " .. x)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 13 then
+					local x = math.random(1,100)
+					testQ["smg"] = tonumber(testQ["smg"]) - 1
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					if testQ["lom"] == nil then
+						testQ["lom"] = x
+					else
+						testQ["lom"] = tonumber(testQ["lom"]) + x
+					end
+					dmgText2(testQ["lom"],mBtn[13],813,13,"FF8C00")
+					print("Прочность лома: " .. testQ["lom"])
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
 			end
-			if id == 2 then
-				local x = math.random(1,10)
-				testQ["smg"] = tonumber(testQ["smg"]) - 1
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				testQ["stog"] = tonumber(testQ["stog"]) + x
-				testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-				dmgText2(testQ["stog"],mBtn[2],802,13,"FF8C00")
-				print("Получено: " .. x .. " травы")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			if tonumber(testQ["smg"]) >= 10 then
+				if id == 5 then
+					testQ[myNome]["петы"]["bb"] = 1
+					testQ["smg"] = tonumber(testQ["smg"]) - 10
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText2(testQ[myNome]["петы"]["bb"],mBtn[5],805,13,"FF8C00")
+					print("Получен: бобер")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
 			end
-			if id == 3 then
-				local x = math.random(1,10)
-				testQ["smg"] = tonumber(testQ["smg"]) - 1
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				testQ["kamen"] = tonumber(testQ["kamen"]) + x
-				testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
-				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-				dmgText2(testQ["kamen"],mBtn[3],803,13,"FF8C00")
-				print("Получено: " .. x .. " камня")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			if tonumber(testQ["smg"]) >= 10 then
+				if id == 9 then
+					testQ["yi"] = tonumber(testQ["yi"])+1
+					testQ["smg"] = tonumber(testQ["smg"]) - 10
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
+					print("Получен: Ящик с инструментами")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 12 then
+					testQ["b0"] = tonumber(testQ["b0"])+1
+					testQ["smg"] = tonumber(testQ["smg"]) - 10
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
+					print("Полученf: Барная стойка")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
 			end
-			if id == 4 then
-				local x = math.random(1,10)
-				testQ["smg"] = tonumber(testQ["smg"]) - 1
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				testQ["beton"] = tonumber(testQ["beton"]) + x
-				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
-				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
-				dmgText2(string.format("%d", tonumber(testQ["beton"])),mBtn[4],804,13,"FF8C00")
-				print("Получено: " .. x .. " бетона")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			if tonumber(testQ["smg"]) >= 30 then
+				if id == 10 then
+					testQ["stanok"] = tonumber(testQ["stanok"])+1
+					testQ["smg"] = tonumber(testQ["smg"]) - 30
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["stanok"] = tonumber(testQ["stanok"])+1
+					print("Получен: Распиловочный станок")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
 			end
-			if id == 8 then
-				local x = math.random(1,5)
-				testQ["smg"] = tonumber(testQ["smg"]) - 1
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				testQ["kirpich"] = tonumber(testQ["kirpich"]) + x
-				testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
-				dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
-				dmgText2(string.format("%d", tonumber(testQ["kirpich"])),mBtn[8],808,13,"FF8C00")
-				print("Получено: " .. x .. " кирпичей")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+			if tonumber(testQ["smg"]) >= 50 then
+				if id == 6 then
+					testQ[myNome]["петы"]["gg"] = "gob"
+					if testQ[myNome]["петы"]["gg"] == "gob" then
+						gobT = 1
+						dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+					else
+						gobT = 0
+						dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+					end
+					if testQ[myNome]["петы"]["gg"] == "gom" then
+						gomT = 1
+						dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+					else
+						gomT = 0
+						dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+					end
+					testQ["smg"] = tonumber(testQ["smg"]) - 50
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					print("Получен: гоблин")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
+				if id == 7 then
+					testQ[myNome]["петы"]["gg"] = "gom"
+					if testQ[myNome]["петы"]["gg"] == "gom" then
+						gomT = 1
+						dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+					else
+						gomT = 0
+						dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+					end
+					if testQ[myNome]["петы"]["gg"] == "gob" then
+						gobT = 1
+						dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+					else
+						gobT = 0
+						dmgText2(gobT,mBtn[6],806,13,"FF8C00")
+					end
+					testQ["smg"] = tonumber(testQ["smg"]) - 50
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
+					print("Получен: гном")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
 			end
+		end
+		if arg1 == "RightButton" then
 			if id == 11 then
-				local x = math.random(1,5)
-				testQ["smg"] = tonumber(testQ["smg"]) - 1
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				testQ["doska"] = tonumber(testQ["doska"]) + x
-				testQ["nikQD"] = antc(tonumber(testQ["doska"]))
-				dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
-				dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
-				print("Получено досок: " .. x)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				if testQ["doskaConfig"] == nil then
+					testQ["doskaConfig"] = 1
+					print("Доска активирована")
+				else
+					testQ["doskaConfig"] = nil
+					print("Доска отключена")
+				end
 			end
 			if id == 13 then
-				local x = math.random(1,100)
-				testQ["smg"] = tonumber(testQ["smg"]) - 1
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				if testQ["lom"] == nil then
-					testQ["lom"] = x
+				if testQ["logConfig"] == nil then
+					testQ["logConfig"] = 1
+					print("Лом активирован")
 				else
-					testQ["lom"] = tonumber(testQ["lom"]) + x
+					testQ["logConfig"] = nil
+					print("Лом отключен")
 				end
-				dmgText2(testQ["lom"],mBtn[13],813,13,"FF8C00")
-				print("Прочность лома: " .. testQ["lom"])
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
-			end
-		end
-		if tonumber(testQ["smg"]) >= 10 then
-			if id == 5 then
-				testQ[myNome]["петы"]["bb"] = 1
-				testQ["smg"] = tonumber(testQ["smg"]) - 10
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				dmgText2(testQ[myNome]["петы"]["bb"],mBtn[5],805,13,"FF8C00")
-				print("Получен: бобер")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
-			end
-		end
-		if tonumber(testQ["smg"]) >= 10 then
-			if id == 9 then
-				testQ["yi"] = tonumber(testQ["yi"])+1
-				testQ["smg"] = tonumber(testQ["smg"]) - 10
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
-				print("Получен: Ящик с инструментами")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
-			end
-			if id == 12 then
-				testQ["b0"] = tonumber(testQ["b0"])+1
-				testQ["smg"] = tonumber(testQ["smg"]) - 10
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
-				print("Полученf: Барная стойка")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
-			end
-		end
-		if tonumber(testQ["smg"]) >= 30 then
-			if id == 10 then
-				testQ["stanok"] = tonumber(testQ["stanok"])+1
-				testQ["smg"] = tonumber(testQ["smg"]) - 30
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				testQ["stanok"] = tonumber(testQ["stanok"])+1
-				print("Получен: Распиловочный станок")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
-			end
-		end
-		if tonumber(testQ["smg"]) >= 50 then
-			if id == 6 then
-				testQ[myNome]["петы"]["gg"] = "gob"
-				if testQ[myNome]["петы"]["gg"] == "gob" then
-					gobT = 1
-					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
-				else
-					gobT = 0
-					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
-				end
-				if testQ[myNome]["петы"]["gg"] == "gom" then
-					gomT = 1
-					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
-				else
-					gomT = 0
-					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
-				end
-				testQ["smg"] = tonumber(testQ["smg"]) - 50
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				print("Получен: гоблин")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
-			end
-			if id == 7 then
-				testQ[myNome]["петы"]["gg"] = "gom"
-				if testQ[myNome]["петы"]["gg"] == "gom" then
-					gomT = 1
-					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
-				else
-					gomT = 0
-					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
-				end
-				if testQ[myNome]["петы"]["gg"] == "gob" then
-					gobT = 1
-					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
-				else
-					gobT = 0
-					dmgText2(gobT,mBtn[6],806,13,"FF8C00")
-				end
-				testQ["smg"] = tonumber(testQ["smg"]) - 50
-				testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-				dmgText2(gomT,mBtn[7],807,13,"FF8C00")
-				print("Получен: гном")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 			end
 		end
 	end)
@@ -7600,6 +7690,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				if mioFld[myNome] ~= nil then
 					if mioFld[myNome]["объекты"] ~= nil then
 						if mioFld[myNome]["объекты"][tostring(i)] == "bn" and tonumber(mioFld[myNome]["целостность"][tostring(i)]) < 999 then
+							mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
+							if fBtn[i]:IsVisible() and nome == myNome then
+								dmgText(mioFld[myNome]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(i)] == "ba" and tonumber(mioFld[myNome]["целостность"][tostring(i)]) < 999 then
 							mioFld[myNome]["целостность"][tostring(i)] = tonumber(mioFld[myNome]["целостность"][tostring(i)])+1
 							if fBtn[i]:IsVisible() and nome == myNome then
 								dmgText(mioFld[myNome]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")

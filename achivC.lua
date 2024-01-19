@@ -2057,6 +2057,22 @@ if kodMsg[1] == "lP" then
 		end
 	end
 end
+if kodMsg[1] == "dB" then
+	if mioFld ~= nil then
+		if mioFld[message] ~= nil then
+			if mioFld[message]["подсказки"] == nil then
+				mioFld[message]["подсказки"] = {}
+			end
+			if mioFld[message]["целостность"] == nil then
+				mioFld[message]["целостность"] = {}
+			end
+			mioFld[message]["объекты"][tostring(kodMsg[2])] = "ba"
+			mioFld[message]["целостность"][tostring(kodMsg[2])] = kodMsg[3]
+			testQ["fRand4"] = 1
+			testQ["fRand4Nome"] = message
+		end
+	end
+end
 if kodMsg[1] == "oB" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
