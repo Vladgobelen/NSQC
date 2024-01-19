@@ -2994,7 +2994,7 @@ function bs()
 			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/164"
 		else
 			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
-			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/164"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/164" .. " рпб/кап: " .. rpb .. "/1400"
 		end
 	end
 	if classUnit == "Друид" then
@@ -3008,7 +3008,7 @@ function bs()
 		end
 		if pdru >= 1 then
 			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+(rpb*1.5)
-			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/??"
 		end
 		if sova >= 1 then
 			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
@@ -3016,12 +3016,12 @@ function bs()
 		end
 		if kot >= 1 then
 			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
-			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/1400"
 		end
 	end
 	if classUnit == "Разбойник" or classUnit == "Разбойница" then
 		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco
-		khit = hit .. "/" .. "263" .. "/" .. "722" .. " маст./кап: " .. mast .. "/132"
+		khit = hit .. "/" .. "263" .. "/" .. "722" .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/1400"
 	end
 	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
 		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)
@@ -3046,7 +3046,7 @@ function bs()
 	end
 	if classUnit == "Охотник" or classUnit == "Охотница" then
 		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco
-		khit = hit .. "/" .. "263"
+		khit = hit .. "/" .. "263" .. " рпб/кап: " .. rpb .. "/1400"
 	end
 	if classUnit == "Рыцарь смерти" then
 		local __,__,__,__,pwar = GetTalentInfo(1, 7)
@@ -3057,7 +3057,7 @@ function bs()
 			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170"
 		else
 			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak
-			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170" .. " рпб/кап: " .. rpb .. "/1400"
 		end
 	end
 	if classUnit == "Маг" then
