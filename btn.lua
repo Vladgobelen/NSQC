@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=4
+versAdd=305;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4085,7 +4085,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if testQ["doskaConfig"] == 1 then
-			if mioFld[nome]["объекты"][tostring(id)] == "bn" and mioFld[nome]["целостность"][tostring(id)] <= -1 then
+			if mioFld[nome]["объекты"][tostring(id)] == "bn" and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= -1 then
 				if testQ["doska"] ~= nil and testQ["doska"] >= 1 then
 					vybor:configure(33)
 					local x = math.random(-100,100)
@@ -5227,6 +5227,11 @@ function mBtn:configure(id)
 		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
 		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lom.tga")
 	end
+	if id == 14 then
+		self[id]:SetPoint("TOPLEFT", mgznText[1],"TOPLEFT",64, -352)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\lb.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\lb.tga")
+	end
 	self[id]:RegisterForClicks("RightButtonDown", "LeftButtonDown")
 
 	self[id]:SetScript("OnClick",function(self)
@@ -5339,6 +5344,15 @@ function mBtn:configure(id)
 					print("Полученf: Барная стойка")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 				end
+				if id == 14 then
+					testQ[myNome]["лотерея"] = tonumber(testQ[myNome]["лотерея"]) + 3
+					dmgText2(testQ[myNome]["лотерея"],mBtn[14],814,14,"FF8C00")
+					testQ["smg"] = tonumber(testQ["smg"]) - 10
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
+					print("Получен: лотерейный билет")
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
+				end
 			end
 			if tonumber(testQ["smg"]) >= 30 then
 				if id == 10 then
@@ -5449,7 +5463,19 @@ function mBtn:configure(id)
 				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF1 бутылка")
 			end
 		end
-
+		if tonumber(testQ["smg"]) < 10 then
+			if id == 14 then
+				GameTooltip:AddLine("|cff99ff99Купить лотерейный билет:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cffff000010 бутылок")
+			end
+		else
+			if id == 14 then
+				GameTooltip:AddLine("|cff99ff99Купить лотерейный билет:")
+				GameTooltip:AddLine(" ")
+				GameTooltip:AddLine("|cff99ff99Стоимость: |cff00BFFF10 бутылок")
+			end
+		end
 		if tonumber(testQ["smg"]) < 1 then
 			if id == 1 then
 				GameTooltip:AddLine("|cff99ff99Купить бревна:")
@@ -5814,11 +5840,17 @@ function resursy:configure(id)
 				else
 					mBtn[13]:Show()
 				end
+				if mBtn[14] == nil then
+					mBtn:configure(14)
+				else
+					mBtn[14]:Show()
+				end
 				dmgText2(testQ["lom"],mBtn[13],813,13,"FF8C00")
 				dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
 				dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
 				dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
 				dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
+				dmgText2(testQ[myNome]["лотерея"],mBtn[14],814,14,"FF8C00")
 				btn[989]:Hide()
 			else
 				magazin("hide")
