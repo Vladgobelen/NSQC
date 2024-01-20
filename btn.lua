@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=5
+versAdd=305;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3066,6 +3066,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								end
 							end
 							if testQ[myNome]["hTimer"] == nil then
+								testQ["hEnd"] = nil
 								if lvlTest ~= nil then
 									if testQ[myNome]["взятый_квест_х"] == nil or testQ[myNome]["взятый_квест_х"] == "9999" then
 										local iii = 0
@@ -3074,6 +3075,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											if testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] == nil or testQ[myNome]["выполненные_квесты_х"][tostring(pQuest["х"][x])] ~= "9999" then
 												if iii == tonumber(#pQuest["х"]) then
 													SendChatMessage("В хижине больше нет заданий...", "OFFICER", nil, 1)
+													testQ["hEnd"] = 1
 													break
 												end
 												local id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuild, wasEarnedByMe, earnedBy, isStatistic = GetAchievementInfo(tonumber(pQuest["х"][x]))
@@ -3109,7 +3111,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 										end
 									end
 								end
-								htimer(myNome)
+								if testQ["hEnd"] ~= 1 then
+									htimer(myNome)
+								end
+								testQ["hEnd"] = nil
 							end
 						else
 							if lvlTest ~= nil then
