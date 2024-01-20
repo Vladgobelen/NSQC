@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=3
+versAdd=305;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7378,19 +7378,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												if testQ["gom"] == nil then
 													xx = math.random(1,4)
 													if xx == 1 then
-														testQ["brevna"] = tonumber(testQ["brevna"])-50
+														testQ["brevna"] = tonumber(testQ["brevna"])-5
 														testQ["nikQB"] = antc(testQ["brevna"])
 													end
 													if xx == 2 then
-														testQ["stog"] = tonumber(testQ["stog"])-50
+														testQ["stog"] = tonumber(testQ["stog"])-5
 														testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 													end
 													if xx == 3 then
-														testQ["kamen"] = tonumber(testQ["kamen"])-50
+														testQ["kamen"] = tonumber(testQ["kamen"])-5
 														testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 													end
 													if xx == 4 then
-														testQ["beton"] = tonumber(testQ["beton"])-50
+														testQ["beton"] = tonumber(testQ["beton"])-5
 														testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 													end
 												end
@@ -7398,19 +7398,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												if testQ["gom"] == nil then
 													xx = math.random(1,4)
 													if xx == 1 then
-														testQ["brevna"] = 0
+														testQ["brevna"] = -2
 														testQ["nikQB"] = antc(testQ["brevna"])
 													end
 													if xx == 2 then
-														testQ["stog"] = 0
+														testQ["stog"] = -2
 														testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 													end
 													if xx == 3 then
-														testQ["kamen"] = 0
+														testQ["kamen"] = -2
 														testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 													end
 													if xx == 4 then
-														testQ["beton"] = 0
+														testQ["beton"] = -2
 														testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 													end
 												end
@@ -7418,19 +7418,19 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 												if testQ["gom"] == nil then
 													xx = math.random(1,4)
 													if xx == 1 then
-														testQ["brevna"] = tonumber(testQ["brevna"])-10
+														testQ["brevna"] = tonumber(testQ["brevna"])-1
 														testQ["nikQB"] = antc(testQ["brevna"])
 													end
 													if xx == 2 then
-														testQ["stog"] = tonumber(testQ["stog"])-10
+														testQ["stog"] = tonumber(testQ["stog"])-1
 														testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 													end
 													if xx == 3 then
-														testQ["kamen"] = tonumber(testQ["kamen"])-10
+														testQ["kamen"] = tonumber(testQ["kamen"])-1
 														testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 													end
 													if xx == 4 then
-														testQ["beton"] = tonumber(testQ["beton"])-10
+														testQ["beton"] = tonumber(testQ["beton"])-1
 														testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 													end
 												end
