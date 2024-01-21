@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=7
+versAdd=305;versAddDop=8
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2706,6 +2706,9 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				if mioFld[nome]["объекты"][tostring(id)] == "tv" then
 					SendAddonMessage("#domtv", nome .. " " .. myNome, "guild")
 				end
+				if mioFld[nome]["объекты"][tostring(id)] == "mz" then
+					SendAddonMessage("#muzeum", nome .. " " .. myNome, "guild")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "mf" then
 					SendAddonMessage("#dommf", nome .. " " .. myNome, "guild")
 				end
@@ -5080,6 +5083,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		else
 			nome = myNome
 		end
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if testQ["domZ"] == "crt" then
 			if vybor[22] == nil or not vybor[22]:IsVisible() then
 				vybor:configure(22)
@@ -5134,6 +5138,17 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 		end
+		if testQ["domZ"] == "muzeum" then
+			if ach[1] ~= nil then
+				if id == 1 then
+					GameTooltip:AddLine("|cFF6495EDЯ героически нашел кнопку аддона и даже смог ее нажать!!!")
+				end
+			else
+				if id == 1 then
+					GameTooltip:AddLine("|cffff0000Мне нужно найти кнопку аддона возле миникарты и нажать ее")
+				end
+			end
+		end
 		if testQ["domZ"] == "mf" and mioFld[nome][testQ["domZ"]][tostring(id)] == "bn" then
 			if vybor[21] == nil or not vybor[21]:IsVisible() then
 				vybor:configure(21)
@@ -5149,7 +5164,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 
 		end
-		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+
 		if testQ['sign'] ~= "1" then
 			nome = GuildFrame["selectedName"]
 		else
@@ -5380,6 +5395,7 @@ function mBtn:configure(id)
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["brevna"] = tonumber(testQ["brevna"]) + x
 					testQ["nikQB"] = antc(testQ["brevna"])
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
 					print("Получено: " .. x .. " бревен")
@@ -5389,6 +5405,7 @@ function mBtn:configure(id)
 					local x = math.random(1,10)
 					testQ["smg"] = tonumber(testQ["smg"]) - 1
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					testQ["stog"] = tonumber(testQ["stog"]) + x
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
@@ -5400,6 +5417,7 @@ function mBtn:configure(id)
 					local x = math.random(1,10)
 					testQ["smg"] = tonumber(testQ["smg"]) - 1
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					testQ["kamen"] = tonumber(testQ["kamen"]) + x
 					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
@@ -5411,6 +5429,7 @@ function mBtn:configure(id)
 					local x = math.random(1,10)
 					testQ["smg"] = tonumber(testQ["smg"]) - 1
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					testQ["beton"] = tonumber(testQ["beton"]) + x
 					testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 					dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
@@ -5433,6 +5452,7 @@ function mBtn:configure(id)
 					local x = math.random(1,5)
 					testQ["smg"] = tonumber(testQ["smg"]) - 1
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					testQ["doska"] = tonumber(testQ["doska"]) + x
 					testQ["nikQD"] = antc(tonumber(testQ["doska"]))
 					dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
@@ -5444,6 +5464,7 @@ function mBtn:configure(id)
 					local x = math.random(1,100)
 					testQ["smg"] = tonumber(testQ["smg"]) - 1
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					if testQ["lom"] == nil then
 						testQ["lom"] = x
 					else
@@ -5459,6 +5480,7 @@ function mBtn:configure(id)
 					testQ[myNome]["петы"]["bb"] = 1
 					testQ["smg"] = tonumber(testQ["smg"]) - 10
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					dmgText2(testQ[myNome]["петы"]["bb"],mBtn[5],805,13,"FF8C00")
 					print("Получен: бобер")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -5469,6 +5491,7 @@ function mBtn:configure(id)
 					testQ["yi"] = tonumber(testQ["yi"])+1
 					testQ["smg"] = tonumber(testQ["smg"]) - 10
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					dmgText2(testQ["yi"],mBtn[9],809,13,"FF8C00")
 					print("Получен: Ящик с инструментами")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -5477,6 +5500,7 @@ function mBtn:configure(id)
 					testQ["b0"] = tonumber(testQ["b0"])+1
 					testQ["smg"] = tonumber(testQ["smg"]) - 10
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
 					print("Полученf: Барная стойка")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -5487,6 +5511,7 @@ function mBtn:configure(id)
 					testQ["smg"] = tonumber(testQ["smg"]) - 10
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					dmgText2(testQ["b0"],mBtn[12],812,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					print("Получен: лотерейный билет")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 				end
@@ -5496,6 +5521,7 @@ function mBtn:configure(id)
 					testQ["stanok"] = tonumber(testQ["stanok"])+1
 					testQ["smg"] = tonumber(testQ["smg"]) - 30
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					testQ["stanok"] = tonumber(testQ["stanok"])+1
 					print("Получен: Распиловочный станок")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -5520,6 +5546,7 @@ function mBtn:configure(id)
 					end
 					testQ["smg"] = tonumber(testQ["smg"]) - 50
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					print("Получен: гоблин")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 				end
@@ -5541,6 +5568,7 @@ function mBtn:configure(id)
 					end
 					testQ["smg"] = tonumber(testQ["smg"]) - 50
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					dmgText2(gomT,mBtn[7],807,13,"FF8C00")
 					print("Получен: гном")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
@@ -6883,6 +6911,15 @@ if testQ ~= nil then
 end
 
 minibtn:SetScript("OnClick", function()
+	if ach == nil then
+		ach = {}
+	end
+	if ach[1] == nil then
+		ach[1] = 1
+		SendChatMessage("Я героически нашел кнопку аддона и даже смог ее нажать!!! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
 	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	local lvl
 	for Zc=1,GetNumGuildMembers(true) do

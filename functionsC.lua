@@ -3495,6 +3495,53 @@ GameTooltip:HookScript("OnShow", function(self)
 	GameTooltip:AddLine("|cff00BFFFбс: |cffFF8C00" .. bs)
 	GameTooltip:Show()
 end)
+function achiv(n,n1)
+	for i = 1, n do
+		local x = math.random(1,7)
+		if x == 1 then
+			SendChatMessage("Я получаю " .. n1 .. " бревен в награду", "OFFICER", nil, 1)
+			testQ["brevna"] = testQ["brevna"]+n1
+			testQ["nikQB"] = antc(testQ["brevna"])
+			dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
+		end
+		if x == 2 then
+			SendChatMessage("Я получаю " .. n1 .. " травы в награду", "OFFICER", nil, 1)
+			testQ["stog"] = tonumber(testQ["stog"]) + n1
+			testQ["nikQF"] = antc(tonumber(testQ["stog"]))
+			dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
+		end
+		if x == 3 then
+			SendChatMessage("Я получаю " .. n1 .. " камня в награду", "OFFICER", nil, 1)
+			testQ["kamen"] = testQ["kamen"] + n1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+		end
+		if x == 4 then
+			SendChatMessage("Я получаю " .. n1 .. " бетона в награду", "OFFICER", nil, 1)
+			testQ["beton"] = tonumber(testQ["beton"]) + n1
+			testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
+			dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+		end
+		if x == 5 then
+			SendChatMessage("Я получаю " .. n1 .. " самогона в награду", "OFFICER", nil, 1)
+			testQ["smg"] = tonumber(testQ["smg"]) + n1
+			testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+			dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+		end
+		if x == 6 then
+			SendChatMessage("Я получаю " .. n1 .. " досок в награду", "OFFICER", nil, 1)
+			testQ["doska"] = tonumber(testQ["doska"]) + n1
+			testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+			dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
+		end
+		if x == 7 then
+			SendChatMessage("Я получаю " .. n1 .. " кирпича в награду", "OFFICER", nil, 1)
+			testQ["kirpich"] = tonumber(testQ["kirpich"]) + n1
+			testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
+			dmgText2(string.format("%d", tonumber(testQ["kirpich"])),mBtn[8],808,13,"FF8C00")
+		end
+	end
+end
 --[[function testQuest(tabella,diam)
 	local testKont = GetCurrentMapContinent()
 	local lok = GetCurrentMapZone()
