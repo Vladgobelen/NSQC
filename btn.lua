@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=8
+versAdd=305;versAddDop=9
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4786,6 +4786,17 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if mioFld[nome][testQ["domZ"]] == nil then
 				mioFld[nome][testQ["domZ"]] = {}
+			end
+			if testQ["domZ"] == "muzeum" then
+				if ach[1] ~= nil then
+					if id == 1 then
+						if nome == myNome then
+							SendChatMessage("Я героически нашел кнопку аддона и даже смог ее нажать!!!", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " героически нашел кнопку аддона и даже смог ее нажать!!!", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
