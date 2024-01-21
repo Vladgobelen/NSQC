@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=10
+versAdd=305;versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4797,6 +4797,60 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if ach[2] ~= nil then
+					if id == 2 then
+						if nome == myNome then
+							SendChatMessage("Я героически срубил дерево!!! Сам, между прочим.", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " героически срубил дерево!!! Сам, между прочим.", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[3] ~= nil then
+					if id == 3 then
+						if nome == myNome then
+							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом 90%", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " невероятным усилием срезал пучок травы с шансом 90%", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[4] ~= nil then
+					if id == 4 then
+						if nome == myNome then
+							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом 50%", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " невероятным усилием срезал пучок травы с шансом 50%", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[5] ~= nil then
+					if id == 5 then
+						if nome == myNome then
+							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом 10%", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " невероятным усилием срезал пучок травы с шансом 10%", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[6] ~= nil then
+					if id == 6 then
+						if nome == myNome then
+							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 5%", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " невероятным усилием срезал пучок травы с шансом всего в 5%", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[7] ~= nil then
+					if id == 7 then
+						if nome == myNome then
+							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " невероятным усилием срезал пучок травы с шансом всего в 1%", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5157,6 +5211,60 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 1 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно найти кнопку аддона возле миникарты и нажать ее")
+				end
+			end
+			if ach[2] ~= nil then
+				if id == 2 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " героически срубил дерево!!! Сам, между прочим.")
+				end
+			else
+				if id == 2 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно самостоятельно срубить дерево.")
+				end
+			end
+			if ach[3] ~= nil then
+				if id == 3 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 90%")
+				end
+			else
+				if id == 3 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом 90%")
+				end
+			end
+			if ach[4] ~= nil then
+				if id == 4 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 50%")
+				end
+			else
+				if id == 4 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом 50%")
+				end
+			end
+			if ach[5] ~= nil then
+				if id == 5 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 10%")
+				end
+			else
+				if id == 5 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом 10%")
+				end
+			end
+			if ach[6] ~= nil then
+				if id == 6 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 5%")
+				end
+			else
+				if id == 6 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом всего в 5%")
+				end
+			end
+			if ach[7] ~= nil then
+				if id == 7 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 1%")
+				end
+			else
+				if id == 7 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом всего в 1%")
 				end
 			end
 		end

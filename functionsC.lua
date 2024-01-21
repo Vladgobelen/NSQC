@@ -1276,6 +1276,12 @@ function treeX(nome,myNome,id)
 		end
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
+		if ach[2] == nil then
+			ach[2] = 1
+			SendChatMessage("Я героически срубил дерево!!! Сам, между прочим. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+			achiv(1,1)
+		end
 		SendAddonMessage("travA " .. id, nome, "guild")
 		if testQ ~= nil then
 			local testB = nil
@@ -1331,6 +1337,12 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					if ach[7] == nil then
+						ach[7] = 1
+						SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+						achiv(3,3)
+					end
 				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 200 then
@@ -1339,6 +1351,12 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					if ach[6] == nil then
+						ach[6] = 1
+						SendChatMessage("Я успешно срезал пучок травы с шансом всего в 5%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+						achiv(3,2)
+					end
 				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 500 then
@@ -1347,6 +1365,12 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					if ach[5] == nil then
+						ach[5] = 1
+						SendChatMessage("Я успешно срезал пучок травы с шансом в 10%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+						achiv(2,2)
+					end
 				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 900 then
@@ -1355,6 +1379,12 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					if ach[4] == nil then
+						ach[4] = 1
+						SendChatMessage("Я успешно срезал пучок травы с шансом в 50%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+						achiv(2,1)
+					end
 				end
 			end
 			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 900 then
@@ -1363,6 +1393,12 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
+					if ach[3] == nil then
+						ach[3] = 1
+						SendChatMessage("Я успешно срезал пучок травы с шансом в 90%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+						achiv(1,1)
+					end
 				end
 			end
 		end
