@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=11
+versAdd=305;versAddDop=12
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1863,6 +1863,12 @@ function vybor:configure(id)
 					testQ["temp"] = nil
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 10
 					testQ["nikQB"] = antc(testQ["brevna"])
+					if ach[8] == nil then
+						ach[8] = 1
+						SendChatMessage("Начинаю копать яму. Большую яму. Оооочень большую яму. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+						achiv(1,1)
+					end
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -4851,6 +4857,42 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if ach[8] ~= nil then
+					if id == 8 then
+						if nome == myNome then
+							SendChatMessage("Я начал копать свою первую шахту", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " начал копать свою первую шахту", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[9] ~= nil then
+					if id == 9 then
+						if nome == myNome then
+							SendChatMessage("Я построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм..", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм..", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[10] ~= nil then
+					if id == 10 then
+						if nome == myNome then
+							SendChatMessage("Я утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if ach[11] ~= nil then
+					if id == 11 then
+						if nome == myNome then
+							SendChatMessage("Я таки добыл первый камень! Первый. Камень.", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " таки добыл первый камень! Первый. Камень.", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5265,6 +5307,42 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 7 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом всего в 1%")
+				end
+			end
+			if ach[8] ~= nil then
+				if id == 8 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " начал копать свою первую шахту")
+				end
+			else
+				if id == 8 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно начать копать шахту на голой земле")
+				end
+			end
+			if ach[9] ~= nil then
+				if id == 9 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм..")
+				end
+			else
+				if id == 9 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно построить каменоломню")
+				end
+			end
+			if ach[10] ~= nil then
+				if id == 10 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ")
+				end
+			else
+				if id == 10 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно утрамбовать голую землю")
+				end
+			end
+			if ach[11] ~= nil then
+				if id == 11 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " таки добыл первый камень! Первый. Камень.")
+				end
+			else
+				if id == 11 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно добыть камень")
 				end
 			end
 		end

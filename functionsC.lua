@@ -1406,6 +1406,12 @@ function treeX(nome,myNome,id)
 
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
 		SendAddonMessage("uZ " .. id, nome, "guild")
+		if ach[10] == nil then
+			ach[10] = 1
+			SendChatMessage("Я утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+			achiv(1,1)
+		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "zc" then
@@ -1414,6 +1420,12 @@ function treeX(nome,myNome,id)
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ms" then
 		SendAddonMessage("mS " .. id, nome, "guild")
+		if ach[9] == nil then
+			ach[9] = 1
+			SendChatMessage("Я построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+			achiv(3,1)
+		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
 	end
 
@@ -1996,6 +2008,12 @@ function gKam(myNome,x)
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			if ach[11] == nil then
+				ach[11] = 1
+				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(1,1)
+			end
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 100 and testK == 1 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
