@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=9
+versAdd=305;versAddDop=10
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5152,11 +5152,11 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if testQ["domZ"] == "muzeum" then
 			if ach[1] ~= nil then
 				if id == 1 then
-					GameTooltip:AddLine("|cFF6495EDЯ героически нашел кнопку аддона и даже смог ее нажать!!!")
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " героически нашел кнопку аддона и даже смог ее нажать!!!")
 				end
 			else
 				if id == 1 then
-					GameTooltip:AddLine("|cffff0000Мне нужно найти кнопку аддона возле миникарты и нажать ее")
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно найти кнопку аддона возле миникарты и нажать ее")
 				end
 			end
 		end
