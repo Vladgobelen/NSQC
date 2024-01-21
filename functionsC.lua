@@ -2012,7 +2012,7 @@ function gKam(myNome,x)
 				ach[11] = 1
 				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(1,1)
+				achiv(3,3)
 			end
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 100 and testK == 1 then
 			testQ["kamen"] = testQ["kamen"]+1
