@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=6
+versAdd=305;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -618,6 +618,22 @@ function vybor:configure(id)
 				GameTooltip:AddLine("|cffFFCF40Стоимость: 10 кирпича, 5 самогона, 10 камня, 5 досок")
 			else
 				GameTooltip:AddLine("|cffFF0000Стоимость: 10 кирпича, 5 самогона, 10 камня, 5 досок")
+			end
+			GameTooltip:Show()
+		end
+		if id == 34 then
+			if vybor[34] ~= nil then
+				vybor[34]:Show()
+			end
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Построить музей")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("Музей нужен для достижений и обучения")
+			GameTooltip:AddLine("В музее хранится все ценное, что было достаточно легким для того, чтобы его можно было вывезти отовсюду...Пирамиды вывезти не удалось.")
+			if testQ["kirpich"] >= 10 and testQ["smg"] >= 5 and testQ["kamen"] >= 10 and testQ["doska"] >= 5 and testQ["beton"] >= 10 then
+				GameTooltip:AddLine("|cffFFCF40Стоимость: 10 кирпича, 5 самогона, 10 камня, 5 досок, 10 бетона")
+			else
+				GameTooltip:AddLine("|cffFF0000Стоимость: 10 кирпича, 5 самогона, 10 камня, 5 досок, 10 бетона")
 			end
 			GameTooltip:Show()
 		end
@@ -1519,6 +1535,71 @@ function vybor:configure(id)
 					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
 					dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+					testQ["temp"] = nil
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		end
+		if nome == myNome then
+			if id == 34 and tonumber(testQ["kirpich"]) >= 10 and tonumber(testQ["kamen"]) >= 10 and tonumber(testQ["smg"]) >= 5 and tonumber(testQ["doska"]) >= 5 and tonumber(testQ["beton"]) >= 10  then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m1.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\m1.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("mZ " .. testQ["idp"], nome, "guild")
+					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 10
+					testQ["nikQKR"] = antc(testQ["kirpich"])
+					testQ["kamen"] = tonumber(testQ["kamen"]) - 10
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+					testQ["smg"] = tonumber(testQ["smg"]) - 5
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["doska"] = tonumber(testQ["doska"]) - 5
+					testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+					testQ["beton"] = tonumber(testQ["beton"]) - 10
+					testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
+					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+					dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
+					testQ["temp"] = nil
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
+						end
+					end
+				end
+			end
+		else
+			if id == 34 and tonumber(testQ["kirpich"]) >= 50 and tonumber(testQ["kamen"]) >= 50 and tonumber(testQ["smg"]) >= 25 and tonumber(testQ["doska"]) >= 25 and tonumber(testQ["beton"]) >= 25   then
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m1.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\m1.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+					SendAddonMessage("mZ " .. testQ["idp"], nome, "guild")
+					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 50
+					testQ["nikQKR"] = antc(testQ["kirpich"])
+					testQ["kamen"] = tonumber(testQ["kamen"]) - 50
+					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
+					testQ["smg"] = tonumber(testQ["smg"]) - 25
+					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
+					testQ["doska"] = tonumber(testQ["doska"]) - 25
+					testQ["nikQD"] = antc(tonumber(testQ["doska"]))
+					testQ["beton"] = tonumber(testQ["beton"]) - 25
+					testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
+					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
+					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
+					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
+					dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+					dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -3193,6 +3274,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
 				end
+				if mioFld[nome]["объекты"][tostring(id)] == "m1" then
+					resObj(id,myNome,nome)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
+				end
 				if mioFld[nome]["объекты"][tostring(id)] == "kx" then
 					resObj(id,myNome,nome)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\hs.ogg")
@@ -3417,6 +3502,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					testQ["temp"] = nil
 				end
 			end
+			if mioFld[nome]["объекты"][tostring(id)] == "mz" then
+				if testQ["temp"] == nil then
+					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\m1.tga")
+					fBtn[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\m1.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					SendAddonMessage("m2 " .. id .. " " .. 990, nome, "guild")
+					testQ["temp"] = nil
+				end
+			end
 			if mioFld[nome]["объекты"][tostring(id)] == "bh" then
 				if testQ["temp"] == nil then
 					fBtn[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\bx.tga")
@@ -3498,6 +3593,10 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "ox" then
+				treeX(nome,myNome,id)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
+			end
+			if mioFld[nome]["объекты"][tostring(id)] == "m1" then
 				treeX(nome,myNome,id)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
 			end
@@ -3725,6 +3824,22 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["icon"] = "tv"
 							testQ["picon"] = "bn"
 						end
+					end
+				end
+			end
+		end
+		if tonumber(mioFld[nome]["целостность"][tostring(id)]) >= 999 then
+			if mioFld[nome]["объекты"][tostring(id)] == "ba" then
+				if vybor[34] == nil or not vybor[34]:IsVisible() then
+					vybor:configure(34)
+					vybor[34]:SetPoint("CENTER", fBtn[id],"CENTER",-1*64, 96)
+					vybor[34]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\mz.tga")
+					vybor[34]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\mz.tga")
+					vybor[34]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "mz"
+						testQ["picon"] = "ba"
 					end
 				end
 			end
@@ -4269,6 +4384,23 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cFF6495EDСтройка: Будущий сельсовет")
 					GameTooltip:AddLine(" ")
 					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40строить")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "m1" then
+					GameTooltip:ClearLines()
+					GameTooltip:AddLine("|cFF6495EDСтройка: Строительство музея")
+					GameTooltip:AddLine("|cFF6495EDСтройка: Когда нибудь сюда можно будет привозить все награбленное, но ценное только в духовном плане")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40строить")
+					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
+				end
+				if mioFld[nome]["объекты"][tostring(id)] == "mz" then
+					GameTooltip:ClearLines()
+					GameTooltip:AddLine("|cFF6495EDМузей")
+					GameTooltip:AddLine("|cffFFCF40Обычно в музеях хранят все недостаточно ценное, чтобы применить это в реальной жизни")
+					GameTooltip:AddLine("|cffFFCF40Чаще всего это художественные ценности, которые стали ничейными по причине внезапной гибели их прошлых хозяев")
+					GameTooltip:AddLine(" ")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: " .. "|cffFFCF40Войти")
 					GameTooltip:AddLine("|cff99ff99ПКМ: " .. "|cffFFCF40разрушить")
 				end
 				if testQ[myNome]["hTimer"] == nil and mioFld[nome]["объекты"][tostring(id)] == "s" then
