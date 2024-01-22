@@ -3066,7 +3066,7 @@ function bs()
 		end
 		if pdru >= 1 then
 			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+rpb
-			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/??"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132/282" .. " рпб/кап: " .. rpb .. "/??"
 		end
 		if sova >= 1 then
 			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
@@ -3114,7 +3114,7 @@ function bs()
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
 			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170/366"
 		else
-			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak
+			bs = (sil*2)+lov+hit+crit+mast+rpb+attak
 			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170" .. " рпб/кап: " .. rpb .. "/1400"
 		end
 	end
@@ -3501,7 +3501,7 @@ GameTooltip:HookScript("OnShow", function(self)
 			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)+(cast1*2)+(sco1*1.5)+crit1+(mana1*1.5)
 		end
 		if pdru >= 1 then
-			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+(rpb*1.5)+hit1+crit1+(sco1*1.5)+mast1+(def1*1.5)+(ukl1*2)+(rpb1*1.5)
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+rpb+hit1+crit1+(sco1*1.5)+mast1+(def1*1.5)+(ukl1*2)+rpb1
 		end
 		if sova >= 1 then
 			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco+(cast1*2)+hit1+(crit1*2)+(mana1*0.5)+sco1
@@ -3540,7 +3540,7 @@ GameTooltip:HookScript("OnShow", function(self)
 		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)
 		else
-			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak+hit1+crit1+mast1+(rpb1*2)+attak1
+			bs = (sil*2)+lov+hit+crit+mast+rpb+attak+hit1+crit1+mast1+rpb1+attak1
 		end
 	end
 	if classUnit == "Маг" then
