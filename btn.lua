@@ -1,4 +1,4 @@
-versAdd=306;versAddDop=3
+versAdd=306;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4947,6 +4947,24 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if acha[16] ~= nil then
+					if id == 16 then
+						if nome == myNome then
+							SendChatMessage("Наверное только интуиция подсказала мне кликнуть по самогону мышем", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " наверное на одной интуиции кликнул по самогону мышем", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[17] ~= nil then
+					if id == 17 then
+						if nome == myNome then
+							SendChatMessage("Мною был построен товарный склад для получения наград за лвлапы", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " построил товарный склад для получения наград за лвлапы", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5433,6 +5451,24 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 15 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно выполнить любой квест в хижине или сельсовете")
+				end
+			end
+			if acha[16] ~= nil then
+				if id == 16 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " на одной интуиции угадывает, что нужно кликнуть по самогону мышем")
+				end
+			else
+				if id == 16 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно найти среди ресурсов самогон (бутылку) и кликнуть по ней правой кнопкой мыши")
+				end
+			end
+			if acha[17] ~= nil then
+				if id == 17 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " построил товарный склад для получения наград за лвлапы")
+				end
+			else
+				if id == 17 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно расчистить землю, утрамбовать ее и построить на этом месте товарный склад")
 				end
 			end
 		end
@@ -6200,6 +6236,12 @@ function resursy:configure(id)
 	self[id]:SetScript("OnClick",function(self)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if id == 5 then
+			if ach[16] == nil then
+				ach[16] = 1
+				SendChatMessage("Я наверное чисто интуитивно понимаю, что нужно кликнуть по самогону мышем *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(1,1)
+			end
 			if testQ["magSign"] == nil then
 				magazin("show")
 				testQ["magSign"] = 1
