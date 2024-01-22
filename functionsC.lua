@@ -3112,7 +3112,7 @@ function bs()
 		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
 		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
-			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170/366"
 		else
 			bs = (sil*2)+lov+hit+crit+mast+(rpb*2)+attak
 			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170" .. " рпб/кап: " .. rpb .. "/1400"
