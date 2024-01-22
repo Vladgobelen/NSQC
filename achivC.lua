@@ -86,6 +86,7 @@ if kodMsg[1] == "#domtv" and msg[1] == myNome then
 	end
 end
 if kodMsg[1] == "#muzeum" and msg[1] == myNome then
+	local mioAch = nil
 	if mioFld == nil then
 		mioFld = {}
 	end
@@ -94,11 +95,20 @@ if kodMsg[1] == "#muzeum" and msg[1] == myNome then
 	end
 	mioFld[myNome]["muzeum"] = {}
 	for i = 1, 100 do
-		mioFld[myNome]["muzeum"][tostring(i)] = "e1"
-	end
-	for i = 1, 100 do
 		if ach[i] ~= nil then
 			mioFld[myNome]["muzeum"][tostring(i)] = "em"
+			if mioAch == nil then
+				mioAch = "1"
+			else
+				mioAch = mioAch .. "1"
+			end
+		else
+			mioFld[myNome]["muzeum"][tostring(i)] = "e1"
+			if mioAch == nil then
+				mioAch = "0"
+			else
+				mioAch = mioAch .. "0"
+			end
 		end
 	end
 	local mz = mioFld[myNome]["muzeum"]["1"]
@@ -106,6 +116,7 @@ if kodMsg[1] == "#muzeum" and msg[1] == myNome then
 		mz = mz .. mioFld[myNome]["muzeum"][tostring(i)]
 	end
 	SendAddonMessage("#mioMZ " .. msg[2], mz, "guild")
+	SendAddonMessage("#mioMZach " .. msg[2], mioAch, "guild")
 end
 if kodMsg[1] == "#munusItem" and message == myNome then
 	krt["podskazki"] = tonumber(krt["podskazki"]) - 1
@@ -194,6 +205,16 @@ if kodMsg[1] == "#mioMZ" and kodMsg[2] == myNome then
 	testQ["dom"] = 1
 	testQ["domZ"] = "muzeum"
 	testQ["domNome"] = sender
+end
+if kodMsg[1] == "#mioMZach" and kodMsg[2] == myNome then
+	acha = {}
+	for i = 1, 100 do
+		if message:sub(i,i) == "1" then
+			acha[i] = 1
+		else
+			acha[i] = nil
+		end
+	end
 end
 if kodMsg[1] == "#mioMF" then
 	if mioFld == nil then

@@ -1,4 +1,4 @@
-versAdd=305;versAddDop=14
+versAdd=305;versAddDop=16
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4794,7 +4794,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				mioFld[nome][testQ["domZ"]] = {}
 			end
 			if testQ["domZ"] == "muzeum" then
-				if ach[1] ~= nil then
+				if acha[1] ~= nil then
 					if id == 1 then
 						if nome == myNome then
 							SendChatMessage("Я героически нашел кнопку аддона и даже смог ее нажать!!!", "OFFICER", nil, 1)
@@ -4803,7 +4803,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[2] ~= nil then
+				if acha[2] ~= nil then
 					if id == 2 then
 						if nome == myNome then
 							SendChatMessage("Я героически срубил дерево!!! Сам, между прочим.", "OFFICER", nil, 1)
@@ -4812,7 +4812,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[3] ~= nil then
+				if acha[3] ~= nil then
 					if id == 3 then
 						if nome == myNome then
 							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом 90%", "OFFICER", nil, 1)
@@ -4821,7 +4821,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[4] ~= nil then
+				if acha[4] ~= nil then
 					if id == 4 then
 						if nome == myNome then
 							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом 50%", "OFFICER", nil, 1)
@@ -4830,7 +4830,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[5] ~= nil then
+				if acha[5] ~= nil then
 					if id == 5 then
 						if nome == myNome then
 							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом 10%", "OFFICER", nil, 1)
@@ -4839,7 +4839,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[6] ~= nil then
+				if acha[6] ~= nil then
 					if id == 6 then
 						if nome == myNome then
 							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 5%", "OFFICER", nil, 1)
@@ -4848,7 +4848,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[7] ~= nil then
+				if acha[7] ~= nil then
 					if id == 7 then
 						if nome == myNome then
 							SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%", "OFFICER", nil, 1)
@@ -4857,7 +4857,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[8] ~= nil then
+				if acha[8] ~= nil then
 					if id == 8 then
 						if nome == myNome then
 							SendChatMessage("Я начал копать свою первую шахту", "OFFICER", nil, 1)
@@ -4866,7 +4866,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[9] ~= nil then
+				if acha[9] ~= nil then
 					if id == 9 then
 						if nome == myNome then
 							SendChatMessage("Я построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм..", "OFFICER", nil, 1)
@@ -4875,7 +4875,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[10] ~= nil then
+				if acha[10] ~= nil then
 					if id == 10 then
 						if nome == myNome then
 							SendChatMessage("Я утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ", "OFFICER", nil, 1)
@@ -4884,7 +4884,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
-				if ach[11] ~= nil then
+				if acha[11] ~= nil then
 					if id == 11 then
 						if nome == myNome then
 							SendChatMessage("Я таки добыл первый камень! Первый. Камень.", "OFFICER", nil, 1)
@@ -5246,7 +5246,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if testQ["domZ"] == "muzeum" then
-			if ach[1] ~= nil then
+			if acha[1] ~= nil then
 				if id == 1 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " героически нашел кнопку аддона и даже смог ее нажать!!!")
 				end
@@ -5255,7 +5255,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно найти кнопку аддона возле миникарты и нажать ее")
 				end
 			end
-			if ach[2] ~= nil then
+			if acha[2] ~= nil then
 				if id == 2 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " героически срубил дерево!!! Сам, между прочим.")
 				end
@@ -5264,7 +5264,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно самостоятельно срубить дерево.")
 				end
 			end
-			if ach[3] ~= nil then
+			if acha[3] ~= nil then
 				if id == 3 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 90%")
 				end
@@ -5273,7 +5273,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом 90%")
 				end
 			end
-			if ach[4] ~= nil then
+			if acha[4] ~= nil then
 				if id == 4 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 50%")
 				end
@@ -5282,7 +5282,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом 50%")
 				end
 			end
-			if ach[5] ~= nil then
+			if acha[5] ~= nil then
 				if id == 5 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 10%")
 				end
@@ -5291,7 +5291,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом 10%")
 				end
 			end
-			if ach[6] ~= nil then
+			if acha[6] ~= nil then
 				if id == 6 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 5%")
 				end
@@ -5300,7 +5300,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом всего в 5%")
 				end
 			end
-			if ach[7] ~= nil then
+			if acha[7] ~= nil then
 				if id == 7 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 1%")
 				end
@@ -5309,7 +5309,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно срезать пучок травы с шансом всего в 1%")
 				end
 			end
-			if ach[8] ~= nil then
+			if acha[8] ~= nil then
 				if id == 8 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " начал копать свою первую шахту")
 				end
@@ -5318,7 +5318,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно начать копать шахту на голой земле")
 				end
 			end
-			if ach[9] ~= nil then
+			if acha[9] ~= nil then
 				if id == 9 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм..")
 				end
@@ -5327,7 +5327,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно построить каменоломню")
 				end
 			end
-			if ach[10] ~= nil then
+			if acha[10] ~= nil then
 				if id == 10 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ")
 				end
@@ -5336,7 +5336,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно утрамбовать голую землю")
 				end
 			end
-			if ach[11] ~= nil then
+			if acha[11] ~= nil then
 				if id == 11 then
 					GameTooltip:AddLine("|cFF6495ED" .. nome .. " таки добыл первый камень! Первый. Камень.")
 				end
