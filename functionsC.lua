@@ -3065,7 +3065,7 @@ function bs()
 			khit = hit .. "/" .. "0"
 		end
 		if pdru >= 1 then
-			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+(rpb*1.5)
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+rpb
 			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/??"
 		end
 		if sova >= 1 then

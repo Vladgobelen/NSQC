@@ -22,6 +22,7 @@ libs\sh.ogg
 libs\tx.ogg
 libs\tv.tga
 libs\em.tga
+libs\e1.tga
 libs\tz.tga
 libs\clc.ogg
 libs\mx.ogg
