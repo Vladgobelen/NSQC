@@ -256,6 +256,12 @@ if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ["okno"] = nil
 	testQ[myNome]["itemQend"] = nil
 	testQ[myNome]["q33end"] = nil
+	if ach[15] == nil then
+		ach[15] = 1
+		SendChatMessage("Я в первый раз выполнил квест через аддон *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,3)
+	end
 end
 
 if kodMsg[1] == "rasstoyanie" then

@@ -1,4 +1,4 @@
-versAdd=306;versAddDop=2
+versAdd=306;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -450,6 +450,12 @@ function okNo:configure(id,sign)
 	if self[2] ~= nil then
 		self[2]:SetScript("OnClick",function(self, button)
 			if testQ["okno"] == "itemQ" then
+				if ach[13] == nil then
+					ach[13] = 1
+					SendChatMessage("Я категорически отказываюсь присылать мою личную шерсть непонятно кому. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+					achiv(1,1)
+				end
 				SendChatMessage("Я злонамеренно отказываюсь от квеста.", "OFFICER", nil, 1)
 				testQ[myNome]["взятый_квест"] = "9999"
 				testQ[myNome]["взятый_квест_х"] = "9999"
@@ -2909,6 +2915,12 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								__,__,testQ[myNome]["q33nik"][2],__,__,__ = qLvl33c2(myNome)
 								__,__,__,testQ[myNome]["q33nik"][3],__,__ = qLvl33c3(myNome)
 								--SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "OFFICER", nil, 1)
+								if ach[14] == nil then
+									ach[14] = 1
+									SendChatMessage("Вот мой первый квест в сельсовете. Тут кажется должны что то выдавать бесплатно.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+									achiv(1,1)
+								end
 								testQ["okno"] = "q33"
 								testQ[myNome]["взятый_квест_s"] = "q33"
 								htimer(myNome)
@@ -3180,6 +3192,12 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											quesT("show")
 											okNo:configure(1,"show")
 											rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])),1,"show")
+											if ach[12] == nil then
+												ach[12] = 1
+												SendChatMessage("Я успешно нашел свой первый квест в хижине и я его выполню! Ведь выполню же?.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+												achiv(1,1)
+											end
 											for i=1,100 do
 												fBtn[i]:Hide()
 											end
@@ -4893,6 +4911,42 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if acha[12] ~= nil then
+					if id == 12 then
+						if nome == myNome then
+							SendChatMessage("Я успешно нашел свой первый квест в хижине", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " успешно нашел свой первый квест в хижине", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[13] ~= nil then
+					if id == 13 then
+						if nome == myNome then
+							SendChatMessage("Я категорически отказался присылать мою личную шерсть непонятно кому", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " категорически отказался присылать свою личную шерсть непонятно кому", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[14] ~= nil then
+					if id == 14 then
+						if nome == myNome then
+							SendChatMessage("Я нашел свой первый квест в сельсовете, но бесплатно почему то ничего не дали...", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " нашел свой первый квест в сельсовете, но бесплатно почему то ничего не дали...", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[15] ~= nil then
+					if id == 15 then
+						if nome == myNome then
+							SendChatMessage("Я в первый раз выполнил квест через аддон", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " в первый раз выполнил квест через аддон", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5343,6 +5397,42 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 11 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно добыть камень")
+				end
+			end
+			if acha[12] ~= nil then
+				if id == 12 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " успешно нашел свой первый квест в хижине")
+				end
+			else
+				if id == 12 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно найти хижину, и кликнуть по ней, пока нет таймера")
+				end
+			end
+			if acha[13] ~= nil then
+				if id == 13 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " категорически отказался присылать свою личную шерсть непонятно кому")
+				end
+			else
+				if id == 13 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно дождаться окончания таймера на хижине и отказаться от квеста на ткань")
+				end
+			end
+			if acha[14] ~= nil then
+				if id == 14 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " нашел свой первый квест в сельсовете, но бесплатно почему то ничего не дали...")
+				end
+			else
+				if id == 14 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно найти сельсовет и кликнуть по нему, когда на хижине не будет таймера")
+				end
+			end
+			if acha[15] ~= nil then
+				if id == 15 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " успешно выполнил свой первый квест через аддон")
+				end
+			else
+				if id == 15 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно успешно выполнить любой квест в хижине или сельсовете")
 				end
 			end
 		end
