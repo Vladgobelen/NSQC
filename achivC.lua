@@ -95,7 +95,7 @@ if kodMsg[1] == "#muzeum" and msg[1] == myNome then
 	end
 	mioFld[myNome]["muzeum"] = {}
 	for i = 1, 100 do
-		if ach[i] ~= nil then
+		if ach_ach[i] ~= nil then
 			mioFld[myNome]["muzeum"][tostring(i)] = "em"
 			if mioAch == nil then
 				mioAch = "1"
@@ -256,8 +256,8 @@ if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ["okno"] = nil
 	testQ[myNome]["itemQend"] = nil
 	testQ[myNome]["q33end"] = nil
-	if ach[15] == nil then
-		ach[15] = 1
+	if ach_ach[15] == nil then
+		ach_ach[15] = 1
 		SendChatMessage("Я в первый раз выполнил квест через аддон *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 		achiv(3,3)
@@ -2420,8 +2420,8 @@ if kodMsg[1] == "resObj" then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ts"
 						if sender == myNome then
-							if ach[17] == nil then
-								ach[17] = 1
+							if ach_ach[17] == nil then
+								ach_ach[17] = 1
 								SendChatMessage("Я построил товарный склад, с которого лвл за лвлом буду получать ооочень мн ого всяких ресурсов и лотерейные билеты!", "OFFICER", nil, 1)
 								SendChatMessage("Бюджет был очень маленьким, поэтому закройте глаза и представьте сотни разноцветных фейерверков и разных супер-пупер спец-эффектов тут", "OFFICER", nil, 1)
 								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")

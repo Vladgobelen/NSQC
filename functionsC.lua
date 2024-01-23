@@ -1276,8 +1276,8 @@ function treeX(nome,myNome,id)
 		end
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
-		if ach[2] == nil then
-			ach[2] = 1
+		if ach_ach[2] == nil then
+			ach_ach[2] = 1
 			SendChatMessage("Я героически срубил дерево!!! Сам, между прочим. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 			achiv(1,1)
@@ -1337,8 +1337,8 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach[7] == nil then
-						ach[7] = 1
+					if ach_ach[7] == nil then
+						ach_ach[7] = 1
 						SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 						achiv(3,3)
@@ -1351,8 +1351,8 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach[6] == nil then
-						ach[6] = 1
+					if ach_ach[6] == nil then
+						ach_ach[6] = 1
 						SendChatMessage("Я успешно срезал пучок травы с шансом всего в 5%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 						achiv(3,2)
@@ -1365,8 +1365,8 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach[5] == nil then
-						ach[5] = 1
+					if ach_ach[5] == nil then
+						ach_ach[5] = 1
 						SendChatMessage("Я успешно срезал пучок травы с шансом в 10%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 						achiv(2,2)
@@ -1379,8 +1379,8 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach[4] == nil then
-						ach[4] = 1
+					if ach_ach[4] == nil then
+						ach_ach[4] = 1
 						SendChatMessage("Я успешно срезал пучок травы с шансом в 50%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 						achiv(2,1)
@@ -1393,8 +1393,8 @@ function treeX(nome,myNome,id)
 					testQ["stog"] = testQ["stog"]+1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach[3] == nil then
-						ach[3] = 1
+					if ach_ach[3] == nil then
+						ach_ach[3] = 1
 						SendChatMessage("Я успешно срезал пучок травы с шансом в 90%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 						achiv(1,1)
@@ -1406,8 +1406,8 @@ function treeX(nome,myNome,id)
 
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
 		SendAddonMessage("uZ " .. id, nome, "guild")
-		if ach[10] == nil then
-			ach[10] = 1
+		if ach_ach[10] == nil then
+			ach_ach[10] = 1
 			SendChatMessage("Я утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 			achiv(1,1)
@@ -1420,8 +1420,8 @@ function treeX(nome,myNome,id)
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ms" then
 		SendAddonMessage("mS " .. id, nome, "guild")
-		if ach[9] == nil then
-			ach[9] = 1
+		if ach_ach[9] == nil then
+			ach_ach[9] = 1
 			SendChatMessage("Я построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 			achiv(3,1)
@@ -2008,8 +2008,8 @@ function gKam(myNome,x)
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
-			if ach[11] == nil then
-				ach[11] = 1
+			if ach_ach[11] == nil then
+				ach_ach[11] = 1
 				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(3,3)
@@ -2019,8 +2019,8 @@ function gKam(myNome,x)
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
-			if ach[11] == nil then
-				ach[11] = 1
+			if ach_ach[11] == nil then
+				ach_ach[11] = 1
 				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(3,3)
@@ -2029,8 +2029,8 @@ function gKam(myNome,x)
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 200 and testK == 2 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
-			if ach[11] == nil then
-				ach[11] = 1
+			if ach_ach[11] == nil then
+				ach_ach[11] = 1
 				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(3,3)
@@ -2041,8 +2041,8 @@ function gKam(myNome,x)
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
-			if ach[11] == nil then
-				ach[11] = 1
+			if ach_ach[11] == nil then
+				ach_ach[11] = 1
 				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(3,3)
@@ -2052,8 +2052,8 @@ function gKam(myNome,x)
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
-			if ach[11] == nil then
-				ach[11] = 1
+			if ach_ach[11] == nil then
+				ach_ach[11] = 1
 				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(3,3)
@@ -2063,8 +2063,8 @@ function gKam(myNome,x)
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
-			if ach[11] == nil then
-				ach[11] = 1
+			if ach_ach[11] == nil then
+				ach_ach[11] = 1
 				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(3,3)

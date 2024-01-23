@@ -1,4 +1,4 @@
-versAdd=307;versAddDop=2
+versAdd=308;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -450,8 +450,8 @@ function okNo:configure(id,sign)
 	if self[2] ~= nil then
 		self[2]:SetScript("OnClick",function(self, button)
 			if testQ["okno"] == "itemQ" then
-				if ach[13] == nil then
-					ach[13] = 1
+				if ach_ach[13] == nil then
+					ach_ach[13] = 1
 					SendChatMessage("Я категорически отказываюсь присылать мою личную шерсть непонятно кому. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 					achiv(1,1)
@@ -1869,8 +1869,8 @@ function vybor:configure(id)
 					testQ["temp"] = nil
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 10
 					testQ["nikQB"] = antc(testQ["brevna"])
-					if ach[8] == nil then
-						ach[8] = 1
+					if ach_ach[8] == nil then
+						ach_ach[8] = 1
 						SendChatMessage("Начинаю копать яму. Большую яму. Оооочень большую яму. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 						achiv(1,1)
@@ -2915,8 +2915,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								__,__,testQ[myNome]["q33nik"][2],__,__,__ = qLvl33c2(myNome)
 								__,__,__,testQ[myNome]["q33nik"][3],__,__ = qLvl33c3(myNome)
 								--SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "OFFICER", nil, 1)
-								if ach[14] == nil then
-									ach[14] = 1
+								if ach_ach[14] == nil then
+									ach_ach[14] = 1
 									SendChatMessage("Вот мой первый квест в сельсовете. Тут кажется должны что то выдавать бесплатно.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 									achiv(1,1)
@@ -3192,8 +3192,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											quesT("show")
 											okNo:configure(1,"show")
 											rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])),1,"show")
-											if ach[12] == nil then
-												ach[12] = 1
+											if ach_ach[12] == nil then
+												ach_ach[12] = 1
 												SendChatMessage("Я успешно нашел свой первый квест в хижине и я его выполню! Ведь выполню же?.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 												achiv(1,1)
@@ -6236,8 +6236,8 @@ function resursy:configure(id)
 	self[id]:SetScript("OnClick",function(self)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if id == 5 then
-			if ach[16] == nil then
-				ach[16] = 1
+			if ach_ach[16] == nil then
+				ach_ach[16] = 1
 				SendChatMessage("Я наверное чисто интуитивно понимаю, что нужно кликнуть по самогону мышем *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(1,1)
@@ -7243,8 +7243,8 @@ minibtn:SetScript("OnClick", function()
 	if ach == nil then
 		ach = {}
 	end
-	if ach[1] == nil then
-		ach[1] = 1
+	if ach_ach[1] == nil then
+		ach_ach[1] = 1
 		SendChatMessage("Я героически нашел кнопку аддона и даже смог ее нажать!!! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 		achiv(1,1)

@@ -5,7 +5,7 @@
 ## Version: 1.5.6
 ## X-Date: 2023-07-15
 ## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh, zametki, mapTables,mioFld,pQuest,acha
-##SavedVariablesPerCharacter: inQuest, incTabC,ach
+##SavedVariablesPerCharacter: inQuest, incTabC,ach_ach
 lib\lib_hook.lua
 lib\lib_math.lua
 lib\lib_string.lua
