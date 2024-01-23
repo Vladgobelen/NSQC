@@ -1,4 +1,4 @@
-versAdd=309;versAddDop=0
+versAdd=309;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4965,6 +4965,33 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if acha[18] ~= nil then
+					if id == 18 then
+						if nome == myNome then
+							SendChatMessage("Мною был успешно приручен бобер..хм.. или бобр?", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " успешно приручил бобра..или бобера, хмм..", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[19] ~= nil then
+					if id == 19 then
+						if nome == myNome then
+							SendChatMessage("У меня на участке завелось что то зеленое... Это или жаба или гоблин...", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " заводит у себя на участке что то зеленое.. Это или жаба или гоблин...", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[20] ~= nil then
+					if id == 20 then
+						if nome == myNome then
+							SendChatMessage("Я привожу домой гнома. Гномку.. Теперь она будет с нами жить. (совершеннолетнюю)", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. " привел домой гнома..гномку. Теперь она будет тут жить. (совершеннолетнюю)", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5469,6 +5496,33 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 17 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно расчистить землю, утрамбовать ее и построить на этом месте товарный склад")
+				end
+			end
+			if acha[18] ~= nil then
+				if id == 18 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " успешно приручил бобра..хм.. или бобера?")
+				end
+			else
+				if id == 18 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно приручить, купить, украсть бобра. Любым путем. Например - делать квесты на шерсть. Или в магазине.")
+				end
+			end
+			if acha[19] ~= nil then
+				if id == 19 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " заводит на участке что то зеленое.. это или жаба или гоблин...")
+				end
+			else
+				if id == 19 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно приручить, купить, украсть гоблина. Любым путем. Например - делать квесты на шерсть. Или в магазине.")
+				end
+			end
+			if acha[20] ~= nil then
+				if id == 20 then
+					GameTooltip:AddLine("|cFF6495ED" .. nome .. " привел домой гнома..гномку. Она теперь будет тут жить. (совершеннолетнюю)")
+				end
+			else
+				if id == 20 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно приручить, купить, украсть гнома Любым путем. Например - делать квесты на шерсть. Или в магазине.")
 				end
 			end
 		end
@@ -8450,7 +8504,35 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 0.5 then
 		timeElapsed = 0
-
+		if ach_ach == nil then
+			ach_ach = {}
+		end
+		if testQ[myNome]["петы"]["bb"] ~= nil then
+			if ach_ach[18] == nil then
+				ach_ach[18] = 1
+				SendChatMessage("Впервые я приручаю бобра успешно. Он будет грызть для меня деревья и увезет в бобриную страну... *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(3,3)
+			end
+		end
+		if testQ[myNome]["петы"]["gg"] ~= nil then
+			if testQ[myNome]["петы"]["gg"] == "gob" then
+				if ach_ach[19] == nil then
+					ach_ach[19] = 1
+					SendChatMessage("У меня на участке завелось что то зеленое.. Это или жаба или гоблин.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+					achiv(5,5)
+				end
+			end
+			if testQ[myNome]["петы"]["gg"] == "gom" then
+				if ach_ach[20] == nil then
+					ach_ach[20] = 1
+					SendChatMessage("Я привожу домой гнома. Гномку.. Теперь она будет с нами жить. (совершеннолетнюю) *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+					achiv(5,5)
+				end
+			end
+		end
 		if InboxPrevPageButton:IsEnabled() ~= 0 then
 			if btn[988]:IsEnabled() then
 				btn[988]:Disable()
