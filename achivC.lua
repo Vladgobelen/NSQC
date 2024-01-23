@@ -4534,7 +4534,48 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					if not TempEnchant1:IsVisible() then
 						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
 					end
+					local shit = nil
+					local r1 = UnitGroupRolesAssigned("party1")
+					local r4 = UnitGroupRolesAssigned("party2")
+					local r7 = UnitGroupRolesAssigned("party3")
+					local r10 = UnitGroupRolesAssigned("party4")
+					if r1 == true then
+						for i = 1, 24 do
+							local x = UnitBuff("party1",i)
+							if x == "Щит земли" then
+								shit = 1
+							end
+						end
+					end
+					if r4 == true then
+						for i = 1, 24 do
+							local x = UnitBuff("party2",i)
+							if x == "Щит земли" then
+								shit = 1
+							end
+						end
+					end
+					if r7 == true then
+						for i = 1, 24 do
+							local x = UnitBuff("party3",i)
+							if x == "Щит земли" then
+								shit = 1
+							end
+						end
+					end
+					if r10 == true then
+						for i = 1, 24 do
+							local x = UnitBuff("party4",i)
+							if x == "Щит земли" then
+								shit = 1
+							end
+						end
+					end
+					if shit ~= 1 then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+					end
 				end
+				--/dump Grid2LayoutHeader1UnitButton1:IsVisible()
 				if testQ["skills"] == nil then
 					testQ["skills"] = {}
 				end
