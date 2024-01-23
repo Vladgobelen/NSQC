@@ -2014,26 +2014,61 @@ function gKam(myNome,x)
 				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 				achiv(3,3)
 			end
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 100 and testK == 1 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			if ach[11] == nil then
+				ach[11] = 1
+				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(3,3)
+			end
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 200 and testK == 2 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
+			if ach[11] == nil then
+				ach[11] = 1
+				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(3,3)
+			end
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 300 and testK == 3 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			if ach[11] == nil then
+				ach[11] = 1
+				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(3,3)
+			end
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 400 and testK == 4 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			if ach[11] == nil then
+				ach[11] = 1
+				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(3,3)
+			end
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 500 and testK == 5 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			if ach[11] == nil then
+				ach[11] = 1
+				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+				achiv(3,3)
+			end
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		end
 	end
@@ -3099,7 +3134,7 @@ function bs()
 		end
 		if rsham >= 1 then
 			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)
-			khit = hit .. "/" .. "0"
+			khit = hit .. "/" .. "0" .. " c./кап: "	.. sco .. "/1269/2100"
 		end
 	end
 	if classUnit == "Охотник" or classUnit == "Охотница" then
