@@ -1,4 +1,4 @@
-versAdd=308;versAddDop=0
+versAdd=309;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7240,8 +7240,8 @@ if testQ ~= nil then
 end
 
 minibtn:SetScript("OnClick", function()
-	if ach == nil then
-		ach = {}
+	if ach_ach == nil then
+		ach_ach = {}
 	end
 	if ach_ach[1] == nil then
 		ach_ach[1] = 1
