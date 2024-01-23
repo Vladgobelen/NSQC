@@ -1,4 +1,4 @@
-versAdd=309;versAddDop=1
+versAdd=309;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4992,6 +4992,15 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if acha[21] ~= nil then
+					if id == 21 then
+						if nome == myNome then
+							SendChatMessage("Гоблин уничтожил рудник. Истребил. Сровнял с землей. Даже чуть чуть ниже.", "OFFICER", nil, 1)
+						else
+							SendChatMessage("Гоблин " .. nome .. " уничтожил рудник. Истребил. Сровнял с землей. Даже чуть чуть ниже.", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5523,6 +5532,15 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 20 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно приручить, купить, украсть гнома Любым путем. Например - делать квесты на шерсть. Или в магазине.")
+				end
+			end
+			if acha[21] ~= nil then
+				if id == 21 then
+					GameTooltip:AddLine("|cFF6495ED Гоблин " .. nome .. " уничтожил рудник. Истребил. Сравнял с землей...даже чуть чуть ниже...")
+				end
+			else
+				if id == 21 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно поставить гоблина добывать камень...и чуть чуть подождать.")
 				end
 			end
 		end
@@ -7956,6 +7974,12 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 										if xx == 1 then
 											SendAddonMessage("gobXm " .. i, myNome, "guild")
+											if ach[21] == nil then
+												ach[21] = 1
+												SendChatMessage("Гоблин только что впервые к херам разнес мой рудник. Я уверен - это он так играется... *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+												achiv(3,1)
+											end
 										end
 									end
 									if (mioFld[myNome]["объекты"][tostring(i)] == "mx" or mioFld[myNome]["объекты"][tostring(i)] == "hs" or mioFld[myNome]["объекты"][tostring(i)] == "ms" or mioFld[myNome]["объекты"][tostring(i)] == "uz" or mioFld[myNome]["объекты"][tostring(i)] == "zs" or mioFld[myNome]["объекты"][tostring(i)] == "zx" or mioFld[myNome]["объекты"][tostring(i)] == "skc" or mioFld[myNome]["объекты"][tostring(i)] == "sx" or mioFld[myNome]["объекты"][tostring(i)] == "bc") and pet[1] == "gom" then
