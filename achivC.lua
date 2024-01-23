@@ -1501,6 +1501,9 @@ if kodMsg[1] == "bbM" then
 			if mioFld[message]["целостность"] == nil then
 				mioFld[message]["целостность"] = {}
 			end
+			if mioFld[message]["хозяин"] == nil then
+				mioFld[message]["хозяин"] = {}
+			end
 			mioFld[message]["петы"][tostring(kodMsg[3])] = mioFld[message]["петы"][tostring(kodMsg[2])]
 			mioFld[message]["хозяин"][tostring(kodMsg[3])] = mioFld[message]["хозяин"][tostring(kodMsg[2])]
 			mioFld[message]["хозяин"][tostring(kodMsg[2])] = nil
@@ -4457,11 +4460,25 @@ if classUnit == "Рыцарь смерти" then
 		},
 	}
 end
-if classUnit == "Жрец" then
+if classUnit == "Жрец" or classUnit == "Жрица" then
 	tblIcons = {
 		["Внутренний огонь"] = {
 			["icon"] = "Interface\\Icons\\Spell_Holy_InnerFire",
 			["name"] = "Внутренний огонь",
+			["pos"] = 1,
+			["buf"] = 1,
+			["debuf"] = 0,
+			["prok"] = nil,
+			["srav"] = "b",
+			["seiv"] = nil,
+		},
+	}
+end
+if classUnit == "Шаман" or classUnit == "Шаманка" then
+	tblIcons = {
+		["Водный щит"] = {
+			["icon"] = "Interface\\Icons\\Ability_Shaman_WaterShield",
+			["name"] = "Водный щит",
 			["pos"] = 1,
 			["buf"] = 1,
 			["debuf"] = 0,
@@ -4513,6 +4530,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if UnitAffectingCombat("player") == 1 then
 			testQ["skills"] = {}
 			if testQ[myNome]["настройки"]["auk"] == "Enable" then
+				if classUnit == "Шаман" or classUnit == "Шаманка" then
+					if not TempEnchant1:IsVisible() then
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					end
+				end
 				if testQ["skills"] == nil then
 					testQ["skills"] = {}
 				end

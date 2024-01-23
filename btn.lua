@@ -1,4 +1,4 @@
-versAdd=307;versAddDop=0
+versAdd=307;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -9405,9 +9405,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									for i = 1,100 do
 										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "hs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "sx" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zc" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "tz" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "m0"
 										and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "lx" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
+											if mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)] ~= nil then
+												if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
+													dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
+													dmG[i]:Show()
+												end
 											end
 										end
 										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "hs" then
