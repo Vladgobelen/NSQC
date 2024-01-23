@@ -2416,12 +2416,14 @@ if kodMsg[1] == "resObj" then
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 4999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ts"
-						if ach[17] == nil then
-							ach[17] = 1
-							SendChatMessage("Я построил товарный склад, с которого лвл за лвлом буду получать ооочень мн ого всяких ресурсов и лотерейные билеты!", "OFFICER", nil, 1)
-							SendChatMessage("Бюджет был очень маленьким, поэтому закройте глаза и представьте сотни разноцветных фейерверков и разных супер-пупер спец-эффектов тут", "OFFICER", nil, 1)
-							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-							achiv(2,5)
+						if sender == myNome then
+							if ach[17] == nil then
+								ach[17] = 1
+								SendChatMessage("Я построил товарный склад, с которого лвл за лвлом буду получать ооочень мн ого всяких ресурсов и лотерейные билеты!", "OFFICER", nil, 1)
+								SendChatMessage("Бюджет был очень маленьким, поэтому закройте глаза и представьте сотни разноцветных фейерверков и разных супер-пупер спец-эффектов тут", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+								achiv(2,5)
+							end
 						end
 						if fBtn[1]:IsVisible() then
 							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ts.tga")
