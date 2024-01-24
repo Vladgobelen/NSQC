@@ -1,4 +1,4 @@
-versAdd=310;versAddDop=0
+versAdd=310;versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7297,273 +7297,98 @@ if testQ ~= nil then
 end
 
 minibtn:SetScript("OnClick", function()
-	if ach_ach == nil then
-		ach_ach = {}
-	end
-	if ach_ach[1] == nil then
-		SendAddonMessage("#achVSE", 1, "guild")
-	end
-	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-	local lvl
-	for Zc=1,GetNumGuildMembers(true) do
-		local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-		if name == myNome then
-			lvl = string.sub(officerNote,1,1)
-			if tonumber(lvl) == 0 then
-				testQ["mioFldLvl"] = 0.5
-			end
-			if tonumber(lvl) == 1 then
-				testQ["mioFldLvl"] = 0.9
-			end
-			if lvl == "" then
-				testQ["mioFldLvl"] = 0.5
+	if tostring(versAdd) == tostring(testQ["vers"]["2"]) then
+		if ach_ach == nil then
+			ach_ach = {}
+		end
+		if ach_ach[1] == nil then
+			SendAddonMessage("#achVSE", 1, "guild")
+		end
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+		local lvl
+		for Zc=1,GetNumGuildMembers(true) do
+			local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+			if name == myNome then
+				lvl = string.sub(officerNote,1,1)
+				if tonumber(lvl) == 0 then
+					testQ["mioFldLvl"] = 0.5
+				end
+				if tonumber(lvl) == 1 then
+					testQ["mioFldLvl"] = 0.9
+				end
+				if lvl == "" then
+					testQ["mioFldLvl"] = 0.5
+				end
 			end
 		end
-	end
-	testQ["lvlProv"] = lvl
-	if testQ["mioFldLvl"] ~= nil and testQ["mioFldLvl"] ~= "" and testQ["mioFldLvl"] ~= "0" and testQ["mioFldLvl"] ~= 0.5 and testQ["mioFldLvl"] ~= 0.9 then
-		if arg1=="LeftButton" then
-			if testQ==nil then
-				testQ={}
-			end
-			if testQ[myNome]==nil then
-				testQ[myNome]={}
-			end
-			btn[2]:Hide()
-			btn[1]:Hide()
-			if testQ[myNome]["взятый_квест"]==nil or testQ[myNome]["взятый_квест"]=="9999" then
-				if pokazat == 0 then
-					btn[1]:SetText("Взять квест")
-					btn[1]:Show()
-					btn[1]:Enable()
-					btn[2]:Hide()
-					btn[7]:Disable()
-					btn[7]:SetText("Нет взятых квестов")
-					btn[8]:Disable()
-					btn[8]:SetText("Нет взятых квестов")
-					btn[2]:Disable()
+		testQ["lvlProv"] = lvl
+		if testQ["mioFldLvl"] ~= nil and testQ["mioFldLvl"] ~= "" and testQ["mioFldLvl"] ~= "0" and testQ["mioFldLvl"] ~= 0.5 and testQ["mioFldLvl"] ~= 0.9 then
+			if arg1=="LeftButton" then
+				if testQ==nil then
+					testQ={}
 				end
-				if pokazat == 1 then
-					btn[1]:Hide()
-					btn[1]:Enable()
-					btn[2]:Hide()
-					btn[7]:Disable()
-					btn[7]:SetText("Нет взятых квестов")
-					btn[8]:Disable()
-					btn[8]:SetText("Нет взятых квестов")
-					btn[2]:Disable()
+				if testQ[myNome]==nil then
+					testQ[myNome]={}
+				end
+				btn[2]:Hide()
+				btn[1]:Hide()
+				if testQ[myNome]["взятый_квест"]==nil or testQ[myNome]["взятый_квест"]=="9999" then
+					if pokazat == 0 then
+						btn[1]:SetText("Взять квест")
+						btn[1]:Show()
+						btn[1]:Enable()
+						btn[2]:Hide()
+						btn[7]:Disable()
+						btn[7]:SetText("Нет взятых квестов")
+						btn[8]:Disable()
+						btn[8]:SetText("Нет взятых квестов")
+						btn[2]:Disable()
+					end
+					if pokazat == 1 then
+						btn[1]:Hide()
+						btn[1]:Enable()
+						btn[2]:Hide()
+						btn[7]:Disable()
+						btn[7]:SetText("Нет взятых квестов")
+						btn[8]:Disable()
+						btn[8]:SetText("Нет взятых квестов")
+						btn[2]:Disable()
 
-				end
-			elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
-				if pokazat == 0 then
-					btn[1]:Hide()
-					btn[7]:SetText("Сдать квест")
-					btn[2]:Show()
-					btn[7]:Enable()
-					btn[7]:SetText("Отказаться от квеста")
-					btn[8]:Enable()
-					btn[8]:SetText("Узнать текущий квест")
-					btn[2]:Disable()
-				end
-				if pokazat == 1 then
-					btn[2]:Hide()
-					btn[1]:Hide()
-					btn[7]:Enable()
-					btn[7]:SetText("Отказаться от квеста")
-					btn[8]:Enable()
-					btn[8]:SetText("Узнать текущий квест")
-					btn[2]:Disable()
-				end
-				if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
-					testComplit=testQ[myNome]["взятый_квест"]
-					testComplit=tonumber(testComplit)
-					if testComplit ~= nil then
-						id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
 					end
-					if completed ~= true then
-						btn[2]:Disable()
-						if pokazat == 0 then
-								btn[2]:Show()
-								btn[1]:Hide()
-							else
-								btn[2]:Hide()
-							end
-						btn[2]:SetText("Ачивка не выполнена")
+				elseif testQ[myNome]["взятый_квест"]~=nil or testQ[myNome]["взятый_квест"]~="9999" then
+					if pokazat == 0 then
 						btn[1]:Hide()
-						btn[1]:SetText("Ачивка не выполнена")
-					else
-						if testQ["timerID2"] == nil then
-							btn[2]:Enable()
-							btn[1]:Enable()
-						end
-						if pokazat == 0 then
-								btn[2]:Show()
-								btn[1]:Hide()
-							else
-								btn[2]:Hide()
-							end
-						btn[2]:SetText("Сдать квест")
-					end
-				elseif testQ[myNome]["лвл_квестов"]=="2" then
-					vypolnenaLiAch=testQ[myNome]["взятый_квест"]
-					count = GetAchievementNumCriteria(vypolnenaLiAch)
-					chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
-					chisloToNum=tonumber(vypolnenaLiAch)
-					j=0
-					k=0
-					for i=1, count do
-						local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(chisloToNum, i);
-						prov=completed
-						if prov == true then
-							j=j+1
-						else
-							k=k+1
-						end
-						i=i+1
-					end
-					temvChislo = tonumber(chisloPunktop)
-					if j<temvChislo then
+						btn[7]:SetText("Сдать квест")
+						btn[2]:Show()
+						btn[7]:Enable()
+						btn[7]:SetText("Отказаться от квеста")
+						btn[8]:Enable()
+						btn[8]:SetText("Узнать текущий квест")
 						btn[2]:Disable()
-						if pokazat == 0 then
-								btn[2]:Show()
-								btn[1]:Hide()
-							else
-								btn[2]:Hide()
-							end
-						btn[2]:SetText("Ачивка не выполнена")
-						btn[1]:Hide()
-						btn[1]:SetText("Ачивка не выполнена")
-					else
-						if testQ["timerID2"] == nil then
-							btn[2]:Enable()
-						end
-						if pokazat == 0 then
-								btn[2]:Show()
-								btn[1]:Hide()
-							else
-								btn[2]:Hide()
-							end
-						btn[2]:SetText("Сдать квест")
 					end
-				elseif testQ[myNome]["лвл_квестов"]=="3" or testQ[myNome]["лвл_квестов"] == 3 then
-					if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" and testQ[myNome]["взятый_квест"] ~= "itemQ" then
-						if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
-							testComplit=testQ[myNome]["взятый_квест"]
-							testComplit=tonumber(testComplit)
+					if pokazat == 1 then
+						btn[2]:Hide()
+						btn[1]:Hide()
+						btn[7]:Enable()
+						btn[7]:SetText("Отказаться от квеста")
+						btn[8]:Enable()
+						btn[8]:SetText("Узнать текущий квест")
+						btn[2]:Disable()
+					end
+					if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
+						testComplit=testQ[myNome]["взятый_квест"]
+						testComplit=tonumber(testComplit)
+						if testComplit ~= nil then
 							id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
-							if completed ~= true then
-								btn[2]:Disable()
-								if pokazat == 0 then
-									btn[2]:Show()
-									btn[1]:Hide()
-								else
-									btn[2]:Hide()
-								end
-								btn[2]:SetText("Ачивка не выполнена")
-								btn[1]:Hide()
-								btn[1]:SetText("Ачивка не выполнена")
-							else
-								if testQ["timerID2"] == nil then
-									btn[2]:Enable()
-									btn[1]:Enable()
-								end
-								if pokazat == 0 then
-									btn[2]:Show()
-									btn[1]:Hide()
-								else
-									btn[2]:Hide()
-								end
-								btn[2]:SetText("Сдать квест")
-							end
-						elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
-							vypolnenaLiAch=testQ[myNome]["взятый_квест"]
-							vypolnenaLiAch=tonumber(vypolnenaLiAch)
-							count = GetAchievementNumCriteria(vypolnenaLiAch)
-							chisloPunktop=testQ[myNome]["квест_лвл3"][vypolnenaLiAch]
-							j=0
-							k=0
-							for i=1, count do
-								local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
-								prov=completed
-								if prov == true then
-									j=j+1
-								else
-									k=k+1
-								end
-								i=i+1
-							end
-							temvChislo = tonumber(chisloPunktop)
-							if j<temvChislo then
-								btn[2]:Disable()
-								if pokazat == 0 then
-									btn[2]:Show()
-									btn[1]:Hide()
-								else
-									btn[2]:Hide()
-								end
-								btn[2]:SetText("Ачивка не выполнена")
-								btn[1]:Hide()
-								btn[1]:SetText("Ачивка не выполнена")
-							else
-								if testQ["timerID2"] == nil then
-									btn[2]:Enable()
-									btn[1]:Enable()
-								end
-								if pokazat == 0 then
-									btn[2]:Show()
-									btn[1]:Hide()
-								else
-									btn[2]:Hide()
-								end
-								btn[2]:SetText("Сдать квест")
-							end
 						end
-					end
-					if testQ[myNome]["взятый_квест"] == "q3Stat" then
-						if testQ[myNome]["q3Stat"]~= nil then
-							btn[1]:Hide()
-							btn[2]:Disable()
-							local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
-							local tQ = tonumber(testQ[myNome]["q3StatNum"])
-							local tQ1 = tQ+5
-							local tQ2 = tonumber(arg4)
-							if tQ2 < tQ1 then
-								btn[2]:Disable()
-								if pokazat == 0 then
-									btn[2]:Show()
-									btn[1]:Hide()
-								else
-									btn[2]:Hide()
-								end
-								btn[2]:SetText("Ачивка не выполнена")
-								btn[1]:Hide()
-								btn[1]:SetText("Ачивка не выполнена")
-							else
-								if testQ["timerID2"] == nil then
-									btn[2]:Enable()
-									btn[1]:Enable()
-								end
-								if pokazat == 0 then
-									btn[2]:Show()
-									btn[1]:Hide()
-								else
-									btn[2]:Hide()
-								end
-								btn[2]:SetText("Сдать квест")
-							end
-						end
-
-					end
-					if testQ[myNome]["взятый_квест"] == "q33" then
-						btn[1]:Hide()
-						if testQ[myNome]["q33nik"][1] ~= 1 or testQ[myNome]["q33nik"][2] ~= 1 or testQ[myNome]["q33nik"][3] ~= 1 then
+						if completed ~= true then
 							btn[2]:Disable()
 							if pokazat == 0 then
-								btn[2]:Show()
-								btn[1]:Hide()
-							else
-								btn[2]:Hide()
-							end
+									btn[2]:Show()
+									btn[1]:Hide()
+								else
+									btn[2]:Hide()
+								end
 							btn[2]:SetText("Ачивка не выполнена")
 							btn[1]:Hide()
 							btn[1]:SetText("Ачивка не выполнена")
@@ -7572,115 +7397,292 @@ minibtn:SetScript("OnClick", function()
 								btn[2]:Enable()
 								btn[1]:Enable()
 							end
-							if pokazat == 1 then
-								btn[2]:Hide()
-								btn[1]:Hide()
-							else
-								btn[2]:Show()
-							end
-								btn[2]:SetText("Сдать квест")
+							if pokazat == 0 then
+									btn[2]:Show()
+									btn[1]:Hide()
+								else
+									btn[2]:Hide()
+								end
+							btn[2]:SetText("Сдать квест")
 						end
-
-					end
-
-					if testQ[myNome]["взятый_квест"] == "itemQ" then
-						btn[1]:Hide()
-						if testQ[myNome]["itemQend"] ~= 1 then
+					elseif testQ[myNome]["лвл_квестов"]=="2" then
+						vypolnenaLiAch=testQ[myNome]["взятый_квест"]
+						count = GetAchievementNumCriteria(vypolnenaLiAch)
+						chisloPunktop=testQ[myNome]["квест_лвл2"][vypolnenaLiAch]
+						chisloToNum=tonumber(vypolnenaLiAch)
+						j=0
+						k=0
+						for i=1, count do
+							local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(chisloToNum, i);
+							prov=completed
+							if prov == true then
+								j=j+1
+							else
+								k=k+1
+							end
+							i=i+1
+						end
+						temvChislo = tonumber(chisloPunktop)
+						if j<temvChislo then
 							btn[2]:Disable()
 							if pokazat == 0 then
-								btn[2]:Show()
-								btn[1]:Hide()
-							else
-								btn[2]:Hide()
-							end
+									btn[2]:Show()
+									btn[1]:Hide()
+								else
+									btn[2]:Hide()
+								end
 							btn[2]:SetText("Ачивка не выполнена")
 							btn[1]:Hide()
 							btn[1]:SetText("Ачивка не выполнена")
 						else
 							if testQ["timerID2"] == nil then
 								btn[2]:Enable()
-								btn[1]:Enable()
 							end
-							if pokazat == 1 then
-								btn[2]:Hide()
+							if pokazat == 0 then
+									btn[2]:Show()
+									btn[1]:Hide()
+								else
+									btn[2]:Hide()
+								end
+							btn[2]:SetText("Сдать квест")
+						end
+					elseif testQ[myNome]["лвл_квестов"]=="3" or testQ[myNome]["лвл_квестов"] == 3 then
+						if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" and testQ[myNome]["взятый_квест"] ~= "itemQ" then
+							if testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+								testComplit=testQ[myNome]["взятый_квест"]
+								testComplit=tonumber(testComplit)
+								id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(testComplit)
+								if completed ~= true then
+									btn[2]:Disable()
+									if pokazat == 0 then
+										btn[2]:Show()
+										btn[1]:Hide()
+									else
+										btn[2]:Hide()
+									end
+									btn[2]:SetText("Ачивка не выполнена")
+									btn[1]:Hide()
+									btn[1]:SetText("Ачивка не выполнена")
+								else
+									if testQ["timerID2"] == nil then
+										btn[2]:Enable()
+										btn[1]:Enable()
+									end
+									if pokazat == 0 then
+										btn[2]:Show()
+										btn[1]:Hide()
+									else
+										btn[2]:Hide()
+									end
+									btn[2]:SetText("Сдать квест")
+								end
+							elseif testQ[myNome]["взятый_квест3_2"] == "vzyat" then
+								vypolnenaLiAch=testQ[myNome]["взятый_квест"]
+								vypolnenaLiAch=tonumber(vypolnenaLiAch)
+								count = GetAchievementNumCriteria(vypolnenaLiAch)
+								chisloPunktop=testQ[myNome]["квест_лвл3"][vypolnenaLiAch]
+								j=0
+								k=0
+								for i=1, count do
+									local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+									prov=completed
+									if prov == true then
+										j=j+1
+									else
+										k=k+1
+									end
+									i=i+1
+								end
+								temvChislo = tonumber(chisloPunktop)
+								if j<temvChislo then
+									btn[2]:Disable()
+									if pokazat == 0 then
+										btn[2]:Show()
+										btn[1]:Hide()
+									else
+										btn[2]:Hide()
+									end
+									btn[2]:SetText("Ачивка не выполнена")
+									btn[1]:Hide()
+									btn[1]:SetText("Ачивка не выполнена")
+								else
+									if testQ["timerID2"] == nil then
+										btn[2]:Enable()
+										btn[1]:Enable()
+									end
+									if pokazat == 0 then
+										btn[2]:Show()
+										btn[1]:Hide()
+									else
+										btn[2]:Hide()
+									end
+									btn[2]:SetText("Сдать квест")
+								end
+							end
+						end
+						if testQ[myNome]["взятый_квест"] == "q3Stat" then
+							if testQ[myNome]["q3Stat"]~= nil then
 								btn[1]:Hide()
-							else
-								btn[2]:Show()
+								btn[2]:Disable()
+								local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
+								local tQ = tonumber(testQ[myNome]["q3StatNum"])
+								local tQ1 = tQ+5
+								local tQ2 = tonumber(arg4)
+								if tQ2 < tQ1 then
+									btn[2]:Disable()
+									if pokazat == 0 then
+										btn[2]:Show()
+										btn[1]:Hide()
+									else
+										btn[2]:Hide()
+									end
+									btn[2]:SetText("Ачивка не выполнена")
+									btn[1]:Hide()
+									btn[1]:SetText("Ачивка не выполнена")
+								else
+									if testQ["timerID2"] == nil then
+										btn[2]:Enable()
+										btn[1]:Enable()
+									end
+									if pokazat == 0 then
+										btn[2]:Show()
+										btn[1]:Hide()
+									else
+										btn[2]:Hide()
+									end
+									btn[2]:SetText("Сдать квест")
+								end
 							end
-								btn[2]:SetText("Сдать квест")
+
+						end
+						if testQ[myNome]["взятый_квест"] == "q33" then
+							btn[1]:Hide()
+							if testQ[myNome]["q33nik"][1] ~= 1 or testQ[myNome]["q33nik"][2] ~= 1 or testQ[myNome]["q33nik"][3] ~= 1 then
+								btn[2]:Disable()
+								if pokazat == 0 then
+									btn[2]:Show()
+									btn[1]:Hide()
+								else
+									btn[2]:Hide()
+								end
+								btn[2]:SetText("Ачивка не выполнена")
+								btn[1]:Hide()
+								btn[1]:SetText("Ачивка не выполнена")
+							else
+								if testQ["timerID2"] == nil then
+									btn[2]:Enable()
+									btn[1]:Enable()
+								end
+								if pokazat == 1 then
+									btn[2]:Hide()
+									btn[1]:Hide()
+								else
+									btn[2]:Show()
+								end
+									btn[2]:SetText("Сдать квест")
+							end
+
 						end
 
+						if testQ[myNome]["взятый_квест"] == "itemQ" then
+							btn[1]:Hide()
+							if testQ[myNome]["itemQend"] ~= 1 then
+								btn[2]:Disable()
+								if pokazat == 0 then
+									btn[2]:Show()
+									btn[1]:Hide()
+								else
+									btn[2]:Hide()
+								end
+								btn[2]:SetText("Ачивка не выполнена")
+								btn[1]:Hide()
+								btn[1]:SetText("Ачивка не выполнена")
+							else
+								if testQ["timerID2"] == nil then
+									btn[2]:Enable()
+									btn[1]:Enable()
+								end
+								if pokazat == 1 then
+									btn[2]:Hide()
+									btn[1]:Hide()
+								else
+									btn[2]:Show()
+								end
+									btn[2]:SetText("Сдать квест")
+							end
+
+						end
 					end
 				end
-			end
-			if pokazat~=1 then
-				ii=6
-				btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
-				btn[ii]:SetFrameStrata("FULLSCREEN_DIALOG")
-				btn[ii]:SetPoint("CENTER",0,150)
-				btn[ii]:SetSize(300, 30)
-				btn[ii]:SetText("Закрыть")
-				btn[ii]:Hide();
-				btn[ii]:SetScript("OnClick", function(self, button)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-					for ii=1,15 do
-						btn[ii]:Hide();
+				if pokazat~=1 then
+					ii=6
+					btn[ii] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+					btn[ii]:SetFrameStrata("FULLSCREEN_DIALOG")
+					btn[ii]:SetPoint("CENTER",0,150)
+					btn[ii]:SetSize(300, 30)
+					btn[ii]:SetText("Закрыть")
+					btn[ii]:Hide();
+					btn[ii]:SetScript("OnClick", function(self, button)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+						for ii=1,15 do
+							btn[ii]:Hide();
+						end
+						minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+						minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+						minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+					end)
+					for ii=3,15 do
+						btn[ii]:Show();
+					end
+					if myCheckButton1:IsVisible() then
+						showRB(myNome)
+					end
+					pokazatChk=0
+					minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+					minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+					minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+					pokazat=1
+				else
+					for ii=3,15 do
+						if btn[ii] ~= nil then
+							btn[ii]:Hide();
+						end
 					end
 					minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 					minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
 					minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-				end)
-				for ii=3,15 do
-					btn[ii]:Show();
+					pokazat=0
+					myCheckButton1:Hide()
+					myCheckButton2:Hide()
+					myCheckButton3:Hide()
+					myCheckButton4:Hide()
+					myCheckButton5:Hide()
+					myCheckButton6:Hide()
+					myCheckButton7:Hide()
+					btn[998]:Hide()
+					btn[997]:Hide()
+					pokazatChk=0
 				end
-				if myCheckButton1:IsVisible() then
+			end
+			if arg1=="RightButton" then
+				if pokazat == 1 then
 					showRB(myNome)
 				end
-				pokazatChk=0
-				minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-				minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-				minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-				pokazat=1
-			else
-				for ii=3,15 do
-					if btn[ii] ~= nil then
-						btn[ii]:Hide();
-					end
-				end
-				minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-				minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-				minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-				pokazat=0
-				myCheckButton1:Hide()
-				myCheckButton2:Hide()
-				myCheckButton3:Hide()
-				myCheckButton4:Hide()
-				myCheckButton5:Hide()
-				myCheckButton6:Hide()
-				myCheckButton7:Hide()
-				btn[998]:Hide()
-				btn[997]:Hide()
-				pokazatChk=0
 			end
-		end
-		if arg1=="RightButton" then
-			if pokazat == 1 then
+		elseif testQ["mioFldLvl"] == 0.5 or testQ["mioFldLvl"] == 0.9 then
+			if arg1=="LeftButton" then
+				showFld("1",myNome)
+			end
+			if arg1=="RightButton" then
+				if pokazat == 0 and not myCheckButton1:IsVisible() then
+					pokazat = 1
+				end
 				showRB(myNome)
 			end
 		end
-	elseif testQ["mioFldLvl"] == 0.5 or testQ["mioFldLvl"] == 0.9 then
-		if arg1=="LeftButton" then
+		if arg1 == "MiddleButton" then
 			showFld("1",myNome)
 		end
-		if arg1=="RightButton" then
-			if pokazat == 0 and not myCheckButton1:IsVisible() then
-				pokazat = 1
-			end
-			showRB(myNome)
-		end
-	end
-	if arg1 == "MiddleButton" then
-		showFld("1",myNome)
 	end
 end)
 
