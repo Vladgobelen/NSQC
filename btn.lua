@@ -1,4 +1,4 @@
-versAdd=310;versAddDop=2
+versAdd=310;versAddDop=3
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4989,6 +4989,33 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if acha[22] ~= nil then
+					if id == 22 then
+						if nome == myNome then
+							SendChatMessage("Я построил первый склад для бревен. Ну, как построил - отгородил пространство теми же бревнами.", "OFFICER", nil, 1)
+						else
+							SendChatMessage("Гоблин " .. nome .. " построил первый склад для бревен. Ну, как построил - отгородил пространство теми же бревнами.", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[23] ~= nil then
+					if id == 23 then
+						if nome == myNome then
+							SendChatMessage("Я построил первый склад для камней. Теперь они не промокнут.", "OFFICER", nil, 1)
+						else
+							SendChatMessage("Гоблин " .. nome .. " построил первый склад для камней. Теперь они не промокнут.", "OFFICER", nil, 1)
+						end
+					end
+				end
+				if acha[24] ~= nil then
+					if id == 24 then
+						if nome == myNome then
+							SendChatMessage("Завод по перетиранию камня в бетон в принципе построил, только кто будет там работать? Ну не я же!", "OFFICER", nil, 1)
+						else
+							SendChatMessage("Гоблин " .. nome .. " построил завод по перетиранию камней в бетон, но кто будет там работать? Добровольцы есть?", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5529,6 +5556,33 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 21 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно поставить гоблина добывать камень...и чуть чуть подождать.")
+				end
+			end
+			if acha[22] ~= nil then
+				if id == 22 then
+					GameTooltip:AddLine("|cFF6495ED " .. nome .. " построил первый склад для бревен. Ну, как построил - отгородил пространство теми же бревнами.")
+				end
+			else
+				if id == 22 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно расчистить землю, утоптать ее, получить 1 гильдлвл и построить склад для бревен")
+				end
+			end
+			if acha[23] ~= nil then
+				if id == 23 then
+					GameTooltip:AddLine("|cFF6495ED " .. nome .. " построил первый склад для камней. Теперь они не промокнут.")
+				end
+			else
+				if id == 23 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно расчистить землю, утоптать ее, получить 1 гильдлвл и построить склад для камня")
+				end
+			end
+			if acha[24] ~= nil then
+				if id == 24 then
+					GameTooltip:AddLine("|cFF6495ED " .. nome .. " построил завод по перетиранию камней в бетон, только кто будет там работать? Добровольцы есть?")
+				end
+			else
+				if id == 24 then
+					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно расчистить землю, утоптать ее, получить 1 гильдлвл и построить бетонный завод")
 				end
 			end
 		end
@@ -7960,11 +8014,8 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 										PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\m.ogg")
 										if xx == 1 then
 											SendAddonMessage("gobXm " .. i, myNome, "guild")
-											if ach[21] == nil then
-												ach[21] = 1
-												SendChatMessage("Гоблин только что впервые к херам разнес мой рудник. Я уверен - это он так играется... *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-												achiv(3,1)
+											if ach_ach[21] == nil then
+												SendAddonMessage("#achVSE", 21, "guild")
 											end
 										end
 									end

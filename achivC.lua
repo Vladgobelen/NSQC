@@ -31,7 +31,6 @@ if kodMsg[1] == "#yIm" then
 	testQ["mfNome"] = message
 end
 if kodMsg[1] == "dostPOL" and kodMsg[2] == myNome then
-print(message)
 	if message == "1" then
 		ach_ach[1] = 1
 		SendChatMessage("Я героически нашел кнопку аддона и даже смог ее нажать!!! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
@@ -152,6 +151,30 @@ print(message)
 		SendChatMessage("Я привожу домой гнома. Гномку.. Теперь она будет с нами жить. (совершеннолетнюю) *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 		achiv(5,5)
+	end
+	if message == "21" then
+		ach_ach[21] = 1
+		SendChatMessage("Гоблин только что впервые к херам разнес мой рудник. Я уверен - это он так играется... *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,1)
+	end
+	if message == "22" then
+		ach_ach[22] = 1
+		SendChatMessage("Я построил первый склад для бревен. Ну, как построил - отгородил пространство теми же бревнами.", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,1)
+	end
+	if message == "23" then
+		ach_ach[23] = 1
+		SendChatMessage("Я построил первый склад для камней. Теперь они не промокнут.", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,1)
+	end
+	if message == "24" then
+		ach_ach[24] = 1
+		SendChatMessage("Завод по перетиранию камня в бетон в принципе построил, только кто будет там работать? Ну не я же!", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,5)
 	end
 end
 if kodMsg[1] == "#b0" then
@@ -1803,6 +1826,11 @@ if kodMsg[1] == "sbS" then
 			if mioFld[message]["целостность"] == nil then
 				mioFld[message]["целостность"] = {}
 			end
+			if sender == myNome then
+				if ach_ach[22] == nil then
+					SendAddonMessage("#achVSE", 22, "guild")
+				end
+			end
 			mioFld[message]["объекты"][tostring(kodMsg[2])] = "sb"
 			mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
 			testQ["fRand4"] = 1
@@ -2526,6 +2554,11 @@ if kodMsg[1] == "resObj" then
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="skc" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "sk"
+						if sender == myNome then
+							if ach_ach[23] == nil then
+								SendAddonMessage("#achVSE", 23, "guild")
+							end
+						end
 					end
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ox" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ob"
@@ -2567,6 +2600,11 @@ if kodMsg[1] == "resObj" then
 				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
 					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zs" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
+						if sender == myNome then
+							if ach_ach[24222222] == nil then
+								SendAddonMessage("#achVSE", 24, "guild")
+							end
+						end
 						if fBtn[1]:IsVisible() then
 							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
 						end
