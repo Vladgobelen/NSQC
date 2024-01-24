@@ -1,4 +1,4 @@
-versAdd=310;versAddDop=3
+versAdd=310;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5371,7 +5371,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		if testQ["domZ"] == "muzeum" then
 			if acha[1] ~= nil then
 				if id == 1 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " героически нашел кнопку аддона и даже смог ее нажать!!!")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " героически нашел кнопку аддона и даже смог ее нажать!!!")
 				end
 			else
 				if id == 1 then
@@ -5380,7 +5380,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[2] ~= nil then
 				if id == 2 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " героически срубил дерево!!! Сам, между прочим.")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " героически срубил дерево!!! Сам, между прочим.")
 				end
 			else
 				if id == 2 then
@@ -5389,7 +5389,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[3] ~= nil then
 				if id == 3 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 90%")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " невероятным усилием срезал пучок травы с шансом 90%")
 				end
 			else
 				if id == 3 then
@@ -5398,7 +5398,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[4] ~= nil then
 				if id == 4 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 50%")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " невероятным усилием срезал пучок травы с шансом 50%")
 				end
 			else
 				if id == 4 then
@@ -5407,7 +5407,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[5] ~= nil then
 				if id == 5 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом 10%")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " невероятным усилием срезал пучок травы с шансом 10%")
 				end
 			else
 				if id == 5 then
@@ -5416,7 +5416,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[6] ~= nil then
 				if id == 6 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 5%")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 5%")
 				end
 			else
 				if id == 6 then
@@ -5425,7 +5425,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[7] ~= nil then
 				if id == 7 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 1%")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " невероятным усилием срезал пучок травы с шансом всего в 1%")
 				end
 			else
 				if id == 7 then
@@ -5434,7 +5434,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[8] ~= nil then
 				if id == 8 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " начал копать свою первую шахту")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " начал копать свою первую шахту")
 				end
 			else
 				if id == 8 then
@@ -5443,7 +5443,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[9] ~= nil then
 				if id == 9 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм..")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм..")
 				end
 			else
 				if id == 9 then
@@ -5452,7 +5452,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[10] ~= nil then
 				if id == 10 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ")
 				end
 			else
 				if id == 10 then
@@ -5461,7 +5461,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[11] ~= nil then
 				if id == 11 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " таки добыл первый камень! Первый. Камень.")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " таки добыл первый камень! Первый. Камень.")
 				end
 			else
 				if id == 11 then
@@ -5470,7 +5470,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[12] ~= nil then
 				if id == 12 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " успешно нашел свой первый квест в хижине")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " успешно нашел свой первый квест в хижине")
 				end
 			else
 				if id == 12 then
@@ -5479,7 +5479,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[13] ~= nil then
 				if id == 13 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " категорически отказался присылать свою личную шерсть непонятно кому")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " категорически отказался присылать свою личную шерсть непонятно кому")
 				end
 			else
 				if id == 13 then
@@ -5488,7 +5488,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[14] ~= nil then
 				if id == 14 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " нашел свой первый квест в сельсовете, но бесплатно почему то ничего не дали...")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " нашел свой первый квест в сельсовете, но бесплатно почему то ничего не дали...")
 				end
 			else
 				if id == 14 then
@@ -5497,7 +5497,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[15] ~= nil then
 				if id == 15 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " успешно выполнил свой первый квест через аддон")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " успешно выполнил свой первый квест через аддон")
 				end
 			else
 				if id == 15 then
@@ -5506,7 +5506,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[16] ~= nil then
 				if id == 16 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " на одной интуиции угадывает, что нужно кликнуть по самогону мышем")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " на одной интуиции угадывает, что нужно кликнуть по самогону мышем")
 				end
 			else
 				if id == 16 then
@@ -5515,7 +5515,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[17] ~= nil then
 				if id == 17 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " построил товарный склад для получения наград за лвлапы")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " построил товарный склад для получения наград за лвлапы")
 				end
 			else
 				if id == 17 then
@@ -5524,7 +5524,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[18] ~= nil then
 				if id == 18 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " успешно приручил бобра..хм.. или бобера?")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " успешно приручил бобра..хм.. или бобера?")
 				end
 			else
 				if id == 18 then
@@ -5533,7 +5533,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[19] ~= nil then
 				if id == 19 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " заводит на участке что то зеленое.. это или жаба или гоблин...")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " заводит на участке что то зеленое.. это или жаба или гоблин...")
 				end
 			else
 				if id == 19 then
@@ -5542,7 +5542,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[20] ~= nil then
 				if id == 20 then
-					GameTooltip:AddLine("|cFF6495ED" .. nome .. " привел домой гнома..гномку. Она теперь будет тут жить. (совершеннолетнюю)")
+					GameTooltip:AddLine("|cff99ff99" .. nome .. " привел домой гнома..гномку. Она теперь будет тут жить. (совершеннолетнюю)")
 				end
 			else
 				if id == 20 then
@@ -5551,7 +5551,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[21] ~= nil then
 				if id == 21 then
-					GameTooltip:AddLine("|cFF6495ED Гоблин " .. nome .. " уничтожил рудник. Истребил. Сравнял с землей...даже чуть чуть ниже...")
+					GameTooltip:AddLine("|cff99ff99 Гоблин " .. nome .. " уничтожил рудник. Истребил. Сравнял с землей...даже чуть чуть ниже...")
 				end
 			else
 				if id == 21 then
@@ -5560,7 +5560,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[22] ~= nil then
 				if id == 22 then
-					GameTooltip:AddLine("|cFF6495ED " .. nome .. " построил первый склад для бревен. Ну, как построил - отгородил пространство теми же бревнами.")
+					GameTooltip:AddLine("|cff99ff99 " .. nome .. " построил первый склад для бревен. Ну, как построил - отгородил пространство теми же бревнами.")
 				end
 			else
 				if id == 22 then
@@ -5569,7 +5569,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[23] ~= nil then
 				if id == 23 then
-					GameTooltip:AddLine("|cFF6495ED " .. nome .. " построил первый склад для камней. Теперь они не промокнут.")
+					GameTooltip:AddLine("|cff99ff99 " .. nome .. " построил первый склад для камней. Теперь они не промокнут.")
 				end
 			else
 				if id == 23 then
@@ -5578,7 +5578,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if acha[24] ~= nil then
 				if id == 24 then
-					GameTooltip:AddLine("|cFF6495ED " .. nome .. " построил завод по перетиранию камней в бетон, только кто будет там работать? Добровольцы есть?")
+					GameTooltip:AddLine("|cff99ff99 " .. nome .. " построил завод по перетиранию камней в бетон, только кто будет там работать? Добровольцы есть?")
 				end
 			else
 				if id == 24 then
