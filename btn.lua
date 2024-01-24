@@ -1,4 +1,4 @@
-versAdd=310;versAddDop=4
+versAdd=310;versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5016,6 +5016,15 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 					end
 				end
+				if acha[25] ~= nil then
+					if id == 25 then
+						if nome == myNome then
+							SendChatMessage("Я, вдохновившись \"подвигом\" Армогедроида, истребил все живое у себя на учатке.", "OFFICER", nil, 1)
+						else
+							SendChatMessage(nome .. ", вдохновившись \"подвигом\" Армогедроида, истребил все живое у себя на учатке.", "OFFICER", nil, 1)
+						end
+					end
+				end
 			end
 			if testQ["domZ"] == "taverna" then
 				if mioFld[nome][testQ["domZ"]][tostring(id)] == "b0" then
@@ -5583,6 +5592,15 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			else
 				if id == 24 then
 					GameTooltip:AddLine("|cffff0000" .. nome .. " нужно расчистить землю, утоптать ее, получить 1 гильдлвл и построить бетонный завод")
+				end
+			end
+			if acha[25] ~= nil then
+				if id == 25 then
+					GameTooltip:AddLine("|cff99ff99 " .. nome .. ", вдохновившись \"подвигом\" Армогедроида, истребил все живое у себя на учатке.")
+				end
+			else
+				if id == 25 then
+
 				end
 			end
 		end
@@ -8335,7 +8353,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
+		local ebnulsa = nil
 		for i = 1,100 do
+			if mioFld[myNome]["объекты"][tostring(i)] == "t" then
+				ebnulsa = 1
+			end
 			if mioFld ~= nil then
 				if mioFld[myNome] ~= nil then
 					if mioFld[myNome]["объекты"] ~= nil then
@@ -8359,6 +8381,11 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						testQ["zavodp"] = nil
 					end
 				end
+			end
+		end
+		if ebnulsa == nil then
+			if ach_ach[25] == nil then
+				SendAddonMessage("#achVSE", 25, "guild")
 			end
 		end
 		if testQ["zavod"] == 1 then

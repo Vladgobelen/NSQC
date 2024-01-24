@@ -176,6 +176,13 @@ if kodMsg[1] == "dostPOL" and kodMsg[2] == myNome then
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 		achiv(3,5)
 	end
+	if message == "25" then
+		ach_ach[25] = 1
+		SendChatMessage("Ненавистник природы: Я вдохновившись \"подвигом\" Армогедроида, истребил все живое у себя на учатке.", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,5)
+		SendAddonMessage("бревнаP Армогедроид","Армогедроид", "guild")
+	end
 end
 if kodMsg[1] == "#b0" then
 	if mioFld == nil then
@@ -1233,6 +1240,11 @@ if kodMsg[1] == "камни" and kodMsg[2] == myNome and testGM~=nil then
 end
 if kodMsg[1] == "бревна" and kodMsg[2] == myNome and testGM~=nil then
 	testQ["brevna"] = tonumber(message)
+	testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
+	testQ["fRand6"] = 1
+end
+if kodMsg[1] == "бревнаP" and kodMsg[2] == myNome and testGM~=nil then
+	testQ["brevna"] = tonumber(testQ["brevna"])+1
 	testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
 	testQ["fRand6"] = 1
 end
