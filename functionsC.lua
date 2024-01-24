@@ -1277,10 +1277,7 @@ function treeX(nome,myNome,id)
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
 		if ach_ach[2] == nil then
-			ach_ach[2] = 1
-			SendChatMessage("Я героически срубил дерево!!! Сам, между прочим. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-			achiv(1,1)
+			SendAddonMessage("#achVSE", 2, "guild")
 		end
 		SendAddonMessage("travA " .. id, nome, "guild")
 		if testQ ~= nil then
@@ -1338,10 +1335,7 @@ function treeX(nome,myNome,id)
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 					if ach_ach[7] == nil then
-						ach_ach[7] = 1
-						SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-						achiv(3,3)
+						SendAddonMessage("#achVSE", 7, "guild")
 					end
 				end
 			end
@@ -1352,10 +1346,7 @@ function treeX(nome,myNome,id)
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 					if ach_ach[6] == nil then
-						ach_ach[6] = 1
-						SendChatMessage("Я успешно срезал пучок травы с шансом всего в 5%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-						achiv(3,2)
+						SendAddonMessage("#achVSE", 6, "guild")
 					end
 				end
 			end
@@ -1366,10 +1357,7 @@ function treeX(nome,myNome,id)
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 					if ach_ach[5] == nil then
-						ach_ach[5] = 1
-						SendChatMessage("Я успешно срезал пучок травы с шансом в 10%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-						achiv(2,2)
+						SendAddonMessage("#achVSE", 5, "guild")
 					end
 				end
 			end
@@ -1380,10 +1368,7 @@ function treeX(nome,myNome,id)
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 					if ach_ach[4] == nil then
-						ach_ach[4] = 1
-						SendChatMessage("Я успешно срезал пучок травы с шансом в 50%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-						achiv(2,1)
+						SendAddonMessage("#achVSE", 4, "guild")
 					end
 				end
 			end
@@ -1394,10 +1379,7 @@ function treeX(nome,myNome,id)
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 					if ach_ach[3] == nil then
-						ach_ach[3] = 1
-						SendChatMessage("Я успешно срезал пучок травы с шансом в 90%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-						achiv(1,1)
+						SendAddonMessage("#achVSE", 3, "guild")
 					end
 				end
 			end
@@ -1407,10 +1389,7 @@ function treeX(nome,myNome,id)
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
 		SendAddonMessage("uZ " .. id, nome, "guild")
 		if ach_ach[10] == nil then
-			ach_ach[10] = 1
-			SendChatMessage("Я утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-			achiv(1,1)
+			SendAddonMessage("#achVSE", 10, "guild")
 		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
 	end
@@ -1421,10 +1400,7 @@ function treeX(nome,myNome,id)
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ms" then
 		SendAddonMessage("mS " .. id, nome, "guild")
 		if ach_ach[9] == nil then
-			ach_ach[9] = 1
-			SendChatMessage("Я построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-			achiv(3,1)
+			SendAddonMessage("#achVSE", 9, "guild")
 		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
 	end
@@ -2009,10 +1985,7 @@ function gKam(myNome,x)
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
-				ach_ach[11] = 1
-				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(3,3)
+				SendAddonMessage("#achVSE", 11, "guild")
 			end
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 100 and testK == 1 then
@@ -2020,20 +1993,14 @@ function gKam(myNome,x)
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
-				ach_ach[11] = 1
-				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(3,3)
+				SendAddonMessage("#achVSE", 11, "guild")
 			end
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 200 and testK == 2 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			if ach_ach[11] == nil then
-				ach_ach[11] = 1
-				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(3,3)
+				SendAddonMessage("#achVSE", 11, "guild")
 			end
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
@@ -2042,10 +2009,7 @@ function gKam(myNome,x)
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
-				ach_ach[11] = 1
-				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(3,3)
+				SendAddonMessage("#achVSE", 11, "guild")
 			end
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 400 and testK == 4 then
@@ -2053,10 +2017,7 @@ function gKam(myNome,x)
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
-				ach_ach[11] = 1
-				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(3,3)
+				SendAddonMessage("#achVSE", 11, "guild")
 			end
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 500 and testK == 5 then
@@ -2064,10 +2025,7 @@ function gKam(myNome,x)
 			testQ["nikQK"] = antc(testQ["kamen"])
 			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
-				ach_ach[11] = 1
-				SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(3,3)
+				SendAddonMessage("#achVSE", 11, "guild")
 			end
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		end

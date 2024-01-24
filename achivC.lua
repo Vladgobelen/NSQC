@@ -30,6 +30,130 @@ if kodMsg[1] == "#yIm" then
 	testQ["mf"] = 1
 	testQ["mfNome"] = message
 end
+if kodMsg[1] == "dostPOL" and kodMsg[2] == myNome then
+print(message)
+	if message == "1" then
+		ach_ach[1] = 1
+		SendChatMessage("Я героически нашел кнопку аддона и даже смог ее нажать!!! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "2" then
+		ach_ach[2] = 1
+		SendChatMessage("Я героически срубил дерево!!! Сам, между прочим. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "3" then
+		ach_ach[3] = 1
+		SendChatMessage("Я успешно срезал пучок травы с шансом в 90%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "4" then
+		ach_ach[4] = 1
+		SendChatMessage("Я успешно срезал пучок травы с шансом в 50%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(2,1)
+	end
+	if message == "5" then
+		ach_ach[5] = 1
+		SendChatMessage("Я успешно срезал пучок травы с шансом в 10%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(2,2)
+	end
+	if message == "6" then
+		ach_ach[6] = 1
+		SendChatMessage("Я успешно срезал пучок травы с шансом всего в 5%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,2)
+	end
+	if message == "7" then
+		ach_ach[7] = 1
+		SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,3)
+	end
+	if message == "8" then
+		ach_ach[8] = 1
+		SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,3)
+	end
+	if message == "9" then
+		ach_ach[9] = 1
+		SendChatMessage("Я построил первую настоящую каменоломню. А почему она такая глубокая? Разве это не поле с камнями? хмм.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,1)
+	end
+	if message == "10" then
+		ach_ach[10] = 1
+		SendChatMessage("Я утрамбовал рыхлую землю. Прям вот голыми ногами так: топ-топ *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "11" then
+		ach_ach[11] = 1
+		SendChatMessage("Я таки добыл первый камень! Первый. Камень. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,3)
+	end
+	if message == "12" then
+		ach_ach[12] = 1
+		SendChatMessage("Я успешно нашел свой первый квест в хижине и я его выполню! Ведь выполню же?.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "13" then
+		ach_ach[13] = 1
+		SendChatMessage("Я категорически отказываюсь присылать мою личную шерсть непонятно кому. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "14" then
+		ach_ach[14] = 1
+		SendChatMessage("Вот мой первый квест в сельсовете. Тут кажется должны что то выдавать бесплатно.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "15" then
+		ach_ach[15] = 1
+		SendChatMessage("Я в первый раз выполнил квест через аддон *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,3)
+	end
+	if message == "16" then
+		ach_ach[16] = 1
+		SendChatMessage("Я наверное чисто интуитивно понимаю, что нужно кликнуть по самогону мышем *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "17" then
+		ach_ach[17] = 1
+		SendChatMessage("Я построил товарный склад, с которого лвл за лвлом буду получать ооочень мн ого всяких ресурсов и лотерейные билеты!", "OFFICER", nil, 1)
+		SendChatMessage("Бюджет был очень маленьким, поэтому закройте глаза и представьте сотни разноцветных фейерверков и разных супер-пупер спец-эффектов тут", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(2,5)
+	end
+	if message == "18" then
+		ach_ach[18] = 1
+		SendChatMessage("Впервые я приручаю бобра успешно. Он будет грызть для меня деревья и увезет в бобриную страну... *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(3,3)
+	end
+	if message == "19" then
+		ach_ach[19] = 1
+		SendChatMessage("У меня на участке завелось что то зеленое.. Это или жаба или гоблин.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(5,5)
+	end
+	if message == "20" then
+		ach_ach[20] = 1
+		SendChatMessage("Я привожу домой гнома. Гномку.. Теперь она будет с нами жить. (совершеннолетнюю) *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(5,5)
+	end
+end
 if kodMsg[1] == "#b0" then
 	if mioFld == nil then
 		mioFld = {}
@@ -257,10 +381,7 @@ if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
 	testQ[myNome]["itemQend"] = nil
 	testQ[myNome]["q33end"] = nil
 	if ach_ach[15] == nil then
-		ach_ach[15] = 1
-		SendChatMessage("Я в первый раз выполнил квест через аддон *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-		achiv(3,3)
+		SendAddonMessage("#achVSE", 15, "guild")
 	end
 end
 
@@ -2421,11 +2542,7 @@ if kodMsg[1] == "resObj" then
 						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ts"
 						if sender == myNome then
 							if ach_ach[17] == nil then
-								ach_ach[17] = 1
-								SendChatMessage("Я построил товарный склад, с которого лвл за лвлом буду получать ооочень мн ого всяких ресурсов и лотерейные билеты!", "OFFICER", nil, 1)
-								SendChatMessage("Бюджет был очень маленьким, поэтому закройте глаза и представьте сотни разноцветных фейерверков и разных супер-пупер спец-эффектов тут", "OFFICER", nil, 1)
-								PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-								achiv(2,5)
+								SendAddonMessage("#achVSE", 17, "guild")
 							end
 						end
 						if fBtn[1]:IsVisible() then
@@ -4535,6 +4652,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
 					end
 					local shit = nil
+					local tankSH = nil
 					local r1 = UnitGroupRolesAssigned("party1")
 					local r4 = UnitGroupRolesAssigned("party2")
 					local r7 = UnitGroupRolesAssigned("party3")
@@ -4544,6 +4662,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							local x = UnitBuff("party1",i)
 							if x == "Щит земли" then
 								shit = 1
+								tankSH = 1
 							end
 						end
 					end
@@ -4552,6 +4671,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							local x = UnitBuff("party2",i)
 							if x == "Щит земли" then
 								shit = 1
+								tankSH = 1
 							end
 						end
 					end
@@ -4560,6 +4680,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							local x = UnitBuff("party3",i)
 							if x == "Щит земли" then
 								shit = 1
+								tankSH = 1
 							end
 						end
 					end
@@ -4568,11 +4689,14 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 							local x = UnitBuff("party4",i)
 							if x == "Щит земли" then
 								shit = 1
+								tankSH = 1
 							end
 						end
 					end
-					if shit ~= 1 then
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+					if tankSH == 1 then
+						if shit ~= 1 then
+							PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
+						end
 					end
 				end
 				--/dump Grid2LayoutHeader1UnitButton1:IsVisible()

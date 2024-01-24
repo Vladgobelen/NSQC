@@ -1,4 +1,4 @@
-versAdd=309;versAddDop=2
+versAdd=310;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -451,10 +451,7 @@ function okNo:configure(id,sign)
 		self[2]:SetScript("OnClick",function(self, button)
 			if testQ["okno"] == "itemQ" then
 				if ach_ach[13] == nil then
-					ach_ach[13] = 1
-					SendChatMessage("Я категорически отказываюсь присылать мою личную шерсть непонятно кому. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-					achiv(1,1)
+					SendAddonMessage("#achVSE", 13, "guild")
 				end
 				SendChatMessage("Я злонамеренно отказываюсь от квеста.", "OFFICER", nil, 1)
 				testQ[myNome]["взятый_квест"] = "9999"
@@ -1870,10 +1867,7 @@ function vybor:configure(id)
 					testQ["brevna"] = tonumber(testQ["brevna"]) - 10
 					testQ["nikQB"] = antc(testQ["brevna"])
 					if ach_ach[8] == nil then
-						ach_ach[8] = 1
-						SendChatMessage("Начинаю копать яму. Большую яму. Оооочень большую яму. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-						achiv(1,1)
+						SendAddonMessage("#achVSE", 8, "guild")
 					end
 					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 					for i=1,100 do
@@ -2916,10 +2910,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 								__,__,__,testQ[myNome]["q33nik"][3],__,__ = qLvl33c3(myNome)
 								--SendChatMessage("Мне срочно нужно " .. testQ[myNome]["q33q"] .. testQ[myNome]["q33nik"][1] .. ", " .. testQ[myNome]["q33nik"][2] .. ", " .. testQ[myNome]["q33nik"][3], "OFFICER", nil, 1)
 								if ach_ach[14] == nil then
-									ach_ach[14] = 1
-									SendChatMessage("Вот мой первый квест в сельсовете. Тут кажется должны что то выдавать бесплатно.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-									achiv(1,1)
+									SendAddonMessage("#achVSE", 11, "guild")
 								end
 								testQ["okno"] = "q33"
 								testQ[myNome]["взятый_квест_s"] = "q33"
@@ -3193,10 +3184,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 											okNo:configure(1,"show")
 											rtnTextF("Нужно выполнить ачивку " .. GetAchievementLink(tonumber(testQ["okno"])),1,"show")
 											if ach_ach[12] == nil then
-												ach_ach[12] = 1
-												SendChatMessage("Я успешно нашел свой первый квест в хижине и я его выполню! Ведь выполню же?.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-												PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-												achiv(1,1)
+												SendAddonMessage("#achVSE", 12, "guild")
 											end
 											for i=1,100 do
 												fBtn[i]:Hide()
@@ -6309,10 +6297,7 @@ function resursy:configure(id)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if id == 5 then
 			if ach_ach[16] == nil then
-				ach_ach[16] = 1
-				SendChatMessage("Я наверное чисто интуитивно понимаю, что нужно кликнуть по самогону мышем *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(1,1)
+				SendAddonMessage("#achVSE", 11, "guild")
 			end
 			if testQ["magSign"] == nil then
 				magazin("show")
@@ -7316,10 +7301,7 @@ minibtn:SetScript("OnClick", function()
 		ach_ach = {}
 	end
 	if ach_ach[1] == nil then
-		ach_ach[1] = 1
-		SendChatMessage("Я героически нашел кнопку аддона и даже смог ее нажать!!! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-		achiv(1,1)
+		SendAddonMessage("#achVSE", 1, "guild")
 	end
 	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 	local lvl
@@ -8533,27 +8515,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		end
 		if testQ[myNome]["петы"]["bb"] ~= nil then
 			if ach_ach[18] == nil then
-				ach_ach[18] = 1
-				SendChatMessage("Впервые я приручаю бобра успешно. Он будет грызть для меня деревья и увезет в бобриную страну... *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-				achiv(3,3)
+				SendAddonMessage("#achVSE", 18, "guild")
 			end
 		end
 		if testQ[myNome]["петы"]["gg"] ~= nil then
 			if testQ[myNome]["петы"]["gg"] == "gob" then
 				if ach_ach[19] == nil then
-					ach_ach[19] = 1
-					SendChatMessage("У меня на участке завелось что то зеленое.. Это или жаба или гоблин.. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-					achiv(5,5)
+					SendAddonMessage("#achVSE", 11, "guild")
 				end
 			end
 			if testQ[myNome]["петы"]["gg"] == "gom" then
 				if ach_ach[20] == nil then
-					ach_ach[20] = 1
-					SendChatMessage("Я привожу домой гнома. Гномку.. Теперь она будет с нами жить. (совершеннолетнюю) *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-					achiv(5,5)
+					SendAddonMessage("#achVSE", 20, "guild")
 				end
 			end
 		end
