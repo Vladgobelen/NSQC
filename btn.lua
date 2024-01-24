@@ -1,4 +1,4 @@
-versAdd=310;versAddDop=5
+versAdd=310;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5600,7 +5600,7 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 			else
 				if id == 25 then
-
+					GameTooltip:AddLine("|cff99ff99Это достижение слишком ужасно, чтобы давать по нему подсказки")
 				end
 			end
 		end
