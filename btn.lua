@@ -1,4 +1,4 @@
-versAdd=310;versAddDop=1
+versAdd=310;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7683,6 +7683,8 @@ minibtn:SetScript("OnClick", function()
 		if arg1 == "MiddleButton" then
 			showFld("1",myNome)
 		end
+	else
+		SendChatMessage("Мне нужно обновить аддон: запустить файл NSQCu в папке с игрой", "OFFICER", nil, 1)
 	end
 end)
 
@@ -8630,37 +8632,37 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			end
 		end
 
-		if VerF == nil or not VerF:IsVisible() then
-			if testQ["fontVers"] ~= nil then
-				testQ["fontVers"]=nil
-			end
-		end
-		if testQ["vers"] ~= nil then
-			if tostring(versAdd) ~= tostring(testQ["vers"]["2"]) then
-				if VerF == nil or not VerF:IsVisible() then
-					if testQ["fontVers"] == nil then
-						testQ["fontVers"]=5
-					end
-					versFail(testQ["fontVers"])
-					btn[990]:SetPoint("CENTER", VerF, "CENTER", -400, 470)
-					btn[990]:Show()
-					VerF:Show()
-				end
-				if VerF ~= nil and VerF:IsVisible() then
-					if testQ["VerF"] ~= nil and testQ["VerF"] ~= 600 then
-						testQ["VerF"] = testQ["VerF"] - 1
-						VerF:Show()
-						VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
-						VerF:SetFont('Fonts\\FRIZQT__.TTF', testQ["fontVers"])
-					end
-				end
-			else
-				if VerF ~= nil and VerF:IsVisible() then
-					VerF:Hide()
-					btn[990]:Hide()
-				end
-			end
-		end
+		--if VerF == nil or not VerF:IsVisible() then
+			--if testQ["fontVers"] ~= nil then
+				--testQ["fontVers"]=nil
+			--end
+		--end
+		--if testQ["vers"] ~= nil then
+			--if tostring(versAdd) ~= tostring(testQ["vers"]["2"]) then
+				--if VerF == nil or not VerF:IsVisible() then
+					--if testQ["fontVers"] == nil then
+						--testQ["fontVers"]=5
+					--end
+					--versFail(testQ["fontVers"])
+					--btn[990]:SetPoint("CENTER", VerF, "CENTER", -400, 470)
+					--btn[990]:Show()
+					--VerF:Show()
+				--end
+				--if VerF ~= nil and VerF:IsVisible() then
+					--if testQ["VerF"] ~= nil and testQ["VerF"] ~= 600 then
+						--testQ["VerF"] = testQ["VerF"] - 1
+						--VerF:Show()
+						--VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
+						--VerF:SetFont('Fonts\\FRIZQT__.TTF', testQ["fontVers"])
+					--end
+				--end
+			--else
+				--if VerF ~= nil and VerF:IsVisible() then
+					--VerF:Hide()
+					--btn[990]:Hide()
+				--end
+			--end
+		--end
 		if testQ["enWorld"] ~= nil then
 			local timer = time()
 			if timer >= tonumber(testQ["enWorld"])+5 then
