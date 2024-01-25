@@ -1,4 +1,4 @@
-versAdd=311;versAddDop=5
+versAdd=311;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1357,6 +1357,14 @@ function vybor:configure(id)
 							vybor[i]:Hide()
 						end
 					end
+					for i = 1, 10000 do
+						if dmG1[i] ~= nil then
+							dmG1[i]:Hide()
+						end
+						if dmG2[i] ~= nil then
+							dmG2[i]:Hide()
+						end
+					end
 				else
 					testQ["diffT"][tonumber(testQ["idp"])] = testQ['icon']
 				end
@@ -1370,6 +1378,14 @@ function vybor:configure(id)
 								fBtn[i]:Show()
 								if vybor[i] ~= nil then
 									vybor[i]:Hide()
+								end
+							end
+							for i = 1, 10000 do
+								if dmG1[i] ~= nil then
+									dmG1[i]:Hide()
+								end
+								if dmG2[i] ~= nil then
+									dmG2[i]:Hide()
 								end
 							end
 							testQ["domZ"] = nil

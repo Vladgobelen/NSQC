@@ -2266,16 +2266,18 @@ end
 if kodMsg[1] == "gobXm" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			if mioFld[message]["подсказки"] == nil then
-				mioFld[message]["подсказки"] = {}
+			if mioFld[message]["объекты"] ~= nil then
+				if mioFld[message]["подсказки"] == nil then
+					mioFld[message]["подсказки"] = {}
+				end
+				if mioFld[message]["целостность"] == nil then
+					mioFld[message]["целостность"] = {}
+				end
+				mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
+				mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
+				testQ["fRand4"] = 1
+				testQ["fRand4Nome"] = message
 			end
-			if mioFld[message]["целостность"] == nil then
-				mioFld[message]["целостность"] = {}
-			end
-			mioFld[message]["объекты"][tostring(kodMsg[2])] = "mx"
-			mioFld[message]["целостность"][tostring(kodMsg[2])] = 1
-			testQ["fRand4"] = 1
-			testQ["fRand4Nome"] = message
 		end
 		if message == myNome then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\gobXm.ogg")
@@ -2556,119 +2558,122 @@ if kodMsg[1] == "resObj" then
 			if mioFld[message]["подсказки"] == nil then
 				mioFld[message]["подсказки"] = {}
 			end
-			if mioFld[message]["целостность"] ~= nil then
-				mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "mx" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
+			if mioFld[message]["объекты"] ~= nil then
+				if mioFld[message]["целостность"] ~= nil then
+
+					mioFld[message]["целостность"][tostring(kodMsg[2])] = tonumber(kodMsg[3])
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "mx" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "m"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "uz" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ms" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="t" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="f" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="skc" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "sk"
+							if sender == myNome then
+								if ach_ach[23] == nil then
+									SendAddonMessage("#achVSE", 23, "guild")
+								end
+							end
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ox" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "ob"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="kx" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "ko"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="m1" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "mz"
+						end
 					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "uz" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "uz"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ms" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ms"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="t" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="f" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "t"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="skc" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "sk"
-						if sender == myNome then
-							if ach_ach[23] == nil then
-								SendAddonMessage("#achVSE", 23, "guild")
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 4999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tc" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "ts"
+							if sender == myNome then
+								if ach_ach[17] == nil then
+									SendAddonMessage("#achVSE", 17, "guild")
+								end
+							end
+							if fBtn[1]:IsVisible() then
+								fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ts.tga")
 							end
 						end
 					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="ox" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ob"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="kx" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ko"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="m1" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "mz"
-					end
-				end
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 4999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tc" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ts"
-						if sender == myNome then
-							if ach_ach[17] == nil then
-								SendAddonMessage("#achVSE", 17, "guild")
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 9999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
+							if fBtn[1]:IsVisible() then
+								fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\h.tga")
 							end
 						end
-						if fBtn[1]:IsVisible() then
-							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ts.tga")
-						end
-					end
-				end
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 9999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "hs" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "h"
-						if fBtn[1]:IsVisible() then
-							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\h.tga")
-						end
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "zc" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "zp"
-						if fBtn[1]:IsVisible() then
-							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\zp.tga")
-						end
-					end
-				end
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zs" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
-						if sender == myNome then
-							if ach_ach[24222222] == nil then
-								SendAddonMessage("#achVSE", 24, "guild")
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "zc" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "zp"
+							if fBtn[1]:IsVisible() then
+								fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\zp.tga")
 							end
 						end
-						if fBtn[1]:IsVisible() then
-							fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
+					end
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zs" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
+							if sender == myNome then
+								if ach_ach[24222222] == nil then
+									SendAddonMessage("#achVSE", 24, "guild")
+								end
+							end
+							if fBtn[1]:IsVisible() then
+								fBtn[tonumber(kodMsg[2])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\za.tga")
+							end
 						end
 					end
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zx" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
+						end
+					end
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="lx" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "lp"
+						end
+					end
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 29999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="sx" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "s"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tz" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "tv"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] =="m0" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "mf"
+						end
+					end
+					if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 14999 then
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "ar"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "bi"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "to"
+						end
+						if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" then
+							mioFld[message]["объекты"][tostring(kodMsg[2])] = "bh"
+						end
+					end
+					testQ["fRand5"] = 1
+					testQ["fRand5Nome"] = message
 				end
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="zx" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "za"
-					end
-				end
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 19999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="lx" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "lp"
-					end
-				end
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 29999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="sx" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "s"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="tz" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "tv"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] =="m0" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "mf"
-					end
-				end
-				if tonumber(mioFld[message]["целостность"][tostring(kodMsg[2])]) >= 14999 then
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "as" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "ar"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bs" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "bi"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bc" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "to"
-					end
-					if mioFld[message]["объекты"][tostring(kodMsg[2])] == "bx" then
-						mioFld[message]["объекты"][tostring(kodMsg[2])] = "bh"
-					end
-				end
-				testQ["fRand5"] = 1
-				testQ["fRand5Nome"] = message
 			end
 		end
 	end
