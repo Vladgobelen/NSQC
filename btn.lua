@@ -1,4 +1,4 @@
-versAdd=311;versAddDop=3
+versAdd=311;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -7848,7 +7848,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 10 then
 		timeElapsed = 0
-		if not resursy[5]:IsVisible() then
+		if not resursy[5]:IsVisible() and not mgznZ:IsVisible() then
 			for i = 1, 10000 do
 				if dmG1[i] ~= nil then
 					dmG1[i]:Hide()
