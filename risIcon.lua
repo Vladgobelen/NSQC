@@ -107,6 +107,16 @@ function magazin(sign)
 								mBtn[i]:Hide()
 							end
 						end
+						if not resursy[5]:IsVisible() and not mgznZ:IsVisible() then
+							for i = 1, 10000 do
+								if dmG1[i] ~= nil then
+									dmG1[i]:Hide()
+								end
+								if dmG2[i] ~= nil then
+									dmG2[i]:Hide()
+								end
+							end
+						end
 						dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
 						dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
