@@ -4708,15 +4708,17 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					local r7 = UnitGroupRolesAssigned("party3")
 					local r10 = UnitGroupRolesAssigned("party4")
 					if r1 == true then
+						tankSH = 1
 						for i = 1, 24 do
 							local x = UnitBuff("party1",i)
 							if x == "Щит земли" then
 								shit = 1
-								tankSH = 1
+
 							end
 						end
 					end
 					if r4 == true then
+						tankSH = 1
 						for i = 1, 24 do
 							local x = UnitBuff("party2",i)
 							if x == "Щит земли" then
@@ -4726,6 +4728,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 					end
 					if r7 == true then
+						tankSH = 1
 						for i = 1, 24 do
 							local x = UnitBuff("party3",i)
 							if x == "Щит земли" then
@@ -4735,6 +4738,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 						end
 					end
 					if r10 == true then
+						tankSH = 1
 						for i = 1, 24 do
 							local x = UnitBuff("party4",i)
 							if x == "Щит земли" then
