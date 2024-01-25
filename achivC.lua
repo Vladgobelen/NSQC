@@ -212,6 +212,7 @@ if kodMsg[1] == "#yImx" then
 	testQ["mf"] = 1
 	testQ["mfNome"] = sender
 end
+
 if kodMsg[1] == "#domtv" and msg[1] == myNome then
 	if mioFld == nil then
 		mioFld = {}
@@ -388,6 +389,9 @@ if kodMsg[1] == "#mioMF" then
 	testQ["domNome"] = sender
 end
 testGM=gmTest(sender)
+if kodMsg[1] == "dostDEL" and kodMsg[2] == myNome and testGM ~= nil then
+	ach_ach[tonumber(message)] = nil
+end
 if kodMsg[1] == "построить" and kodMsg[2] == myNome and testGM ~= nil then
 	if mioFld ~= nil then
 		if mioFld[myNome] ~= nil then
@@ -1421,18 +1425,22 @@ if kodMsg[1] == "bB" then
 	end
 end
 if kodMsg[1] == "goB" then
-	if mioFld[message]["петы"] == nil then
-		mioFld[message]["петы"] = {}
-	end
-	if mioFld[message]["хозяин"] == nil then
-		mioFld[message]["хозяин"] = {}
-	end
-	mioFld[message]["петы"][tostring(kodMsg[2])] = kodMsg[3]
-	mioFld[message]["хозяин"][tostring(kodMsg[2])] = sender
-	testQ["fRandDb"] = 1
-	testQ["fRandDbnome"] = message
-	if message == myNome then
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. kodMsg[3] .. ".ogg")
+	if mioFld[message] ~= nil then
+		if mioFld ~= nil then
+			if mioFld[message]["петы"] == nil then
+				mioFld[message]["петы"] = {}
+			end
+			if mioFld[message]["хозяин"] == nil then
+				mioFld[message]["хозяин"] = {}
+			end
+			mioFld[message]["петы"][tostring(kodMsg[2])] = kodMsg[3]
+			mioFld[message]["хозяин"][tostring(kodMsg[2])] = sender
+			testQ["fRandDb"] = 1
+			testQ["fRandDbnome"] = message
+			if message == myNome then
+				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. kodMsg[3] .. ".ogg")
+			end
+		end
 	end
 end
 if kodMsg[1] == "MioFld" then
@@ -1570,11 +1578,13 @@ end
 if kodMsg[1] == "zemlYa" then
 	if mioFld ~= nil then
 		if mioFld[message] ~= nil then
-			if mioFld[message]["объекты"] ~= nil then
-				mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
-				mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
-				testQ["fRand4"] = 1
-				testQ["fRand4Nome"] = message
+			if mioFld[message]["целостность"] ~= nil then
+				if mioFld[message]["объекты"] ~= nil then
+					mioFld[message]["объекты"][tostring(kodMsg[2])] = "z"
+					mioFld[message]["целостность"][tostring(kodMsg[2])] = 999
+					testQ["fRand4"] = 1
+					testQ["fRand4Nome"] = message
+				end
 			end
 		end
 	end
