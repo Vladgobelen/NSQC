@@ -1,4 +1,4 @@
-versAdd=310;versAddDop=6
+versAdd=310;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6369,7 +6369,7 @@ function resursy:configure(id)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		if id == 5 then
 			if ach_ach[16] == nil then
-				SendAddonMessage("#achVSE", 11, "guild")
+				SendAddonMessage("#achVSE", 16, "guild")
 			end
 			if testQ["magSign"] == nil then
 				magazin("show")
