@@ -1,4 +1,4 @@
-versAdd=311;versAddDop=6
+versAdd=311;versAddDop=7
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1380,14 +1380,7 @@ function vybor:configure(id)
 									vybor[i]:Hide()
 								end
 							end
-							for i = 1, 10000 do
-								if dmG1[i] ~= nil then
-									dmG1[i]:Hide()
-								end
-								if dmG2[i] ~= nil then
-									dmG2[i]:Hide()
-								end
-							end
+
 							testQ["domZ"] = nil
 							local x = math.random(1,5)
 							testQ["doska"] = tonumber(testQ["doska"])+x
@@ -1414,6 +1407,14 @@ function vybor:configure(id)
 							end
 							print("Получена барная стойка")
 						end
+					end
+				end
+				for i = 1, 10000 do
+					if dmG1[i] ~= nil then
+						dmG1[i]:Hide()
+					end
+					if dmG2[i] ~= nil then
+						dmG2[i]:Hide()
 					end
 				end
 			else
