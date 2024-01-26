@@ -4534,7 +4534,7 @@ if classUnit == "Друид" then
 		},
 	}
 end
-if classUnit == "Разбойник" then
+if classUnit == "Разбойник" or classUnit == "Разбойница" then
 	tblIcons = {
 		["Мясорубка"] = {
 			["icon"] = "Interface\\Icons\\Ability_Rogue_SliceDice",

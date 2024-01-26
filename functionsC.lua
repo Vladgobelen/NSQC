@@ -2961,7 +2961,7 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 		end
 	end
 	if spell == "Мясорубка" then
-		if tonumber(GetComboPoints("player", target)) == 5 and kya ~= 1 then
+		if tonumber(GetComboPoints("player", target)) == 1 and kya ~= 1 then
 			PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
 		end
 	end
@@ -3105,7 +3105,7 @@ function bs()
 		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
 		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
 			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
-			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170/366"
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170/409"
 		else
 			bs = (sil*2)+lov+hit+crit+mast+rpb+attak
 			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170" .. " рпб/кап: " .. rpb .. "/1400"
