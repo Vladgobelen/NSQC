@@ -17,7 +17,7 @@ msg3=mysplit(message)
 if message == "!кик" and sender == myNome then
 	SendAddonMessage("gKick", "", "guild")
 end
-if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес" or sender == "Аффа" or sender == "Маздам" or sender == "Нугган") then
+if msg[1] == "\"чс" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес" or sender == "Аффа" or sender == "Маздам" or sender == "Нугган" or sender == "Magitron" ) then
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end
@@ -450,7 +450,7 @@ if string.find (message, "покажи предмет") and string.find(message,
 	tblLensCosa=tablelength(lenCosa)
 	predmet=table.concat(lenCosa, " ", 4,tblLensCosa)
 	local x,y
-	for i = 1, 52034 do
+	for i = 1, 100000 do
 		itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice = GetItemInfo(i)
 		if itemName ~= nil and string.lower(predmet) == string.lower(itemName) then
 			 if itemLink ~= nil then
