@@ -1,4 +1,4 @@
-versAdd=311;versAddDop=10
+versAdd=311;versAddDop=11
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -5984,6 +5984,7 @@ function mBtn:configure(id)
 				end
 				if id == 14 then
 					testQ[myNome]["лотерея"] = tonumber(testQ[myNome]["лотерея"]) + 3
+					SendAddonMessage("#lotpp",myNome, "guild")
 					dmgText2(testQ[myNome]["лотерея"],mBtn[14],814,14,"FF8C00")
 					testQ["smg"] = tonumber(testQ["smg"]) - 10
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
