@@ -2968,7 +2968,9 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 				end
 			end
 		else
-			PlaySoundFile(prok)
+			if spell ~= "Праведное неистовство" then
+				PlaySoundFile(prok)
+			end
 		end
 	end
 	if spell == "Мясорубка" then
