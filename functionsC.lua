@@ -2957,6 +2957,17 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 				end
 			end
 		else
+			if spell ~= "Власть льда" then
+				PlaySoundFile(prok)
+			end
+		end
+		if classUnit == "Рыцарь смерти" then
+			if spell == "Власть льда" then
+				if kya ~= 1 then
+					PlaySoundFile(prok)
+				end
+			end
+		else
 			PlaySoundFile(prok)
 		end
 	end
