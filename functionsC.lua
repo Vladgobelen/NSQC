@@ -2981,7 +2981,9 @@ function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
 	if seiv == 1 then
 		if UnitHealth("player") <= (tonumber(UnitHealthMax("player"))/2) and GetSpellCooldown(spell) == 0 then
 			table.insert(testQ["skills"],pos, spell)
-			PlaySoundFile(prok)
+			if prok ~= nil then
+				PlaySoundFile(prok)
+			end
 		else
 			for k, v in pairs(testQ["skills"]) do
 				if testQ["skills"][k] ~= nil then
