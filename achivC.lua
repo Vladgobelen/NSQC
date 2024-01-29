@@ -969,6 +969,13 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 			end
 			while true do
 				local xxx = math.random(1,100)
+				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" then
+					mioFld[myNome]["объекты"][tostring(xxx)] = "ob"
+					break
+				end
+			end
+			while true do
+				local xxx = math.random(1,100)
 				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" then
 					mioFld[myNome]["объекты"][tostring(xxx)] = "mz"
 					break
