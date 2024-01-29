@@ -75,9 +75,9 @@ if kodMsg[1] == "dostPOL" and kodMsg[2] == myNome then
 	end
 	if message == "8" then
 		ach_ach[8] = 1
-		SendChatMessage("Невероятным усилием я срезал пучок травы с шансом всего в 1%! *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		SendChatMessage("Я могу копать, а могу и не копать... Или не могу? Буду копать. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
-		achiv(3,3)
+		achiv(1,1)
 	end
 	if message == "9" then
 		ach_ach[9] = 1
