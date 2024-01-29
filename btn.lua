@@ -1,4 +1,4 @@
-versAdd=312;versAddDop=3
+versAdd=312;versAddDop=4
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -2649,6 +2649,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 						end
 						if arg2 == false then
 							testQ["zavod"] = nil
+							testQ["betonX"] = 86400
 						end
 					end
 				end
@@ -8272,6 +8273,21 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if testQ["betonX"] ~= nil then
+			testQ["betonX"] = tonumber(testQ["betonX"]) - 1
+			if testQ["betonX"] <= 0 then
+				testQ["beton"] = tonumber(testQ["beton"]) - 5
+				testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
+				testQ["kamen"] = tonumber(testQ["kamen"]) + 1
+				testQ["nikQK"] = antc(testQ["kamen"])
+				SendChatMessage("Бетон без дела начал засыхать. Пять кубов уже превратились в камень...", "OFFICER", nil, 1)
+				if tonumber(testQ["beton"]) >= 1 then
+					testQ["betonX"] = 13200
+				else
+					testQ["betonX"] = nil
+				end
+			end
+		end
 		if UnitName("target") == "Магистр Весара" or UnitName("target") == "Магистр Сариен" or UnitName("target") == "Магистр Бразайл" then
 			if UnitName("target") ~= "Усури Златоблям" then
 				if MerchantFrame:IsVisible() then
