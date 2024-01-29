@@ -405,12 +405,15 @@ if kodMsg[1] == "xTime" and kodMsg[2] == myNome and testGM ~= nil then
 	testQ[myNome]["hTimer"] = tonumber(message)
 end
 if kodMsg[1] == "#hQ1x" and kodMsg[2] == myNome then
-	testQ[myNome]["взятый_квест_х"] = "9999"
+	testQ[myNome]["взятый_квест_х"] = nil
 	testQ[myNome]["взятый_квест_t"] = nil
 	testQ["taverna_num_q"] = nil
 	testQ[myNome]["взятый_квест_s"] = nil
-	testQ[myNome]["выполненные_квесты_х"][message] = "9999"
-	testQ[myNome]["взятый_квест"] = "9999"
+	if testQ[myNome]["выполненные_квесты_х"] == nil then
+		testQ[myNome]["выполненные_квесты_х"] = {}
+	end
+	testQ[myNome]["выполненные_квесты_х"][message] = nil
+	testQ[myNome]["взятый_квест"] = nil
 	testQ["okno"] = nil
 	testQ[myNome]["itemQend"] = nil
 	testQ[myNome]["q33end"] = nil
