@@ -21,6 +21,7 @@ libs\gom.ogg
 libs\sh.ogg
 libs\tx.ogg
 libs\tv.tga
+libs\dz.tga
 libs\em.tga
 libs\e1.tga
 libs\tz.tga

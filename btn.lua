@@ -1,4 +1,4 @@
-versAdd=312;versAddDop=1
+versAdd=312;versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -6519,6 +6519,12 @@ function resursy:configure(id)
 				for i = 1, 1000 do
 					if dmG1[i] ~= nil then
 						dmG1[i]:Hide()
+					end
+					if dmG2[i] ~= nil then
+						dmG2[i]:Hide()
+					end
+					if dmG[i] ~= nil then
+						dmG[i]:Hide()
 					end
 				end
 			end
