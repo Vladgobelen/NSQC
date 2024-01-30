@@ -1,4 +1,4 @@
-versAdd=312;versAddDop=5
+versAdd=312;versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -4687,7 +4687,7 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				SendAddonMessage("#achVSE", 26, "guild")
 				while true do
 					local xxx = math.random(1,100)
-					if mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" and mioFld[myNome]["объекты"][tostring(xxx)] == "t" then
+					if mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" and (mioFld[myNome]["объекты"][tostring(xxx)] == "t" or mioFld[myNome]["объекты"][tostring(xxx)] == "z") then
 						mioFld[myNome]["объекты"][tostring(xxx)] = "mz"
 						break
 					end
