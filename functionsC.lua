@@ -3195,217 +3195,219 @@ GameTooltip:HookScript("OnShow", function(self)
 	local ii
 	--print("|cff00ff00------")
 	for i=1, self:NumLines() do
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "+" or string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "|"  then
-			bstemp = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
-			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "вын" then
-				if vyn == 0 then
-					vyn = tonumber(string.utf8sub(bstemp[1],2))
-				end
-				if vyn == nil then
-					vyn = tonumber(string.utf8sub(bstemp[1],11))
-					ii = i
-				end
-				if vyn ~= 0 and ii ~= i then
-					if tonumber(bstemp[1]:sub(2)) ~= nil then
-
-					else
-						vyn = vyn + tonumber(bstemp[1]:sub(11))
+		if _G["GameTooltipTextLeft"..i]:GetText() ~= nil then
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "+" or string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "|"  then
+				bstemp = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "вын" then
+					if vyn == 0 then
+						vyn = tonumber(string.utf8sub(bstemp[1],2))
 					end
-				end
-
-			end
-			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "лов" then
-				if lov == 0 then
-					lov = tonumber(string.utf8sub(bstemp[1],2))
-				end
-				if lov == nil then
-					lov = tonumber(string.utf8sub(bstemp[1],11))
-					ii = i
-				end
-				if lov ~= 0 and ii ~= i then
-					if tonumber(bstemp[1]:sub(2)) ~= nil then
-
-					else
-						lov = lov + tonumber(bstemp[1]:sub(11))
-					end
-				end
-			end
-			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "сил" then
-				if bstemp[4] == nil then
-					if sil == 0 then
-						sil = tonumber(string.utf8sub(bstemp[1],2))
-					end
-					if sil == nil then
-						sil = tonumber(string.utf8sub(bstemp[1],11))
+					if vyn == nil then
+						vyn = tonumber(string.utf8sub(bstemp[1],11))
 						ii = i
 					end
-					if sil ~= 0 and ii ~= i then
+					if vyn ~= 0 and ii ~= i then
 						if tonumber(bstemp[1]:sub(2)) ~= nil then
 
 						else
-							sil = sil + tonumber(bstemp[1]:sub(11))
+							vyn = vyn + tonumber(bstemp[1]:sub(11))
+						end
+					end
+
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "лов" then
+					if lov == 0 then
+						lov = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if lov == nil then
+						lov = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if lov ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							lov = lov + tonumber(bstemp[1]:sub(11))
 						end
 					end
 				end
-			end
-			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "инт" then
-				if int == 0 then
-					int = tonumber(string.utf8sub(bstemp[1],2))
-				end
-				if int == nil then
-					int = tonumber(string.utf8sub(bstemp[1],11))
-					ii = i
-				end
-				if int ~= 0 and ii ~= i then
-					if tonumber(bstemp[1]:sub(2)) ~= nil then
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "сил" then
+					if bstemp[4] == nil then
+						if sil == 0 then
+							sil = tonumber(string.utf8sub(bstemp[1],2))
+						end
+						if sil == nil then
+							sil = tonumber(string.utf8sub(bstemp[1],11))
+							ii = i
+						end
+						if sil ~= 0 and ii ~= i then
+							if tonumber(bstemp[1]:sub(2)) ~= nil then
 
-					else
-						int = int + tonumber(bstemp[1]:sub(11))
+							else
+								sil = sil + tonumber(bstemp[1]:sub(11))
+							end
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "инт" then
+					if int == 0 then
+						int = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if int == nil then
+						int = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if int ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							int = int + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "дух" then
+					if duh == 0 then
+						duh = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if duh == nil then
+						duh = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if duh ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							duh = duh + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ата" then
+					attak = tonumber(bstemp[1]:sub(2))
+					if attak == nil then
+						attak = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "кри" then
+					crit = tonumber(bstemp[1]:sub(2))
+					if crit == nil then
+						crit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мас" then
+					mast = tonumber(bstemp[1]:sub(2))
+					if mast == nil then
+						mast = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "зак" then
+					cast = tonumber(bstemp[1]:sub(2))
+					if cast == nil then
+						cast = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мет" then
+					hit = tonumber(bstemp[1]:sub(2))
+					if hit == nil then
+						hit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ско" then
+					hit = tonumber(bstemp[1]:sub(2))
+					if hit == nil then
+						hit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "защ" then
+					def = tonumber(bstemp[1]:sub(2))
+					if def == nil then
+						def = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "укл" then
+					ukl = tonumber(bstemp[1]:sub(2))
+					if ukl == nil then
+						ukl = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "пар" then
+					par = tonumber(bstemp[1]:sub(2))
+					if par == nil then
+						par = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "бло" then
+					block = tonumber(bstemp[1]:sub(2))
+					if block == nil then
+						block = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "про" then
+					rpb = tonumber(bstemp[1]:sub(2))
+					if rpb == nil then
+						rpb = tonumber(bstemp[1]:sub(11))
 					end
 				end
 			end
-			if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "дух" then
-				if duh == 0 then
-					duh = tonumber(string.utf8sub(bstemp[1],2))
-				end
-				if duh == nil then
-					duh = tonumber(string.utf8sub(bstemp[1],11))
-					ii = i
-				end
-				if duh ~= 0 and ii ~= i then
-					if tonumber(bstemp[1]:sub(2)) ~= nil then
-
-					else
-						duh = duh + tonumber(bstemp[1]:sub(11))
-					end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"атаки") then
+					attak1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ата" then
-				attak = tonumber(bstemp[1]:sub(2))
-				if attak == nil then
-					attak = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"критического") then
+					crit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "кри" then
-				crit = tonumber(bstemp[1]:sub(2))
-				if crit == nil then
-					crit = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"мастерства") then
+					mast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мас" then
-				mast = tonumber(bstemp[1]:sub(2))
-				if mast == nil then
-					mast = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"заклинаний") then
+					cast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "зак" then
-				cast = tonumber(bstemp[1]:sub(2))
-				if cast == nil then
-					cast = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"меткости") then
+					hit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мет" then
-				hit = tonumber(bstemp[1]:sub(2))
-				if hit == nil then
-					hit = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"скорости") then
+					sco1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ско" then
-				hit = tonumber(bstemp[1]:sub(2))
-				if hit == nil then
-					hit = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"защиты") then
+					def1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "защ" then
-				def = tonumber(bstemp[1]:sub(2))
-				if def == nil then
-					def = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"уклонения") then
+					ukl1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "укл" then
-				ukl = tonumber(bstemp[1]:sub(2))
-				if ukl == nil then
-					ukl = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"парирования") then
+					par1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "пар" then
-				par = tonumber(bstemp[1]:sub(2))
-				if par == nil then
-					par = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"блокирования") then
+					block1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "бло" then
-				block = tonumber(bstemp[1]:sub(2))
-				if block == nil then
-					block = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"Восполнение") then
+					mana1 = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+					mana1 = tonumber(mana1[5])
 				end
 			end
-			if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "про" then
-				rpb = tonumber(bstemp[1]:sub(2))
-				if rpb == nil then
-					rpb = tonumber(bstemp[1]:sub(11))
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"пробивания") then
+					rpb1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 				end
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"атаки") then
-				attak1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"критического") then
-				crit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"мастерства") then
-				mast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"заклинаний") then
-				cast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"меткости") then
-				hit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"скорости") then
-				sco1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"защиты") then
-				def1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"уклонения") then
-				ukl1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"парирования") then
-				par1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"блокирования") then
-				block1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"Восполнение") then
-				mana1 = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
-				mana1 = tonumber(mana1[5])
-			end
-		end
-		if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
-			if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"пробивания") then
-				rpb1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
 			end
 		end
 		--print(_G["GameTooltipTextLeft"..i]:GetText())
