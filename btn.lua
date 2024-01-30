@@ -1,4 +1,4 @@
-versAdd=312;versAddDop=7
+versAdd=313;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -3492,7 +3492,12 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 				end
 			else
-				SendChatMessage("Я беспорядочно стучу руками по дереву...зачем? Нет, правда, нахрена?", "OFFICER", nil, 1)
+				if testQ[myNome]["treeXT"] = nil then
+					testQ[myNome]["treeXT"] = 30
+					SendChatMessage("Я беспорядочно стучу руками по дереву...зачем? Нет, правда, нахрена?", "OFFICER", nil, 1)
+				else
+					print("Я беспорядочно стучу руками по дереву...зачем? Нет, правда, нахрена?")
+				end
 			end
 			if mioFld[nome]["объекты"][tostring(id)] == "m" then
 				if testQ["temp"] == nil then
@@ -7910,7 +7915,12 @@ minibtn:SetScript("OnClick", function()
 			showFld("1",myNome)
 		end
 	else
-		SendChatMessage("Мне нужно обновить аддон: запустить файл NSQCu в папке с игрой", "OFFICER", nil, 1)
+		if testQ["update"] = nil then
+			testQ["update"] = 30
+			SendChatMessage("Мне нужно обновить аддон: запустить файл NSQCu в папке с игрой", "OFFICER", nil, 1)
+		else
+			print("Мне нужно обновить аддон: запустить файл NSQCu в папке с игрой")
+		end
 	end
 end)
 
@@ -8388,6 +8398,18 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 	timeElapsed = timeElapsed + elapsed
 	if timeElapsed > 1 then
 		timeElapsed = 0
+		if testQ[myNome]["treeXT"] ~= nil then
+			testQ[myNome]["treeXT"] = tonumber(testQ[myNome]["treeXT"]) - 1
+			if testQ[myNome]["treeXT"] <= 0 then
+				testQ[myNome]["treeXT"] = nil
+			end
+		end
+		if testQ["update"] ~= nil then
+			testQ["update"] = tonumber(testQ["update"]) - 1
+			if testQ["update"] <= 0 then
+				testQ["update"] = nil
+			end
+		end
 		if testQ["betonX"] ~= nil then
 			testQ["betonX"] = tonumber(testQ["betonX"]) - 1
 			if testQ["betonX"] <= 0 then
