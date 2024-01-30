@@ -1276,8 +1276,16 @@ function treeX(nome,myNome,id)
 		end
 	end
 	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
-		if ach_ach[2] == nil then
-			SendAddonMessage("#achVSE", 2, "guild")
+		if testQ[myNome]["kolvoTree"] == nil or testQ[myNome]["kolvoTree"] <= 9 then
+			if testQ[myNome]["kolvoTree"] == nil then
+				testQ[myNome]["kolvoTree"] = 1
+			else
+				testQ[myNome]["kolvoTree"] = tonumber(testQ[myNome]["kolvoTree"]) + 1
+			end
+		else
+			if ach_ach[2] == nil then
+				SendAddonMessage("#achVSE", 2, "guild")
+			end
 		end
 		SendAddonMessage("travA " .. id, nome, "guild")
 		if testQ ~= nil then
@@ -2093,7 +2101,26 @@ function gtest()
 		end
 	end
 end
-
+function closeFld()
+	for i = 1, 100 do
+		fBtn[i]:Hide()
+	end
+	for i = 1, 100 do
+		if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+			if resursy[i] ~= nil then
+				if i == 5 then
+					if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+					end
+				else
+					resursy[i]:Hide()
+				end
+			end
+		end
+	end
+	btn[989]:Hide()
+	btn[989]:ClearAllPoints()
+	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+end
 function hX()
 	quesT("hide")
 	okNo:configure(1,"hide")

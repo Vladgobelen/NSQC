@@ -39,9 +39,18 @@ if kodMsg[1] == "dostPOL" and kodMsg[2] == myNome then
 	end
 	if message == "2" then
 		ach_ach[2] = 1
-		SendChatMessage("Я героически срубил дерево!!! Сам, между прочим. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		SendChatMessage("Я героически срубил десять деревьев!!! Сам, между прочим. *вжжжжж спецэффекты всякие там*", "OFFICER", nil, 1)
+		SendChatMessage("Пока я истреблял деревья, недалеко от обелиска кто то поселился. Следует сходить познакомиться.", "OFFICER", nil, 1)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 		achiv(1,1)
+		closeFld()
+		while true do
+			local xxx = math.random(1,100)
+			if mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" and mioFld[myNome]["объекты"][tostring(xxx)] == "t" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "mz" then
+				mioFld[myNome]["объекты"][tostring(xxx)] = "h"
+				break
+			end
+		end
 	end
 	if message == "3" then
 		ach_ach[3] = 1
@@ -178,10 +187,23 @@ if kodMsg[1] == "dostPOL" and kodMsg[2] == myNome then
 	end
 	if message == "25" then
 		ach_ach[25] = 1
-		SendChatMessage("Ненавистник природы: Я вдохновившись \"подвигом\" Армогедроида, истребил все живое у себя на учатке.", "OFFICER", nil, 1)
+		SendChatMessage("Ненавистник природы: Я вдохновившись \"подвигом\" Армогедроида, истребил все живое у себя на участке.", "OFFICER", nil, 1)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
 		achiv(3,5)
 		SendAddonMessage("бревнаP Армогедроид","Армогедроид", "guild")
+	end
+	if message == "26" then
+		ach_ach[26] = 1
+		SendChatMessage("Наверное я прочитал устав. Возможно даже внимательно, конспектируя особо интригующие места.", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+	end
+	if message == "27" then
+		ach_ach[27] = 1
+		SendChatMessage("Прогуливаясь по музею, я нахожу идею давно утерянной и забытой, но достаточно гениальной технологии: деревья можно рубить!", "OFFICER", nil, 1)
+		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ach.ogg")
+		achiv(1,1)
+		testQ[myNome]["treeX"] = 1
 	end
 end
 if kodMsg[1] == "#b0" then
@@ -587,7 +609,14 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 			mioFld[myNome]["объекты"] = {}
 			for i = 1, 100 do
 				j = tostring(i)
-				mioFld[myNome]["объекты"][j] = "t"
+				local x = math.random(1,3)
+				if x == 1 then
+					mioFld[myNome]["объекты"][j] = "t"
+				elseif x == 2 then
+					mioFld[myNome]["объекты"][j] = "ka"
+				else
+					mioFld[myNome]["объекты"][j] = "ka"
+				end
 			end
 			x = math.random(1,100)
 			if mapTables == nil then
@@ -609,27 +638,31 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 			mioFld[myNome]["влияние"] = {}
 		end
 		if x ~= nil then
-			mioFld[myNome]["объекты"][tostring(x)] = "h"
-			if mioFld[myNome]["объекты"][tostring(10)] ~= "h" then
-				mioFld[myNome]["объекты"][tostring(10)] = "s"
-			else
-				mioFld[myNome]["объекты"][tostring(20)] = "s"
-			end
-			while true do
-				local xxx = math.random(1,100)
-				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" then
-					mioFld[myNome]["объекты"][tostring(xxx)] = "ob"
-					break
-				end
-			end
-			while true do
-				local xxx = math.random(1,100)
-				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" then
-					mioFld[myNome]["объекты"][tostring(xxx)] = "mz"
-					break
-				end
-			end
+			local xxx = math.random(1,100)
+			mioFld[myNome]["объекты"][tostring(xxx)] = "ob"
 		end
+-- 		if x ~= nil then
+-- 			mioFld[myNome]["объекты"][tostring(x)] = "h"
+-- 			if mioFld[myNome]["объекты"][tostring(10)] ~= "h" then
+-- 				mioFld[myNome]["объекты"][tostring(10)] = "s"
+-- 			else
+-- 				mioFld[myNome]["объекты"][tostring(20)] = "s"
+-- 			end
+-- 			while true do
+-- 				local xxx = math.random(1,100)
+-- 				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" then
+-- 					mioFld[myNome]["объекты"][tostring(xxx)] = "ob"
+-- 					break
+-- 				end
+-- 			end
+-- 			while true do
+-- 				local xxx = math.random(1,100)
+-- 				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" then
+-- 					mioFld[myNome]["объекты"][tostring(xxx)] = "mz"
+-- 					break
+-- 				end
+-- 			end
+-- 		end
 
 		if pQuest == nil then
 			pQuest = {}
@@ -951,9 +984,15 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 			mioFld[myNome]["влияние"] = {}
 			for i = 1, 100 do
 				j = tostring(i)
-				mioFld[myNome]["объекты"][j] = "t"
+				x = math.random(1,3)
+				if x == 1 then
+					mioFld[myNome]["объекты"][j] = "t"
+				elseif x == 2 then
+					mioFld[myNome]["объекты"][j] = "ka"
+				else
+					mioFld[myNome]["объекты"][j] = "ka"
+				end
 				mioFld[myNome]["целостность"][j] = 999
-				x = math.random(1,100)
 				if mapTables == nil then
 					mapTables = {}
 				end
@@ -961,27 +1000,31 @@ if kodMsg[1] == "shMFld" and msg[1] == myNome then
 			end
 		end
 		if x ~= nil then
-			mioFld[myNome]["объекты"][tostring(x)] = "h"
-			if mioFld[myNome]["объекты"][tostring(10)] ~= "h" then
-				mioFld[myNome]["объекты"][tostring(10)] = "s"
-			else
-				mioFld[myNome]["объекты"][tostring(20)] = "s"
-			end
-			while true do
-				local xxx = math.random(1,100)
-				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" then
-					mioFld[myNome]["объекты"][tostring(xxx)] = "ob"
-					break
-				end
-			end
-			while true do
-				local xxx = math.random(1,100)
-				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" then
-					mioFld[myNome]["объекты"][tostring(xxx)] = "mz"
-					break
-				end
-			end
+			local xxx = math.random(1,100)
+			mioFld[myNome]["объекты"][tostring(xxx)] = "ob"
 		end
+-- 		if x ~= nil then
+-- 			mioFld[myNome]["объекты"][tostring(x)] = "h"
+-- 			if mioFld[myNome]["объекты"][tostring(10)] ~= "h" then
+-- 				mioFld[myNome]["объекты"][tostring(10)] = "s"
+-- 			else
+-- 				mioFld[myNome]["объекты"][tostring(20)] = "s"
+-- 			end
+-- 			while true do
+-- 				local xxx = math.random(1,100)
+-- 				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" then
+-- 					mioFld[myNome]["объекты"][tostring(xxx)] = "ob"
+-- 					break
+-- 				end
+-- 			end
+-- 			while true do
+-- 				local xxx = math.random(1,100)
+-- 				if mioFld[myNome]["объекты"][tostring(xxx)] ~= "h" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "s" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" then
+-- 					mioFld[myNome]["объекты"][tostring(xxx)] = "mz"
+-- 					break
+-- 				end
+-- 			end
+-- 		end
 		if pQuest == nil then
 			pQuest = {}
 		end
