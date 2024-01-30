@@ -46,7 +46,7 @@ if kodMsg[1] == "dostPOL" and kodMsg[2] == myNome then
 		closeFld()
 		while true do
 			local xxx = math.random(1,100)
-			if (mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "mz") and (and mioFld[myNome]["объекты"][tostring(xxx)] == "t" or and mioFld[myNome]["объекты"][tostring(xxx)] == "z") then
+			if (mioFld[myNome]["объекты"][tostring(xxx)] ~= "ob" and mioFld[myNome]["объекты"][tostring(xxx)] ~= "mz") and (mioFld[myNome]["объекты"][tostring(xxx)] == "t" or mioFld[myNome]["объекты"][tostring(xxx)] == "z") then
 				mioFld[myNome]["объекты"][tostring(xxx)] = "h"
 				break
 			end
