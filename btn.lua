@@ -1,4 +1,4 @@
-versAdd=314;versAddDop=1
+versAdd=315;versAddDop=0
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -986,11 +986,17 @@ function vybor:configure(id)
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 6 and tonumber(testQ["brevna"]) < 10 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("|cFF6495EDВыкопать шахту")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cffFFCF40В шахте добывают..руду?")
 			GameTooltip:AddLine("Нужно 10 бревен")
 			GameTooltip:Show()
 		end
 		if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "zt" and id == 2 and tonumber(testQ["brevna"]) < 8 then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+			GameTooltip:AddLine("Построить:|cFF6495ED Склад бревен")
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine("|cffFFCF40Увеличивает место под бревна на 100")
 			GameTooltip:AddLine("Нужно 8 бревен")
 			GameTooltip:Show()
 		end
@@ -1161,6 +1167,8 @@ function vybor:configure(id)
 	else
 		nome = myNome
 	end
+	SendAddonMessage("smT st","1", "guild")
+	SendAddonMessage("pN1","", "guild")
 		if id == 27 then
 			if testQ["brevna"] >= 30 and testQ["stog"] >= 15 and testQ["smg"] >= 10 and testQ["stanok"] >= 1 then
 				if nome == myNome then
@@ -1179,10 +1187,6 @@ function vybor:configure(id)
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 						testQ["stanok"] = tonumber(testQ["stanok"]) - 1
 						testQ["nikQST"] = antc(testQ["stanok"])
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["stog"],resursy[3],103,13,"FF8C00")
-						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-						dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1207,10 +1211,6 @@ function vybor:configure(id)
 							testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 							testQ["stanok"] = tonumber(testQ["stanok"]) - 1
 							testQ["nikQST"] = antc(testQ["stanok"])
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-							dmgText(testQ["stog"],resursy[3],103,13,"FF8C00")
-							dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-							dmgText2(testQ["stanok"],mBtn[10],810,13,"FF8C00")
 							testQ["temp"] = nil
 							for i=1,100 do
 								if vybor[i] ~= nil then
@@ -1387,8 +1387,6 @@ function vybor:configure(id)
 							testQ["nikQD"] = antc(tonumber(testQ["doska"]))
 							dmgText2(testQ["doska"],mBtn[11],811,13,"FF8C00")
 							print("Получено " .. x .. " досок")
-							dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						end
 						if shRec[i][101] == "Я собрал барную стойку" then
 							SendChatMessage(shRec[i][101], "officer", nil, 1)
@@ -1471,8 +1469,6 @@ function vybor:configure(id)
 					testQ["smg"] = tonumber(testQ["smg"]) - 3
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1494,8 +1490,6 @@ function vybor:configure(id)
 					testQ["nikQB"] = antc(testQ["brevna"])
 					testQ["kamen"] = tonumber(testQ["kamen"]) - 50
 					testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
-					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1646,10 +1640,6 @@ function vybor:configure(id)
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 5
 					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
-					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1675,10 +1665,6 @@ function vybor:configure(id)
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 15
 					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
-					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1705,10 +1691,6 @@ function vybor:configure(id)
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 15
 					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
-					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1734,10 +1716,6 @@ function vybor:configure(id)
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["kirpich"] = tonumber(testQ["kirpich"]) - 45
 					testQ["nikQKR"] = antc(tonumber(testQ["kirpich"]))
-					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
 					testQ["temp"] = nil
 					for i=1,100 do
 						if vybor[i] ~= nil then
@@ -1763,9 +1741,6 @@ function vybor:configure(id)
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["stog"] = tonumber(testQ["stog"]) - 5
 						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1791,9 +1766,6 @@ function vybor:configure(id)
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["stog"] = tonumber(testQ["stog"]) - 25
 						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1818,8 +1790,6 @@ function vybor:configure(id)
 						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 20
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1843,8 +1813,6 @@ function vybor:configure(id)
 						testQ["nikQB"] = antc(testQ["brevna"])
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 100
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1873,25 +1841,19 @@ function vybor:configure(id)
 		end
 		if testQ["bbConfig"] == nil then
 			if mioFld[nome]["объекты"][tostring(testQ["idp"])] == "z" and id == 6 then
-				if tonumber(testQ["brevna"]) >= 10 then
-					if testQ["temp"] == nil then
-						vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopko.tga")
-						vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kopko.tga")
-						testQ["temp"] = 1
-					elseif testQ["temp"] == 1 then
-						PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
-						SendAddonMessage("KopKop " .. testQ["idp"], nome, "guild")
-						testQ["temp"] = nil
-						testQ["brevna"] = tonumber(testQ["brevna"]) - 10
-						testQ["nikQB"] = antc(testQ["brevna"])
-						if ach_ach[8] == nil then
-							SendAddonMessage("#achVSE", 8, "guild")
-						end
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						for i=1,100 do
-							if vybor[i] ~= nil then
-								vybor[i]:Hide()
-							end
+				if testQ["temp"] == nil then
+					vybor[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopko.tga")
+					vybor[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kopko.tga")
+					testQ["temp"] = 1
+				elseif testQ["temp"] == 1 then
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\ms.ogg")
+					testQ["temp"] = nil
+					testQ["brevna"] = tonumber(testQ["brevna"]) - 10
+					testQ["nikQB"] = antc(testQ["brevna"])
+					SendAddonMessage("ns_hs " .. testQ["idp"], nome, "guild")
+					for i=1,100 do
+						if vybor[i] ~= nil then
+							vybor[i]:Hide()
 						end
 					end
 				end
@@ -1913,9 +1875,6 @@ function vybor:configure(id)
 						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 5
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil then
@@ -1941,9 +1900,6 @@ function vybor:configure(id)
 						testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 						testQ["kamen"] = tonumber(testQ["kamen"]) - 25
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-						dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						testQ["temp"] = nil
 						for i=1,100 do
 							if vybor[i] ~= nil and vybor[i]:IsVisible() then
@@ -2157,7 +2113,6 @@ function vybor:configure(id)
 							testQ["temp"] = nil
 							testQ["brevna"] = tonumber(testQ["brevna"])-8
 							testQ["nikQB"] = antc(testQ["brevna"])
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							for i=1,100 do
 								if vybor[i] ~= nil then
 									vybor[i]:Hide()
@@ -2179,7 +2134,6 @@ function vybor:configure(id)
 							testQ["temp"] = nil
 							testQ["brevna"] = tonumber(testQ["brevna"])-30
 							testQ["nikQB"] = antc(testQ["brevna"])
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							for i=1,100 do
 								if vybor[i] ~= nil and vybor[i]:IsVisible() then
 									vybor[i]:Hide()
@@ -2202,7 +2156,6 @@ function vybor:configure(id)
 							testQ["temp"] = nil
 							testQ["brevna"] = tonumber(testQ["brevna"])-15
 							testQ["nikQB"] = antc(testQ["brevna"])
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							for i=1,100 do
 								if vybor[i] ~= nil then
 									vybor[i]:Hide()
@@ -2224,7 +2177,6 @@ function vybor:configure(id)
 							testQ["temp"] = nil
 							testQ["brevna"] = tonumber(testQ["brevna"])-50
 							testQ["nikQB"] = antc(testQ["brevna"])
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							for i=1,100 do
 								if vybor[i] ~= nil and vybor[i]:IsVisible() then
 									vybor[i]:Hide()
@@ -2300,7 +2252,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2331,7 +2282,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2363,7 +2313,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2394,7 +2343,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2426,7 +2374,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2457,7 +2404,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2489,7 +2435,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 1
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2520,7 +2465,6 @@ function vybor:configure(id)
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
 						testQ["smg"] = tonumber(testQ["smg"]) - 5
 						testQ["nikQS"] = antc(tonumber(testQ["smg"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
@@ -2549,7 +2493,6 @@ function vybor:configure(id)
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 10
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
@@ -2576,7 +2519,6 @@ function vybor:configure(id)
 						testQ["nikQK"] = antc(tonumber(testQ["kamen"]))
 						testQ["beton"] = tonumber(testQ["beton"]) - 30
 						testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
-						dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 						dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
 						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
 						for i=1,100 do
@@ -2638,6 +2580,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		else
 			nome = myNome
 		end
+		SendAddonMessage("pN1","", "guild")
+		SendAddonMessage("smT","1", "guild")
 		if nome == myNome then
 			if tonumber(testQ["kamen"]) >= 1 then
 				if mioFld[nome]["объекты"][tostring(id)] == "za" then
@@ -2683,7 +2627,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["zavodpc"] = 1
 							testQ["brevna"] = tonumber(testQ["brevna"])-1
 							testQ["nikQB"] = antc(testQ["brevna"])
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							testQ["stog"] = tonumber(testQ["stog"])-1
 							testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 							dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
@@ -2704,7 +2647,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 							testQ["zavodpc"] = 1
 							testQ["brevna"] = tonumber(testQ["brevna"])-5
 							testQ["nikQB"] = antc(testQ["brevna"])
-							dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 							testQ["stog"] = tonumber(testQ["stog"])-5
 							testQ["nikQF"] = antc(tonumber(testQ["stog"]))
 							dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
@@ -3417,7 +3359,6 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 				testQ["brevna"] = tonumber(testQ["brevna"])-1
 				testQ["nikQB"] = antc(testQ["brevna"])
-				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				testQ["domZ"] = "crt"
 				local nome
 				if testQ['sign'] ~= "1" then
@@ -3488,7 +3429,8 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 			if testQ[myNome]["treeX"] == 1 then
 				if mioFld[nome]["объекты"][tostring(id)] == "t" or mioFld[nome]["объекты"][tostring(id)] == "f" then
-					treeX(nome,myNome,id)
+					SendAddonMessage("treeX " .. id, nome, "guild")
+					--treeX(nome,myNome,id)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .. ".ogg")
 				end
 			else
@@ -3788,18 +3730,16 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		end
 		if nome == myNome then
 			if testQ[myNome]["hTimer"] ~= nil then
-				if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
-					if mioFld[nome]["объекты"][tostring(id)] == "h" or mioFld[nome]["объекты"][tostring(id)] == "sx" then
-						vybor:configure(12)
-						vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
-						vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
-						vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
-						vybor[12]:Show()
-						if testQ ~= nil then
-							testQ["idp"] = id
-							testQ["icon"] = "smg"
-							testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
-						end
+				if mioFld[nome]["объекты"][tostring(id)] == "h" or mioFld[nome]["объекты"][tostring(id)] == "sx" then
+					vybor:configure(12)
+					vybor[12]:SetPoint("CENTER", fBtn[id],"CENTER",96, 0)
+					vybor[12]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+					vybor[12]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smgb.tga")
+					vybor[12]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "smg"
+						testQ["picon"] = mioFld[nome]["объекты"][tostring(id)]
 					end
 				end
 			end
@@ -3819,40 +3759,36 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 
-		if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
-			if mioFld[nome]["объекты"][tostring(id)] == "z" then
-				if vybor[31] == nil or not vybor[31]:IsVisible() then
-					vybor:configure(31)
-					vybor[31]:SetPoint("CENTER", fBtn[id],"CENTER",0, -96)
-					vybor[31]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ko.tga")
-					vybor[31]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ko.tga")
-					vybor[31]:Show()
-					if testQ ~= nil then
-						testQ["idp"] = id
-						testQ["icon"] = "ko"
-						testQ["picon"] = "z"
-					end
+		if mioFld[nome]["объекты"][tostring(id)] == "z" then
+			if vybor[31] == nil or not vybor[31]:IsVisible() then
+				vybor:configure(31)
+				vybor[31]:SetPoint("CENTER", fBtn[id],"CENTER",0, -96)
+				vybor[31]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\ko.tga")
+				vybor[31]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\ko.tga")
+				vybor[31]:Show()
+				if testQ ~= nil then
+					testQ["idp"] = id
+					testQ["icon"] = "ko"
+					testQ["picon"] = "z"
 				end
 			end
 		end
 		if testQ["ggConfig"] == nil and testQ["gmConfig"] == nil then
-			if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4 or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
-				if testQ["hs"] < 1 and testQ["h"] < 1 then
-					if mioFld[nome]["объекты"][tostring(id)] == "zt" then
-						if vybor[1] == nil or not vybor[1]:IsVisible() then
-							vybor:configure(1)
-							vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
-							if n == nil then
-								n = "hs"
-							end
-							vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
-							vybor[1]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
-							vybor[1]:Show()
-							if testQ ~= nil then
-								testQ["idp"] = id
-								testQ["icon"] = "hs"
-								testQ["picon"] = "zt"
-							end
+			if testQ["hs"] < 1 and testQ["h"] < 1 then
+				if mioFld[nome]["объекты"][tostring(id)] == "zt" then
+					if vybor[1] == nil or not vybor[1]:IsVisible() then
+						vybor:configure(1)
+						vybor[1]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
+						if n == nil then
+							n = "hs"
+						end
+						vybor[1]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+						vybor[1]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\hs.tga")
+						vybor[1]:Show()
+						if testQ ~= nil then
+							testQ["idp"] = id
+							testQ["icon"] = "hs"
+							testQ["picon"] = "zt"
 						end
 					end
 				end
@@ -4068,24 +4004,22 @@ function fBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 			end
 		end
 		if testQ["bbConfig"] == nil then
-			if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 or tonumber(testQ["mioFldLvl"]) == 1 or tonumber(testQ["mioFldLvl"]) == 2 or tonumber(testQ["mioFldLvl"]) == 3 or tonumber(testQ["mioFldLvl"]) == 4  or tonumber(testQ["mioFldLvl"]) == 5 or tonumber(testQ["mioFldLvl"]) == 6 or tonumber(testQ["mioFldLvl"]) == 7 then
-				if mioFld[nome]["объекты"][tostring(id)] == "z" then
-					if vybor[5] == nil or not vybor[5]:IsVisible() then
-						vybor:configure(5)
-						vybor:configure(6)
-						vybor[5]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
-						vybor[6]:SetPoint("CENTER", fBtn[id],"CENTER",1*64, 96)
-						vybor[5]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
-						vybor[5]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
-						vybor[6]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
-						vybor[6]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
-						vybor[5]:Show()
-						vybor[6]:Show()
-						if testQ ~= nil then
-							testQ["idp"] = id
-							testQ["icon"] = "kopkop"
-							testQ["picon"] = "z"
-						end
+			if mioFld[nome]["объекты"][tostring(id)] == "z" then
+				if vybor[5] == nil or not vybor[5]:IsVisible() then
+					vybor:configure(5)
+					vybor:configure(6)
+					vybor[5]:SetPoint("CENTER", fBtn[id],"CENTER",-1*(1*64), 96)
+					vybor[6]:SetPoint("CENTER", fBtn[id],"CENTER",1*64, 96)
+					vybor[5]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+					vybor[5]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\toptop.tga")
+					vybor[6]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+					vybor[6]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\kopkop.tga")
+					vybor[5]:Show()
+					vybor[6]:Show()
+					if testQ ~= nil then
+						testQ["idp"] = id
+						testQ["icon"] = "kopkop"
+						testQ["picon"] = "z"
 					end
 				end
 			end
@@ -5396,7 +5330,6 @@ function dBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 				end
 				testQ["brevna"] = tonumber(testQ["brevna"])-1
 				testQ["nikQB"] = antc(testQ["brevna"])
-				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 			end
 		end
 		if arg1 == "RightButton" then
@@ -5975,9 +5908,6 @@ function mBtn:configure(id)
 					testQ["nikQS"] = antc(tonumber(testQ["smg"]))
 					testQ["brevna"] = tonumber(testQ["brevna"]) + x
 					testQ["nikQB"] = antc(testQ["brevna"])
-					dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-					dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-					dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
 					print("Получено: " .. x .. " бревен")
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\smg.ogg")
 				end
@@ -6491,6 +6421,30 @@ function resursy:configure(id)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		if id == 1 then
 			GameTooltip:AddLine("|cff99ff99Бревна")
+			local br = 0
+			for i = 1, 100 do
+				if mioFld[myNome]["объекты"][tostring(i)] == "sb" then
+					br = br + 1
+				end
+			end
+			if br == 0 then
+				GameTooltip:AddLine("|cffFFCF40Можно добыть не более 10 бревен")
+			end
+			if br == 1 then
+				GameTooltip:AddLine("|cffFFCF40Можно добыть не более 100 бревен")
+			end
+			if br == 2 then
+				GameTooltip:AddLine("|cffFFCF40Можно добыть не более 200 бревен")
+			end
+			if br == 3 then
+				GameTooltip:AddLine("|cffFFCF40Можно добыть не более 300 бревен")
+			end
+			if br == 4 then
+				GameTooltip:AddLine("|cffFFCF40Можно добыть не более 400 бревен")
+			end
+			if br == 5 then
+				GameTooltip:AddLine("|cffFFCF40Можно добыть не более 500 бревен")
+			end
 		end
 		if id == 2 then
 			GameTooltip:AddLine("|cff99ff99Трава")
@@ -6520,7 +6474,8 @@ function resursy:configure(id)
 	end)
 	self[id]:SetScript("OnClick",function(self)
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-		if id == 5 then
+		SendAddonMessage("smT st","1", "guild")
+		if id == 55 then
 			if ach_ach[16] == nil then
 				SendAddonMessage("#achVSE", 16, "guild")
 			end
@@ -6535,7 +6490,6 @@ function resursy:configure(id)
 				else
 					mBtn[1]:Show()
 				end
-				dmgText2(testQ["brevna"],mBtn[1],801,13,"FF8C00")
 				if mBtn[2] == nil then
 					mBtn:configure(2)
 				else
@@ -7528,13 +7482,8 @@ if testQ ~= nil then
 end
 
 minibtn:SetScript("OnClick", function()
+
 	if tostring(versAdd) == tostring(testQ["vers"]["2"]) then
-		if ach_ach == nil then
-			ach_ach = {}
-		end
-		if ach_ach[1] == nil then
-			SendAddonMessage("#achVSE", 1, "guild")
-		end
 		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 		local lvl
 		for Zc=1,GetNumGuildMembers(true) do
@@ -7553,7 +7502,7 @@ minibtn:SetScript("OnClick", function()
 			end
 		end
 		testQ["lvlProv"] = lvl
-		if testQ["mioFldLvl"] ~= nil and testQ["mioFldLvl"] ~= "" and testQ["mioFldLvl"] ~= "0" and testQ["mioFldLvl"] ~= 0.5 and testQ["mioFldLvl"] ~= 0.9 then
+		--if testQ["mioFldLvl"] == nil and testQ["mioFldLvl"] == "" and testQ["mioFldLvl"] == "0" and testQ["mioFldLvl"] == 0.5 and testQ["mioFldLvl"] == 0.9 then
 			if arg1=="LeftButton" then
 				if testQ==nil then
 					testQ={}
@@ -7900,17 +7849,17 @@ minibtn:SetScript("OnClick", function()
 					showRB(myNome)
 				end
 			end
-		elseif testQ["mioFldLvl"] == 0.5 or testQ["mioFldLvl"] == 0.9 then
-			if arg1=="LeftButton" then
-				showFld("1",myNome)
-			end
-			if arg1=="RightButton" then
-				if pokazat == 0 and not myCheckButton1:IsVisible() then
-					pokazat = 1
-				end
-				showRB(myNome)
-			end
-		end
+-- 		elseif testQ["mioFldLvl"] == 0.5 or testQ["mioFldLvl"] == 0.9 then
+-- 			if arg1=="LeftButton" then
+-- 				showFld("1",myNome)
+-- 			end
+-- 			if arg1=="RightButton" then
+-- 				if pokazat == 0 and not myCheckButton1:IsVisible() then
+-- 					pokazat = 1
+-- 				end
+-- 				showRB(myNome)
+-- 			end
+		--end
 		if arg1 == "MiddleButton" then
 			showFld("1",myNome)
 		end
@@ -8040,32 +7989,26 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
 										testQ["brevna"] = testQ["brevna"]+1
 										testQ["nikQB"] = antc(testQ["brevna"])
-										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 									if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
 										testQ["brevna"] = testQ["brevna"]+1
 										testQ["nikQB"] = antc(testQ["brevna"])
-										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 									if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
 										testQ["brevna"] = testQ["brevna"]+1
 										testQ["nikQB"] = antc(testQ["brevna"])
-										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 									if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
 										testQ["brevna"] = testQ["brevna"]+1
 										testQ["nikQB"] = antc(testQ["brevna"])
-										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 									if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
 										testQ["brevna"] = testQ["brevna"]+1
 										testQ["nikQB"] = antc(testQ["brevna"])
-										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 									if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
 										testQ["brevna"] = testQ["brevna"]+1
 										testQ["nikQB"] = antc(testQ["brevna"])
-										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 								end
 							end
@@ -8155,7 +8098,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 									if x == 1 then
 										testQ["brevna"] = tonumber(testQ["brevna"])-1
 										testQ["nikQB"] = antc(testQ["brevna"])
-										dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 									end
 									treeX(myNome,myNome,i)
 									PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\t.ogg")
@@ -8614,7 +8556,6 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 					testQ["nikQB"] = antc(testQ["brevna"])
 					print("Кирпичный цех расходует 1 бревно")
 				end
-				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
 				if x == 1 then
 					testQ["stog"] = tonumber(testQ["stog"]) - 1
 					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
@@ -9265,7 +9206,9 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				resursy[5]:Show()
 			end
 			if mgznZ ~= nil then
-				dmgText1(testQ["smg"],mgznZ,105,13,"FF8C00")
+				if mgznZ:IsVisible() then
+					dmgText1(dmgT,mgznZ,105,13,"FF8C00")
+				end
 				if dmG1[1005] ~= nil then
 					dmG1[1005]:SetFrameStrata("TOOLTIP")
 					mgznZ:SetFrameStrata("LOW")
@@ -9433,13 +9376,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 
 		if resursy[1] ~= nil and resursy[1]:IsVisible() then
 			if dmG[101] == nil or not dmG[101]:IsVisible() then
-				dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-				dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-				dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-				dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
-				dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-				dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
-				dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
+				SendAddonMessage("smT","1", "guild")
 			end
 			for i = 101, 200 do
 				if dmG[i] ~= nil then
@@ -9447,27 +9384,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
-		if testQ["nikQB"] ~= antc(testQ["brevna"]) then
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
-		end
-		if testQ["nikQF"] ~= antc(testQ["stog"]) then
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
-		end
-		if testQ["nikQK"] ~= antc(testQ["kamen"]) then
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
-		end
-		if testQ["nikQBT"] ~= antc(testQ["beton"]) then
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
-		end
-		if testQ["nikQS"] ~= antc(testQ["smg"]) then
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
-		end
-		if testQ["nikQKR"] ~= antc(testQ["kirpich"]) then
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
-		end
-		if testQ["nikQD"] ~= antc(testQ["doska"]) then
-			SendChatMessage("Прошу забанить меня по собственному желанию", "officer", nil, 1)
-		end
+
 		if fBtn[1]:IsVisible() then
 			for i = 1, 100 do
 				if resursy[i] ~= nil then
@@ -9523,582 +9440,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 			btn[989]:Hide()
 			testQ['sign'] = nil
 		end
-		if testQ["fRand2"] ~= nil and testQ["fRand2name"] == myNome then
-			local nome
-			if GuildFrame:IsVisible() or testQ['sign'] == "1" then
-				if not GuildFrameLFGButton:GetChecked() or testQ['sign'] == "1" then
-					if testQ['sign'] ~= "1" then
-						nome = GuildFrame["selectedName"]
-					else
-						nome = myNome
-					end
-					if not fBtn[1]:IsVisible() then
-						for i=1,100 do
-							j = tostring(i)
-							fBtn[i]:Show()
-							btn[989]:ClearAllPoints()
-							btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-							if mioFld ~= nil then
-								if mioFld[nome] ~= nil then
-									if mioFld[nome]["объекты"] ~= nil then
-										fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][j] .. ".tga")
-									end
-								end
-							end
-						end
-					end
-				end
-			end
-			testQ["fRand2"] = nil
-			testQ["fRand1"] = nil
-			testQ["fRand2name"] = nil
-			FriendsFrame:Hide()
-		end
-			if (GuildFrame["selectedName"] ~= nil and testQ["fRandDbnome"] ~= nil) or testQ['sign'] == "1" then
-				if (GuildFrame["selectedName"] == testQ["fRandDbnome"]) or (testQ['sign'] == "1" and testQ["fRandDbnome"] == myNome) then
-					if testQ["fRandDb"] ~= nil then
-						for i = 1, 100 do
-							local pet
-							if testQ["fRandDbnome"] ~= nil then
-								if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
-								pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
-							end
-							end
-							if pet ~= nil then
-								if pet[1] == "bb" then
-									fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\bb.tga")
-									testQ["fRandDb"] = nil
-									testQ["fRandDbnome"] = nil
-									pet = nil
-								end
-							end
-						end
-					end
-				end
-			end
-			if (GuildFrame["selectedName"] ~= nil and testQ["fRandD1nome"] ~= nil) or testQ['sign'] == "1" then
-				if (GuildFrame["selectedName"] == testQ["fRandD1nome"]) or (testQ['sign'] == "1" and testQ["fRandD1nome"] == myNome) then
-					if testQ["fRandD1"] == 1 then
-						for i=1,35 do
-							j = tostring(i)
-							local pet
-							if testQ["fRandDbnome"] ~= nil then
-								if mioFld ~= nil then
-									if mioFld[testQ["fRandDbnome"]]["петы"] ~= nil then
-										if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
-											pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
-											fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
-										end
-									end
-								end
-								testQ["fRandDbnome"] = nil
-							end
-							if mioFld ~= nil then
-								if mioFld[testQ["fRandD1nome"]] ~= nil then
-									if mioFld[testQ["fRandD1nome"]]["объекты"] ~= nil then
-										fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
-										fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
-										fBtn[i]:Show()
-										btn[989]:ClearAllPoints()
-										btn[989]:SetPoint("BOTTOMLEFT", fBtn[10],"TOPRIGHT",0, 0)
-										if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "sx" then
-											if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
-												dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											else
-												dmgText("",fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "hs" then
-											if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 9999 then
-												dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											else
-												dmgText("",fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "zx" then
-											if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 19999 then
-												dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											else
-												dmgText("",fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "sx" then
-											if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 29999 then
-												dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											else
-												dmgText("",fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-									end
-								end
-							end
-							testQ["fRandD1"] = nil
-						end
-					end
-					if testQ["fRandD2"] == 1 then
-						for i=36,70 do
-							j = tostring(i)
-							local pet
-							if mioFld ~= nil then
-								if testQ["fRandDbnome"] ~= nil then
-									if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
-										pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
-										fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
-									end
-								end
-								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
-								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
-								fBtn[i]:Show()
-								FriendsFrame:Hide()
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "sx"  then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "hs" then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 9999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "zx" then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 19999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "sx" then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 29999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-							end
-						end
-						testQ["fRandD2"] = nil
-					end
-					if testQ["fRandD3"] == 1 then
-						for i=71,100 do
-							j = tostring(i)
-							local pet
-							if mioFld ~= nil then
-								if testQ["fRandDbnome"] ~= nil then
-									if mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)] ~= nil then
-										pet = mysplit(mioFld[testQ["fRandDbnome"]]["петы"][tostring(i)])
-										fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet[1] .. ".tga")
-									end
-								end
-								fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
-								fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRandD1nome"]]["объекты"][tostring(i)] .. ".tga")
-								fBtn[i]:Show()
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hs" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "hx" and mioFld[testQ["fRandD1nome"]]["объекты"][j] ~= "sx" then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "hs" then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 9999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "zx" then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 19999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-								if mioFld[testQ["fRandD1nome"]]["объекты"][j] == "sx" then
-									if tonumber(mioFld[testQ["fRandD1nome"]]["целостность"][j]) < 29999 then
-										dmgText(mioFld[testQ["fRandD1nome"]]["целостность"][j],fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									else
-										dmgText("",fBtn[i],i,13,"FF8C00")
-										dmG[i]:Show()
-									end
-								end
-							end
-						end
-						testQ["fRandD3"] = nil
-						testQ["fRandD1nome"] = nil
-					end
-				end
-			end
-			if (GuildFrame["selectedName"] ~= nil and testQ["fRand3Nome"] ~= nil) or testQ['sign'] == "1" then
-				if (GuildFrame["selectedName"] == testQ["fRand3Nome"]) or (testQ['sign'] == "1" and testQ["fRand3Nome"] == myNome) then
-					if testQ["fRand3"] == 1 then
-						local nome
-						if testQ['sign'] ~= "1" then
-							nome = GuildFrame["selectedName"]
-						else
-							nome = myNome
-						end
-						if mioFld ~= nil then
-							if testQ["fRand3Nome"] == nome then
-								if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-									for i = 1,100 do
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "hs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zs" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "sx" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "zc" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "tz" and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "m0"
-										and mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] ~= "lx" then
-											if mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)] ~= nil then
-												if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 999 then
-													dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												end
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "hs" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 9999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "lx" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 19999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "zc" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 9999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "tz" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 29999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "m0" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 29999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "tc" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 4999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "bc" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 14999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "bs" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 14999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "as" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 14999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "bx" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 14999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "zx" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 19999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "zs" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 19999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-										if mioFld[testQ["fRand3Nome"]]["объекты"][tostring(i)] == "sx" then
-											if tonumber(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)]) < 29999 then
-												dmgText(mioFld[testQ["fRand3Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											end
-										end
-									end
-								end
-								testQ["fRand3"] = nil
-								testQ["fRand3Nome"] = nil
-							end
-						end
-					end
-				end
-			end
-			if resursy[5]:IsVisible() then
-				if (GuildFrame["selectedName"] ~= nil and testQ["fRand4Nome"] ~= nil) or testQ['sign'] == "1" then
-					if (GuildFrame["selectedName"] == testQ["fRand4Nome"]) or (testQ['sign'] == "1" and testQ["fRand4Nome"] == myNome) then
-						if testQ["fRand4"] == 1 then
-							local nome
-							if testQ['sign'] ~= "1" then
-								nome = GuildFrame["selectedName"]
-							else
-								nome = myNome
-							end
-							if mioFld ~= nil then
-								if nome == testQ["fRand4Nome"] then
-									if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-										for i = 1,100 do
-											j = tostring(i)
-											fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-											fBtn[i]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand4Nome"]]["объекты"][j] .. ".tga")
-											--fBtn[i]:SetHighlightTexture("")
-											if tonumber(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)]) < 999 then
-												dmgText(mioFld[testQ["fRand4Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-												dmG[i]:Show()
-											else
-												if dmG[i]~=nil then
-													dmG[i]:Hide()
-												end
-											end
-										end
-									end
-								end
-							end
-							testQ["fRand4"] = nil
-							testQ["fRand4Nome"] = nil
-						end
-					end
-				end
 
-				if (GuildFrame["selectedName"] ~= nil and testQ["fRand5Nome"] ~= nil) or testQ['sign'] == "1" then
-					if (GuildFrame["selectedName"] == testQ["fRand5Nome"]) or (testQ['sign'] == "1" and testQ["fRand5Nome"] == myNome) then
-						if testQ["fRand5"] == 1 then
-							local nome
-							if testQ['sign'] ~= "1" then
-								nome = GuildFrame["selectedName"]
-							else
-								nome = myNome
-							end
-							if nome == testQ["fRand5Nome"] then
-								if fBtn[1] ~= nil or fBtn[1]:IsVisible() then
-									for i = 1,100 do
-										j = tostring(i)
-										if mioFld ~= nil then
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "hs" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zs" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zx" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "sx" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "zc" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "tz" and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "m0"
-											and mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] ~= "lx" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "tc" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 4999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "m0" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "lx" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 19999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "tz" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "tz" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "zc" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 9999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "as" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 14999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "bx" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 14999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "bs" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 14999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "bc" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 14999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "hs" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 9999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "zx" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 19999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "zs" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 19999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											if mioFld[testQ["fRand5Nome"]]["объекты"][tostring(i)] == "sx" then
-												if tonumber(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)]) < 29999 then
-													dmgText(mioFld[testQ["fRand5Nome"]]["целостность"][tostring(i)],fBtn[i],i,13,"FF8C00")
-													dmG[i]:Show()
-												else
-													if dmG[i]~=nil then
-														dmG[i]:Hide()
-													end
-												end
-											end
-											fBtn[i]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[testQ["fRand5Nome"]]["объекты"][j] .. ".tga")
-										end
-									end
-								end
-							end
-							testQ["fRand5"] = nil
-							testQ["fRand5Nome"] = nil
-						end
-					end
-				end
-
-				if GuildFrame["selectedName"] ~= nil or testQ['sign'] == "1" then
-					local nome
-					if testQ['sign'] ~= "1" then
-						nome = GuildFrame["selectedName"]
-					else
-						nome = myNome
-					end
-					if (GuildFrame["selectedName"] == myNome) or testQ['sign'] == "1" then
-						if testQ["fRand6"] == 1 then
-							if resursy[1] ~= nil and resursy[1]:IsVisible() then
-								dmgText(testQ["brevna"],resursy[1],101,13,"FF8C00")
-								dmgText(testQ["stog"],resursy[2],102,13,"FF8C00")
-								dmgText(testQ["kamen"],resursy[3],103,13,"FF8C00")
-								dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
-								dmgText(testQ["smg"],resursy[5],105,13,"FF8C00")
-								dmgText(string.format("%d", tonumber(testQ["kirpich"])),resursy[6],106,13,"FF8C00")
-								dmgText(testQ["doska"],resursy[7],107,13,"FF8C00")
-							end
-							testQ["fRand6"] = nil
-						end
-					end
-				end
-		end
 		if btn[6] == nil or not btn[6]:IsVisible() then
 			btn[2]:Hide()
 			btn[1]:Hide()

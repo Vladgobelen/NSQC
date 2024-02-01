@@ -1217,263 +1217,7 @@ function marSh()
 	marsh[testKont][lok][n]["y"] =  string.format("%.3f",y)
 	print (n)
 end
-function treeX(nome,myNome,id)
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) >=1 then
-		if krt == nil then
-			krt = {}
-		end
-		if krt["podskazki"] == nil then
-			krt["podskazki"] = 1
-		end
-		if testQ["трудовые_ресурсы"] == nil then
-			testQ["трудовые_ресурсы"] = {}
-			testQ["трудовые_ресурсы"] = 0
-		end
-		if mioFld[nome]["объекты"][tostring(id)] ~= "f" then
-			if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
-				if nome == myNome then
-					mioFld[nome]["целостность"][tostring(id)]=mioFld[nome]["целостность"][tostring(id)]-50
-				else
-					if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
-						local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
-						if x == 9 then
-							mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
-						end
-					else
-						mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
-					end
-				end
-				--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-				testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
-			else
-				if nome == myNome then
-					mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
-				else
-					if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
-						local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
-						if x == 9 then
-							mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
-						end
-					else
-						mioFld[nome]["целостность"][tostring(id)]=tonumber(mioFld[nome]["целостность"][tostring(id)])-round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
-					end
-				end
-				--fBtn[id]:SetText(mioFld[nome]["целостность"][tostring(id)])
-			end
-		end
-		if testQ ~= nil then
-			if testQ[myNome] ~= nil then
-				if testQ[myNome]["характеристики"] ~= nil then
-					if testQ[myNome]["характеристики"]["скрытность"] ~= nil then
-						SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)] .. " " .. testQ[myNome]["характеристики"]["скрытность"], nome, "guild")
-					else
-						SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
-					end
-				else
-					SendAddonMessage("obgIz " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)], nome, "guild")
-				end
-			end
-		end
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "t" then
-		if testQ[myNome]["kolvoTree"] == nil or testQ[myNome]["kolvoTree"] <= 9 then
-			if testQ[myNome]["kolvoTree"] == nil then
-				testQ[myNome]["kolvoTree"] = 1
-			else
-				testQ[myNome]["kolvoTree"] = tonumber(testQ[myNome]["kolvoTree"]) + 1
-			end
-		else
-			if ach_ach[2] == nil then
-				SendAddonMessage("#achVSE", 2, "guild")
-			end
-		end
-		SendAddonMessage("travA " .. id, nome, "guild")
-		if testQ ~= nil then
-			local testB = nil
-			for i = 1,100 do
-				if mioFld[nome]["объекты"][tostring(i)] == "sb" then
-					if testB == nil then
-						testB = 1
-					else
-						testB = testB + 1
-					end
-				end
-			end
-			if testQ["brevna"] ~= nil and testQ["brevna"] < 10 and testB == nil then
-				testQ["brevna"] = testQ["brevna"]+1
-				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-			end
-			if testQ["brevna"] ~= nil and testQ["brevna"] < 100 and testB == 1 then
-				testQ["brevna"] = testQ["brevna"]+1
-				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-			end
-			if testQ["brevna"] ~= nil and testQ["brevna"] < 200 and testB == 2 then
-				testQ["brevna"] = testQ["brevna"]+1
-				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-			end
-			if testQ["brevna"] ~= nil and testQ["brevna"] < 300 and testB == 3 then
-				testQ["brevna"] = testQ["brevna"]+1
-				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-			end
-			if testQ["brevna"] ~= nil and testQ["brevna"] < 400 and testB == 4 then
-				testQ["brevna"] = testQ["brevna"]+1
-				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-			end
-			if testQ["brevna"] ~= nil and testQ["brevna"] < 500 and testB == 5 then
-				testQ["brevna"] = testQ["brevna"]+1
-				testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
-				dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-			end
-		end
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] .."x.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 and mioFld[nome]["объекты"][tostring(id)] == "f" then
-		SendAddonMessage("zemlYa " .. id, nome, "guild")
-		if testQ["stog"] ~= nil and testQ["stog"] < 99999 then
-			local x
-			if tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 100 then
-				x = math.random(1,100)
-				if x == 100 then
-					testQ["stog"] = testQ["stog"]+1
-					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach_ach[7] == nil then
-						SendAddonMessage("#achVSE", 7, "guild")
-					end
-				end
-			end
-			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 100 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 200 then
-				x = math.random(1,20)
-				if x == 20 then
-					testQ["stog"] = testQ["stog"]+1
-					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach_ach[6] == nil then
-						SendAddonMessage("#achVSE", 6, "guild")
-					end
-				end
-			end
-			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 200 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 500 then
-				x = math.random(1,10)
-				if x == 10 then
-					testQ["stog"] = testQ["stog"]+1
-					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach_ach[5] == nil then
-						SendAddonMessage("#achVSE", 5, "guild")
-					end
-				end
-			end
-			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 500 and tonumber(mioFld[nome]["целостность"][tostring(id)]) <= 900 then
-				x = math.random(1,2)
-				if x == 2 then
-					testQ["stog"] = testQ["stog"]+1
-					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach_ach[4] == nil then
-						SendAddonMessage("#achVSE", 4, "guild")
-					end
-				end
-			end
-			if tonumber(mioFld[nome]["целостность"][tostring(id)]) > 900 then
-				x = math.random(1,10)
-				if x ~= 1 then
-					testQ["stog"] = testQ["stog"]+1
-					testQ["nikQF"] = antc(tonumber(testQ["stog"]))
-					dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-					if ach_ach[3] == nil then
-						SendAddonMessage("#achVSE", 3, "guild")
-					end
-				end
-			end
-		end
-	end
 
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "uz" then
-		SendAddonMessage("uZ " .. id, nome, "guild")
-		if ach_ach[10] == nil then
-			SendAddonMessage("#achVSE", 10, "guild")
-		end
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "zc" then
-		SendAddonMessage("bX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ms" then
-		SendAddonMessage("mS " .. id, nome, "guild")
-		if ach_ach[9] == nil then
-			SendAddonMessage("#achVSE", 9, "guild")
-		end
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
-	end
-
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "mx" then
-		SendAddonMessage("mXx " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "hs" then
-		SendAddonMessage("uZ " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\" .. mioFld[nome]["объекты"][tostring(id)] ..".ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "zs" then
-		SendAddonMessage("zSx " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "m1" then
-		SendAddonMessage("m3 " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "zx" then
-		SendAddonMessage("zXx " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "skc" then
-		SendAddonMessage("skcX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "sb" then
-		SendAddonMessage("sbX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "sx" then
-		SendAddonMessage("sXX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "tc" then
-		SendAddonMessage("tcX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "tz" then
-		SendAddonMessage("tVx " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "m0" then
-		SendAddonMessage("mFX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and (mioFld[nome]["объекты"][tostring(id)] == "as" or mioFld[nome]["объекты"][tostring(id)] == "bx" or mioFld[nome]["объекты"][tostring(id)] == "bc" or mioFld[nome]["объекты"][tostring(id)] == "bs") then
-		SendAddonMessage("bX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ox" then
-		SendAddonMessage("oX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "ob" then
-		SendAddonMessage("oXX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-	if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 1 and mioFld[nome]["объекты"][tostring(id)] == "kx" then
-		SendAddonMessage("kXX " .. id, nome, "guild")
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\mx.ogg")
-	end
-end
 function resObj(id,myNome,nome)
 	if krt == nil then
 		krt = {}
@@ -1988,53 +1732,53 @@ function gKam(myNome,x)
 				end
 			end
 		end
-		if testQ["kamen"] ~= nil and testQ["kamen"] < 10 and testK == nil then
+		if testK == nil then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
-			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
 				SendAddonMessage("#achVSE", 11, "guild")
 			end
+			SendAddonMessage("ns_kP","0", "guild")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
-		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 100 and testK == 1 then
+		elseif testK == 1 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
-			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
 				SendAddonMessage("#achVSE", 11, "guild")
 			end
+			SendAddonMessage("ns_kP","1", "guild")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
-		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 200 and testK == 2 then
+		elseif testK == 2 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
 			if ach_ach[11] == nil then
 				SendAddonMessage("#achVSE", 11, "guild")
 			end
-			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
+			SendAddonMessage("ns_kP","2", "guild")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
-		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 300 and testK == 3 then
+		elseif testK == 3 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
-			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
 				SendAddonMessage("#achVSE", 11, "guild")
 			end
+			SendAddonMessage("ns_kP","3", "guild")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
-		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 400 and testK == 4 then
+		elseif testK == 4 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
-			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
 				SendAddonMessage("#achVSE", 11, "guild")
 			end
+			SendAddonMessage("ns_kP","4", "guild")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
-		elseif testQ["kamen"] ~= nil and testQ["kamen"] < 500 and testK == 5 then
+		elseif testK == 5 then
 			testQ["kamen"] = testQ["kamen"]+1
 			testQ["nikQK"] = antc(testQ["kamen"])
-			dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
 			if ach_ach[11] == nil then
 				SendAddonMessage("#achVSE", 11, "guild")
 			end
+			SendAddonMessage("ns_kP","5", "guild")
 			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
 		end
 	end

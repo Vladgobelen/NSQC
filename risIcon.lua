@@ -88,7 +88,6 @@ function magazin(sign)
 				mgznZ:SetScript("OnClick",function(self)
 					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
 					if testQ["magSign"] == nil then
-						dmgText1(testQ["smg"],mgznZ,1005,11,"FF8C00")
 						dmG1[1005]:Show()
 						dmG1[1005]:SetFrameStrata("TOOLTIP")
 						mgznIcon[1]:Show()
@@ -117,18 +116,12 @@ function magazin(sign)
 								end
 							end
 						end
-						dmgText(testQ["brevna"],resursy[1],101,22,"FF8C00")
-						dmgText(testQ["stog"],resursy[2],102,22,"FF8C00")
-						dmgText(testQ["kamen"],resursy[3],103,22,"FF8C00")
-						dmgText(string.format("%d", tonumber(testQ["beton"])),resursy[4],104,13,"FF8C00")
-						dmgText(testQ["smg"],resursy[5],105,22,"FF8C00")
 						resursy[5]:Show()
 						btn[989]:Show()
 					end
 					GameTooltip:Hide()
 				end)
 			else
-				dmgText1(testQ["smg"],mgznZ,1005,22,"FF8C00")
 				dmG1[1005]:Show()
 				dmG1[1005]:SetFrameStrata("TOOLTIP")
 				mgznZ:Show()
