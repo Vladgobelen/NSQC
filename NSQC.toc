@@ -46,6 +46,8 @@ libs\ox.tga
 libs\zs.tga
 libs\zx.tga
 libs\t.tga
+libs\e2.tga
+libs\e3.tga
 libs\f.tga
 libs\zc.tga
 libs\yi.tga
