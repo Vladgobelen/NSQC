@@ -19,6 +19,7 @@ libs\gob.ogg
 libs\gobXm.ogg
 libs\gom.ogg
 libs\sh.ogg
+np.lua
 libs\tx.ogg
 libs\ka.tga
 libs\tv.tga
