@@ -22,10 +22,12 @@ libs\sh.ogg
 np.lua
 libs\tx.ogg
 libs\ka.tga
+libs\kostKluch.tga
 libs\tv.tga
 libs\dz.tga
 libs\em.tga
 libs\e1.tga
+libs\krov_vampira.tga
 libs\tz.tga
 libs\clc.ogg
 libs\mx.ogg
@@ -42,7 +44,10 @@ libs\st.tga
 libs\lom.tga
 libs\my.tga
 libs\z.tga
+libs\nl.tga
+libs\zelenka.tga
 libs\ob.tga
+libs\krovootvod.tga
 libs\ox.tga
 libs\zs.tga
 libs\zx.tga
