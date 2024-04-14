@@ -1,1 +1,488 @@
-local C=CreateFrame("\070\114\097\109\101")C:RegisterEvent("\067\072\065\084\095\077\083\071\095\065\068\068\079\078")C:SetScript("\079\110\069\118\101\110\116",function(C,v,F,X,O,d,u,j,V)if testQ.npArg==nil then np_change_nil()end if testQ.npArg==0 then np_change_0()end local B={font="\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",normTex="\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\120\056";glowTex="\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\120\056",back="\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\120\056"}local n={edgeFile=B.glowTex;edgeSize=ns_cfg.border;insets={left=ns_cfg.border;right=ns_cfg.border,top=ns_cfg.border;bottom=ns_cfg.border}}local K=-1 local y={}local function I(C,v,...)local F=...local X=F if F~=X and F=="\112\108\097\121\101\114"then return end local O=string.gsub((select(7,(C:GetParent()):GetRegions())):GetText(),"\037\115\037\040\037\042\037\041","")if not(O==UnitName(X)and((C:GetParent()):GetChildren()):GetValue()==UnitHealth(X))then return end if v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\065\082\084"then local v=0 local F local O local d local u local j local V local B local n local K while true do if v==3 then C.castID=n C.delay=0 C.channeling=nil C.fadeOut=nil v=4 end if 4==v then if C.Shield then if C.showShield and K then C.Shield:Show()if C.Border then C.Border:Hide()end else C.Shield:Hide()if C.Border then C.Border:Show()end end end C:Show()break end if v==2 then if C.Icon then C.Icon:SetTexture(u)end C:SetAlpha(1)C.holdTime=0 C.casting=1 v=3 end if v==1 then C.max=(V-j)/1000 C:SetValue(0)C:SetMinMaxValues(0,C.max)C:SetAlpha(1)v=2 end if v==0 then F,O,d,u,j,V,B,n,K=UnitCastingInfo(X)if not F or not C.showTradeSkills and B then C:Hide()return end C:SetStatusBarColor(1,.7,0)C.duration=GetTime()-j/1000 v=1 end end elseif v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080"or v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\079\080"then if C.casting and(v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080"and select(4,...)==C.castID)or C.channeling and v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\079\080"then local F if C.max==nil then local v=0 while true do if v==0 then F=1.5 C:SetValue(F)break end end else C:SetValue(C.max)end if v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080"then C.casting=nil C:SetStatusBarColor(0,1,0)else C.channeling=nil end C.flash=1 C.fadeOut=1 C.holdTime=0 end elseif v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\070\065\073\076\069\068"or v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\069\068"then if C:IsShown()and(C.casting and(select(4,...)==C.castID and not C.fadeOut))then C:SetValue(C.max)C:SetStatusBarColor(1,0,0)C.casting=nil C.channeling=nil C.fadeOut=1 C.holdTime=GetTime()+CASTING_BAR_HOLD_TIME end elseif v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\068\069\076\065\089\069\068"then local v=0 local F while true do if v==0 then F=C if F:IsShown()then local v=0 local O local d local u local j local V local B local n local K while true do if v==2 then F.delay=(F.delay+F.duration)-K F.duration=K v=3 end if v==0 then O,d,u,j,V,B,n=UnitCastingInfo(X)if not O or not C.showTradeSkills and n then local v=0 while true do if v==0 then C:Hide()return end end end v=1 end if v==3 then F:SetValue(K)if not F.casting then local C=0 while true do if C==1 then F.channeling=nil F.fadeOut=0 break end if C==0 then F:SetStatusBarColor(1,.70000000000005,0)F.casting=1 C=1 end end end break end if v==1 then K=GetTime()-V/1000 if K<0 then K=0 end v=2 end end end break end end elseif v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\065\082\084"then local v=0 local F local O local d local u local j local V local B local n while true do if v==1 then C.duration=V/1000-GetTime()C.max=(V-j)/1000 C.delay=0 v=2 end if v==4 then C.channeling=1 C.fadeOut=nil if C.Shield then if C.showShield and n then local v=0 while true do if v==0 then C.Shield:Show()if C.Border then C.Border:Hide()end break end end else C.Shield:Hide()if C.Border then C.Border:Show()end end end v=5 end if v==3 then C:SetAlpha(1)C.holdTime=0 C.casting=nil v=4 end if v==2 then C:SetMinMaxValues(0,C.max)C:SetValue(C.duration)if C.Icon then C.Icon:SetTexture(u)end v=3 end if v==0 then F,O,d,u,j,V,B,n=UnitChannelInfo(X)if not F or not C.showTradeSkills and B then C:Hide()return end C:SetStatusBarColor(0,1,0)v=1 end if v==5 then C:Show()break end end elseif v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\085\080\068\065\084\069"then local v=C if v:IsShown()then local F=0 local O local d local u local j local V local B local n local K while true do if F==3 then v:SetMinMaxValues(0,v.max)v:SetValue(K)break end if F==0 then O,d,u,j,V,B,n=UnitChannelInfo(X)if not O or not C.showTradeSkills and n then C:Hide()return end F=1 end if F==2 then v.duration=K v.max=(B-V)/1000 F=3 end if F==1 then K=B/1000-GetTime()v.delay=(v.delay+v.duration)-K F=2 end end end elseif v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069"then if C.Shield then local v=0 while true do if v==0 then C.Shield:Hide()if C.Border then C.Border:Show()end break end end end elseif v=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\078\079\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069"then if C.Shield then C.Shield:Show()if C.Border then C.Border:Hide()end end end end local function Z(C,v)if C.casting then local F=C.duration+v if F>=C.max then local v=0 while true do if v==2 then C.casting=nil return end if v==1 then C.holdTime=0 C.fadeOut=0 v=2 end if v==0 then C:SetValue(C.max)C:SetStatusBarColor(0,1,0)v=1 end end end C.duration=F C:SetValue(F)elseif C.channeling then local F=0 local X while true do if 1==F then C.duration=X C:SetValue(X)break end if F==0 then X=C.duration-v if X<=0 then local v=0 while true do if v==0 then C:SetStatusBarColor(0,1,0)C.fadeOut=0 v=1 end if 2==v then return end if 1==v then C.channeling=nil C.holdTime=0 v=2 end end end F=1 end end elseif GetTime()<C.holdTime then return elseif C.fadeOut then local v=0 local F while true do if v==0 then F=C:GetAlpha()-CASTING_BAR_ALPHA_STEP if F>.05 then C:SetAlpha(F)else C.fadeOut=nil C:Hide()end break end end end end local function M(C,v)local F,X=C:GetMinMaxValues()if C.channeling then local F=0 local O local d while true do if F==0 then O=string.format("\037\046\049\102",v)d=string.format("\n\037\046\049\102",X)F=1 end if F==1 then C.time:SetText(O..d)break end end else local F=0 local O local d while true do if F==1 then C.time:SetText(O..d)break end if F==0 then O=string.format("\037\046\049\102",X-v)d=string.format("\n\037\046\049\102",X)F=1 end end end end local function s(C)local v=0 local F local X local O local d while true do if 1==v then if not frame.oldglow:IsShown()then C.hpBorder:SetBackdropBorderColor(0,0,0)else local v,F,X=frame.oldglow:GetVertexColor()if F+X==0 then C.hpBorder:SetBackdropBorderColor(1,0,0)else C.hpBorder:SetBackdropBorderColor(1,1,0)end end C:SetStatusBarColor(C.r,C.g,C.b)C:ClearAllPoints()v=2 end if v==3 then C.hpBackground:SetVertexColor(C.r*.25,C.g*.25,C.b*.25)d=frame.oldname:GetText()if string.len(d)<ns_cfg.HPwidth/5 then frame.name:SetText(d)else frame.name:SetFormattedText(d:sub(0,ns_cfg.HPwidth/5).."\046\046\046")end v=4 end if v==4 then frame.level:ClearAllPoints()frame.level:SetPoint(ns_cfg.LvLpoint,frame.healthBar,ns_cfg.LvLrelativePoint,ns_cfg.LvLx,ns_cfg.LvLy)if frame.boss:IsShown()then frame.level:SetText("\208\145\208\158\208\161")frame.level:SetTextColor(.8,.05,0)frame.level:Show()end v=5 end if v==0 then F,X,O=C:GetStatusBarColor()if X+O==0 then C.r,C.g,C.b=ns_cfg.hostileunit.r,ns_cfg.hostileunit.g,ns_cfg.hostileunit.b C:SetStatusBarColor(ns_cfg.hostileunit.r,ns_cfg.hostileunit.g,ns_cfg.hostileunit.b)elseif F+O==0 then C.r,C.g,C.b=ns_cfg.friendlyunit.r,ns_cfg.friendlyunit.g,ns_cfg.friendlyunit.b C:SetStatusBarColor(ns_cfg.friendlyunit.r,ns_cfg.friendlyunit.g,ns_cfg.friendlyunit.b)elseif F+X==0 then C.r,C.g,C.b=ns_cfg.friendlyplayer.r,ns_cfg.friendlyplayer.g,ns_cfg.friendlyplayer.b C:SetStatusBarColor(ns_cfg.friendlyplayer.r,ns_cfg.friendlyplayer.g,ns_cfg.friendlyplayer.b)elseif 2-(F+X)<.049999999999955 and O==0 then C.r,C.g,C.b=ns_cfg.neutralunit.r,ns_cfg.neutralunit.g,ns_cfg.neutralunit.b C:SetStatusBarColor(ns_cfg.neutralunit.r,ns_cfg.neutralunit.g,ns_cfg.neutralunit.b)else C.r,C.g,C.b=F,X,O end frame=C:GetParent()v=1 end if 2==v then C:SetPoint("\067\069\078\084\069\082",C:GetParent(),0,10)C:SetHeight(ns_cfg.HPheight)C:SetWidth(ns_cfg.HPwidth)v=3 end if v==5 then frame.highlight:SetAllPoints(C)break end end end local function k(C)C.highlight:Hide()end local function J(C)C.healthBar,C.castBar=C:GetChildren()local v,F=C.healthBar,C.castBar local X,O,d,u,j,V,K,J,q,t,x=C:GetRegions()C.oldname=K K:Hide()K.Show=function() end C.name=C:CreateFontString()C.name:SetPoint(ns_cfg.Npoint,v,ns_cfg.NrelativePoint,ns_cfg.Nx,ns_cfg.Ny)C.name:SetFont(B.font,ns_cfg.NameFontSize,"\079\085\084\076\073\078\069")C.name:SetTextColor(.83999999999997,.75,.65000000000009)C.name:SetShadowOffset(1,-1)C.level=J J:SetFont(B.font,ns_cfg.LvLFontSize,"\079\085\084\076\073\078\069")J:SetShadowOffset(1,-1)C.boss=q v:SetStatusBarTexture(B.normTex)v.hpBackground=v:CreateTexture(nil,"\066\079\082\068\069\082")v.hpBackground:SetAllPoints(v)v.hpBackground:SetTexture(B.back)v.hpBackground:SetVertexColor(.15,.15,.15)v.hpBorder=CreateFrame("\070\114\097\109\101",nil,v)v.hpBorder:SetFrameLevel(v:GetFrameLevel()-1>0 and v:GetFrameLevel()-1 or 0)v.hpBorder:SetPoint("\084\079\080\076\069\070\084",v,"\084\079\080\076\069\070\084",-ns_cfg.border,ns_cfg.border)v.hpBorder:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",v,"\066\079\084\084\079\077\082\073\071\072\084",ns_cfg.border,-ns_cfg.border)v.hpBorder:SetBackdrop(n)v.hpBorder:SetBackdropColor(0,0,0)v.hpBorder:SetBackdropBorderColor(0,0,0)v:SetScript("\079\110\085\112\100\097\116\101",s)V:SetTexture(B.normTex)V:SetVertexColor(.25,.25,.25)C.highlight=V local o=CreateFrame("\083\116\097\116\117\115\066\097\114",nil,C)o:SetHeight(ns_cfg.CBheight)o:SetWidth(ns_cfg.HPwidth-(ns_cfg.CBheight+8))o:SetStatusBarTexture(B.normTex);(o:GetStatusBarTexture()):SetHorizTile(false);(o:GetStatusBarTexture()):SetVertTile(false)o:SetPoint("\084\079\080\082\073\071\072\084",v,"\066\079\084\084\079\077\082\073\071\072\084",0,-8)o.showTradeSkills=true o.showShield=true o.casting=true o.channeling=true o.holdTime=0 o.Border=o:CreateTexture(nil,"\066\065\067\075\071\082\079\085\078\068")o.Border:SetSize(d:GetSize())o.Border:SetAllPoints(o)o.Border:SetTexture(B.back)o.Border:SetVertexColor(0,0,0,.8)o.Icon=o:CreateTexture(nil,"\065\082\084\087\079\082\075")o.Icon:SetSize(j:GetSize())o.Icon:SetPoint("\082\073\071\072\084",o,"\076\069\070\084",-2,0)o.Icon:SetTexCoord(.099999999999909,.90000000000009,.1,.9)o.time=o:CreateFontString(nil,"\065\082\084\087\079\082\075")o.time:SetPoint("\082\073\071\072\084",o.Icon,"\076\069\070\084",-4,0)o.time:SetFont(B.font,ns_cfg.CBtieFont,"\079\085\084\076\073\078\069")o.time:SetTextColor(.84,.75,.65)o.time:SetShadowOffset(1,-1)o:Hide()o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\065\082\084")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\070\065\073\076\069\068")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\069\068")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\078\079\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\068\069\076\065\089\069\068")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\065\082\084")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\085\080\068\065\084\069")o:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\079\080")o:SetScript("\079\110\069\118\101\110\116",I)o:SetScript("\079\110\085\112\100\097\116\101",Z)o:HookScript("\079\110\086\097\108\117\101\067\104\097\110\103\101\100",M)C.oldglow=X C:SetScript("\079\110\072\105\100\101",k)y[C]=true X:SetTexture(nil)O:SetTexture(nil)u:SetTexture(nil)d:SetTexture(nil)x:SetTexture(nil)q:SetTexture(nil)end local q=select local function t(...)for C=1,q("\035",...),1 do local v=q(C,...)local F=v:GetRegions()if not y[v]and(not v:GetName()and(F and(F:GetObjectType()=="\084\101\120\116\117\114\101"and F:GetTexture()=="\073\110\116\101\114\102\097\099\101\092\084\097\114\103\101\116\105\110\103\070\114\097\109\101\092\085\073-\084\097\114\103\101\116\105\110\103\070\114\097\109\101-\070\108\097\115\104")))then J(v)end end end local x=.1;(CreateFrame("\070\114\097\109\101")):SetScript("\079\110\085\112\100\097\116\101",function(C,v)if testQ.np==1 then if WorldFrame:GetNumChildren()~=K then K=WorldFrame:GetNumChildren()t(WorldFrame:GetChildren())end end end)end)
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
+GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, sender, hernya, name, instanceID)
+if testQ['npArg'] == nil then
+    np_change_nil()
+end
+if testQ['npArg'] == 0 then
+    np_change_0()
+end
+
+--//Так же для удобства редактирования выношу сюда же и текстурки со шрифтами]]
+local media = {
+    ["font"] = [=[Fonts\FRIZQT__.TTF]=],
+    ["normTex"] = [[Interface\Buttons\WHITE8x8]],
+    ["glowTex"] = [[Interface\Buttons\WHITE8x8]],
+    ["back"] = [[Interface\Buttons\WHITE8x8]],
+}
+
+local backdrop = {
+    edgeFile = media.glowTex, edgeSize = ns_cfg.border,
+    insets = {left = ns_cfg.border, right = ns_cfg.border, top = ns_cfg.border, bottom = ns_cfg.border}
+}
+
+
+
+
+local numChildren = -1
+local frames = {}
+
+
+local function Castbar_OnEvent(self, event, ...)
+    local arg1 = ...
+    local unit = arg1
+    if(arg1 ~= unit and arg1 == "player") then
+        return
+    end
+
+    local name = string.gsub(select(7, self:GetParent():GetRegions()):GetText(), "%s%(%*%)","")
+    if not(name == UnitName(unit) and self:GetParent():GetChildren():GetValue() == UnitHealth(unit)) then
+        return
+    end
+
+    if(event == "UNIT_SPELLCAST_START") then
+        local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill, castID, notInterruptible = UnitCastingInfo(unit)
+        if(not name or (not self.showTradeSkills and isTradeSkill)) then
+            self:Hide()
+            return
+        end
+
+        self:SetStatusBarColor(1.0, 0.7, 0.0)
+        self.duration = GetTime() - (startTime/1000)
+        self.max = (endTime - startTime) / 1000
+
+        self:SetValue(0)
+        self:SetMinMaxValues(0, self.max)
+        self:SetAlpha(1.0)
+
+        if(self.Icon) then
+            self.Icon:SetTexture(texture)
+        end
+
+        self:SetAlpha(1.0)
+        self.holdTime = 0
+        self.casting = 1
+        self.castID = castID
+        self.delay = 0
+        self.channeling = nil
+        self.fadeOut = nil
+
+        if(self.Shield) then
+            if(self.showShield and notInterruptible) then
+                self.Shield:Show()
+                if(self.Border) then
+                    self.Border:Hide()
+                end
+                else
+                self.Shield:Hide()
+                if(self.Border) then
+                    self.Border:Show()
+                end
+            end
+         end
+
+    self:Show()
+    elseif(event == "UNIT_SPELLCAST_STOP" or event == "UNIT_SPELLCAST_CHANNEL_STOP") then
+        if((self.casting and event == "UNIT_SPELLCAST_STOP" and select(4, ...) == self.castID) or (self.channeling and event == "UNIT_SPELLCAST_CHANNEL_STOP")) then
+            local x
+            if self.max == nil then
+                x = 1.5
+                self:SetValue(x)
+            else
+                self:SetValue(self.max)
+            end
+
+
+            if(event == "UNIT_SPELLCAST_STOP") then
+                self.casting = nil
+                self:SetStatusBarColor(0.0, 1.0, 0.0)
+                else
+                    self.channeling = nil
+            end
+
+                    self.flash = 1
+                    self.fadeOut = 1
+                    self.holdTime = 0
+        end
+            elseif(event == "UNIT_SPELLCAST_FAILED" or event == "UNIT_SPELLCAST_INTERRUPTED") then
+                if(self:IsShown() and (self.casting and select(4, ...) == self.castID) and not self.fadeOut) then
+                        self:SetValue(self.max)
+                        self:SetStatusBarColor(1.0, 0.0, 0.0)
+
+                        self.casting = nil
+                        self.channeling = nil
+                        self.fadeOut = 1
+                        self.holdTime = GetTime() + CASTING_BAR_HOLD_TIME
+                end
+        elseif(event == "UNIT_SPELLCAST_DELAYED") then
+                local castbar = self
+                if(castbar:IsShown()) then
+                        local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill = UnitCastingInfo(unit)
+                        if(not name or (not self.showTradeSkills and isTradeSkill)) then
+                                self:Hide()
+                                return
+                        end
+
+                        local duration = GetTime() - (startTime / 1000)
+                        if(duration < 0) then duration = 0 end
+                        castbar.delay = castbar.delay + castbar.duration - duration
+                        castbar.duration = duration
+
+                        castbar:SetValue(duration)
+
+                        if(not castbar.casting) then
+                                castbar:SetStatusBarColor(1.0, 0.7, 0.0)
+
+                                castbar.casting = 1
+                                castbar.channeling = nil
+                                castbar.fadeOut = 0
+                        end
+                end
+        elseif(event == "UNIT_SPELLCAST_CHANNEL_START") then
+                local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill, notInterruptible = UnitChannelInfo(unit)
+                if(not name or (not self.showTradeSkills and isTradeSkill)) then
+                        self:Hide()
+                        return
+                end
+
+                self:SetStatusBarColor(0.0, 1.0, 0.0)
+                self.duration = ((endTime / 1000) - GetTime())
+                self.max = (endTime - startTime) / 1000
+                self.delay = 0
+                self:SetMinMaxValues(0, self.max)
+                self:SetValue(self.duration)
+
+                if(self.Icon) then
+                        self.Icon:SetTexture(texture)
+                end
+
+                self:SetAlpha(1.0)
+                self.holdTime = 0
+                self.casting = nil
+                self.channeling = 1
+                self.fadeOut = nil
+
+                if(self.Shield) then
+                        if(self.showShield and notInterruptible) then
+                                self.Shield:Show()
+                                if(self.Border) then
+                                        self.Border:Hide()
+                                end
+                        else
+                                self.Shield:Hide()
+                                if(self.Border) then
+                                        self.Border:Show()
+                                end
+                        end
+                end
+
+                self:Show()
+        elseif(event == "UNIT_SPELLCAST_CHANNEL_UPDATE") then
+                local castbar = self
+                if(castbar:IsShown()) then
+                        local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill = UnitChannelInfo(unit)
+                        if(not name or (not self.showTradeSkills and isTradeSkill)) then
+                                self:Hide()
+                                return
+                        end
+
+                        local duration = ((endTime / 1000) - GetTime())
+                        castbar.delay = castbar.delay + castbar.duration - duration
+                        castbar.duration = duration
+                        castbar.max = (endTime - startTime) / 1000
+
+                        castbar:SetMinMaxValues(0, castbar.max)
+                        castbar:SetValue(duration)
+                end
+        elseif(event == "UNIT_SPELLCAST_INTERRUPTIBLE") then
+                if(self.Shield) then
+                        self.Shield:Hide()
+                        if(self.Border) then
+                                self.Border:Show()
+                        end
+                end
+        elseif(event == "UNIT_SPELLCAST_NOT_INTERRUPTIBLE") then
+                if(self.Shield) then
+                        self.Shield:Show()
+                        if(self.Border) then
+                                self.Border:Hide()
+                        end
+                end
+        end
+end
+
+local function Castbar_OnUpdate(self, elapsed)
+    if(self.casting) then
+        local duration = self.duration + elapsed
+        if(duration >= self.max) then
+            self:SetValue(self.max)
+            self:SetStatusBarColor(0.0, 1.0, 0.0)
+            self.holdTime = 0
+            self.fadeOut = 0
+            self.casting = nil
+            return
+        end
+
+        self.duration = duration
+        self:SetValue(duration)
+    elseif(self.channeling) then
+            local duration = self.duration - elapsed
+        if(duration <= 0) then
+            self:SetStatusBarColor(0.0, 1.0, 0.0)
+            self.fadeOut = 0
+            self.channeling = nil
+            self.holdTime = 0
+            return
+        end
+            self.duration = duration
+            self:SetValue(duration)
+        elseif(GetTime() < self.holdTime) then
+            return
+        elseif(self.fadeOut) then
+            local alpha = self:GetAlpha() - CASTING_BAR_ALPHA_STEP
+        if(alpha > 0.05) then
+            self:SetAlpha(alpha)
+        else
+            self.fadeOut = nil
+            self:Hide()
+        end
+    end
+end
+
+local function UpdateCastTime(self, curValue)
+    local minValue, maxValue = self:GetMinMaxValues()
+    if self.channeling then
+        local casttime = string.format("%.1f", curValue)
+        local castcur = string.format("\n%.1f", maxValue)
+        self.time:SetText(casttime..castcur)
+    else
+        local casttime = string.format("%.1f", (maxValue-curValue))
+        local castcur = string.format("\n%.1f", maxValue)
+        self.time:SetText(casttime..castcur)
+    end
+end
+
+
+
+local function Healthbar_OnUpdate(self)
+
+    local r, g, b = self:GetStatusBarColor()
+    if g + b == 0 then
+        self.r, self.g, self.b = ns_cfg.hostileunit.r, ns_cfg.hostileunit.g, ns_cfg.hostileunit.b
+        self:SetStatusBarColor(ns_cfg.hostileunit.r, ns_cfg.hostileunit.g, ns_cfg.hostileunit.b)
+    elseif r + b == 0 then
+        self.r, self.g, self.b = ns_cfg.friendlyunit.r, ns_cfg.friendlyunit.g, ns_cfg.friendlyunit.b
+        self:SetStatusBarColor(ns_cfg.friendlyunit.r, ns_cfg.friendlyunit.g, ns_cfg.friendlyunit.b)
+    elseif r + g == 0 then
+        self.r, self.g, self.b = ns_cfg.friendlyplayer.r, ns_cfg.friendlyplayer.g, ns_cfg.friendlyplayer.b
+        self:SetStatusBarColor(ns_cfg.friendlyplayer.r, ns_cfg.friendlyplayer.g, ns_cfg.friendlyplayer.b)
+    elseif 2 - (r + g) < 0.05 and b == 0 then
+        self.r, self.g, self.b = ns_cfg.neutralunit.r, ns_cfg.neutralunit.g, ns_cfg.neutralunit.b
+        self:SetStatusBarColor(ns_cfg.neutralunit.r, ns_cfg.neutralunit.g, ns_cfg.neutralunit.b)
+    else
+        self.r, self.g, self.b = r, g, b
+    end
+
+    frame = self:GetParent()
+    if not frame.oldglow:IsShown() then
+        self.hpBorder:SetBackdropBorderColor(0, 0, 0)
+    else
+        local r, g, b = frame.oldglow:GetVertexColor()
+        if g + b == 0 then
+            self.hpBorder:SetBackdropBorderColor(1, 0, 0)
+        else
+            self.hpBorder:SetBackdropBorderColor(1, 1, 0)
+        end
+    end
+        self:SetStatusBarColor(self.r, self.g, self.b)
+
+    self:ClearAllPoints()
+    self:SetPoint("CENTER", self:GetParent(), 0, 10)
+    self:SetHeight(ns_cfg.HPheight)
+    self:SetWidth(ns_cfg.HPwidth)
+
+    self.hpBackground:SetVertexColor(self.r * 0.25, self.g * 0.25, self.b * 0.25)
+
+    local nameString = frame.oldname:GetText()
+    if string.len(nameString) < ns_cfg.HPwidth/5 then
+        frame.name:SetText(nameString)
+    else
+        frame.name:SetFormattedText(nameString:sub(0, ns_cfg.HPwidth/5).."...")
+    end
+
+    frame.level:ClearAllPoints()
+    frame.level:SetPoint(ns_cfg.LvLpoint, frame.healthBar, ns_cfg.LvLrelativePoint, ns_cfg.LvLx, ns_cfg.LvLy)
+    if frame.boss:IsShown() then
+        frame.level:SetText("БОС")
+        frame.level:SetTextColor(0.8, 0.05, 0)
+        frame.level:Show()
+    end
+    frame.highlight:SetAllPoints(self)
+end
+
+local function onHide(self)
+    self.highlight:Hide()
+    print(self:GetID())
+end
+
+local function SkinObjects(frame,i)
+
+    frame.healthBar, frame.castBar = frame:GetChildren()
+    local healthBar, castBar = frame.healthBar, frame.castBar
+    local glowRegion, overlayRegion, castbarOverlay, shieldedRegion, spellIconRegion, highlightRegion, nameTextRegion, levelTextRegion, bossIconRegion, raidIconRegion, stateIconRegion = frame:GetRegions()
+
+    frame.oldname = nameTextRegion
+    nameTextRegion:Hide()
+    nameTextRegion.Show = function() end
+
+    frame.name = frame:CreateFontString()
+    frame.name:SetPoint(ns_cfg.Npoint, healthBar, ns_cfg.NrelativePoint, ns_cfg.Nx, ns_cfg.Ny)
+    frame.name:SetFont(media.font, ns_cfg.NameFontSize, "OUTLINE")
+    frame.name:SetTextColor(0.84, 0.75, 0.65)
+    frame.name:SetShadowOffset(1, -1)
+
+    frame.level = levelTextRegion
+    levelTextRegion:SetFont(media.font, ns_cfg.LvLFontSize, "OUTLINE")
+    levelTextRegion:SetShadowOffset(1, -1)
+    frame.boss = bossIconRegion
+
+    healthBar:SetStatusBarTexture(media.normTex)
+
+    healthBar.hpBackground = healthBar:CreateTexture(nil, "BORDER")
+    healthBar.hpBackground:SetAllPoints(healthBar)
+    healthBar.hpBackground:SetTexture(media.back)
+    healthBar.hpBackground:SetVertexColor(0.15, 0.15, 0.15)
+
+    healthBar.hpBorder = CreateFrame("Frame", nil, healthBar)
+    healthBar.hpBorder:SetFrameLevel(healthBar:GetFrameLevel() -1 > 0 and healthBar:GetFrameLevel() -1 or 0)
+    healthBar.hpBorder:SetPoint("TOPLEFT", healthBar, "TOPLEFT", -ns_cfg.border, ns_cfg.border)
+    healthBar.hpBorder:SetPoint("BOTTOMRIGHT", healthBar, "BOTTOMRIGHT", ns_cfg.border, -ns_cfg.border)
+    healthBar.hpBorder:SetBackdrop(backdrop)
+    healthBar.hpBorder:SetBackdropColor(0, 0, 0)
+    healthBar.hpBorder:SetBackdropBorderColor(0, 0, 0)
+
+    healthBar:SetScript('OnUpdate', Healthbar_OnUpdate)
+
+    highlightRegion:SetTexture(media.normTex)
+    highlightRegion:SetVertexColor(0.25, 0.25, 0.25)
+    frame.highlight = highlightRegion
+
+    local castbar = CreateFrame("StatusBar", nil, frame)
+    castbar:SetHeight(ns_cfg.CBheight)
+    castbar:SetWidth(ns_cfg.HPwidth-(ns_cfg.CBheight+8))
+    castbar:SetStatusBarTexture(media.normTex)
+    castbar:GetStatusBarTexture():SetHorizTile(false)
+    castbar:GetStatusBarTexture():SetVertTile(false)
+    castbar:SetPoint("TOPRIGHT", healthBar, "BOTTOMRIGHT", 0, -8)
+
+    castbar.showTradeSkills = true
+    castbar.showShield = true
+    castbar.casting = true
+    castbar.channeling = true
+    castbar.holdTime = 0
+
+    castbar.Border = castbar:CreateTexture(nil, "BACKGROUND")
+    castbar.Border:SetSize(castbarOverlay:GetSize())
+    castbar.Border:SetAllPoints(castbar)
+    castbar.Border:SetTexture(media.back)
+    castbar.Border:SetVertexColor(0,0,0, 0.8)
+
+    -- castbar.Shield = castbar:CreateTexture(nil, "ARTWORK")
+    -- castbar.Shield:SetSize(shieldedRegion:GetSize())
+    -- castbar.Shield:SetPoint(shieldedRegion:GetPoint())
+    -- castbar.Shield:SetTexture(shieldedRegion:GetTexture())
+    -- castbar.Shield:SetTexCoord(shieldedRegion:GetTexCoord())
+
+    castbar.Icon = castbar:CreateTexture(nil, "ARTWORK")
+    castbar.Icon:SetSize(spellIconRegion:GetSize())
+    castbar.Icon:SetPoint('RIGHT', castbar, 'LEFT', -2, 0)
+    castbar.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+
+    castbar.time = castbar:CreateFontString(nil, "ARTWORK")
+    castbar.time:SetPoint("RIGHT", castbar.Icon, "LEFT", -4, 0)
+    castbar.time:SetFont(media.font, ns_cfg.CBtieFont, "OUTLINE")
+    castbar.time:SetTextColor(0.84, 0.75, 0.65)
+    castbar.time:SetShadowOffset(1, -1)
+
+     --  print(shielded)
+
+    castbar:Hide()
+
+    castbar:RegisterEvent("UNIT_SPELLCAST_START")
+    castbar:RegisterEvent("UNIT_SPELLCAST_FAILED")
+    castbar:RegisterEvent("UNIT_SPELLCAST_STOP")
+    castbar:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED")
+    castbar:RegisterEvent("UNIT_SPELLCAST_INTERRUPTIBLE")
+    castbar:RegisterEvent("UNIT_SPELLCAST_NOT_INTERRUPTIBLE")
+    castbar:RegisterEvent("UNIT_SPELLCAST_DELAYED")
+    castbar:RegisterEvent("UNIT_SPELLCAST_CHANNEL_START")
+    castbar:RegisterEvent("UNIT_SPELLCAST_CHANNEL_UPDATE")
+    castbar:RegisterEvent("UNIT_SPELLCAST_CHANNEL_STOP")
+    castbar:SetScript("OnEvent", Castbar_OnEvent)
+    castbar:SetScript("OnUpdate", Castbar_OnUpdate)
+    castbar:HookScript("OnValueChanged", UpdateCastTime)
+
+    frame.oldglow = glowRegion
+
+    frame:SetScript('OnHide', onHide)
+
+    frames[frame] = true
+
+    glowRegion:SetTexture(nil)
+    overlayRegion:SetTexture(nil)
+    shieldedRegion:SetTexture(nil)
+    castbarOverlay:SetTexture(nil)
+    stateIconRegion:SetTexture(nil)
+    bossIconRegion:SetTexture(nil)
+
+end
+
+local select = select
+local function HookFrames(...)
+    local np_num = 0
+    for index = 1, select("#", ...) do
+        local frame = select(index, ...)
+        local region = frame:GetRegions()
+        if(not frames[frame] and not frame:GetName() and region and region:GetObjectType() == "Texture" and region:GetTexture() == [=[Interface\TargetingFrame\UI-TargetingFrame-Flash]=]) then
+            testQ['temp'] = print(frame)
+            if testQ == nil then
+                testQ = {}
+            end
+            if testQ['np_b'] == nil then
+                testQ['np_b'] = {}
+            end
+            frame:SetScript("OnUpdate", function()
+                --for i = 1, numChildren do
+                    if not frame:IsVisible() then
+                        print('nilll')
+                    end
+                    frame:ClearAllPoints()
+                    if index >= 1 and index <= 5 then
+                        frame:SetPoint("TOPLEFT", PlayerFrame,"TOPLEFT", 25, -55-(index*25))
+                    end
+                    if index >= 6 and index <= 10 then
+                        frame:SetPoint("TOPLEFT", PlayerFrame,"TOPLEFT", 125, (-55-(index*25))+100)
+                    end
+                    if index >= 11 and index <= 15 then
+                        frame:SetPoint("TOPLEFT", PlayerFrame,"TOPLEFT", 225, (-55-(index*25))+200)
+                    end
+                --end
+
+            end)
+
+            --btn:configure(987,0,0,32,32,"","");
+            SkinObjects(frame,index)
+        end
+    end
+end
+
+local t = .1
+CreateFrame("Frame"):SetScript("OnUpdate", function(self, elapsed)
+    if testQ['np'] == 1 then
+        if(WorldFrame:GetNumChildren() ~= numChildren) then
+            numChildren = WorldFrame:GetNumChildren()
+            HookFrames(WorldFrame:GetChildren())
+        end
+    end
+end)
+end)

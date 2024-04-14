@@ -36,6 +36,12 @@ libs\ach.ogg
 libs\f.ogg
 libs\sx.tga
 libs\lb.tga
+libs\save1.tga
+libs\save2.tga
+libs\save3.tga
+libs\save4.tga
+libs\save5.tga
+libs\save6.tga
 libs\mz.tga
 libs\m1.tga
 libs\kx.tga
