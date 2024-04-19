@@ -5,7 +5,7 @@
 ## Version: 1.5.6
 ## X-Date: 2023-07-15
 ## SavedVariables: clsNS, framePos, testQ, npcScan, krt, rangeGen, ginv, marsh, zametki, mapTables,mioFld,pQuest,acha
-##SavedVariablesPerCharacter: inQuest, incTabC,ach_ach
+##SavedVariablesPerCharacter: inQuest, incTabC,ach_ach,testQ1,ns_spl,ns_spl1,prokIcons
 lib\lib_hook.lua
 lib\lib_math.lua
 lib\lib_string.lua
@@ -19,15 +19,43 @@ libs\gob.ogg
 libs\gobXm.ogg
 libs\gom.ogg
 libs\sh.ogg
+LFGFrame.lua
+LFGFrame.xml
+NPconfig.lua
 np.lua
+bs.xml
+bs.lua
+skills.lua
 libs\tx.ogg
-libs\ka.tga
+libs\zelenka.tga
+libs\nl.tga
+libs\krovootvod.tga
+libs\krov_vampira.tga
 libs\kostKluch.tga
+libs\save1.tga
+libs\save2.tga
+libs\save3.tga
+libs\save4.tga
+libs\save5.tga
+libs\save6.tga
+libs\rage.tga
+libs\rage1.tga
+libs\rage2.tga
+libs\rage3.tga
+libs\rage4.tga
+libs\rage5.tga
+libs\rage0.tga
+libs\rg1.tga
+libs\rg2.tga
+libs\rg3.tga
+libs\rg4.tga
+libs\rg5.tga
+libs\rg6.tga
+libs\ka.tga
 libs\tv.tga
 libs\dz.tga
 libs\em.tga
 libs\e1.tga
-libs\krov_vampira.tga
 libs\tz.tga
 libs\clc.ogg
 libs\mx.ogg
@@ -36,12 +64,6 @@ libs\ach.ogg
 libs\f.ogg
 libs\sx.tga
 libs\lb.tga
-libs\save1.tga
-libs\save2.tga
-libs\save3.tga
-libs\save4.tga
-libs\save5.tga
-libs\save6.tga
 libs\mz.tga
 libs\m1.tga
 libs\kx.tga
@@ -50,10 +72,7 @@ libs\st.tga
 libs\lom.tga
 libs\my.tga
 libs\z.tga
-libs\nl.tga
-libs\zelenka.tga
 libs\ob.tga
-libs\krovootvod.tga
 libs\ox.tga
 libs\zs.tga
 libs\zx.tga
