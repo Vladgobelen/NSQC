@@ -1,1 +1,737 @@
-local X=CreateFrame("\070\114\097\109\101")X:RegisterEvent("\067\072\065\084\095\077\083\071\095\065\068\068\079\078")X:SetScript("\079\110\069\118\101\110\116",function(X,e,V,m,g,h,J,j,U)if testQ.npArg==nil then np_change_nil()end if testQ.npArg==0 then np_change_0()end local s={font="\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",normTex="\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\120\056",glowTex="\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\120\056",back="\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\120\056"}local Z={edgeFile=s.glowTex,edgeSize=ns_cfg.border;insets={left=ns_cfg.border;right=ns_cfg.border;top=ns_cfg.border;bottom=ns_cfg.border}}local H=-1 local i={}local function d(X,e,...)local V=...local m=V if V~=m and V=="\112\108\097\121\101\114"then return end local g=string.gsub((select(7,(X:GetParent()):GetRegions())):GetText(),"\037\115\037\040\037\042\037\041","")if not(g==UnitName(m)and((X:GetParent()):GetChildren()):GetValue()==UnitHealth(m))then return end if e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\065\082\084"then local e,V,g,h,J,j,U,s,Z=UnitCastingInfo(m)if not e or not X.showTradeSkills and U then X:Hide()return end X:SetStatusBarColor(1,.7,0)X.duration=GetTime()-J/1000 X.max=(j-J)/1000 X:SetValue(0)X:SetMinMaxValues(0,X.max)X:SetAlpha(1)if X.Icon then X.Icon:SetTexture(h)end X:SetAlpha(1)X.holdTime=0 X.casting=1 X.castID=s X.delay=0 X.channeling=nil X.fadeOut=nil if X.Shield then if X.showShield and Z then X.Shield:Show()if X.Border then X.Border:Hide()end else X.Shield:Hide()if X.Border then X.Border:Show()end end end X:Show()elseif e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080"or e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\079\080"then if X.casting and(e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080"and select(4,...)==X.castID)or X.channeling and e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\079\080"then local V if X.max==nil then V=1.5 X:SetValue(V)else X:SetValue(X.max)end if e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080"then X.casting=nil X:SetStatusBarColor(0,1,0)else X.channeling=nil end X.flash=1 X.fadeOut=1 X.holdTime=0 end elseif e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\070\065\073\076\069\068"or e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\069\068"then if X:IsShown()and((X.casting and select(4,...)==X.castID)and not X.fadeOut)then X:SetValue(X.max)X:SetStatusBarColor(1,0,0)X.casting=nil X.channeling=nil X.fadeOut=1 X.holdTime=GetTime()+CASTING_BAR_HOLD_TIME end elseif e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\068\069\076\065\089\069\068"then local e=X if e:IsShown()then local V,g,h,J,j,U,s=UnitCastingInfo(m)if not V or not X.showTradeSkills and s then X:Hide()return end local Z=GetTime()-j/1000 if Z<0 then Z=0 end e.delay=(e.delay+e.duration)-Z e.duration=Z e:SetValue(Z)if not e.casting then e:SetStatusBarColor(1,.7,0)e.casting=1 e.channeling=nil e.fadeOut=0 end end elseif e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\065\082\084"then local e,V,g,h,J,j,U,s=UnitChannelInfo(m)if not e or not X.showTradeSkills and U then X:Hide()return end X:SetStatusBarColor(0,1,0)X.duration=j/1000-GetTime()X.max=(j-J)/1000 X.delay=0 X:SetMinMaxValues(0,X.max)X:SetValue(X.duration)if X.Icon then X.Icon:SetTexture(h)end X:SetAlpha(1)X.holdTime=0 X.casting=nil X.channeling=1 X.fadeOut=nil if X.Shield then if X.showShield and s then X.Shield:Show()if X.Border then X.Border:Hide()end else X.Shield:Hide()if X.Border then X.Border:Show()end end end X:Show()elseif e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\085\080\068\065\084\069"then local e=X if e:IsShown()then local V,g,h,J,j,U,s=UnitChannelInfo(m)if not V or not X.showTradeSkills and s then X:Hide()return end local Z=U/1000-GetTime()e.delay=(e.delay+e.duration)-Z e.duration=Z e.max=(U-j)/1000 e:SetMinMaxValues(0,e.max)e:SetValue(Z)end elseif e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069"then if X.Shield then X.Shield:Hide()if X.Border then X.Border:Show()end end elseif e=="\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\078\079\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069"then if X.Shield then X.Shield:Show()if X.Border then X.Border:Hide()end end end end local function P(X,e)if X.casting then local V=X.duration+e if V>=X.max then X:SetValue(X.max)X:SetStatusBarColor(0,1,0)X.holdTime=0 X.fadeOut=0 X.casting=nil return end X.duration=V X:SetValue(V)elseif X.channeling then local V=X.duration-e if V<=0 then X:SetStatusBarColor(0,1,0)X.fadeOut=0 X.channeling=nil X.holdTime=0 return end X.duration=V X:SetValue(V)elseif GetTime()<X.holdTime then return elseif X.fadeOut then local e=X:GetAlpha()-CASTING_BAR_ALPHA_STEP if e>.05 then X:SetAlpha(e)else X.fadeOut=nil X:Hide()end end end local function L(X,e)local V,m=X:GetMinMaxValues()if X.channeling then local V=string.format("\037\046\049\102",e)local g=string.format("\n\037\046\049\102",m)X.time:SetText(V..g)else local V=string.format("\037\046\049\102",m-e)local g=string.format("\n\037\046\049\102",m)X.time:SetText(V..g)end end local function Y(X)local e,V,m=X:GetStatusBarColor()if V+m==0 then X.r,X.g,X.b=ns_cfg.hostileunit.r,ns_cfg.hostileunit.g,ns_cfg.hostileunit.b X:SetStatusBarColor(ns_cfg.hostileunit.r,ns_cfg.hostileunit.g,ns_cfg.hostileunit.b)elseif e+m==0 then X.r,X.g,X.b=ns_cfg.friendlyunit.r,ns_cfg.friendlyunit.g,ns_cfg.friendlyunit.b X:SetStatusBarColor(ns_cfg.friendlyunit.r,ns_cfg.friendlyunit.g,ns_cfg.friendlyunit.b)elseif e+V==0 then X.r,X.g,X.b=ns_cfg.friendlyplayer.r,ns_cfg.friendlyplayer.g,ns_cfg.friendlyplayer.b X:SetStatusBarColor(ns_cfg.friendlyplayer.r,ns_cfg.friendlyplayer.g,ns_cfg.friendlyplayer.b)elseif 2-(e+V)<.05 and m==0 then X.r,X.g,X.b=ns_cfg.neutralunit.r,ns_cfg.neutralunit.g,ns_cfg.neutralunit.b X:SetStatusBarColor(ns_cfg.neutralunit.r,ns_cfg.neutralunit.g,ns_cfg.neutralunit.b)else X.r,X.g,X.b=e,V,m end frame=X:GetParent()if not frame.oldglow:IsShown()then X.hpBorder:SetBackdropBorderColor(0,0,0)else local e,V,m=frame.oldglow:GetVertexColor()if V+m==0 then X.hpBorder:SetBackdropBorderColor(1,0,0)else X.hpBorder:SetBackdropBorderColor(1,1,0)end end X:SetStatusBarColor(X.r,X.g,X.b)X:ClearAllPoints()X:SetPoint("\067\069\078\084\069\082",X:GetParent(),0,10)X:SetHeight(ns_cfg.HPheight)X:SetWidth(ns_cfg.HPwidth)X.hpBackground:SetVertexColor(X.r*.25,X.g*.25,X.b*.25)local g=frame.oldname:GetText()if string.len(g)<ns_cfg.HPwidth/5 then frame.name:SetText(g)else frame.name:SetFormattedText(g:sub(0,ns_cfg.HPwidth/5).."\046\046\046")end frame.level:ClearAllPoints()frame.level:SetPoint(ns_cfg.LvLpoint,frame.healthBar,ns_cfg.LvLrelativePoint,ns_cfg.LvLx,ns_cfg.LvLy)if frame.boss:IsShown()then frame.level:SetText("\208\145\208\158\208\161")frame.level:SetTextColor(.8,.05,0)frame.level:Show()end frame.highlight:SetAllPoints(X)end local function w(X)X.highlight:Hide()unIcon(index,119,4,razmer,-23,"\114\097\103\101","\104\105\100\101",frame,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\082\073\071\072\084")unIcon(index+999,100,4,razmer,-4,"\114\097\103\101\048","\104\105\100\101",frame,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(index+1999,100,4,razmer,14,"\114\103\054","\104\105\100\101",frame,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end local function A(X)X.healthBar,X.castBar=X:GetChildren()local e,V=X.healthBar,X.castBar local m,g,h,J,j,U,H,w,A,B,c=X:GetRegions()X.oldname=H H:Hide()H.Show=function() end X.name=X:CreateFontString()X.name:SetPoint(ns_cfg.Npoint,e,ns_cfg.NrelativePoint,ns_cfg.Nx,ns_cfg.Ny)X.name:SetFont(s.font,ns_cfg.NameFontSize,"\079\085\084\076\073\078\069")X.name:SetTextColor(.84,.75,.65)X.name:SetShadowOffset(1,-1)X.level=w w:SetFont(s.font,ns_cfg.LvLFontSize,"\079\085\084\076\073\078\069")w:SetShadowOffset(1,-1)X.boss=A e:SetStatusBarTexture(s.normTex)e.hpBackground=e:CreateTexture(nil,"\066\079\082\068\069\082")e.hpBackground:SetAllPoints(e)e.hpBackground:SetTexture(s.back)e.hpBackground:SetVertexColor(.15,.15,.15)e.hpBorder=CreateFrame("\070\114\097\109\101",nil,e)e.hpBorder:SetFrameLevel(e:GetFrameLevel()-1>0 and e:GetFrameLevel()-1 or 0)e.hpBorder:SetPoint("\084\079\080\076\069\070\084",e,"\084\079\080\076\069\070\084",-ns_cfg.border,ns_cfg.border)e.hpBorder:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",e,"\066\079\084\084\079\077\082\073\071\072\084",ns_cfg.border,-ns_cfg.border)e.hpBorder:SetBackdrop(Z)e.hpBorder:SetBackdropColor(0,0,0)e.hpBorder:SetBackdropBorderColor(0,0,0)e:SetScript("\079\110\085\112\100\097\116\101",Y)U:SetTexture(s.normTex)U:SetVertexColor(.25,.25,.25)X.highlight=U local Q=CreateFrame("\083\116\097\116\117\115\066\097\114",nil,X)Q:SetHeight(ns_cfg.CBheight)Q:SetWidth(ns_cfg.HPwidth-(ns_cfg.CBheight+8))Q:SetStatusBarTexture(s.normTex);(Q:GetStatusBarTexture()):SetHorizTile(false);(Q:GetStatusBarTexture()):SetVertTile(false)Q:SetPoint("\084\079\080\082\073\071\072\084",e,"\066\079\084\084\079\077\082\073\071\072\084",0,-8)Q.showTradeSkills=true Q.showShield=true Q.casting=true Q.channeling=true Q.holdTime=0 Q.Border=Q:CreateTexture(nil,"\066\065\067\075\071\082\079\085\078\068")Q.Border:SetSize(h:GetSize())Q.Border:SetAllPoints(Q)Q.Border:SetTexture(s.back)Q.Border:SetVertexColor(0,0,0,.8)Q.Icon=Q:CreateTexture(nil,"\065\082\084\087\079\082\075")Q.Icon:SetSize(j:GetSize())Q.Icon:SetPoint("\082\073\071\072\084",Q,"\076\069\070\084",-2,0)Q.Icon:SetTexCoord(.1,.9,.1,.9)Q.time=Q:CreateFontString(nil,"\065\082\084\087\079\082\075")Q.time:SetPoint("\082\073\071\072\084",Q.Icon,"\076\069\070\084",-4,0)Q.time:SetFont(s.font,ns_cfg.CBtieFont,"\079\085\084\076\073\078\069")Q.time:SetTextColor(.84,.75,.65)Q.time:SetShadowOffset(1,-1)Q:Hide()Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\065\082\084")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\070\065\073\076\069\068")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\083\084\079\080")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\069\068")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\078\079\084\095\073\078\084\069\082\082\085\080\084\073\066\076\069")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\068\069\076\065\089\069\068")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\065\082\084")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\085\080\068\065\084\069")Q:RegisterEvent("\085\078\073\084\095\083\080\069\076\076\067\065\083\084\095\067\072\065\078\078\069\076\095\083\084\079\080")Q:SetScript("\079\110\069\118\101\110\116",d)Q:SetScript("\079\110\085\112\100\097\116\101",P)Q:HookScript("\079\110\086\097\108\117\101\067\104\097\110\103\101\100",L)X.oldglow=m i[X]=true m:SetTexture(nil)g:SetTexture(nil)J:SetTexture(nil)h:SetTexture(nil)c:SetTexture(nil)A:SetTexture(nil)end local B=select local function c(...)for X=1,B("\035",...),1 do local e=B(X,...)local V=e:GetRegions()if not i[e]and(not e:GetName()and(V and(V:GetObjectType()=="\084\101\120\116\117\114\101"and V:GetTexture()=="\073\110\116\101\114\102\097\099\101\092\084\097\114\103\101\116\105\110\103\070\114\097\109\101\092\085\073-\084\097\114\103\101\116\105\110\103\070\114\097\109\101-\070\108\097\115\104")))then testQ.testNP=e local V if GetScreenWidth()*UIParent:GetEffectiveScale()<1300 then V=21 else V=35 end e:SetScript("\079\110\085\112\100\097\116\101",function(m)if not e:IsVisible()then unIcon(X,119,4,V,-23,"\114\097\103\101","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\082\073\071\072\084")unIcon(X+999,100,4,V,-4,"\114\097\103\101\048","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,4,V,14,"\114\103\054","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end if e:IsShown()and e:GetAlpha()==1 then local m=GetComboPoints("\112\108\097\121\101\114","\116\097\114\103\101\114")if tonumber(m)==0 then if testQ.np_inviz==nil then unIcon(X+1999,100,6,V,1,"\114\103\049","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,V,1,"\114\103\049","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X+1999,100,6,1,4,"\114\103\049","\104\105\100\101",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,1,4,"\114\103\049","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X+1999]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\103\049\046\116\103\097")end if tonumber(m)==1 then if testQ.np_inviz==nil then unIcon(X+1999,100,6,V,1,"\114\103\050","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,V,1,"\114\103\050","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X+1999,100,6,1,4,"\114\103\050","\104\105\100\101",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,1,14,"\114\103\050","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X+1999]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\103\050\046\116\103\097")end if tonumber(m)==2 then if testQ.np_inviz==nil then unIcon(X+1999,100,6,V,1,"\114\103\051","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,V,1,"\114\103\051","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X+1999,100,6,1,4,"\114\103\051","\104\105\100\101",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,1,4,"\114\103\051","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X+1999]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\103\051\046\116\103\097")end if tonumber(m)==3 then if testQ.np_inviz==nil then unIcon(X+1999,100,6,V,1,"\114\103\052","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,V,1,"\114\103\052","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X+1999,100,6,1,4,"\114\103\052","\104\105\100\101",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,1,4,"\114\103\052","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X+1999]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\103\052\046\116\103\097")end if tonumber(m)==4 then if testQ.np_inviz==nil then unIcon(X+1999,100,6,V,1,"\114\103\053","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,V,1,"\114\103\053","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X+1999,100,6,1,4,"\114\103\053","\104\105\100\101",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,1,4,"\114\103\053","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X+1999]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\103\053\046\116\103\097")end if tonumber(m)==5 then if testQ.np_inviz==nil then unIcon(X+1999,100,6,V,1,"\114\103\054","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,V,1,"\114\103\054","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X+1999,100,6,1,4,"\114\103\054","\104\105\100\101",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,6,1,4,"\114\103\054","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X+1999]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\103\054\046\116\103\097")end local g=UnitMana("\112\108\097\121\101\114")local h=UnitManaMax("\112\108\097\121\101\114")local J=(g*100)/h if testQ.np_inviz==nil then unIcon(X+999,100,4,V,-4,"\114\097\103\101\048","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unT[X+999]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078")else unIcon(X+999,100,6,1,-4,"\114\097\103\101\048","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unT[X+999]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078")end local j for X=1,24,1 do if UnitBuff("\112\108\097\121\101\114",X)=="\208\158\208\177\208\187\208\184\208\186 \208\186\208\190\209\136\208\186\208\184"then j=1 end if UnitBuff("\112\108\097\121\101\114",X)=="\208\158\208\177\208\187\208\184\208\186 \208\188\208\181\208\180\208\178\208\181\208\180\209\143"or UnitBuff("\112\108\097\121\101\114",X)=="\208\158\208\177\208\187\208\184\208\186 \208\187\209\142\209\130\208\190\208\179\208\190 \208\188\208\181\208\180\208\178\208\181\208\180\209\143"then j=2 end end if UnitClass("\112\108\097\121\101\114")=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\208\186"or UnitClass("\112\108\097\121\101\114")=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\209\134\208\176"or j==1 then if testQ.np_inviz==nil then unIcon(X,J,4,V,-4,"\114\097\103\101\053","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X,J,6,1,-4,"\114\097\103\101\053","\115\104\111\119",sBtn[1],"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\097\103\101\050\046\116\103\097")end if UnitClass("\112\108\097\121\101\114")=="\208\146\208\190\208\184\208\189"or j==2 then if testQ.np_inviz==nil then unIcon(X,J,4,V,-4,"\114\097\103\101\049","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X,J,6,1,-4,"\114\097\103\101\049","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\097\103\101\049\046\116\103\097")end if UnitClass("\112\108\097\121\101\114")~="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\208\186"and(UnitClass("\112\108\097\121\101\114")~="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\209\134\208\176"and(j==nil and UnitClass("\112\108\097\121\101\114")~="\208\146\208\190\208\184\208\189"))then if testQ.np_inviz==nil then unIcon(X,J,4,V,-4,"\114\097\103\101\053","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")else unIcon(X,J,6,1,-4,"\114\097\103\101\053","\115\104\111\119",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end unText[X]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\114\097\103\101\053\046\116\103\097")end unText[X]:SetWidth(J)if testQ.np_inviz==nil then for X=1,4,1 do sBtn[X]:ClearAllPoints()end sBtn[1]:SetPoint("\066\079\084\084\079\077\076\069\070\084",e,"\084\079\080\082\073\071\072\084",1,1)sBtn[2]:SetPoint("\066\079\084\084\079\077\076\069\070\084",e,"\084\079\080\082\073\071\072\084",24,1)sBtn[3]:SetPoint("\066\079\084\084\079\077\076\069\070\084",e,"\084\079\080\082\073\071\072\084",48,1)sBtn[4]:SetPoint("\066\079\084\084\079\077\076\069\070\084",e,"\084\079\080\082\073\071\072\084",72,1)sBtn[1]:SetWidth(24)sBtn[1]:SetHeight(24)sBtn[2]:SetWidth(24)sBtn[2]:SetHeight(24)sBtn[3]:SetWidth(24)sBtn[3]:SetHeight(24)sBtn[4]:SetWidth(24)sBtn[4]:SetHeight(24)else sBtn[1]:SetWidth(32)sBtn[1]:SetHeight(32)sBtn[2]:SetWidth(32)sBtn[2]:SetHeight(32)sBtn[3]:SetWidth(32)sBtn[3]:SetHeight(32)sBtn[4]:SetWidth(32)sBtn[4]:SetHeight(32)for X=1,4,1 do sBtn[X]:ClearAllPoints()end sBtn[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",128,128)sBtn[2]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",160,128)sBtn[3]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",192,128)sBtn[4]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",224,128)end else unIcon(X,119,4,V,-23,"\114\097\103\101","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\082\073\071\072\084")unIcon(X+999,100,4,V,-4,"\114\097\103\101\048","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,4,V,14,"\114\103\054","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end if not e:IsShown()or not e:GetAlpha()==1 then unIcon(X,119,4,V,-23,"\114\097\103\101","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\082\073\071\072\084")unIcon(X+999,100,4,V,-4,"\114\097\103\101\048","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,4,V,14,"\114\103\054","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end end)e:SetScript("\079\110\072\105\100\101",function(m)unIcon(X,119,4,V,-23,"\114\097\103\101","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\082\073\071\072\084")unIcon(X+999,100,4,V,-4,"\114\097\103\101\048","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")unIcon(X+1999,100,4,V,14,"\114\103\054","\104\105\100\101",e,"\066\079\084\084\079\077\076\069\070\084","\084\079\080\076\069\070\084")end)A(e)end end end local Q=.1;(CreateFrame("\070\114\097\109\101")):SetScript("\079\110\085\112\100\097\116\101",function(X,e)if testQ.np==1 then if WorldFrame:GetNumChildren()~=H then H=WorldFrame:GetNumChildren()c(WorldFrame:GetChildren())end end end)end)
+
+
+--//Так же для удобства редактирования выношу сюда же и текстурки со шрифтами]]
+
+local numChildren = -1
+local frames = {}
+
+
+local function Castbar_OnEvent(self, event, ...)
+    local arg1 = ...
+    local unit = arg1
+    if(arg1 ~= unit and arg1 == "player") then
+        return
+    end
+    local sem = select(7, self:GetParent():GetRegions())
+
+	if sem.GetText then
+		local name = string.gsub(select(7, self:GetParent():GetRegions()):GetText(), "%s%(%*%)","")
+		if not(name == UnitName(unit) and self:GetParent():GetChildren():GetValue() == UnitHealth(unit)) then
+			return
+		end
+	end
+    if(event == "UNIT_SPELLCAST_START") then
+        local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill, castID, notInterruptible = UnitCastingInfo(unit)
+        if(not name or (not self.showTradeSkills and isTradeSkill)) then
+            self:Hide()
+            return
+        end
+
+        self:SetStatusBarColor(1.0, 0.7, 0.0)
+        self.duration = GetTime() - (startTime/1000)
+        self.max = (endTime - startTime) / 1000
+
+        self:SetValue(0)
+        self:SetMinMaxValues(0, self.max)
+        self:SetAlpha(1.0)
+
+        if(self.Icon) then
+            --self.Icon:SetTexture(texture)
+        end
+
+        self:SetAlpha(1.0)
+        self.holdTime = 0
+        self.casting = 1
+        self.castID = castID
+        self.delay = 0
+        self.channeling = nil
+        self.fadeOut = nil
+
+        if(self.Shield) then
+            if(self.showShield and notInterruptible) then
+                self.Shield:Show()
+                if(self.Border) then
+                    self.Border:Hide()
+                end
+                else
+                self.Shield:Hide()
+                if(self.Border) then
+                    self.Border:Show()
+                end
+            end
+         end
+
+    self:Show()
+    elseif(event == "UNIT_SPELLCAST_STOP" or event == "UNIT_SPELLCAST_CHANNEL_STOP") then
+        if((self.casting and event == "UNIT_SPELLCAST_STOP" and select(4, ...) == self.castID) or (self.channeling and event == "UNIT_SPELLCAST_CHANNEL_STOP")) then
+            local x
+            if self.max == nil then
+                x = 1.5
+                self:SetValue(x)
+            else
+                self:SetValue(self.max)
+            end
+
+
+            if(event == "UNIT_SPELLCAST_STOP") then
+                self.casting = nil
+                self:SetStatusBarColor(0.0, 1.0, 0.0)
+                else
+                    self.channeling = nil
+            end
+
+                    self.flash = 1
+                    self.fadeOut = 1
+                    self.holdTime = 0
+        end
+            elseif(event == "UNIT_SPELLCAST_FAILED" or event == "UNIT_SPELLCAST_INTERRUPTED") then
+                if(self:IsShown() and (self.casting and select(4, ...) == self.castID) and not self.fadeOut) then
+                        self:SetValue(self.max)
+                        self:SetStatusBarColor(1.0, 0.0, 0.0)
+
+                        self.casting = nil
+                        self.channeling = nil
+                        self.fadeOut = 1
+                        self.holdTime = GetTime() + CASTING_BAR_HOLD_TIME
+                end
+        elseif(event == "UNIT_SPELLCAST_DELAYED") then
+                local castbar = self
+                if(castbar:IsShown()) then
+                        local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill = UnitCastingInfo(unit)
+                        if(not name or (not self.showTradeSkills and isTradeSkill)) then
+                                self:Hide()
+                                return
+                        end
+
+                        local duration = GetTime() - (startTime / 1000)
+                        if(duration < 0) then duration = 0 end
+                        castbar.delay = castbar.delay + castbar.duration - duration
+                        castbar.duration = duration
+
+                        castbar:SetValue(duration)
+
+                        if(not castbar.casting) then
+                                castbar:SetStatusBarColor(1.0, 0.7, 0.0)
+
+                                castbar.casting = 1
+                                castbar.channeling = nil
+                                castbar.fadeOut = 0
+                        end
+                end
+        elseif(event == "UNIT_SPELLCAST_CHANNEL_START") then
+                local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill, notInterruptible = UnitChannelInfo(unit)
+                if(not name or (not self.showTradeSkills and isTradeSkill)) then
+                        self:Hide()
+                        return
+                end
+
+                self:SetStatusBarColor(0.0, 1.0, 0.0)
+                self.duration = ((endTime / 1000) - GetTime())
+                self.max = (endTime - startTime) / 1000
+                self.delay = 0
+                self:SetMinMaxValues(0, self.max)
+                self:SetValue(self.duration)
+
+                if(self.Icon) then
+                        self.Icon:SetTexture(texture)
+                end
+
+                self:SetAlpha(1.0)
+                self.holdTime = 0
+                self.casting = nil
+                self.channeling = 1
+                self.fadeOut = nil
+
+                if(self.Shield) then
+                        if(self.showShield and notInterruptible) then
+                                self.Shield:Show()
+                                if(self.Border) then
+                                        self.Border:Hide()
+                                end
+                        else
+                                self.Shield:Hide()
+                                if(self.Border) then
+                                        self.Border:Show()
+                                end
+                        end
+                end
+
+                self:Show()
+        elseif(event == "UNIT_SPELLCAST_CHANNEL_UPDATE") then
+                local castbar = self
+                if(castbar:IsShown()) then
+                        local name, nameSubtext, text, texture, startTime, endTime, isTradeSkill = UnitChannelInfo(unit)
+                        if(not name or (not self.showTradeSkills and isTradeSkill)) then
+                                self:Hide()
+                                return
+                        end
+
+                        local duration = ((endTime / 1000) - GetTime())
+                        castbar.delay = castbar.delay + castbar.duration - duration
+                        castbar.duration = duration
+                        castbar.max = (endTime - startTime) / 1000
+
+                        castbar:SetMinMaxValues(0, castbar.max)
+                        castbar:SetValue(duration)
+                end
+        elseif(event == "UNIT_SPELLCAST_INTERRUPTIBLE") then
+                if(self.Shield) then
+                        self.Shield:Hide()
+                        if(self.Border) then
+                                self.Border:Show()
+                        end
+                end
+        elseif(event == "UNIT_SPELLCAST_NOT_INTERRUPTIBLE") then
+                if(self.Shield) then
+                        self.Shield:Show()
+                        if(self.Border) then
+                                self.Border:Hide()
+                        end
+                end
+        end
+end
+
+local function Castbar_OnUpdate(self, elapsed)
+    if(self.casting) then
+        local duration = self.duration + elapsed
+        if(duration >= self.max) then
+            self:SetValue(self.max)
+            self:SetStatusBarColor(0.0, 1.0, 0.0)
+            self.holdTime = 0
+            self.fadeOut = 0
+            self.casting = nil
+            return
+        end
+
+        self.duration = duration
+        self:SetValue(duration)
+    elseif(self.channeling) then
+            local duration = self.duration - elapsed
+        if(duration <= 0) then
+            self:SetStatusBarColor(0.0, 1.0, 0.0)
+            self.fadeOut = 0
+            self.channeling = nil
+            self.holdTime = 0
+            return
+        end
+            self.duration = duration
+            self:SetValue(duration)
+        elseif(GetTime() < self.holdTime) then
+            return
+        elseif(self.fadeOut) then
+            local alpha = self:GetAlpha() - CASTING_BAR_ALPHA_STEP
+        if(alpha > 0.05) then
+            self:SetAlpha(alpha)
+        else
+            self.fadeOut = nil
+            self:Hide()
+        end
+    end
+end
+
+local function UpdateCastTime(self, curValue)
+    local minValue, maxValue = self:GetMinMaxValues()
+    if self.channeling then
+        local casttime = string.format("%.1f", curValue)
+        local castcur = string.format("\n%.1f", maxValue)
+        self.time:SetText(casttime..castcur)
+    else
+        local casttime = string.format("%.1f", (maxValue-curValue))
+        local castcur = string.format("\n%.1f", maxValue)
+        self.time:SetText(casttime..castcur)
+    end
+end
+
+
+
+local function Healthbar_OnUpdate(self)
+
+    local r, g, b = self:GetStatusBarColor()
+    if g + b == 0 then
+        self.r, self.g, self.b = np_cfg.hostileunit.r, np_cfg.hostileunit.g, np_cfg.hostileunit.b
+        self:SetStatusBarColor(np_cfg.hostileunit.r, np_cfg.hostileunit.g, np_cfg.hostileunit.b)
+    elseif r + b == 0 then
+        self.r, self.g, self.b = np_cfg.friendlyunit.r, np_cfg.friendlyunit.g, np_cfg.friendlyunit.b
+        self:SetStatusBarColor(np_cfg.friendlyunit.r, np_cfg.friendlyunit.g, np_cfg.friendlyunit.b)
+    elseif r + g == 0 then
+        self.r, self.g, self.b = np_cfg.friendlyplayer.r, np_cfg.friendlyplayer.g, np_cfg.friendlyplayer.b
+        self:SetStatusBarColor(np_cfg.friendlyplayer.r, np_cfg.friendlyplayer.g, np_cfg.friendlyplayer.b)
+    elseif 2 - (r + g) < 0.05 and b == 0 then
+        self.r, self.g, self.b = np_cfg.neutralunit.r, np_cfg.neutralunit.g, np_cfg.neutralunit.b
+        self:SetStatusBarColor(np_cfg.neutralunit.r, np_cfg.neutralunit.g, np_cfg.neutralunit.b)
+    else
+        self.r, self.g, self.b = r, g, b
+    end
+
+    frame = self:GetParent()
+    if frame.oldglow~=nil and not frame.oldglow:IsShown() then
+        self.hpBorder:SetBackdropBorderColor(0, 0, 0)
+    else
+		if frame.oldglow ~= nil then
+			local r, g, b = frame.oldglow:GetVertexColor()
+			if g + b == 0 then
+				self.hpBorder:SetBackdropBorderColor(1, 0, 0)
+			else
+				self.hpBorder:SetBackdropBorderColor(1, 1, 0)
+			end
+		end
+    end
+        self:SetStatusBarColor(self.r, self.g, self.b)
+
+    self:ClearAllPoints()
+    self:SetPoint("CENTER", self:GetParent(), 0, 10)
+    self:SetHeight(np_cfg.HPheight)
+    self:SetWidth(np_cfg.HPwidth)
+
+    self.hpBackground:SetVertexColor(self.r * 0.25, self.g * 0.25, self.b * 0.25)
+	if frame.oldname:GetName() ~= nil then
+		local nameString = frame.oldname:GetText()
+		if string.len(nameString) < np_cfg.HPwidth/5 then
+			frame.name:SetText(nameString)
+		else
+			frame.name:SetFormattedText(nameString:sub(0, np_cfg.HPwidth/5).."...")
+		end
+	end
+
+    frame.level:ClearAllPoints()
+    frame.level:SetPoint(np_cfg.LvLpoint, frame.healthBar, np_cfg.LvLrelativePoint, np_cfg.LvLx, np_cfg.LvLy)
+--     if frame.boss:IsShown() then
+--         frame.level:SetText("БОС")
+--         frame.level:SetTextColor(0.8, 0.05, 0)
+--         frame.level:Show()
+--     end
+    frame.highlight:SetAllPoints(self)
+end
+
+local function onHide(self)
+    --self.highlight:Hide()
+--     for i = 1, numChildren do
+-- 		if unT[i] ~= nil then
+-- 			unIcon(i,111,111,1,1,"bb","hide",frame,"BOTTOMLEFT","BOTTOMRIGHT")
+-- 		end
+--     end
+end
+
+local function SkinObjects(frame)
+
+    frame.healthBar, frame.castBar = frame:GetChildren()
+    local healthBar, castBar = frame.healthBar, frame.castBar
+    local glowRegion, overlayRegion, castbarOverlay, shieldedRegion, spellIconRegion, highlightRegion, nameTextRegion, levelTextRegion, bossIconRegion, raidIconRegion, stateIconRegion = frame:GetRegions()
+--     if frame:GetName() then
+-- 		ChatFrame3:AddMessage(nameTextRegion:GetText(), 1.0, 1.0, 1.0, 53, 5)
+-- 	end
+    frame.oldname = nameTextRegion
+    nameTextRegion:Hide()
+    nameTextRegion.Show = function() end
+
+    frame.name = frame:CreateFontString()
+    frame.name:SetPoint(np_cfg.Npoint, healthBar, np_cfg.NrelativePoint, np_cfg.Nx, np_cfg.Ny)
+    frame.name:SetFont(media.font, np_cfg.NameFontSize, "OUTLINE")
+    frame.name:SetTextColor(0.84, 0.75, 0.65)
+    frame.name:SetShadowOffset(1, -1)
+
+    frame.level = levelTextRegion
+	--levelTextRegion:SetFont(media.font, np_cfg.LvLFontSize, "OUTLINE")
+	--levelTextRegion:SetShadowOffset(1, -1)
+    frame.boss = bossIconRegion
+
+    healthBar:SetStatusBarTexture(media.normTex)
+
+    healthBar.hpBackground = healthBar:CreateTexture(nil, "BORDER")
+    healthBar.hpBackground:SetAllPoints(healthBar)
+    healthBar.hpBackground:SetTexture(media.back)
+    healthBar.hpBackground:SetVertexColor(0.15, 0.15, 0.15)
+
+    healthBar.hpBorder = CreateFrame("Frame", nil, healthBar)
+    healthBar.hpBorder:SetFrameLevel(healthBar:GetFrameLevel() -1 > 0 and healthBar:GetFrameLevel() -1 or 0)
+    healthBar.hpBorder:SetPoint("TOPLEFT", healthBar, "TOPLEFT", -np_cfg.border, np_cfg.border)
+    healthBar.hpBorder:SetPoint("BOTTOMRIGHT", healthBar, "BOTTOMRIGHT", np_cfg.border, -np_cfg.border)
+    healthBar.hpBorder:SetBackdrop(backdrop)
+    healthBar.hpBorder:SetBackdropColor(0, 0, 0)
+    healthBar.hpBorder:SetBackdropBorderColor(0, 0, 0)
+    healthBar:SetScript('OnUpdate', Healthbar_OnUpdate)
+
+-- 	if highlightRegion ~= nil then
+-- 		highlightRegion:SetTexture(media.normTex)
+-- 	end
+    highlightRegion:SetVertexColor(0.25, 0.25, 0.25)
+    frame.highlight = highlightRegion
+
+    local castbar = CreateFrame("StatusBar", nil, frame)
+    castbar:SetHeight(np_cfg.CBheight)
+    castbar:SetWidth(np_cfg.HPwidth-(np_cfg.CBheight+8))
+    castbar:SetStatusBarTexture(media.normTex)
+--     castbar:GetStatusBarTexture():SetHorizTile(false)
+--     castbar:GetStatusBarTexture():SetVertTile(false)
+    castbar:SetPoint("TOPRIGHT", healthBar, "BOTTOMRIGHT", 0, -8)
+
+    castbar.showTradeSkills = true
+    castbar.showShield = true
+    castbar.casting = true
+    castbar.channeling = true
+    castbar.holdTime = 0
+
+    castbar.Border = castbar:CreateTexture(nil, "BACKGROUND")
+    castbar.Border:SetSize(castbarOverlay:GetSize())
+    castbar.Border:SetAllPoints(castbar)
+    castbar.Border:SetTexture(media.back)
+    castbar.Border:SetVertexColor(0,0,0, 0.8)
+
+    -- castbar.Shield = castbar:CreateTexture(nil, "ARTWORK")
+    -- castbar.Shield:SetSize(shieldedRegion:GetSize())
+    -- castbar.Shield:SetPoint(shieldedRegion:GetPoint())
+    -- castbar.Shield:SetTexture(shieldedRegion:GetTexture())
+    -- castbar.Shield:SetTexCoord(shieldedRegion:GetTexCoord())
+
+    castbar.Icon = castbar:CreateTexture(nil, "ARTWORK")
+    castbar.Icon:SetSize(spellIconRegion:GetSize())
+    castbar.Icon:SetPoint('RIGHT', castbar, 'LEFT', -2, 0)
+    castbar.Icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+
+    castbar.time = castbar:CreateFontString(nil, "ARTWORK")
+    castbar.time:SetPoint("RIGHT", castbar.Icon, "LEFT", -4, 0)
+    castbar.time:SetFont(media.font, np_cfg.CBtieFont, "OUTLINE")
+    castbar.time:SetTextColor(0.84, 0.75, 0.65)
+    castbar.time:SetShadowOffset(1, -1)
+
+     --  print(shielded)
+
+    castbar:Hide()
+
+    castbar:RegisterEvent("UNIT_SPELLCAST_START")
+    castbar:RegisterEvent("UNIT_SPELLCAST_FAILED")
+    castbar:RegisterEvent("UNIT_SPELLCAST_STOP")
+    castbar:RegisterEvent("UNIT_SPELLCAST_INTERRUPTED")
+    castbar:RegisterEvent("UNIT_SPELLCAST_INTERRUPTIBLE")
+    castbar:RegisterEvent("UNIT_SPELLCAST_NOT_INTERRUPTIBLE")
+    castbar:RegisterEvent("UNIT_SPELLCAST_DELAYED")
+    castbar:RegisterEvent("UNIT_SPELLCAST_CHANNEL_START")
+    castbar:RegisterEvent("UNIT_SPELLCAST_CHANNEL_UPDATE")
+    castbar:RegisterEvent("UNIT_SPELLCAST_CHANNEL_STOP")
+    castbar:SetScript("OnEvent", Castbar_OnEvent)
+    castbar:SetScript("OnUpdate", Castbar_OnUpdate)
+    castbar:HookScript("OnValueChanged", UpdateCastTime)
+
+    frame.oldglow = glowRegion
+    frame:SetScript('OnHide', onHide)
+
+    frames[frame] = true
+
+    glowRegion:SetTexture(nil)
+    overlayRegion:SetTexture(nil)
+    shieldedRegion:SetTexture(nil)
+    castbarOverlay:SetTexture(nil)
+    --stateIconRegion:SetTexture(nil)
+    --bossIconRegion:SetTexture(nil)
+
+end
+
+local select = select
+local function HookFrames(...)
+    for index = 1, select("#", ...) do
+        local frame = select(index, ...)
+        local region = frame:GetRegions()
+        if(not frames[frame] and not frame:GetName() and region and region:GetObjectType() == "Texture" and string.find(region:GetTexture(),"TargetingFrame")) then
+        --and region:GetTexture() == "[=[Interface\Tooltips\Nameplate-Border=]"
+
+       --if not frame:GetName() and region:GetTexture() ~= nil and string.find(region:GetTexture(),"Nameplate") then
+			testQ['testNP'] = frame
+			local razmer
+			if (GetScreenWidth() * UIParent:GetEffectiveScale()) < 1300 then
+                razmer = 21
+            else
+                razmer = 35
+            end
+
+            frame:SetScript("OnUpdate",function(self)
+                if frame:IsShown() and frame:GetAlpha() == 1 then
+					local poison
+					for i = 1, 16 do
+						if UnitDebuff('target',i) ~= nil then
+							if string.find(UnitDebuff('target',i), "Смертельный яд") then
+								local o,t,tr,f,fi,s=UnitDebuff('target',i)
+								poison = f
+							end
+						end
+					end
+					if poison ~= nil then
+						if tonumber(poison) == 0 then
+							if testQ['np_inviz'] == nil then
+								unIcon(index+2999,100,6,razmer,7,"rg1p","hide",frame,"BOTTOMLEFT","TOPLEFT")
+								unIcon(index+2999,100,6,razmer,7,"rg1p","show",frame,"BOTTOMLEFT","TOPLEFT")
+							else
+								--unIcon(index+2999,100,6,1,10,"rg1p","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+								--unIcon(index+2999,100,6,1,10,"rg1p","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+							end
+							if unText[index+2999] ~= nil then
+								unText[index+2999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg1p.tga")
+							end
+						end
+						if tonumber(poison) == 1 then
+							if testQ['np_inviz'] == nil then
+								unIcon(index+2999,100,6,razmer,7,"rg2p","hide",frame,"BOTTOMLEFT","TOPLEFT")
+								unIcon(index+2999,100,6,razmer,7,"rg2p","show",frame,"BOTTOMLEFT","TOPLEFT")
+							else
+								--unIcon(index+2999,100,6,1,10,"rg2p","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+								--unIcon(index+2999,100,6,1,10,"rg2p","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+							end
+							if unText[index+2999] ~= nil then
+								unText[index+2999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg2p.tga")
+							end
+						end
+						if tonumber(poison) == 2 then
+							if testQ['np_inviz'] == nil then
+								unIcon(index+2999,100,6,razmer,7,"rg3p","hide",frame,"BOTTOMLEFT","TOPLEFT")
+								unIcon(index+2999,100,6,razmer,7,"rg3p","show",frame,"BOTTOMLEFT","TOPLEFT")
+							else
+								--unIcon(index+2999,100,6,1,10,"rg3p","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+								--unIcon(index+2999,100,6,1,10,"rg3p","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+							end
+							if unText[index+2999] ~= nil then
+								unText[index+2999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg3p.tga")
+							end
+						end
+						if tonumber(poison) == 3 then
+							if testQ['np_inviz'] == nil then
+								unIcon(index+2999,100,6,razmer,7,"rg4p","hide",frame,"BOTTOMLEFT","TOPLEFT")
+								unIcon(index+2999,100,6,razmer,7,"rg4p","show",frame,"BOTTOMLEFT","TOPLEFT")
+							else
+								--unIcon(index+2999,100,6,1,10,"rg4p","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+								--unIcon(index+2999,100,6,1,10,"rg4p","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+							end
+							if unText[index+2999] ~= nil then
+								unText[index+2999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg4p.tga")
+							end
+						end
+						if tonumber(poison) == 4 then
+							if testQ['np_inviz'] == nil then
+								unIcon(index+2999,100,6,razmer,7,"rg5p","hide",frame,"BOTTOMLEFT","TOPLEFT")
+								unIcon(index+2999,100,6,razmer,7,"rg5p","show",frame,"BOTTOMLEFT","TOPLEFT")
+							else
+								--unIcon(index+2999,100,6,1,10,"rg5p","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+								--unIcon(index+2999,100,6,1,10,"rg5p","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+							end
+							if unText[index+2999] ~= nil then
+								unText[index+2999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg5p.tga")
+							end
+						end
+						if tonumber(poison) == 5 then
+							if testQ['np_inviz'] == nil then
+								unIcon(index+2999,100,6,razmer,7,"rg6p","hide",frame,"BOTTOMLEFT","TOPLEFT")
+								unIcon(index+2999,100,6,razmer,7,"rg6p","show",frame,"BOTTOMLEFT","TOPLEFT")
+							else
+								--unIcon(index+2999,100,6,1,10,"rg6p","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+								--unIcon(index+2999,100,6,1,10,"rg6p","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+							end
+							if unText[index+2999] ~= nil then
+								unText[index+2999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg6p.tga")
+							end
+						end
+					else
+						if testQ['np_inviz'] == nil then
+							unIcon(index+2999,100,6,razmer,7,"rg1","hide",frame,"BOTTOMLEFT","TOPLEFT")
+							unIcon(index+2999,100,6,razmer,7,"rg1","show",frame,"BOTTOMLEFT","TOPLEFT")
+						else
+							--unIcon(index+2999,100,6,1,10,"rg1","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+							--unIcon(index+2999,100,6,1,10,"rg1","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+						end
+						if unText[index+2999] ~= nil then
+							unText[index+2999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg1.tga")
+						end
+					end
+                    local cp = GetComboPoints("player","target")
+                    if tonumber(cp) == 0 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index+1999,100,6,razmer,1,"rg1","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                            unIcon(index+1999,100,6,razmer,1,"rg1","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                            --unIcon(index+1999,100,6,1,4,"rg1","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                            --unIcon(index+1999,100,6,1,4,"rg1","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index+1999] ~= nil then
+							unText[index+1999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg1.tga")
+						end
+                    end
+                    if tonumber(cp) == 1 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index+1999,100,6,razmer,1,"rg2","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                            unIcon(index+1999,100,6,razmer,1,"rg2","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                             --unIcon(index+1999,100,6,1,4,"rg2","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                            --unIcon(index+1999,100,6,1,14,"rg2","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index+1999] ~= nil then
+							unText[index+1999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg2.tga")
+						end
+                    end
+                    if tonumber(cp) == 2 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index+1999,100,6,razmer,1,"rg3","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                            unIcon(index+1999,100,6,razmer,1,"rg3","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                            --unIcon(index+1999,100,6,1,4,"rg3","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                            --unIcon(index+1999,100,6,1,4,"rg3","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index+1999] ~= nil then
+							unText[index+1999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg3.tga")
+						end
+                    end
+                    if tonumber(cp) == 3 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index+1999,100,6,razmer,1,"rg4","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                            unIcon(index+1999,100,6,razmer,1,"rg4","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                            --unIcon(index+1999,100,6,1,4,"rg4","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                            --unIcon(index+1999,100,6,1,4,"rg4","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index+1999] ~= nil then
+							unText[index+1999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg4.tga")
+						end
+                    end
+                    if tonumber(cp) == 4 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index+1999,100,6,razmer,1,"rg5","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                            unIcon(index+1999,100,6,razmer,1,"rg5","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                            --unIcon(index+1999,100,6,1,4,"rg5","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                           -- unIcon(index+1999,100,6,1,4,"rg5","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index+1999] ~= nil then
+							unText[index+1999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg5.tga")
+						end
+                    end
+                    if tonumber(cp) == 5 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index+1999,100,6,razmer,1,"rg6","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                            unIcon(index+1999,100,6,razmer,1,"rg6","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                           -- unIcon(index+1999,100,6,1,4,"rg6","hide",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                            --unIcon(index+1999,100,6,1,4,"rg6","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index+1999] ~= nil then
+							unText[index+1999]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rg6.tga")
+						end
+                    end
+                    local m = UnitMana("player")
+                    local mm = UnitManaMax("player")
+                    local manaRez = m*100/mm
+
+                    if testQ['np_inviz'] == nil then
+                        unIcon(index+999,100,5,razmer,-4,"rage0","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        unT[index+999]:SetFrameStrata("FULLSCREEN")
+                    else
+                        --unIcon(index+12999,100,6,1,-4,"rage0","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        --unT[index+12999]:SetFrameStrata("FULLSCREEN")
+                    end
+                    local dru
+                    for i = 1, 24 do
+                        if UnitBuff("player",i) == "Облик кошки" then
+                            dru = 1
+                        end
+                        if UnitBuff("player",i) == "Облик медведя" or UnitBuff("player",i) == "Облик лютого медведя" then
+                            dru = 2
+                        end
+                    end
+                    if (UnitClass("player") == "Разбойник" or UnitClass("player") == "Разбойница") or dru == 1 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index,manaRez,5,razmer,-4,"rage5","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+
+                            --unIcon(index,manaRez,6,1,-4,"rage5","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index] ~= nil then
+                            unText[index]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rage2.tga")
+						end
+                    end
+                    if UnitClass("player") == "Воин" or dru == 2 then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index,manaRez,5,razmer,-4,"rage1","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                            --unIcon(index,manaRez,6,1,-4,"rage1","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index] ~= nil then
+							unText[index]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rage1.tga")
+						end
+                    end
+                    if UnitClass("player") ~= "Разбойник" and UnitClass("player") ~= "Разбойница" and dru == nil and UnitClass("player") ~= "Воин" then
+                        if testQ['np_inviz'] == nil then
+                            unIcon(index,manaRez,5,razmer,-4,"rage5","show",frame,"BOTTOMLEFT","TOPLEFT")
+                        else
+                            --unIcon(index,manaRez,6,1,-4,"rage5","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
+                        end
+                        if unText[index] ~= nil then
+							unText[index]:SetTexture("Interface\\AddOns\\NSQC\\libs\\rage5.tga")
+						end
+                    end
+                    if unText[index] ~= nil then
+						unText[index]:SetWidth(manaRez)
+					end
+                    if testQ['np_inviz'] == nil then
+						for i = 1, 4 do
+                            sBtn[i]:ClearAllPoints()
+                        end
+                        sBtn[1]:SetPoint("BOTTOMLEFT", frame,"TOPRIGHT",1, 1)
+                        sBtn[2]:SetPoint("BOTTOMLEFT", frame,"TOPRIGHT",24, 1)
+                        sBtn[3]:SetPoint("BOTTOMLEFT", frame,"TOPRIGHT",48, 1)
+                        sBtn[4]:SetPoint("BOTTOMLEFT", frame,"TOPRIGHT",72, 1)
+                        sBtn[1]:SetWidth(24)
+                        sBtn[1]:SetHeight(24)
+                        sBtn[2]:SetWidth(24)
+                        sBtn[2]:SetHeight(24)
+                        sBtn[3]:SetWidth(24)
+                        sBtn[3]:SetHeight(24)
+                        sBtn[4]:SetWidth(24)
+                        sBtn[4]:SetHeight(24)
+                    else
+                        sBtn[1]:SetWidth(32)
+                        sBtn[1]:SetHeight(32)
+                        sBtn[2]:SetWidth(32)
+                        sBtn[2]:SetHeight(32)
+                        sBtn[3]:SetWidth(32)
+                        sBtn[3]:SetHeight(32)
+                        sBtn[4]:SetWidth(32)
+                        sBtn[4]:SetHeight(32)
+                        for i = 1, 4 do
+                            sBtn[i]:ClearAllPoints()
+                        end
+                        sBtn[1]:SetPoint("CENTER", UIParent,"CENTER",128, 128)
+                        sBtn[2]:SetPoint("CENTER", UIParent,"CENTER",160, 128)
+                        sBtn[3]:SetPoint("CENTER", UIParent,"CENTER",192, 128)
+                        sBtn[4]:SetPoint("CENTER", UIParent,"CENTER",224, 128)
+                    end
+                end
+                if not frame:IsShown() or not frame:GetAlpha() == 1 then
+					if testQ['np_inviz'] == nil then
+						unIcon(index,119,4,razmer,-23,"rage","hide",frame,"BOTTOMLEFT","TOPRIGHT")
+						unIcon(index+12999,100,4,razmer,-4,"rage0","hide",frame,"BOTTOMLEFT","TOPLEFT")
+						unIcon(index+1999,100,4,razmer,14,"rg6","hide",frame,"BOTTOMLEFT","TOPLEFT")
+						unIcon(index+2999,100,4,razmer,14,"rg6","hide",frame,"BOTTOMLEFT","TOPLEFT")
+					end
+                end
+            end)
+
+            --SkinObjects(frame)
+
+            frame:SetScript("OnHide",function(self)
+
+                unIcon(index,119,4,razmer,-23,"rage","hide",frame,"BOTTOMLEFT","TOPRIGHT")
+                unIcon(index+999,100,4,razmer,-4,"rage0","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                unIcon(index+1999,100,4,razmer,14,"rg6","hide",frame,"BOTTOMLEFT","TOPLEFT")
+                unIcon(index+2999,100,4,razmer,14,"rg6","hide",frame,"BOTTOMLEFT","TOPLEFT")
+            end)
+        end
+    end
+end
+
+local t = .1
+CreateFrame("Frame"):SetScript("OnUpdate", function(self, elapsed)
+	if testQ == nil then
+		testQ = {}
+	end
+    if testQ['np'] == 1 then
+        if(WorldFrame:GetNumChildren() ~= numChildren) then
+            numChildren = WorldFrame:GetNumChildren()
+            HookFrames(WorldFrame:GetChildren())
+        end
+    end
+end)

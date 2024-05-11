@@ -45,6 +45,11 @@ libs\rage3.tga
 libs\rage4.tga
 libs\rage5.tga
 libs\rage0.tga
+libs\rg2p.tga
+libs\rg3p.tga
+libs\rg4p.tga
+libs\rg5p.tga
+libs\rg6p.tga
 libs\rg1.tga
 libs\rg2.tga
 libs\rg3.tga
