@@ -25,6 +25,7 @@ NPconfig.lua
 np.lua
 bs.xml
 bs.lua
+stelth.lua
 skills.lua
 libs\tx.ogg
 libs\zelenka.tga
