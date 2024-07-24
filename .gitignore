@@ -148,6 +148,7 @@
 !libs/topto.tga
 !libs/stog.tga
 !libs/UTF8/
+!libs/SpellActivationOverlays/
 !libs/SpellActivationOverlays/*
 !libs/UTF8/utf8.lua
 !libs/UTF8/UTF8.toc
