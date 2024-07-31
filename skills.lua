@@ -2,6 +2,16 @@ local GC_Sniffer = CreateFrame("Frame")
 GC_Sniffer:RegisterEvent("CHAT_MSG_ADDON")
 GC_Sniffer:SetScript("OnEvent", function (prefix, text, kod, message, chanel, sender, hernya, name, instanceID)
 	local classUnit = UnitClass("player")
+	testQ['sBtnRX'] = 32 -- Ширина иконок скиллов
+	testQ['sBtnRY'] = 32 -- Высота иконок скиллов
+	testQ['sBtn1X'] = 128 -- Координата первой иконки скиллов по иксу
+	testQ['sBtn1Y'] = 128 -- Координата первой иконки скиллов по игреку
+	testQ['sBtn2X'] = 160 -- Координата второй иконки скиллов по иксу
+	testQ['sBtn2Y'] = 128 -- Координата второй иконки скиллов по игреку
+	testQ['sBtn3X'] = 192 -- Координата третьей иконки скиллов по иксу
+	testQ['sBtn3Y'] = 128 -- Координата третьей иконки скиллов по игреку
+	testQ['sBtn4X'] = 224 -- Координата четвертой иконки скиллов по иксу
+	testQ['sBtn4Y'] = 128 -- Координата четвертой иконки скиллов по игреку
 	prok_set1 = {
 		["Rx"] = 128,
 		["Ry"] = 256,
@@ -600,4 +610,75 @@ if classUnit == "Шаман" or classUnit == "Шаманка" then
 		},
 	}
 end
+function sBtn:configure(id)
+	if self[id] == nil then
+		self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+	else
+		self[id]:Show()
+	end
+	if id == 1 then
+		self[id]:SetSize(testQ['sBtnRX'], testQ['sBtnRY'])
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn1X'], testQ['sBtn1Y'])
+	end
+	if id == 2 then
+		self[id]:SetSize(testQ['sBtnRX'], testQ['sBtnRY'])
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn2X'], testQ['sBtn2Y'])
+	end
+	if id == 3 then
+		self[id]:SetSize(testQ['sBtnRX'], testQ['sBtnRY'])
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn3X'], testQ['sBtn3Y'])
+	end
+	if id == 4 then
+		self[id]:SetSize(testQ['sBtnRX'], testQ['sBtnRY'])
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn4X'], testQ['sBtn4Y'])
+	end
+	if id == 15 then
+		self[id]:SetSize(8, 8)
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",122, 148)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\save1.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\save1.tga")
+	end
+	if id == 16 then
+		self[id]:SetSize(8, 8)
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",131, 148)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\save2.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\save2.tga")
+	end
+	if id == 17 then
+		self[id]:SetSize(8, 8)
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",139, 148)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\save3.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\save3.tga")
+	end
+	if id == 18 then
+		self[id]:SetSize(8, 8)
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",148, 148)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\save4.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\save4.tga")
+	end
+	if id == 19 then
+		self[id]:SetSize(8, 8)
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",157, 148)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\save5.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\save5.tga")
+	end
+	if id == 20 then
+		self[id]:SetSize(8, 8)
+		self[id]:SetPoint("CENTER", UIParent,"CENTER",166, 148)
+		self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\save6.tga")
+		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\save6.tga")
+	end
+	self[id]:EnableMouse(false)
+	self[id]:Hide()
+end
+sBtn:configure(1)
+sBtn:configure(2)
+sBtn:configure(3)
+sBtn:configure(4)
+sBtn:configure(15)
+sBtn:configure(16)
+sBtn:configure(17)
+sBtn:configure(18)
+sBtn:configure(19)
+sBtn:configure(20)
 end)

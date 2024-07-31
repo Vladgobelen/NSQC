@@ -683,21 +683,21 @@ local function HookFrames(...)
                         sBtn[4]:SetWidth(24)
                         sBtn[4]:SetHeight(24)
                     else
-                        sBtn[1]:SetWidth(32)
-                        sBtn[1]:SetHeight(32)
-                        sBtn[2]:SetWidth(32)
-                        sBtn[2]:SetHeight(32)
-                        sBtn[3]:SetWidth(32)
-                        sBtn[3]:SetHeight(32)
-                        sBtn[4]:SetWidth(32)
-                        sBtn[4]:SetHeight(32)
+                        sBtn[1]:SetWidth(testQ['sBtnRX'])
+                        sBtn[1]:SetHeight(testQ['sBtnRX'])
+                        sBtn[2]:SetWidth(testQ['sBtnRX'])
+                        sBtn[2]:SetHeight(testQ['sBtnRX'])
+                        sBtn[3]:SetWidth(testQ['sBtnRX'])
+                        sBtn[3]:SetHeight(testQ['sBtnRX'])
+                        sBtn[4]:SetWidth(testQ['sBtnRX'])
+                        sBtn[4]:SetHeight(testQ['sBtnRX'])
                         for i = 1, 4 do
                             sBtn[i]:ClearAllPoints()
                         end
-                        sBtn[1]:SetPoint("CENTER", UIParent,"CENTER",128, 128)
-                        sBtn[2]:SetPoint("CENTER", UIParent,"CENTER",160, 128)
-                        sBtn[3]:SetPoint("CENTER", UIParent,"CENTER",192, 128)
-                        sBtn[4]:SetPoint("CENTER", UIParent,"CENTER",224, 128)
+                        sBtn[1]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn1X'], testQ['sBtn1Y'])
+                        sBtn[2]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn2X'], testQ['sBtn2Y'])
+                        sBtn[3]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn3X'], testQ['sBtn2Y'])
+                        sBtn[4]:SetPoint("CENTER", UIParent,"CENTER",testQ['sBtn4X'], testQ['sBtn2Y'])
                     end
                 end
                 if not frame:IsShown() or not frame:GetAlpha() == 1 then
