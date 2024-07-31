@@ -22,6 +22,7 @@ libs\sh.ogg
 LFGFrame.lua
 LFGFrame.xml
 NPconfig.lua
+skills.lua
 np.lua
 bs.xml
 bs.lua

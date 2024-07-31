@@ -3,6 +3,7 @@
 
 # Do not ignore these files:
 !vers
+!skills.lua
 !mm.lua
 !versad
 !emblem.tga
