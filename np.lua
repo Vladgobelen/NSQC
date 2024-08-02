@@ -436,6 +436,7 @@ local function HookFrames(...)
 
        --if not frame:GetName() and region:GetTexture() ~= nil and string.find(region:GetTexture(),"Nameplate") then
 			testQ['testNP'] = frame
+
 			local razmer
 			if (GetScreenWidth() * UIParent:GetEffectiveScale()) < 1300 then
                 razmer = 21
@@ -711,7 +712,6 @@ local function HookFrames(...)
             end)
 
             --SkinObjects(frame)
-
             frame:SetScript("OnHide",function(self)
 
                 unIcon(index,119,4,razmer,-23,"rage","hide",frame,"BOTTOMLEFT","TOPRIGHT")
@@ -719,6 +719,7 @@ local function HookFrames(...)
                 unIcon(index+1999,100,4,razmer,14,"rg6","hide",frame,"BOTTOMLEFT","TOPLEFT")
                 unIcon(index+2999,100,4,razmer,14,"rg6","hide",frame,"BOTTOMLEFT","TOPLEFT")
             end)
+
         end
     end
 end
