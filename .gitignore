@@ -3,6 +3,7 @@
 
 # Do not ignore these files:
 !vers
+!iya.lua
 !skills.lua
 !mm.lua
 !versad
@@ -102,6 +103,36 @@
 !libs/os.tga
 !libs/gob.tga
 !libs/gom.tga
+!libs/iya/
+!libs/iya/unnino.tga
+!libs/iya/unanina.tga
+!libs/iya/lnc.tga
+!libs/iya/lnb.tga
+!libs/iya/enc.tga
+!libs/iya/enb.tga
+!libs/iya/um.tga
+!libs/iya/uh.tga
+!libs/iya/um1.tga
+!libs/iya/uh1.tga
+!libs/iya/uh2.tga
+!libs/iya/um2.tga
+!libs/iya/q.ogg
+!libs/iya/encO.ogg
+!libs/iya/lncO.ogg
+!libs/iya/lnbO.ogg
+!libs/iya/enbO.ogg
+!libs/iya/lnbM.ogg
+!libs/iya/enbM.ogg
+!libs/iya/lncM.ogg
+!libs/iya/encM.ogg
+!libs/iya/umO.ogg
+!libs/iya/uhO.ogg
+!libs/iya/unanina1.tga
+!libs/iya/unnino1.tga
+!libs/iya/unaninaM.ogg
+!libs/iya/unaninaO.ogg
+!libs/iya/unninoM.ogg
+!libs/iya/unninoO.ogg
 !libs/bt.tga
 !libs/bn.tga
 !libs/bt.ogg
@@ -145,6 +176,7 @@
 !libs/uz.tga
 !libs/uz.ogg
 !libs/ms.tga
+!libs/po.tga
 !libs/kopko.tga
 !libs/topto.tga
 !libs/stog.tga
