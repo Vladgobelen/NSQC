@@ -612,7 +612,7 @@ if classUnit == "Шаман" or classUnit == "Шаманка" then
 end
 function sBtn:configure(id)
 	if self[id] == nil then
-		self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate")
+		self[id] = CreateFrame("Button", nil, UIParent, "")
 	else
 		self[id]:Show()
 	end
