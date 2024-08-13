@@ -144,6 +144,7 @@ libs\iya\ecrM.mp3
 libs\iya\eslM.mp3
 libs\iya\escM.mp3
 libs\iya\ecrM1.mp3
+libs\iya\lasmcrM.mp3
 libs\iya\unanina1.tga
 libs\iya\unnino1.tga
 libs\iya\unaninaM.ogg
