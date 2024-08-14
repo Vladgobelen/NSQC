@@ -1,0 +1,4 @@
+ffmpeg -i unaninaM.mp3 inaninaM.ogg
+ffmpeg -i unaninaO.mp3 inaninaO.ogg
+ffmpeg -i unninoM.mp3 unninoM.ogg
+ffmpeg -i unninoO.mp3 unninoO.ogg
