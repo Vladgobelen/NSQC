@@ -33,6 +33,7 @@ libs\tx.ogg
 libs\zelenka.tga
 libs\nl.tga
 libs\po.tga
+libs\iya\*
 libs\iya\unnino.tga
 libs\iya\unanina.tga
 libs\iya\lnc.tga
