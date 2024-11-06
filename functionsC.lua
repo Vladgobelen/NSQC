@@ -1,1 +1,4160 @@
-function mysplit(C,W)if W==nil then W="\037\115"end local b={}for C in string.gmatch(C,"\040\091\094"..(W.."\093\043\041"))do table.insert(b,C)end return b end function round(C)if(C-C%.1)-(C-C%1)<.5 then C=C-C%1 else C=(C-C%1)+1 end return C end function nsplit(C)lines={}for C in C:gmatch("\091\094\r\n\093\043")do table.insert(lines,C)end return lines end function all_trim(C)return C:match("\094\037\115\042\040\046-\041\037\115\042\036")end function kirTest(C,W)test1=C:sub(W,W)testN=C:byte(7)testN=tonumber(testN)if testN==208 then r=C:sub(W*2-1,W*2)else r=test1 end return r end function alfabet(C)shablon="\208\176\208\177\208\178\208\179\208\180\208\181\209\145\208\182\208\183\208\184\208\185\208\186\208\187\208\188\208\189\208\190\208\191\209\128\209\129\209\130\209\131\209\132\209\133\209\134\209\135\209\136\209\137\209\138\209\139\209\140\209\141\209\142\209\143\208\144\208\145\208\146\208\147\208\148\208\149\208\129\208\150\208\151\208\152\208\153\208\154\208\155\208\156\208\157\208\158\208\159\208\160\208\161\208\162\208\163\208\164\208\165\208\166\208\167\208\168\208\169\208\170\208\171\208\172\208\173\208\174\208\175\097\098\099\100\101\102\103\104\105\106\107\108\109\110\111\112\113\114\115\116\117\118\119\120\121\122\065\066\067\068\069\070\071\072\073\074\075\076\077\078\079\080\081\082\083\084\085\086\087\088\089\090 \033\063\044\046-\048\049\050\051\052\053\054\055\056\057\'\040\041"myB=string.find(shablon,C,1,true)return myB end function alfabetC(C,W)shablon="\208\176\208\177\208\178\208\179\208\180\208\181\209\145\208\182\208\183\208\184\208\185\208\186\208\187\208\188\208\189\208\190\208\191\209\128\209\129\209\130\209\131\209\132\209\133\209\134\209\135\209\136\209\137\209\138\209\139\209\140\209\141\209\142\209\143\208\144\208\145\208\146\208\147\208\148\208\149\208\129\208\150\208\151\208\152\208\153\208\154\208\155\208\156\208\157\208\158\208\159\208\160\208\161\208\162\208\163\208\164\208\165\208\166\208\167\208\168\208\169\208\170\208\171\208\172\208\173\208\174\208\175\097\098\099\100\101\102\103\104\105\106\107\108\109\110\111\112\113\114\115\116\117\118\119\120\121\122\065\066\067\068\069\070\071\072\073\074\075\076\077\078\079\080\081\082\083\084\085\086\087\088\089\090 \033\063\044\046-\048\049\050\051\052\053\054\055\056\057\'\040\041"local b if W==0 then b=string.find(shablon,C,1,true)end if W==1 then if C<133 then b=string.utf8sub(shablon,C/2+.5,C/2+.5)else b=string.sub(shablon,C,C)end end return b end function hashStr(C)local W=time()W=W%10000 W=tostring(W)W=string.utf8sub(W,2,3)W=string.format("\037\048\051\100",W)nomeLen=string.utf8len(C)nome1={}for W=1,nomeLen,1 do nome1[W]=string.utf8sub(C,W,W)tmNome=nome1[W]nome1[W]=alfabet(tmNome)end nome11=0 for C=1,nomeLen,1 do nome11=nome11+nome1[C]end nome11=nome11%1000 hNome=string.format("\037\048\051\100",nome11)iN=tostring(W)r1=string.utf8sub(iN,1,1)r2=string.utf8sub(hNome,1,1)r3=string.utf8sub(iN,2,2)r4=string.utf8sub(hNome,2,2)r5=string.utf8sub(iN,3,3)r6=string.utf8sub(hNome,3,3)r=r1 ..(r2 ..(r3 ..(r4 ..(r5 ..r6))))return r end function tablelength(C)local W=0 for C in pairs(C)do W=W+1 end return W end function getPOS(C,W)local b=(1-W)*668 local x=C*1002 return x,b end function hshStrNuovo(C,W)nomeLen=string.utf8len(W)nome1={}for C=1,nomeLen,1 do nome1[C]=string.utf8sub(W,C,C)tmNome=nome1[C]nome1[C]=alfabet(tmNome)end nome11=0 for C=1,nomeLen,1 do nome11=nome11+nome1[C]end nome11=nome11%1000 hNome=string.format("\037\048\051\100",nome11)local b=string.sub(C,2,2)local x=string.sub(C,4,4)local M=string.sub(C,6,6)local s=math.random(0,9)local q=math.random(0,9)local w=math.random(0,9)local m=b..(x..M)local J=hashStr(W)local E=string.utf8sub(nome11,2,2)local L=string.utf8sub(nome11,4,4)local u=string.utf8sub(nome11,6,6)local i=E..(L..u)local H=s..(L..(q..(E..(w..u))))return m,i,H end function hshStrNuovo(C,W)local b local x local M local s local q local w local m local J local E local L local u local i local H b=string.utf8len(W)local X={}for C=1,b,1 do X[C]=string.utf8sub(W,C,C)x=X[C]X[C]=alfabet(x)end M=0 for C=1,b,1 do M=M+X[C]end M=M%1000 s=string.format("\037\048\051\100",M)q=string.sub(s,1,1)w=string.sub(s,2,2)m=string.sub(s,3,3)J=string.sub(C,2,2)J=tonumber(J)if J==0 then E=string.sub(C,3,3)L=string.sub(C,4,4)u=string.sub(C,6,6)elseif J==1 then E=string.sub(C,4,4)L=string.sub(C,3,3)u=string.sub(C,6,6)elseif J==2 then E=string.sub(C,4,4)L=string.sub(C,6,6)u=string.sub(C,3,3)elseif J==3 then E=string.sub(C,3,3)L=string.sub(C,6,6)u=string.sub(C,4,4)elseif J==4 then E=string.sub(C,1,1)L=string.sub(C,6,6)u=string.sub(C,4,4)elseif J==5 then E=string.sub(C,1,1)L=string.sub(C,6,6)u=string.sub(C,3,3)elseif J==6 then E=string.sub(C,6,6)L=string.sub(C,1,1)u=string.sub(C,3,3)elseif J==7 then E=string.sub(C,6,6)L=string.sub(C,3,3)u=string.sub(C,1,1)elseif J==8 then E=string.sub(C,4,4)L=string.sub(C,5,5)u=string.sub(C,6,6)elseif J==9 then E=string.sub(C,5,5)L=string.sub(C,1,1)u=string.sub(C,3,3)end i=E..(L..u)H=q..(w..m)return i,H end function hshSenderNomeC(C)local W local b local x local M local s local q local w local m local J local E local L W=string.utf8len(C)b={}for W=1,W,1 do b[W]=string.utf8sub(C,W,W)tmNome=b[W]b[W]=alfabet(tmNome)end x=0 for C=1,W,1 do x=x+b[C]end x=x%1000 M=string.format("\037\048\051\100",x)s=string.sub(M,1,1)q=string.sub(M,2,2)w=string.sub(M,3,3)m=math.random(0,9)J=math.random(0,9)E=math.random(0,9)if J==0 then L=m..(J..(s..(q..(E..w))))elseif J==1 then L=m..(J..(q..(s..(E..w))))elseif J==2 then L=m..(J..(w..(s..(E..q))))elseif J==3 then L=m..(J..(s..(w..(E..q))))elseif J==4 then L=s..(J..(m..(w..(E..q))))elseif J==5 then L=s..(J..(w..(m..(E..q))))elseif J==6 then L=q..(J..(w..(m..(E..s))))elseif J==7 then L=w..(J..(q..(E..(m..s))))elseif J==8 then L=m..(J..(E..(s..(q..w))))elseif J==8 then L=s..(J..(w..(m..(q..E))))elseif J==9 then L=q..(J..(w..(m..(s..E))))end if testQ~=nil then if testQ[C]~=nil then if testQ[C].rarHSH1==nil then testQ[C].rarHSH1={}end if testQ[C].rarHSH==nil then testQ[C].rarHSH={}end testDate=date("\037\100")testDate=tonumber(testDate)if testDate%2==0 then tableHSH="\114\097\114\072\083\072"testQ[C].rarHSH1=nil else tableHSH="\114\097\114\072\083\072\049"testQ[C].rarHSH=nil end if L==testQ[C][tableHSH]then L=hshSenderNomeC(C)end table.insert(testQ[C][tableHSH],L)return L end end end function gmTest(C)local W for b=1,#gmList,1 do if C==gmList[b]then W="\208\179\208\188"break end b=b+1 end return W end function proverkaVypolneniyaKvestySachivkoj(C,W)local b=testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130"]if W=="\050"then W="\208\186\208\178\208\181\209\129\209\130\095\208\187\208\178\208\187\050"elseif W=="\051"then W="\208\186\208\178\208\181\209\129\209\130\095\208\187\208\178\208\187\051"end local x=testQ[C][W][b]x=tonumber(x)local M=GetAchievementNumCriteria(b)j=0 k=0 for C=1,M,1 do local W,x,M,s,q,w,m,J,E,L=GetAchievementCriteriaInfo(b,C)prov=M if prov==true then j=j+1 else k=k+1 end C=C+1 end local s=x-j if s<0 then s=0 end SendChatMessage("\208\158\209\129\209\130\208\176\208\187\208\190\209\129\209\140 \208\178\209\139\208\191\208\190\208\187\208\189\208\184\209\130\209\140 "..(s..(" \208\191\209\131\208\189\208\186\209\130\208\190\208\178 \208\176\209\135\208\184\208\178\208\186\208\184 "..(b..(" "..(GetAchievementLink(b)..(" \208\184\208\183 "..x)))))),"\071\085\073\076\068",nil,1)end function npcXY(C,W,b,x,M)local s=nil local q=C local w=W q=tostring(q)w=tostring(w)if npcScan[q]==nil then npcScan[q]={}end if npcScan[q][w]==nil then npcScan[q][w]={}end local m=M if m~=nil then local C=b local W=x C=tostring(C)W=tostring(W)if npcScan[q][w][m]==nil then npcCount=1 npcCount=tostring(npcCount)npcScan[q][w][m]={}npcScan[q][w][m][npcCount]={}npcScan[q][w][m][npcCount].x=C npcScan[q][w][m][npcCount].y=W else local b={}local x={}npcCount=tablelength(npcScan[q][w][m])+1 npcCount=tostring(npcCount)C=tostring(C)W=tostring(W)npcScan[q][w][m][npcCount]={}npcScan[q][w][m][npcCount].x=C npcScan[q][w][m][npcCount].y=W end else print("\208\146\209\139\208\177\208\181\209\128\208\184 \209\134\208\181\208\187\209\140")end end function testNpc(C)local W CreateFrame("\071\097\109\101\084\111\111\108\116\105\112","\077\121\083\099\097\110\110\105\110\103\084\111\111\108\116\105\112",nil,"\071\097\109\101\084\111\111\108\116\105\112\084\101\109\112\108\097\116\101")MyScanningTooltip:SetOwner(WorldFrame,"\065\078\067\072\079\082\095\078\079\078\069")MyScanningTooltip:AddFontStrings(MyScanningTooltip:CreateFontString("\036\112\097\114\101\110\116\084\101\120\116\076\101\102\116\049",nil,"\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116"),MyScanningTooltip:CreateFontString("\036\112\097\114\101\110\116\084\101\120\116\082\105\103\104\116\049",nil,"\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116"))MyScanningTooltip:SetHyperlink("\117\110\105\116\058"..C)W=EnumerateTooltipLines(MyScanningTooltip)return W end local function C(...)local C for W=1,select("\035",...),1 do local b=select(W,...)if b and b:GetObjectType()=="\070\111\110\116\083\116\114\105\110\103"then local W=b:GetText()if W~=nil then print(W)if string.find(W,"\208\163\209\128\208\190\208\178\208\181\208\189\209\140")then testLvlNpc=mysplit(W)end if string.find(W,"\209\131\209\128\208\190\208\178\208\189\209\143")then testLvlNpc=mysplit(W)if string.find(testLvlNpc[3],"\037\063\037\063")then else C="\049"end if string.find(testLvlNpc[2],"\037\063\037\063")then SendAddonMessage("\078\083\071\097\100\100","\035\110\112\099\079\102\102","\103\117\105\108\100")end if string.find(testLvlNpc[1],"\208\162\209\128\209\131\208\191")then SendAddonMessage("\078\083\071\097\100\100","\035\110\112\099\068\105\101","\103\117\105\108\100")end end end end end return C end function EnumerateTooltipLines(W)local b b=C(W:GetRegions())return b end function pLid()if UnitIsPartyLeader("\112\097\114\116\121\049")then pL=1 elseif UnitIsPartyLeader("\112\097\114\116\121\050")then pL=2 elseif UnitIsPartyLeader("\112\097\114\116\121\051")then pL=3 elseif UnitIsPartyLeader("\112\097\114\116\121\052")then pL=4 else pL=0 end return pL end function pM(C)if C==UnitName("\112\097\114\116\121\049")then r=1 elseif C==UnitName("\112\097\114\116\121\050")then r=1 elseif C==UnitName("\112\097\114\116\121\051")then r=1 elseif C==UnitName("\112\097\114\116\121\052")then r=1 else r=0 end return r end function testN()testNpc(UnitGUID("\116\097\114\103\101\116"))end function tblAllFail(C,W)if mmList[C]~=nil then for b=1,mmList[C]["\208\186\208\190\208\187\208\184\209\135\208\181\209\129\209\130\208\178\208\190\095\208\177\208\190\209\129\209\129\208\190\208\178"],1 do if W==mmList[C][b]then r=b break else r=0 end end end return r end function testMarsh(C,W)trovMarsh(C,W)local b=0 for W,b in pairs(mapTables[C])do if type(W)=="\115\116\114\105\110\103"then tKont=W end for C,W in pairs(mapTables[C][W])do if type(C)=="\115\116\114\105\110\103"then tLok=C end end end if testQ.schet1~=nil then for W=testQ.schet1-10,testQ.schet1+10,1 do if testQ.schet[W]~=nil then marshrut(W,tablelength(mapTables[C][tKont][tLok]))b=b+testQ.schet[W]if b>0 then break end end end end return b end function trovMarsh(C,W)if testKontLok(C)~=nil then local b,x=GetPlayerMapPosition("\112\108\097\121\101\114")local M=GetCurrentMapContinent()M=tostring(M)local s=GetCurrentMapZone()s=tostring(s)local q=GetMapInfo()if q=="\082\097\103\101\102\105\114\101"then M="\057\057"s="\049"end local w=tablelength(mapTables[C][M][s])testQ.schet={}testQ.numPunti={}if testQ.num==nil then if testKontLok(C)<W then testQ.num=1 testQ.schet1=1 end end for q=testQ.num-10,testQ.num+10,1 do testQ.schet1=q j=tostring(q)if testQ["\209\129\209\130\208\176\209\128\209\130"]~=nil then if mapTables[C][M][s][j]~=nil then mioCel=sqrt((b-mapTables[C][M][s][j].x)^2+(x-mapTables[C][M][s][j].y)^2)if mioCel<W then testQ.schet[q]=1 j=testQ.num j=tostring(j)mioCel1=sqrt((b-mapTables[C][M][s][j].x)^2+(x-mapTables[C][M][s][j].y)^2)if mioCel1>mioCel then testQ.num=q testQ.marshF[q]=q if testQ.marshF[q]==math.modf(w/4)then SendChatMessage("\208\175 \208\191\209\128\208\190\209\136\208\181\208\187 \209\135\208\181\209\130\208\178\208\181\209\128\209\130\209\140 \208\188\208\176\209\128\209\136\209\128\209\131\209\130\208\176","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end if testQ.marshF[q]==math.modf(w/2)then SendChatMessage("\208\175 \208\191\209\128\208\190\209\136\208\181\208\187 \208\191\208\190\208\187\208\190\208\178\208\184\208\189\209\131 \208\188\208\176\209\128\209\136\209\128\209\131\209\130\208\176","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end if testQ.marshF[q]==math.modf((w/4)*3)then SendChatMessage("\208\175 \208\191\209\128\208\190\209\136\208\181\208\187 \209\130\209\128\208\184 \209\135\208\181\209\130\208\178\208\181\209\128\209\130\208\184 \208\188\208\176\209\128\209\136\209\128\209\131\209\130\208\176","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end if tonumber(w)==tonumber(q)then SendChatMessage("\208\156\208\176\209\128\209\136\209\128\209\131\209\130 \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\102\105\110\046\111\103\103")if marshruT~=nil then for C=1,9999,1 do if marshruT[C]~=nil then marshruT[C]:Hide()end end end marshruT=nil testQ["\209\129\209\130\208\176\209\128\209\130"]=nil testQ.num=nil testQ.marshF=nil if C=="\101\118\079\048\049\048\050"then testQ.evO0102=true testQ.startChern=nil end if C=="\101\118\079\048\050\048\051"then testQ.evO0203=true testQ.startChern=nil end if C=="\101\118\079\048\051\048\052"then testQ.evO0304=true testQ.startChern=nil end if C=="\101\118\079\048\052\048\053"then testQ.evO0405=true testQ.startChern=nil end if C=="\101\118\079\048\053\048\054"then testQ.evO0506=true testQ.startChern=nil end if C=="\101\118\079\048\054\048\055"then testQ.evO0607=true testQ.startChern=nil end if C=="\101\118\079\048\055\048\056"then testQ.evO0708=true testQ.startChern=nil end if C=="\101\118\079\048\056\048\057"then testQ.evO0809=true testQ.startChern=nil end if C=="\101\118\079\048\057\049\048"then testQ.evO0910=true testQ.startChern=nil end if C=="\101\118\079\049\048\049\049"then testQ.evO1011=true testQ.startChern=nil end if C=="\101\118\079\049\049"then testQ.evO11=true testQ.startChern=nil end if C=="\101\118\079\049\050"then testQ.evO12=true testQ.startChern=nil end if C=="\101\118\079\049\051"then testQ.evO13=true testQ.startChern=nil end if C=="\101\118\079\049\052"then testQ.evO14=true testQ.startChern=nil end testQ.start=nil end end else testQ.schet[q]=0 end end end end end end function testKontLok(C)local W=GetCurrentMapContinent()W=tostring(W)local b=GetCurrentMapZone()b=tostring(b)local x local M,s=GetPlayerMapPosition("\112\108\097\121\101\114")local q,w local m=GetMapInfo()if m=="\082\097\103\101\102\105\114\101"then W="\057\057"b="\049"end if mapTables~=nil then if mapTables[C]~=nil then for W,b in pairs(mapTables[C])do if type(W)=="\115\116\114\105\110\103"then q=W end for C,W in pairs(mapTables[C][W])do if type(C)=="\115\116\114\105\110\103"then w=C end end end if tostring(b)==tostring(w)then if C~=nil then if mapTables[C]~=nil then if q==W then if mapTables[C][W][b]~=nil then if w==b then x=sqrt((M-mapTables[C][W][b]["\049"].x)^2+(s-mapTables[C][W][b]["\049"].y)^2)return x end end end end end end end end end function startFchern(C,W,b)W=tostring(W)b=tostring(b)if krt[W]==true and krt[b]==true then testQ.start=C testQ["\209\129\209\130\208\176\209\128\209\130"]=0 testQ[C]="\209\129\209\130\208\176\209\128\209\130"marshruT={}end end function testFchern(C,W,b)W=tostring(W)b=tostring(b)local x,M if testQ[C]==nil then for W,b in pairs(mapTables[C])do if type(W)=="\115\116\114\105\110\103"then x=W end for C,W in pairs(mapTables[C][x])do if type(C)=="\115\116\114\105\110\103"then M=C end end end if mapTables.lokRasstoyanie[tostring(x)]~=nil then if mapTables.lokRasstoyanie[tostring(x)][tostring(M)]~=nil then if testKontLok(C)~=nil then if tonumber(testKontLok(C))<=tonumber(mapTables.lokRasstoyanie[tostring(x)][tostring(M)])*3 then startFchern(C,W,b)testQ.startChern=C end end end end end end function printPar(C)local W={}local b for C,b in pairs(C)do if C~=nil then table.insert(W,C)end end b=table.concat(W," ")return b end function otladka(C,W,b,x,M,s,q)local w numF=tonumber(C)if numF==1 then if W=="\116\101\115\116\081"then w=testQ end end if numF==2 then if W=="\116\101\115\116\081"then w=testQ[b]end end if numF==3 then if W=="\116\101\115\116\081"then w=testQ[b][x]end end if numF==4 then if W=="\116\101\115\116\081"then w=testQ[b][x][M]end end if numF==5 then if W=="\116\101\115\116\081"then w=testQ[b][x][M][s]end end if numF==6 then if W=="\116\101\115\116\081"then w=testQ[b][x][M][s][q]end end w=type(w)y=w return w,y end function tabellaFind(C,W)local b=1 while C[b]do print(W)print(C[b])if W==C[b]then return 1 end b=b+1 end return nil end function krtChernGetXY(C)C=tostring(C)for C,W in pairs(krt.chernila[C])do kont=C end for C,W in pairs(krt.chernila[C][kont])do lok=C end for C,W in pairs(krt.chernila[C][kont][lok])do if C=="\120"then x=W end if C=="\121"then y=W end if C=="\109\115\103"then m=W end end return kont,lok,x,y,m end function mapQuest(C)C=tostring(C)for C,W in pairs(testQ.mapQuest[C])do kont=C end for C,W in pairs(testQ.mapQuest[C][kont])do lok=C end for C,W in pairs(testQ.mapQuest[C][kont][lok])do if C=="\120"then x=W end if C=="\121"then y=W end if C=="\109\115\103"then m=W end if C=="\099\101\108"then c=W end end return kont,lok,x,y,m,c end function mapQuestP(C)C=tostring(C)testQ.mapQuest.podskazkiRez={}for C,W in pairs(testQ.mapQuest[C])do kont=C end for C,W in pairs(testQ.mapQuest[C][kont])do lok=C end for W,b in pairs(testQ.mapQuest[C][kont][lok])do if W=="\112\111\100\115\107\097\122\107\105"then for C,W in pairs(testQ.mapQuest[C][kont][lok].podskazki)do testQ.mapQuest.podskazkiRez[C]=W end end end end function chern1P(C)C=tostring(C)krt.chernila.podskazkiRez={}for C,W in pairs(krt.chernila[C])do kont=C end for C,W in pairs(krt.chernila[C][kont])do lok=C end for W,b in pairs(krt.chernila[C][kont][lok])do if W=="\112\111\100\115\107\097\122\107\105"then for C,W in pairs(krt.chernila[C][kont][lok].podskazki)do krt.chernila.podskazkiRez[C]=W end end end end function tabellaEnStr(C,W)local b,x,M,s,q,w C=tostring(C)W=tostring(W)if testQ.chD==nil then testQ.chD={}end if testQ.chD[tostring(C)]==nil then M="\048"for C,W in pairs(krt.chernila[C])do q=C end for C,W in pairs(krt.chernila[C][q])do w=C end b=tablelength(krt.chernila[C][q][w].podskazki)for b=1,b,1 do s=tostring(b)if x==nil then x=s..(" "..(txtXor(krt.chernila[C][q][w].podskazki[s]).."\n"))else x=x..(s..(" "..(txtXor(krt.chernila[C][q][w].podskazki[s]).."\n")))end M=tonumber(M)M=M+1 M=tostring(M)if M==W then break end end else for C,W in pairs(krt.chernila[C])do q=C end for C,W in pairs(krt.chernila[C][q])do w=C end x=C.." \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\190\n"M=tablelength(krt.chernila[C][q][w].podskazki)end return x,M end function txtXor(C)local W=C:utf8sub(1,3)local b local x if W~="\035\035\035"then b=string.utf8len(C)x="\035\035\035"for W=1,b,1 do x=x..string.format("\037\048\051\100",alfabet(string.utf8sub(C,W,W)))end end if W=="\035\035\035"then x=alfabetC(tonumber(string.sub(C,4,6)),1)for W=7,#C,3 do x=x..alfabetC(tonumber(string.sub(C,W,W+2)),1)end end return x end bcsQuickFrame={}function createQuickHtmlFrame(C,W,b)local x=GetTime()bcsQuickFrame[b]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\066\067\083\081\117\105\099\107\070\114\097\109\101",UIParent)bcsQuickFrame[b]:SetSize(222,222)bcsQuickFrame[b]:SetFrameStrata("\072\073\071\072")bcsQuickFrame[b]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",33,W)bcsQuickFrame[b]:SetBackdropColor(0,103,51,1)bcsQuickFrame[b]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",32)bcsQuickFrame[b]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\057\048\101\101\057\048"..(C.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062"))end dmG={}function dmgText(C,W,b,x,M)if dmG[b]==nil then dmG[b]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\100\109\071",W)else dmG[b]:Show()end dmG[b]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")dmG[b]:ClearAllPoints()dmG[b]:SetBackdropColor(0,103,51,1)dmG[b]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",13,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")if C~=""then if tonumber(C)<=9999 then dmG[b]:SetSize(48,48)end if tonumber(C)>9999 then dmG[b]:SetSize(54,48)end if tonumber(C)<=9999 then dmG[b]:SetPoint("\067\069\078\084\069\082",W,"\067\069\078\084\069\082",5,-10)end if tonumber(C)>9999 then dmG[b]:SetPoint("\067\069\078\084\069\082",W,"\067\069\078\084\069\082",1,-10)end end dmG[b]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112 \115\116\121\108\101\061\'\098\097\099\107\103\114\111\117\110\100-\099\111\108\111\114\058 \035\049\050\051\052\053\097\'\062 \124\099\102\102"..(M..(C.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")))end dmG1={}function dmgText1(C,W,b,x,M)if dmG1[b]==nil then dmG1[b]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\100\109\071",W)dmG1[b]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")dmG1[b]:ClearAllPoints()dmG1[b]:SetBackdropColor(0,103,51,1)dmG1[b]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",13,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")end if C~=""then if tonumber(C)<=9999 then dmG1[b]:SetSize(48,48)end if tonumber(C)>9999 then dmG1[b]:SetSize(54,48)end if tonumber(C)<=9999 then dmG1[b]:SetPoint("\067\069\078\084\069\082",W,"\067\069\078\084\069\082",5,-10)end if tonumber(C)>9999 then dmG1[b]:SetPoint("\067\069\078\084\069\082",W,"\067\069\078\084\069\082",1,-10)end end dmG1[b]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112 \115\116\121\108\101\061\'\098\097\099\107\103\114\111\117\110\100-\099\111\108\111\114\058 \035\049\050\051\052\053\097\'\062 \124\099\102\102"..(M..(C.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")))end dmG2={}function dmgText2(C,W,b,x,M)if dmG2[b]==nil then dmG2[b]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\100\109\071",W)dmG2[b]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")dmG2[b]:ClearAllPoints()dmG2[b]:SetBackdropColor(0,103,51,1)dmG2[b]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",13,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")end if C~=nil and C~=""then if tonumber(C)<=9999 then dmG2[b]:SetSize(48,48)end if tonumber(C)>9999 then dmG2[b]:SetSize(54,48)end if tonumber(C)<=9999 then dmG2[b]:SetPoint("\067\069\078\084\069\082",W,"\067\069\078\084\069\082",5,-10)end if tonumber(C)>9999 then dmG2[b]:SetPoint("\067\069\078\084\069\082",W,"\067\069\078\084\069\082",1,-10)end end if C~=nil then dmG2[b]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112 \115\116\121\108\101\061\'\098\097\099\107\103\114\111\117\110\100-\099\111\108\111\114\058 \035\049\050\051\052\053\097\'\062 \124\099\102\102"..(M..(C.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")))end end rtnText={}function rtnTextF(C,W,b)if b=="\115\104\111\119"then if rtnText[W]==nil then rtnText[W]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\066\067\083\081\117\105\099\107\070\114\097\109\101",UIParent)rtnText[W]:SetSize(460,396)rtnText[W]:SetFrameStrata("\084\079\079\076\084\073\080")rtnText[W]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",15,-55)rtnText[W]:SetBackdropColor(0,0,0,0)rtnText[W]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",33)end rtnText[W]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\048\048\048\048\048\048"..(C.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062"))rtnText[W]:Show()else if rtnText[W]~=nil then rtnText[W]:Hide()end end end function versFail(C)if VerF==nil then VerF=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\066\067\083\081\117\105\099\107\070\114\097\109\101",UIParent)end VerF:SetSize(1111,888)VerF:SetFrameStrata("\072\073\071\072")if testQ.VerF==nil then testQ.VerF=600 end VerF:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",testQ.VerF,-355)VerF:SetBackdropColor(0,103,51,1)VerF:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",C+10)VerF:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\102\102\048\048\048\048\208\158\208\145\208\157\208\158\208\146\208\152 \208\144\208\148\208\148\208\158\208\157\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")end function marshrut(C,W)local b=C-1 local x=C+1 local M=C+2 local s=C-2 local q=C+3 local w=C-3 if testQ.start~="\101\118\079\051"then if marshruT~=nil then if marshruT[C]==nil then marshruT[C]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\109\097\114\115\104\114\117\116",UIParent)marshruT[C]:SetSize(222,222)marshruT[C]:SetFrameStrata("\072\073\071\072")marshruT[C]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",333,111)marshruT[C]:SetBackdropColor(0,103,51,1)marshruT[C]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",32)marshruT[C]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\057\048\101\101\057\048"..(C..(" \208\184\208\183 "..(tostring(W).."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062"))))end if marshruT[b]~=nil then marshruT[b]:Hide()marshruT[b]=nil end if marshruT[x]~=nil then marshruT[x]:Hide()marshruT[x]=nil end if marshruT[M]~=nil then marshruT[M]:Hide()marshruT[M]=nil end if marshruT[s]~=nil then marshruT[s]:Hide()marshruT[s]=nil end if marshruT[q]~=nil then marshruT[q]:Hide()marshruT[q]=nil end if marshruT[w]~=nil then marshruT[w]:Hide()marshruT[w]=nil end end end end function showRB(C)if debuffChkB==nil then debuffChkB={}end if pokazat==1 and btn[1]~=nil then for C=1,15,1 do if btn[C]~=nil then btn[C]:Hide()end end btn[991]:Show()if tonumber(testQ.mioFldLvl)~=.5 and(tonumber(testQ.mioFldLvl)~=.9 and tonumber(testQ.mioFldLvl)~=nil)then btn[14]:Show()end myCheckButton1:Show()myCheckButton2:Show()myCheckButton3:Show()myCheckButton4:Show()myCheckButton5:Show()myCheckButton6:Show()myCheckButton7:Show()btn[998]:Show()btn[997]:Show()for W=1,20,1 do local b,x,M,s,q,w,m,J=UnitDebuff("\112\108\097\121\101\114",W)if b~=nil then debuffChkB[b]=createCheckbutton(UIParent,150,-20*W+230,b)debuffChkB[b].tooltip="\208\161\208\186\209\128\209\139\208\178\208\176\209\130\209\140 \208\184\208\186\208\190\208\189\208\186\209\131 "..b debuffChkB[b]:SetScript("\079\110\067\108\105\099\107",function()if testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB==nil then testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB={}end if testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[b]=="\068\105\115\097\098\108\101"or testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[b]==nil then testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[b]="\069\110\097\098\108\101"debuffChkB[b]:SetChecked(true)elseif testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[b]=="\069\110\097\098\108\101"then testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[b]="\068\105\115\097\098\108\101"debuffChkB[b]:SetChecked(false)end end)end end pokazat=0 pokazatChk=1 elseif pokazat==0 then btn[991]:Hide()if tonumber(testQ.mioFldLvl)~=.5 and(tonumber(testQ.mioFldLvl)~=.9 and tonumber(testQ.mioFldLvl)~=nil)then for C=1,15,1 do if btn[C]~=nil then btn[C]:Show()end end if btn[ii]~=nil then if testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130"]=="\057\057\057\057"then btn[1]:Show()btn[2]:Hide()end if testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130"]~="\057\057\057\057"then btn[1]:Hide()btn[2]:Show()end end end testQ.lvlProv=nil myCheckButton1:Hide()myCheckButton2:Hide()myCheckButton3:Hide()myCheckButton4:Hide()myCheckButton5:Hide()myCheckButton6:Hide()myCheckButton7:Show()for C,W in pairs(debuffChkB)do if debuffChkB[C]~=nil then debuffChkB[C]:Hide()end end btn[998]:Hide()btn[997]:Hide()pokazat=1 pokazatChk=0 end end function marSh()local C=GetCurrentMapContinent()local W=GetCurrentMapZone()local b,x=GetPlayerMapPosition("\112\108\097\121\101\114")local M C=tostring(C)W=tostring(W)local s=GetMapInfo()if s=="\082\097\103\101\102\105\114\101"then C="\057\057"W="\049"end if marsh==nil then marsh={}end if marsh[C]==nil then marsh[C]={}end if marsh[C][W]==nil then marsh[C][W]={}end local q=tablelength(marsh[C][W])q=tostring(q+1)marsh[C][W][q]={}testQ.marshK=C testQ.marshL=W testQ.marshN=q marsh[C][W][q].x=string.format("\037\046\051\102",b)marsh[C][W][q].y=string.format("\037\046\051\102",x)print(q)end function resObj1(C,W,b)if krt==nil then krt={}end if krt.podskazki==nil then krt.podskazki=1 end if testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]==nil then testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]={}testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=0 end if W==b then if mioFld~=nil then if mioFld[W]~=nil then if mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"]~=nil then if tonumber(testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"])<=tonumber(krt.podskazki)then if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\104\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\120"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\115\120"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\099"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\097\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\099"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\120"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\099"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\112"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\122"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\118"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\102"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\048"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\108\120"and mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\108\112")))))))))))))))then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\102"then SendAddonMessage("\116\114\101\101 "..tostring(C),W,"\103\117\105\108\100")end mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\109\048"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\104\115"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<9999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=9999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\122"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\108\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\099"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<9999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=9999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\097\115"or mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\099"or mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\115"or mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<14999 then print("\209\130\209\131\209\130")mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else print("\209\130\209\131\209\130\051")mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=14999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\115"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\099"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<4999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=4999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\115\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end else if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\104\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\120"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\115\120"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\099"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\097\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\120"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\099"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\115"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\099"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\112"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\122"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\118"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\102"and(mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\048"and mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\108\120"))))))))))))))then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\102"then SendAddonMessage("\116\114\101\101 "..tostring(C),W,"\103\117\105\108\100")end mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\104\115"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<9999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=9999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\108\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\122"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\109\048"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\099"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<9999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=9999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\097\115"or mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\099"or mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\115"or mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<14999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=14999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\115"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\099"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<4999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=4999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[W]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\115\120"then if tonumber(mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]+5 else mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end end SendAddonMessage("\114\101\115\079\098\106 "..(C..(" "..mioFld[W]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])),b,"\103\117\105\108\100")end end end else if mioFld~=nil then if mioFld[b]~=nil then if mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"]~=nil then if tonumber(testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"])<=tonumber(krt.podskazki)then if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\104\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\120"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\115\120"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\099"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\097\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\099"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\120"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\099"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\112"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\122"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\118"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\048"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\102"and mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\108\120"))))))))))))))then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\104\115"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<9999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=9999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\108\120"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\122"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\109\048"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\099"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<9999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=9999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\097\115"or mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\099"or mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\115"or mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\098\120"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<14999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=14999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\115"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\120"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\099"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<4999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=4999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\115\120"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end else if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\104\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\120"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\115\120"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\099"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\097\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\099"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\115"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\098\120"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\099"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\122\112"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\122"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\116\118"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\048"and(mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\109\102"and mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]~="\108\120"))))))))))))))then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\104\115"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<9999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=9999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\108\120"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\122"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\109\048"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\116\099"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<4999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=4999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\097\115"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<14999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=14999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\115"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\122\120"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<19999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=19999 end end if mioFld[b]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(C)]=="\115\120"then if tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])<29999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local W=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if W==9 then mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=tonumber(mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)]=29999 end end end SendAddonMessage("\114\101\115\079\098\106 "..(C..(" "..mioFld[b]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(C)])),b,"\103\117\105\108\100")end end end end end function gKam(C,W)local b=nil if tonumber(W)==500 then for W=1,100,1 do if mioFld1[C]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(W)]=="\115\107"then if b==nil then b=1 else b=b+1 end end end if b==nil then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\048","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif b==1 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\049","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif b==2 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\050","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif b==3 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\051","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif b==4 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\052","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif b==5 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\053","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")end end end function bdf(C)if testQ==nil then testQ={}end if testQ.myNome==nil then testQ.myNome={}end if testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"]==nil then testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"]={}end if testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB==nil then testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB={}end if DebuffButton1~=nil then if tonumber(testQ.buffX)~=nil and tonumber(testQ.buffX)~=0 then local W,b,x,M=DebuffButton1:GetPoint()local s,q,w,m=btn[991]:GetPoint()if M~=m then local W,b=DebuffButton1:GetSize()local x=UIParent:GetSize()/2 j=1 for b=1,DEBUFF_MAX_DISPLAY,1 do if AuraButton_Update("\068\101\098\117\102\102\066\117\116\116\111\110",b,"\072\065\082\077\070\085\076")then local M,s,q,w,m,J,E,L=UnitDebuff("\112\108\097\121\101\114",b)local u=_G["\068\101\098\117\102\102\066\117\116\116\111\110"..b]if u~=nil and(testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[M]==nil or testQ[C]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[M]=="\068\105\115\097\098\108\101")then u:ClearAllPoints()if tonumber(testQ.buffX)<x then u:SetPoint("\066\079\084\084\079\077\076\069\070\084",UIParent,"\066\079\084\084\079\077\076\069\070\084",tonumber(testQ.buffX)+W*j,testQ.buffY)j=j+1 else u:SetPoint("\066\079\084\084\079\077\076\069\070\084",UIParent,"\066\079\084\084\079\077\076\069\070\084",tonumber(testQ.buffX)-W*j,testQ.buffY)j=j+1 end else if u~=nil and u:IsVisible()then u:Hide()end end end end end if testQ.buffX==0 then testQ.buffX=nil end end end end function gtest()gTest=nil gTest={}for C=1,50,1 do local W,b,x,M,s,q,w=GetWhoInfo(C)if b==""then if M~="\208\148\209\128\208\181\208\189\208\181\208\185"and(M~="\208\157\208\190\209\135\208\189\208\176\209\143 \209\141\208\187\209\140\209\132\208\184\208\185\208\186\208\176"and(M~="\208\167\208\181\208\187\208\190\208\178\208\181\208\186"and(M~="\208\157\208\190\209\135\208\189\208\190\208\185 \209\141\208\187\209\140\209\132"and(M~="\208\147\208\189\208\190\208\188"and M~="\208\148\208\178\208\190\209\128\209\132"))))then table.insert(gTest,W)end end end end function ns_q5()ns_q5Test=nil ns_q5Test={}for C=1,50,1 do local W,b,x,M,s,q,w=GetWhoInfo(C)if b==""then table.insert(ns_q5Test,W)end end end function closeFld()for C=1,100,1 do fBtn[C]:Hide()end for C=1,100,1 do if mgznIcon[1]==nil or not mgznIcon[1]:IsVisible()then if resursy[C]~=nil then if C==5 then if mgznIcon[1]~=nil and mgznIcon[1]:IsVisible()then end else resursy[C]:Hide()end end end end btn[989]:Hide()btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)end function hX()quesT("\104\105\100\101")okNo:configure(1,"\104\105\100\101")rtnTextF("\102\100\115\097",1,"\104\105\100\101")for C=1,100,1 do fBtn[C]:Hide()end if resursy[1]~=nil then resursy[1]:Hide()resursy[2]:Hide()resursy[3]:Hide()end if okNo~=nil then okNo[1]:Hide()okNo[2]:Hide()end btn[989]:Hide()btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)end function showFld(C,W)local b local x local M local s if mBtn[1]~=nil then if mBtn[1]:IsVisible()then s=1 end end if dBtn[1]~=nil then if dBtn[1]:IsVisible()then s=1 end end if not fBtn[1]:IsVisible()and s~=1 then if not GuildFrameLFGButton:GetChecked()or C=="\049"then if C=="\048"then b=GuildFrame.selectedName else b=W end btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",fBtn[10],"\084\079\080\082\073\071\072\084",1,1)for C=1,GetNumGuildMembers(true),1 do local s,q,w,m,J,E,L,u,i,H,X,n,d,D,U,O,o=GetGuildRosterInfo(C)if b~=W then if s==b then x=string.sub(u,1,1)M=string.sub(u,2,2)if u~=""and(x~="\049"and x~="\048")then testQ.fldLvl=tonumber(x)testQ.qNum=string.sub(u,8,8)testQ.qDay=string.sub(u,6,7)elseif x=="\049"then testQ.fldLvl=.9 testQ.qNum=string.sub(u,8,8)testQ.qDay=string.sub(u,6,7)elseif x=="\048"then testQ.fldLvl=.5 testQ.qNum=0 testQ.qDay=0 elseif x==""then testQ.fldLvl=.5 testQ.qNum=0 testQ.qDay=0 end if M==nil then testQ.fldLvl=.5 testQ.qNum=0 testQ.qDay=0 end end if s==W then x=string.sub(u,1,1)if u~=""and(x~="\049"and x~="\048")then testQ.mioFldLvl=string.sub(u,1,1)elseif x=="\049"then testQ.mioFldLvl=.9 elseif x=="\048"then testQ.mioFldLvl=.5 elseif x==""then testQ.mioFldLvl=.5 end end else if s==W then x=string.sub(u,1,1)M=string.sub(u,2,2)if u~=""and(x~="\049"and x~="\048")then testQ.mioFldLvl=string.sub(u,1,1)testQ.fldLvl=testQ.mioFldLvl testQ.qNum=string.sub(u,8,8)testQ.qDay=string.sub(u,6,7)elseif x=="\049"then testQ.mioFldLvl=.9 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=string.sub(u,8,8)testQ.qDay=string.sub(u,6,7)elseif x=="\048"then testQ.mioFldLvl=.5 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=0 testQ.qDay=0 elseif x==""then testQ.mioFldLvl=.5 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=0 testQ.qDay=0 end if M==nil then testQ.mioFldLvl=.5 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=0 testQ.qDay=0 end end end if tonumber(testQ.mioFldLvl)==0 then testQ.mioFldLvl=.5 end if tonumber(testQ.fldLvl)==0 then testQ.fldLvl=.5 end end testQ.fRand1=math.random(1,1000000)testQ.sign=C SendAddonMessage("\115\104\077\070\108\100 "..testQ.fRand1,b..(" "..W),"\103\117\105\108\100")FriendsFrame:Hide()else for C=1,100,1 do fBtn[C]:Hide()end btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)if resursy[1]~=nil then resursy[1]:Hide()resursy[2]:Hide()resursy[3]:Hide()end for C=1,100,1 do if dmG[C]~=nil and dmG[C]:IsVisible()then dmG[C]:Hide()end end for C=1,3,1 do if mgznIcon[1]==nil or not mgznIcon[1]:IsVisible()then if resursy[C]~=nil then if C==5 then if mgznIcon[1]~=nil and mgznIcon[1]:IsVisible()then end else resursy[C]:Hide()end end end end for C=101,103,1 do if dmG[C]~=nil then dmG[C]:Hide()end end if tonumber(testQ.sign)==0 then FriendsFrame:Show()end testQ.sign=nil testQ.fRandD1nome=nil end else for C=1,100,1 do fBtn[C]:Hide()btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)end if resursy[1]~=nil then resursy[1]:Hide()resursy[2]:Hide()resursy[3]:Hide()end for C=1,100,1 do if dmG[C]~=nil and dmG[C]:IsVisible()then dmG[C]:Hide()end end for C=1,100,1 do if mgznIcon[1]==nil or not mgznIcon[1]:IsVisible()then if resursy[C]~=nil then if C==5 then if mgznIcon[1]~=nil and mgznIcon[1]:IsVisible()then end else resursy[C]:Hide()end end end end for C=101,103,1 do if dmG[C]~=nil then dmG[C]:Hide()end end if tonumber(testQ.sign)==0 then FriendsFrame:Show()end if tostring(testQ.sign)=="\049"then btn[989]:Hide()end testQ.sign=nil end end function qLvl33c1()local C local W local b local x local M local s local q M=(rndTblc(eMotC))["\208\186\208\178\208\181\209\129\209\130"]print(M)s=eMotC[M]["\208\191\208\190\208\184\209\129\208\186"]q=eMotC[M]["\208\190\209\130\208\178\208\181\209\130"]C=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]W=npcListC1[C]["\208\184\208\188\209\143"]C=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]b=npcListC1[C]["\208\184\208\188\209\143"]while true do if W==b then C=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]b=npcListC1[C]["\208\184\208\188\209\143"]else break end end C=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]x=npcListC1[C]["\208\184\208\188\209\143"]while true do if x==b or x==W then C=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]x=npcListC1[C]["\208\184\208\188\209\143"]else break end end return M,W,b,x,s,q end function qLvl33c2()local C local W local b local x local M local s local q M=(rndTblc(eMotC))["\208\186\208\178\208\181\209\129\209\130"]print(M)s=eMotC[M]["\208\191\208\190\208\184\209\129\208\186"]q=eMotC[M]["\208\190\209\130\208\178\208\181\209\130"]C=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]W=npcListC2[C]["\208\184\208\188\209\143"]C=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]b=npcListC2[C]["\208\184\208\188\209\143"]while true do if W==b then C=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]b=npcListC2[C]["\208\184\208\188\209\143"]else break end end C=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]x=npcListC2[C]["\208\184\208\188\209\143"]while true do if x==b or x==W then C=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]x=npcListC2[C]["\208\184\208\188\209\143"]else break end end return M,W,b,x,s,q end function qLvl33c3()local C local W local b local x local M local s local q M=(rndTblc(eMotC))["\208\186\208\178\208\181\209\129\209\130"]print(M)s=eMotC[M]["\208\191\208\190\208\184\209\129\208\186"]q=eMotC[M]["\208\190\209\130\208\178\208\181\209\130"]C=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]W=npcListC3[C]["\208\184\208\188\209\143"]C=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]b=npcListC3[C]["\208\184\208\188\209\143"]while true do if W==b then C=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]b=npcListC3[C]["\208\184\208\188\209\143"]else break end end C=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]x=npcListC3[C]["\208\184\208\188\209\143"]while true do if x==b or x==W then C=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]x=npcListC3[C]["\208\184\208\188\209\143"]else break end end return M,W,b,x,s,q end function rndTblc(C)local W={}for C in pairs(C)do table.insert(W,C)end return C[W[math.random(#W)]]end function htimer(C)local W=0 for b=1,100,1 do if mioFld1[C]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(b)]=="\116\111"then W="\116\111"end end if testQ[C].dTimer[30]==nil then testQ[C].dTimer[30]=26000 end if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil then testQ[C].dTimer[tonumber(date("\037\100"))-1]=26000 end if tonumber(testQ.mioFldLvl)==.5 or tonumber(testQ.mioFldLvl)==.9 then if testQ[C].hTimer==nil then if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[C].dTimer[30]==nil then if W~="\116\111"then testQ[C].hTimer=50400 else testQ[C].hTimer=26000 end else if tonumber(date("\037\100"))~=1 then if testQ[C].dTimer[tonumber(date("\037\100"))-1]>10800 then if W~="\116\111"then testQ[C].hTimer=testQ[C].dTimer[tonumber(date("\037\100"))-1]else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(testQ[C].dTimer[tonumber(date("\037\100"))-1])/1.5))end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end else if testQ[C].dTimer[30]~=nil and testQ[C].dTimer[30]>10800 then if W~="\116\111"then testQ[C].hTimer=testQ[C].dTimer[30]else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(testQ[C].dTimer[30])/1.5))end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==2 then if testQ[C].hTimer==nil then if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[C].dTimer[30]==nil then if W~="\116\111"then testQ[C].hTimer=25200 else testQ[C].hTimer=16000 end else if tonumber(date("\037\100"))~=1 then if testQ[C].dTimer[tonumber(date("\037\100"))-1]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/2))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/2))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end else if testQ[C].dTimer[30]~=nil and testQ[C].dTimer[30]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/2))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/2))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==3 then if testQ[C].hTimer==nil then if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[C].dTimer[30]==nil then if W~="\116\111"then testQ[C].hTimer=14500 else testQ[C].hTimer=10000 end else if tonumber(date("\037\100"))~=1 then if testQ[C].dTimer[tonumber(date("\037\100"))-1]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/3))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/3))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end else if testQ[C].dTimer[30]~=nil and testQ[C].dTimer[30]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/3))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/3))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==4 then if testQ[C].hTimer==nil then if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[C].dTimer[30]==nil then if W~="\116\111"then testQ[C].hTimer=11000 else testQ[C].hTimer=8000 end else if tonumber(date("\037\100"))~=1 then if testQ[C].dTimer[tonumber(date("\037\100"))-1]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/4))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/4))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end else if testQ[C].dTimer[30]~=nil and testQ[C].dTimer[30]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/4))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/4))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==5 then if testQ[C].hTimer==nil then if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[C].dTimer[30]==nil then if W~="\116\111"then testQ[C].hTimer=10500 else testQ[C].hTimer=7000 end else if tonumber(date("\037\100"))~=1 then if testQ[C].dTimer[tonumber(date("\037\100"))-1]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/5))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/5))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end else if testQ[C].dTimer[30]~=nil and testQ[C].dTimer[30]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/5))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/5))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==6 then if testQ[C].hTimer==nil then if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[C].dTimer[30]==nil then if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end else if tonumber(date("\037\100"))~=1 then if testQ[C].dTimer[tonumber(date("\037\100"))-1]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/6))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/6))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end else if testQ[C].dTimer[30]~=nil and testQ[C].dTimer[30]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/6))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/6))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==7 then if testQ[C].hTimer==nil then if testQ[C].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[C].dTimer[30]==nil then if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end else if tonumber(date("\037\100"))~=1 then if testQ[C].dTimer[tonumber(date("\037\100"))-1]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/7))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/7))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end else if testQ[C].dTimer[30]~=nil and testQ[C].dTimer[30]>10800 then if W~="\116\111"then testQ[C].hTimer=tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/7))if testQ[C].hTimer<10800 then testQ[C].hTimer=10800 end else testQ[C].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[C].dTimer[tonumber(date("\037\100"))-1]/7))/1.5))if testQ[C].hTimer<7000 then testQ[C].hTimer=7000 end end else if W~="\116\111"then testQ[C].hTimer=10800 else testQ[C].hTimer=7000 end end end end end end SendAddonMessage("\035\109\105\111\084\105\109\101\114 "..C,testQ[C].hTimer..(" "..tonumber(testQ.mioFldLvl)),"\103\117\105\108\100")SendAddonMessage("\035\109\105\111\084\105\109\101\114 "..C,testQ[C].hTimer..(" "..tonumber(testQ.mioFldLvl)),"\103\117\105\108\100")SendAddonMessage("\035\109\105\111\084\105\109\101\114 "..C,testQ[C].hTimer..(" "..tonumber(testQ.mioFldLvl)),"\103\117\105\108\100")end function ml()if BrowseBuyoutButton~=nil then if aucBtn==nil then aucBtn=CreateFrame("\066\117\116\116\111\110",nil,UIParent,"")aucBtn:SetFrameStrata("\084\079\079\076\084\073\080")aucBtn:SetSize(222,32)aucBtn:SetPoint("\067\069\078\084\069\082",BrowseBidButton,"\067\069\078\084\069\082",22,0)aucBtn:SetNormalTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\097\117\107\046\116\103\097")aucBtn:Hide()end name,texture,count,quality,canUse,level,levelColHeader,minBid,minIncrement,buyoutPrice,bidAmount,highBidder,owner,saleStatus,itemId,hasAllInfo=GetAuctionItemInfo("\108\105\115\116",tonumber(GetSelectedAuctionItem("\108\105\115\116")))if name=="\208\158\208\177\209\139\209\135\208\189\208\190\208\181 \208\191\208\184\209\129\209\140\208\188\208\190"then aucBtn:Show()if highBidder=="\208\165\208\181\209\132\208\181"then aucBtn:Hide()end else if aucBtn~=nil then aucBtn:Hide()end end end if Atr_Buy1_Button~=nil and Atr_Buy1_Button:IsVisible()then if aucBtn==nil then aucBtn=CreateFrame("\066\117\116\116\111\110",nil,UIParent,"")aucBtn:SetFrameStrata("\084\079\079\076\084\073\080")aucBtn:SetSize(222,32)aucBtn:SetPoint("\067\069\078\084\069\082",BrowseBidButton,"\067\069\078\084\069\082",22,0)aucBtn:SetNormalTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\097\117\107\046\116\103\097")aucBtn:Hide()end if Atr_Search_Box:IsVisible()and Atr_Search_Box:GetText()=="\208\158\208\177\209\139\209\135\208\189\208\190\208\181 \208\191\208\184\209\129\209\140\208\188\208\190"then aucBtn:Show()aucBtn:SetSize(422,32)else if aucBtn~=nil then aucBtn:Hide()end end end end function diffT(C,W)for b=1,100,1 do if C[b]~=W[b]then return false end end return true end function antc(C)shablon="\097\098\099\100\101\102\103\104\105\106\107\108\109\110\111\112\113\114\115\116\117\118\119\120\121\122\065\066\067\068\069\070\071\072\073\074\075\076\077\078\079\080\081\082\083\084\085\086\087\088\089\090 \033\063\044\046-\048\049\050\051\052\053\054\055\056\057\'\040\041"myB=string.find(shablon,(tostring(C)):sub(1,1),1,true)if tonumber(#tostring(C))>=2 then for W=2,#tostring(C),1 do myB=myB..string.find(shablon,(tostring(C)):sub(W,W),1,true)end end return myB end function ochered(C,W,b,x,M,s,q,w,m,J)if C~="\208\156\208\190\209\128"then local E=UnitClass("\112\108\097\121\101\114")local L=0 local u,i,H,X for W=1,24,1 do if b==1 then u,__,__,__,__,i,H,X=UnitDebuff("\116\097\114\103\101\116",W)if X=="\112\108\097\121\101\114"then if u=="\208\158\208\183\208\189\208\190\208\177"then if H~=nil and tonumber(H)-tonumber(GetTime())<=5 then testQ.o=1 else testQ.o=nil end end if u=="\208\154\209\128\208\190\208\178\208\176\208\178\208\176\209\143 \209\135\209\131\208\188\208\176"then if H~=nil and tonumber(H)-tonumber(GetTime())<=5 then testQ.c=1 else testQ.c=nil end end end end if x==1 then u=UnitBuff("\112\108\097\121\101\114",W)end if u~=nil then if u==C then L=1 end end end local n=UnitClass("\112\108\097\121\101\114")if n=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then if testQ.o==1 and testQ.c==1 then local C for W,b in pairs(testQ.skills)do if testQ.skills[W]~=nil then if testQ.skills[W]=="\208\156\208\190\209\128"then C=1 end end end if C~=1 then table.insert(testQ.skills,W,"\208\156\208\190\209\128")end end end for W,b in pairs(testQ.skills)do if testQ.skills[W]==C then L=1 end end local d=0 if w~=nil then d=d+1 end if m~=nil then d=d+1 end if J~=nil then d=d+1 end local D,U,O,o=GetSpellInfo(C)if o==nil then o=0 end if n=="\208\148\209\128\209\131\208\184\208\180"then o=30 end if s=="\109"then if UnitPower("\112\108\097\121\101\114")<o and(IsUsableSpell(C)and GetSpellCooldown(C)==0)then if L~=1 then if W==0 then table.insert(testQ.skills,W,C)end if W==1 then table.insert(testQ.skills,C)end end else for W,b in pairs(testQ.skills)do if testQ.skills[W]~=nil then if testQ.skills[W]==C then testQ.skills[W]=nil end end end end end local A,j,z,Y=GetSpellInfo(C)if Y==nil then Y=0 end if s=="\098"then if UnitPower("\112\108\097\121\101\114")>=Y and(IsUsableSpell(C)and GetSpellCooldown(C)==0)then if L~=1 then if W==0 then table.insert(testQ.skills,1,C)end if W==1 then table.insert(testQ.skills,C)end else end else for W,b in pairs(testQ.skills)do if testQ.skills[W]~=nil then if testQ.skills[W]==C then testQ.skills[W]=nil end end end end end if M~=nil and(IsUsableSpell(C)and(GetSpellCooldown(C)==0 and q==nil))then if n=="\208\159\208\176\208\187\208\176\208\180\208\184\208\189"then if C=="\208\159\209\128\208\176\208\178\208\181\208\180\208\189\208\190\208\181 \208\189\208\181\208\184\209\129\209\130\208\190\208\178\209\129\209\130\208\178\208\190"then if L~=1 then PlaySoundFile(M)end end else if C~="\208\146\208\187\208\176\209\129\209\130\209\140 \208\187\209\140\208\180\208\176"then PlaySoundFile(M)end end if n=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then if C=="\208\146\208\187\208\176\209\129\209\130\209\140 \208\187\209\140\208\180\208\176"then if L~=1 then end end else if C~="\208\159\209\128\208\176\208\178\208\181\208\180\208\189\208\190\208\181 \208\189\208\181\208\184\209\129\209\130\208\190\208\178\209\129\209\130\208\178\208\190"then PlaySoundFile(M)end end end if C=="\208\156\209\143\209\129\208\190\209\128\209\131\208\177\208\186\208\176"then if tonumber(GetComboPoints("\112\108\097\121\101\114",target))==1 and L~=1 then end end if q==1 then if UnitHealth("\112\108\097\121\101\114")<=tonumber(UnitHealthMax("\112\108\097\121\101\114"))/2 and GetSpellCooldown(C)==0 then table.insert(testQ.skills,W,C)if M~=nil then PlaySoundFile(M)end else for W,b in pairs(testQ.skills)do if testQ.skills[W]~=nil then if testQ.skills[W]==C then testQ.skills[W]=nil end end end end end end end function partyFrameHide()for C=1,25,1 do local W=_G["\080\097\114\116\121\077\101\109\098\101\114\070\114\097\109\101"..C]if W~=nil and W:IsVisible()then W:Hide()end end end function bs(C)local W local b=UnitClass("\112\108\097\121\101\114")local x=UnitStat("\112\108\097\121\101\114",1)local M=UnitStat("\112\108\097\121\101\114",2)local s=UnitStat("\112\108\097\121\101\114",3)local q=UnitStat("\112\108\097\121\101\114",4)local w=UnitStat("\112\108\097\121\101\114",5)local m=GetSpellBonusHealing()local J=GetCombatRating(6)local E=GetCombatRating(9)local L=GetCombatRating(24)local u=GetCombatRating(2)local i=GetCombatRating(3)local H=GetCombatRating(4)local X=GetCombatRating(5)local n=GetManaRegen()local d=GetCombatRating(25)local D,U=UnitAttackPower("\112\108\097\121\101\114")local O=GetCombatRating(18)local o=D+U local A local j=0 if b=="\208\150\209\128\208\181\209\134"or b=="\208\150\209\128\208\184\209\134\208\176"then local C,b,x,M,s=GetTalentInfo(3,27)if s>=1 then W=(((((q+w*.5)+m*2)+J)+E*2)+n*.5)+O j=J.."\047\050\056\057\047\052\052\054"else W=((((q+w*1.5)+m*2)+E)+n*1.5)+O j=J.."\047\048"end end if b=="\208\159\208\176\208\187\208\176\208\180\208\184\208\189"then local C,b,d,D,U=GetTalentInfo(1,26)local A,z,Y,p,Z=GetTalentInfo(2,26)local f,k,t,P,N=GetTalentInfo(3,26)if U>=1 then W=((((q*2+w)+m*1.5)+E)+n)+O*1.5 j=J.."\047\048"end if Z>=1 then W=(((((((x+M)+s*2)+J)+L)+u*1.5)+i*1.5)+H*1.5)+X*1.5 j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L.."\047\049\056\053"))))end if N>=1 then W=(((((x*2+M)+J)+E)+o)+O)+L j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L.."\047\049\052\056"))))end end if b=="\208\146\208\190\208\184\208\189"then local C,b,q,w,m=GetTalentInfo(3,7)if m>=1 then W=(((((((x+M)+s*2)+J)+L)+u*1.5)+i*1.5)+H*1.5)+X*1.5 j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L.."\047\049\054\052"))))else W=((((((x*2+M)+J)+E*1.5)+L)+d*2)+o)+O j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L..("\047\050\051\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(d.."\047\049\052\048\048")))))))end end if b=="\208\148\209\128\209\131\208\184\208\180"then local b,H,X,D,U=GetTalentInfo(3,27)local A,z,Y,p,Z=GetTalentInfo(2,5)local f,k,t,P,N=GetTalentInfo(1,13)local G,r,a,e,y=GetTalentInfo(2,9)if U>=1 or C=="\209\133\208\184\208\187"then W=((((q+w*1.5)+m*2)+O*1.5)+E)+n*1.5 j=J.."\047\048"end if Z>=1 or C=="\208\188\208\181\208\180\208\178\208\181\208\180\209\140"then W=((((((((x+M*2)+s*2)+J)+E)+O*1.5)+L)+u*1.5)+i*2)+d j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L..("\047\049\051\050\047\050\056\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(d.."\047\063\063")))))))end if N>=1 or C=="\209\129\208\190\208\178\208\176"then W=(((((q+w*.5)+m*2)+J)+E*2)+n*.5)+O j=J.."\047\050\054\051"end if y>=1 or C=="\208\186\208\190\209\130"then W=((((((x+M*2)+J)+E*1.5)+L)+d*2)+o)+O j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L..("\047\049\051\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(d.."\047\049\052\048\048")))))))end end if b=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\208\186"or b=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\209\134\208\176"then W=((((((x+M*2)+J)+E)+d*2)+L)+o)+O j=J..("\047"..("\050\054\051"..("\047"..("\055\050\050"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L..("\047\049\051\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(d.."\047\049\052\048\048")))))))))end if b=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\208\186"or b=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\209\134\208\176"then W=(((((q+w*1.5)+m*2)+J)+E*1.5)+n*.5)+O*1.5 j=J..("\047"..("\050\056\057\047\052\052\054 "..("\208\165\208\176\209\129\209\130\058 "..(O.." \049\049\048\048\047\049\052\048\048"))))end if b=="\208\168\208\176\208\188\208\176\208\189"then local C,b,s,u,i=GetTalentInfo(1,3)local H,X,D,U,A=GetTalentInfo(2,9)local z,Y,p,Z,f=GetTalentInfo(3,1)if i>=3 and A>=1 then Z,Z,Z,Z,i=GetTalentInfo(1,7)Z,Z,Z,Z,A=GetTalentInfo(2,11)end if i>=1 then W=(((q+m*2)+E)+J)+O*1.5 j=J.."\047\051\054\056"end if A>=1 then W=(((((((x+M*2)+J)+E*1.5)+d)+o)+O*1.5)+L)+m*.5 j=J..("\047"..("\050\051\050"..("\047"..("\051\054\056"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L.."\047\049\052\048"))))))end if f>=1 then W=((((q+w)+m*2)+E)+n*2)+O*2 j=J..("\047"..("\048"..(" \099\046\047\208\186\208\176\208\191\058 "..(O.."\047\049\050\054\057\047\050\049\048\048"))))end end if b=="\208\158\209\133\208\190\209\130\208\189\208\184\208\186"or b=="\208\158\209\133\208\190\209\130\208\189\208\184\209\134\208\176"then W=((((M*2+J)+E)+d*2)+o)+O j=J..("\047"..("\050\054\051"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(d.."\047\049\052\048\048"))))end if b=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then local C,b,q,w,m=GetTalentInfo(1,7)local H,X,n,D,U=GetTalentInfo(2,3)local O,A,z,Y,p=GetTalentInfo(3,3)if m>=1 or U>=1 or p>=1 then W=(((((x+M)+s*2)+J)+L)+u*1.5)+i*1.5 j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L.."\047\049\055\048\047\052\048\057"))))else W=(((((x*2+M)+J)+E)+L)+d)+o j=J..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(L..("\047\049\055\048"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(d.."\047\049\052\048\048")))))))end end if b=="\208\156\208\176\208\179"then W=((((q+w)+m*2)+J)+E*1.5)+O*1.5 j=J.."\047\052\052\054"end return string.format("\037\100",W)..(" \209\133\208\184\209\130\047\208\186\208\176\208\191\058 "..j)end GameTooltip:HookScript("\079\110\083\104\111\119",function(C)local W=UnitClass("\112\108\097\121\101\114")local b=0 local x local M=0 local s=0 local q=0 local w=0 local m=0 local J=0 local E=0 local L=0 local u=0 local i=0 local H=0 local X=0 local n=0 local d=0 local D=0 local U=0 local O=0 local o=0 local A=0 local j=0 local z=0 local Y=0 local p=0 local Z=0 local f=0 local k=0 local t=0 local P=0 local N=0 local G for C=1,C:NumLines(),1 do if _G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText()~=nil then if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,1)=="\043"or string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,1)=="\124"then x=mysplit(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText())if x[3]~=nil and string.utf8sub(x[3],1,3)=="\208\178\209\139\208\189"then if q==0 then q=tonumber(string.utf8sub(x[1],2))end if q==nil then q=tonumber(string.utf8sub(x[1],11))G=C end if q~=0 and G~=C then if tonumber(x[1]:sub(2))~=nil then else q=q+tonumber(x[1]:sub(11))end end end if x[3]~=nil and string.utf8sub(x[3],1,3)=="\208\187\208\190\208\178"then if s==0 then s=tonumber(string.utf8sub(x[1],2))end if s==nil then s=tonumber(string.utf8sub(x[1],11))G=C end if s~=0 and G~=C then if tonumber(x[1]:sub(2))~=nil then else s=s+tonumber(x[1]:sub(11))end end end if x[3]~=nil and string.utf8sub(x[3],1,3)=="\209\129\208\184\208\187"then if x[4]==nil then if M==0 then M=tonumber(string.utf8sub(x[1],2))end if M==nil then M=tonumber(string.utf8sub(x[1],11))G=C end if M~=0 and G~=C then if tonumber(x[1]:sub(2))~=nil then else M=M+tonumber(x[1]:sub(11))end end end end if x[3]~=nil and string.utf8sub(x[3],1,3)=="\208\184\208\189\209\130"then if w==0 then w=tonumber(string.utf8sub(x[1],2))end if w==nil then w=tonumber(string.utf8sub(x[1],11))G=C end if w~=0 and G~=C then if tonumber(x[1]:sub(2))~=nil then else w=w+tonumber(x[1]:sub(11))end end end if x[3]~=nil and string.utf8sub(x[3],1,3)=="\208\180\209\131\209\133"then if m==0 then m=tonumber(string.utf8sub(x[1],2))end if m==nil then m=tonumber(string.utf8sub(x[1],11))G=C end if m~=0 and G~=C then if tonumber(x[1]:sub(2))~=nil then else m=m+tonumber(x[1]:sub(11))end end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\176\209\130\208\176"then U=tonumber(x[1]:sub(2))if U==nil then U=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\186\209\128\208\184"then L=tonumber(x[1]:sub(2))if L==nil then L=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\188\208\176\209\129"then u=tonumber(x[1]:sub(2))if u==nil then u=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\183\208\176\208\186"then J=tonumber(x[1]:sub(2))if J==nil then J=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\188\208\181\209\130"then E=tonumber(x[1]:sub(2))if E==nil then E=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\209\129\208\186\208\190"then E=tonumber(x[1]:sub(2))if E==nil then E=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\183\208\176\209\137"then i=tonumber(x[1]:sub(2))if i==nil then i=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\209\131\208\186\208\187"then H=tonumber(x[1]:sub(2))if H==nil then H=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\191\208\176\209\128"then X=tonumber(x[1]:sub(2))if X==nil then X=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\177\208\187\208\190"then n=tonumber(x[1]:sub(2))if n==nil then n=tonumber(x[1]:sub(11))end end if x[4]~=nil and string.utf8sub(x[4],1,3)=="\208\191\209\128\208\190"then D=tonumber(x[1]:sub(2))if D==nil then D=tonumber(x[1]:sub(11))end end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\176\209\130\208\176\208\186\208\184")then P=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\186\209\128\208\184\209\130\208\184\209\135\208\181\209\129\208\186\208\190\208\179\208\190")then j=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\188\208\176\209\129\209\130\208\181\209\128\209\129\209\130\208\178\208\176")then z=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\183\208\176\208\186\208\187\208\184\208\189\208\176\208\189\208\184\208\185")then o=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\188\208\181\209\130\208\186\208\190\209\129\209\130\208\184")then A=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\209\129\208\186\208\190\209\128\208\190\209\129\209\130\208\184")then N=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\183\208\176\209\137\208\184\209\130\209\139")then Y=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\209\131\208\186\208\187\208\190\208\189\208\181\208\189\208\184\209\143")then p=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\191\208\176\209\128\208\184\209\128\208\190\208\178\208\176\208\189\208\184\209\143")then Z=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\177\208\187\208\190\208\186\208\184\209\128\208\190\208\178\208\176\208\189\208\184\209\143")then f=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\146\208\190\209\129\208\191\208\190\208\187\208\189\208\181\208\189\208\184\208\181")then k=mysplit(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText())k=tonumber(k[5])end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\208\191\209\128\208\190\208\177\208\184\208\178\208\176\208\189\208\184\209\143")then t=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..C]:GetText(),"\037\083\043\036"))end end end end if U==nil then U=0 end if M==nil then M=0 end if s==nil then s=0 end if q==nil then q=0 end if w==nil then w=0 end if m==nil then m=0 end if J==nil then J=0 end if E==nil then E=0 end if L==nil then L=0 end if u==nil then u=0 end if i==nil then i=0 end if H==nil then H=0 end if X==nil then X=0 end if n==nil then n=0 end if d==nil then d=0 end if D==nil then D=0 end if P==nil then P=0 end if o==nil then o=0 end if A==nil then A=0 end if j==nil then j=0 end if z==nil then z=0 end if Y==nil then Y=0 end if p==nil then p=0 end if Z==nil then Z=0 end if f==nil then f=0 end if k==nil then k=0 end if t==nil then t=0 end if N==nil then N=0 end if O==nil then O=0 end if W=="\208\150\209\128\208\181\209\134"or W=="\208\150\209\128\208\184\209\134\208\176"then local C,W,x,M,s=GetTalentInfo(3,27)if s>=1 then b=((((((((((w+m*.5)+J*2)+o*2)+E)+A)+L*2)+j*2)+d*.5)+k*.5)+O)+N else b=((((((((w+m*1.5)+J*2)+L)+d*1.5)+O)+o*2)+j)+k*1.5)+N end end if W=="\208\159\208\176\208\187\208\176\208\180\208\184\208\189"then local C,W,x,D,t=GetTalentInfo(1,26)local G,r,a,e,y=GetTalentInfo(2,26)local F,g,R,c,S=GetTalentInfo(3,26)if t>=1 then b=((((((((w*2+m)+J*1.5)+L)+d)+O*1.5)+o*1.5)+j)+k)+N*1.5 end if y>=1 then b=(((((((((((((M+s)+q*2)+E)+u)+i*1.5)+H*1.5)+X*1.5)+n*1.5)+A)+z)+Y*1.5)+p*1.5)+Z*1.5)+f*1.5 end if S>=1 then b=((((((((((M*2+s)+E)+L)+U)+O)+u)+A)+j)+P)+N)+z end end if W=="\208\146\208\190\208\184\208\189"then local C,W,x,w,m=GetTalentInfo(3,7)if m>=1 then b=(((((((((((((M+s)+q*2)+E)+u)+i*1.5)+H*1.5)+X*1.5)+n*1.5)+A)+z)+Y*1.5)+p*1.5)+Z*1.5)+f*1.5 else b=((((((((((((M*2+s)+E)+L*1.5)+u)+D*2)+U)+O)+A)+j*1.5)+z)+t*2)+P)+N end end if W=="\208\148\209\128\209\131\208\184\208\180"then local C,W,x,X,n=GetTalentInfo(3,27)local Z,f,G,r,a=GetTalentInfo(2,5)local e,y,F,g,R=GetTalentInfo(1,13)local c,S,B,K,l=GetTalentInfo(2,9)if n>=1 then b=((((((((w+m*1.5)+J*2)+O*1.5)+L)+d*1.5)+o*2)+N*1.5)+j)+k*1.5 end if a>=1 then b=(((((((((((((((M+s*2)+q*2)+E)+L)+O*1.5)+u)+i*1.5)+H*2)+D)+A)+j)+N*1.5)+z)+Y*1.5)+p*2)+t end if R>=1 then b=((((((((((w+m*.5)+J*2)+E)+L*2)+d*.5)+O)+o*2)+A)+j*2)+k*.5)+N end if l>=1 then b=((((((((((((M+s*2)+E)+L*1.5)+u)+D*2)+U)+O)+A)+j*1.5)+z)+t*2)+P)+N end end if W=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\208\186"or W=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\209\134\208\176"then b=((((((((((((M+s*2)+E)+L)+D*2)+u)+U)+O)+A)+j)+t*2)+z)+P)+N end if W=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\208\186"or W=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\209\134\208\176"then b=((((((((((w+m*1.5)+J*2)+E)+L*1.5)+d*.5)+O*1.5)+o*2)+A)+j*1.5)+k*.5)+N*1.5 end if W=="\208\168\208\176\208\188\208\176\208\189"then local C,W,x,q,i=GetTalentInfo(1,3)local H,X,n,Y,p=GetTalentInfo(2,9)local Z,f,G,r,a=GetTalentInfo(3,1)if i>=3 and p>=1 then r,r,r,r,i=GetTalentInfo(1,7)r,r,r,r,p=GetTalentInfo(2,11)end if i>=1 then b=(((((((w+J*2)+L)+E)+O*1.5)+o*2)+j)+A)+N*1.5 end if p>=1 then b=((((((((((((((M+s*2)+E)+L*1.5)+D)+U)+O*1.5)+u)+J)+A)+j*1.5)+t)+P)+N*1.5)+z)+o end if a>=1 then b=((((((((w+m)+J*2)+L)+d*2)+O*2)+o*2)+j)+k*2)+N*2 end end if W=="\208\158\209\133\208\190\209\130\208\189\208\184\208\186"or W=="\208\158\209\133\208\190\209\130\208\189\208\184\209\134\208\176"then b=(((((((((s*2+E)+L)+D*2)+U)+O)+A)+j)+t*2)+P)+N end if W=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then local C,W,x,w,m=GetTalentInfo(1,7)local J,X,n,d,O=GetTalentInfo(2,3)local o,Z,f,k,N=GetTalentInfo(3,3)if m>=1 or O>=1 or N>=1 then b=(((((((((M+s)+q*2)+E)+u)+i*1.5)+H*1.5)+A)+z)+Y*1.5)+p*1.5 else b=((((((((((M*2+s)+E)+L)+u)+D)+U)+A)+j)+z)+t)+P end end if W=="\208\156\208\176\208\179"then b=((((((((w+m)+J*2)+E)+L*1.5)+O*1.5)+o*2)+A)+j*1.5)+N*1.5 end if tonumber(b)~=0 then GameTooltip:AddLine("\124\099\102\102\048\048\066\070\070\070\208\177\209\129\058 \124\099\102\102\070\070\056\067\048\048"..b)GameTooltip:Show()else end end)function ns_obj(C)local W if C=="\097\097"then W="\107\097"end if C=="\097\065"then W="\116"end if C=="\097\098"then W="\102"end if C=="\097\066"then W="\111\098"end if C=="\097\099"then W="\109\122"end if C=="\097\067"then W="\104"end return W end local W={[0]="\048",[1]="\049",[2]="\050",[3]="\051",[4]="\052";[5]="\053",[6]="\054",[7]="\055",[8]="\056";[9]="\057";[10]="\065",[11]="\066",[12]="\067",[13]="\068",[14]="\069";[15]="\070";[16]="\071";[17]="\035";[18]="\036",[19]="\037",[20]="\040",[21]="\041",[22]="\042";[23]="\043";[24]="-";[25]="\046",[26]="\047",[27]="\058",[28]="\059";[29]="\060";[30]="\061",[31]="\062";[32]="\063";[33]="\064";[34]="\072",[35]="\073";[36]="\074";[37]="\075",[38]="\076";[39]="\077";[40]="\078";[41]="\079";[42]="\080";[43]="\081",[44]="\082",[45]="\083";[46]="\084",[47]="\085",[48]="\086",[49]="\087",[50]="\088",[51]="\089";[52]="\090";[53]="\094";[54]="\095",[55]="\096";[56]="\097";[57]="\098";[58]="\099";[59]="\100";[60]="\101";[61]="\102",[62]="\103";[63]="\104";[64]="\105";[65]="\106";[66]="\107",[67]="\108";[68]="\109";[69]="\110";[70]="\111",[71]="\112";[72]="\113",[73]="\114",[74]="\115",[75]="\116";[76]="\117";[77]="\118",[78]="\119";[79]="\120",[80]="\121";[81]="\122";[82]="\033";[83]="\123";[84]="\124";[85]="\125";[86]="\091",[87]="\093";[88]="\'",[89]="\044"}local function b(C)for W,b in pairs(W)do if b==C then return W end end return 0 end function numeCod(C)local W={}local x=string.len(C)local M=x while M>0 do local x=string.sub(C,M,M)W[#W+1]=b(x)M=M-1 end local s=0 for C,W in ipairs(W)do s=s+W*math.pow(90,C-1)end return s end function rand_alfabet()testQ.ns_alfabetQ={}testQ.ns_alfabetQ1={}local C={[1]="\208\144",[2]="\208\145";[3]="\208\146",[4]="\208\147";[5]="\208\148",[6]="\208\150",[7]="\208\151";[8]="\208\152";[9]="\208\154";[10]="\208\155";[11]="\208\156",[12]="\208\157",[13]="\208\158";[14]="\208\159";[15]="\208\160",[16]="\208\161";[17]="\208\162",[18]="\208\163",[19]="\208\164";[20]="\208\165",[21]="\208\166",[22]="\208\167";[23]="\208\168",[24]="\208\175";[25]="\208\149",[26]="\208\153";[27]="\208\173";[28]="\208\169",[29]="\208\174",[30]="\208\171"}for W=1,5,1 do local b=math.random(1,30)table.insert(testQ.ns_alfabetQ,C[b])table.insert(testQ.ns_alfabetQ1,C[b])end end function np_change_0()ns_cfg={HPheight=14;HPwidth=99;CBheight=5;CBtieFont=10;border=4;rheight=15,Rpoint="\082\073\071\072\084",RrelativePoint="\076\069\070\084",Rx=0;Ry=-4,LvLFontSize=13;LvLpoint="\082\073\071\072\084",LvLrelativePoint="\076\069\070\084",LvLx=-2,LvLy=0;NameFontSize=11;Npoint="\066\079\084\084\079\077",NrelativePoint="\084\079\080",Nx=0;Ny=4,hostileunit={r=.77;g=.11;b=.11},friendlyunit={r=.6;g=.88,b=.99},friendlyplayer={r=.11;g=.88,b=.11};neutralunit={r=.99,g=.99,b=0}}end function np_change_nil()ns_cfg={HPheight=4,HPwidth=99;CBheight=5,CBtieFont=10,border=2;rheight=15,Rpoint="\082\073\071\072\084";RrelativePoint="\076\069\070\084";Rx=0;Ry=-4;LvLFontSize=13;LvLpoint="\082\073\071\072\084";LvLrelativePoint="\076\069\070\084";LvLx=-2,LvLy=0;NameFontSize=11,Npoint="\066\079\084\084\079\077",NrelativePoint="\084\079\080";Nx=0,Ny=4;hostileunit={r=.77;g=.11;b=.11},friendlyunit={r=.6;g=.88,b=.99};friendlyplayer={r=.11;g=.88;b=.11},neutralunit={r=.99,g=.99;b=0}}end function ns_xy(C,W,b,x)local M=sqrt((C-b)^2+(W-x)^2)return M end function numZome()if GetZoneText()=="\208\155\209\131\208\189\208\190\209\129\208\178\208\181\209\130"then kont="\050"lok="\049\052"end if GetZoneText()=="\208\151\208\176\208\189\208\179\208\176\209\128\209\130\208\190\208\191\209\140"then kont="\051"lok="\050"end if GetZoneText()=="\208\162\208\176\208\189\208\176\209\128\208\184\209\129"then kont="\049"lok="\049\056"end if GetZoneText()=="\208\158\209\128\208\179\209\128\208\184\208\188\208\188\208\176\209\128"then kont="\049"lok="\049\048"end if GetZoneText()=="\208\168\209\130\208\190\209\128\208\188\208\179\209\128\208\176\208\180"then kont="\050"lok="\050\056"end if GetZoneText()=="\208\148\209\131\209\128\208\190\209\130\208\176\209\128"then kont="\049"lok="\052"end if GetZoneText()=="\208\161\209\130\208\181\208\191\208\184"then kont="\049"lok="\049\055"end return kont,lok end function ns_locaziya()local C=math.random(1,7)local W if C==1 then W="\208\155\209\131\208\189\208\190\209\129\208\178\208\181\209\130"end if C==2 then W="\208\148\209\131\209\128\208\190\209\130\208\176\209\128"end if C==3 then W="\208\158\209\128\208\179\209\128\208\184\208\188\208\188\208\176\209\128"end if C==4 then W="\208\151\208\176\208\189\208\179\208\176\209\128\209\130\208\190\208\191\209\140"end if C==5 then W="\208\161\209\130\208\181\208\191\208\184"end if C==6 then W="\208\162\208\176\208\189\208\176\209\128\208\184\209\129"end if C==7 then W="\208\168\209\130\208\190\209\128\208\188\208\179\209\128\208\176\208\180"end return W end function ns_q4xy()local C=GetUnitName("\112\108\097\121\101\114")kont,lok=numZome()if kont~=nil then if testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]==nil then testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]={}local W=math.random(1,99)local b=math.random(1,99)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=600 testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x=tonumber("\048\046"..W)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y=tonumber("\048\046"..b)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok=ns_locaziya()testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].timer=5 else if GetZoneText()==testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok then if testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time>=1 then local W,b=GetPlayerMapPosition("\112\108\097\121\101\114")testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].timer=(ns_xy(W,b,testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x,testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y)/tonumber(mapTables.lokRasstoyanie[kont][lok]))/10 testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time-1 print("\208\158\209\129\209\130\208\176\208\187\208\190\209\129\209\140 "..(testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time.." \209\129\208\181\208\186\209\131\208\189\208\180"))if(ns_xy(W,b,testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x,testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y)/tonumber(mapTables.lokRasstoyanie[kont][lok]))/10<.5 then testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121\095\101\110\100"]=1 SendChatMessage("\208\158\208\189\208\176 \209\130\209\131\209\130\033 \208\157\209\142\209\133\208\190\208\188 \209\135\209\131\209\142\033","\079\070\070\073\067\069\082",nil,1)end else testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok=ns_locaziya()SendChatMessage("\208\163\208\178\209\139\044 \208\188\208\190\209\142 \208\191\209\128\208\184\208\189\209\134\208\181\209\129\209\129\209\131 \209\131\208\182\208\181 \209\131\208\178\208\181\208\183\208\187\208\184 \208\178 "..testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok,"\079\070\070\073\067\069\082",nil,1)local W=math.random(1,99)local b=math.random(1,99)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x=tonumber("\048\046"..W)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y=tonumber("\048\046"..b)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=600 end end end else if testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]==nil then testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]={}local W=math.random(1,99)local b=math.random(1,99)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=300 testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x=tonumber("\048\046"..W)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y=tonumber("\048\046"..b)testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok=ns_locaziya()testQ[C]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].timer=5 end end end function allcash(C,W,b)local x,M=GetPlayerMapPosition("\112\108\097\121\101\114")local s=sqrt((x-C)^2+(M-W)^2)local q=(.82-s)/.82 if b==1 then MoveViewRightStart(0)if testQ.acbuhlo==nil then MoveViewLeftStart(q)else MoveViewLeftStart(q/2)end else MoveViewLeftStart(0)if testQ.acbuhlo==nil then MoveViewRightStart(q)else MoveViewRightStart(q/2)end end local w=math.random(1,2)if w==1 then if testQ.acbuhlo==1 then print(q)end end end function osleplenie(C)MoveViewLeftStart(0)MoveViewRightStart(0)local W=math.random(1,2)if W==1 then MoveViewLeftStart(C)else MoveViewRightStart(C)end end function Shuffle(C)local W={}for b=1,#C,1 do W[b]=C[b]end for C=#C,2,-1 do local b=math.random(C)W[C],W[b]=W[b],W[C]end return W end function ns_iya(C)for C=1,100,1 do if iYaBtn[C]~=nil then iYaBtn[C]:Hide()iYaBtn[C]:Enable()iYaBtn[C]:SetAlpha(1)end if iYaBtnP[C]~=nil then iYaBtnP[C]:Hide()end end if tblIya[C].sh==1 then testQ.iya_temp=time()for C=1,11,1 do if iYaBtn[C]~=nil then iYaBtn[C]:SetAlpha(1)end end for C=1,100,1 do if iYaBtnP[C]~=nil then iYaBtnP[C]:Hide()end end for C=1,100,1 do if iYaBtnPic[C]~=nil then iYaBtnPic[C]:Hide()end end for C=1,100,1 do if iYaBtnText[C]~=nil then iYaBtnText[C]:Hide()end end for C=1,100,1 do if iYaBtnVsp[C]~=nil then iYaBtnVsp[C]:Hide()end end iYaBtn:configure(1,0,300,515,32,"",tblIya[C].t1,C,tblIya[C].s1,99)iYaBtn:configure(2,-131,125,256,256,tblIya[C].p1,tblIya[C].t2,C,tblIya[C].s2,99)iYaBtn:configure(3,127,125,256,256,tblIya[C].p2,tblIya[C].t3,C,tblIya[C].s3,99)iYaBtn:configure(4,-131,-165,256,256,tblIya[C].p3,tblIya[C].t4,C,tblIya[C].s4,tblIya[C].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[C].p4,tblIya[C].t5,C,tblIya[C].s5,tblIya[C].tq)iYaBtn:configure(6,-128,268,256,32,"",tblIya[C].t6,C,tblIya[C].s6,99)iYaBtn:configure(7,128,268,256,32,"",tblIya[C].t7,C,tblIya[C].s7,99)iYaBtn:configure(8,-128,-22,256,32,"",tblIya[C].t8,C,tblIya[C].s8,99)iYaBtn:configure(9,128,-22,256,32,"",tblIya[C].t9,C,tblIya[C].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",C,"",99)iYaBtn:configure(11,-322,300,128,64,"",C..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)iYaBtn[6]:SetAlpha(.5)iYaBtn[7]:SetAlpha(.5)iYaBtn[2]:SetAlpha(.5)iYaBtn[3]:SetAlpha(.5)end if tblIya[C].sh==2 then testQ.iya_temp=time()for C=1,11,1 do if iYaBtn[C]~=nil then iYaBtn[C]:SetAlpha(1)end end for C=1,100,1 do if iYaBtnP[C]~=nil then iYaBtnP[C]:Hide()end end for C=1,100,1 do if iYaBtnPic[C]~=nil then iYaBtnPic[C]:Hide()end end for C=1,100,1 do if iYaBtnText[C]~=nil then iYaBtnText[C]:Hide()end end for C=1,100,1 do if iYaBtnVsp[C]~=nil then iYaBtnVsp[C]:Hide()end end local W={"\050";"\051","\052","\053"}local b=Shuffle(W)iYaBtn:configure(1,0,300,515,32,tblIya[C].p10,tblIya[C].t1,C,tblIya[C].s1,99)iYaBtn:configure(2,-131,125,256,256,tblIya[C]["\112"..b[1]],tblIya[C]["\116"..b[1]],C,tblIya[C]["\115"..b[1]],tblIya[C].tq)iYaBtn:configure(3,127,125,256,256,tblIya[C]["\112"..b[2]],tblIya[C]["\116"..b[2]],C,tblIya[C]["\115"..b[2]],tblIya[C].tq)iYaBtn:configure(4,-131,-165,256,256,tblIya[C]["\112"..b[3]],tblIya[C]["\116"..b[3]],C,tblIya[C]["\115"..b[3]],tblIya[C].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[C]["\112"..b[4]],tblIya[C]["\116"..b[4]],C,tblIya[C]["\115"..b[4]],tblIya[C].tq)iYaBtn:configure(6,-128,268,256,32,tblIya[C].p6,tblIya[C].t6,C,tblIya[C].s6,99)iYaBtn:configure(7,128,268,256,32,tblIya[C].p7,tblIya[C].t7,C,tblIya[C].s7,99)iYaBtn:configure(8,-128,-22,256,32,tblIya[C].p8,tblIya[C].t8,C,tblIya[C].s8,99)iYaBtn:configure(9,128,-22,256,32,tblIya[C].p9,tblIya[C].t9,C,tblIya[C].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",C,"",99)iYaBtn:configure(11,-322,300,128,64,"",C..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)end if tblIya[C].sh==3 then testQ.iya_temp=time()for C=1,11,1 do if iYaBtn[C]~=nil then iYaBtn[C]:SetAlpha(1)end end for C=1,100,1 do if iYaBtnP[C]~=nil then iYaBtnP[C]:Hide()end end for C=1,100,1 do if iYaBtnPic[C]~=nil then iYaBtnPic[C]:Hide()end end for C=1,100,1 do if iYaBtnText[C]~=nil then iYaBtnText[C]:Hide()end end for C=1,100,1 do if iYaBtnVsp[C]~=nil then iYaBtnVsp[C]:Hide()end end local W={"\050";"\051","\052"}local b=Shuffle(W)iYaBtn:configure(1,0,300,515,32,"",tblIya[C].t1,C,tblIya[C].s1,99)iYaBtn:configure(2,0,125,256,256,tblIya[C]["\112"..b[1]],tblIya[C]["\116"..b[1]],C,tblIya[C]["\115"..b[1]],tblIya[C].tq)iYaBtn:configure(3,-256,125,256,256,tblIya[C]["\112"..b[2]],tblIya[C]["\116"..b[2]],C,tblIya[C]["\115"..b[2]],tblIya[C].tq)iYaBtn:configure(4,256,125,256,256,tblIya[C]["\112"..b[3]],tblIya[C]["\116"..b[3]],C,tblIya[C]["\115"..b[3]],tblIya[C].tq)iYaBtn:configure(10,268,300,32,32,"","\120",C,"",99)iYaBtn:configure(11,-322,300,128,64,"",C..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)end if tblIya[C].sh==4 then local W={"\050";"\051","\052","\053"}local b=Shuffle(W)for C=1,11,1 do if iYaBtn[C]~=nil then iYaBtn[C]:SetAlpha(1)end end for C=1,100,1 do if iYaBtnP[C]~=nil then iYaBtnP[C]:Hide()end end for C=1,100,1 do if iYaBtnPic[C]~=nil then iYaBtnPic[C]:Hide()end end for C=1,100,1 do if iYaBtnText[C]~=nil then iYaBtnText[C]:Hide()end end for C=1,100,1 do if iYaBtnVsp[C]~=nil then iYaBtnVsp[C]:Hide()end end iYaBtn:configure(2,-131,125,256,256,tblIya[C]["\112"..b[1]],tblIya[C]["\116"..b[1]],C,tblIya[C]["\115"..b[1]],tblIya[C].tq)iYaBtn:configure(3,127,125,256,256,tblIya[C]["\112"..b[2]],tblIya[C]["\116"..b[2]],C,tblIya[C]["\115"..b[2]],tblIya[C].tq)iYaBtn:configure(4,-131,-165,256,256,tblIya[C]["\112"..b[3]],tblIya[C]["\116"..b[3]],C,tblIya[C]["\115"..b[3]],tblIya[C].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[C]["\112"..b[4]],tblIya[C]["\116"..b[4]],C,tblIya[C]["\115"..b[4]],tblIya[C].tq)iYaBtn:configure(6,-128,268,256,32,"",tblIya[C]["\116\116"..b[1]],C,tblIya[C].s6,99)iYaBtn:configure(7,128,268,256,32,"",tblIya[C]["\116\116"..b[2]],C,tblIya[C].s7,99)iYaBtn:configure(8,-128,-22,256,32,"",tblIya[C]["\116\116"..b[3]],C,tblIya[C].s8,99)iYaBtn:configure(9,128,-22,256,32,"",tblIya[C]["\116\116"..b[4]],C,tblIya[C].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",C,"",99)iYaBtn:configure(11,-322,300,128,64,"",C..("\047"..50-testQ.iya_ser),"","",99)local x={"\049","\050";"\051","\052"}local M=Shuffle(x)iYaBtnP:configure(1,-112,148,64,64,"",tblIya[C]["\116\112"..M[1]],C,tblIya[C].s10,tblIya[C].tq)iYaBtnP:configure(2,-112,84,64,64,"",tblIya[C]["\116\112"..M[2]],C,tblIya[C].s10,tblIya[C].tq)iYaBtnP:configure(3,-112,20,64,64,"",tblIya[C]["\116\112"..M[3]],C,tblIya[C].s10,tblIya[C].tq)iYaBtnP:configure(4,-112,-44,64,64,"",tblIya[C]["\116\112"..M[4]],C,tblIya[C].s10,tblIya[C].tq)iYaBtn[2]:Disable()iYaBtn[3]:Disable()iYaBtn[4]:Disable()iYaBtn[5]:Disable()iYaBtn[6]:Disable()iYaBtn[7]:Disable()iYaBtn[8]:Disable()iYaBtn[9]:Disable()end if tblIya[C].sh==5 then testQ.iya_temp=time()local W={"\049","\050";"\051";"\052";"\053","\054"}local b=Shuffle(W)iYaBtn:configure(1,0,300,515,32,tblIya[C].p11,tblIya[C].t11,C,tblIya[C].s1,99)iYaBtnPic:configure(1,-259,125,256,256,tblIya[C]["\112"..b[1]],tblIya[C]["\116"..b[1]],C,tblIya[C]["\116\115"..b[1]],tblIya[C].tq)iYaBtnPic:configure(2,257,125,256,256,tblIya[C]["\112"..b[2]],tblIya[C]["\116"..b[2]],C,tblIya[C]["\116\115"..b[2]],tblIya[C].tq)iYaBtnPic:configure(3,-259,-165,256,256,tblIya[C]["\112"..b[3]],tblIya[C]["\116"..b[3]],C,tblIya[C]["\116\115"..b[3]],tblIya[C].tq)iYaBtnPic:configure(4,257,-165,256,256,tblIya[C]["\112"..b[4]],tblIya[C]["\116"..b[4]],C,tblIya[C]["\116\115"..b[4]],tblIya[C].tq)iYaBtnPic:configure(5,0,125,256,256,tblIya[C]["\112"..b[5]],tblIya[C]["\116"..b[5]],C,tblIya[C]["\116\115"..b[5]],tblIya[C].tq)iYaBtnPic:configure(6,0,-165,256,256,tblIya[C]["\112"..b[6]],tblIya[C]["\116"..b[6]],C,tblIya[C]["\116\115"..b[6]],tblIya[C].tq)iYaBtnText:configure(1,-259,268,256,32,"",tblIya[C].tt1,C,tblIya[C].tts1,99)iYaBtnText:configure(2,255,268,256,32,"",tblIya[C].tt2,C,tblIya[C].tts2,99)iYaBtnText:configure(3,-259,-22,256,32,"",tblIya[C].tt3,C,tblIya[C].tts3,99)iYaBtnText:configure(4,255,-22,256,32,"",tblIya[C].tt4,C,tblIya[C].tts4,99)iYaBtnText:configure(5,0,268,256,32,"",tblIya[C].tt5,C,tblIya[C].tts5,99)iYaBtnText:configure(6,0,-22,256,32,"",tblIya[C].tt6,C,tblIya[C].tts6,99)iYaBtn:configure(10,268,300,32,32,"","\120",C,"",99)iYaBtn:configure(11,-322,316,128,64,"",C..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)end if tblIya[C].sh==6 then local W={"\050";"\051";"\052","\053"}local b=Shuffle(W)for C=1,11,1 do if iYaBtn[C]~=nil then iYaBtn[C]:SetAlpha(1)end end for C=1,100,1 do if iYaBtnP[C]~=nil then iYaBtnP[C]:Hide()end end for C=1,100,1 do if iYaBtnPic[C]~=nil then iYaBtnPic[C]:Hide()end end for C=1,100,1 do if iYaBtnText[C]~=nil then iYaBtnText[C]:Hide()end end for C=1,100,1 do if iYaBtnVsp[C]~=nil then iYaBtnVsp[C]:Hide()end end iYaBtn:configure(2,-131,125,256,256,tblIya[C]["\112"..b[1]],tblIya[C]["\116"..b[1]],C,tblIya[C]["\115"..b[1]],tblIya[C].tq)iYaBtn:configure(3,127,125,256,256,tblIya[C]["\112"..b[2]],tblIya[C]["\116"..b[2]],C,tblIya[C]["\115"..b[2]],tblIya[C].tq)iYaBtn:configure(4,-131,-165,256,256,tblIya[C]["\112"..b[3]],tblIya[C]["\116"..b[3]],C,tblIya[C]["\115"..b[3]],tblIya[C].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[C]["\112"..b[4]],tblIya[C]["\116"..b[4]],C,tblIya[C]["\115"..b[4]],tblIya[C].tq)iYaBtn:configure(6,-128,268,256,32,"",tblIya[C]["\116\116"..b[1]],C,tblIya[C].s6,99)iYaBtn:configure(7,128,268,256,32,"",tblIya[C]["\116\116"..b[2]],C,tblIya[C].s7,99)iYaBtn:configure(8,-128,-22,256,32,"",tblIya[C]["\116\116"..b[3]],C,tblIya[C].s8,99)iYaBtn:configure(9,128,-22,256,32,"",tblIya[C]["\116\116"..b[4]],C,tblIya[C].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",C,"",99)iYaBtn:configure(11,-322,300,128,64,"",C..("\047"..50-testQ.iya_ser),"","",99)local x={"\049","\050";"\051","\052"}local M=Shuffle(x)iYaBtnP:configure(1,-11,148,80,32,"",tblIya[C]["\116\112"..M[1]],C,tblIya[C].s10,tblIya[C].tq)iYaBtnP:configure(2,-11,116,80,32,"",tblIya[C]["\116\112"..M[2]],C,tblIya[C].s10,tblIya[C].tq)iYaBtnP:configure(3,-11,84,80,32,"",tblIya[C]["\116\112"..M[3]],C,tblIya[C].s10,tblIya[C].tq)iYaBtnP:configure(4,-11,52,80,32,"",tblIya[C]["\116\112"..M[4]],C,tblIya[C].s10,tblIya[C].tq)iYaBtn[2]:Disable()iYaBtn[3]:Disable()iYaBtn[4]:Disable()iYaBtn[5]:Disable()iYaBtn[6]:Disable()iYaBtn[7]:Disable()iYaBtn[8]:Disable()iYaBtn[9]:Disable()end end function sCh()SendChatMessage("\208\167\209\130\208\190 \208\178\209\139 \208\178\208\184\208\180\208\184\209\130\208\181 \209\130\209\131\209\130\058 \"\195\145\195\177\"\063","\071\085\073\076\068",nil,1)end function pokazTextur(C,W,b,M)if M=="\115\104\111\119"then prok_set1={Rx=128;Ry=256;x=-200,y=0}prok_set2={Rx=128,Ry=256,x=200;y=0}prok_set3={Rx=256;Ry=128;x=0;y=200}prok_set4={Rx=0;Ry=0,x=0,y=0}local x=GetScreenWidth()local M=GetScreenHeight()if b==4 then unIcon(tonumber(C),x,M,0+prok_set4.x,0+prok_set4.y,W,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end if b==1 then unIcon(tonumber(C),prok_set1.Rx,prok_set1.Ry,0+prok_set1.x,0+prok_set1.y,W,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end if b==2 then unIcon(tonumber(C),prok_set2.Rx,prok_set2.Ry,0+prok_set2.x,0+prok_set2.y,W,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end if b==3 then unIcon(tonumber(C),prok_set3.Rx,prok_set3.Ry,0+prok_set3.x,0+prok_set3.y,W,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end else unIcon(tonumber(tonumber(C),x,y,0,0,0,"\104\105\100\101",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082"))end end
+function mysplit (inputstr, sep)
+	if sep == nil then
+		sep = "%s"
+	end
+	local t={}
+	for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+		table.insert(t, str)
+	end
+	return t
+end
+function round(number)
+  if (number - (number % 0.1)) - (number - (number % 1)) < 0.5 then
+    number = number - (number % 1)
+  else
+    number = (number - (number % 1)) + 1
+  end
+ return number
+end
+function nsplit(str)
+	lines = {}
+	for s in str:gmatch("[^\r\n]+") do
+		table.insert(lines, s)
+	end
+	return lines
+end
+function all_trim(s)
+	return s:match( "^%s*(.-)%s*$" )
+end
+
+function kirTest(b,n1)
+test1=b:sub(n1,n1)
+testN=b:byte(7)
+testN=tonumber(testN)
+if testN == 208 then
+	r=b:sub(n1*2-1,n1*2)
+else
+	r=test1
+end
+return r
+end
+
+function alfabet (bookv)
+shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'()"
+	myB=string.find(shablon,bookv,1,true)
+	return myB
+end
+function alfabetC (bookv,c)
+	shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'()"
+	local myB
+	if c == 0 then
+		myB=string.find(shablon,bookv,1,true)
+	end
+	if c == 1 then
+		if bookv < 133 then
+			myB = string.utf8sub(shablon,bookv/2+0.5,bookv/2+0.5)
+		else
+			myB = string.sub(shablon,bookv,bookv)
+		end
+	end
+	return myB
+end
+function hashStr (nome)
+	local i = time()
+	i = i % 10000
+	i=tostring(i)
+	i=string.utf8sub(i,2,3)
+	i=string.format("%03d", i)
+	nomeLen=string.utf8len(nome)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(nome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	iN=tostring(i)
+	r1=string.utf8sub(iN, 1, 1)
+	r2=string.utf8sub(hNome, 1, 1)
+	r3=string.utf8sub(iN, 2, 2)
+	r4=string.utf8sub(hNome, 2, 2)
+	r5=string.utf8sub(iN, 3, 3)
+	r6=string.utf8sub(hNome, 3, 3)
+	r=r1 .. r2 .. r3 .. r4 .. r5 .. r6
+	return r
+end
+
+function tablelength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+end
+
+function getPOS(x,y)
+	local YYY=((1-y)*668)
+	local XXX=x*1002
+	return XXX,YYY
+end
+
+function hshStrNuovo(hshRar,mioNome)
+	nomeLen=string.utf8len(mioNome)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(mioNome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	local hshRarMsh1=string.sub(hshRar,2,2)
+	local hshRarMsh2=string.sub(hshRar,4,4)
+	local hshRarMsh3=string.sub(hshRar,6,6)
+	local hshNuovo1 = math.random(0, 9)
+    local hshNuovo2 = math.random(0, 9)
+	local hshNuovo3 = math.random(0, 9)
+	local hshRarMshRezult=hshRarMsh1 .. hshRarMsh2 .. hshRarMsh3
+	local hshMioNome=hashStr(mioNome)
+	local hshMioNome1=string.utf8sub(nome11,2,2)
+	local hshMioNome2=string.utf8sub(nome11,4,4)
+	local hshMioNome3=string.utf8sub(nome11,6,6)
+	local hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
+	local hshNuovoRezult=hshNuovo1 .. hshMioNome2 .. hshNuovo2 .. hshMioNome1 .. hshNuovo3 .. hshMioNome3
+	return hshRarMshRezult, hshMioNomeRezult, hshNuovoRezult
+end
+
+function hshStrNuovo(hshRar,mioNome)
+	local nomeLen
+	local tmNome
+	local nome11
+	local hNome
+	local hshMioNome1
+	local hshMioNome2
+	local hshMioNome3
+	local qioC
+	local hshRar1
+	local hshRar2
+	local hshRar3
+	local hshRarMshRezult
+	local hshMioNomeRezult
+	nomeLen=string.utf8len(mioNome)
+	local nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(mioNome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	hshMioNome1=string.sub(hNome,1,1)
+	hshMioNome2=string.sub(hNome,2,2)
+	hshMioNome3=string.sub(hNome,3,3)
+	qioC=string.sub(hshRar,2,2)
+	qioC=tonumber(qioC)
+	if qioC==0 then
+		hshRar1=string.sub(hshRar, 3,3)
+		hshRar2=string.sub(hshRar, 4,4)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qioC==1 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 3,3)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qioC==2 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qioC==3 then
+		hshRar1=string.sub(hshRar, 3,3)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 4,4)
+	elseif qioC==4 then
+		hshRar1=string.sub(hshRar, 1,1)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 4,4)
+	elseif qioC==5 then
+		hshRar1=string.sub(hshRar, 1,1)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qioC==6 then
+		hshRar1=string.sub(hshRar, 6,6)
+		hshRar2=string.sub(hshRar, 1,1)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qioC==7 then
+		hshRar1=string.sub(hshRar, 6,6)
+		hshRar2=string.sub(hshRar, 3,3)
+		hshRar3=string.sub(hshRar, 1,1)
+	elseif qioC==8 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 5,5)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qioC==9 then
+		hshRar1=string.sub(hshRar, 5,5)
+		hshRar2=string.sub(hshRar, 1,1)
+		hshRar3=string.sub(hshRar, 3,3)
+	end
+	hshRarMshRezult=hshRar1 .. hshRar2 .. hshRar3
+	hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
+	return hshRarMshRezult, hshMioNomeRezult
+end
+
+
+function hshSenderNomeC(senderNomeC)
+	local nomeLen
+	local nome1
+	local nome11
+	local hNomeC
+	local hsSenderNomeC1
+	local hsSenderNomeC2
+	local hsSenderNomeC3
+	local hshSenderRC1
+	local hshSenderRC2
+	local hshSenderRC3
+	local hsSenderNomeCRezult
+	nomeLen=string.utf8len(senderNomeC)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(senderNomeC, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNomeC=string.format("%03d",nome11)
+	hsSenderNomeC1=string.sub(hNomeC,1,1)
+	hsSenderNomeC2=string.sub(hNomeC,2,2)
+	hsSenderNomeC3=string.sub(hNomeC,3,3)
+	hshSenderRC1 = math.random(0, 9)
+	hshSenderRC2 = math.random(0, 9)
+	hshSenderRC3 = math.random(0, 9)
+
+	if hshSenderRC2==0 then
+	hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC1 .. hsSenderNomeC2 .. hshSenderRC3 .. hsSenderNomeC3
+	elseif hshSenderRC2==1 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC2 .. hsSenderNomeC1 .. hshSenderRC3 .. hsSenderNomeC3
+	elseif hshSenderRC2==2 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hsSenderNomeC1 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==3 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC1 .. hsSenderNomeC3 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==4 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hshSenderRC1 .. hsSenderNomeC3 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==5 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==6 then
+		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hshSenderRC3 .. hsSenderNomeC1
+	elseif hshSenderRC2==7 then
+		hsSenderNomeCRezult=hsSenderNomeC3 .. hshSenderRC2 .. hsSenderNomeC2 .. hshSenderRC3 .. hshSenderRC1 .. hsSenderNomeC1
+	elseif hshSenderRC2==8 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hshSenderRC3 .. hsSenderNomeC1 .. hsSenderNomeC2 .. hsSenderNomeC3
+	elseif hshSenderRC2==8 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC2 .. hshSenderRC3
+	elseif hshSenderRC2==9 then
+		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC1 .. hshSenderRC3
+	end
+	if testQ ~= nil then
+		if testQ[senderNomeC] ~= nil then
+			if testQ[senderNomeC]["rarHSH1"]==nil then
+				testQ[senderNomeC]["rarHSH1"]={}
+			end
+			if testQ[senderNomeC]["rarHSH"]==nil then
+				testQ[senderNomeC]["rarHSH"]={}
+			end
+
+
+			testDate=date("%d")
+			testDate=tonumber(testDate)
+			if (testDate % 2 == 0) then
+				tableHSH="rarHSH"
+				testQ[senderNomeC]["rarHSH1"]=nil
+			else
+				tableHSH="rarHSH1"
+				testQ[senderNomeC]["rarHSH"]=nil
+			end
+
+
+			if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
+				hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
+			end
+
+
+			table.insert(testQ[senderNomeC][tableHSH], hsSenderNomeCRezult)
+			return hsSenderNomeCRezult
+		end
+	end
+end
+
+function gmTest (gmTestNome)
+	local gmTestRez
+	for i=1,#gmList do
+		if gmTestNome==gmList[i] then
+			gmTestRez = "гм"
+			break
+		end
+		i=i+1
+	end
+	return gmTestRez
+end
+
+function proverkaVypolneniyaKvestySachivkoj(mNome,qlvl)
+	local vypolnenaLiAch=testQ[mNome]["взятый_квест"]
+	if qlvl == "2" then
+		qlvl = "квест_лвл2"
+	elseif qlvl == "3" then
+		qlvl = "квест_лвл3"
+	end
+	local chisloPunktop=testQ[mNome][qlvl][vypolnenaLiAch]
+	chisloPunktop=tonumber(chisloPunktop)
+	local count = GetAchievementNumCriteria (vypolnenaLiAch)
+	j=0
+	k=0
+	for i=1, count do
+		local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+		prov=completed
+		if prov == true then
+			j=j+1
+		else
+			k=k+1
+		end
+		i=i+1
+		end
+		local pokazatRezult=chisloPunktop-j
+		if pokazatRezult < 0 then
+			pokazatRezult = 0
+		end
+		SendChatMessage("Осталось выполнить " .. pokazatRezult .. " пунктов ачивки " .. vypolnenaLiAch .. " " .. GetAchievementLink(vypolnenaLiAch) .. " из " .. chisloPunktop, "GUILD", nil, 1)
+end
+
+
+function npcXY(k,l,x,y,u)
+	local testNpcScanDal = nil
+	local npcSK = k
+	local npcSL = l
+	npcSK=tostring(npcSK)
+	npcSL=tostring(npcSL)
+	if npcScan[npcSK] == nil then
+		npcScan[npcSK] = {}
+	end
+	if npcScan[npcSK][npcSL] == nil then
+		npcScan[npcSK][npcSL] = {}
+	end
+	local unitNome = u
+	if unitNome ~= nil then
+		local npcPX = x
+		local npcPY = y
+		npcPX=tostring(npcPX)
+		npcPY=tostring(npcPY)
+		if npcScan[npcSK][npcSL][unitNome] == nil then
+				npcCount=1
+				npcCount=tostring(npcCount)
+				npcScan[npcSK][npcSL][unitNome] = {}
+				npcScan[npcSK][npcSL][unitNome][npcCount] = {}
+				npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
+				npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
+
+		else
+			local nomeRar={}
+			local npcTestToch={}
+			npcCount = (tablelength(npcScan[npcSK][npcSL][unitNome])) + 1
+			npcCount=tostring(npcCount)
+			npcPX=tostring(npcPX)
+			npcPY=tostring(npcPY)
+			npcScan[npcSK][npcSL][unitNome][npcCount] = {}
+			npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
+			npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
+			end
+		else
+			print ("Выбери цель")
+		end
+
+end
+
+function testNpc ( NpcID )
+	local r
+	CreateFrame( "GameTooltip", "MyScanningTooltip", nil, "GameTooltipTemplate" );
+	MyScanningTooltip:SetOwner( WorldFrame, "ANCHOR_NONE" );
+	MyScanningTooltip:AddFontStrings(
+    MyScanningTooltip:CreateFontString( "$parentTextLeft1", nil, "GameTooltipText" ),
+    MyScanningTooltip:CreateFontString( "$parentTextRight1", nil, "GameTooltipText" ) );
+    MyScanningTooltip:SetHyperlink("unit:" .. NpcID)
+    --GameTooltip:Show()
+
+    r=EnumerateTooltipLines(MyScanningTooltip)
+    return r
+end
+
+
+
+local function EnumerateTooltipLines_helper(...)
+	local rrr
+    for i = 1, select("#", ...) do
+        local region = select(i, ...)
+        if region and region:GetObjectType() == "FontString" then
+            local text = region:GetText() -- string or nil
+            if text ~= nil then
+            print (text)
+                if string.find (text, "Уровень") then
+					testLvlNpc=mysplit(text)
+				end
+				if string.find (text, "уровня") then
+					testLvlNpc=mysplit(text)
+					if string.find(testLvlNpc[3], "%?%?") then
+						--SendAddonMessage("NSGadd", "#npcOff", "guild")
+					else
+						rrr="1"
+					end
+					if string.find(testLvlNpc[2], "%?%?") then
+						SendAddonMessage("NSGadd", "#npcOff", "guild")
+					end
+
+					if string.find(testLvlNpc[1], "Труп") then
+						SendAddonMessage("NSGadd", "#npcDie", "guild")
+					end
+				end
+            end
+        end
+    end
+    return rrr
+end
+
+function EnumerateTooltipLines(tooltip) -- good for script handlers that pass the tooltip as the first argument.
+	local r
+    r=EnumerateTooltipLines_helper(tooltip:GetRegions())
+    return r
+end
+
+function pLid ()
+	if UnitIsPartyLeader("party1") then
+		pL = 1
+	elseif UnitIsPartyLeader("party2") then
+		pL = 2
+	elseif UnitIsPartyLeader("party3") then
+		pL = 3
+	elseif UnitIsPartyLeader("party4") then
+		pL = 4
+	else
+		pL = 0
+	end
+	return pL
+end
+function pM(nik)
+		if nik == UnitName("party1") then
+			r = 1
+		elseif nik == UnitName("party2") then
+			r = 1
+		elseif nik == UnitName("party3") then
+			r = 1
+		elseif nik == UnitName("party4") then
+			r = 1
+		else
+			r = 0
+		end
+		return r
+	end
+function testN()
+	testNpc(UnitGUID("target"))
+end
+function tblAllFail(mm,nik)
+	if mmList[mm] ~= nil then
+		for i=1, mmList[mm]["количество_боссов"] do
+			if nik == mmList[mm][i] then
+				r = i
+				break
+			else
+				r = 0
+			end
+		end
+	end
+	return r
+end
+
+function testMarsh(tabella,diam)
+	trovMarsh(tabella,diam)
+		local rez = 0
+		for k, v in pairs(mapTables[tabella]) do
+			if type(k)=="string" then
+				tKont = k
+			end
+			for k, v in pairs(mapTables[tabella][k]) do
+				if type(k)=="string" then
+					tLok = k
+				end
+			end
+		end
+		if testQ["schet1"] ~= nil then
+			for i = testQ["schet1"]-10, testQ["schet1"]+10 do
+				if testQ["schet"][i] ~= nil then
+					marshrut(i,tablelength(mapTables[tabella][tKont][tLok]))
+					rez = rez + testQ["schet"][i]
+					if rez > 0 then
+						break
+					end
+				end
+			end
+		end
+	return rez
+end
+
+function trovMarsh(tabella,diam)
+	if testKontLok(tabella) ~= nil then
+		local x,y = GetPlayerMapPosition("player")
+		local testKont = GetCurrentMapContinent()
+		testKont = tostring(testKont)
+		local lok = GetCurrentMapZone()
+		lok = tostring(lok)
+		local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
+		local tablen = tablelength(mapTables[tabella][testKont][lok])
+		testQ["schet"] = {}
+		testQ["numPunti"] = {}
+		if testQ["num"] == nil then
+			if testKontLok(tabella) < diam then
+				testQ["num"] = 1
+				testQ["schet1"] = 1
+			end
+		end
+		for i = testQ["num"]-10, testQ["num"]+10 do
+			testQ["schet1"] = i
+			j = tostring(i)
+			if testQ["старт"] ~= nil then
+				if mapTables[tabella][testKont][lok][j] ~= nil then
+					mioCel=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+					if mioCel < diam then
+						testQ["schet"][i] = 1
+						j = testQ["num"]
+						j = tostring(j)
+						mioCel1=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+						if mioCel1 > mioCel then
+							testQ["num"] = i
+							testQ["marshF"][i] = i
+							if testQ["marshF"][i] == math.modf(tablen/4) then
+								SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/2) then
+								SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/4*3) then
+								SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if tonumber(tablen) == tonumber(i) then
+								SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+								if marshruT ~= nil then
+								for i=1,9999 do
+									if marshruT[i] ~= nil then
+										marshruT[i]:Hide()
+									end
+								end
+								end
+								marshruT = nil
+								testQ["старт"] = nil
+								testQ["num"] = nil
+								testQ["marshF"] = nil
+
+									if tabella == "evO0102" then
+										testQ["evO0102"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0203" then
+										testQ["evO0203"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0304" then
+										testQ["evO0304"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0405" then
+										testQ["evO0405"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0506" then
+										testQ["evO0506"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0607" then
+										testQ["evO0607"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0708" then
+										testQ["evO0708"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0809" then
+										testQ["evO0809"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0910" then
+										testQ["evO0910"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO1011" then
+										testQ["evO1011"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO11" then
+										testQ["evO11"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO12" then
+										testQ["evO12"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO13" then
+										testQ["evO13"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO14" then
+										testQ["evO14"] = true
+										testQ["startChern"] = nil
+									end
+								testQ["start"] = nil
+
+							end
+						end
+					else
+						testQ["schet"][i] = 0
+					end
+				end
+			end
+		end
+
+	end
+end
+
+function testKontLok(tabella)
+	local testKont = GetCurrentMapContinent()
+	testKont = tostring(testKont)
+	local lok = GetCurrentMapZone()
+	lok = tostring(lok)
+	local mioCel
+	local x,y = GetPlayerMapPosition("player")
+	local tKont,tLok
+	local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
+	if mapTables ~= nil then
+		if mapTables[tabella] ~= nil then
+			for k, v in pairs(mapTables[tabella]) do
+				if type(k)=="string" then
+					tKont = k
+				end
+				for k, v in pairs(mapTables[tabella][k]) do
+					if type(k)=="string" then
+						tLok = k
+					end
+				end
+			end
+			if tostring(lok) == tostring(tLok) then
+				if tabella ~= nil then
+					if mapTables[tabella] ~= nil then
+						if tKont == testKont then
+							if mapTables[tabella][testKont][lok] ~= nil then
+								if tLok == lok then
+									mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
+									return mioCel
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+function startFchern(tabella,n1,n2)
+	n1 = tostring(n1)
+	n2 = tostring(n2)
+	if krt[n1] == true and krt[n2] == true then
+		testQ["start"] = tabella
+		testQ["старт"] = 0
+		testQ[tabella] = "старт"
+		marshruT = {}
+	end
+end
+
+function testFchern(tabella,n1,n2)
+	n1 = tostring(n1)
+	n2 = tostring(n2)
+	local tKont,tLok
+	if testQ[tabella] == nil then
+		for k, v in pairs(mapTables[tabella]) do
+			if type(k)=="string" then
+				tKont = k
+			end
+			for k, v in pairs(mapTables[tabella][tKont]) do
+				if type(k)=="string" then
+					tLok = k
+				end
+			end
+		end
+			if mapTables["lokRasstoyanie"][tostring(tKont)] ~= nil then
+				if mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)] ~= nil then
+					if testKontLok(tabella) ~= nil then
+						if tonumber(testKontLok(tabella)) <= tonumber(mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)])*3 then
+							startFchern(tabella,n1,n2)
+							testQ["startChern"] = tabella
+						end
+					end
+				end
+			end
+	end
+end
+
+function printPar(tabella)
+	local spisok = {}
+	local spisokRez
+	for k, v in pairs(tabella) do
+		if k ~= nil then
+			table.insert(spisok,k)
+		end
+	end
+	spisokRez = table.concat(spisok, " ")
+	return spisokRez
+end
+
+function otladka(num,mess1,mess2,mess3,mess4,mess5,mess6)
+	local x
+	numF=tonumber(num)
+	if numF == 1 then
+		if mess1 == "testQ" then
+			x = testQ
+		end
+	end
+	if numF == 2 then
+		if mess1 == "testQ" then
+			x = testQ[mess2]
+		end
+	end
+	if numF == 3 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3]
+		end
+	end
+	if numF == 4 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4]
+		end
+	end
+	if numF == 5 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4][mess5]
+		end
+	end
+	if numF == 6 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4][mess5][mess6]
+		end
+	end
+	x=type(x)
+	y=x
+	return x,y
+end
+function tabellaFind(table, item)
+       local index = 1;
+       while table[index] do
+       print (item)
+       print(table[index])
+               if ( item == table[index] ) then
+                       return 1;
+               end
+               index = index + 1;
+       end
+       return nil;
+end
+function krtChernGetXY(nomer)
+	nomer = tostring(nomer)
+	for k, v in pairs(krt["chernila"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont][lok]) do
+		if k == "x" then
+			x = v
+		end
+		if k == "y" then
+			y = v
+		end
+		if k == "msg" then
+			m = v
+		end
+	end
+	return kont, lok, x, y, m
+end
+function mapQuest(nomer)
+	nomer = tostring(nomer)
+	for k, v in pairs(testQ["mapQuest"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]) do
+		if k == "x" then
+			x = v
+		end
+		if k == "y" then
+			y = v
+		end
+		if k == "msg" then
+			m = v
+		end
+		if k == "cel" then
+			c = v
+		end
+	end
+	return kont, lok, x, y, m, c
+end
+function mapQuestP(nomer)
+	nomer = tostring(nomer)
+	testQ["mapQuest"]["podskazkiRez"] = {}
+	for k, v in pairs(testQ["mapQuest"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]) do
+		if k == "podskazki" then
+			for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]["podskazki"]) do
+				testQ["mapQuest"]["podskazkiRez"][k] = v
+			end
+		end
+	end
+end
+function chern1P(nomer)
+	nomer = tostring(nomer)
+	krt["chernila"]["podskazkiRez"] = {}
+	for k, v in pairs(krt["chernila"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont][lok]) do
+		if k == "podskazki" then
+			for k, v in pairs(krt["chernila"][nomer][kont][lok]["podskazki"]) do
+				krt["chernila"]["podskazkiRez"][k] = v
+			end
+		end
+	end
+end
+function tabellaEnStr(nq,n)
+	local lenVlozh, rez, l, k, x, x1
+	nq=tostring(nq)
+	n=tostring(n)
+	if testQ["chD"] == nil then
+		testQ["chD"] = {}
+	end
+	if testQ["chD"][tostring(nq)] == nil then
+		l = "0"
+		for z, v in pairs(krt["chernila"][nq]) do
+			x=z
+		end
+		for z, v in pairs(krt["chernila"][nq][x]) do
+			x1=z
+		end
+		lenVlozh = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
+		for i=1,lenVlozh do
+			k=tostring(i)
+			if rez == nil then
+				rez = k .. " " .. txtXor(krt["chernila"][nq][x][x1]["podskazki"][k]) .. "\n"
+			else
+				rez = rez .. k .. " " .. txtXor(krt["chernila"][nq][x][x1]["podskazki"][k]) .. "\n"
+			end
+			l = tonumber(l)
+			l = l+1
+			l = tostring(l)
+			if l==n then
+				break
+			end
+		end
+	else
+		for z, v in pairs(krt["chernila"][nq]) do
+			x=z
+		end
+		for z, v in pairs(krt["chernila"][nq][x]) do
+			x1=z
+		end
+		rez = nq .." выполнено\n"
+		l = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
+	end
+	return rez,l
+end
+
+function txtXor(str)
+	local g = str:utf8sub(1,3)
+	local num
+	local strRez
+	if g ~= "###" then
+		num = string.utf8len(str)
+		strRez = "###"
+		for i=1,num do
+			strRez = strRez .. string.format("%03d",alfabet(string.utf8sub(str,i,i)))
+		end
+	end
+	if g == "###" then
+		strRez = alfabetC(tonumber(string.sub(str,4,6)),1)
+		for i=7,#str,3 do
+			strRez = strRez .. alfabetC(tonumber(string.sub(str,i,i+2)),1)
+		end
+	end
+	return strRez
+end
+bcsQuickFrame = {}
+function createQuickHtmlFrame(text,num,id)
+	local tm = GetTime()
+	bcsQuickFrame[id]  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	bcsQuickFrame[id]:SetSize(222, 222)
+	bcsQuickFrame[id]:SetFrameStrata("HIGH")
+	bcsQuickFrame[id]:SetPoint("CENTER", UIParent, "CENTER", 33, num)
+	bcsQuickFrame[id]:SetBackdropColor(0, 103, 51, 1)
+	bcsQuickFrame[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
+end
+dmG = {}
+function dmgText(text,obj,id,raz,cvet)
+	if dmG[id] == nil then
+		dmG[id] = CreateFrame("SimpleHTML", "dmG", obj)
+	else
+		dmG[id]:Show()
+	end
+	dmG[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	dmG[id]:ClearAllPoints()
+	dmG[id]:SetBackdropColor(0, 103, 51, 1)
+	dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	if text ~= "" then
+		if tonumber(text) <= 9999 then
+			dmG[id]:SetSize(48, 48)
+		end
+		if tonumber(text) > 9999 then
+			dmG[id]:SetSize(54, 48)
+		end
+		if tonumber(text) <= 9999 then
+			dmG[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+		end
+		if tonumber(text) > 9999 then
+			dmG[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+		end
+	end
+	dmG[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+end
+dmG1 = {}
+function dmgText1(text,obj,id,raz,cvet)
+	if dmG1[id] == nil then
+		dmG1[id] = CreateFrame("SimpleHTML", "dmG", obj)
+		dmG1[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+		dmG1[id]:ClearAllPoints()
+		dmG1[id]:SetBackdropColor(0, 103, 51, 1)
+		dmG1[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	end
+		if text ~= "" then
+			if tonumber(text) <= 9999 then
+				dmG1[id]:SetSize(48, 48)
+			end
+			if tonumber(text) > 9999 then
+				dmG1[id]:SetSize(54, 48)
+			end
+			if tonumber(text) <= 9999 then
+				dmG1[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+			end
+			if tonumber(text) > 9999 then
+				dmG1[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+			end
+		end
+		dmG1[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+end
+dmG2 = {}
+function dmgText2(text,obj,id,raz,cvet)
+	if dmG2[id] == nil then
+		dmG2[id] = CreateFrame("SimpleHTML", "dmG", obj)
+		dmG2[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+		dmG2[id]:ClearAllPoints()
+		dmG2[id]:SetBackdropColor(0, 103, 51, 1)
+		dmG2[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	end
+	if text ~= nil and text ~= "" then
+		if tonumber(text) <= 9999 then
+			dmG2[id]:SetSize(48, 48)
+		end
+		if tonumber(text) > 9999 then
+			dmG2[id]:SetSize(54, 48)
+		end
+		if tonumber(text) <= 9999 then
+			dmG2[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+		end
+		if tonumber(text) > 9999 then
+			dmG2[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+		end
+	end
+	if text ~= nil then
+		dmG2[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+	end
+end
+rtnText = {}
+function rtnTextF(text,id,show)
+	if show == "show" then
+		if rtnText[id] == nil then
+			rtnText[id]  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+			rtnText[id]:SetSize(460, 396)
+			rtnText[id]:SetFrameStrata("TOOLTIP")
+			rtnText[id]:SetPoint("CENTER", UIParent, "CENTER", 15, -55)
+			rtnText[id]:SetBackdropColor(0, 0, 0, 0)
+			rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 33);
+
+		end
+		rtnText[id]:SetText("<html><body><p>|cff000000" .. text .. "</p></body></html>");
+		rtnText[id]: Show()
+	else
+		if rtnText[id] ~= nil then
+			rtnText[id]: Hide()
+		end
+	end
+end
+function versFail(num)
+	if VerF == nil then
+		VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	end
+	VerF:SetSize(1111, 888)
+	VerF:SetFrameStrata("HIGH")
+	if testQ["VerF"] == nil then
+		testQ["VerF"] = 600
+	end
+	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
+	VerF:SetBackdropColor(0, 103, 51, 1)
+	VerF:SetFont('Fonts\\FRIZQT__.TTF', num+10);
+	VerF:SetText("<html><body><p>|cffff0000ОБНОВИ АДДОН</p></body></html>");
+end
+
+function marshrut(id,num1)
+	local j = id-1
+	local jj = id+1
+	local jjj = id+2
+	local jjjj = id-2
+	local jjjjj = id+3
+	local jjjjjj = id-3
+	if testQ["start"] ~= "evO3" then
+		if marshruT ~= nil then
+			if marshruT[id] == nil then
+				marshruT[id]  = CreateFrame("SimpleHTML", "marshrut", UIParent)
+				marshruT[id]:SetSize(222, 222)
+				marshruT[id]:SetFrameStrata("HIGH")
+				marshruT[id]:SetPoint("CENTER", UIParent, "CENTER", 333, 111)
+				marshruT[id]:SetBackdropColor(0, 103, 51, 1)
+				marshruT[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+				marshruT[id]:SetText("<html><body><p>|cff90ee90" .. id .. " из " .. tostring(num1) .. "</p></body></html>");
+			end
+			if marshruT[j] ~= nil then
+				marshruT[j]:Hide()
+				marshruT[j] = nil
+			end
+			if marshruT[jj] ~= nil then
+				marshruT[jj]:Hide()
+				marshruT[jj] = nil
+			end
+			if marshruT[jjj] ~= nil then
+				marshruT[jjj]:Hide()
+				marshruT[jjj] = nil
+			end
+			if marshruT[jjjj] ~= nil then
+				marshruT[jjjj]:Hide()
+				marshruT[jjjj] = nil
+			end
+			if marshruT[jjjjj] ~= nil then
+				marshruT[jjjjj]:Hide()
+				marshruT[jjjjj] = nil
+			end
+			if marshruT[jjjjjj] ~= nil then
+				marshruT[jjjjjj]:Hide()
+				marshruT[jjjjjj] = nil
+			end
+		end
+	end
+end
+
+
+function showRB(nome)
+	if debuffChkB == nil then
+		debuffChkB = {}
+	end
+	if pokazat==1 and btn[1] ~= nil then
+		for ii=1,15 do
+			if btn[ii] ~= nil then
+				btn[ii]:Hide();
+			end
+		end
+		btn[991]:Show()
+		if tonumber(testQ["mioFldLvl"]) ~= 0.5 and tonumber(testQ["mioFldLvl"]) ~= 0.9 and tonumber(testQ["mioFldLvl"]) ~= nil then
+			btn[14]:Show()
+		end
+		myCheckButton1:Show()
+		myCheckButton2:Show()
+		myCheckButton3:Show()
+		myCheckButton4:Show()
+		myCheckButton5:Show()
+		myCheckButton6:Show()
+		myCheckButton7:Show()
+		btn[998]:Show()
+		btn[997]:Show()
+
+		for i=1,20 do
+			local name,__,__,__,__,__,__,__ = UnitDebuff("player",i)
+			if name ~= nil then
+				debuffChkB[name] = createCheckbutton(UIParent, 150, (-20*i)+230, name)
+				debuffChkB[name].tooltip = "Скрывать иконку " .. name
+				debuffChkB[name]:SetScript("OnClick",	function()
+
+					if testQ[nome]["настройки"]["debuffChkB"] == nil then
+						testQ[nome]["настройки"]["debuffChkB"] = {}
+					end
+
+					if testQ[nome]["настройки"]["debuffChkB"][name] == "Disable" or testQ[nome]["настройки"]["debuffChkB"][name] == nil then
+						testQ[nome]["настройки"]["debuffChkB"][name] = "Enable"
+						debuffChkB[name]:SetChecked(true)
+					elseif testQ[nome]["настройки"]["debuffChkB"][name] == "Enable" then
+						testQ[nome]["настройки"]["debuffChkB"][name] = "Disable"
+						debuffChkB[name]:SetChecked(false)
+					end
+				end)
+			end
+		end
+
+		pokazat=0
+		pokazatChk=1
+	elseif pokazat == 0 then
+		btn[991]:Hide()
+		if tonumber(testQ["mioFldLvl"]) ~= 0.5 and tonumber(testQ["mioFldLvl"]) ~= 0.9 and tonumber(testQ["mioFldLvl"]) ~= nil then
+			for ii=1,15 do
+				if btn[ii] ~= nil then
+					btn[ii]:Show();
+				end
+			end
+			if btn[ii] ~= nil then
+				if testQ[nome]["взятый_квест"] == "9999" then
+					btn[1]:Show()
+					btn[2]:Hide()
+				end
+				if testQ[nome]["взятый_квест"] ~= "9999" then
+					btn[1]:Hide()
+					btn[2]:Show()
+				end
+			end
+		end
+		testQ["lvlProv"] = nil
+		myCheckButton1:Hide()
+		myCheckButton2:Hide()
+		myCheckButton3:Hide()
+		myCheckButton4:Hide()
+		myCheckButton5:Hide()
+		myCheckButton6:Hide()
+		myCheckButton7:Show()
+		for k, v in pairs(debuffChkB) do
+			if debuffChkB[k] ~= nil then
+				debuffChkB[k]:Hide()
+			end
+		end
+		btn[998]:Hide()
+		btn[997]:Hide()
+		pokazat=1
+		pokazatChk=0
+	end
+end
+
+function marSh()
+	local testKont = GetCurrentMapContinent()
+	local lok = GetCurrentMapZone()
+	local x,y = GetPlayerMapPosition("player")
+	local n
+	testKont = tostring(testKont)
+	lok = tostring(lok)
+	local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
+	if marsh == nil then
+		marsh = {}
+	end
+	if marsh[testKont] == nil then
+		marsh[testKont] = {}
+	end
+	if marsh[testKont][lok] == nil then
+		marsh[testKont][lok] = {}
+	end
+	local n = tablelength(marsh[testKont][lok])
+	n = tostring(n+1)
+	marsh[testKont][lok][n] = {}
+	testQ["marshK"] = testKont
+	testQ["marshL"] = lok
+	testQ["marshN"] = n
+	marsh[testKont][lok][n]["x"] =  string.format("%.3f",x)
+	marsh[testKont][lok][n]["y"] =  string.format("%.3f",y)
+	print (n)
+end
+
+function resObj1(id,myNome,nome)
+	if krt == nil then
+		krt = {}
+	end
+	if krt["podskazki"] == nil then
+		krt["podskazki"] = 1
+	end
+	if testQ["трудовые_ресурсы"] == nil then
+		testQ["трудовые_ресурсы"] = {}
+		testQ["трудовые_ресурсы"] = 0
+	end
+	if myNome == nome then
+		if mioFld ~= nil then
+			if mioFld[myNome] ~= nil then
+				if mioFld[myNome]["целостность"] ~= nil then
+					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" and mioFld[myNome]["объекты"][tostring(id)] ~= "mf" and mioFld[myNome]["объекты"][tostring(id)] ~= "m0" and mioFld[myNome]["объекты"][tostring(id)] ~= "lx" and mioFld[myNome]["объекты"][tostring(id)] ~= "lp" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								if mioFld[myNome]["объекты"][tostring(id)] == "f" then
+									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
+								end
+								mioFld[myNome]["целостность"][tostring(id)] = 999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "m0" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "tz" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "lx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "zc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "as" or mioFld[myNome]["объекты"][tostring(id)] == "bc" or mioFld[myNome]["объекты"][tostring(id)] == "bs" or mioFld[myNome]["объекты"][tostring(id)] == "bx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 14999 then
+							print('тут')
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+							print('тут3')
+								mioFld[myNome]["целостность"][tostring(id)] = 14999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "tc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 4999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 4999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "sx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+					else
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" and mioFld[myNome]["объекты"][tostring(id)] ~= "mf" and mioFld[myNome]["объекты"][tostring(id)] ~= "m0" and mioFld[myNome]["объекты"][tostring(id)] ~= "lx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								if mioFld[myNome]["объекты"][tostring(id)] == "f" then
+									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
+								end
+								mioFld[myNome]["целостность"][tostring(id)] = 999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "lx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "tz" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "m0" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "as" or mioFld[myNome]["объекты"][tostring(id)] == "bc" or mioFld[myNome]["объекты"][tostring(id)] == "bs" or mioFld[myNome]["объекты"][tostring(id)] == "bx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 14999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 14999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "tc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 4999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 4999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "sx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+					end
+					SendAddonMessage("resObj " .. id .. " " .. mioFld[myNome]["целостность"][tostring(id)],nome , "guild")
+				end
+			end
+		end
+	else
+		if mioFld ~= nil then
+			if mioFld[nome] ~= nil then
+				if mioFld[nome]["целостность"] ~= nil then
+						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" and mioFld[nome]["объекты"][tostring(id)] ~= "m0" and mioFld[nome]["объекты"][tostring(id)] ~= "mf" and mioFld[nome]["объекты"][tostring(id)] ~= "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "hs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tz" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "m0" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zc" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if mioFld[nome]["объекты"][tostring(id)] == "as" or mioFld[nome]["объекты"][tostring(id)] == "bc" or mioFld[nome]["объекты"][tostring(id)] == "bs" or mioFld[nome]["объекты"][tostring(id)] == "bx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 14999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 14999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tc" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 4999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 4999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "sx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+						else
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" and mioFld[nome]["объекты"][tostring(id)] ~= "m0" and mioFld[nome]["объекты"][tostring(id)] ~= "mf" and mioFld[nome]["объекты"][tostring(id)] ~= "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "hs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tz" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "m0" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tc" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 4999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 4999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "as" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 14999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 14999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "sx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+						end
+					SendAddonMessage("resObj " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)],nome , "guild")
+				end
+			end
+		end
+	end
+end
+function gKam(myNome,x)
+	local testK = nil
+	if tonumber(x) == 500 then
+		for i = 1,100 do
+			if mioFld1[myNome]["объекты"][tostring(i)] == "sk" then
+				if testK == nil then
+					testK = 1
+				else
+					testK = testK + 1
+				end
+			end
+		end
+		if testK == nil then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","0", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 1 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","1", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 2 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","2", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 3 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","3", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 4 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","4", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 5 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","5", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		end
+	end
+end
+
+function bdf(myNome)
+	if testQ == nil then
+		testQ = {}
+	end
+	if testQ["myNome"] == nil then
+		testQ["myNome"] = {}
+	end
+	if testQ[myNome]["настройки"] == nil then
+		testQ[myNome]["настройки"] = {}
+	end
+	if  testQ[myNome]["настройки"]["debuffChkB"] == nil then
+		testQ[myNome]["настройки"]["debuffChkB"] = {}
+	end
+	if DebuffButton1 ~= nil then
+		if tonumber(testQ["buffX"]) ~= nil and tonumber(testQ["buffX"]) ~= 0 then
+			local __,__,__,tempPoint = DebuffButton1:GetPoint()
+			local __,__,__,tempPointB = btn[991]:GetPoint()
+			if tempPoint ~= tempPointB then
+				local x,y = DebuffButton1:GetSize()
+				local getSize = UIParent:GetSize()/2
+				j = 1
+				for i=1, DEBUFF_MAX_DISPLAY do
+					if AuraButton_Update("DebuffButton", i, "HARMFUL") then
+						local name,__,__,__,__,__,__,__ = UnitDebuff("player",i)
+						local buff = _G["DebuffButton"..i]
+						if buff ~= nil and (testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable") then
+							buff:ClearAllPoints()
+							if tonumber(testQ["buffX"]) < getSize then
+								buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*j, testQ["buffY"])
+								j = j+1
+							else
+								buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*j, testQ["buffY"])
+								j = j+1
+							end
+						else
+							if buff ~= nil and buff:IsVisible() then
+								buff:Hide()
+							end
+						end
+						--buff:SetAllPoints(btn[991])
+					end
+				end
+			end
+			if testQ["buffX"] == 0 then
+				testQ["buffX"]=nil
+			end
+		end
+	end
+end
+function gtest()
+	gTest = nil
+	gTest = {}
+	for i = 1, 50 do
+		local t1,t2,g,r,t3,t4,t= GetWhoInfo(i)
+		if t2 == "" then
+			if r ~= "Дреней" and r ~= "Ночная эльфийка" and r ~= "Человек" and r ~= "Ночной эльф" and r ~= "Гном" and r ~= "Дворф" then
+				table.insert(gTest,t1)
+			end
+		end
+	end
+end
+function ns_q5()
+	ns_q5Test = nil
+	ns_q5Test = {}
+	for i = 1, 50 do
+		local t1,t2,g,r,t3,t4,t= GetWhoInfo(i)
+		if t2 == "" then
+			table.insert(ns_q5Test,t1)
+		end
+	end
+end
+function closeFld()
+	for i = 1, 100 do
+		fBtn[i]:Hide()
+	end
+	for i = 1, 100 do
+		if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+			if resursy[i] ~= nil then
+				if i == 5 then
+					if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+					end
+				else
+					resursy[i]:Hide()
+				end
+			end
+		end
+	end
+	btn[989]:Hide()
+	btn[989]:ClearAllPoints()
+	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+end
+function hX()
+	quesT("hide")
+	okNo:configure(1,"hide")
+	rtnTextF("fdsa",1,"hide")
+	for i=1,100 do
+		fBtn[i]:Hide()
+		--fBtn[i]:SetHighlightTexture("")
+	end
+	if resursy[1] ~= nil then
+		resursy[1]:Hide()
+		resursy[2]:Hide()
+		resursy[3]:Hide()
+	end
+	if okNo ~= nil then
+		okNo[1]:Hide()
+		okNo[2]:Hide()
+	end
+	btn[989]:Hide()
+	btn[989]:ClearAllPoints()
+	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+end
+
+function showFld(sign,myNome)
+	local nome
+	local proverkaLvla
+	local proverkaLvla1
+	local testB
+	if mBtn[1] ~= nil then
+		if mBtn[1]:IsVisible() then
+			testB = 1
+		end
+	end
+	if dBtn[1] ~= nil then
+		if dBtn[1]:IsVisible() then
+			testB = 1
+		end
+	end
+	if not fBtn[1]:IsVisible() and testB ~= 1 then
+		if not GuildFrameLFGButton:GetChecked() or sign == "1" then
+			if sign == "0" then
+				nome = GuildFrame["selectedName"]
+			else
+				nome = myNome
+			end
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMRIGHT", fBtn[10],"TOPRIGHT",1, 1)
+			for Zc=1,GetNumGuildMembers(true) do
+				local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+				if nome ~= myNome then
+					if name == nome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						proverkaLvla1 = string.sub(officerNote,2,2)
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
+							testQ["fldLvl"] = tonumber(proverkaLvla)
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "1" then
+							testQ["fldLvl"] = 0.9
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "0" then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						elseif proverkaLvla == "" then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+						if proverkaLvla1 == nil then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+					end
+					if name == myNome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
+							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+						elseif proverkaLvla == "1" then
+							testQ["mioFldLvl"] = 0.9
+						elseif proverkaLvla == "0" then
+							testQ["mioFldLvl"] = 0.5
+						elseif proverkaLvla == "" then
+							testQ["mioFldLvl"] = 0.5
+						end
+					end
+				else
+					if name == myNome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						proverkaLvla1 = string.sub(officerNote,2,2)
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
+							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "1" then
+							testQ["mioFldLvl"] = 0.9
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "0" then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						elseif proverkaLvla == "" then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+						if proverkaLvla1 == nil then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+					end
+				end
+				if tonumber(testQ["mioFldLvl"]) == 0 then
+					testQ["mioFldLvl"] = 0.5
+				end
+				if tonumber(testQ["fldLvl"]) == 0 then
+					testQ["fldLvl"] = 0.5
+				end
+			end
+			testQ["fRand1"] = math.random(1,1000000)
+			testQ['sign'] = sign
+			SendAddonMessage("shMFld " .. testQ["fRand1"], nome .. " " .. myNome, "guild")
+			FriendsFrame:Hide()
+		else
+			for i=1,100 do
+				fBtn[i]:Hide()
+				--fBtn[i]:SetHighlightTexture("")
+			end
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			if resursy[1] ~= nil then
+				resursy[1]:Hide()
+				resursy[2]:Hide()
+				resursy[3]:Hide()
+			end
+			for i = 1,100 do
+				if dmG[i] ~= nil and dmG[i]:IsVisible()then
+					dmG[i]:Hide()
+				end
+			end
+			for i = 1,3 do
+				if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+					if resursy[i] ~= nil then
+						if i == 5 then
+							if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+							end
+						else
+							resursy[i]:Hide()
+						end
+					end
+				end
+			end
+			for i=101,103 do
+				if dmG[i]~= nil then
+					dmG[i]:Hide()
+				end
+			end
+			if tonumber(testQ['sign']) == 0 then
+				FriendsFrame:Show()
+			end
+			testQ['sign'] = nil
+			testQ["fRandD1nome"] = nil
+		end
+	else
+		for i=1,100 do
+			fBtn[i]:Hide()
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			--fBtn[i]:SetHighlightTexture("")
+		end
+		if resursy[1] ~= nil then
+			resursy[1]:Hide()
+			resursy[2]:Hide()
+			resursy[3]:Hide()
+		end
+		for i = 1,100 do
+			if dmG[i] ~= nil and dmG[i]:IsVisible()then
+				dmG[i]:Hide()
+			end
+		end
+		for i = 1,100 do
+			if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+				if resursy[i] ~= nil then
+					if i == 5 then
+						if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+						end
+					else
+						resursy[i]:Hide()
+					end
+				end
+			end
+		end
+		for i=101,103 do
+			if dmG[i] ~= nil then
+				dmG[i]:Hide()
+			end
+		end
+		if tonumber(testQ['sign']) == 0 then
+			FriendsFrame:Show()
+		end
+		if tostring(testQ['sign']) == "1" then
+			btn[989]:Hide()
+		end
+		testQ['sign'] = nil
+	end
+end
+function qLvl33c1()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc1 = npcListC1[idNpc]["имя"]
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc2 = npcListC1[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC1)["айди"]
+			nomeNpc2 = npcListC1[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc3 = npcListC1[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC1)["айди"]
+			nomeNpc3 = npcListC1[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function qLvl33c2()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc1 = npcListC2[idNpc]["имя"]
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc2 = npcListC2[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC2)["айди"]
+			nomeNpc2 = npcListC2[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc3 = npcListC2[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC2)["айди"]
+			nomeNpc3 = npcListC2[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function qLvl33c3()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc1 = npcListC3[idNpc]["имя"]
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc2 = npcListC3[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC3)["айди"]
+			nomeNpc2 = npcListC3[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc3 = npcListC3[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC3)["айди"]
+			nomeNpc3 = npcListC3[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function rndTblc(tb)
+    local keys = {}
+    for k in pairs(tb) do table.insert(keys, k) end
+    return tb[keys[math.random(#keys)]]
+end
+function htimer(myNome)
+	local testTO = 0
+	for i = 1, 100 do
+		if mioFld1[myNome]["объекты"][tostring(i)] == "to" then
+			testTO = "to"
+		end
+	end
+	if testQ[myNome]["dTimer"][30] == nil then
+		testQ[myNome]["dTimer"][30] = 26000
+	end
+	if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+		testQ[myNome]["dTimer"][tonumber(date("%d"))-1] = 26000
+	end
+	if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 50400
+				else
+					testQ[myNome]["hTimer"] = 26000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",tonumber(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/1.5))
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][30]
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",tonumber(testQ[myNome]["dTimer"][30])/1.5))
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 2 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 25200
+				else
+					testQ[myNome]["hTimer"] = 16000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 3 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 14500
+				else
+					testQ[myNome]["hTimer"] = 10000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 4 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 11000
+				else
+					testQ[myNome]["hTimer"] = 8000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 5 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 10500
+				else
+					testQ[myNome]["hTimer"] = 7000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 6 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 10800
+				else
+					testQ[myNome]["hTimer"] = 7000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 7 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 10800
+				else
+					testQ[myNome]["hTimer"] = 7000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	end
+	SendAddonMessage("#mioTimer " .. myNome, testQ[myNome]["hTimer"] .. " " .. tonumber(testQ["mioFldLvl"]), "guild")
+	SendAddonMessage("#mioTimer " .. myNome, testQ[myNome]["hTimer"] .. " " .. tonumber(testQ["mioFldLvl"]), "guild")
+	SendAddonMessage("#mioTimer " .. myNome, testQ[myNome]["hTimer"] .. " " .. tonumber(testQ["mioFldLvl"]), "guild")
+end
+
+function ml()
+	if BrowseBuyoutButton ~= nil then
+		if aucBtn == nil then
+			aucBtn = CreateFrame("Button", nil, UIParent, "");
+			aucBtn:SetFrameStrata("TOOLTIP")
+			aucBtn:SetSize(222, 32)
+			aucBtn:SetPoint("CENTER", BrowseBidButton,"CENTER",22, 0)
+			aucBtn:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\auk.tga")
+			aucBtn:Hide()
+		end
+		name, texture, count, quality, canUse, level, levelColHeader, minBid, minIncrement, buyoutPrice, bidAmount, highBidder, owner, saleStatus, itemId, hasAllInfo = GetAuctionItemInfo("list",tonumber(GetSelectedAuctionItem("list")))
+		if name == "Обычное письмо" then
+			aucBtn:Show()
+			if highBidder == "Хефе" then
+				aucBtn:Hide()
+			end
+		else
+			if aucBtn ~= nil then
+				aucBtn:Hide()
+			end
+		end
+	end
+	if Atr_Buy1_Button ~= nil and Atr_Buy1_Button:IsVisible() then
+		if aucBtn == nil then
+			aucBtn = CreateFrame("Button", nil, UIParent, "");
+			aucBtn:SetFrameStrata("TOOLTIP")
+			aucBtn:SetSize(222, 32)
+			aucBtn:SetPoint("CENTER", BrowseBidButton,"CENTER",22, 0)
+			aucBtn:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\auk.tga")
+			aucBtn:Hide()
+		end
+		if Atr_Search_Box:IsVisible() and Atr_Search_Box:GetText() == "Обычное письмо" then
+			aucBtn:Show()
+			aucBtn:SetSize(422, 32)
+		else
+			if aucBtn ~= nil then
+				aucBtn:Hide()
+			end
+		end
+	end
+end
+function diffT(t,t1)
+	for i = 1, 100 do
+		if t[i] ~= t1[i] then
+			return false
+		end
+	end
+	return true
+end
+function antc(kol)
+	shablon="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'()"
+	myB=string.find(shablon,tostring(kol):sub(1,1),1,true)
+	if tonumber(#tostring(kol)) >= 2 then
+		for i = 2, #tostring(kol) do
+			myB = myB .. string.find(shablon,tostring(kol):sub(i,i),1,true)
+		end
+	end
+	return myB
+end
+function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
+	if spell ~= "Мор" then
+		local classUnit = UnitClass("player")
+		local kya = 0
+		local x,dtime,ltime,xxccvv
+		for i = 1, 24 do
+			if debuf == 1 then
+				x,__,__,__,__,dtime,ltime,xxccvv = UnitDebuff("target",i)
+				if xxccvv == "player" then
+					if x == "Озноб" then
+						if ltime ~= nil and tonumber(ltime) - tonumber(GetTime()) <= 5 then
+							testQ['o'] = 1
+						else
+							testQ['o'] = nil
+						end
+					end
+					if x == "Кровавая чума" then
+						if ltime ~= nil and tonumber(ltime) - tonumber(GetTime()) <= 5 then
+							testQ['c'] = 1
+						else
+							testQ['c'] = nil
+						end
+					end
+				end
+			end
+			if buf == 1 then
+				x = UnitBuff("player",i)
+			end
+			if x ~= nil then
+				if x == spell then
+					kya = 1
+				end
+			end
+		end
+		local classUnit = UnitClass("player")
+		if classUnit == "Рыцарь смерти" then
+			if testQ['o'] == 1 and testQ['c'] == 1 then
+				local m
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == "Мор" then
+							m = 1
+						end
+					end
+				end
+				if m ~= 1 then
+					table.insert(testQ["skills"],pos, "Мор")
+				end
+			end
+		end
+		for k, v in pairs(testQ["skills"]) do
+			if testQ["skills"][k] == spell then
+				kya = 1
+			end
+		end
+		local numr = 0
+		if runyk ~= nil then
+			numr = numr + 1
+		end
+		if runyl ~= nil then
+			numr = numr + 1
+		end
+		if runyn ~= nil then
+			numr = numr + 1
+		end
+		--if classUnit == "Рыцарь смерти" then
+			--local rune = nil
+			--for i = 1, 6 do
+				--if GetRuneCooldown(i) == 0 and (GetRuneType(i) == tonumber(runy) or GetRuneType(i) == 4) then
+					--if rune == nil then
+						--rune = 1
+					--else
+						--rune = rune + 1
+					--end
+					--if rune == tonumber(numr) then
+						--break
+					--end
+				--end
+			--end
+			--if rune == numr then
+				--kya = 0
+			--else
+				--kya = 1
+			--end
+		--end
+		local __,__,__,mana = GetSpellInfo(spell)
+		if mana == nil then
+			mana = 0
+		end
+		if classUnit == "Друид" then
+			mana = 30
+		end
+		if srav == "m" then
+			if UnitPower("player") < mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
+				if kya ~= 1 then
+					if pos == 0 then
+						table.insert(testQ["skills"],pos, spell)
+					end
+					if pos == 1 then
+						table.insert(testQ["skills"], spell)
+					end
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == spell then
+							testQ["skills"][k] = nil
+						end
+					end
+				end
+			end
+		end
+		local __,__,__,mana = GetSpellInfo(spell)
+		if mana == nil then
+			mana = 0
+		end
+		if srav == "b" then
+			if UnitPower("player") >= mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
+				if kya ~= 1 then
+					if pos == 0 then
+						table.insert(testQ["skills"],1, spell)
+					end
+					if pos == 1 then
+						table.insert(testQ["skills"], spell)
+					end
+				else
+					--local classUnit = UnitClass("player")
+					--if classUnit == "Рыцарь смерти" then
+						--for k, v in pairs(testQ["skills"]) do
+							--if testQ["skills"][k] ~= nil then
+								--if testQ["skills"][k] == spell then
+									--testQ["skills"][k] = nil
+								--end
+							--end
+						--end
+					--end
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == spell then
+							testQ["skills"][k] = nil
+						end
+					end
+				end
+			end
+		end
+		if prok ~= nil and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 and seiv == nil then
+			if classUnit == "Паладин" then
+				if spell == "Праведное неистовство" then
+					if kya ~= 1 then
+						PlaySoundFile(prok)
+					end
+				end
+			else
+				if spell ~= "Власть льда" then
+					PlaySoundFile(prok)
+				end
+			end
+			if classUnit == "Рыцарь смерти" then
+				if spell == "Власть льда" then
+					if kya ~= 1 then
+						--PlaySoundFile(prok)
+					end
+				end
+			else
+				if spell ~= "Праведное неистовство" then
+					PlaySoundFile(prok)
+				end
+			end
+		end
+		if spell == "Мясорубка" then
+			if tonumber(GetComboPoints("player", target)) == 1 and kya ~= 1 then
+				--PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+			end
+		end
+		if seiv == 1 then
+			if UnitHealth("player") <= (tonumber(UnitHealthMax("player"))/2) and GetSpellCooldown(spell) == 0 then
+				table.insert(testQ["skills"],pos, spell)
+				if prok ~= nil then
+					PlaySoundFile(prok)
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == spell then
+							testQ["skills"][k] = nil
+						end
+					end
+				end
+			end
+		end
+	end
+end
+function partyFrameHide()
+	for i = 1, 25 do
+		local prtyF = _G["PartyMemberFrame"..i]
+		if prtyF ~= nil and prtyF:IsVisible() then
+			prtyF:Hide()
+		end
+	end
+end
+function bs(msg)
+	local bs
+	local classUnit = UnitClass("player")
+	local sil = UnitStat("player", 1)
+	local lov = UnitStat("player", 2)
+	local vyn = UnitStat("player", 3)
+	local int = UnitStat("player", 4)
+	local duh = UnitStat("player", 5)
+	local cast = GetSpellBonusHealing()
+	local hit = GetCombatRating(6)
+	local crit = GetCombatRating(9)
+	local mast = GetCombatRating(24)
+	local def = GetCombatRating(2)
+	local ukl = GetCombatRating(3)
+	local par = GetCombatRating(4)
+	local block = GetCombatRating(5)
+	local mana = GetManaRegen()
+	local rpb = GetCombatRating(25)
+	local x,y = UnitAttackPower("player")
+	local sco = GetCombatRating(18)
+	local attak = x+y
+	local str
+	local khit = 0
+	if classUnit == "Жрец" or classUnit == "Жрица" then
+		local __,__,__,__,tma = GetTalentInfo(3, 27)
+		if tma >= 1 then
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
+			khit = hit .. "/" .. "289/446"
+		else
+			bs = int+(duh*1.5)+(cast*2)+crit+(mana*1.5)+sco
+			khit = hit .. "/" .. "0"
+		end
+	end
+	if classUnit == "Паладин" then
+		local __,__,__,__,xpal = GetTalentInfo(1, 26)
+		local __,__,__,__,ppal = GetTalentInfo(2, 26)
+		local __,__,__,__,rpal = GetTalentInfo(3, 26)
+		if xpal >= 1 then
+			bs = (int*2)+duh+(cast*1.5)+crit+mana+(sco*1.5)
+			khit = hit .. "/" .. "0"
+		end
+		if ppal >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/185"
+		end
+		if rpal >= 1 then
+			bs = (sil*2)+lov+hit+crit+attak+sco+mast
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/148"
+		end
+	end
+	if classUnit == "Воин" then
+		local __,__,__,__,pwar = GetTalentInfo(3, 7)
+		if pwar >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/164"
+		else
+			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/232" .. " рпб/кап: " .. rpb .. "/1400"
+		end
+	end
+	if classUnit == "Друид" then
+		local __,__,__,__,rdru = GetTalentInfo(3, 27)
+		local __,__,__,__,pdru = GetTalentInfo(2, 5)
+		local __,__,__,__,sova = GetTalentInfo(1, 13)
+		local __,__,__,__,kot = GetTalentInfo(2, 9)
+		if rdru >= 1 or msg == "хил" then
+			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)
+			khit = hit .. "/" .. "0"
+		end
+		if pdru >= 1 or msg == "медведь" then
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+rpb
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132/282" .. " рпб/кап: " .. rpb .. "/??"
+		end
+		if sova >= 1 or msg == "сова" then
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
+			khit = hit .. "/" .. "263"
+		end
+		if kot >= 1 or msg == "кот" then
+			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/1400"
+		end
+	end
+	if classUnit == "Разбойник" or classUnit == "Разбойница" then
+		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco
+		khit = hit .. "/" .. "263" .. "/" .. "722" .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/1400"
+	end
+	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
+		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)
+		khit = hit .. "/" .. "289/446 " .. "Хаст: " .. sco .. " 1100/1400"
+	end
+	if classUnit == "Шаман" then
+		local __,__,__,__,elem = GetTalentInfo(1, 3)
+		local __,__,__,__,enh = GetTalentInfo(2, 9)
+		local __,__,__,__,rsham = GetTalentInfo(3, 1)
+		if elem >= 3 and enh >= 1 then
+			__,__,__,__,elem = GetTalentInfo(1, 7)
+			__,__,__,__,enh = GetTalentInfo(2, 11)
+		end
+		if elem >= 1 then
+			bs = int+(cast*2)+crit+hit+(sco*1.5)
+			khit = hit .. "/" .. "368"
+		end
+		if enh >= 1 then
+			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+(cast*0.5)
+			khit = hit .. "/" .. "232" .. "/" .. "368"  .. " маст./кап: " .. mast .. "/140"
+		end
+		if rsham >= 1 then
+			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)
+			khit = hit .. "/" .. "0" .. " c./кап: "	.. sco .. "/1269/2100"
+		end
+	end
+	if classUnit == "Охотник" or classUnit == "Охотница" then
+		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco
+		khit = hit .. "/" .. "263" .. " рпб/кап: " .. rpb .. "/1400"
+	end
+	if classUnit == "Рыцарь смерти" then
+		local __,__,__,__,pwar = GetTalentInfo(1, 7)
+		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
+		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
+		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170/409"
+		else
+			bs = (sil*2)+lov+hit+crit+mast+rpb+attak
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170" .. " рпб/кап: " .. rpb .. "/1400"
+		end
+	end
+	if classUnit == "Маг" then
+		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)
+		khit = hit .. "/" .. "446"
+	end
+	return string.format("%d",bs) .. " хит/кап: " .. khit
+end
+GameTooltip:HookScript("OnShow", function(self)
+	local classUnit = UnitClass("player")
+	local bs = 0
+	local bstemp
+	local sil = 0
+	local lov = 0
+	local vyn = 0
+	local int = 0
+	local duh = 0
+	local cast = 0
+	local hit = 0
+	local crit = 0
+	local mast = 0
+	local def = 0
+	local ukl = 0
+	local par = 0
+	local block = 0
+	local mana = 0
+	local rpb = 0
+	local attak = 0
+	local sco = 0
+	local cast1 = 0
+	local hit1 = 0
+	local crit1 = 0
+	local mast1 = 0
+	local def1 = 0
+	local ukl1 = 0
+	local par1 = 0
+	local block1 = 0
+	local mana1 = 0
+	local rpb1 = 0
+	local attak1 = 0
+	local sco1 = 0
+	local ii
+	--print("|cff00ff00------")
+	for i=1, self:NumLines() do
+		if _G["GameTooltipTextLeft"..i]:GetText() ~= nil then
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "+" or string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "|"  then
+				bstemp = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "вын" then
+					if vyn == 0 then
+						vyn = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if vyn == nil then
+						vyn = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if vyn ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							vyn = vyn + tonumber(bstemp[1]:sub(11))
+						end
+					end
+
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "лов" then
+					if lov == 0 then
+						lov = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if lov == nil then
+						lov = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if lov ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							lov = lov + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "сил" then
+					if bstemp[4] == nil then
+						if sil == 0 then
+							sil = tonumber(string.utf8sub(bstemp[1],2))
+						end
+						if sil == nil then
+							sil = tonumber(string.utf8sub(bstemp[1],11))
+							ii = i
+						end
+						if sil ~= 0 and ii ~= i then
+							if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+							else
+								sil = sil + tonumber(bstemp[1]:sub(11))
+							end
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "инт" then
+					if int == 0 then
+						int = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if int == nil then
+						int = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if int ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							int = int + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "дух" then
+					if duh == 0 then
+						duh = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if duh == nil then
+						duh = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if duh ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							duh = duh + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ата" then
+					attak = tonumber(bstemp[1]:sub(2))
+					if attak == nil then
+						attak = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "кри" then
+					crit = tonumber(bstemp[1]:sub(2))
+					if crit == nil then
+						crit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мас" then
+					mast = tonumber(bstemp[1]:sub(2))
+					if mast == nil then
+						mast = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "зак" then
+					cast = tonumber(bstemp[1]:sub(2))
+					if cast == nil then
+						cast = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мет" then
+					hit = tonumber(bstemp[1]:sub(2))
+					if hit == nil then
+						hit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ско" then
+					hit = tonumber(bstemp[1]:sub(2))
+					if hit == nil then
+						hit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "защ" then
+					def = tonumber(bstemp[1]:sub(2))
+					if def == nil then
+						def = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "укл" then
+					ukl = tonumber(bstemp[1]:sub(2))
+					if ukl == nil then
+						ukl = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "пар" then
+					par = tonumber(bstemp[1]:sub(2))
+					if par == nil then
+						par = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "бло" then
+					block = tonumber(bstemp[1]:sub(2))
+					if block == nil then
+						block = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "про" then
+					rpb = tonumber(bstemp[1]:sub(2))
+					if rpb == nil then
+						rpb = tonumber(bstemp[1]:sub(11))
+					end
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"атаки") then
+					attak1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"критического") then
+					crit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"мастерства") then
+					mast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"заклинаний") then
+					cast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"меткости") then
+					hit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"скорости") then
+					sco1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"защиты") then
+					def1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"уклонения") then
+					ukl1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"парирования") then
+					par1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"блокирования") then
+					block1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"Восполнение") then
+					mana1 = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+					mana1 = tonumber(mana1[5])
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"пробивания") then
+					rpb1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+		end
+		--print(_G["GameTooltipTextLeft"..i]:GetText())
+	end
+	if attak == nil then
+		attak = 0
+	end
+	if sil == nil then
+		sil = 0
+	end
+	if lov == nil then
+		lov = 0
+	end
+	if vyn == nil then
+		vyn = 0
+	end
+	if int == nil then
+		int = 0
+	end
+	if duh == nil then
+		duh = 0
+	end
+	if cast == nil then
+		cast = 0
+	end
+	if hit == nil then
+		hit = 0
+	end
+	if crit == nil then
+		crit = 0
+	end
+	if mast == nil then
+		mast = 0
+	end
+	if def == nil then
+		def = 0
+	end
+	if ukl == nil then
+		ukl = 0
+	end
+	if par == nil then
+		par = 0
+	end
+	if block == nil then
+		block = 0
+	end
+	if mana == nil then
+		mana = 0
+	end
+	if rpb == nil then
+		rpb = 0
+	end
+	if attak1 == nil then
+		attak1 = 0
+	end
+	if cast1 == nil then
+		cast1 = 0
+	end
+	if hit1 == nil then
+		hit1 = 0
+	end
+	if crit1 == nil then
+		crit1 = 0
+	end
+	if mast1 == nil then
+		mast1 = 0
+	end
+	if def1 == nil then
+		def1 = 0
+	end
+	if ukl1 == nil then
+		ukl1 = 0
+	end
+	if par1 == nil then
+		par1 = 0
+	end
+	if block1 == nil then
+		block1 = 0
+	end
+	if mana1 == nil then
+		mana1 = 0
+	end
+	if rpb1 == nil then
+		rpb1 = 0
+	end
+	if sco1 == nil then
+		sco1 = 0
+	end
+	if sco == nil then
+		sco = 0
+	end
+	if classUnit == "Жрец" or classUnit == "Жрица" then
+		local __,__,__,__,tma = GetTalentInfo(3, 27)
+		if tma >= 1 then
+			bs = int+(duh*0.5)+(cast*2)+(cast1*2)+hit+hit1+(crit*2)+(crit1*2)+(mana*0.5)+(mana1*0.5)+sco+sco1
+		else
+			bs = int+(duh*1.5)+(cast*2)+crit+(mana*1.5)+sco+(cast1*2)+crit1+(mana1*1.5)+sco1
+		end
+	end
+	if classUnit == "Паладин" then
+		local __,__,__,__,xpal = GetTalentInfo(1, 26)
+		local __,__,__,__,ppal = GetTalentInfo(2, 26)
+		local __,__,__,__,rpal = GetTalentInfo(3, 26)
+		if xpal >= 1 then
+			bs = (int*2)+duh+(cast*1.5)+crit+mana+(sco*1.5)+(cast1*1.5)+crit1+mana1+(sco1*1.5)
+		end
+		if ppal >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)+(par1*1.5)+(block1*1.5)
+		end
+		if rpal >= 1 then
+			bs = (sil*2)+lov+hit+crit+attak+sco+mast+hit1+crit1+attak1+sco1+mast1
+		end
+	end
+	if classUnit == "Воин" then
+		local __,__,__,__,pwar = GetTalentInfo(3, 7)
+		if pwar >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)+(par1*1.5)+(block1*1.5)
+		else
+			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco+hit1+(crit1*1.5)+mast1+(rpb1*2)+attak1+sco1
+		end
+	end
+	if classUnit == "Друид" then
+		local __,__,__,__,rdru = GetTalentInfo(3, 27)
+		local __,__,__,__,pdru = GetTalentInfo(2, 5)
+		local __,__,__,__,sova = GetTalentInfo(1, 13)
+		local __,__,__,__,kot = GetTalentInfo(2, 9)
+		if rdru >= 1 then
+			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)+(cast1*2)+(sco1*1.5)+crit1+(mana1*1.5)
+		end
+		if pdru >= 1 then
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+rpb+hit1+crit1+(sco1*1.5)+mast1+(def1*1.5)+(ukl1*2)+rpb1
+		end
+		if sova >= 1 then
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco+(cast1*2)+hit1+(crit1*2)+(mana1*0.5)+sco1
+		end
+		if kot >= 1 then
+			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco+hit1+(crit1*1.5)+mast1+(rpb1*2)+attak1+sco1
+		end
+	end
+	if classUnit == "Разбойник" or classUnit == "Разбойница" then
+		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco+hit1+crit1+(rpb1*2)+mast1+attak1+sco1
+	end
+	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
+		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)+(cast1*2)+hit1+(crit1*1.5)+(mana1*0.5)+(sco1*1.5)
+	end
+	if classUnit == "Шаман" then
+		local __,__,__,__,elem = GetTalentInfo(1, 3)
+		local __,__,__,__,enh = GetTalentInfo(2, 9)
+		local __,__,__,__,rsham = GetTalentInfo(3, 1)
+		if elem >= 3 and enh >= 1 then
+			__,__,__,__,elem = GetTalentInfo(1, 7)
+			__,__,__,__,enh = GetTalentInfo(2, 11)
+		end
+		if elem >= 1 then
+			bs = int+(cast*2)+crit+hit+(sco*1.5)+(cast1*2)+crit1+hit1+(sco1*1.5)
+		end
+		if enh >= 1 then
+			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+cast+hit1+(crit1*1.5)+rpb1+attak1+(sco1*1.5)+mast1+cast1
+		end
+		if rsham >= 1 then
+			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)+(cast1*2)+crit1+(mana1*2)+(sco1*2)
+		end
+	end
+	if classUnit == "Охотник" or classUnit == "Охотница" then
+		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco+hit1+crit1+(rpb1*2)+attak1+sco1
+	end
+	if classUnit == "Рыцарь смерти" then
+		local __,__,__,__,pwar = GetTalentInfo(1, 7)
+		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
+		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
+		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)
+		else
+			bs = (sil*2)+lov+hit+crit+mast+rpb+attak+hit1+crit1+mast1+rpb1+attak1
+		end
+	end
+	if classUnit == "Маг" then
+		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)+(cast1*2)+hit1+(crit1*1.5)+(sco1*1.5)
+	end
+	if tonumber(bs) ~= 0 then
+		GameTooltip:AddLine("|cff00BFFFбс: |cffFF8C00" .. bs)
+		GameTooltip:Show()
+	else
+
+	end
+end)
+-- function numeCod(str)
+-- 	local m = nil
+-- 	if string.utf8sub(str,1,1) == "-" then
+-- 		str = string.utf8sub(str,2,string.utf8len(str))
+-- 		m = 1
+-- 	end
+-- 	local rez
+-- 	local r
+-- 	local hexstr = "0123456789ABCDEFG#$%()*+-./:;<=>?@HIJKLMNOPQRSTUVWXYZ^_`abcdefghijklmnopqrstuvwxyz!{|}[]'"
+-- 	local len = string.utf8len(str)
+-- 	local lenH = string.utf8len(hexstr)
+-- 	for j = 1, len do
+-- 		for i = 1, lenH do
+-- 			local r1 = string.utf8sub(hexstr,i,i)
+-- 			if r1 == string.utf8sub(str,j,j) then
+-- 				if j == 1 and j ~= len then
+-- 					r = i * 92
+-- 				elseif j ~= 1 and j ~= len then
+-- 					r = (tonumber(r) + i) * 89
+-- 				elseif j == 1 and j == len then
+-- 					r = i
+-- 				elseif j ~= 1 and j == len then
+-- 					r = tonumber(r) + i
+-- 				end
+-- 				break
+-- 			end
+-- 		end
+-- 	end
+-- 	if m ~= nil then
+-- 		r = r*-1
+-- 	end
+-- 	return r
+-- end
+function ns_obj(str)
+	local r
+	if str == "aa" then
+		r = "ka"
+	end
+	if str == "aA" then
+		r = "t"
+	end
+	if str == "ab" then
+		r = "f"
+	end
+	if str == "aB" then
+		r = "ob"
+	end
+	if str == "ac" then
+		r = "mz"
+	end
+	if str == "aC" then
+		r = "h"
+	end
+	return r
+end
+local _convertTable = {
+    [0] = "0",
+    [1] = "1",
+    [2] = "2",
+    [3] = "3",
+    [4] = "4",
+    [5] = "5",
+    [6] = "6",
+    [7] = "7",
+    [8] = "8",
+    [9] = "9",
+    [10] = "A",
+    [11] = "B",
+    [12] = "C",
+    [13] = "D",
+    [14] = "E",
+    [15] = "F",
+    [16] = "G",
+    [17] = "#",
+	[18] = "$",
+	[19] = "%",
+	[20] = "(",
+	[21] = ")",
+	[22] = "*",
+	[23] = "+",
+	[24] = "-",
+	[25] = ".",
+	[26] = "/",
+	[27] = ":",
+	[28] = ";",
+	[29] = "<",
+	[30] = "=",
+	[31] = ">",
+	[32] = "?",
+	[33] = "@",
+	[34] = "H",
+	[35] = "I",
+	[36] = "J",
+	[37] = "K",
+	[38] = "L",
+	[39] = "M",
+	[40] = "N",
+	[41] = "O",
+	[42] = "P",
+	[43] = "Q",
+	[44] = "R",
+	[45] = "S",
+	[46] = "T",
+	[47] = "U",
+	[48] = "V",
+	[49] = "W",
+	[50] = "X",
+	[51] = "Y",
+	[52] = "Z",
+	[53] = "^",
+	[54] = "_",
+	[55] = "`",
+	[56] = "a",
+	[57] = "b",
+	[58] = "c",
+	[59] = "d",
+	[60] = "e",
+	[61] = "f",
+	[62] = "g",
+	[63] = "h",
+	[64] = "i",
+	[65] = "j",
+	[66] = "k",
+	[67] = "l",
+	[68] = "m",
+	[69] = "n",
+	[70] = "o",
+	[71] = "p",
+	[72] = "q",
+	[73] = "r",
+	[74] = "s",
+	[75] = "t",
+	[76] = "u",
+	[77] = "v",
+	[78] = "w",
+	[79] = "x",
+	[80] = "y",
+	[81] = "z",
+	[82] = "!",
+	[83] = "{",
+	[84] = "|",
+	[85] = "}",
+	[86] = "[",
+	[87] = "]",
+	[88] = "'",
+	[89] = ",",
+}
+--"!tuvwxyz{|}"
+local function GetNumFromChar(char)
+    for k, v in pairs(_convertTable) do
+        if v == char then
+            return k
+        end
+    end
+    return 0
+end
+function numeCod(text)
+    local x_t = {}
+    local len = string.len(text)
+    local index = len
+    while ( index > 0) do
+        local char = string.sub(text, index, index)
+        x_t[#x_t + 1] = GetNumFromChar(char)
+        index = index - 1
+    end
+
+    local num = 0
+    for k, v in ipairs(x_t) do
+        num = num + v * math.pow(90, k - 1)
+    end
+    return num
+end
+function rand_alfabet()
+	testQ['ns_alfabetQ'] = {}
+	testQ['ns_alfabetQ1'] = {}
+	local KV = {
+        [1] = "А",
+        [2] = "Б",
+        [3] = "В",
+        [4] = "Г",
+        [5] = "Д",
+        [6] = "Ж",
+        [7] = "З",
+        [8] = "И",
+        [9] = "К",
+        [10] = "Л",
+        [11] = "М",
+        [12] = "Н",
+        [13] = "О",
+        [14] = "П",
+        [15] = "Р",
+        [16] = "С",
+        [17] = "Т",
+        [18] = "У",
+        [19] = "Ф",
+        [20] = "Х",
+        [21] = "Ц",
+        [22] = "Ч",
+        [23] = "Ш",
+        [24] = "Я",
+        [25] = "Е",
+        [26] = "Й",
+        [27] = "Э",
+        [28] = "Щ",
+        [29] = "Ю",
+        [30] = "Ы",
+    }
+    for i = 1, 5 do
+		local x = math.random(1,30)
+		table.insert(testQ['ns_alfabetQ'],KV[x])
+		table.insert(testQ['ns_alfabetQ1'],KV[x])
+	end
+end
+function np_change_0()
+		ns_cfg = {
+
+		--//Полосы здоровья и касты]]--
+		HPheight = 14 ,--высота
+		HPwidth = 99 ,--ширина
+
+
+		CBheight = 5 , --Высота каст бара
+		CBtieFont = 10 , --Размер шрифта каст бар
+		border = 4 , --размер бортика
+
+		--//рейдовая иконка]]--
+		rheight = 15 ,-- размер (например 15 означает , что размер иконки будет высотой 15 и шириной 15 пикселей)
+		Rpoint          = "RIGHT" , --чем цепляем
+		RrelativePoint = "LEFT" , --куда цепляем
+		Rx             = 0 , --координата Х (по ширине)
+		Ry             = -4 , --координата У (по высоте)
+
+		--//Уровень]]--
+		LvLFontSize = 13 , --размер букв
+		LvLpoint          = "RIGHT" , --чем цепляем
+		LvLrelativePoint = "LEFT"  ,--куда цепляем
+		LvLx             = -2 , --координата Х (по ширине)
+		LvLy             = 0 , --координата У (по высоте)
+
+		--//Имя]]--
+		NameFontSize = 11 , --размер букв имени
+		Npoint          = "BOTTOM" , --чем цепляем
+		NrelativePoint = "TOP"  ,--куда цепляем
+		Nx             = 0 , --координата Х (по ширине)
+		Ny             = 4 , --координата У (по высоте))
+
+		--//Цвета]]
+		hostileunit    = {r=0.77, g=0.11, b=0.11},  --цвет враждебного инита
+		friendlyunit   = {r=0.6, g=0.88, b=0.99},  --цвет дружественного юнита
+		friendlyplayer = {r=0.11, g=0.88, b=0.11},  --цвет дружественного игрока
+		neutralunit    = {r=0.99, g=0.99, b=0.0},  --цвет нейтрального юнита
+	}
+end
+function np_change_nil()
+	ns_cfg = {
+
+		--//Полосы здоровья и касты]]--
+		HPheight = 4 ,--высота
+		HPwidth = 99 ,--ширина
+
+
+		CBheight = 5 , --Высота каст бара
+		CBtieFont = 10 , --Размер шрифта каст бар
+		border = 2 , --размер бортика
+
+		--//рейдовая иконка]]--
+		rheight = 15 ,-- размер (например 15 означает , что размер иконки будет высотой 15 и шириной 15 пикселей)
+		Rpoint          = "RIGHT" , --чем цепляем
+		RrelativePoint = "LEFT" , --куда цепляем
+		Rx             = 0 , --координата Х (по ширине)
+		Ry             = -4 , --координата У (по высоте)
+
+		--//Уровень]]--
+		LvLFontSize = 13 , --размер букв
+		LvLpoint          = "RIGHT" , --чем цепляем
+		LvLrelativePoint = "LEFT"  ,--куда цепляем
+		LvLx             = -2 , --координата Х (по ширине)
+		LvLy             = 0 , --координата У (по высоте)
+
+		--//Имя]]--
+		NameFontSize = 11 , --размер букв имени
+		Npoint          = "BOTTOM" , --чем цепляем
+		NrelativePoint = "TOP"  ,--куда цепляем
+		Nx             = 0 , --координата Х (по ширине)
+		Ny             = 4 , --координата У (по высоте))
+
+		--//Цвета]]
+		hostileunit    = {r=0.77, g=0.11, b=0.11},  --цвет враждебного инита
+		friendlyunit   = {r=0.6, g=0.88, b=0.99},  --цвет дружественного юнита
+		friendlyplayer = {r=0.11, g=0.88, b=0.11},  --цвет дружественного игрока
+		neutralunit    = {r=0.99, g=0.99, b=0.0},  --цвет нейтрального юнита
+	}
+end
+function ns_xy(x,y,x1,y1)
+	local mioCel = sqrt((x-x1)^2+(y-y1)^2)
+	return mioCel
+end
+function numZome()
+	if GetZoneText() == "Луносвет" then
+		kont = "2"
+		lok = "14"
+	end
+	if GetZoneText() == "Зангартопь" then
+		kont = "3"
+		lok = "2"
+	end
+	if GetZoneText() == "Танарис" then
+		kont = "1"
+		lok = "18"
+	end
+	if GetZoneText() == "Оргриммар" then
+		kont = "1"
+		lok = "10"
+	end
+	if GetZoneText() == "Штормград" then
+		kont = "2"
+		lok = "28"
+	end
+	if GetZoneText() == "Дуротар" then
+		kont = "1"
+		lok = "4"
+	end
+	if GetZoneText() == "Степи" then
+		kont = "1"
+		lok = "17"
+	end
+	return kont,lok
+end
+function ns_locaziya()
+	local x = math.random(1,7)
+	local rez
+	if x == 1 then
+		rez = "Луносвет"
+	end
+	if x == 2 then
+		rez = "Дуротар"
+	end
+	if x == 3 then
+		rez = "Оргриммар"
+	end
+	if x == 4 then
+		rez = "Зангартопь"
+	end
+	if x == 5 then
+		rez = "Степи"
+	end
+	if x == 6 then
+		rez = "Танарис"
+	end
+	if x == 7 then
+		rez = "Штормград"
+	end
+	return rez
+end
+function ns_q4xy()
+	local myNome = GetUnitName("player")
+	kont,lok = numZome()
+	if kont ~= nil then
+		if testQ[myNome]["взятый_квест_xy"] == nil then
+			testQ[myNome]["взятый_квест_xy"] = {}
+			local x = math.random(1,99)
+			local y = math.random(1,99)
+			testQ[myNome]["взятый_квест_xy"]['time'] = 600
+			testQ[myNome]["взятый_квест_xy"]['x'] = tonumber("0."..x)
+			testQ[myNome]["взятый_квест_xy"]['y'] = tonumber("0."..y)
+			testQ[myNome]["взятый_квест_xy"]['lok'] = ns_locaziya()
+			testQ[myNome]["взятый_квест_xy"]['timer'] = 5
+		else
+			if GetZoneText() == testQ[myNome]["взятый_квест_xy"]['lok'] then
+				if testQ[myNome]["взятый_квест_xy"]['time'] >= 1 then
+					local x,y = GetPlayerMapPosition("player")
+					testQ[myNome]["взятый_квест_xy"]['timer'] = (ns_xy(x,y,testQ[myNome]["взятый_квест_xy"]['x'],testQ[myNome]["взятый_квест_xy"]['y'])/tonumber(mapTables["lokRasstoyanie"][kont][lok]))/10
+					testQ[myNome]["взятый_квест_xy"]['time'] = testQ[myNome]["взятый_квест_xy"]['time'] - 1
+					print("Осталось " .. testQ[myNome]["взятый_квест_xy"]['time'] .. " секунд")
+					if (ns_xy(x,y,testQ[myNome]["взятый_квест_xy"]['x'],testQ[myNome]["взятый_квест_xy"]['y']) / tonumber(mapTables["lokRasstoyanie"][kont][lok]))/10 < 0.5 then
+						testQ[myNome]["взятый_квест_xy_end"] = 1
+						SendChatMessage("Она тут! Нюхом чую!", "OFFICER", nil, 1)
+					end
+				else
+					testQ[myNome]["взятый_квест_xy"]['lok'] = ns_locaziya()
+					SendChatMessage("Увы, мою принцессу уже увезли в " .. testQ[myNome]["взятый_квест_xy"]['lok'], "OFFICER", nil, 1)
+					local x = math.random(1,99)
+					local y = math.random(1,99)
+					testQ[myNome]["взятый_квест_xy"]['x'] = tonumber("0."..x)
+					testQ[myNome]["взятый_квест_xy"]['y'] = tonumber("0."..y)
+					testQ[myNome]["взятый_квест_xy"]['time'] = 600
+				end
+			end
+		end
+	else
+		if testQ[myNome]["взятый_квест_xy"] == nil then
+			testQ[myNome]["взятый_квест_xy"] = {}
+			local x = math.random(1,99)
+			local y = math.random(1,99)
+			testQ[myNome]["взятый_квест_xy"]['time'] = 300
+			testQ[myNome]["взятый_квест_xy"]['x'] = tonumber("0."..x)
+			testQ[myNome]["взятый_квест_xy"]['y'] = tonumber("0."..y)
+			testQ[myNome]["взятый_квест_xy"]['lok'] = ns_locaziya()
+			testQ[myNome]["взятый_квест_xy"]['timer'] = 5
+		end
+	end
+end
+
+function allcash(xC,yC,cod)
+	local x,y = GetPlayerMapPosition("player")
+	local mioCel=sqrt((x-xC)^2+(y-yC)^2)
+	local ac = (0.82 - mioCel)/0.82
+	if cod == 1 then
+		MoveViewRightStart(0)
+		if testQ['acbuhlo'] == nil then
+			MoveViewLeftStart(ac)
+		else
+			MoveViewLeftStart(ac/2)
+		end
+	else
+		MoveViewLeftStart(0)
+		if testQ['acbuhlo'] == nil then
+			MoveViewRightStart(ac)
+		else
+			MoveViewRightStart(ac/2)
+		end
+	end
+	local rnd = math.random(1,2)
+	if rnd == 1 then
+		if testQ['acbuhlo'] == 1 then
+			print(ac)
+		end
+	end
+end
+
+function osleplenie(sila)
+	MoveViewLeftStart(0)
+	MoveViewRightStart(0)
+	local x = math.random(1,2)
+	if x == 1 then
+		MoveViewLeftStart(sila)
+	else
+		MoveViewRightStart(sila)
+	end
+end
+function Shuffle(t)
+	local s = {}
+	for i = 1, #t do s[i] = t[i] end
+	for i = #t, 2, -1 do
+		local j = math.random(i)
+		s[i], s[j] = s[j], s[i]
+	end
+	return s
+end
+
+function ns_iya(num)
+	for i = 1, 100 do
+		if iYaBtn[i] ~= nil then
+			iYaBtn[i]:Hide()
+			iYaBtn[i]:Enable()
+			iYaBtn[i]:SetAlpha(1)
+		end
+		if iYaBtnP[i] ~= nil then
+			iYaBtnP[i]:Hide()
+		end
+	end
+	if tblIya[num]['sh'] == 1 then
+		testQ['iya_temp']=time()
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		iYaBtn:configure(1,0,300,515,32,"",tblIya[num]['t1'],num,tblIya[num]['s1'],99)
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p1'],tblIya[num]['t2'],num,tblIya[num]['s2'],99)
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p2'],tblIya[num]['t3'],num,tblIya[num]['s3'],99)
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p3'],tblIya[num]['t4'],num,tblIya[num]['s4'],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p4'],tblIya[num]['t5'],num,tblIya[num]['s5'],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,"",tblIya[num]['t6'],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,"",tblIya[num]['t7'],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,"",tblIya[num]['t8'],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,"",tblIya[num]['t9'],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+		iYaBtn[6]:SetAlpha(0.5)
+		iYaBtn[7]:SetAlpha(0.5)
+		iYaBtn[2]:SetAlpha(0.5)
+		iYaBtn[3]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 2 then
+		testQ['iya_temp']=time()
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		local number = {"2","3","4","5"}
+		local numbers = Shuffle(number)
+		iYaBtn:configure(1,0,300,515,32,tblIya[num]['p10'],tblIya[num]['t1'],num,tblIya[num]['s1'],99)
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['s'..numbers[4]],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,tblIya[num]['p6'],tblIya[num]['t6'],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,tblIya[num]['p7'],tblIya[num]['t7'],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,tblIya[num]['p8'],tblIya[num]['t8'],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,tblIya[num]['p9'],tblIya[num]['t9'],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 3 then
+		testQ['iya_temp']=time()
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		local number = {"2","3","4"}
+		local numbers = Shuffle(number)
+		iYaBtn:configure(1,0,300,515,32,"",tblIya[num]['t1'],num,tblIya[num]['s1'],99)
+		iYaBtn:configure(2,0,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,-256,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,256,125,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 4 then
+		local number = {"2","3","4","5"}
+		local numbers = Shuffle(number)
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['s'..numbers[4]],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,"",tblIya[num]['tt'..numbers[1]],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,"",tblIya[num]['tt'..numbers[2]],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,"",tblIya[num]['tt'..numbers[3]],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,"",tblIya[num]['tt'..numbers[4]],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		local numberP = {"1","2","3","4"}
+		local numbersP = Shuffle(numberP)
+		iYaBtnP:configure(1,tblIya[num]['x1'],tblIya[num]['y1'],tblIya[num]['rx1'],tblIya[num]['ry1'],"",tblIya[num]['tp'..numbersP[1]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(2,tblIya[num]['x2'],tblIya[num]['y2'],tblIya[num]['rx2'],tblIya[num]['ry2'],"",tblIya[num]['tp'..numbersP[2]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(3,tblIya[num]['x3'],tblIya[num]['y3'],tblIya[num]['rx3'],tblIya[num]['ry3'],"",tblIya[num]['tp'..numbersP[3]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(4,tblIya[num]['x4'],tblIya[num]['y4'],tblIya[num]['rx4'],tblIya[num]['ry4'],"",tblIya[num]['tp'..numbersP[4]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtn[2]:Disable()
+		iYaBtn[3]:Disable()
+		iYaBtn[4]:Disable()
+		iYaBtn[5]:Disable()
+		iYaBtn[6]:Disable()
+		iYaBtn[7]:Disable()
+		iYaBtn[8]:Disable()
+		iYaBtn[9]:Disable()
+	end
+	if tblIya[num]['sh'] == 5 then
+		testQ['iya_temp']=time()
+		local number = {"1","2","3","4","5","6"}
+		local numbers = Shuffle(number)
+		iYaBtn:configure(1,0,300,515,32,tblIya[num]['p11'],tblIya[num]['t11'],num,tblIya[num]['s1'],99)
+		iYaBtnPic:configure(1,-259,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['ts'..numbers[1]],tblIya[num]['tq'])
+		iYaBtnPic:configure(2,257,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['ts'..numbers[2]],tblIya[num]['tq'])
+		iYaBtnPic:configure(3,-259,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['ts'..numbers[3]],tblIya[num]['tq'])
+		iYaBtnPic:configure(4,257,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['ts'..numbers[4]],tblIya[num]['tq'])
+		iYaBtnPic:configure(5,0,125,256,256,tblIya[num]['p'..numbers[5]],tblIya[num]['t'..numbers[5]],num,tblIya[num]['ts'..numbers[5]],tblIya[num]['tq'])
+		iYaBtnPic:configure(6,0,-165,256,256,tblIya[num]['p'..numbers[6]],tblIya[num]['t'..numbers[6]],num,tblIya[num]['ts'..numbers[6]],tblIya[num]['tq'])
+
+		iYaBtnText:configure(1,-259,268,256,32,"",tblIya[num]['tt1'],num,tblIya[num]['tts1'],99)
+		iYaBtnText:configure(2,255,268,256,32,"",tblIya[num]['tt2'],num,tblIya[num]['tts2'],99)
+		iYaBtnText:configure(3,-259,-22,256,32,"",tblIya[num]['tt3'],num,tblIya[num]['tts3'],99)
+		iYaBtnText:configure(4,255,-22,256,32,"",tblIya[num]['tt4'],num,tblIya[num]['tts4'],99)
+		iYaBtnText:configure(5,0,268,256,32,"",tblIya[num]['tt5'],num,tblIya[num]['tts5'],99)
+		iYaBtnText:configure(6,0,-22,256,32,"",tblIya[num]['tt6'],num,tblIya[num]['tts6'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,316,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 6 then
+		local number = {"2","3","4","5"}
+		local numbers = Shuffle(number)
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['s'..numbers[4]],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,"",tblIya[num]['tt'..numbers[1]],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,"",tblIya[num]['tt'..numbers[2]],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,"",tblIya[num]['tt'..numbers[3]],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,"",tblIya[num]['tt'..numbers[4]],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		local numberP = {"1","2","3","4"}
+		local numbersP = Shuffle(numberP)
+		iYaBtnP:configure(1,-11,148,80,32,"",tblIya[num]['tp'..numbersP[1]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(2,-11,116,80,32,"",tblIya[num]['tp'..numbersP[2]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(3,-11,84,80,32,"",tblIya[num]['tp'..numbersP[3]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(4,-11,52,80,32,"",tblIya[num]['tp'..numbersP[4]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtn[2]:Disable()
+		iYaBtn[3]:Disable()
+		iYaBtn[4]:Disable()
+		iYaBtn[5]:Disable()
+		iYaBtn[6]:Disable()
+		iYaBtn[7]:Disable()
+		iYaBtn[8]:Disable()
+		iYaBtn[9]:Disable()
+	end
+end
+
+function sCh()
+	SendChatMessage('Что вы видите тут: "Ññ"?', "GUILD", nil, 1)
+end
+
+function pokazTextur(id,textur,profil,sign)
+    if sign == "show" then
+        prok_set1 = {
+            ["Rx"] = 128,
+            ["Ry"] = 256,
+            ["x"] = -200,
+            ["y"] = 0,
+        }
+        prok_set2 = {
+            ["Rx"] = 128,
+            ["Ry"] = 256,
+            ["x"] = 200,
+            ["y"] = 0,
+        }
+        prok_set3 = {
+            ["Rx"] = 256,
+            ["Ry"] = 128,
+            ["x"] = 0,
+            ["y"] = 200,
+        }
+        prok_set4 = {
+            ["Rx"] = 0,
+            ["Ry"] = 0,
+            ["x"] = 0,
+            ["y"] = 0,
+        }
+        local x = GetScreenWidth()
+        local y = GetScreenHeight()
+        if profil == 4 then
+        unIcon(tonumber(id),x,y,0+prok_set4["x"],0+prok_set4["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+        if profil == 1 then
+        unIcon(tonumber(id),prok_set1["Rx"],prok_set1["Ry"],0+prok_set1["x"],0+prok_set1["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+        if profil == 2 then
+        unIcon(tonumber(id),prok_set2["Rx"],prok_set2["Ry"],0+prok_set2["x"],0+prok_set2["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+        if profil == 3 then
+        unIcon(tonumber(id),prok_set3["Rx"],prok_set3["Ry"],0+prok_set3["x"],0+prok_set3["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+    else
+        unIcon(tonumber(tonumber(id),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER"))
+    end
+end
+
+
+
+
+
+
+
+
+
