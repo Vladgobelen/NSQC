@@ -24,6 +24,7 @@ LFGFrame.xml
 NPconfig.lua
 skills.lua
 np.lua
+cQ.lua
 iya.lua
 bs.xml
 bs.lua
