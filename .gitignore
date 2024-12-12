@@ -32,6 +32,7 @@
 !.gitignore
 !functionsC.lua
 !libs/
+!libs/LibRangeCheck-2.0
 !libs/q.ogg
 !libs/gobXm.ogg
 !libs/hr.ogg
