@@ -33,6 +33,7 @@
 !functionsC.lua
 !libs/
 !libs/LibRangeCheck-2.0
+!libs/LibRangeCheck-2.0/LibRangeCheck-2.0.lua
 !libs/q.ogg
 !libs/gobXm.ogg
 !libs/hr.ogg
