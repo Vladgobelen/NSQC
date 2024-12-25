@@ -1,1 +1,649 @@
-iconRis={}iconRisText={}iconRisText2={}iconRisBO={}tochki={}iconRisEv3={}iconRisEvO3={}icN=1 iconCh={}iconChText={}iconRisEv3={}iconRisEvent3={}iconRisEvent3Tex={}iconQ={}iconQText={}fenix={}fenixText={}ahtnG={}ahtnGText={}risPet={}risPetText={}mgznIcon={}mgznText={}dkT={}dkText={}unT={}unText={}nIcon={}function nIcon.new(C,q,G,K,r,E,O,a,b,y,S)local R={}function R.configure(C)C[q]=C[q]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",G)C[q]:SetFrameStrata(S)C[q]=C[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")C[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(a.."\046\116\103\097"))C[q]:SetSize(E,O)C[q]:SetPoint(b,G,y,K,r)end function R.Show(G)if R[q]==nil then R:configure()else R[q]:Show()end end function R.Hide(G)R[q]:Hide()end function R.reSize(r,G,K)r[q]:SetSize(G,K)end function R.reMove(E,K,r)E[q]:SetPoint(b,G,y,K,r)end setmetatable(R,C)C.__index=C return R end function dkT.configure(r,q,G,K)r[q]=r[q]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)r[q]:SetWidth(G)r[q]:SetHeight(K)end function dkText.configure(a,q,G,K,r,E,O)a[q]=dkT[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")a[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(O.."\046\112\110\103"))a[q]:SetWidth(G)a[q]:SetHeight(K)a[q]:SetPoint("\066\079\084\084\079\077\076\069\070\084",UIParent,"\066\079\084\084\079\077\076\069\070\084",r,E)end function dkIcon(q,G,K,r,E,O,a)if a=="\115\104\111\119"then if dkT[q]==nil then dkT:configure(q,G,K)dkText:configure(q,G,K,r,E,O)dkT[q]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")dkText[q]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",0,0)else dkT[q]:Show()end else if dkT[q]~=nil then dkT[q]:Hide()end end end function unT.configure(r,q,G,K)r[q]=r[q]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)r[q]:SetWidth(G)r[q]:SetHeight(K)end function unText.configure(S,q,G,K,r,E,O,a,b,y)if q~=nil then S[q]=unT[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")S[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(O.."\046\116\103\097"))S[q]:SetWidth(G)S[q]:SetHeight(K)S[q]:ClearAllPoints()S[q]:SetPoint(b,a,y,r,E)end end function unIcon(q,G,K,r,E,O,a,b,y,S)if q~=nil then if a=="\115\104\111\119"then if unT[q]==nil then unT:configure(q,G,K)unText:configure(q,G,K,r,E,O,b,y,S)unT[q]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")unT[q]:ClearAllPoints()unText[q]:SetPoint(y,b,S,r,E)unT[q]:SetWidth(G)unT[q]:SetHeight(K)else unT[q]:ClearAllPoints()unT[q]:Show()unT[q]:SetWidth(G)unT[q]:SetHeight(K)end else if unT[q]~=nil then unT[q]:Hide()end end end end function iconCh.configure(r,q,G,K)r[q]=r[q]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",WorldMapDetailFrame)r[q]:SetWidth(G)r[q]:SetHeight(K)end function iconChText.configure(O,q,G,K,r,E)O[q]=iconCh[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")O[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\099\104\046\112\110\103")O[q]:SetWidth(G)O[q]:SetHeight(K)O[q]:SetPoint("\066\079\084\084\079\077\076\069\070\084",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",r,E)end function chMuestro(q,G,K)iconCh:configure(q,576,384)iconChText:configure(q,32,32,G,K)iconCh:configure(q,G,K)iconChText:configure(q,32,32,G,K)iconCh[q]:SetFrameStrata("\084\079\079\076\084\073\080")iconChText[q]:SetPoint("\066\079\084\084\079\077\076\069\070\084",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",G,K)end function iconQ.configure(q)q[1]=q[1]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)q[1]:SetWidth(512)q[1]:SetHeight(396)end function iconQText.configure(q)q[1]=iconQ[1]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")q[1]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\113\117\101\115\116\046\116\103\097")q[1]:SetWidth(512)q[1]:SetHeight(396)q[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",0,0)end function fenix.configure(q)q[1]=q[1]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)q[1]:SetWidth(512)q[1]:SetHeight(512)end function fenixText.configure(q)q[1]=fenix[1]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")q[1]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\102\110\120\046\116\103\097")q[1]:SetWidth(512)q[1]:SetHeight(512)q[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",0,0)end function ahtnG.configure(q)q[1]=q[1]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)q[1]:SetWidth(400)q[1]:SetHeight(450)end function ahtnGText.configure(q)q[1]=ahtnG[1]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")q[1]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\065\072\084\085\078\071\046\116\103\097")q[1]:SetWidth(350)q[1]:SetHeight(450)q[1]:SetPoint("\067\069\078\084\069\082",SendMailFrame,"\067\069\078\084\069\082",-22,50)end function risPet.configure(G,q)G[q]=G[1]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)G[q]:SetWidth(32)G[q]:SetHeight(32)end function risPetText.configure(K,q,G)K[q]=risPet[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")K[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(G.."\046\116\103\097"))K[q]:SetWidth(32)K[q]:SetHeight(32)K[q]:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",SendMailFrame,"\066\079\084\084\079\077\082\073\071\072\084",0,0)end function mgznIcon.configure(q)q[1]=q[1]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)q[1]:SetWidth(768)q[1]:SetHeight(512)end function mgznText.configure(q)q[1]=mgznIcon[1]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")q[1]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\113\117\101\115\116\046\116\103\097")q[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",0,0)q[1]:SetWidth(768)q[1]:SetHeight(700)end function magazin(q)GameTooltip:Hide()if q=="\115\104\111\119"then if mgznIcon[1]==nil then mgznIcon:configure()mgznText:configure()mgznIcon[1]:SetFrameStrata("\068\073\065\076\079\071")mgznText[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",-80,48)if mgznZ==nil then mgznZ=CreateFrame("\066\117\116\116\111\110",nil,UIParent,"")mgznZ:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")mgznZ:SetPoint("\066\079\084\084\079\077\076\069\070\084",resursy[5],"\066\079\084\084\079\077\076\069\070\084",0,0)mgznZ:SetWidth(64)mgznZ:SetHeight(64)mgznZ:SetNormalTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\115\109\103\046\116\103\097")mgznZ:SetHighlightTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\115\109\103\046\116\103\097")mgznZ:SetScript("\079\110\069\110\116\101\114",function(q)GameTooltip:SetOwner(q,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine("\124\099\102\102\057\057\102\102\057\057\208\146\208\176\208\187\209\142\209\130\208\176")GameTooltip:AddLine("\124\099\102\102\070\070\067\070\052\048\208\152\208\189\208\190\208\179\208\180\208\176 \208\191\208\176\208\180\208\176\208\181\209\130 \209\129 \208\186\208\178\208\181\209\129\209\130\208\176 \208\189\208\176 \209\136\208\181\209\128\209\129\209\130\209\140 \208\184 \208\191\209\128\208\190\209\135\209\131\209\142 \209\130\208\186\208\176\208\189\209\140")GameTooltip:AddLine("\124\099\102\102\070\070\067\070\052\048\208\156\208\190\208\182\208\189\208\190 \208\186\209\131\208\191\208\184\209\130\209\140 \208\189\208\176 \208\176\209\131\208\186\209\134\208\184\208\190\208\189\208\181\058 \124\099\102\102\057\057\102\102\057\057\"\208\158\208\177\209\139\209\135\208\189\208\190\208\181 \208\191\208\184\209\129\209\140\208\188\208\190\" \124\099\102\102\070\070\067\070\052\048\208\190\209\130 \208\191\208\181\209\128\209\129\208\190\208\189\208\176\208\182\208\176 \"\208\165\208\181\209\132\208\181\"")GameTooltip:AddLine("\124\099\102\102\057\057\102\102\057\057\208\155\208\154\208\156\058 \124\099\102\102\070\070\067\070\052\048\208\158\209\130\208\186\209\128\209\139\209\130\209\140\047\208\151\208\176\208\186\209\128\209\139\209\130\209\140 \208\188\208\176\208\179\208\176\208\183\208\184\208\189")GameTooltip:Show()end)mgznZ:SetScript("\079\110\076\101\097\118\101",function(q)GameTooltip:Hide()end)mgznZ:SetScript("\079\110\067\108\105\099\107",function(q)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\099\108\099\046\111\103\103")if testQ.magSign==nil then dmG1[1005]:Show()dmG1[1005]:SetFrameStrata("\084\079\079\076\084\073\080")mgznIcon[1]:Show()for q=1,100,1 do fBtn[q]:Hide()end resursy[5]:Hide()mgznZ:Show()mgznZ:SetFrameStrata("\076\079\087")else dmgText1("",mgznZ,1005,22,"\070\070\056\067\048\048")mgznIcon[1]:Hide()for q=1,100,1 do fBtn[q]:Show()if mBtn[q]~=nil then mBtn[q]:Hide()end end if not resursy[5]:IsVisible()and not mgznZ:IsVisible()then for q=1,10000,1 do if dmG1[q]~=nil then dmG1[q]:Hide()end if dmG2[q]~=nil then dmG2[q]:Hide()end end end resursy[5]:Show()btn[989]:Show()end GameTooltip:Hide()end)else dmG1[1005]:Show()dmG1[1005]:SetFrameStrata("\084\079\079\076\084\073\080")mgznZ:Show()GameTooltip:Hide()end else mgznIcon[1]:Show()end else if mgznIcon[1]~=nil then mgznIcon[1]:Hide()end end end function iconRis.configure(r,q,G,K)r[q]=r[q]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",WorldMapDetailFrame)r[q]:SetWidth(G)r[q]:SetHeight(K)end function iconRisEv3.configure(r,q,G,K)r[q]=r[q]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",WorldMapDetailFrame)r[q]:SetWidth(G)r[q]:SetHeight(K)end function iconRisEvent3.configure(r,q,G,K)r[q]=r[q]or CreateFrame("\070\082\065\077\069","\109\121\065\100\100\111\110\073\099\111\110\070\114\097\109\101",UIParent)r[q]:SetWidth(G)r[q]:SetHeight(K)end function iconRisText.configure(a,q,G,K,r,E,O)a[q]=iconRis[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")a[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092"..(O.."\046\116\103\097"))a[q]:SetWidth(G)a[q]:SetHeight(K)a[q]:SetPoint("\066\079\084\084\079\077\076\069\070\084",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",r,E)end function iconRisBO.configure(a,q,G,K,r,E,O)a[q]=iconRis[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")a[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\049\050\049\050\049\050\046\116\103\097")a[q]:SetWidth(G)a[q]:SetHeight(K)a[q]:SetPoint("\067\069\078\084\069\082",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",r,E)end function iconRisEvO3.configure(a,q,G,K,r,E,O)a[q]=iconRisEv3[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")a[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092"..(O.."\046\116\103\097"))a[q]:SetWidth(G)a[q]:SetHeight(K)a[q]:SetPoint("\067\069\078\084\069\082",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",r,E)end function iconRisEvent3Tex.configure(a,q,G,K,r,E,O)a[q]=iconRisEvent3[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")a[q]:SetTexture("\073\110\116\101\114\102\097\099\101\047\067\079\077\077\079\078\047\073\110\100\105\099\097\116\111\114-\071\114\101\101\110\046\112\110\103")a[q]:SetPoint("\067\069\078\084\069\082",UIParent,"\066\079\084\084\079\077\076\069\070\084",r,E)end function quesT(q)if q=="\115\104\111\119"then if iconQ[1]==nil then iconQ:configure()iconQText:configure()iconQ[1]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")iconQText[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",0,0)else iconQ[1]:Show()end else if iconQ[1]~=nil then iconQ[1]:Hide()end end end function showFenix(q)if q=="\115\104\111\119"then if fenix[1]==nil then fenix:configure()fenixText:configure()fenix[1]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")fenixText[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",0,-70)else fenix[1]:Show()end else if fenix[1]~=nil then fenix[1]:Hide()end end end function ahtunGSH(q)if q=="\115\104\111\119"then if ahtnG[1]==nil then ahtnG:configure()ahtnGText:configure()ahtnG[1]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")ahtnGText[1]:SetPoint("\067\069\078\084\069\082",SendMailFrame,"\067\069\078\084\069\082",-15,20)else ahtnG[1]:Show()end else if ahtnG[1]~=nil then ahtnG[1]:Hide()end end end function risPetShow(q,G,K,r,E)if G=="\115\104\111\119"then if risPet[q]==nil then risPet:configure(q)risPetText:configure(q,K)risPet[q]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")risPetText[q]:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",fBtn[q],"\066\079\084\084\079\077\082\073\071\072\084",0,0)else risPet[q]:Show()end SendAddonMessage("\110\115\095\112\111\107\097\122\104\105\072\111\122\121\097\105\110\097 ",r,"\103\117\105\108\100")else if risPet[q]~=nil then risPet[q]:Hide()end end end function bo(q,G)for q,G in pairs(mapTables[testQ["\209\141\208\178\208\181\208\189\209\130\049"]])do if type(q)=="\115\116\114\105\110\103"then tKont=q end for q,G in pairs(mapTables[testQ["\209\141\208\178\208\181\208\189\209\130\049"]][q])do if type(q)=="\115\116\114\105\110\103"then tLok=q end end end iconRis:configure(q,q,G)local K,r=getPOS(tonumber(mapTables[testQ["\209\141\208\178\208\181\208\189\209\130\049"]][tKont][tLok][tostring(q)].x),tonumber(mapTables[testQ["\209\141\208\178\208\181\208\189\209\130\049"]][tKont][tLok][tostring(q)].y))iconRisBO:configure(q,G,G,K,r,121212)iconRis[q]:SetFrameStrata("\084\079\079\076\084\073\080")iconRisBO[q]:SetPoint("\067\069\078\084\069\082",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",K,r)end function event3(q,G,K)if K=="\115\104\111\119"then if iconRisEvent3[1]==nil then iconRisEvent3:configure(1,576,384)iconRisEvent3Tex:configure(1,G,G,0,0,121212)iconRisEvent3Tex[q]:SetWidth(G)iconRisEvent3Tex[q]:SetHeight(G)iconRisEvent3[1]:SetFrameStrata("\066\065\067\075\071\082\079\085\078\068")iconRisEvent3Tex[1]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",0,0)else if not iconRisEvent3[1]:IsVisible()then iconRisEvent3[1]:Show()iconRisEvent3Tex[1]:SetWidth(G)iconRisEvent3Tex[1]:SetHeight(G)else iconRisEvent3Tex[1]:SetWidth(G)iconRisEvent3Tex[1]:SetHeight(G)end end else if iconRisEvent3[1]~=nil then iconRisEvent3[1]:Hide()end end end function ev3(q,G,K)for G,K in pairs(mapTables[q])do if type(G)=="\115\116\114\105\110\103"then tKont=G end for q,G in pairs(mapTables[q][G])do if type(q)=="\115\116\114\105\110\103"then tLok=q end end end iconRisEv3:configure(G,576,384)local r,E=getPOS(tonumber(mapTables[q][tKont][tLok][tostring(G)].x),tonumber(mapTables[q][tKont][tLok][tostring(G)].y))iconRisEvO3:configure(G,K,K,r,E,121212)iconRisEv3[G]:SetFrameStrata("\084\079\079\076\084\073\080")iconRisEvO3[G]:SetPoint("\067\069\078\084\069\082",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",r,E)end function iconRisText2.configure(a,q,G,K,r,E,O)a[q]=iconRis[q]:CreateTexture("\109\121\065\100\100\111\110\073\099\111\110","\079\086\069\082\076\065\089")a[q]:SetTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092"..(O.."\046\116\103\097"))a[q]:SetWidth(G)a[q]:SetHeight(K)a[q]:SetPoint("\084\079\080\076\069\070\084",WorldMapDetailFrame,"\084\079\080\076\069\070\084",r,E)end function setka()mostraKrtl2("\083\104\111\119",0,0,0,650,50,1,3)mostraKrtl2("\083\104\111\119",50,0,50,650,50,1,3)mostraKrtl2("\083\104\111\119",100,0,100,650,50,1,3)mostraKrtl2("\083\104\111\119",150,0,150,650,50,1,3)mostraKrtl2("\083\104\111\119",200,0,200,650,50,1,3)mostraKrtl2("\083\104\111\119",250,0,250,650,50,1,3)mostraKrtl2("\083\104\111\119",300,0,300,650,50,1,3)mostraKrtl2("\083\104\111\119",350,0,350,650,50,1,3)mostraKrtl2("\083\104\111\119",400,0,400,650,50,1,3)mostraKrtl2("\083\104\111\119",450,0,450,650,50,1,3)mostraKrtl2("\083\104\111\119",500,0,500,650,50,1,3)mostraKrtl2("\083\104\111\119",550,0,550,650,50,1,3)mostraKrtl2("\083\104\111\119",600,0,600,650,50,1,3)mostraKrtl2("\083\104\111\119",650,0,650,650,50,1,3)mostraKrtl2("\083\104\111\119",700,0,700,650,50,1,3)mostraKrtl2("\083\104\111\119",750,0,750,650,50,1,3)mostraKrtl2("\083\104\111\119",800,0,800,650,50,1,3)mostraKrtl2("\083\104\111\119",850,0,850,650,50,1,3)mostraKrtl2("\083\104\111\119",900,0,900,650,50,1,3)mostraKrtl2("\083\104\111\119",950,0,950,650,50,1,3)mostraKrtl2("\083\104\111\119",1000,0,1000,650,50,1,3)mostraKrtl2("\083\104\111\119",0,0,1000,0,50,1,3)mostraKrtl2("\083\104\111\119",0,50,1000,50,50,1,3)mostraKrtl2("\083\104\111\119",0,100,1000,100,50,1,3)mostraKrtl2("\083\104\111\119",0,150,1000,150,50,1,3)mostraKrtl2("\083\104\111\119",0,200,1000,200,50,1,3)mostraKrtl2("\083\104\111\119",0,250,1000,250,50,1,3)mostraKrtl2("\083\104\111\119",0,300,1000,300,50,1,3)mostraKrtl2("\083\104\111\119",0,350,1000,350,50,1,3)mostraKrtl2("\083\104\111\119",0,400,1000,400,50,1,3)mostraKrtl2("\083\104\111\119",0,450,1000,450,50,1,3)mostraKrtl2("\083\104\111\119",0,500,1000,500,50,1,3)mostraKrtl2("\083\104\111\119",0,550,1000,550,50,1,3)mostraKrtl2("\083\104\111\119",0,600,1000,600,50,1,3)mostraKrtl2("\083\104\111\119",0,650,1000,650,50,1,3)end function mostraKrtl2(q,G,K,r,E,O,a,b)if q=="\083\104\111\119"then tochki[icN]=true iconRis:configure(icN,576,384)iconRisText:configure(icN,b,b,G,K,121212)local q=G local y=K local S=r local C=E local R=S-q local e=C-y local A=1 local m=O local k=a local Q=(m-A)/k dirX=R/Q dirY=e/Q local P=q local L=y for q=A,m,k do icN=icN+q tochki[icN]=true P=P+dirX L=L+dirY iconRis:configure(icN,P,L)iconRisText:configure(icN,b,b,1,1,121212)iconRis[icN]:SetFrameStrata("\084\079\079\076\084\073\080")iconRisText[icN]:SetPoint("\066\079\084\084\079\077\076\069\070\084",WorldMapDetailFrame,"\066\079\084\084\079\077\076\069\070\084",P,L)end else iconRisText[icN][q](iconRisText[icN])end end function krtHide(q)if#tochki~=nil then for q,G in pairs(tochki)do if tochki[q]==true then iconRis[q].Hide(iconRis[q])end end end end
+iconRis={}
+iconRisText={}
+iconRisText2={}
+iconRisBO={}
+tochki = {}
+iconRisEv3={}
+iconRisEvO3 ={}
+icN = 1
+iconCh = {}
+iconChText = {}
+iconRisEv3 = {}
+iconRisEvent3 = {}
+iconRisEvent3Tex={}
+iconQ = {}
+iconQText = {}
+fenix = {}
+fenixText = {}
+ahtnG = {}
+ahtnGText = {}
+risPet = {}
+risPetText = {}
+mgznIcon = {}
+mgznText = {}
+dkT = {}
+dkText = {}
+unT = {}
+unText = {}
+
+nIcon = {}
+function nIcon:new(id,object,x,y,Rx,Ry,texture,point1,point2,strata)
+
+    local obj = {}
+    
+    function obj:configure()
+		self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", object)
+		self[id]:SetFrameStrata(strata)
+		self[id] = self[id]:CreateTexture("myAddonIcon", "OVERLAY")
+		self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\" .. texture .. ".tga")
+		self[id]:SetSize(Rx,Ry)
+		self[id]:SetPoint(point1,object,point2,x,y)
+	end
+	
+	function obj:Show()
+		if obj[id] == nil then
+			obj:configure()
+		else
+			obj[id]:Show()
+		end
+	end
+	
+	function obj:Hide()
+		obj[id]:Hide()
+	end
+
+	function obj:reSize(Rx,Ry)
+		self[id]:SetSize(Rx, Ry)
+	end
+
+	function obj:reMove(x,y)
+		self[id]:SetPoint(point1,object,point2,x,y)
+	end
+
+    setmetatable(obj, self)
+    self.__index = self; return obj
+end
+
+--1-16   17-32   33-48 49-64
+function dkT:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
+function dkText:configure(id,Rx,Ry,x,y,nome)
+	self[id] = dkT[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\" .. nome .. ".png")
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	self[id]:SetPoint("BOTTOMLEFT", UIParent,"BOTTOMLEFT", x, y)
+end
+function dkIcon(id,Rx,Ry,x,y,nome,sign)
+	if sign == "show" then
+		if dkT[id] == nil then
+			dkT:configure(id,Rx,Ry)
+			dkText:configure(id,Rx,Ry,x,y,nome)
+			dkT[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+			dkText[id]:SetPoint("CENTER", UIParent,"CENTER",0,0)
+		else
+			dkT[id]:Show()
+		end
+	else
+		if dkT[id] ~= nil then
+			dkT[id]:Hide()
+		end
+	end
+end
+function unT:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
+-- function unText:configure(id,Rx,Ry,x,y,nome,frame,pnt,pnt1)
+-- 	self[id] = unT[id]:CreateTexture("myAddonIcon", "OVERLAY")
+-- 	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\" .. nome .. ".tga")
+-- 	--self[id]:SetSize(Rx, Ry)
+-- 	self[id]:SetWidth(Rx)
+-- 	self[id]:SetHeight(Ry)
+-- 	self[id]:ClearAllPoints()
+-- 	self[id]:SetPoint(pnt, frame,pnt1, x, y)
+-- end
+function unText:configure(id,Rx,Ry,x,y,nome,frame,pnt,pnt1)
+	if id ~= nil then
+		self[id] = unT[id]:CreateTexture("myAddonIcon", "OVERLAY")
+		self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\" .. nome .. ".tga")
+		--self[id]:SetSize(Rx, Ry)
+		self[id]:SetWidth(Rx)
+		self[id]:SetHeight(Ry)
+		self[id]:ClearAllPoints()
+		self[id]:SetPoint(pnt, frame,pnt1, x, y)
+	end
+end
+-- function unIcon(id,Rx,Ry,x,y,nome,sign,frame,pnt,pnt1)
+-- 	if sign == "show" then
+-- 		if unT[id] == nil then
+-- 			unT:configure(id,Rx,Ry)
+-- 			unText:configure(id,Rx,Ry,x,y,nome,frame,pnt,pnt1)
+-- 			unT[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+-- 			unT[id]:ClearAllPoints()
+-- 			unText[id]:SetPoint(pnt, frame,pnt1,x,y)
+-- 			unT[id]:SetWidth(Rx)
+-- 			unT[id]:SetHeight(Ry)
+-- 		else
+-- 			unT[id]:ClearAllPoints()
+-- 			unT[id]:Show()
+-- 			unT[id]:SetWidth(Rx)
+-- 			unT[id]:SetHeight(Ry)
+-- 		end
+-- 	else
+-- 		if unT[id] ~= nil then
+-- 			unT[id]:Hide()
+-- 		end
+-- 	end
+-- end
+function unIcon(id,Rx,Ry,x,y,nome,sign,frame,pnt,pnt1)
+	if id ~= nil then
+		if sign == "show" then
+			if unT[id] == nil then
+				unT:configure(id,Rx,Ry)
+				unText:configure(id,Rx,Ry,x,y,nome,frame,pnt,pnt1)
+				unT[id]:SetFrameStrata("BACKGROUND")
+				unT[id]:ClearAllPoints()
+				unText[id]:SetPoint(pnt, frame,pnt1,x,y)
+				unT[id]:SetWidth(Rx)
+				unT[id]:SetHeight(Ry)
+			else
+				unT[id]:ClearAllPoints()
+				unT[id]:Show()
+				unT[id]:SetWidth(Rx)
+				unT[id]:SetHeight(Ry)
+			end
+		else
+			if unT[id] ~= nil then
+				unT[id]:Hide()
+			end
+		end
+	end
+end
+function iconCh:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
+
+function iconChText:configure(id,Rx,Ry,x,y)
+	self[id] = iconCh[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\ch.png")
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+
+function chMuestro(iCh,X0,Y0)
+	iconCh:configure(iCh,576,384)
+	iconChText:configure(iCh,32,32,X0,Y0)
+	iconCh:configure(iCh,X0,Y0)
+	iconChText:configure(iCh,32,32,X0,Y0)
+	iconCh[iCh]:SetFrameStrata("TOOLTIP")
+	iconChText[iCh]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", X0, Y0)
+end
+function iconQ:configure()
+	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[1]:SetSize(512, 396)
+	self[1]:SetWidth(512)
+	self[1]:SetHeight(396)
+end
+function iconQText:configure()
+	self[1] = iconQ[1]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\quest.tga")
+	--self[1]:SetSize(512, 396)
+	self[1]:SetWidth(512)
+	self[1]:SetHeight(396)
+	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
+end
+function fenix:configure()
+	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[1]:SetSize(512, 396)
+	self[1]:SetWidth(512)
+	self[1]:SetHeight(512)
+end
+function fenixText:configure()
+	self[1] = fenix[1]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\fnx.tga")
+	--self[1]:SetSize(512, 396)
+	self[1]:SetWidth(512)
+	self[1]:SetHeight(512)
+	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
+end
+function ahtnG:configure()
+	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[1]:SetSize(512, 396)
+	self[1]:SetWidth(400)
+	self[1]:SetHeight(450)
+end
+function ahtnGText:configure()
+	self[1] = ahtnG[1]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\AHTUNG.tga")
+	--self[1]:SetSize(512, 396)
+	self[1]:SetWidth(350)
+	self[1]:SetHeight(450)
+	self[1]:SetPoint("CENTER", SendMailFrame,"CENTER", -22, 50)
+end
+function risPet:configure(id)
+	self[id] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[1]:SetSize(512, 396)
+	self[id]:SetWidth(32)
+	self[id]:SetHeight(32)
+end
+function risPetText:configure(id,pet)
+	self[id] = risPet[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\libs\\" .. pet .. ".tga")
+	--self[1]:SetSize(512, 396)
+	self[id]:SetWidth(32)
+	self[id]:SetHeight(32)
+	self[id]:SetPoint("BOTTOMRIGHT", SendMailFrame,"BOTTOMRIGHT", 0, 0)
+end
+function mgznIcon:configure()
+	self[1] = self[1] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[1]:SetSize(768, 512)
+	self[1]:SetWidth(768)
+	self[1]:SetHeight(512)
+end
+function mgznText:configure()
+	self[1] = mgznIcon[1]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[1]:SetTexture("Interface\\AddOns\\NSQC\\libs\\quest.tga")
+	self[1]:SetPoint("CENTER", UIParent,"CENTER", 0, 0)
+	--self[1]:SetSize(768, 700)
+	self[1]:SetWidth(768)
+	self[1]:SetHeight(700)
+end
+function magazin(sign)
+	GameTooltip:Hide()
+	if sign == "show" then
+		if mgznIcon[1] == nil then
+			mgznIcon:configure()
+			mgznText:configure()
+			mgznIcon[1]:SetFrameStrata("DIALOG")
+			mgznText[1]:SetPoint("CENTER", UIParent,"CENTER",-80,48)
+			if mgznZ == nil then
+				mgznZ = CreateFrame("Button", nil, UIParent, "");
+				mgznZ:SetFrameStrata("FULLSCREEN_DIALOG")
+				mgznZ:SetPoint("BOTTOMLEFT", resursy[5],"BOTTOMLEFT",0, 0)
+				--mgznZ:SetSize(64, 64)
+				mgznZ:SetWidth(64)
+				mgznZ:SetHeight(64)
+				mgznZ:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				mgznZ:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\smg.tga")
+				--mgznZ:SetFrameStrata("LOW")
+				mgznZ:SetScript("OnEnter",function(self)
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+					GameTooltip:AddLine("|cff99ff99Валюта")
+					GameTooltip:AddLine("|cffFFCF40Иногда падает с квеста на шерсть и прочую ткань")
+					GameTooltip:AddLine("|cffFFCF40Можно купить на аукционе: |cff99ff99\"Обычное письмо\" |cffFFCF40от персонажа \"Хефе\"")
+					GameTooltip:AddLine("|cff99ff99ЛКМ: |cffFFCF40Открыть/Закрыть магазин")
+					GameTooltip:Show()
+				end)
+				mgznZ:SetScript("OnLeave",function(self)
+					GameTooltip:Hide()
+				end)
+				mgznZ:SetScript("OnClick",function(self)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+					if testQ["magSign"] == nil then
+						dmG1[1005]:Show()
+						dmG1[1005]:SetFrameStrata("TOOLTIP")
+						mgznIcon[1]:Show()
+						for i = 1, 100 do
+							fBtn[i]:Hide()
+						end
+						resursy[5]:Hide()
+						mgznZ:Show()
+						mgznZ:SetFrameStrata("LOW")
+					else
+						dmgText1("",mgznZ,1005,22,"FF8C00")
+						mgznIcon[1]:Hide()
+						for i = 1, 100 do
+							fBtn[i]:Show()
+							if mBtn[i] ~= nil then
+								mBtn[i]:Hide()
+							end
+						end
+						if not resursy[5]:IsVisible() and not mgznZ:IsVisible() then
+							for i = 1, 10000 do
+								if dmG1[i] ~= nil then
+									dmG1[i]:Hide()
+								end
+								if dmG2[i] ~= nil then
+									dmG2[i]:Hide()
+								end
+							end
+						end
+						resursy[5]:Show()
+						btn[989]:Show()
+					end
+					GameTooltip:Hide()
+				end)
+			else
+				dmG1[1005]:Show()
+				dmG1[1005]:SetFrameStrata("TOOLTIP")
+				mgznZ:Show()
+				GameTooltip:Hide()
+			end
+		else
+			mgznIcon[1]:Show()
+		end
+	else
+		if mgznIcon[1] ~= nil then
+			mgznIcon[1]:Hide()
+		end
+	end
+end
+function iconRis:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
+function iconRisEv3:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", WorldMapDetailFrame)
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
+function iconRisEvent3:configure(id,Rx,Ry)
+	self[id] = self[id] or CreateFrame("FRAME", "myAddonIconFrame", UIParent)
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	--self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT")
+end
+
+function iconRisText:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+function iconRisBO:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\121212.tga")
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+function iconRisEvO3:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRisEv3[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	self[id]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT", x, y)
+end
+function iconRisEvent3Tex:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRisEvent3[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface/COMMON/Indicator-Green.png")
+	self[id]:SetPoint("CENTER", UIParent,"BOTTOMLEFT", x, y)
+end
+
+function quesT(sign)
+	if sign == "show" then
+		if iconQ[1] == nil then
+			iconQ:configure()
+			iconQText:configure()
+			iconQ[1]:SetFrameStrata("FULLSCREEN_DIALOG")
+			iconQText[1]:SetPoint("CENTER", UIParent,"CENTER",0,0)
+		else
+			iconQ[1]:Show()
+		end
+	else
+		if iconQ[1] ~= nil then
+			iconQ[1]:Hide()
+		end
+	end
+end
+function showFenix(sign)
+	if sign == "show" then
+		if fenix[1] == nil then
+			fenix:configure()
+			fenixText:configure()
+			fenix[1]:SetFrameStrata("FULLSCREEN_DIALOG")
+			fenixText[1]:SetPoint("CENTER", UIParent,"CENTER",0,-70)
+		else
+			fenix[1]:Show()
+		end
+	else
+		if fenix[1] ~= nil then
+			fenix[1]:Hide()
+		end
+	end
+end
+function ahtunGSH(sign)
+	if sign == "show" then
+		if ahtnG[1] == nil then
+			ahtnG:configure()
+			ahtnGText:configure()
+			ahtnG[1]:SetFrameStrata("FULLSCREEN_DIALOG")
+			ahtnGText[1]:SetPoint("CENTER", SendMailFrame,"CENTER",-15,20)
+		else
+			ahtnG[1]:Show()
+		end
+	else
+		if ahtnG[1] ~= nil then
+			ahtnG[1]:Hide()
+		end
+	end
+end
+function risPetShow(id,sign,pet,nome,igol)
+	if sign == "show" then
+		if risPet[id] == nil then
+			risPet:configure(id)
+			risPetText:configure(id,pet)
+			risPet[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+			risPetText[id]:SetPoint("BOTTOMRIGHT", fBtn[id],"BOTTOMRIGHT",0,0)
+		else
+			risPet[id]:Show()
+		end
+		SendAddonMessage("ns_pokazhiHozyaina " , nome, "guild")
+	else
+		if risPet[id] ~= nil then
+			risPet[id]:Hide()
+		end
+	end
+end
+
+function bo(n,n1)
+	for k, v in pairs(mapTables[testQ["эвент1"]]) do
+		if type(k)=="string" then
+		tKont = k
+	end
+		for k, v in pairs(mapTables[testQ["эвент1"]][k]) do
+			if type(k)=="string" then
+				tLok = k
+			end
+		end
+	end
+	iconRis:configure(n,n,n1)
+	local xx,yy = getPOS(tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables[testQ["эвент1"]][tKont][tLok][tostring(n)]["y"]))
+	iconRisBO:configure(n,n1,n1,xx,yy,121212)
+	iconRis[n]:SetFrameStrata("TOOLTIP")
+	iconRisBO[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )
+end
+function event3(n,n1,show)
+	if show == "show" then
+		if iconRisEvent3[1] == nil then
+			iconRisEvent3:configure(1,576,384)
+			iconRisEvent3Tex:configure(1,n1,n1,0,0,121212)
+			--iconRisEvent3Tex[n]:SetSize(n1, n1)
+			iconRisEvent3Tex[n]:SetWidth(n1)
+			iconRisEvent3Tex[n]:SetHeight(n1)
+			iconRisEvent3[1]:SetFrameStrata("BACKGROUND")
+			iconRisEvent3Tex[1]:SetPoint("CENTER", UIParent,"CENTER",0,0)
+		else
+			if not iconRisEvent3[1]:IsVisible() then
+				iconRisEvent3[1]:Show()
+				--iconRisEvent3Tex[1]:SetSize(n1, n1)
+				iconRisEvent3Tex[1]:SetWidth(n1)
+				iconRisEvent3Tex[1]:SetHeight(n1)
+			else
+				--iconRisEvent3Tex[1]:SetSize(n1, n1)
+				iconRisEvent3Tex[1]:SetWidth(n1)
+				iconRisEvent3Tex[1]:SetHeight(n1)
+			end
+		end
+	else
+		if iconRisEvent3[1] ~= nil then
+			iconRisEvent3[1]:Hide()
+		end
+	end
+end
+function ev3(tabella,n,n1)
+	for k, v in pairs(mapTables[tabella]) do
+		if type(k)=="string" then
+		tKont = k
+	end
+		for k, v in pairs(mapTables[tabella][k]) do
+			if type(k)=="string" then
+				tLok = k
+			end
+		end
+	end
+	iconRisEv3:configure(n,576,384)
+	local xx,yy = getPOS(tonumber(mapTables[tabella][tKont][tLok][tostring(n)]["x"]), tonumber(mapTables[tabella][tKont][tLok][tostring(n)]["y"]))
+	iconRisEvO3:configure(n,n1,n1,xx,yy,121212)
+	iconRisEv3[n]:SetFrameStrata("TOOLTIP")
+	iconRisEvO3[n]:SetPoint("CENTER", WorldMapDetailFrame,"BOTTOMLEFT",xx,yy )
+end
+
+function iconRisText2:configure(id,Rx,Ry,x,y,nRis)
+	self[id] = iconRis[id]:CreateTexture("myAddonIcon", "OVERLAY")
+	self[id]:SetTexture("Interface\\AddOns\\NSQC\\" .. nRis ..".tga")
+	--self[id]:SetSize(Rx, Ry)
+	self[id]:SetWidth(Rx)
+	self[id]:SetHeight(Ry)
+	self[id]:SetPoint("TOPLEFT", WorldMapDetailFrame,"TOPLEFT", x, y)
+end
+
+function setka()
+mostraKrtl2("Show",0,0,0,650,50,1,3)
+mostraKrtl2("Show",50,0,50,650,50,1,3)
+mostraKrtl2("Show",100,0,100,650,50,1,3)
+mostraKrtl2("Show",150,0,150,650,50,1,3)
+mostraKrtl2("Show",200,0,200,650,50,1,3)
+mostraKrtl2("Show",250,0,250,650,50,1,3)
+mostraKrtl2("Show",300,0,300,650,50,1,3)
+mostraKrtl2("Show",350,0,350,650,50,1,3)
+mostraKrtl2("Show",400,0,400,650,50,1,3)
+mostraKrtl2("Show",450,0,450,650,50,1,3)
+mostraKrtl2("Show",500,0,500,650,50,1,3)
+mostraKrtl2("Show",550,0,550,650,50,1,3)
+mostraKrtl2("Show",600,0,600,650,50,1,3)
+mostraKrtl2("Show",650,0,650,650,50,1,3)
+mostraKrtl2("Show",700,0,700,650,50,1,3)
+mostraKrtl2("Show",750,0,750,650,50,1,3)
+mostraKrtl2("Show",800,0,800,650,50,1,3)
+mostraKrtl2("Show",850,0,850,650,50,1,3)
+mostraKrtl2("Show",900,0,900,650,50,1,3)
+mostraKrtl2("Show",950,0,950,650,50,1,3)
+mostraKrtl2("Show",1000,0,1000,650,50,1,3)
+mostraKrtl2("Show",0,0,1000,0,50,1,3)
+mostraKrtl2("Show",0,50,1000,50,50,1,3)
+mostraKrtl2("Show",0,100,1000,100,50,1,3)
+mostraKrtl2("Show",0,150,1000,150,50,1,3)
+mostraKrtl2("Show",0,200,1000,200,50,1,3)
+mostraKrtl2("Show",0,250,1000,250,50,1,3)
+mostraKrtl2("Show",0,300,1000,300,50,1,3)
+mostraKrtl2("Show",0,350,1000,350,50,1,3)
+mostraKrtl2("Show",0,400,1000,400,50,1,3)
+mostraKrtl2("Show",0,450,1000,450,50,1,3)
+mostraKrtl2("Show",0,500,1000,500,50,1,3)
+mostraKrtl2("Show",0,550,1000,550,50,1,3)
+mostraKrtl2("Show",0,600,1000,600,50,1,3)
+mostraKrtl2("Show",0,650,1000,650,50,1,3)
+end
+function mostraKrtl2(signalKrt,X0,Y0,X1,Y1,S,S1,diametr)
+    if signalKrt=="Show" then
+        tochki[icN] = true
+        iconRis:configure(icN,576,384)
+        iconRisText:configure(icN,diametr,diametr,X0,Y0,121212)
+        local x0 = X0
+        local y0 = Y0
+        local x1 = X1
+        local y1 = Y1
+
+        local dx = x1 - x0
+        local dy = y1 - y0
+
+
+        local i0 = 1
+        local i1 = S
+        local step = S1
+        local stepCount = (i1 - i0) / step
+
+
+        dirX = dx / stepCount
+        dirY = dy / stepCount
+
+
+        local resX = x0
+        local resY = y0
+        for i=i0,i1,step do
+            icN = icN+i
+            tochki[icN] = true
+            resX = resX + dirX
+            resY = resY + dirY
+            iconRis:configure(icN,resX,resY)
+            iconRisText:configure(icN,diametr,diametr,1,1,121212)
+            iconRis[icN]:SetFrameStrata("TOOLTIP")
+            iconRisText[icN]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"BOTTOMLEFT", resX, resY)
+
+		end
+    else
+        iconRisText[icN][signalKrt](iconRisText[icN])
+    end
+end
+function krtHide(signalKrt)
+	if #tochki ~= nil then
+		for key, val in pairs(tochki) do
+			if tochki[key] == true then
+				iconRis[key]["Hide"](iconRis[key])
+			end
+		end
+	end
+end
+
+--[[
+iRis=1
+local UpdateSpeed = 1
+local fRis = CreateFrame("Frame")
+fRis.Text1 = fRis:CreateFontString()
+
+fRis.UpdateSpeed = UpdateSpeed
+fRis:SetScript("OnUpdate", function(self, elapsed)
+	self.UpdateSpeed = self.UpdateSpeed - elapsed
+	if self.UpdateSpeed > 0 then
+		return
+	end
+
+	self.UpdateSpeed = UpdateSpeed
+	mioKontRis,mioLokRis,mioXRis,mioYRis=Astrolabe:GetCurrentPlayerPosition()
+	XXXRis,YYYRis=getPOS(mioXRis,mioYRis)
+
+	iconRis:configure(iRis,128,128)
+	iconRisText:configure(iRis,128,128,0,0)
+	iconRis[iRis]:SetPoint("BOTTOMLEFT", XXXRis, YYYRis)
+	iconRis[iRis]:Show()
+	iRis=iRis+1
+
+end)
+--]]
