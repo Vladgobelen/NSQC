@@ -619,7 +619,7 @@ local function HookFrames(...)
 
                     if testQ['np_inviz'] == nil then
                         unIcon(index+999,100,5,razmer,-4,"rage0","show",frame,"BOTTOMLEFT","TOPLEFT")
-                        unT[index+999]:SetFrameStrata("FULLSCREEN")
+                        --unT[index+999]:SetFrameStrata("FULLSCREEN")
                     else
                         --unIcon(index+12999,100,6,1,-4,"rage0","show",sBtn[1],"BOTTOMLEFT","TOPLEFT")
                         --unT[index+12999]:SetFrameStrata("FULLSCREEN")
