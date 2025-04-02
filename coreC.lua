@@ -1,1 +1,1095 @@
-local J=CreateFrame("\070\114\097\109\101")J:RegisterEvent("\067\072\065\084\095\077\083\071\095\071\085\073\076\068")J:SetScript("\079\110\069\118\101\110\116",function(J,K,t,f)local a=f local O=mysplit(t)local n="\208\189\208\181\208\190\208\177\209\133\208\190\208\180\208\184\208\188\208\190\095\209\129\208\180\208\181\208\187\208\176\209\130\209\140"local e=string.gsub(t,"\037\115\043","")local r=GetUnitName("\112\108\097\121\101\114")if testQ[r]==nil then testQ[r]={}end local F testGM=gmTest(f)F=hshSenderNomeC(r)msg3=mysplit(t)if t=="\033\208\186\208\184\208\186"and f==r then SendAddonMessage("\103\075\105\099\107","","\103\117\105\108\100")end if O[1]=="\209\130\208\181\209\129\209\130"and(O[2]=="\209\137\208\184\208\191"and(O[3]==r and testGM~=nil))then SendChatMessage(testShip(r),"\079\070\070\073\067\069\082",nil,1)end if string.find(t,"\208\178\209\139\208\177\208\181\209\128\208\184 \209\129\208\191\208\181\208\186")and(string.find(t,r)and testGM~=nil)then spek1=nBtn:new(1,nil,UIParent,328,328,30,-25,-50,13,128,64,O[4],"\067\069\078\084\069\082","\067\069\078\084\069\082","\084\079\080\076\069\070\084","\084\079\080\076\069\070\084","\066\065\067\075\071\082\079\085\078\068","\070\070\056\067\048\048")spek2=nBtn:new(2,nil,UIParent,328,264,30,-25,-50,13,128,64,O[5],"\067\069\078\084\069\082","\067\069\078\084\069\082","\084\079\080\076\069\070\084","\084\079\080\076\069\070\084","\066\065\067\075\071\082\079\085\078\068","\070\070\056\067\048\048")spek3=nBtn:new(3,nil,UIParent,328,200,30,-25,-50,13,128,64,O[6],"\067\069\078\084\069\082","\067\069\078\084\069\082","\084\079\080\076\069\070\084","\084\079\080\076\069\070\084","\066\065\067\075\071\082\079\085\078\068","\070\070\056\067\048\048")spek1:configure()spek2:configure()spek3:configure()spek1:setClick(change_spek,nil,spek1)spek2:setClick(change_spek,nil,spek2)spek3:setClick(change_spek,nil,spek3)end if O[1]=="\208\147\208\159"and(O[2]~=nil and(O[3]==nil and f==r))then sendGP(O[2])end if O[1]=="\208\147\208\159"and(O[2]~=nil and(O[3]~=nil and f==r))then for J=1,GetNumGuildMembers(true),1 do local K,t,f,x,a,n,e,F,h,I,l,E,Q,C,V,X,L=GetGuildRosterInfo(J)if K==r then if t=="\208\155\208\181\208\185\209\130\208\181\208\189\208\176\208\189\209\130"or t=="\208\154\208\176\208\191\208\184\209\130\208\176\208\189"then SendChatMessage(O[3]..(" \208\191\208\187\209\142\209\129 "..O[2]),"\079\070\070\073\067\069\082",nil,1)SendAddonMessage("\110\115\071\080"..(" "..O[2]),O[3],"\103\117\105\108\100")end end end end if testQ[r].puteshestvie~=nil then if t_cQ[testQ[r].puteshestvieTabella][testQ[r].puteshestvie].sh=="\208\178\208\190\208\191\209\128\208\190\209\129"then if strlower(t)==t_cQ[testQ[r].puteshestvieTabella][testQ[r].puteshestvie]["\208\190\209\130\208\178\208\181\209\130"]then SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[r].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[testQ[r].puteshestvieTabella][testQ[r].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[r].puteshestvie=t_cQ[testQ[r].puteshestvieTabella][testQ[r].puteshestvie]["\208\186\209\131\208\180\208\176"]PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end end if O[1]=="\"\208\179\209\129"and GS_Data[GetRealmName()].Players[O[2]]~=nil then SendChatMessage(O[2]..("\058 "..(GS_Data[GetRealmName()].Players[O[2]].GearScore..(" \208\179\209\129\046 \208\158\208\177\208\189\208\190\208\178\208\187\208\181\208\189\208\190\058 "..(string.sub(GS_Data[GetRealmName()].Players[O[2]].Date,7,8)..("\047"..(string.sub(GS_Data[GetRealmName()].Players[O[2]].Date,5,6)..("\047"..string.sub(GS_Data[GetRealmName()].Players[O[2]].Date,1,4)))))))),"\079\070\070\073\067\069\082",nil,1)end if O[1]=="\"\209\135\209\129"and(f=="\208\148\209\133\208\176\208\189\208\178\208\176\208\189\209\130\208\176\209\128\208\184"or f=="\208\165\208\181\209\132\208\181"or f=="\208\148\208\181\209\128\208\178\208\184\208\189"or f=="\208\155\209\142\209\134\208\183\208\181"or f=="\208\159\208\190\209\129\208\181\209\130\208\184"or f=="\208\146\208\184\209\130\208\184\208\189\208\176\209\128\208\184"or f=="\208\151\208\187\208\190\208\185\208\186\208\176\208\186\208\176\209\136"or f=="\208\160\208\176\208\183\208\177\209\128\208\181\208\180\208\190\208\178\208\184\208\189\208\176"or f=="\081\111\115\104\097\100\111\119\115"or f=="\208\165\208\184\208\187\209\143\208\187\208\186\208\190"or f=="\208\161\208\176\208\189\209\130\208\176\208\189\208\184\208\179\208\179\208\176"or f=="\208\154\209\131\209\129\209\143\208\190"or f=="\208\154\208\190\208\187\208\190\208\189"or f=="\208\154\208\181\209\128\208\177\208\181\209\129"or f=="\208\144\209\132\209\132\208\176"or f=="\208\168\208\181\209\132"or f=="\208\157\209\131\208\179\208\179\208\176\208\189"or f=="\083\104\111\119\109\101\098\108\111\111\100"or f=="\208\147\208\190\208\180\208\178\208\176\209\128"or f=="\208\161\208\190\208\178\208\176\208\188\208\184\208\187\208\176\209\133\208\176")then if testQ.chs==nil then testQ.chs={}end local J=nil for K=1,#testQ.chs,1 do if testQ.chs[K]==O[2]then J=1 end end if J~=1 then table.insert(testQ.chs,O[2])SendChatMessage(O[2].." \208\177\209\139\208\187 \208\180\208\190\208\177\208\176\208\178\208\187\208\181\208\189 \208\178 \209\135\208\181\209\128\208\189\209\139\208\185 \209\129\208\191\208\184\209\129\208\190\208\186","\079\070\070\073\067\069\082",nil,1)else SendChatMessage(O[2].." \209\131\208\182\208\181 \208\181\209\129\209\130\209\140 \208\178 \209\135\208\181\209\128\208\189\208\190\208\188 \209\129\208\191\208\184\209\129\208\186\208\181","\079\070\070\073\067\069\082",nil,1)end end if O[1]=="\033\209\131\209\129\209\130\208\176\208\178"then if f==r or O[3]==r then print(O[3])if O[2]==nil or O[2]=="\049"then SendChatMessage(ustav["\049"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\050"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\046\049"then SendChatMessage(ustav["\051"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\046\050"then SendChatMessage(ustav["\052"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\050"then SendChatMessage(ustav["\053"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\051"then SendChatMessage(ustav["\054"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\051\046\048"then SendChatMessage(ustav["\055"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\051\046\049"then SendChatMessage(ustav["\056"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\051\046\050"then SendChatMessage(ustav["\057"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\049\048"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\052"then SendChatMessage(ustav["\049\049"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\052\046\049"then SendChatMessage(ustav["\049\050"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\049\051"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\052\046\050"then SendChatMessage(ustav["\049\052"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\052\046\050\046\049"then SendChatMessage(ustav["\049\053"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\052\046\051"then SendChatMessage(ustav["\049\054"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\052\046\052"then SendChatMessage(ustav["\049\055"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\052\046\052\046\049"then SendChatMessage(ustav["\049\056"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\053"then SendChatMessage(ustav["\049\057"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\050\048"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\053\046\049"then SendChatMessage(ustav["\050\049"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\050\050"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\053\046\049\046\049"then SendChatMessage(ustav["\050\051"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\053\046\050"then SendChatMessage(ustav["\050\052"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\053\046\050\046\049"then SendChatMessage(ustav["\050\053"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\050\054"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\050\055"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\053\046\051"then SendChatMessage(ustav["\050\056"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\053\046\052"then SendChatMessage(ustav["\050\057"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\054\046\049"then SendChatMessage(ustav["\051\048"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\054\046\051"then SendChatMessage(ustav["\051\049"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\055"then SendChatMessage(ustav["\051\050"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\055\046\049"then SendChatMessage(ustav["\051\051"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\055\046\050"then SendChatMessage(ustav["\051\052"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\056"then SendChatMessage(ustav["\051\053"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\056\046\050"then SendChatMessage(ustav["\051\054"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\051\046\052"then SendChatMessage(ustav["\051\055"],"\079\070\070\073\067\069\082",nil,1)SendChatMessage(ustav["\051\056"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\051\046\052\046\049"then SendChatMessage(ustav["\051\057"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\051\046\052\046\050"then SendChatMessage(ustav["\052\048"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\051\046\052\046\051"then SendChatMessage(ustav["\052\049"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\051\046\052\046\052"then SendChatMessage(ustav["\052\050"],"\079\070\070\073\067\069\082",nil,1)end if O[2]=="\049\053"then SendChatMessage(ustav["\052\051"],"\079\070\070\073\067\069\082",nil,1)end end end if O[1]=="\"\208\152\208\187\208\178\208\187"and O[3]then if O[3]==r then if GS_Data~=nil then if GS_Data[GetRealmName()].Players[O[2]]~=nil then date_update=string.utf8sub(tostring(GS_Data[GetRealmName()].Players[O[2]].Date),1,4)..("\047"..(string.utf8sub(tostring(GS_Data[GetRealmName()].Players[O[2]].Date),5,6)..("\047"..(string.utf8sub(tostring(GS_Data[GetRealmName()].Players[O[2]].Date),7,8)..(" "..(string.utf8sub(tostring(GS_Data[GetRealmName()].Players[O[2]].Date),9,10)..("\058"..string.utf8sub(tostring(GS_Data[GetRealmName()].Players[O[2]].Date),11,11))))))))SendChatMessage("\208\152\208\187\208\178\208\187\058 "..(GS_Data[GetRealmName()].Players[O[2]].Average..(" \208\179\209\129\058 "..(GS_Data[GetRealmName()].Players[O[2]].GearScore..(" \208\148\208\176\209\130\208\176 \208\190\208\177\208\189\208\190\208\178\208\187\208\181\208\189\208\184\209\143\058 "..date_update)))),"\079\070\070\073\067\069\082",nil,1)else SendChatMessage("\208\159\209\128\208\190 \208\184\208\179\209\128\208\190\208\186\208\176 "..(O[2].." \208\189\208\181\209\130 \208\184\208\189\209\132\208\190\209\128\208\188\208\176\209\134\208\184\208\184"),"\079\070\070\073\067\069\082",nil,1)end end end end if O[1]=="\"\208\184\208\187\208\178\208\187"then if f==r then local J=nil if GS_Data~=nil then if GS_Data[GetRealmName()].Players[r]~=nil then SendChatMessage("\208\156\208\190\208\185 \208\184\208\187\208\178\208\187\058 "..(string.format("\037\100",CalculateAverageItemLevel(r))..(" \208\179\209\129\058 "..(GS_Data[GetRealmName()].Players[r].GearScore..(" "..("\208\177\209\129\058 "..bs(O[3])))))),"\079\070\070\073\067\069\082",nil,1)J=1 end else SendChatMessage("\208\156\208\190\208\185 \208\184\208\187\208\178\208\187\058 "..(string.format("\037\100",CalculateAverageItemLevel(r))..(" "..("\208\177\209\129\058 "..bs(O[3])))),"\079\070\070\073\067\069\082",nil,1)J=1 end if J~=1 then SendChatMessage("\208\156\208\190\208\185 \208\184\208\187\208\178\208\187\058 "..(string.format("\037\100",CalculateAverageItemLevel(r))..(" "..("\208\177\209\129\058 "..bs(O[3])))),"\079\070\070\073\067\069\082",nil,1)end else if O[2]==r then local J=nil if GS_Data~=nil then if GS_Data[GetRealmName()].Players[r]~=nil then SendChatMessage("\208\156\208\190\208\185 \208\184\208\187\208\178\208\187\058 "..(string.format("\037\100",CalculateAverageItemLevel(r))..(" \208\179\209\129\058 "..(GS_Data[GetRealmName()].Players[r].GearScore..(" "..("\208\177\209\129\058 "..bs(O[3])))))),"\079\070\070\073\067\069\082",nil,1)J=1 end else SendChatMessage("\208\156\208\190\208\185 \208\184\208\187\208\178\208\187\058 "..(string.format("\037\100",CalculateAverageItemLevel(r))..(" "..("\208\177\209\129\058 "..bs(O[3])))),"\079\070\070\073\067\069\082",nil,1)J=1 end if J~=1 then SendChatMessage("\208\156\208\190\208\185 \208\184\208\187\208\178\208\187\058 "..(string.format("\037\100",CalculateAverageItemLevel(r))..(" "..("\208\177\209\129\058 "..bs(O[3])))),"\079\070\070\073\067\069\082",nil,1)end end end end if O[1]=="\"\209\135\209\129\208\178"and(f=="\208\165\208\181\209\132\208\181"or f=="\208\148\208\181\209\128\208\178\208\184\208\189"or f=="\208\155\209\142\209\134\208\183\208\181"or f=="\208\159\208\190\209\129\208\181\209\130\208\184"or f=="\208\146\208\184\209\130\208\184\208\189\208\176\209\128\208\184"or f=="\208\151\208\187\208\190\208\185\208\186\208\176\208\186\208\176\209\136"or f=="\208\160\208\176\208\183\208\177\209\128\208\181\208\180\208\190\208\178\208\184\208\189\208\176"or f=="\081\111\115\104\097\100\111\119\115"or f=="\208\165\208\184\208\187\209\143\208\187\208\186\208\190"or f=="\208\161\208\176\208\189\209\130\208\176\208\189\208\184\208\179\208\179\208\176"or f=="\208\154\209\131\209\129\209\143\208\190"or f=="\208\154\208\190\208\187\208\190\208\189"or f=="\208\154\208\181\209\128\208\177\208\181\209\129"or f=="\208\144\209\132\209\132\208\176"or f=="\208\168\208\181\209\132"or f=="\208\157\209\131\208\179\208\179\208\176\208\189"or f=="\208\147\208\190\208\180\208\178\208\176\209\128"or f=="\208\161\208\190\208\178\208\176\208\188\208\184\208\187\208\176\209\133\208\176")then if testQ.chs==nil then testQ.chs={}end for J=1,#testQ.chs,1 do if testQ.chs[J]==O[2]then SendChatMessage(testQ.chs[J].." \208\177\209\139\208\187 \209\131\208\180\208\176\208\187\208\181\208\189 \208\184\208\183 \209\135\208\181\209\128\208\189\208\190\208\179\208\190 \209\129\208\191\208\184\209\129\208\186\208\176","\079\070\070\073\067\069\082",nil,1)testQ.chs[J]=nil end end end if O[1]=="\"\208\186\208\184\208\186"and f==r then GuildUninvite(O[2])SendChatMessage(O[2].." \208\177\209\139\208\187 \208\184\209\129\208\186\208\187\209\142\209\135\208\181\208\189  \208\184\208\183 \208\179\208\184\208\187\209\140\208\180\208\184\208\184","\079\070\070\073\067\069\082",nil,1)end if O[1]=="\"\208\191\209\128\208\184\208\189\208\184\208\183\208\184\209\130\209\140"and f==r then GuildDemote(O[2])SendChatMessage(O[2].." \208\188\208\184\208\189\209\131\209\129 \208\183\208\178\208\176\208\189\208\184\208\181","\079\070\070\073\067\069\082",nil,1)end if O[1]=="\"\208\191\208\190\208\178\209\139\209\129\208\184\209\130\209\140"and f==r then GuildPromote(O[2])SendChatMessage(O[2].." \208\191\208\190\208\178\209\139\209\136\208\181\208\189","\079\070\070\073\067\069\082",nil,1)end if testQ.sign~="\049"then nome=GuildFrame.selectedName else nome=r end if O[1]=="\"\208\191\208\190\209\129\209\130\209\128\208\190\208\184\209\130\209\140"and testGM~=nil then if mioFld1[O[2]]~=nil then mioFld1[O[2]]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(O[4])]=O[3]if fBtn[1]:IsVisible()and nome==O[2]then fBtn[tonumber(O[4])]:SetNormalTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(O[3].."\046\116\103\097"))fBtn[tonumber(O[4])]:SetHighlightTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(O[3].."\046\116\103\097"))end end end if O[1]=="\"\209\133\208\191\093"and testGM~=nil then mioFld1[O[2]]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(O[4])]=tonumber(O[3])end if O[1]=="\208\187\208\190\208\186\208\176\209\134\208\184\209\143"and(O[2]=="\209\131\208\180\208\176\208\187\208\184\209\130\209\140"and(O[3]==r and testGM~=nil))then mapTables.lokRasstoyanie=nil krt.chernila=nil end if O[1]=="\"\208\186\208\176\208\188\208\189\208\184"and(O[2]==r and testGM~=nil)then testQ.kamen=tonumber(testQ.kamen)+tonumber(O[3])testQ.nikQK=antc(testQ.kamen)testQ.fRand6=1 end if O[1]=="\"\208\186\208\184\209\128\208\191\208\184\209\135"and(O[2]==r and testGM~=nil)then testQ.kirpich=tonumber(testQ.kirpich)+tonumber(O[3])testQ.nikQKR=antc(testQ.kirpich)testQ.fRand6=1 end if O[1]=="\"\208\180\208\190\209\129\208\186\208\176"and(O[2]==r and testGM~=nil)then testQ.doska=tonumber(testQ.doska)+tonumber(O[3])testQ.nikQD=antc(testQ.doska)testQ.fRand6=1 end if O[1]=="\"\208\177\209\128\208\181\208\178\208\189\208\176"and(O[2]==r and testGM~=nil)then testQ.brevna=tonumber(testQ.brevna)+tonumber(O[3])testQ.nikQB=antc(tonumber(testQ.brevna))testQ.fRand6=1 end if O[1]=="\"\209\130\209\128\208\176\208\178\208\176"and(O[2]==r and testGM~=nil)then testQ.stog=tonumber(testQ.stog)+tonumber(O[3])testQ.nikQF=antc(testQ.stog)testQ.fRand6=1 end if O[1]=="\"\208\177\208\181\209\130\208\190\208\189"and(O[2]==r and testGM~=nil)then testQ.beton=tonumber(testQ.beton)+tonumber(O[3])testQ.nikQBT=antc(tonumber(testQ.beton))testQ.fRand6=1 end if O[1]=="\"\209\129\208\176\208\188\208\190\208\179\208\190\208\189"and(O[2]==r and testGM~=nil)then testQ.smg=tonumber(testQ.smg)+tonumber(O[3])testQ.nikQS=antc(testQ.smg)testQ.fRand6=1 end if O[1]==r.."\044"and(O[2]=="\208\191\208\190\208\186\208\176\208\182\208\184"and O[3]=="\209\129\208\178\208\190\208\185")then SendChatMessage("\208\163 \208\188\208\181\208\189\209\143 "..testQ[r].dTimer[tonumber(date("\037\100"))],"\079\070\070\073\067\069\082",nil,1)end if O[1]==r.."\044"and(O[2]=="\208\191\208\190\208\186\208\176\208\182\208\184"and O[3]=="\209\129\208\178\208\190\209\142")then if testQ[r].hTimer~=nil then SendChatMessage("\208\163 \208\188\208\181\208\189\209\143 "..testQ[r].hTimer,"\079\070\070\073\067\069\082",nil,1)else SendChatMessage("\208\163 \208\188\208\181\208\189\209\143 \208\189\208\181\209\130\046\046\046","\079\070\070\073\067\069\082",nil,1)end end if O[1]=="\033\208\180\208\190\208\177\208\176\208\178\208\184\209\130\209\140"and(O[2]=="\208\191\209\128\208\181\208\180\208\188\208\181\209\130"and testGM~=nil)then local J local K if pQuest.items==nil then pQuest.items={}end if#pQuest.items==0 then K=1 else K=#pQuest.items+1 end pQuest.items[K]={}pQuest.items[K].itemNum=O[3]pQuest.items[K].itemEnStuck=O[4]J=O[5]for K=6,#O,1 do J=J..(" "..O[K])end pQuest.items[K].itemName=J print(pQuest.items[K].itemName.." \209\131\209\129\208\191\208\181\209\136\208\189\208\190 \208\180\208\190\208\177\208\176\208\178\208\187\208\181\208\189")end if O[1]=="\033\208\180\208\190\208\177\208\176\208\178\208\184\209\130\209\140"and(O[2]=="\208\186\208\178\208\181\209\129\209\130"and testGM~=nil)then local J if pQuest==nil then pQuest={}end if pQuest["\209\133"]==nil then pQuest["\209\133"]={}end for K,t in pairs(pQuest[O[3]])do if tonumber(t)==tonumber(O[4])then print("\042\208\144\209\135\208\184\208\178\208\186\208\176 "..(t..(" "..(GetAchievementLink(tonumber(t)).." \209\131\208\182\208\181 \208\177\209\139\208\187\208\176 \208\180\208\190\208\177\208\176\208\178\208\187\208\181\208\189\208\176\046"))))J=1 end end if J~=1 then table.insert(pQuest[O[3]],O[4])print("\042\208\144\209\135\208\184\208\178\208\186\208\176 "..(O[4]..(" "..(GetAchievementLink(tonumber(O[4])).." \208\177\209\139\208\187\208\176 \208\180\208\190\208\177\208\176\208\178\208\187\208\181\208\189\208\176\046"))))end end if zametki==nil then zametki={}end if O[1]=="\033\208\191\208\176\208\188\209\143\209\130\208\186\208\176"and f==r then local J if O[2]~=nil then if zametki[O[2]]==nil then zametki[O[2]]={}end if O[3]~=nil then if O[3]=="\035\035\035"then J="\035\035\035\n"else J=O[3].." "end if O[4]~=nil then for K=4,#O,1 do if O[K]=="\035\035\035"then J=J.." \035\035\035\n"else J=J..(" "..O[K])end end end zametki[O[2]]=J SendChatMessage("\208\151\208\176\208\188\208\181\209\130\208\186\208\176 \208\190 \208\191\208\181\209\128\209\129\208\190\208\189\208\176\208\182\208\181 "..(O[2].." \208\180\208\190\208\177\208\176\208\178\208\187\208\181\208\189\208\176"),"\079\070\070\073\067\069\082",nil,1)else end else SendChatMessage("\208\157\208\181 \209\131\208\186\208\176\208\183\208\176\208\189\208\190 \208\186\208\190\208\188\209\131 \208\180\208\190\208\177\208\176\208\178\208\187\209\143\209\130\209\140 \208\191\208\176\208\188\209\143\209\130\208\186\209\131","\079\070\070\073\067\069\082",nil,1)end end if O[1]=="\033\208\191\208\176\208\188\209\143\209\130\208\186\208\176\043"and f==r then local J=O[3]if zametki[O[2]]==nil then if O[4]~=nil then for K=4,#O,1 do J=J..(" "..O[K])end end else J=zametki[O[2]]..("\n"..J)if O[4]~=nil then for K=4,#O,1 do J=J..(" "..O[K])end end end zametki[O[2]]=J SendChatMessage("\208\151\208\176\208\188\208\181\209\130\208\186\208\176 \208\190 \208\191\208\181\209\128\209\129\208\190\208\189\208\176\208\182\208\181 "..(O[2].." \208\180\208\190\208\191\208\190\208\187\208\189\208\181\208\189\208\176"),"\079\070\070\073\067\069\082",nil,1)end if string.find(t,"\208\191\208\190\208\186\208\176\208\182\208\184 \208\188\208\189\208\181 \208\176\209\135\208\184\208\178\208\186\209\131")and(string.find(t,r)and(msg3[2]~="\035\097\097\097"and nachalo~="\042"))then msg1=mysplit(t)if msg1[2]=="\208\191\208\190\208\186\208\176\208\182\208\184"then msg1=msg1[5]msg1=tonumber(msg1)id,name,points,completed,month,day,year,description,flags,icon,rewardText,isGuildAch=GetAchievementInfo(msg1)if completed==true then SendChatMessage("\042"..(f..("\044 \209\141\209\130\208\176 \209\131\208\182\208\181 \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\176\058 "..(msg1 ..(" "..GetAchievementLink(msg1))))),"\079\070\070\073\067\069\082",nil,1)else SendChatMessage("\042"..(f..("\044 \209\141\209\130\209\131 \208\181\209\137\208\181 \208\189\208\181 \208\180\208\181\208\187\208\176\208\187\058 "..(msg1 ..(" "..GetAchievementLink(msg1))))),"\079\070\070\073\067\069\082",nil,1)end end end if t=="\208\162\208\181\209\129\209\130\208\147\208\156"then local J=CreateFrame("\083\108\105\100\101\114","\077\121\083\108\105\100\101\114\071\108\111\098\097\108\078\097\109\101",WorldMapFrame,"\079\112\116\105\111\110\115\083\108\105\100\101\114\084\101\109\112\108\097\116\101")J:SetWidth(20)J:SetHeight(100)J:SetOrientation("\086\069\082\084\073\067\065\076")J:SetOrientation("\072\079\082\073\090\079\078\084\065\076")J:Show()end if string.find(t,"\116\101\115\116\071\114\111\117\112")then memberCount=0 for J=1,MAX_PARTY_MEMBERS,1 do if GetPartyMember(J)then memberCount=memberCount+1 end end end if string.find(t,"\208\191\208\190\208\186\208\176\208\182\208\184 \208\176\209\135\208\184\208\178\208\186\209\131")and(string.find(t,r)and(msg3[2]~="\035\097\097\097"and nachalo~="\042"))then msg2=mysplit(t)msg2=msg2[4]msg2=tonumber(msg2)j=0 k=0 count=GetAchievementNumCriteria(msg2)for J=1,count,1 do local K,t,f,x,a,O,n,e,r,F=GetAchievementCriteriaInfo(msg2,J)prov=f if prov==true then j=j+1 else k=k+1 end J=J+1 end if k==0 then SendChatMessage(F..(" \035\097\097\105 "..("\209\131\208\182\208\181 \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\176 \208\191\208\190\208\187\208\189\208\190\209\129\209\130\209\140\209\142\058 "..(msg2 ..(" "..GetAchievementLink(msg2))))),"\079\070\070\073\067\069\082",nil,1)else SendChatMessage("\042"..("\208\180\208\190\209\129\209\130\209\131\208\191\208\189\208\190 \208\191\209\131\208\189\208\186\209\130\208\190\208\178 \208\176\209\135\208\184\208\178\208\186\208\184\058 "..(k..(" \208\184\208\183 "..(count..(" "..(msg2 ..(" "..GetAchievementLink(msg2)))))))),"\079\070\070\073\067\069\082",nil,1)end end if string.find(t,"\208\191\208\190\208\186\208\176\208\182\208\184 \209\129\209\130\208\176\209\130\208\184\209\129\209\130\208\184\208\186\209\131")and(string.find(t,r)and nachalo~="\042")then msgStat=mysplit(t)msgStat=msgStat[4]SendChatMessage("\042 "..(GetAchievementLink(msgStat)..(" "..GetStatistic(msgStat))),"\079\070\070\073\067\069\082",nil,1)end if string.find(t,"\208\191\208\190\208\186\208\176\208\182\208\184 \208\191\209\128\208\181\208\180\208\188\208\181\209\130")and(string.find(t,r)and nachalo~="\042")then lenCosa=mysplit(t)tblLensCosa=tablelength(lenCosa)predmet=table.concat(lenCosa," ",4,tblLensCosa)local J,K for J=1,100000,1 do itemName,itemLink,itemRarity,itemLevel,itemMinLevel,itemType,itemSubType,itemStackCount,itemEquipLoc,itemTexture,itemSellPrice=GetItemInfo(J)if itemName~=nil and string.lower(predmet)==string.lower(itemName)then if itemLink~=nil then SendChatMessage("\042 "..itemLink,"\079\070\070\073\067\069\082",nil,1)break else SendChatMessage("\042 \208\191\209\128\208\181\208\180\208\188\208\181\209\130 "..(predmet.." \208\189\208\181 \209\129\209\131\209\137\208\181\209\129\209\130\208\178\209\131\208\181\209\130"),"\079\070\070\073\067\069\082",nil,1)end end end end if string.find(t,"\033\208\176\209\135\208\184\208\178\208\186\208\176")and nachalo~="\042"then lenShow=mysplit(t)if lenShow[1]==r then tblLensShow=tablelength(lenShow)achShow=table.concat(lenShow," ",3,tblLensShow)achShow=string.lower(achShow)for J=1,100000,1 do IDNumber,Name,Points,Completed,Month,Day,Year,Description,Flags,Image,RewardText,isGuildAch=GetAchievementInfo(J)if Name~=nil then Name1=string.lower(Name)if string.find(Name1,achShow)then print("\208\189\208\190\208\188\208\181\209\128 \208\176\209\135\208\184\208\178\208\186\208\184\058 ",J)prov1=Completed j=0 k=0 countShow=GetAchievementNumCriteria(J)testShow=1 for K=1,countShow,1 do local t,f,x,a,O,n,e,r,F,h=GetAchievementCriteriaInfo(J,K)if x~=true then testShow="\048\048\048"end provShow=x quantityShow=a reqQuantityShow=O quantityShow=tonumber(quantityShow)reqQuantityShow=tonumber(reqQuantityShow)if provShow==true then j=j+1 else k=k+1 end end if provShow~=true and(countShow~=1 and countShow~=0)then cmpltd1=j cmpltd2=" \208\191\209\131\208\189\208\186\209\130\208\190\208\178 \208\176\209\135\208\184\208\178\208\186\208\184 \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\189\208\190\058 "cmpltd22=" \208\184\208\183 "if string.find(Name1,"\208\183\208\190\208\187\208\190\209\130")then countShow=tonumber(countShow)/10000 else end cmpltd=cmpltd2 ..(cmpltd1 ..(cmpltd22 ..countShow))elseif provShow==true or prov1==true and testShow~="\048\048\048"then cmpltd=" \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\176"elseif provShow~=true then cmpltd1=" "cmpltd=cmpltd1 ..GetStatistic(J)end if quantityShow~=0 and(reqQuantityShow~=0 and(reqQuantityShow~=nil and testShow=="\048\048\048"))then cmpltd1=" \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\189\208\190 \208\191\209\131\208\189\208\186\209\130\208\190\208\178 \208\176\209\135\208\184\208\178\208\186\208\184 "cmpltd2=j cmpltd3=" \208\184\208\183 "if string.find(Name1,"\208\183\208\190\208\187\208\190\209\130")then countShow=tonumber(countShow)/10000 else end cmpltd4=countShow cmpltd=cmpltd1 ..(cmpltd2 ..(cmpltd3 ..cmpltd4))end if quantityShow~=0 and(quantityShow~=1 and(reqQuantityShow~=0 and(reqQuantityShow~=nil and testShow=="\048\048\048")))then cmpltd1=" \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\189\208\190 \208\191\209\131\208\189\208\186\209\130\208\190\208\178 \208\176\209\135\208\184\208\178\208\186\208\184 "if string.find(Name1,"\208\183\208\190\208\187\208\190\209\130")then countShow=tonumber(quantityShow)/10000 else end cmpltd2=quantityShow cmpltd3=" \208\184\208\183 "cmpltd4=reqQuantityShow cmpltd=cmpltd1 ..(cmpltd2 ..(cmpltd3 ..cmpltd4))end if quantityShow~=0 and(reqQuantityShow==0 and quantityShow~=nil)then print(J)cmpltd1=" \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\189\208\190 \208\191\209\131\208\189\208\186\209\130\208\190\208\178 \208\176\209\135\208\184\208\178\208\186\208\184 "if string.find(Name1,"\208\183\208\190\208\187\208\190\209\130")then quantityShow=tonumber(quantityShow)/10000 else end cmpltd2=quantityShow cmpltd=cmpltd1 ..cmpltd2 end SendChatMessage(GetAchievementLink(J)..cmpltd,"\079\070\070\073\067\069\082",nil,1)quantityShow=nil reqQuantityShow=nil quantityShow=nil cmpltd=nil provShow=nil prov1=nil Completed=nil completed=nil end end end end end ltrC=mysplit(t)if string.find(t,"\208\191\208\190\208\187\209\131\209\135\208\176\208\181\209\130 \208\187\208\190\209\130\208\181\209\128\208\181\208\185\208\189\209\139\208\185 \208\177\208\184\208\187\208\181\209\130")and(ltrC[1]==r and testGM~=nil)then ltrNikC=ltrC[1]if testQ[ltrNikC]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]==nil then testQ[ltrNikC]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]=3 else lotereyaC=testQ[ltrNikC]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]lotereyaC=lotereyaC+3 testQ[ltrNikC]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]=lotereyaC end end krtKus=mysplit(t)if string.find(t,"\208\191\208\190\208\187\209\131\209\135\208\176\208\181\209\130 \208\186\209\131\209\129\208\190\208\186 \208\186\208\176\209\128\209\130\209\139")and(krtKus[1]==r and testGM~=nil)then krtKusNikC=krtKus[1]if krt==nil then krt={}end if krt["\055\055\055"]==nil then x=math.random(1,15)x=tostring(x)if krt[x]==nil then krt[x]=true else for J=1,15,1 do x=math.random(1,15)x=tostring(x)if krt[x]==nil or krt[x]~=true then krt[x]=true break end end end end if krt["\055\055\055"]==2 then x=math.random(21,34)x=tostring(x)if krt[x]==nil then krt[x]=true else for J=21,34,1 do x=math.random(21,34)x=tostring(x)if krt[x]==nil or krt[x]~=true then krt[x]=true break end end end end end if string.find(t,"\033\208\186\208\176\209\128\209\130\208\176")and(krtKus[1]==r and testGM~=nil)then if krt==nil then krt={}end local J J=tostring(krtKus[3])if krt[J]==nil then krt[J]=true else SendChatMessage("\208\163 "..(f..(" \209\131\208\182\208\181 \208\181\209\129\209\130\209\140 "..(J.." \208\186\209\131\209\129\208\190\208\186"))),"\079\070\070\073\067\069\082",nil,1)end end if string.find(t,"\208\191\208\190\208\187\209\131\209\135\208\176\208\181\209\130 \209\135\208\181\209\128\208\189\208\184\208\187\208\176")and(krtKus[1]==r and testGM~=nil)then if krt["\057\057\057"]==nil then krt["\057\057\057"]=1 else krt["\057\057\057"]=krt["\057\057\057"]+1 end end if string.find(t,"\033\209\129\208\177\209\128\208\190\209\129")and(string.find(t,r)and testGM~=nil)then if testQ[r]["\209\129\208\177\209\128\208\190\209\129"]==nil then testQ[r]["\209\129\208\177\209\128\208\190\209\129"]=1 else testQ[r]["\209\129\208\177\209\128\208\190\209\129"]=nil end end if string.find(t,"\033\208\190\209\130\208\188\208\181\208\189\208\176")and(string.find(t,r)and testGM~=nil)then if testQ[r]["\208\190\209\130\208\188\208\181\208\189\208\176"]==nil then testQ[r]["\208\190\209\130\208\188\208\181\208\189\208\176"]=1 else testQ[r]["\208\190\209\130\208\188\208\181\208\189\208\176"]=nil end end lotTest=mysplit(t)if string.find(t,"\035\108\116\114\049\049\049")and(testGM~=nil and lotTest[3]==r)then minusLrt=testQ[r]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]minusLrt=tonumber(minusLrt)minusLrt=minusLrt-1 testQ[r]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]=minusLrt end if string.find(t,"\035\109\097\114\115\104")and(testGM~=nil and f==r)then print("\049")if testQ.marsh==nil then testQ.marsh=1 else testQ.marsh=nil end end if string.find(t,"\035\108\116\114\051\051\051")and(testGM~=nil and lotTest[3]==r)then minusLrt=testQ[r]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]minusLrt=tonumber(minusLrt)minusLrt=minusLrt-3 testQ[r]["\208\187\208\190\209\130\208\181\209\128\208\181\209\143"]=minusLrt end if string.find(t,"\208\176\208\187\208\186\208\176\209\136")and(string.find(t,"\208\161\208\162\208\144\208\160\208\162")and(testGM~=nil and O[3]==nil))then if testQ.eventAllcash==nil then testQ.eventAllcash=1 end end if string.find(t,"\208\191\209\131\209\130\208\181\209\136\208\181\209\129\209\130\208\178\208\184\208\181")and(string.find(t,"\208\161\208\162\208\144\208\160\208\162")and testGM~=nil)then if testQ[r].puteshestvie==nil then testQ[r].puteshestvie="\048"PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\115\116\097\114\116\046\111\103\103")testQ[r].puteshestvieTabella="\101\118\101\110\116\049"testQ[r][testQ[r].puteshestvieTabella]="\048"end if testGM~=nil then sohranenieTablicRamerovLokaciy()end end if string.find(t,"\208\183\208\176\209\128\208\184\208\186\208\176")and(string.find(t,"\208\161\208\162\208\144\208\160\208\162")and(testGM~=nil and O[3]==r))then if testQ[r].puteshestvie==nil then testQ[r].puteshestvie="\048"PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\115\116\097\114\116\046\111\103\103")testQ[r].puteshestvieTabella="\101\118\101\110\116\049"testQ[r][testQ[r].puteshestvieTabella]="\048"end if testGM~=nil then sohranenieTablicRamerovLokaciy()end end if string.find(t,"\209\132\208\181\208\189\208\184\208\186\209\129")and(string.find(t,"\208\161\208\162\208\144\208\160\208\162")and(testGM~=nil and O[3]==r))then if testQ[r].puteshestvie==nil then testQ[r].puteshestvie="\048"PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\115\116\097\114\116\046\111\103\103")testQ[r].puteshestvieTabella="\102\101\110\105\120"testQ[r][testQ[r].puteshestvieTabella]="\048"end if testGM~=nil then sohranenieTablicRamerovLokaciy()end testQ.edaNomeRez={}testQ[r]["\208\186\208\178\208\181\209\129\209\130\095\208\189\208\176\095\209\141\208\188\208\190\209\134\208\184\208\184\095\208\178\208\183\209\143\209\130"]=nil end if string.find(t,"\209\129\208\184\208\183\208\184\209\132")and(string.find(t,"\208\161\208\162\208\144\208\160\208\162")and testGM~=nil)then if testQ["\209\129\209\130\208\176\209\128\209\130"]==nil then testQ.start=lotTest[3]testQ["\209\129\209\130\208\176\209\128\209\130"]=0 marshruT={}end end if string.find(t,"\209\132\208\181\208\188\208\184\208\180\208\176")and(string.find(t,"\208\161\208\162\208\144\208\160\208\162")and testGM~=nil)then testQ["\209\141\208\178\208\181\208\189\209\130\051"]=0 testQ["\209\141\208\178\208\181\208\189\209\130\051\095\107"]=lotTest[3]testQ["\209\141\208\178\208\181\208\189\209\130\051\095\108"]=lotTest[4]testQ["\209\141\208\178\208\181\208\189\209\130\051\095\110"]=lotTest[5]end if string.find(t,"\208\177\209\131\209\128\208\184\208\180\208\176\208\189\208\190\208\178\095\208\190\209\129\208\181\208\187")and(string.find(t,"\208\161\208\162\208\144\208\160\208\162")and testGM~=nil)then testQ["\209\141\208\178\208\181\208\189\209\130\049"]=lotTest[3]testQ["\209\141\208\178\208\181\208\189\209\130\049\095\208\183\208\176\208\191\209\131\209\137\208\181\208\189"]=0 testQ.boDiam=tonumber(lotTest[4])end if string.find(t,"\208\161\208\162\208\158\208\159")and(string.find(t,"\209\141\208\178\208\181\208\189\209\130")and testGM~=nil)then if testQ[testQ.start]~=nil then testQ[testQ.start]=nil end testQ["\209\129\209\130\208\176\209\128\209\130"]=nil testQ.num=nil testQ.marshF=nil testQ.start=nil if marshruT~=nil then for J=1,9999,1 do if marshruT[J]~=nil then marshruT[J]:Hide()end end end marshruT=nil testQ["\209\141\208\178\208\181\208\189\209\130\049\095\208\183\208\176\208\191\209\131\209\137\208\181\208\189"]=nil testQ["\209\141\208\178\208\181\208\189\209\130\049"]=nil for J=1,100,1 do if iconRis[J]~=nil then iconRis[J]:Hide()end end testQ.boDiam=nil testQ.event1=nil testQ["\209\141\208\178\208\181\208\189\209\130\051"]=nil testQ["\209\141\208\178\208\181\208\189\209\130\051\095\107"]=nil testQ["\209\141\208\178\208\181\208\189\209\130\051\095\108"]=nil testQ["\209\141\208\178\208\181\208\189\209\130\051\095\110"]=nil event3(1,1,"\104\105\100\101")testQ.eventAllcash=nil MoveViewRightStart(0)MoveViewLeftStart(0)testQ.acX=nil testQ.acY=nil puteshestvieHide()testQ[r]["\208\186\208\178\208\181\209\129\209\130\095\208\189\208\176\095\209\141\208\188\208\190\209\134\208\184\208\184\095\208\178\208\183\209\143\209\130"]=nil testQ.edaNomeRez={}testQ[r].edaQuest=nil end if string.find(t,"\208\191\208\190\208\186\208\176\208\182\208\184 \209\129\208\184\209\129\209\140\208\186\208\184")and(string.find(t,r)and nachalo~="\042")then local J=math.random(1,13)if J==1 then SendChatMessage("\040  \046   \089   \046  \041","\079\070\070\073\067\069\082",nil,1)elseif J==2 then SendChatMessage("\091  \046   \089   \046  \093","\079\070\070\073\067\069\082",nil,1)elseif J==3 then SendChatMessage("\091\095\095\111\095\095\093","\079\070\070\073\067\069\082",nil,1)elseif J==4 then SendChatMessage("\091\095\095\042\095\095\093","\079\070\070\073\067\069\082",nil,1)elseif J==5 then SendChatMessage("\040\095\095\111\095\095\041","\079\070\070\073\067\069\082",nil,1)elseif J==6 then SendChatMessage("\040\095\095\042\095\095\041","\079\070\070\073\067\069\082",nil,1)elseif J==7 then SendChatMessage("\040 \062  \041 \040  \060  \041","\079\070\070\073\067\069\082",nil,1)elseif J==8 then SendChatMessage("\040 \044  \089  \044 \041","\079\070\070\073\067\069\082",nil,1)elseif J==9 then SendChatMessage("\040\046\041\040\046\041","\079\070\070\073\067\069\082",nil,1)elseif J==10 then SendChatMessage("\040\044\041\040\044\041","\079\070\070\073\067\069\082",nil,1)elseif J==11 then SendChatMessage("\040\046 \041\040 \046\041","\079\070\070\073\067\069\082",nil,1)elseif J==12 then SendChatMessage("\040 \046 \041\040 \046\041","\079\070\070\073\067\069\082",nil,1)elseif J==13 then SendChatMessage("\040\046 \041\040 \046 \041","\079\070\070\073\067\069\082",nil,1)end end if string.find(t,r)and(testGM~=nil and(string.find(t,"\208\178\208\181\209\128\209\129\208\184\209\143")and(string.find(t,"\049\050\051\052\053\054\055\056\057\048")and nachalo~="\042")))then SendChatMessage(F..(" \209\130\208\181\208\186\209\131\209\137\208\176\209\143 \208\178\208\181\209\128\209\129\208\184\209\143 "..versAdd),"\079\070\070\073\067\069\082",nil,1)end if testGM~=nil and(string.find(t,"\208\178\208\181\209\128\209\129\208\184\209\143")and(string.find(t,"\049\050\051\052\053\054\055\056\057\048")and lotTest[3]==nil))then SendAddonMessage("\078\083\071\097\100\100",r..(" "..versAdd),"\103\117\105\108\100")end if string.find(t,r)and(testGM~=nil and string.find(t,"\208\191\208\190\208\186\208\176\208\182\208\184\208\188\208\189\208\181"))then SendChatMessage(F,"\079\070\070\073\067\069\082",nil,1)end end)local K=CreateFrame("\070\114\097\109\101")K:RegisterEvent("\067\072\065\084\095\077\083\071\095\069\077\079\084\069")K:SetScript("\079\110\069\118\101\110\116",function(J,K,t,f)local x=GetUnitName("\112\108\097\121\101\114")if testQ[x]["\208\186\208\178\208\181\209\129\209\130\095\208\189\208\176\095\209\141\208\188\208\190\209\134\208\184\208\184\095\208\178\208\183\209\143\209\130"]~=nil then if t==t_cQ[testQ[x].puteshestvieTabella][testQ[x].puteshestvie]["\209\141\208\188\208\190\209\134\208\184\209\143"]then if tonumber(UnitLevel("\116\097\114\103\101\116"))==80 then if testQ[x]["\208\191\209\128\208\190\208\178\208\181\209\128\208\186\208\176\095\209\128\208\176\209\129\209\129\209\130\208\190\209\143\208\189\208\184\209\143\095\209\141\208\188\208\190\209\134\208\184\208\184"]==1 then local J,K,t,f,a,O,n=GetPlayerInfoByGUID(UnitGUID("\116\097\114\103\101\116"))if K~=nil then if testQ[x].HumanMan==nil then if f=="\072\117\109\097\110"and a==2 then testQ[x].HumanMan=1 SendChatMessage("\208\175 \208\178\209\139\208\180\208\184\209\128\208\176\209\142 \209\134\208\181\208\187\209\139\208\185 \208\191\209\131\208\186 \209\136\208\181\209\128\209\129\209\130\208\184 \208\184\208\183 \208\189\208\190\209\129\208\176 \209\135\208\181\208\187\208\190\208\178\208\181\208\186\208\176","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].HumanWoman==nil then if f=="\072\117\109\097\110"and a==3 then testQ[x].HumanWoman=1 SendChatMessage("\208\162\209\139 \209\129\208\188\208\190\209\130\209\128\208\184\044 \209\130\209\131\209\130 \208\188\208\181\209\133\208\176 \209\130\208\190 - \209\129 \208\187\208\176\208\180\208\190\209\136\208\186\209\131\046\046\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].DworfMan==nil then if f=="\068\119\097\114\102"and a==2 then testQ[x].DworfMan=1 SendChatMessage("\208\175 \208\190\208\177\208\180\208\184\209\128\208\176\209\142 \208\178\208\181\209\129\209\140 \208\188\208\181\209\133 \209\129 \208\187\208\190\208\180\209\139\208\182\208\186\208\184 \208\180\208\178\208\190\209\128\209\132\208\176\046 \208\157\209\131\044 \208\189\208\184\209\135\208\181\208\179\208\190\044 \209\130\208\176\208\188 \208\181\209\137\208\181 \208\188\208\189\208\190\208\179\208\190\046\046\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].DworfWoman==nil then if f=="\068\119\097\114\102"and a==3 then testQ[x].DworfWoman=1 SendChatMessage("\208\152 \208\173\208\162\208\158 \208\159\208\158\208\148\208\156\208\171\208\168\208\154\208\152\063\033 \208\148\208\176 \209\130\209\131\209\130 \208\189\208\176 \208\191\209\143\209\130\209\140 \209\132\208\181\208\189\208\184\208\186\209\129\208\190\208\178 \209\133\208\178\208\176\209\130\208\184\209\130\033\033\033","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].NEMan==nil then if f=="\078\105\103\104\116\069\108\102"and a==2 then testQ[x].NEMan=1 SendChatMessage("\208\165\208\188\046\046 \208\191\208\190\209\135\208\181\208\188\209\131 \208\189\208\184\209\133 \209\136\208\181\209\128\209\129\209\130\209\140 - \209\130\208\190\208\187\209\140\208\186\208\190 \208\189\208\176 \209\131\209\136\208\176\209\133 \209\128\208\176\209\129\209\130\208\181\209\130\063","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].NEWoman==nil then if f=="\078\105\103\104\116\069\108\102"and a==3 then testQ[x].NEWoman=1 SendChatMessage("\208\159\209\131\209\129\209\130\209\140 \208\188\208\189\208\181 \208\177\209\131\208\180\208\181\209\130 \209\129\209\130\209\139\208\180\208\189\208\190\046\046\046\208\189\208\190 \208\191\208\190\209\130\208\190\208\188\046 \208\144 \208\191\208\190\208\186\208\176 \208\177\209\131\208\180\208\181\208\188 \208\190\209\137\208\184\208\191\209\139\208\178\208\176\209\130\209\140 \208\189\208\176 \208\177\208\187\208\176\208\179\208\190 \208\177\209\131\208\180\209\131\209\137\208\181\208\179\208\190\033","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].GnomMan==nil then if f=="\071\110\111\109\101"and a==2 then testQ[x].GnomMan=1 SendChatMessage("\208\146\209\129\208\181 \209\135\209\130\208\190 \208\191\209\128\208\190\208\184\209\129\209\133\208\190\208\180\208\184\209\130 \208\178 \208\186\208\178\208\181\209\129\209\130\208\181\044 \208\180\208\190\208\187\208\182\208\189\208\190 \208\190\209\129\209\130\208\176\209\130\209\140\209\129\209\143 \208\178 \208\186\208\178\208\181\209\129\209\130\208\181\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].GnomWoman==nil then if f=="\071\110\111\109\101"and a==3 then testQ[x].GnomWoman=1 SendChatMessage("\208\144 \208\178\209\139 \208\183\208\189\208\176\208\187\208\184\044 \209\135\209\130\208\190 \208\180\208\190\209\129\209\130\208\176\209\130\208\190\209\135\208\189\208\190 \208\189\208\176\208\191\209\131\208\179\208\176\209\130\209\140 \208\179\208\189\208\190\208\188\208\184\209\133\209\131 \208\184 \209\130\208\176 \209\129\208\176\208\188\208\176 \209\129\208\177\209\128\208\176\209\129\209\139\208\178\208\176\208\181\209\130 \209\129 \209\129\208\181\208\177\209\143 \209\136\208\181\209\128\209\129\209\130\209\140\063 \208\151\208\176\209\137\208\184\209\130\208\189\208\176\209\143 \209\128\208\181\208\176\208\186\209\134\208\184\209\143 \208\178\208\184\208\180\208\184\208\188\208\190\046\046\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].DrenayMan==nil then if f=="\068\114\097\101\110\101\105"and a==2 then testQ[x].DrenayMan=1 SendChatMessage("\208\163\209\133\033\033\033 \208\154\208\176\208\186\208\190\208\185 \209\131 \208\180\209\128\208\181\208\189\208\181\208\181\208\178 \208\188\208\190\209\133\208\189\208\176\209\130\209\139\208\185\046\046\209\133\208\178\208\190\209\129\209\130\033","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].DrenayWoman==nil then if f=="\068\114\097\101\110\101\105"and a==3 then testQ[x].DrenayWoman=1 SendChatMessage("\208\161\209\130\209\128\208\176\208\189\208\189\208\190\044 \208\176 \208\180\209\128\208\181\208\189\208\181\208\185\208\186\208\184 \209\129\208\190\208\178\209\129\208\181\208\188 \208\189\208\181 \209\130\208\176\208\186\208\184\208\181\044 \208\186\208\176\208\186 \208\189\208\176 \209\130\208\181\209\133 \209\132\208\190\209\130\208\190 \208\184 \208\178\208\184\208\180\208\181\208\190\046\046\046\208\189\209\131\044 \208\188\208\189\208\181 \208\180\209\128\209\131\208\179 \209\128\208\176\209\129\209\129\208\186\208\176\208\183\209\139\208\178\208\176\208\187\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].OrkMan==nil then if f=="\079\114\099"and a==2 then testQ[x].OrkMan=1 SendChatMessage("\208\158\209\133\046\046\046 \208\152 \208\183\208\176\209\135\208\181\208\188 \209\130\208\190\208\187\209\140\208\186\208\190 \208\190\209\128\208\186\208\184 \209\130\208\176\208\186 \209\130\209\137\208\176\209\130\208\181\208\187\209\140\208\189\208\190 \208\177\209\128\208\181\209\142\209\130 \208\178\209\129\208\181 \208\180\208\190\209\129\209\130\209\131\208\191\208\189\209\139\208\181 \208\188\208\181\209\129\209\130\208\176\063 \208\158\209\129\209\130\208\176\209\142\209\130\209\129\209\143 \209\130\209\128\209\131\208\180\208\189\208\190\208\180\208\190\209\129\209\130\209\131\208\191\208\189\209\139\208\181\046\046\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].OrkWoman==nil then if f=="\079\114\099"and a==3 then testQ[x].OrkWoman=1 SendChatMessage("\208\157\209\131 \208\178\209\129\208\181\044 \208\191\208\190\209\129\208\187\208\181 \209\130\208\176\208\186\208\190\208\185 \208\191\208\190\208\188\208\190\209\137\208\184 \208\178 \208\180\208\181\208\191\208\184\208\187\209\143\209\134\208\184\208\184 \208\191\209\128\208\184\208\180\208\181\209\130\209\129\209\143 \208\182\208\181\208\189\208\184\209\130\209\140\209\129\209\143\046\046\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].UndeadMan==nil then if f=="\083\099\111\117\114\103\101"and a==2 then testQ[x].UndeadMan=1 SendChatMessage("\208\163\209\133 \209\130\209\139 \208\184 \209\141\209\130\208\190 \208\188\208\181\209\133\033\063 \208\158\208\185\046\046 \208\173\209\130\208\190 \208\182\208\181 \208\188\208\190\209\133\033","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].UndeaWoman==nil then if f=="\083\099\111\117\114\103\101"and a==3 then testQ[x].UndeaWoman=1 SendChatMessage("\208\165\208\190\209\128\208\190\209\136\208\190 \208\183\208\176\209\132\208\184\208\186\209\129\208\184\209\128\208\190\208\178\208\176\208\189\208\189\208\176\209\143 \208\176\208\189\208\180\208\181\208\180\208\186\208\176\046\046 \208\178 \208\191\209\128\208\184\208\189\209\134\208\184\208\191\208\181 \208\189\208\184\209\135\208\181\208\188 \208\189\208\181 \208\190\209\130\208\187\208\184\209\135\208\176\208\181\209\130\209\129\209\143 \208\190\209\130 \208\190\208\177\209\139\209\135\208\189\208\190\208\185\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].TaurenMan==nil then if f=="\084\097\117\114\101\110"and a==2 then testQ[x].TaurenMan=1 SendChatMessage("\208\148\208\190\209\129\209\130\208\176\209\130\208\190\209\135\208\189\208\190 \209\133\208\190\209\128\208\190\209\136\208\181\208\189\209\140\208\186\208\190 \208\190\208\177\208\189\209\143\209\130\209\140 \209\130\208\176\209\131\209\128\208\181\208\189\208\176 \208\184 \208\189\208\176 \208\190\208\180\208\181\208\182\208\180\208\181 \208\190\209\129\209\130\208\176\208\189\208\181\209\130\209\129\209\143 \208\181\208\179\208\190 \209\136\208\181\209\128\209\129\209\130\208\184 \209\129\209\130\208\190\208\187\209\140\208\186\208\190\044 \209\135\209\130\208\190 \208\188\208\190\208\182\208\189\208\190 \209\131\209\130\208\181\208\191\208\187\208\184\209\130\209\140 \208\180\208\178\208\176 \209\129\209\130\208\176\208\189\208\180\208\176\209\128\209\130\208\189\209\139\209\133 \208\188\208\189\208\190\208\179\208\190\209\141\209\130\208\176\208\182\208\189\209\139\209\133 \208\180\208\190\208\188\208\176\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].TaurenWoman==nil then if f=="\084\097\117\114\101\110"and a==3 then testQ[x].TaurenWoman=1 SendChatMessage("\208\144 \208\178\209\139 \208\189\208\184\208\186\208\190\208\179\208\180\208\176 \208\189\208\181 \208\183\208\176\208\180\209\131\208\188\209\139\208\178\208\176\208\187\208\184\209\129\209\140\044 \209\135\209\130\208\190 \208\177\209\131\208\180\208\181\209\130\044 \208\181\209\129\208\187\208\184 \208\191\209\128\208\181\208\180\208\187\208\190\208\182\208\184\209\130\209\140 \209\130\208\176\209\131\209\128\208\181\208\189\209\136\208\181 \208\189\208\181\208\188\208\189\208\190\208\182\208\186\208\190 \208\181\208\181 \208\191\208\190\208\180\208\190\208\184\209\130\209\140\063","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].TrollMan==nil then if f=="\084\114\111\108\108"and a==2 then testQ[x].TrollMan=1 SendChatMessage("\208\167\209\130\208\190\208\177\209\139 \208\180\208\190\209\129\209\130\208\176\209\130\209\140 \208\188\208\181\209\133 \209\130\209\128\208\190\208\187\208\187\209\143\044 \208\189\209\131\208\182\208\189\208\190 \209\129\208\191\209\128\208\190\209\129\208\184\209\130\209\140\058 \"\208\183\208\189\208\176\208\181\209\130 \208\187\208\184 \208\190\208\189 \208\190 \208\178\209\131\208\180\209\131\063\"\046 \208\158\208\189 \208\189\208\176\209\135\208\189\208\181\209\130 \208\178\209\139\208\180\208\184\209\128\208\176\209\130\209\140 \208\191\208\190\209\129\208\187\208\181\208\180\208\189\208\184\208\181 \208\187\208\190\209\133\208\188\209\139\044 \208\186\208\187\209\143\208\189\209\143\209\129\209\140\044 \209\135\209\130\208\190 \208\180\208\176\208\182\208\181 \208\189\208\181 \209\129\208\187\209\139\209\136\208\176\208\187\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].TrollWoman==nil then if f=="\084\114\111\108\108"and a==3 then testQ[x].TrollWoman=1 SendChatMessage("\208\168\208\181\209\128\209\129\209\130\209\140 \208\189\208\176 \209\131\209\136\208\176\209\133 \209\130\209\128\208\190\208\187\208\187\208\184\209\133\208\184 \208\189\208\181 \208\188\208\181\208\189\208\181\208\181 \208\188\209\143\208\179\208\186\208\176\209\143 \208\184 \209\136\208\181\208\187\208\186\208\178\208\184\209\129\209\130\208\176\209\143\044 \209\135\208\181\208\188 \208\189\208\176 \209\131\209\136\208\176\209\133 \209\141\208\187\209\140\209\132\208\184\208\185\208\186\208\184\046 \208\163\208\182 \208\189\208\181 \209\128\208\190\208\180\209\129\209\130\208\178\208\181\208\189\208\189\208\184\208\186\208\184 \208\187\208\184 \208\190\208\189\208\184\063","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].ElfMan==nil then if f=="\066\108\111\111\100\069\108\102"and a==2 then testQ[x].ElfMan=1 SendChatMessage("\208\154\208\176\208\186 \208\187\208\190\208\178\208\186\208\190 \209\131 \208\188\208\181\208\189\209\143 \208\191\208\190\208\187\209\131\209\135\208\184\208\187\208\190\209\129\209\140 \208\190\209\137\208\184\208\191\208\176\209\130\209\140 \209\141\208\187\209\140\209\132\208\176\046\046\046\208\176 \208\179\208\187\208\176\208\178\208\189\208\190\208\181 - \208\189\208\181\208\183\208\176\208\188\208\181\209\130\208\189\208\190\046","\079\070\070\073\067\069\082",nil,1)end end if testQ[x].ElfWoman==nil then if f=="\066\108\111\111\100\069\108\102"and a==3 then testQ[x].ElfWoman=1 SendChatMessage("\208\163\209\133 \209\130\209\139\033 \208\154\208\176\208\186\208\176\209\143 \208\188\209\143\208\179\208\186\208\176 \209\136\208\181\209\128\209\129\209\130\209\140 \209\129 \209\131\209\136\208\181\208\185 \209\141\208\187\209\140\209\132\208\184\208\185\208\186\208\184\033","\079\070\070\073\067\069\082",nil,1)end end else SendChatMessage("\208\148\208\176\208\182\208\181 \208\191\209\128\208\190\208\177\208\190\208\178\208\176\209\130\209\140 \208\189\208\181 \208\177\209\131\208\180\209\131\044 \208\178\208\184\208\180\208\189\208\190 \208\182\208\181\044 \209\135\209\130\208\190 \209\141\209\130\208\190 \209\129\209\131\209\137\208\181\209\129\209\130\208\178\208\190 \208\189\208\181 \208\190\209\130\208\187\208\184\209\135\208\176\208\181\209\130\209\129\209\143 \209\136\208\181\209\128\209\129\209\130\208\184\209\129\209\130\208\190\209\129\209\130\209\140\209\142\046","\079\070\070\073\067\069\082",nil,1)end elseif testQ[x]["\208\191\209\128\208\190\208\178\208\181\209\128\208\186\208\176\095\209\128\208\176\209\129\209\129\209\130\208\190\209\143\208\189\208\184\209\143\095\209\141\208\188\208\190\209\134\208\184\208\184"]==2 then if t==t_cQ[testQ[x].puteshestvieTabella][testQ[x].puteshestvie]["\209\141\208\188\208\190\209\134\208\184\209\143"]then SendChatMessage("\208\161\208\187\208\184\209\136\208\186\208\190\208\188 \208\180\208\176\208\187\208\181\208\186\208\190\044 \208\190 \209\135\208\181\208\188 \209\143 \209\130\208\190\208\187\209\140\208\186\208\190 \208\180\209\131\208\188\208\176\209\142\063","\079\070\070\073\067\069\082",nil,1)end end else SendChatMessage("\208\166\208\181\208\187\209\140 \209\129\208\187\208\184\209\136\208\186\208\190\208\188 \208\188\208\190\208\187\208\190\208\180\208\176\209\143\044 \209\141\209\130\208\190 \208\189\208\181\208\179\209\131\208\188\208\176\208\189\208\189\208\190\046\046\046","\079\070\070\073\067\069\082",nil,1)end end testQ[x]["\208\191\209\128\208\190\208\178\208\181\209\128\208\186\208\176\095\209\128\208\176\209\129\209\129\209\130\208\190\209\143\208\189\208\184\209\143\095\209\141\208\188\208\190\209\134\208\184\208\184"]=nil end end)local t=CreateFrame("\070\114\097\109\101")t:RegisterEvent("\067\072\065\084\095\077\083\071\095\082\065\073\068\095\076\069\065\068\069\082")t:SetScript("\079\110\069\118\101\110\116",function(J,K,t,f)local x=mysplit(t)local a=GetUnitName("\112\108\097\121\101\114")if testQ.raidAUK~=nil then local J=mysplit(t)if J[2]==nil and type(tonumber(t))=="\110\117\109\098\101\114"then if testQ.raidAUKPobeda_gp~=nil and testQ.raidAUKPobeda_gp~=""then if tonumber(t)>tonumber(testQ.raidAUKPobeda_gp)then nsAUK(f,x[1],testQ[a].nsAUKpredmet)end else nsAUK(f,x[1],testQ[a].nsAUKpredmet)end end end end)local f=CreateFrame("\070\114\097\109\101")f:RegisterEvent("\067\072\065\084\095\077\083\071\095\082\065\073\068")f:SetScript("\079\110\069\118\101\110\116",function(J,K,t,f)local x=mysplit(t)local a=GetUnitName("\112\108\097\121\101\114")if testQ.raidAUK~=nil then local J=mysplit(t)if J[2]==nil and type(tonumber(t))=="\110\117\109\098\101\114"then if testQ.raidAUKPobeda_gp~=nil and testQ.raidAUKPobeda_gp~=""then if tonumber(t)>tonumber(testQ.raidAUKPobeda_gp)then nsAUK(f,x[1],testQ[a].nsAUKpredmet)end else nsAUK(f,x[1],testQ[a].nsAUKpredmet)end end end end)local a=CreateFrame("\070\114\097\109\101")a:RegisterEvent("\067\072\065\084\095\077\083\071\095\082\065\073\068\095\087\065\082\078\073\078\071")a:SetScript("\079\110\069\118\101\110\116",function(J,K,t,f)local x=mysplit(t)local a=GetUnitName("\112\108\097\121\101\114")if x[1]=="\208\144\208\163\208\154"then testQ.rez=nsGP()if f==a then SendAddonMessage("\110\115\065\085\075",lastWords(t),"\082\065\073\068")if testQ.raidAUK~=nil then testQ.raidAUK=nil end end testQ[a].nsAUKpredmet=lastWords(t)end if testQ.raidAUK~=nil then local J=mysplit(t)if J[2]==nil and type(tonumber(t))=="\110\117\109\098\101\114"then if testQ.raidAUKPobeda_gp~=nil and testQ.raidAUKPobeda_gp~=""then if tonumber(t)>tonumber(testQ.raidAUKPobeda_gp)then nsAUK(f,x[1],testQ[a].nsAUKpredmet)end else nsAUK(f,x[1],testQ[a].nsAUKpredmet)end end end end)
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_GUILD")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+--команды для управления квестами
+local nik=sender
+local msg = mysplit(message)
+local neobhodimo="необходимо_сделать"
+local str = string.gsub(message, "%s+", "")
+local myNome = GetUnitName("player")
+if testQ[myNome]==nil then
+	testQ[myNome]={}
+end
+local hshStran3
+testGM=gmTest(sender)
+hshStran3=hshSenderNomeC(myNome)
+msg3=mysplit(message)
+if message == "!кик" and sender == myNome then
+	SendAddonMessage("gKick", "", "guild")
+end
+if msg[1] == "тест" and msg[2] == "щип" and msg[3] == myNome and testGM~=nil then
+	SendChatMessage(testShip(myNome), "OFFICER", nil, 1)
+end
+if string.find(message,"выбери спек") and string.find(message,myNome) and testGM~=nil then
+	spek1 = nBtn:new(1,nil,UIParent,328,328,30,-25,-50,13,128,64,msg[4],"CENTER","CENTER","TOPLEFT","TOPLEFT","BACKGROUND","FF8C00")
+	spek2 = nBtn:new(2,nil,UIParent,328,264,30,-25,-50,13,128,64,msg[5],"CENTER","CENTER","TOPLEFT","TOPLEFT","BACKGROUND","FF8C00")
+	spek3 = nBtn:new(3,nil,UIParent,328,200,30,-25,-50,13,128,64,msg[6],"CENTER","CENTER","TOPLEFT","TOPLEFT","BACKGROUND","FF8C00")
+	spek1:configure()
+	spek2:configure()
+	spek3:configure()
+	spek1:setClick(change_spek, nil, spek1)
+	spek2:setClick(change_spek, nil, spek2)
+	spek3:setClick(change_spek, nil, spek3)
+end
+
+if msg[1] == "ГП" and msg[2] ~= nil and msg[3] ~= nil and sender == myNome then
+	SendGuildOfficerMessageWithBonus(message)
+	-- for Zc=1,GetNumGuildMembers(true) do
+	--     local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+	--     if name == myNome then
+	--     	if rankName == "Лейтенант" or rankName == "Капитан" then
+	-- 		 	SendChatMessage(msg[3] .. " плюс " .. msg[2], "OFFICER", nil, 1)
+	-- 		 	SendAddonMessage("nsGP" .. " " .. msg[2],msg[3], "guild")
+	-- 		end
+	-- 	end
+	--  end
+end
+
+if testQ[myNome]['puteshestvie'] ~= nil then
+	if t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['sh'] == "вопрос" then
+		if strlower(message) == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['ответ'] then
+			SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+			sohranenieProgressa("обычка")
+			testQ[myNome]['puteshestvie'] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда']
+			PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+		end
+	end
+end
+if msg[1] == "\"гс" and GS_Data[GetRealmName()].Players[msg[2]] ~= nil then
+	SendChatMessage(msg[2] .. ": " .. GS_Data[GetRealmName()].Players[msg[2]].GearScore .. " гс. Обновлено: " .. string.sub(GS_Data[GetRealmName()].Players[msg[2]].Date,7,8) .. "/" .. string.sub(GS_Data[GetRealmName()].Players[msg[2]].Date,5,6) .. "/" .. string.sub(GS_Data[GetRealmName()].Players[msg[2]].Date,1,4) , "OFFICER", nil, 1)
+end
+if msg[1] == "\"чс" and (sender == "Дханвантари" or sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес" or sender == "Аффа" or sender == "Шеф" or sender == "Нугган" or sender == "Showmeblood" or sender == "Годвар" or sender == "Совамилаха") then
+	if testQ["chs"] == nil then
+		testQ["chs"] = {}
+	end
+	local prov = nil
+	for i = 1, #testQ["chs"] do
+		if testQ["chs"][i] == msg[2] then
+			prov = 1
+		end
+	end
+	if prov ~= 1 then
+		table.insert(testQ["chs"],msg[2])
+		SendChatMessage(msg[2] .. " был добавлен в черный список" , "OFFICER", nil, 1)
+	else
+		SendChatMessage(msg[2] .. " уже есть в черном списке" , "OFFICER", nil, 1)
+	end
+end
+if msg[1] == "!устав" then
+	if sender == myNome or msg[3] == myNome then
+		print(msg[3])
+		if msg[2] == nil or msg[2] == "1" then
+			SendChatMessage(ustav["1"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["2"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "1.1" then
+			SendChatMessage(ustav["3"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "1.2" then
+			SendChatMessage(ustav["4"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "2" then
+			SendChatMessage(ustav["5"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "3" then
+			SendChatMessage(ustav["6"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "3.0" then
+			SendChatMessage(ustav["7"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "3.1" then
+			SendChatMessage(ustav["8"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "3.2" then
+			SendChatMessage(ustav["9"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["10"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4" then
+			SendChatMessage(ustav["11"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4.1" then
+			SendChatMessage(ustav["12"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["13"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4.2" then
+			SendChatMessage(ustav["14"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4.2.1" then
+			SendChatMessage(ustav["15"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4.3" then
+			SendChatMessage(ustav["16"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4.4" then
+			SendChatMessage(ustav["17"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "4.4.1" then
+			SendChatMessage(ustav["18"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5" then
+			SendChatMessage(ustav["19"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["20"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5.1" then
+			SendChatMessage(ustav["21"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["22"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5.1.1" then
+			SendChatMessage(ustav["23"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5.2" then
+			SendChatMessage(ustav["24"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5.2.1" then
+			SendChatMessage(ustav["25"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["26"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["27"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5.3" then
+			SendChatMessage(ustav["28"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "5.4" then
+			SendChatMessage(ustav["29"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "6.1" then
+			SendChatMessage(ustav["30"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "6.3" then
+			SendChatMessage(ustav["31"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "7" then
+			SendChatMessage(ustav["32"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "7.1" then
+			SendChatMessage(ustav["33"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "7.2" then
+			SendChatMessage(ustav["34"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "8" then
+			SendChatMessage(ustav["35"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "8.2" then
+			SendChatMessage(ustav["36"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "13.4" then
+			SendChatMessage(ustav["37"], "OFFICER", nil, 1)
+			SendChatMessage(ustav["38"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "13.4.1" then
+			SendChatMessage(ustav["39"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "13.4.2" then
+			SendChatMessage(ustav["40"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "13.4.3" then
+			SendChatMessage(ustav["41"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "13.4.4" then
+			SendChatMessage(ustav["42"], "OFFICER", nil, 1)
+		end
+		if msg[2] == "15" then
+			SendChatMessage(ustav["43"], "OFFICER", nil, 1)
+		end
+	end
+end
+if msg[1] == "\"Илвл" and msg[3] then
+	if msg[3] == myNome then
+		if GS_Data ~= nil then
+			if GS_Data[GetRealmName()].Players[msg[2]] ~= nil then
+				date_update = string.utf8sub(tostring(GS_Data[GetRealmName()].Players[msg[2]]['Date']),1,4) .. "/" .. string.utf8sub(tostring(GS_Data[GetRealmName()].Players[msg[2]]['Date']),5,6) .. "/" .. string.utf8sub(tostring(GS_Data[GetRealmName()].Players[msg[2]]['Date']),7,8) .. " " .. string.utf8sub(tostring(GS_Data[GetRealmName()].Players[msg[2]]['Date']),9,10) .. ":" .. string.utf8sub(tostring(GS_Data[GetRealmName()].Players[msg[2]]['Date']),11,11)
+				SendChatMessage("Илвл: " .. GS_Data[GetRealmName()].Players[msg[2]]['Average'] .. " гс: " .. GS_Data[GetRealmName()].Players[msg[2]].GearScore .. " Дата обновления: " .. date_update, "OFFICER", nil, 1)
+			else
+				SendChatMessage("Про игрока " .. msg[2] .. " нет информации", "OFFICER", nil, 1)
+			end
+		end
+	end
+end
+if msg[1] == "\"илвл" then
+	if sender == myNome then
+		local test = nil
+		if GS_Data ~= nil then
+			if GS_Data[GetRealmName()].Players[myNome] ~= nil then
+				SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore .. " " .. "бс: " .. bs(msg[3]), "OFFICER", nil, 1)
+				test = 1
+			end
+		else
+			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " " .. "бс: " .. bs(msg[3]), "OFFICER", nil, 1)
+			test = 1
+		end
+		if test ~= 1 then
+			SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " " .. "бс: " .. bs(msg[3]), "OFFICER", nil, 1)
+		end
+	else
+		if msg[2] == myNome then
+			local test = nil
+			if GS_Data ~= nil then
+				if GS_Data[GetRealmName()].Players[myNome] ~= nil then
+					SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome)) .. " гс: " .. GS_Data[GetRealmName()].Players[myNome].GearScore  .. " " .. "бс: " .. bs(msg[3]), "OFFICER", nil, 1)
+					test = 1
+				end
+			else
+				SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome))  .. " " .. "бс: " .. bs(msg[3]), "OFFICER", nil, 1)
+				test = 1
+			end
+			if test ~= 1 then
+				SendChatMessage("Мой илвл: " .. string.format("%d", CalculateAverageItemLevel(myNome))  .. " " .. "бс: " .. bs(msg[3]), "OFFICER", nil, 1)
+			end
+		end
+	end
+end
+if msg[1] == "\"чсв" and (sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес" or sender == "Аффа" or sender == "Шеф" or sender == "Нугган" or sender == "Годвар" or sender == "Совамилаха") then
+	if testQ["chs"] == nil then
+		testQ["chs"] = {}
+	end
+	for i = 1, #testQ["chs"] do
+		if testQ["chs"][i] == msg[2] then
+			SendChatMessage(testQ["chs"][i] .. " был удален из черного списка" , "OFFICER", nil, 1)
+			testQ["chs"][i] = nil
+		end
+	end
+end
+if msg[1] == "\"кик" and sender == myNome then
+	GuildUninvite(msg[2])
+	SendChatMessage(msg[2] .. " был исключен  из гильдии" , "OFFICER", nil, 1)
+end
+if msg[1] == "\"принизить" and sender == myNome then
+	GuildDemote(msg[2])
+	SendChatMessage(msg[2] .. " минус звание" , "OFFICER", nil, 1)
+end
+if msg[1] == "\"повысить" and sender == myNome then
+	GuildPromote(msg[2])
+	SendChatMessage(msg[2] .. " повышен" , "OFFICER", nil, 1)
+end
+
+if testQ['sign'] ~= "1" then
+	nome = GuildFrame["selectedName"]
+else
+	nome = myNome
+end
+if msg[1] == "\"построить" and testGM~=nil then
+	if mioFld1[msg[2]] ~= nil then
+		mioFld1[msg[2]]["объекты"][tostring(msg[4])] = msg[3]
+		if fBtn[1]:IsVisible() and nome == msg[2] then
+			fBtn[tonumber(msg[4])]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. msg[3] .. ".tga")
+			fBtn[tonumber(msg[4])]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. msg[3] .. ".tga")
+		end
+	end
+end
+if msg[1] == "\"хп]" and testGM~=nil then
+	mioFld1[msg[2]]["целостность"][tostring(msg[4])] = tonumber(msg[3])
+end
+if msg[1] == "локация" and msg[2]=="удалить" and msg[3] == myNome and testGM~=nil then
+	mapTables["lokRasstoyanie"] = nil
+	krt["chernila"] = nil
+end
+
+if msg[1] == "\"камни" and msg[2] == myNome and testGM~=nil then
+	testQ["kamen"] = tonumber(testQ["kamen"])+tonumber(msg[3])
+	testQ["nikQK"] = antc(testQ["kamen"])
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"кирпич" and msg[2] == myNome and testGM~=nil then
+	testQ["kirpich"] = tonumber(testQ["kirpich"])+tonumber(msg[3])
+	testQ["nikQKR"] = antc(testQ["kirpich"])
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"доска" and msg[2] == myNome and testGM~=nil then
+	testQ["doska"] = tonumber(testQ["doska"])+tonumber(msg[3])
+	testQ["nikQD"] = antc(testQ["doska"])
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"бревна" and msg[2] == myNome and testGM~=nil then
+	testQ["brevna"] = tonumber(testQ["brevna"])+tonumber(msg[3])
+	testQ["nikQB"] = antc(tonumber(testQ["brevna"]))
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"трава" and msg[2] == myNome and testGM~=nil then
+	testQ["stog"] = tonumber(testQ["stog"])+tonumber(msg[3])
+	testQ["nikQF"] = antc(testQ["stog"])
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"бетон" and msg[2] == myNome and testGM~=nil then
+	testQ["beton"] = tonumber(testQ["beton"])+tonumber(msg[3])
+	testQ["nikQBT"] = antc(tonumber(testQ["beton"]))
+	testQ["fRand6"] = 1
+end
+if msg[1] == "\"самогон" and msg[2] == myNome and testGM~=nil then
+	testQ["smg"] = tonumber(testQ["smg"])+tonumber(msg[3])
+	testQ["nikQS"] = antc(testQ["smg"])
+	testQ["fRand6"] = 1
+end
+if msg[1] == myNome .. "," and msg[2] == "покажи" and msg[3] == "свой" then
+	SendChatMessage("У меня " .. testQ[myNome]["dTimer"][tonumber(date("%d"))], "OFFICER", nil, 1)
+end
+if msg[1] == myNome .. "," and msg[2] == "покажи" and msg[3] == "свою" then
+	if testQ[myNome]["hTimer"] ~= nil then
+		SendChatMessage("У меня " .. testQ[myNome]["hTimer"], "OFFICER", nil, 1)
+	else
+		SendChatMessage("У меня нет...", "OFFICER", nil, 1)
+	end
+end
+if msg[1] == "!добавить" and msg[2] == "предмет" and testGM~=nil then
+	local nazvanie
+	local n
+	if pQuest["items"] == nil then
+		pQuest["items"] = {}
+	end
+	if #pQuest["items"] == 0 then
+		n = 1
+	else
+		n = #pQuest["items"]+1
+	end
+	pQuest["items"][n] = {}
+	pQuest["items"][n]["itemNum"] = msg[3]
+	pQuest["items"][n]["itemEnStuck"] = msg[4]
+	nazvanie = msg[5]
+	for i=6,#msg do
+		nazvanie = nazvanie .. " " .. msg[i]
+	end
+	pQuest["items"][n]["itemName"] = nazvanie
+	print(pQuest["items"][n]["itemName"] .. " успешно добавлен")
+end
+
+if msg[1] == "!добавить" and msg[2] == "квест" and testGM~=nil then
+	local testIDqq
+	if pQuest == nil then
+		pQuest = {}
+	end
+	if pQuest["х"] == nil then
+		pQuest["х"] = {}
+	end
+	for key, val in pairs(pQuest[msg[3]]) do
+		if tonumber(val) == tonumber(msg[4]) then
+			print("*Ачивка " .. val .. " " .. GetAchievementLink(tonumber(val)) .. " уже была добавлена.")
+			testIDqq=1
+		end
+	end
+	if testIDqq~=1 then
+		table.insert(pQuest[msg[3]], msg[4])
+		print("*Ачивка " .. msg[4] .. " " .. GetAchievementLink(tonumber(msg[4])) .. " была добавлена.")
+	end
+end
+if zametki == nil then
+	zametki = {}
+end
+if msg[1] == "!памятка" and sender == myNome then
+	local zametka
+	if msg[2] ~= nil then
+		if zametki[msg[2]] == nil then
+			zametki[msg[2]] = {}
+		end
+		if msg[3] ~= nil then
+			if msg[3] == "###" then
+				zametka = "###\n"
+			else
+				zametka = msg[3] .. " "
+			end
+			if msg[4] ~= nil then
+				for i=4,#msg do
+					if msg[i] == "###" then
+						zametka = zametka .. " ###\n"
+					else
+						zametka = zametka.. " " .. msg[i]
+					end
+				end
+			end
+			zametki[msg[2]] = zametka
+			SendChatMessage("Заметка о персонаже " .. msg[2] .. " добавлена", "OFFICER", nil, 1)
+		else
+
+		end
+	else
+		SendChatMessage("Не указано кому добавлять памятку", "OFFICER", nil, 1)
+	end
+end
+if msg[1] == "!памятка+" and sender == myNome then
+	local zametka = msg[3]
+	if zametki[msg[2]] == nil then
+		if msg[4] ~= nil then
+			for i=4,#msg do
+				zametka = zametka .. " " .. msg[i]
+			end
+		end
+	else
+		zametka = zametki[msg[2]] .. "\n" .. zametka
+		if msg[4] ~= nil then
+			for i=4,#msg do
+				zametka = zametka .. " " .. msg[i]
+			end
+		end
+	end
+	zametki[msg[2]] = zametka
+	SendChatMessage("Заметка о персонаже " .. msg[2] .. " дополнена", "OFFICER", nil, 1)
+end
+
+if string.find (message, "покажи мне ачивку")  and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
+	msg1 = mysplit(message)
+	if msg1[2]=="покажи" then
+		msg1 = msg1[5]
+		msg1 = tonumber(msg1)
+
+		id, name, points, completed, month, day, year, description, flags, icon, rewardText, isGuildAch = GetAchievementInfo(msg1)
+		if completed == true then
+			SendChatMessage("*" .. sender .. ", эта уже выполнена: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+		else
+			SendChatMessage("*" .. sender .. ", эту еще не делал: " .. msg1 .. " " .. GetAchievementLink(msg1), "OFFICER", nil, 1)
+		end
+	end
+end
+
+if message == "ТестГМ" then
+	local MySlider = CreateFrame("Slider", "MySliderGlobalName", WorldMapFrame, "OptionsSliderTemplate")
+	MySlider:SetWidth(20)
+	MySlider:SetHeight(100)
+	 MySlider:SetOrientation('VERTICAL')
+	  MySlider:SetOrientation('HORIZONTAL')
+	  MySlider:Show()
+end
+
+if string.find (message, "testGroup") then
+
+
+memberCount = 0
+for groupindex = 1,MAX_PARTY_MEMBERS do
+ if (GetPartyMember(groupindex)) then
+  memberCount = memberCount + 1
+ end
+end
+end
+if string.find (message, "покажи ачивку") and string.find(message, myNome) and msg3[2]~="#aaa" and nachalo~="*" then
+	msg2 = mysplit(message)
+	msg2 = msg2[4]
+	msg2 = tonumber(msg2)
+	j=0
+	k=0
+	count = GetAchievementNumCriteria(msg2)
+	for i=1, count do
+		local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(msg2, i);
+		prov=completed
+		if prov == true then
+			j=j+1
+		else
+			k=k+1
+		end
+		i=i+1
+	end
+	if k==0 then
+		SendChatMessage(hshStran3 .. " #aai " .. "уже выполнена полностью: " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+	else
+		SendChatMessage("*" .. "доступно пунктов ачивки: " .. k .. " из " .. count  .. " " .. msg2 .. " " .. GetAchievementLink(msg2), "OFFICER", nil, 1)
+	end
+
+
+end
+
+if string.find (message, "покажи статистику") and string.find(message, myNome) and nachalo~="*" then
+	msgStat=mysplit(message)
+	msgStat=msgStat[4]
+	SendChatMessage("* " ..  GetAchievementLink(msgStat) .. " " .. GetStatistic(msgStat), "OFFICER", nil, 1)
+end
+
+
+
+if string.find (message, "покажи предмет") and string.find(message, myNome) and nachalo~="*" then
+	lenCosa=mysplit(message)
+	tblLensCosa=tablelength(lenCosa)
+	predmet=table.concat(lenCosa, " ", 4,tblLensCosa)
+	local x,y
+	for i = 1, 100000 do
+		itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount, itemEquipLoc, itemTexture, itemSellPrice = GetItemInfo(i)
+		if itemName ~= nil and string.lower(predmet) == string.lower(itemName) then
+			 if itemLink ~= nil then
+				SendChatMessage("* " ..  itemLink, "OFFICER", nil, 1)
+				break
+			else
+				SendChatMessage("* предмет " .. predmet .. " не существует", "OFFICER", nil, 1)
+			end
+		end
+	end
+end
+
+if string.find (message, "!ачивка") and nachalo~="*" then
+	lenShow=mysplit(message)
+	if lenShow[1]==myNome then
+		tblLensShow=tablelength(lenShow)
+		achShow=table.concat(lenShow, " ", 3,tblLensShow)
+		achShow = string.lower(achShow)
+		for i=1,100000 do
+			IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText, isGuildAch = GetAchievementInfo(i)
+			if Name ~= nil then
+				Name1 = string.lower(Name)
+				if string.find(Name1,achShow) then --Name1==achShow then
+				print ("номер ачивки: ",i)
+				prov1=Completed
+				j=0
+				k=0
+				countShow = GetAchievementNumCriteria(i)
+				testShow=1
+				for shoCount=1,countShow do
+					local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount);
+					if completed~=true then
+						testShow="000"
+					end
+					provShow=completed
+					quantityShow=quantity
+					reqQuantityShow=reqQuantity
+					quantityShow=tonumber(quantityShow)
+					reqQuantityShow=tonumber(reqQuantityShow)
+				if provShow == true then
+					j=j+1
+				else
+					k=k+1
+				end
+				end
+
+				if provShow~=true and countShow~=1 and countShow~=0 then
+					cmpltd1=j
+					cmpltd2=" пунктов ачивки выполненно: "
+					cmpltd22=" из "
+					if string.find(Name1,"золот") then
+						countShow = tonumber(countShow)/10000
+					else
+
+					end
+					cmpltd=cmpltd2 .. cmpltd1 .. cmpltd22 .. countShow
+				elseif provShow==true or prov1==true and testShow~="000" then
+					cmpltd=" выполнена"
+				elseif provShow~=true then
+					cmpltd1=" "
+					cmpltd=cmpltd1 .. GetStatistic(i)
+				end
+
+				if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
+					cmpltd1=" выполненно пунктов ачивки "
+					cmpltd2=j
+					cmpltd3=" из "
+					if string.find(Name1,"золот") then
+						countShow = tonumber(countShow)/10000
+					else
+
+					end
+					cmpltd4=countShow
+					cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
+				end
+				if quantityShow~=0 and quantityShow~=1 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
+					cmpltd1=" выполненно пунктов ачивки "
+					if string.find(Name1,"золот") then
+						countShow = tonumber(quantityShow)/10000
+					else
+
+					end
+					cmpltd2=quantityShow
+					cmpltd3=" из "
+					cmpltd4=reqQuantityShow
+					cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
+				end
+				if quantityShow~=0 and reqQuantityShow==0 and quantityShow~=nil then
+					print(i)
+					cmpltd1=" выполненно пунктов ачивки "
+					if string.find(Name1,"золот") then
+						quantityShow = tonumber(quantityShow)/10000
+					else
+
+					end
+					cmpltd2=quantityShow
+					cmpltd=cmpltd1 .. cmpltd2
+				end
+
+					SendChatMessage(GetAchievementLink(i)..cmpltd, "OFFICER", nil, 1)
+					quantityShow=nil
+					reqQuantityShow=nil
+					quantityShow=nil
+					cmpltd=nil
+					provShow=nil
+					prov1=nil
+					Completed=nil
+					completed=nil
+					--break
+				end
+			end
+
+		end
+	end
+end
+
+ltrC=mysplit(message)
+if string.find (message, "получает лотерейный билет") and ltrC[1]==myNome and testGM~=nil then
+	ltrNikC=ltrC[1]
+	if testQ[ltrNikC]["лотерея"]==nil then
+		testQ[ltrNikC]["лотерея"]=3
+	else
+		lotereyaC=testQ[ltrNikC]["лотерея"]
+		lotereyaC=lotereyaC+3
+		testQ[ltrNikC]["лотерея"]=lotereyaC
+	end
+end
+
+krtKus=mysplit(message)
+if string.find (message, "получает кусок карты") and krtKus[1]==myNome and testGM~=nil then
+	krtKusNikC=krtKus[1]
+	if krt==nil then
+		krt={}
+	end
+	if krt["777"] == nil then
+		x = math.random(1, 15)
+		x = tostring(x)
+		if krt[x] == nil then
+			krt[x] = true
+		else
+			for i = 1, 15 do
+				x = math.random(1, 15)
+				x = tostring(x)
+				if krt[x] == nil or krt[x] ~= true then
+					krt[x] = true
+					break
+				end
+			end
+		end
+	end
+	if krt["777"] == 2 then
+		x = math.random(21, 34)
+		x = tostring(x)
+		if krt[x] == nil then
+			krt[x] = true
+		else
+			for i = 21, 34 do
+				x = math.random(21, 34)
+				x = tostring(x)
+				if krt[x] == nil or krt[x] ~= true then
+					krt[x] = true
+					break
+				end
+			end
+		end
+	end
+end
+
+if string.find (message, "!карта") and krtKus[1]==myNome and testGM~=nil then
+	if krt == nil then
+		krt = {}
+	end
+	local x
+	x = tostring(krtKus[3])
+	if krt[x] == nil then
+		krt[x] = true
+	else
+		SendChatMessage("У " .. sender .. " уже есть " .. x .. " кусок", "OFFICER", nil, 1)
+	end
+end
+
+if string.find (message, "получает чернила") and krtKus[1]==myNome and testGM~=nil then
+	if krt["999"] == nil then
+		krt["999"] = 1
+	else
+		krt["999"] = krt["999"] + 1
+	end
+end
+
+if string.find (message, "!сброс") and string.find (message, myNome) and testGM~=nil then
+	if testQ[myNome]["сброс"] == nil then
+		testQ[myNome]["сброс"] = 1
+	else
+		testQ[myNome]["сброс"] = nil
+	end
+end
+
+if string.find (message, "!отмена") and string.find (message, myNome) and testGM~=nil then
+	if testQ[myNome]["отмена"] == nil then
+		testQ[myNome]["отмена"] = 1
+	else
+		testQ[myNome]["отмена"] = nil
+	end
+end
+
+
+
+
+
+--for key, val in pairs(npcScan[npcSK][npcSL]["Борто"]["1"]) do
+--	print (key)
+--	print (val)
+--end
+--GetPlayerMapPosition("player")
+
+lotTest=mysplit(message)
+
+if string.find (message, "#ltr111") and testGM~=nil and lotTest[3]==myNome then
+	minusLrt=testQ[myNome]["лотерея"]
+	minusLrt=tonumber(minusLrt)
+	minusLrt=minusLrt-1
+	testQ[myNome]["лотерея"]=minusLrt
+end
+
+if string.find (message, "#marsh") and testGM~=nil and sender == myNome then
+	print ("1")
+	if testQ["marsh"] == nil then
+		testQ["marsh"] = 1
+	else
+		testQ["marsh"] = nil
+	end
+end
+
+if string.find (message, "#ltr333") and testGM~=nil and lotTest[3]==myNome then
+	minusLrt=testQ[myNome]["лотерея"]
+	minusLrt=tonumber(minusLrt)
+	minusLrt=minusLrt-3
+	testQ[myNome]["лотерея"]=minusLrt
+end
+if string.find (message, "алкаш") and string.find (message, "СТАРТ") and testGM~=nil and msg[3] == nil then
+	if testQ['eventAllcash'] == nil then
+		testQ['eventAllcash'] = 1
+	end
+end
+if string.find (message, "путешествие") and string.find (message, "СТАРТ") and testGM~=nil then
+	if testQ[myNome]['puteshestvie'] == nil then
+		testQ[myNome]['puteshestvie'] = "0"
+		PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
+		testQ[myNome]['puteshestvieTabella'] = "event1"
+		testQ[myNome][testQ[myNome]['puteshestvieTabella']] = "0"
+	end
+	if testGM~=nil then
+		sohranenieTablicRamerovLokaciy()
+	end
+end
+if string.find (message, "зарика") and string.find (message, "СТАРТ") and testGM~=nil and msg[3] == myNome then
+	if testQ[myNome]['puteshestvie'] == nil then
+		testQ[myNome]['puteshestvie'] = "0"
+		PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
+		testQ[myNome]['puteshestvieTabella'] = "event1"
+		testQ[myNome][testQ[myNome]['puteshestvieTabella']] = "0"
+	end
+	if testGM~=nil then
+		sohranenieTablicRamerovLokaciy()
+	end
+end
+if string.find (message, "феникс") and string.find (message, "СТАРТ") and testGM~=nil and msg[3] == myNome then
+	if testQ[myNome]['puteshestvie'] == nil then
+		testQ[myNome]['puteshestvie'] = "0"
+		PlaySoundFile("Interface\\AddOns\\NSQC\\start.ogg")
+		testQ[myNome]['puteshestvieTabella'] = "fenix"
+		testQ[myNome][testQ[myNome]['puteshestvieTabella']] = "0"
+	end
+	if testGM~=nil then
+		sohranenieTablicRamerovLokaciy()
+	end
+	testQ['edaNomeRez'] = {}
+	testQ[myNome]['квест_на_эмоции_взят'] = nil
+end
+if string.find (message, "сизиф") and string.find (message, "СТАРТ") and testGM~=nil then
+	if testQ["старт"] == nil then
+		testQ["start"] = lotTest[3]
+		testQ["старт"] = 0
+		marshruT = {}
+	end
+end
+if string.find (message, "фемида") and string.find (message, "СТАРТ") and testGM~=nil then
+	testQ["эвент3"] = 0
+	testQ["эвент3_k"] = lotTest[3]
+	testQ["эвент3_l"] = lotTest[4]
+	testQ["эвент3_n"] = lotTest[5]
+end
+if string.find (message, "буриданов_осел") and string.find (message, "СТАРТ") and testGM~=nil then
+	testQ["эвент1"] = lotTest[3]
+	testQ["эвент1_запущен"] = 0
+	testQ["boDiam"] = tonumber(lotTest[4])
+end
+
+if string.find (message, "СТОП") and string.find (message, "эвент") and testGM~=nil then
+	if testQ[testQ["start"]] ~= nil then
+		testQ[testQ["start"]]=nil
+	end
+	testQ["старт"] = nil
+	testQ["num"] = nil
+	testQ["marshF"] = nil
+	testQ["start"]=nil
+	if marshruT ~= nil then
+		for i=1,9999 do
+			if marshruT[i] ~= nil then
+				marshruT[i]:Hide()
+			end
+		end
+	end
+	marshruT = nil
+	testQ["эвент1_запущен"]=nil
+	testQ["эвент1"] = nil
+	for i=1,100 do
+		if iconRis[i] ~= nil then
+			iconRis[i]:Hide()
+		end
+	end
+	testQ["boDiam"] = nil
+	testQ["event1"] = nil
+	testQ["эвент3"] = nil
+	testQ["эвент3_k"] = nil
+	testQ["эвент3_l"] = nil
+	testQ["эвент3_n"] = nil
+	event3(1,1,"hide")
+	testQ['eventAllcash'] = nil
+	MoveViewRightStart(0)
+	MoveViewLeftStart(0)
+	testQ['acX'] = nil
+	testQ['acY'] = nil
+	puteshestvieHide()
+	testQ[myNome]['квест_на_эмоции_взят'] = nil
+	testQ['edaNomeRez'] = {}
+	testQ[myNome]['edaQuest'] = nil
+end
+
+if string.find (message, "покажи сиськи") and string.find(message, myNome) and nachalo~="*" then
+	local x = math.random(1, 13)
+	if x == 1 then
+		SendChatMessage("(  .   Y   .  )" , "OFFICER", nil, 1)
+	elseif x == 2 then
+		SendChatMessage("[  .   Y   .  ]" , "OFFICER", nil, 1)
+	elseif x == 3 then
+		SendChatMessage("[__o__]" , "OFFICER", nil, 1)
+	elseif x == 4 then
+		SendChatMessage("[__*__]" , "OFFICER", nil, 1)
+	elseif x == 5 then
+		SendChatMessage("(__o__)" , "OFFICER", nil, 1)
+	elseif x == 6 then
+		SendChatMessage("(__*__)" , "OFFICER", nil, 1)
+	elseif x == 7 then
+		SendChatMessage("( >  ) (  <  )" , "OFFICER", nil, 1)
+	elseif x == 8 then
+		SendChatMessage("( ,  Y  , )" , "OFFICER", nil, 1)
+	elseif x == 9 then
+		SendChatMessage("(.)(.)" , "OFFICER", nil, 1)
+	elseif x == 10 then
+		SendChatMessage("(,)(,)" , "OFFICER", nil, 1)
+	elseif x == 11 then
+		SendChatMessage("(. )( .)" , "OFFICER", nil, 1)
+	elseif x == 12 then
+		SendChatMessage("( . )( .)" , "OFFICER", nil, 1)
+	elseif x == 13 then
+		SendChatMessage("(. )( . )" , "OFFICER", nil, 1)
+	end
+end
+
+if string.find (message, myNome) and testGM~=nil and string.find (message, "версия") and string.find (message, "1234567890")  and nachalo~="*" then
+        SendChatMessage(hshStran3 .." текущая версия " .. versAdd, "OFFICER", nil, 1)
+end
+
+if testGM~=nil and string.find (message, "версия") and string.find (message, "1234567890")  and lotTest[3] == nil then
+        SendAddonMessage("NSGadd", myNome .. " " .. versAdd, "guild")
+end
+
+if string.find (message, myNome) and testGM~=nil and string.find (message, "покажимне") then
+	SendChatMessage(hshStran3, "OFFICER", nil, 1)
+end
+end
+)
+
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_EMOTE")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+	local myNome = GetUnitName("player")
+	if testQ[myNome]['квест_на_эмоции_взят'] ~= nil then
+		if message == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['эмоция'] then
+			if tonumber(UnitLevel('target')) == 80 then
+				if testQ[myNome]['проверка_расстояния_эмоции'] == 1 then
+					local locClass, engClass, locRace, engRace, gender, name, server = GetPlayerInfoByGUID(UnitGUID("target"))
+					if engClass ~= nil then
+						if testQ[myNome]['HumanMan'] == nil then
+							if engRace == "Human" and gender == 2 then
+								testQ[myNome]['HumanMan'] = 1
+								SendChatMessage("Я выдираю целый пук шерсти из носа человека", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['HumanWoman'] == nil then
+							if engRace == "Human" and gender == 3 then
+								testQ[myNome]['HumanWoman'] = 1
+								SendChatMessage("Ты смотри, тут меха то - с ладошку...", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['DworfMan'] == nil then
+							if engRace == "Dwarf" and gender == 2 then
+								testQ[myNome]['DworfMan'] = 1
+								SendChatMessage("Я обдираю весь мех с лодыжки дворфа. Ну, ничего, там еще много...", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['DworfWoman'] == nil then
+							if engRace == "Dwarf" and gender == 3 then
+								testQ[myNome]['DworfWoman'] = 1
+								SendChatMessage("И ЭТО ПОДМЫШКИ?! Да тут на пять фениксов хватит!!!", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['NEMan'] == nil then
+							if engRace == "NightElf" and gender == 2 then
+								testQ[myNome]['NEMan'] = 1
+								SendChatMessage("Хм.. почему них шерсть - только на ушах растет?", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['NEWoman'] == nil then
+							if engRace == "NightElf" and gender == 3 then
+								testQ[myNome]['NEWoman'] = 1
+								SendChatMessage("Пусть мне будет стыдно...но потом. А пока будем ощипывать на благо будущего!", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['GnomMan'] == nil then
+							if engRace == "Gnome" and gender == 2 then
+								testQ[myNome]['GnomMan'] = 1
+								SendChatMessage("Все что происходит в квесте, должно остаться в квесте.", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['GnomWoman'] == nil then
+							if engRace == "Gnome" and gender == 3 then
+								testQ[myNome]['GnomWoman'] = 1
+								SendChatMessage("А вы знали, что достаточно напугать гномиху и та сама сбрасывает с себя шерсть? Защитная реакция видимо...", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['DrenayMan'] == nil then
+							if engRace == "Draenei" and gender == 2 then
+								testQ[myNome]['DrenayMan'] = 1
+								SendChatMessage("Ух!!! Какой у дренеев мохнатый..хвост!", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['DrenayWoman'] == nil then
+							if engRace == "Draenei" and gender == 3 then
+								testQ[myNome]['DrenayWoman'] = 1
+								SendChatMessage("Странно, а дренейки совсем не такие, как на тех фото и видео...ну, мне друг рассказывал.", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['OrkMan'] == nil then
+							if engRace == "Orc" and gender == 2 then
+								testQ[myNome]['OrkMan'] = 1
+								SendChatMessage("Ох... И зачем только орки так тщательно бреют все доступные места? Остаются труднодоступные...", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['OrkWoman'] == nil then
+							if engRace == "Orc" and gender == 3 then
+								testQ[myNome]['OrkWoman'] = 1
+								SendChatMessage("Ну все, после такой помощи в депиляции придется жениться...", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['UndeadMan'] == nil then
+							if engRace == "Scourge" and gender == 2 then
+								testQ[myNome]['UndeadMan'] = 1
+								SendChatMessage("Ух ты и это мех!? Ой.. Это же мох!", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['UndeaWoman'] == nil then
+							if engRace == "Scourge" and gender == 3 then
+								testQ[myNome]['UndeaWoman'] = 1
+								SendChatMessage("Хорошо зафиксированная андедка.. в принципе ничем не отличается от обычной.", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['TaurenMan'] == nil then
+							if engRace == "Tauren" and gender == 2 then
+								testQ[myNome]['TaurenMan'] = 1
+								SendChatMessage("Достаточно хорошенько обнять таурена и на одежде останется его шерсти столько, что можно утеплить два стандартных многоэтажных дома.", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['TaurenWoman'] == nil then
+							if engRace == "Tauren" and gender == 3 then
+								testQ[myNome]['TaurenWoman'] = 1
+								SendChatMessage("А вы никогда не задумывались, что будет, если предложить тауренше немножко ее подоить?", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['TrollMan'] == nil then
+							if engRace == "Troll" and gender == 2 then
+								testQ[myNome]['TrollMan'] = 1
+								SendChatMessage('Чтобы достать мех тролля, нужно спросить: "знает ли он о вуду?". Он начнет выдирать последние лохмы, клянясь, что даже не слышал.', "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['TrollWoman'] == nil then
+							if engRace == "Troll" and gender == 3 then
+								testQ[myNome]['TrollWoman'] = 1
+								SendChatMessage('Шерсть на ушах троллихи не менее мягкая и шелквистая, чем на ушах эльфийки. Уж не родственники ли они?', "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['ElfMan'] == nil then
+							if engRace == "BloodElf" and gender == 2 then
+								testQ[myNome]['ElfMan'] = 1
+								SendChatMessage("Как ловко у меня получилось ощипать эльфа...а главное - незаметно.", "OFFICER", nil, 1)
+							end
+						end
+						if testQ[myNome]['ElfWoman'] == nil then
+							if engRace == "BloodElf" and gender == 3 then
+								testQ[myNome]['ElfWoman'] = 1
+								SendChatMessage("Ух ты! Какая мягка шерсть с ушей эльфийки!", "OFFICER", nil, 1)
+							end
+						end
+					else
+						SendChatMessage("Даже пробовать не буду, видно же, что это существо не отличается шерстистостью.", "OFFICER", nil, 1)
+					end
+				elseif testQ[myNome]['проверка_расстояния_эмоции'] == 2 then
+					if message == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['эмоция'] then
+						SendChatMessage("Слишком далеко, о чем я только думаю?", "OFFICER", nil, 1)
+					end
+				end
+			else
+				SendChatMessage("Цель слишком молодая, это негуманно...", "OFFICER", nil, 1)
+			end
+		end
+		testQ[myNome]['проверка_расстояния_эмоции'] = nil
+	end
+end)
+
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_RAID_LEADER")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+	local msg = mysplit(message)
+	local myNome = GetUnitName("player")
+	if testQ["raidAUK"] ~= nil then
+		local test = mysplit(message)
+		if test[2] == nil and type(tonumber(message)) == "number" then
+			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
+				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
+					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+				end
+			else
+				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+			end
+		end
+	end
+end)
+
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_RAID")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+	local msg = mysplit(message)
+	local myNome = GetUnitName("player")
+	if testQ["raidAUK"] ~= nil then
+		local test = mysplit(message)
+		if test[2] == nil and type(tonumber(message)) == "number" then
+			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
+				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
+					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+				end
+			else
+				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+			end
+		end
+	end
+end)
+
+local GC_Sniffer = CreateFrame("Frame")
+GC_Sniffer:RegisterEvent("CHAT_MSG_RAID_WARNING")
+GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+	local msg = mysplit(message)
+	local myNome = GetUnitName("player")
+	if msg[1] == "АУК" then
+		testQ['rez'] = nsGP()
+    	if sender == myNome then
+			SendAddonMessage("nsAUK", lastWords(message), "RAID")
+			if testQ["raidAUK"] ~= nil then
+				testQ["raidAUK"] = nil
+			end
+		end
+		testQ[myNome]['nsAUKpredmet'] = lastWords(message)
+	end
+	if testQ["raidAUK"] ~= nil then
+		local test = mysplit(message)
+		if test[2] == nil and type(tonumber(message)) == "number" then
+			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
+				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
+					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+				end
+			else
+				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+			end
+		end
+	end
+end)
