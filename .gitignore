@@ -2,6 +2,7 @@
 *
 
 # Do not ignore these files:
+!sounds.lua
 !vers
 !iya.lua
 !cQ.lua
