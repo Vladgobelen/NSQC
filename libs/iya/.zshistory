@@ -2,3 +2,37 @@ ffmpeg -i unaninaM.mp3 inaninaM.ogg
 ffmpeg -i unaninaO.mp3 inaninaO.ogg
 ffmpeg -i unninoM.mp3 unninoM.ogg
 ffmpeg -i unninoO.mp3 unninoO.ogg
+./install.sh /home/diver/Games/xcom-enemy-within/xew
+./install.sh ~/.local/share/feral-interactive/XCOM/XEW /home/diver/Games/xcom-enemy-within/xew
+./start.sh
+ffmpeg -i pkk.mp4 -vcodec libx264 -crf 23 -preset fast -acodec aac -b:a 128k -movflags +faststart pkk1.mp4
+file AyuGram
+ffmpeg -i urzh.mp4 -vcodec libx264 -crf 23 -preset fast -acodec aac -b:a 128k -movflags +faststart urzh1.mp4
+ls -ls |grep urzh
+ffmpeg -i urzh.mp4
+ffprobe -v error -show_entries format=bit_rate -of default=nw=1 urzh.mp4\
+
+ffprobe -v error -show_entries stream=codec_type,codec_name,bit_rate,width,height,sample_rate,channels -of default=nw=1 urzh.mp4
+ffmpeg -i urzh.mp4 -c:v libx265 -crf 28 -preset fast -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart urzh_hevc.mp4
+ffmpeg -i urzh.mp4 -c:v libx264 -b:v 4000k -preset fast -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart urzh_smaller.mp4
+ffmpeg -i urzh.mp4 -c:v libx264 -b:v 10000k -preset fast -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart urzh_smaller.mp4
+mpv AUD
+mpv AUD00_111149_11042024.amr
+lua ./cli.lua 1.lua
+ffmpeg -i 2607.mp4 -c:v libx264 -b:v 10000k -preset fast -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart 2607_1.mp4
+python python.py
+sh updateConfigs.sh
+env MESA_LOADER_DRIVER_OVERRIDE=iris DXVK_HUD=fps,info WINEDEBUG=-all WINEPREFIX=/home/diver/WP7RS/PF STAGING_SHARED_MEMORY=1 DXVK_STATE_CACHE=1 STAGING_WRITECOPY=1 /home/diver/WP7RS/bin/wine Setup.exe
+env MESA_LOADER_DRIVER_OVERRIDE=iris DXVK_HUD=fps,info WINEDEBUG=-all WINEPREFIX=/home/diver/WP7RS/PF STAGING_SHARED_MEMORY=1 DXVK_STATE_CACHE=1 STAGING_WRITECOPY=1 /home/diver/WP7RS/bin/wine Sims2.apm
+env MESA_LOADER_DRIVER_OVERRIDE=iris DXVK_HUD=fps,info WINEDEBUG=-all WINEPREFIX=/home/diver/WP7RS/PF STAGING_SHARED_MEMORY=1 DXVK_STATE_CACHE=1 STAGING_WRITECOPY=1 /home/diver/WP7RS/bin/wine Sims2.exe
+env MESA_LOADER_DRIVER_OVERRIDE=iris DXVK_HUD=fps,info WINEDEBUG=-all WINEPREFIX=/home/diver/WP7RS/PF STAGING_SHARED_MEMORY=1 DXVK_STATE_CACHE=1 STAGING_WRITECOPY=1 /home/diver/WP7RS/bin/wine SimsLS.exe
+find The\ Sims\ 2 -name "*.bik" -exec mv {} {}.bak \;
+WINEPREFIX=/home/diver/WP7RS/PF
+WINEPREFIX="/home/diver/WP7RS/PF" winetricks binkw32
+find . -name "*.bik" -exec mv {} {}.bak \;
+find . -name "*.BIK" -exec mv {} {}.BAK \;
+find . -name "*.smk" -exec mv {} {}.bak \;
+find . -name "*.avi" -exec mv {} {}.bak \;
+WINEPREFIX="/home/diver/WP7RS/PF" winetricks wmp10
+WINEPREFIX="/home/diver/WP7RS/PF" winetricks
+env MESA_LOADER_DRIVER_OVERRIDE=iris DXVK_HUD=fps,info WINEPREFIX=/home/diver/WP7RS/PF STAGING_SHARED_MEMORY=1 DXVK_STATE_CACHE=1 STAGING_WRITECOPY=1 /home/diver/WP7RS/bin/wine Sims2.exe
