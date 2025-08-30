@@ -7953,9 +7953,9 @@ function RestoreFramePositions(saveTable)
 end
 
 function remove()
-    move(nsDbc['frames'])
+    move(testQ['frames'])
 end
 
 function resetF()
-    nsDbc['frames'] = nil
+    testQ['frames'] = nil
 end
