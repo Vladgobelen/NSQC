@@ -1,1 +1,7961 @@
-function mysplit(T,O)if O==nil then O="\037\115"end local j={}for T in string.gmatch(T,"\040\091\094"..(O.."\093\043\041"))do table.insert(j,T)end return j end local function T()return GetNumRaidMembers()>0 end function round(T)if(T-T%.1)-(T-T%1)<.5 then T=T-T%1 else T=(T-T%1)+1 end return T end function nsplit(T)lines={}for T in T:gmatch("\091\094\r\n\093\043")do table.insert(lines,T)end return lines end function all_trim(T)return T:match("\094\037\115\042\040\046-\041\037\115\042\036")end function kirTest(T,O)test1=T:sub(O,O)testN=T:byte(7)testN=tonumber(testN)if testN==208 then r=T:sub(O*2-1,O*2)else r=test1 end return r end function alfabet(T)shablon="\208\176\208\177\208\178\208\179\208\180\208\181\209\145\208\182\208\183\208\184\208\185\208\186\208\187\208\188\208\189\208\190\208\191\209\128\209\129\209\130\209\131\209\132\209\133\209\134\209\135\209\136\209\137\209\138\209\139\209\140\209\141\209\142\209\143\208\144\208\145\208\146\208\147\208\148\208\149\208\129\208\150\208\151\208\152\208\153\208\154\208\155\208\156\208\157\208\158\208\159\208\160\208\161\208\162\208\163\208\164\208\165\208\166\208\167\208\168\208\169\208\170\208\171\208\172\208\173\208\174\208\175\097\098\099\100\101\102\103\104\105\106\107\108\109\110\111\112\113\114\115\116\117\118\119\120\121\122\065\066\067\068\069\070\071\072\073\074\075\076\077\078\079\080\081\082\083\084\085\086\087\088\089\090 \033\063\044\046-\048\049\050\051\052\053\054\055\056\057\'\040\041"myB=string.find(shablon,T,1,true)return myB end function alfabetC(T,O)shablon="\208\176\208\177\208\178\208\179\208\180\208\181\209\145\208\182\208\183\208\184\208\185\208\186\208\187\208\188\208\189\208\190\208\191\209\128\209\129\209\130\209\131\209\132\209\133\209\134\209\135\209\136\209\137\209\138\209\139\209\140\209\141\209\142\209\143\208\144\208\145\208\146\208\147\208\148\208\149\208\129\208\150\208\151\208\152\208\153\208\154\208\155\208\156\208\157\208\158\208\159\208\160\208\161\208\162\208\163\208\164\208\165\208\166\208\167\208\168\208\169\208\170\208\171\208\172\208\173\208\174\208\175\097\098\099\100\101\102\103\104\105\106\107\108\109\110\111\112\113\114\115\116\117\118\119\120\121\122\065\066\067\068\069\070\071\072\073\074\075\076\077\078\079\080\081\082\083\084\085\086\087\088\089\090 \033\063\044\046-\048\049\050\051\052\053\054\055\056\057\'\040\041"local j if O==0 then j=string.find(shablon,T,1,true)end if O==1 then if T<133 then j=string.utf8sub(shablon,T/2+.5,T/2+.5)else j=string.sub(shablon,T,T)end end return j end function hashStr(T)local O=time()O=O%10000 O=tostring(O)O=string.utf8sub(O,2,3)O=string.format("\037\048\051\100",O)nomeLen=string.utf8len(T)nome1={}for O=1,nomeLen,1 do nome1[O]=string.utf8sub(T,O,O)tmNome=nome1[O]nome1[O]=alfabet(tmNome)end nome11=0 for T=1,nomeLen,1 do nome11=nome11+nome1[T]end nome11=nome11%1000 hNome=string.format("\037\048\051\100",nome11)iN=tostring(O)r1=string.utf8sub(iN,1,1)r2=string.utf8sub(hNome,1,1)r3=string.utf8sub(iN,2,2)r4=string.utf8sub(hNome,2,2)r5=string.utf8sub(iN,3,3)r6=string.utf8sub(hNome,3,3)r=r1 ..(r2 ..(r3 ..(r4 ..(r5 ..r6))))return r end function tablelength(T)local O=0 for T in pairs(T)do O=O+1 end return O end function getPOS(T,O)local j=(1-O)*668 local b=T*1002 return b,j end function hshStrNuovo(T,O)nomeLen=string.utf8len(O)nome1={}for T=1,nomeLen,1 do nome1[T]=string.utf8sub(O,T,T)tmNome=nome1[T]nome1[T]=alfabet(tmNome)end nome11=0 for T=1,nomeLen,1 do nome11=nome11+nome1[T]end nome11=nome11%1000 hNome=string.format("\037\048\051\100",nome11)local j=string.sub(T,2,2)local b=string.sub(T,4,4)local k=string.sub(T,6,6)local J=math.random(0,9)local f=math.random(0,9)local r=math.random(0,9)local Z=j..(b..k)local a=hashStr(O)local o=string.utf8sub(nome11,2,2)local q=string.utf8sub(nome11,4,4)local V=string.utf8sub(nome11,6,6)local U=o..(q..V)local R=J..(q..(f..(o..(r..V))))return Z,U,R end function hshStrNuovo(T,O)local j local b local k local J local f local r local Z local a local o local q local V local U local R j=string.utf8len(O)local i={}for T=1,j,1 do i[T]=string.utf8sub(O,T,T)b=i[T]i[T]=alfabet(b)end k=0 for T=1,j,1 do k=k+i[T]end k=k%1000 J=string.format("\037\048\051\100",k)f=string.sub(J,1,1)r=string.sub(J,2,2)Z=string.sub(J,3,3)a=string.sub(T,2,2)a=tonumber(a)if a==0 then o=string.sub(T,3,3)q=string.sub(T,4,4)V=string.sub(T,6,6)elseif a==1 then o=string.sub(T,4,4)q=string.sub(T,3,3)V=string.sub(T,6,6)elseif a==2 then o=string.sub(T,4,4)q=string.sub(T,6,6)V=string.sub(T,3,3)elseif a==3 then o=string.sub(T,3,3)q=string.sub(T,6,6)V=string.sub(T,4,4)elseif a==4 then o=string.sub(T,1,1)q=string.sub(T,6,6)V=string.sub(T,4,4)elseif a==5 then o=string.sub(T,1,1)q=string.sub(T,6,6)V=string.sub(T,3,3)elseif a==6 then o=string.sub(T,6,6)q=string.sub(T,1,1)V=string.sub(T,3,3)elseif a==7 then o=string.sub(T,6,6)q=string.sub(T,3,3)V=string.sub(T,1,1)elseif a==8 then o=string.sub(T,4,4)q=string.sub(T,5,5)V=string.sub(T,6,6)elseif a==9 then o=string.sub(T,5,5)q=string.sub(T,1,1)V=string.sub(T,3,3)end U=o..(q..V)R=f..(r..Z)return U,R end function hshSenderNomeC(T)local O local j local b local k local J local f local r local Z local a local o local q O=string.utf8len(T)j={}for O=1,O,1 do j[O]=string.utf8sub(T,O,O)tmNome=j[O]j[O]=alfabet(tmNome)end b=0 for T=1,O,1 do b=b+j[T]end b=b%1000 k=string.format("\037\048\051\100",b)J=string.sub(k,1,1)f=string.sub(k,2,2)r=string.sub(k,3,3)Z=math.random(0,9)a=math.random(0,9)o=math.random(0,9)if a==0 then q=Z..(a..(J..(f..(o..r))))elseif a==1 then q=Z..(a..(f..(J..(o..r))))elseif a==2 then q=Z..(a..(r..(J..(o..f))))elseif a==3 then q=Z..(a..(J..(r..(o..f))))elseif a==4 then q=J..(a..(Z..(r..(o..f))))elseif a==5 then q=J..(a..(r..(Z..(o..f))))elseif a==6 then q=f..(a..(r..(Z..(o..J))))elseif a==7 then q=r..(a..(f..(o..(Z..J))))elseif a==8 then q=Z..(a..(o..(J..(f..r))))elseif a==8 then q=J..(a..(r..(Z..(f..o))))elseif a==9 then q=f..(a..(r..(Z..(J..o))))end if testQ~=nil then if testQ[T]~=nil then if testQ[T].rarHSH1==nil then testQ[T].rarHSH1={}end if testQ[T].rarHSH==nil then testQ[T].rarHSH={}end testDate=date("\037\100")testDate=tonumber(testDate)if testDate%2==0 then tableHSH="\114\097\114\072\083\072"testQ[T].rarHSH1=nil else tableHSH="\114\097\114\072\083\072\049"testQ[T].rarHSH=nil end if q==testQ[T][tableHSH]then q=hshSenderNomeC(T)end table.insert(testQ[T][tableHSH],q)return q end end end function gmTest(T)local O for j=1,#gmList,1 do if T==gmList[j]then O="\208\179\208\188"break end j=j+1 end return O end function proverkaVypolneniyaKvestySachivkoj(T,O)local b=testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130"]if O=="\050"then O="\208\186\208\178\208\181\209\129\209\130\095\208\187\208\178\208\187\050"elseif O=="\051"then O="\208\186\208\178\208\181\209\129\209\130\095\208\187\208\178\208\187\051"end local J=testQ[T][O][b]J=tonumber(J)local f=GetAchievementNumCriteria(b)j=0 k=0 for T=1,f,1 do local O,J,f,r,Z,a,o,q,V,U=GetAchievementCriteriaInfo(b,T)prov=f if prov==true then j=j+1 else k=k+1 end T=T+1 end local r=J-j if r<0 then r=0 end SendChatMessage("\208\158\209\129\209\130\208\176\208\187\208\190\209\129\209\140 \208\178\209\139\208\191\208\190\208\187\208\189\208\184\209\130\209\140 "..(r..(" \208\191\209\131\208\189\208\186\209\130\208\190\208\178 \208\176\209\135\208\184\208\178\208\186\208\184 "..(b..(" "..(GetAchievementLink(b)..(" \208\184\208\183 "..J)))))),"\071\085\073\076\068",nil,1)end function npcXY(T,O,j,b,k)local J=nil local f=T local r=O f=tostring(f)r=tostring(r)if npcScan[f]==nil then npcScan[f]={}end if npcScan[f][r]==nil then npcScan[f][r]={}end local Z=k if Z~=nil then local T=j local O=b T=tostring(T)O=tostring(O)if npcScan[f][r][Z]==nil then npcCount=1 npcCount=tostring(npcCount)npcScan[f][r][Z]={}npcScan[f][r][Z][npcCount]={}npcScan[f][r][Z][npcCount].x=T npcScan[f][r][Z][npcCount].y=O else local j={}local b={}npcCount=tablelength(npcScan[f][r][Z])+1 npcCount=tostring(npcCount)T=tostring(T)O=tostring(O)npcScan[f][r][Z][npcCount]={}npcScan[f][r][Z][npcCount].x=T npcScan[f][r][Z][npcCount].y=O end else print("\208\146\209\139\208\177\208\181\209\128\208\184 \209\134\208\181\208\187\209\140")end end function testNpc(T)local O CreateFrame("\071\097\109\101\084\111\111\108\116\105\112","\077\121\083\099\097\110\110\105\110\103\084\111\111\108\116\105\112",nil,"\071\097\109\101\084\111\111\108\116\105\112\084\101\109\112\108\097\116\101")MyScanningTooltip:SetOwner(WorldFrame,"\065\078\067\072\079\082\095\078\079\078\069")MyScanningTooltip:AddFontStrings(MyScanningTooltip:CreateFontString("\036\112\097\114\101\110\116\084\101\120\116\076\101\102\116\049",nil,"\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116"),MyScanningTooltip:CreateFontString("\036\112\097\114\101\110\116\084\101\120\116\082\105\103\104\116\049",nil,"\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116"))MyScanningTooltip:SetHyperlink("\117\110\105\116\058"..T)O=EnumerateTooltipLines(MyScanningTooltip)return O end local function O(...)local T for O=1,select("\035",...),1 do local j=select(O,...)if j and j:GetObjectType()=="\070\111\110\116\083\116\114\105\110\103"then local O=j:GetText()if O~=nil then print(O)if string.find(O,"\208\163\209\128\208\190\208\178\208\181\208\189\209\140")then testLvlNpc=mysplit(O)end if string.find(O,"\209\131\209\128\208\190\208\178\208\189\209\143")then testLvlNpc=mysplit(O)if string.find(testLvlNpc[3],"\037\063\037\063")then else T="\049"end if string.find(testLvlNpc[2],"\037\063\037\063")then SendAddonMessage("\078\083\071\097\100\100","\035\110\112\099\079\102\102","\103\117\105\108\100")end if string.find(testLvlNpc[1],"\208\162\209\128\209\131\208\191")then SendAddonMessage("\078\083\071\097\100\100","\035\110\112\099\068\105\101","\103\117\105\108\100")end end end end end return T end function EnumerateTooltipLines(T)local j j=O(T:GetRegions())return j end function pLid()if UnitIsPartyLeader("\112\097\114\116\121\049")then pL=1 elseif UnitIsPartyLeader("\112\097\114\116\121\050")then pL=2 elseif UnitIsPartyLeader("\112\097\114\116\121\051")then pL=3 elseif UnitIsPartyLeader("\112\097\114\116\121\052")then pL=4 else pL=0 end return pL end function pM(T)if T==UnitName("\112\097\114\116\121\049")then r=1 elseif T==UnitName("\112\097\114\116\121\050")then r=1 elseif T==UnitName("\112\097\114\116\121\051")then r=1 elseif T==UnitName("\112\097\114\116\121\052")then r=1 else r=0 end return r end function testN()testNpc(UnitGUID("\116\097\114\103\101\116"))end function tblAllFail(T,O)if mmList[T]~=nil then for j=1,mmList[T]["\208\186\208\190\208\187\208\184\209\135\208\181\209\129\209\130\208\178\208\190\095\208\177\208\190\209\129\209\129\208\190\208\178"],1 do if O==mmList[T][j]then r=j break else r=0 end end end return r end function testMarsh(T,O)trovMarsh(T,O)local j=0 for O,j in pairs(mapTables[T])do if type(O)=="\115\116\114\105\110\103"then tKont=O end for T,O in pairs(mapTables[T][O])do if type(T)=="\115\116\114\105\110\103"then tLok=T end end end if testQ.schet1~=nil then for O=testQ.schet1-10,testQ.schet1+10,1 do if testQ.schet[O]~=nil then marshrut(O,tablelength(mapTables[T][tKont][tLok]))j=j+testQ.schet[O]if j>0 then break end end end end return j end function trovMarsh(T,O)if testKontLok(T)~=nil then local b,k=GetPlayerMapPosition("\112\108\097\121\101\114")local J=GetCurrentMapContinent()J=tostring(J)local f=GetCurrentMapZone()f=tostring(f)local r=GetMapInfo()if r=="\082\097\103\101\102\105\114\101"then J="\057\057"f="\049"end local Z=tablelength(mapTables[T][J][f])testQ.schet={}testQ.numPunti={}if testQ.num==nil then if testKontLok(T)<O then testQ.num=1 testQ.schet1=1 end end for r=testQ.num-10,testQ.num+10,1 do testQ.schet1=r j=tostring(r)if testQ["\209\129\209\130\208\176\209\128\209\130"]~=nil then if mapTables[T][J][f][j]~=nil then mioCel=sqrt((b-mapTables[T][J][f][j].x)^2+(k-mapTables[T][J][f][j].y)^2)if mioCel<O then testQ.schet[r]=1 j=testQ.num j=tostring(j)mioCel1=sqrt((b-mapTables[T][J][f][j].x)^2+(k-mapTables[T][J][f][j].y)^2)if mioCel1>mioCel then testQ.num=r testQ.marshF[r]=r if testQ.marshF[r]==math.modf(Z/4)then SendChatMessage("\208\175 \208\191\209\128\208\190\209\136\208\181\208\187 \209\135\208\181\209\130\208\178\208\181\209\128\209\130\209\140 \208\188\208\176\209\128\209\136\209\128\209\131\209\130\208\176","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end if testQ.marshF[r]==math.modf(Z/2)then SendChatMessage("\208\175 \208\191\209\128\208\190\209\136\208\181\208\187 \208\191\208\190\208\187\208\190\208\178\208\184\208\189\209\131 \208\188\208\176\209\128\209\136\209\128\209\131\209\130\208\176","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end if testQ.marshF[r]==math.modf((Z/4)*3)then SendChatMessage("\208\175 \208\191\209\128\208\190\209\136\208\181\208\187 \209\130\209\128\208\184 \209\135\208\181\209\130\208\178\208\181\209\128\209\130\208\184 \208\188\208\176\209\128\209\136\209\128\209\131\209\130\208\176","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end if tonumber(Z)==tonumber(r)then SendChatMessage("\208\156\208\176\209\128\209\136\209\128\209\131\209\130 \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\102\105\110\046\111\103\103")if marshruT~=nil then for T=1,9999,1 do if marshruT[T]~=nil then marshruT[T]:Hide()end end end marshruT=nil testQ["\209\129\209\130\208\176\209\128\209\130"]=nil testQ.num=nil testQ.marshF=nil if T=="\101\118\079\048\049\048\050"then testQ.evO0102=true testQ.startChern=nil end if T=="\101\118\079\048\050\048\051"then testQ.evO0203=true testQ.startChern=nil end if T=="\101\118\079\048\051\048\052"then testQ.evO0304=true testQ.startChern=nil end if T=="\101\118\079\048\052\048\053"then testQ.evO0405=true testQ.startChern=nil end if T=="\101\118\079\048\053\048\054"then testQ.evO0506=true testQ.startChern=nil end if T=="\101\118\079\048\054\048\055"then testQ.evO0607=true testQ.startChern=nil end if T=="\101\118\079\048\055\048\056"then testQ.evO0708=true testQ.startChern=nil end if T=="\101\118\079\048\056\048\057"then testQ.evO0809=true testQ.startChern=nil end if T=="\101\118\079\048\057\049\048"then testQ.evO0910=true testQ.startChern=nil end if T=="\101\118\079\049\048\049\049"then testQ.evO1011=true testQ.startChern=nil end if T=="\101\118\079\049\049"then testQ.evO11=true testQ.startChern=nil end if T=="\101\118\079\049\050"then testQ.evO12=true testQ.startChern=nil end if T=="\101\118\079\049\051"then testQ.evO13=true testQ.startChern=nil end if T=="\101\118\079\049\052"then testQ.evO14=true testQ.startChern=nil end testQ.start=nil end end else testQ.schet[r]=0 end end end end end end function testKontLok(T)local O=GetCurrentMapContinent()O=tostring(O)local j=GetCurrentMapZone()j=tostring(j)local b local k,J=GetPlayerMapPosition("\112\108\097\121\101\114")local f,r local Z=GetMapInfo()if Z=="\082\097\103\101\102\105\114\101"then O="\057\057"j="\049"end if mapTables~=nil then if mapTables[T]~=nil then for O,j in pairs(mapTables[T])do if type(O)=="\115\116\114\105\110\103"then f=O end for T,O in pairs(mapTables[T][O])do if type(T)=="\115\116\114\105\110\103"then r=T end end end if tostring(j)==tostring(r)then if T~=nil then if mapTables[T]~=nil then if f==O then if mapTables[T][O][j]~=nil then if r==j then b=sqrt((k-mapTables[T][O][j]["\049"].x)^2+(J-mapTables[T][O][j]["\049"].y)^2)return b end end end end end end end end end function startFchern(T,O,j)O=tostring(O)j=tostring(j)if krt[O]==true and krt[j]==true then testQ.start=T testQ["\209\129\209\130\208\176\209\128\209\130"]=0 testQ[T]="\209\129\209\130\208\176\209\128\209\130"marshruT={}end end function testFchern(T,O,j)O=tostring(O)j=tostring(j)local b,k if testQ[T]==nil then for O,j in pairs(mapTables[T])do if type(O)=="\115\116\114\105\110\103"then b=O end for T,O in pairs(mapTables[T][b])do if type(T)=="\115\116\114\105\110\103"then k=T end end end if mapTables.lokRasstoyanie[tostring(b)]~=nil then if mapTables.lokRasstoyanie[tostring(b)][tostring(k)]~=nil then if testKontLok(T)~=nil then if tonumber(testKontLok(T))<=tonumber(mapTables.lokRasstoyanie[tostring(b)][tostring(k)])*3 then startFchern(T,O,j)testQ.startChern=T end end end end end end function printPar(T)local O={}local j for T,j in pairs(T)do if T~=nil then table.insert(O,T)end end j=table.concat(O," ")return j end function otladka(T,O,j,b,k,J,f)local r numF=tonumber(T)if numF==1 then if O=="\116\101\115\116\081"then r=testQ end end if numF==2 then if O=="\116\101\115\116\081"then r=testQ[j]end end if numF==3 then if O=="\116\101\115\116\081"then r=testQ[j][b]end end if numF==4 then if O=="\116\101\115\116\081"then r=testQ[j][b][k]end end if numF==5 then if O=="\116\101\115\116\081"then r=testQ[j][b][k][J]end end if numF==6 then if O=="\116\101\115\116\081"then r=testQ[j][b][k][J][f]end end r=type(r)y=r return r,y end function tabellaFind(T,O)local j=1 while T[j]do print(O)print(T[j])if O==T[j]then return 1 end j=j+1 end return nil end function krtChernGetXY(T)T=tostring(T)for T,O in pairs(krt.chernila[T])do kont=T end for T,O in pairs(krt.chernila[T][kont])do lok=T end for T,O in pairs(krt.chernila[T][kont][lok])do if T=="\120"then x=O end if T=="\121"then y=O end if T=="\109\115\103"then m=O end end return kont,lok,x,y,m end function mapQuest(T)T=tostring(T)for T,O in pairs(testQ.mapQuest[T])do kont=T end for T,O in pairs(testQ.mapQuest[T][kont])do lok=T end for T,O in pairs(testQ.mapQuest[T][kont][lok])do if T=="\120"then x=O end if T=="\121"then y=O end if T=="\109\115\103"then m=O end if T=="\099\101\108"then c=O end end return kont,lok,x,y,m,c end function mapQuestP(T)T=tostring(T)testQ.mapQuest.podskazkiRez={}for T,O in pairs(testQ.mapQuest[T])do kont=T end for T,O in pairs(testQ.mapQuest[T][kont])do lok=T end for O,j in pairs(testQ.mapQuest[T][kont][lok])do if O=="\112\111\100\115\107\097\122\107\105"then for T,O in pairs(testQ.mapQuest[T][kont][lok].podskazki)do testQ.mapQuest.podskazkiRez[T]=O end end end end function chern1P(T)T=tostring(T)krt.chernila.podskazkiRez={}for T,O in pairs(krt.chernila[T])do kont=T end for T,O in pairs(krt.chernila[T][kont])do lok=T end for O,j in pairs(krt.chernila[T][kont][lok])do if O=="\112\111\100\115\107\097\122\107\105"then for T,O in pairs(krt.chernila[T][kont][lok].podskazki)do krt.chernila.podskazkiRez[T]=O end end end end function tabellaEnStr(T,O)local j,b,k,J,f,r T=tostring(T)O=tostring(O)if testQ.chD==nil then testQ.chD={}end if testQ.chD[tostring(T)]==nil then k="\048"for T,O in pairs(krt.chernila[T])do f=T end for T,O in pairs(krt.chernila[T][f])do r=T end j=tablelength(krt.chernila[T][f][r].podskazki)for j=1,j,1 do J=tostring(j)if b==nil then b=J..(" "..(txtXor(krt.chernila[T][f][r].podskazki[J]).."\n"))else b=b..(J..(" "..(txtXor(krt.chernila[T][f][r].podskazki[J]).."\n")))end k=tonumber(k)k=k+1 k=tostring(k)if k==O then break end end else for T,O in pairs(krt.chernila[T])do f=T end for T,O in pairs(krt.chernila[T][f])do r=T end b=T.." \208\178\209\139\208\191\208\190\208\187\208\189\208\181\208\189\208\190\n"k=tablelength(krt.chernila[T][f][r].podskazki)end return b,k end function txtXor(T)local O=T:utf8sub(1,3)local j local b if O~="\035\035\035"then j=string.utf8len(T)b="\035\035\035"for O=1,j,1 do b=b..string.format("\037\048\051\100",alfabet(string.utf8sub(T,O,O)))end end if O=="\035\035\035"then b=alfabetC(tonumber(string.sub(T,4,6)),1)for O=7,#T,3 do b=b..alfabetC(tonumber(string.sub(T,O,O+2)),1)end end return b end bcsQuickFrame={}function createQuickHtmlFrame(T,O,j)local b=GetTime()bcsQuickFrame[j]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\066\067\083\081\117\105\099\107\070\114\097\109\101",UIParent)bcsQuickFrame[j]:SetSize(222,222)bcsQuickFrame[j]:SetFrameStrata("\072\073\071\072")bcsQuickFrame[j]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",33,O)bcsQuickFrame[j]:SetBackdropColor(0,103,51,1)bcsQuickFrame[j]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",32)bcsQuickFrame[j]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\057\048\101\101\057\048"..(T.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062"))end dmG={}function dmgText(T,O,j,b,k)if dmG[j]==nil then dmG[j]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\100\109\071",O)else dmG[j]:Show()end dmG[j]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")dmG[j]:ClearAllPoints()dmG[j]:SetBackdropColor(0,103,51,1)dmG[j]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",13,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")if T~=""then if tonumber(T)<=9999 then dmG[j]:SetSize(48,48)end if tonumber(T)>9999 then dmG[j]:SetSize(54,48)end if tonumber(T)<=9999 then dmG[j]:SetPoint("\067\069\078\084\069\082",O,"\067\069\078\084\069\082",5,-10)end if tonumber(T)>9999 then dmG[j]:SetPoint("\067\069\078\084\069\082",O,"\067\069\078\084\069\082",1,-10)end end dmG[j]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112 \115\116\121\108\101\061\'\098\097\099\107\103\114\111\117\110\100-\099\111\108\111\114\058 \035\049\050\051\052\053\097\'\062 \124\099\102\102"..(k..(T.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")))end dmG1={}function dmgText1(T,O,j,b,k)if dmG1[j]==nil then dmG1[j]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\100\109\071",O)dmG1[j]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")dmG1[j]:ClearAllPoints()dmG1[j]:SetBackdropColor(0,103,51,1)dmG1[j]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",13,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")end if T~=""then if tonumber(T)<=9999 then dmG1[j]:SetSize(48,48)end if tonumber(T)>9999 then dmG1[j]:SetSize(54,48)end if tonumber(T)<=9999 then dmG1[j]:SetPoint("\067\069\078\084\069\082",O,"\067\069\078\084\069\082",5,-10)end if tonumber(T)>9999 then dmG1[j]:SetPoint("\067\069\078\084\069\082",O,"\067\069\078\084\069\082",1,-10)end end dmG1[j]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112 \115\116\121\108\101\061\'\098\097\099\107\103\114\111\117\110\100-\099\111\108\111\114\058 \035\049\050\051\052\053\097\'\062 \124\099\102\102"..(k..(T.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")))end dmG2={}function dmgText2(T,O,j,b,k)if dmG2[j]==nil then dmG2[j]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\100\109\071",O)dmG2[j]:SetFrameStrata("\070\085\076\076\083\067\082\069\069\078\095\068\073\065\076\079\071")dmG2[j]:ClearAllPoints()dmG2[j]:SetBackdropColor(0,103,51,1)dmG2[j]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",13,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")end if T~=nil and T~=""then if tonumber(T)<=9999 then dmG2[j]:SetSize(48,48)end if tonumber(T)>9999 then dmG2[j]:SetSize(54,48)end if tonumber(T)<=9999 then dmG2[j]:SetPoint("\067\069\078\084\069\082",O,"\067\069\078\084\069\082",5,-10)end if tonumber(T)>9999 then dmG2[j]:SetPoint("\067\069\078\084\069\082",O,"\067\069\078\084\069\082",1,-10)end end if T~=nil then dmG2[j]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112 \115\116\121\108\101\061\'\098\097\099\107\103\114\111\117\110\100-\099\111\108\111\114\058 \035\049\050\051\052\053\097\'\062 \124\099\102\102"..(k..(T.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")))end end rtnText={}function rtnTextF(T,O,j)if j=="\115\104\111\119"then if rtnText[O]==nil then rtnText[O]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\066\067\083\081\117\105\099\107\070\114\097\109\101",UIParent)rtnText[O]:SetSize(415,396)rtnText[O]:SetFrameStrata("\084\079\079\076\084\073\080")rtnText[O]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",5,-55)rtnText[O]:SetBackdropColor(0,0,0,0)if tonumber(string.utf8len(T))<200 then rtnText[O]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",33)elseif tonumber(string.utf8len(T))>200 and tonumber(string.utf8len(T))<300 then rtnText[O]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",27)elseif tonumber(string.utf8len(T))>=400 then rtnText[O]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",16)end end rtnText[O]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\048\048\048\048\048\048"..(T.."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062"))rtnText[O]:Show()else if rtnText[O]~=nil then rtnText[O]:Hide()end end end function versFail(T)if VerF==nil then VerF=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\066\067\083\081\117\105\099\107\070\114\097\109\101",UIParent)end VerF:SetSize(1111,888)VerF:SetFrameStrata("\072\073\071\072")if testQ.VerF==nil then testQ.VerF=600 end VerF:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",testQ.VerF,-355)VerF:SetBackdropColor(0,103,51,1)VerF:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",T+10)VerF:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\102\102\048\048\048\048\208\158\208\145\208\157\208\158\208\146\208\152 \208\144\208\148\208\148\208\158\208\157\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062")end function marshrut(T,O)local j=T-1 local b=T+1 local k=T+2 local J=T-2 local f=T+3 local r=T-3 if testQ.start~="\101\118\079\051"then if marshruT~=nil then if marshruT[T]==nil then marshruT[T]=CreateFrame("\083\105\109\112\108\101\072\084\077\076","\109\097\114\115\104\114\117\116",UIParent)marshruT[T]:SetSize(222,222)marshruT[T]:SetFrameStrata("\072\073\071\072")marshruT[T]:SetPoint("\067\069\078\084\069\082",UIParent,"\067\069\078\084\069\082",333,111)marshruT[T]:SetBackdropColor(0,103,51,1)marshruT[T]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",32)marshruT[T]:SetText("\060\104\116\109\108\062\060\098\111\100\121\062\060\112\062\124\099\102\102\057\048\101\101\057\048"..(T..(" \208\184\208\183 "..(tostring(O).."\060\047\112\062\060\047\098\111\100\121\062\060\047\104\116\109\108\062"))))end if marshruT[j]~=nil then marshruT[j]:Hide()marshruT[j]=nil end if marshruT[b]~=nil then marshruT[b]:Hide()marshruT[b]=nil end if marshruT[k]~=nil then marshruT[k]:Hide()marshruT[k]=nil end if marshruT[J]~=nil then marshruT[J]:Hide()marshruT[J]=nil end if marshruT[f]~=nil then marshruT[f]:Hide()marshruT[f]=nil end if marshruT[r]~=nil then marshruT[r]:Hide()marshruT[r]=nil end end end end function showRB(T)if debuffChkB==nil then debuffChkB={}end if pokazat==1 and btn[1]~=nil then for T=1,15,1 do if btn[T]~=nil then btn[T]:Hide()end end btn[991]:Show()if tonumber(testQ.mioFldLvl)~=.5 and(tonumber(testQ.mioFldLvl)~=.9 and tonumber(testQ.mioFldLvl)~=nil)then btn[14]:Show()end myCheckButton1:Show()myCheckButton2:Show()myCheckButton3:Show()myCheckButton4:Show()myCheckButton5:Show()myCheckButton6:Show()myCheckButton7:Show()btn[998]:Show()btn[997]:Show()for O=1,20,1 do local j,b,k,J,f,r,Z,a=UnitDebuff("\112\108\097\121\101\114",O)if j~=nil then debuffChkB[j]=createCheckbutton(UIParent,150,-20*O+230,j)debuffChkB[j].tooltip="\208\161\208\186\209\128\209\139\208\178\208\176\209\130\209\140 \208\184\208\186\208\190\208\189\208\186\209\131 "..j debuffChkB[j]:SetScript("\079\110\067\108\105\099\107",function()if testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB==nil then testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB={}end if testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[j]=="\068\105\115\097\098\108\101"or testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[j]==nil then testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[j]="\069\110\097\098\108\101"debuffChkB[j]:SetChecked(true)elseif testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[j]=="\069\110\097\098\108\101"then testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[j]="\068\105\115\097\098\108\101"debuffChkB[j]:SetChecked(false)end end)end end pokazat=0 pokazatChk=1 elseif pokazat==0 then btn[991]:Hide()if tonumber(testQ.mioFldLvl)~=.5 and(tonumber(testQ.mioFldLvl)~=.9 and tonumber(testQ.mioFldLvl)~=nil)then for T=1,15,1 do if btn[T]~=nil then btn[T]:Show()end end if btn[ii]~=nil then if testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130"]=="\057\057\057\057"then btn[1]:Show()btn[2]:Hide()end if testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130"]~="\057\057\057\057"then btn[1]:Hide()btn[2]:Show()end end end testQ.lvlProv=nil myCheckButton1:Hide()myCheckButton2:Hide()myCheckButton3:Hide()myCheckButton4:Hide()myCheckButton5:Hide()myCheckButton6:Hide()myCheckButton7:Show()for T,O in pairs(debuffChkB)do if debuffChkB[T]~=nil then debuffChkB[T]:Hide()end end btn[998]:Hide()btn[997]:Hide()pokazat=1 pokazatChk=0 end end function marSh()local T=GetCurrentMapContinent()local O=GetCurrentMapZone()local j,b=GetPlayerMapPosition("\112\108\097\121\101\114")local k T=tostring(T)O=tostring(O)local J=GetMapInfo()if J=="\082\097\103\101\102\105\114\101"then T="\057\057"O="\049"end if marsh==nil then marsh={}end if marsh[T]==nil then marsh[T]={}end if marsh[T][O]==nil then marsh[T][O]={}end local f=tablelength(marsh[T][O])f=tostring(f+1)marsh[T][O][f]={}testQ.marshK=T testQ.marshL=O testQ.marshN=f marsh[T][O][f].x=string.format("\037\046\051\102",j)marsh[T][O][f].y=string.format("\037\046\051\102",b)print(f)end function resObj1(T,O,j)if krt==nil then krt={}end if krt.podskazki==nil then krt.podskazki=1 end if testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]==nil then testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]={}testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=0 end if O==j then if mioFld~=nil then if mioFld[O]~=nil then if mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"]~=nil then if tonumber(testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"])<=tonumber(krt.podskazki)then if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\104\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\120"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\115\120"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\099"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\097\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\099"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\120"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\099"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\112"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\122"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\118"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\102"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\048"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\108\120"and mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\108\112")))))))))))))))then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\102"then SendAddonMessage("\116\114\101\101 "..tostring(T),O,"\103\117\105\108\100")end mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\109\048"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\104\115"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<9999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=9999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\122"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\108\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\099"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<9999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=9999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\097\115"or mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\099"or mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\115"or mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<14999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=14999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\115"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\099"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<4999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=4999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\115\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+50 testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]=testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"]+.02 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end else if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\104\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\120"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\115\120"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\099"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\097\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\120"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\099"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\115"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\099"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\112"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\122"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\118"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\102"and(mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\048"and mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\108\120"))))))))))))))then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\102"then SendAddonMessage("\116\114\101\101 "..tostring(T),O,"\103\117\105\108\100")end mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\104\115"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<9999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=9999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\108\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\122"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\109\048"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\099"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<9999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=9999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\097\115"or mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\099"or mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\115"or mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<14999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=14999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\115"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\099"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<4999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=4999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[O]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\115\120"then if tonumber(mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]+5 else mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end end SendAddonMessage("\114\101\115\079\098\106 "..(T..(" "..mioFld[O]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])),j,"\103\117\105\108\100")end end end else if mioFld~=nil then if mioFld[j]~=nil then if mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"]~=nil then if tonumber(testQ["\209\130\209\128\209\131\208\180\208\190\208\178\209\139\208\181\095\209\128\208\181\209\129\209\131\209\128\209\129\209\139"])<=tonumber(krt.podskazki)then if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\104\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\120"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\115\120"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\099"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\097\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\099"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\120"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\099"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\112"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\122"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\118"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\048"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\102"and mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\108\120"))))))))))))))then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\104\115"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<9999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=9999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\108\120"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\122"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\109\048"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\099"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<9999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=9999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\097\115"or mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\099"or mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\115"or mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\098\120"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<14999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=14999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\115"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\120"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\099"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<4999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=4999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\115\120"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then if(5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((5*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end else if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\104\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\120"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\115\120"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\099"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\097\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\099"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\115"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\098\120"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\099"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\122\112"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\122"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\116\118"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\048"and(mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\109\102"and mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]~="\108\120"))))))))))))))then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\104\115"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<9999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=9999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\108\120"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\122"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\109\048"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\116\099"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<4999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=4999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\097\115"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<14999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=14999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\115"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\122\120"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<19999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=19999 end end if mioFld[j]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(T)]=="\115\120"then if tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])<29999 then if(1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl)<1 then local O=math.random(((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))*10,9)if O==9 then mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=tonumber(mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])+round((1*tonumber(testQ.mioFldLvl))/tonumber(testQ.fldLvl))end else mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)]=29999 end end end SendAddonMessage("\114\101\115\079\098\106 "..(T..(" "..mioFld[j]["\209\134\208\181\208\187\208\190\209\129\209\130\208\189\208\190\209\129\209\130\209\140"][tostring(T)])),j,"\103\117\105\108\100")end end end end end function gKam(T,O)local j=nil if tonumber(O)==500 then for O=1,100,1 do if mioFld1[T]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(O)]=="\115\107"then if j==nil then j=1 else j=j+1 end end end if j==nil then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\048","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif j==1 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\049","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif j==2 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\050","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif j==3 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\051","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif j==4 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\052","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")elseif j==5 then testQ.kamen=testQ.kamen+1 testQ.nikQK=antc(testQ.kamen)SendAddonMessage("\110\115\095\107\080","\053","\103\117\105\108\100")PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\107\046\111\103\103")end end end function bdf(T)if testQ==nil then testQ={}end if testQ.myNome==nil then testQ.myNome={}end if testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"]==nil then testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"]={}end if testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB==nil then testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB={}end if DebuffButton1~=nil then if tonumber(testQ.buffX)~=nil and tonumber(testQ.buffX)~=0 then local O,b,k,J=DebuffButton1:GetPoint()local f,r,Z,a=btn[991]:GetPoint()if J~=a then local O,b=DebuffButton1:GetSize()local k=UIParent:GetSize()/2 j=1 for b=1,DEBUFF_MAX_DISPLAY,1 do if AuraButton_Update("\068\101\098\117\102\102\066\117\116\116\111\110",b,"\072\065\082\077\070\085\076")then local J,f,r,Z,a,o,q,V=UnitDebuff("\112\108\097\121\101\114",b)local U=_G["\068\101\098\117\102\102\066\117\116\116\111\110"..b]if U~=nil and(testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[J]==nil or testQ[T]["\208\189\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184"].debuffChkB[J]=="\068\105\115\097\098\108\101")then U:ClearAllPoints()if tonumber(testQ.buffX)<k then U:SetPoint("\066\079\084\084\079\077\076\069\070\084",UIParent,"\066\079\084\084\079\077\076\069\070\084",tonumber(testQ.buffX)+O*j,testQ.buffY)j=j+1 else U:SetPoint("\066\079\084\084\079\077\076\069\070\084",UIParent,"\066\079\084\084\079\077\076\069\070\084",tonumber(testQ.buffX)-O*j,testQ.buffY)j=j+1 end else if U~=nil and U:IsVisible()then U:Hide()end end end end end if testQ.buffX==0 then testQ.buffX=nil end end end end function gtest()gTest=nil gTest={}for T=1,50,1 do local O,j,b,k,J,f,r=GetWhoInfo(T)if j==""then if k~="\208\148\209\128\208\181\208\189\208\181\208\185"and(k~="\208\157\208\190\209\135\208\189\208\176\209\143 \209\141\208\187\209\140\209\132\208\184\208\185\208\186\208\176"and(k~="\208\167\208\181\208\187\208\190\208\178\208\181\208\186"and(k~="\208\157\208\190\209\135\208\189\208\190\208\185 \209\141\208\187\209\140\209\132"and(k~="\208\147\208\189\208\190\208\188"and k~="\208\148\208\178\208\190\209\128\209\132"))))then table.insert(gTest,O)end end end end function ns_q5()ns_q5Test=nil ns_q5Test={}for T=1,50,1 do local O,j,b,k,J,f,r=GetWhoInfo(T)if j==""then table.insert(ns_q5Test,O)end end end function closeFld()for T=1,100,1 do fBtn[T]:Hide()end for T=1,100,1 do if mgznIcon[1]==nil or not mgznIcon[1]:IsVisible()then if resursy[T]~=nil then if T==5 then if mgznIcon[1]~=nil and mgznIcon[1]:IsVisible()then end else resursy[T]:Hide()end end end end btn[989]:Hide()btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)end function hX()quesT("\104\105\100\101")okNo:configure(1,"\104\105\100\101")rtnTextF("\102\100\115\097",1,"\104\105\100\101")for T=1,100,1 do fBtn[T]:Hide()end if resursy[1]~=nil then resursy[1]:Hide()resursy[2]:Hide()resursy[3]:Hide()end if okNo~=nil then okNo[1]:Hide()okNo[2]:Hide()end btn[989]:Hide()btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)end function showFld(T,O)local j local b local k local J if mBtn[1]~=nil then if mBtn[1]:IsVisible()then J=1 end end if dBtn[1]~=nil then if dBtn[1]:IsVisible()then J=1 end end if not fBtn[1]:IsVisible()and J~=1 then if not GuildFrameLFGButton:GetChecked()or T=="\049"then if T=="\048"then j=GuildFrame.selectedName else j=O end btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",fBtn[10],"\084\079\080\082\073\071\072\084",1,1)for T=1,GetNumGuildMembers(true),1 do local J,f,r,Z,a,o,q,V,U,R,i,Q,n,E,e,p,z=GetGuildRosterInfo(T)if j~=O then if J==j then b=string.sub(V,1,1)k=string.sub(V,2,2)if V~=""and(b~="\049"and b~="\048")then testQ.fldLvl=tonumber(b)testQ.qNum=string.sub(V,8,8)testQ.qDay=string.sub(V,6,7)elseif b=="\049"then testQ.fldLvl=.9 testQ.qNum=string.sub(V,8,8)testQ.qDay=string.sub(V,6,7)elseif b=="\048"then testQ.fldLvl=.5 testQ.qNum=0 testQ.qDay=0 elseif b==""then testQ.fldLvl=.5 testQ.qNum=0 testQ.qDay=0 end if k==nil then testQ.fldLvl=.5 testQ.qNum=0 testQ.qDay=0 end end if J==O then b=string.sub(V,1,1)if V~=""and(b~="\049"and b~="\048")then testQ.mioFldLvl=string.sub(V,1,1)elseif b=="\049"then testQ.mioFldLvl=.9 elseif b=="\048"then testQ.mioFldLvl=.5 elseif b==""then testQ.mioFldLvl=.5 end end else if J==O then b=string.sub(V,1,1)k=string.sub(V,2,2)if V~=""and(b~="\049"and b~="\048")then testQ.mioFldLvl=string.sub(V,1,1)testQ.fldLvl=testQ.mioFldLvl testQ.qNum=string.sub(V,8,8)testQ.qDay=string.sub(V,6,7)elseif b=="\049"then testQ.mioFldLvl=.9 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=string.sub(V,8,8)testQ.qDay=string.sub(V,6,7)elseif b=="\048"then testQ.mioFldLvl=.5 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=0 testQ.qDay=0 elseif b==""then testQ.mioFldLvl=.5 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=0 testQ.qDay=0 end if k==nil then testQ.mioFldLvl=.5 testQ.fldLvl=testQ.mioFldLvl testQ.qNum=0 testQ.qDay=0 end end end if tonumber(testQ.mioFldLvl)==0 then testQ.mioFldLvl=.5 end if tonumber(testQ.fldLvl)==0 then testQ.fldLvl=.5 end end testQ.fRand1=math.random(1,1000000)testQ.sign=T SendAddonMessage("\115\104\077\070\108\100 "..testQ.fRand1,j..(" "..O),"\103\117\105\108\100")FriendsFrame:Hide()else local T=tablelength(risPet)for T=1,100,1 do if risPet[T]~=nil then risPetShow(T,"\104\105\100\101","")end end for T=1,100,1 do fBtn[T]:Hide()end btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)if resursy[1]~=nil then resursy[1]:Hide()resursy[2]:Hide()resursy[3]:Hide()end for T=1,100,1 do if dmG[T]~=nil and dmG[T]:IsVisible()then dmG[T]:Hide()end end for T=1,3,1 do if mgznIcon[1]==nil or not mgznIcon[1]:IsVisible()then if resursy[T]~=nil then if T==5 then if mgznIcon[1]~=nil and mgznIcon[1]:IsVisible()then end else resursy[T]:Hide()end end end end for T=101,103,1 do if dmG[T]~=nil then dmG[T]:Hide()end end if tonumber(testQ.sign)==0 then FriendsFrame:Show()end testQ.sign=nil testQ.fRandD1nome=nil end else local T=tablelength(risPet)for T=1,100,1 do if risPet[T]~=nil then risPetShow(T,"\104\105\100\101","")end end for T=1,100,1 do fBtn[T]:Hide()btn[989]:ClearAllPoints()btn[989]:SetPoint("\066\079\084\084\079\077\076\069\070\084",GuildMemberDetailFrame,"\084\079\080\076\069\070\084",96,-3)end if resursy[1]~=nil then resursy[1]:Hide()resursy[2]:Hide()resursy[3]:Hide()end for T=1,100,1 do if dmG[T]~=nil and dmG[T]:IsVisible()then dmG[T]:Hide()end end for T=1,100,1 do if mgznIcon[1]==nil or not mgznIcon[1]:IsVisible()then if resursy[T]~=nil then if T==5 then if mgznIcon[1]~=nil and mgznIcon[1]:IsVisible()then end else resursy[T]:Hide()end end end end for T=101,103,1 do if dmG[T]~=nil then dmG[T]:Hide()end end if tonumber(testQ.sign)==0 then FriendsFrame:Show()end if tostring(testQ.sign)=="\049"then btn[989]:Hide()end testQ.sign=nil end end function qLvl33c1()local T local O local j local b local k local J local f k=(rndTblc(eMotC))["\208\186\208\178\208\181\209\129\209\130"]print(k)J=eMotC[k]["\208\191\208\190\208\184\209\129\208\186"]f=eMotC[k]["\208\190\209\130\208\178\208\181\209\130"]T=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]O=npcListC1[T]["\208\184\208\188\209\143"]T=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]j=npcListC1[T]["\208\184\208\188\209\143"]while true do if O==j then T=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]j=npcListC1[T]["\208\184\208\188\209\143"]else break end end T=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]b=npcListC1[T]["\208\184\208\188\209\143"]while true do if b==j or b==O then T=(rndTblc(npcListC1))["\208\176\208\185\208\180\208\184"]b=npcListC1[T]["\208\184\208\188\209\143"]else break end end return k,O,j,b,J,f end function qLvl33c2()local T local O local j local b local k local J local f k=(rndTblc(eMotC))["\208\186\208\178\208\181\209\129\209\130"]print(k)J=eMotC[k]["\208\191\208\190\208\184\209\129\208\186"]f=eMotC[k]["\208\190\209\130\208\178\208\181\209\130"]T=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]O=npcListC2[T]["\208\184\208\188\209\143"]T=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]j=npcListC2[T]["\208\184\208\188\209\143"]while true do if O==j then T=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]j=npcListC2[T]["\208\184\208\188\209\143"]else break end end T=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]b=npcListC2[T]["\208\184\208\188\209\143"]while true do if b==j or b==O then T=(rndTblc(npcListC2))["\208\176\208\185\208\180\208\184"]b=npcListC2[T]["\208\184\208\188\209\143"]else break end end return k,O,j,b,J,f end function qLvl33c3()local T local O local j local b local k local J local f k=(rndTblc(eMotC))["\208\186\208\178\208\181\209\129\209\130"]print(k)J=eMotC[k]["\208\191\208\190\208\184\209\129\208\186"]f=eMotC[k]["\208\190\209\130\208\178\208\181\209\130"]T=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]O=npcListC3[T]["\208\184\208\188\209\143"]T=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]j=npcListC3[T]["\208\184\208\188\209\143"]while true do if O==j then T=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]j=npcListC3[T]["\208\184\208\188\209\143"]else break end end T=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]b=npcListC3[T]["\208\184\208\188\209\143"]while true do if b==j or b==O then T=(rndTblc(npcListC3))["\208\176\208\185\208\180\208\184"]b=npcListC3[T]["\208\184\208\188\209\143"]else break end end return k,O,j,b,J,f end function rndTblc(T)local O={}for T in pairs(T)do table.insert(O,T)end return T[O[math.random(#O)]]end function htimer(T)local O=0 for j=1,100,1 do if mioFld1[T]["\208\190\208\177\209\138\208\181\208\186\209\130\209\139"][tostring(j)]=="\116\111"then O="\116\111"end end if testQ[T].dTimer[30]==nil then testQ[T].dTimer[30]=26000 end if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil then testQ[T].dTimer[tonumber(date("\037\100"))-1]=26000 end if tonumber(testQ.mioFldLvl)==.5 or tonumber(testQ.mioFldLvl)==.9 then if testQ[T].hTimer==nil then if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[T].dTimer[30]==nil then if O~="\116\111"then testQ[T].hTimer=50400 else testQ[T].hTimer=26000 end else if tonumber(date("\037\100"))~=1 then if testQ[T].dTimer[tonumber(date("\037\100"))-1]>10800 then if O~="\116\111"then testQ[T].hTimer=testQ[T].dTimer[tonumber(date("\037\100"))-1]else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(testQ[T].dTimer[tonumber(date("\037\100"))-1])/1.5))end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end else if testQ[T].dTimer[30]~=nil and testQ[T].dTimer[30]>10800 then if O~="\116\111"then testQ[T].hTimer=testQ[T].dTimer[30]else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(testQ[T].dTimer[30])/1.5))end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==2 then if testQ[T].hTimer==nil then if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[T].dTimer[30]==nil then if O~="\116\111"then testQ[T].hTimer=25200 else testQ[T].hTimer=16000 end else if tonumber(date("\037\100"))~=1 then if testQ[T].dTimer[tonumber(date("\037\100"))-1]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/2))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/2))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end else if testQ[T].dTimer[30]~=nil and testQ[T].dTimer[30]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/2))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/2))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==3 then if testQ[T].hTimer==nil then if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[T].dTimer[30]==nil then if O~="\116\111"then testQ[T].hTimer=14500 else testQ[T].hTimer=10000 end else if tonumber(date("\037\100"))~=1 then if testQ[T].dTimer[tonumber(date("\037\100"))-1]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/3))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/3))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end else if testQ[T].dTimer[30]~=nil and testQ[T].dTimer[30]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/3))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/3))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==4 then if testQ[T].hTimer==nil then if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[T].dTimer[30]==nil then if O~="\116\111"then testQ[T].hTimer=11000 else testQ[T].hTimer=8000 end else if tonumber(date("\037\100"))~=1 then if testQ[T].dTimer[tonumber(date("\037\100"))-1]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/4))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/4))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end else if testQ[T].dTimer[30]~=nil and testQ[T].dTimer[30]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/4))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/4))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==5 then if testQ[T].hTimer==nil then if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[T].dTimer[30]==nil then if O~="\116\111"then testQ[T].hTimer=10500 else testQ[T].hTimer=7000 end else if tonumber(date("\037\100"))~=1 then if testQ[T].dTimer[tonumber(date("\037\100"))-1]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/5))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/5))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end else if testQ[T].dTimer[30]~=nil and testQ[T].dTimer[30]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/5))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/5))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==6 then if testQ[T].hTimer==nil then if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[T].dTimer[30]==nil then if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end else if tonumber(date("\037\100"))~=1 then if testQ[T].dTimer[tonumber(date("\037\100"))-1]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/6))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/6))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end else if testQ[T].dTimer[30]~=nil and testQ[T].dTimer[30]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/6))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/6))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end end end end elseif tonumber(testQ.mioFldLvl)==7 then if testQ[T].hTimer==nil then if testQ[T].dTimer[tonumber(date("\037\100"))-1]==nil and testQ[T].dTimer[30]==nil then if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end else if tonumber(date("\037\100"))~=1 then if testQ[T].dTimer[tonumber(date("\037\100"))-1]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/7))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/7))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end else if testQ[T].dTimer[30]~=nil and testQ[T].dTimer[30]>10800 then if O~="\116\111"then testQ[T].hTimer=tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/7))if testQ[T].hTimer<10800 then testQ[T].hTimer=10800 end else testQ[T].hTimer=tonumber(string.format("\037\117",tonumber(string.format("\037\117",testQ[T].dTimer[tonumber(date("\037\100"))-1]/7))/1.5))if testQ[T].hTimer<7000 then testQ[T].hTimer=7000 end end else if O~="\116\111"then testQ[T].hTimer=10800 else testQ[T].hTimer=7000 end end end end end end SendAddonMessage("\035\109\105\111\084\105\109\101\114 "..T,testQ[T].hTimer..(" "..tonumber(testQ.mioFldLvl)),"\103\117\105\108\100")SendAddonMessage("\035\109\105\111\084\105\109\101\114 "..T,testQ[T].hTimer..(" "..tonumber(testQ.mioFldLvl)),"\103\117\105\108\100")SendAddonMessage("\035\109\105\111\084\105\109\101\114 "..T,testQ[T].hTimer..(" "..tonumber(testQ.mioFldLvl)),"\103\117\105\108\100")end function ml()if BrowseBuyoutButton~=nil then if aucBtn==nil then aucBtn=CreateFrame("\066\117\116\116\111\110",nil,UIParent,"")aucBtn:SetFrameStrata("\084\079\079\076\084\073\080")aucBtn:SetSize(222,32)aucBtn:SetPoint("\067\069\078\084\069\082",BrowseBidButton,"\067\069\078\084\069\082",22,0)aucBtn:SetNormalTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\097\117\107\046\116\103\097")aucBtn:Hide()end name,texture,count,quality,canUse,level,levelColHeader,minBid,minIncrement,buyoutPrice,bidAmount,highBidder,owner,saleStatus,itemId,hasAllInfo=GetAuctionItemInfo("\108\105\115\116",tonumber(GetSelectedAuctionItem("\108\105\115\116")))if name=="\208\158\208\177\209\139\209\135\208\189\208\190\208\181 \208\191\208\184\209\129\209\140\208\188\208\190"then aucBtn:Show()if highBidder=="\208\165\208\181\209\132\208\181"then aucBtn:Hide()end else if aucBtn~=nil then aucBtn:Hide()end end end if Atr_Buy1_Button~=nil and Atr_Buy1_Button:IsVisible()then if aucBtn==nil then aucBtn=CreateFrame("\066\117\116\116\111\110",nil,UIParent,"")aucBtn:SetFrameStrata("\084\079\079\076\084\073\080")aucBtn:SetSize(222,32)aucBtn:SetPoint("\067\069\078\084\069\082",BrowseBidButton,"\067\069\078\084\069\082",22,0)aucBtn:SetNormalTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\097\117\107\046\116\103\097")aucBtn:Hide()end if Atr_Search_Box:IsVisible()and Atr_Search_Box:GetText()=="\208\158\208\177\209\139\209\135\208\189\208\190\208\181 \208\191\208\184\209\129\209\140\208\188\208\190"then aucBtn:Show()aucBtn:SetSize(422,32)else if aucBtn~=nil then aucBtn:Hide()end end end end function diffT(T,O)for j=1,100,1 do if T[j]~=O[j]then return false end end return true end function antc(T)shablon="\097\098\099\100\101\102\103\104\105\106\107\108\109\110\111\112\113\114\115\116\117\118\119\120\121\122\065\066\067\068\069\070\071\072\073\074\075\076\077\078\079\080\081\082\083\084\085\086\087\088\089\090 \033\063\044\046-\048\049\050\051\052\053\054\055\056\057\'\040\041"myB=string.find(shablon,(tostring(T)):sub(1,1),1,true)if tonumber(#tostring(T))>=2 then for O=2,#tostring(T),1 do myB=myB..string.find(shablon,(tostring(T)):sub(O,O),1,true)end end return myB end function ochered(T,O,j,b,k,J,f,r,Z,a)if T~="\208\156\208\190\209\128"then local o=UnitClass("\112\108\097\121\101\114")local q=0 local V,U,R,i for O=1,24,1 do if j==1 then V,__,__,__,__,U,R,i=UnitDebuff("\116\097\114\103\101\116",O)if i=="\112\108\097\121\101\114"then if V=="\208\158\208\183\208\189\208\190\208\177"then if R~=nil and tonumber(R)-tonumber(GetTime())<=5 then testQ.o=1 else testQ.o=nil end end if V=="\208\154\209\128\208\190\208\178\208\176\208\178\208\176\209\143 \209\135\209\131\208\188\208\176"then if R~=nil and tonumber(R)-tonumber(GetTime())<=5 then testQ.c=1 else testQ.c=nil end end end end if b==1 then V=UnitBuff("\112\108\097\121\101\114",O)end if V~=nil then if V==T then q=1 end end end local Q=UnitClass("\112\108\097\121\101\114")if Q=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then if testQ.o==1 and testQ.c==1 then local T for O,j in pairs(testQ.skills)do if testQ.skills[O]~=nil then if testQ.skills[O]=="\208\156\208\190\209\128"then T=1 end end end if T~=1 then table.insert(testQ.skills,O,"\208\156\208\190\209\128")end end end for O,j in pairs(testQ.skills)do if testQ.skills[O]==T then q=1 end end local n=0 if r~=nil then n=n+1 end if Z~=nil then n=n+1 end if a~=nil then n=n+1 end local E,e,p,z=GetSpellInfo(T)if z==nil then z=0 end if Q=="\208\148\209\128\209\131\208\184\208\180"then z=30 end if J=="\109"then if UnitPower("\112\108\097\121\101\114")<z and(IsUsableSpell(T)and GetSpellCooldown(T)==0)then if q~=1 then if O==0 then table.insert(testQ.skills,O,T)end if O==1 then table.insert(testQ.skills,T)end end else for O,j in pairs(testQ.skills)do if testQ.skills[O]~=nil then if testQ.skills[O]==T then testQ.skills[O]=nil end end end end end local y,C,c,N=GetSpellInfo(T)if N==nil then N=0 end if J=="\098"then if UnitPower("\112\108\097\121\101\114")>=N and(IsUsableSpell(T)and GetSpellCooldown(T)==0)then if q~=1 then if O==0 then table.insert(testQ.skills,1,T)end if O==1 then table.insert(testQ.skills,T)end else end else for O,j in pairs(testQ.skills)do if testQ.skills[O]~=nil then if testQ.skills[O]==T then testQ.skills[O]=nil end end end end end if k~=nil and(IsUsableSpell(T)and(GetSpellCooldown(T)==0 and f==nil))then if Q=="\208\159\208\176\208\187\208\176\208\180\208\184\208\189"then if T=="\208\159\209\128\208\176\208\178\208\181\208\180\208\189\208\190\208\181 \208\189\208\181\208\184\209\129\209\130\208\190\208\178\209\129\209\130\208\178\208\190"then if q~=1 then PlaySoundFile(k)end end else if T~="\208\146\208\187\208\176\209\129\209\130\209\140 \208\187\209\140\208\180\208\176"then PlaySoundFile(k)end end if Q=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then if T=="\208\146\208\187\208\176\209\129\209\130\209\140 \208\187\209\140\208\180\208\176"then if q~=1 then end end else if T~="\208\159\209\128\208\176\208\178\208\181\208\180\208\189\208\190\208\181 \208\189\208\181\208\184\209\129\209\130\208\190\208\178\209\129\209\130\208\178\208\190"then PlaySoundFile(k)end end end if T=="\208\156\209\143\209\129\208\190\209\128\209\131\208\177\208\186\208\176"then if tonumber(GetComboPoints("\112\108\097\121\101\114",target))==1 and q~=1 then end end if f==1 then if UnitHealth("\112\108\097\121\101\114")<=tonumber(UnitHealthMax("\112\108\097\121\101\114"))/2 and GetSpellCooldown(T)==0 then table.insert(testQ.skills,O,T)if k~=nil then end else for O,j in pairs(testQ.skills)do if testQ.skills[O]~=nil then if testQ.skills[O]==T then testQ.skills[O]=nil end end end end end end end function partyFrameHide()for T=1,25,1 do local O=_G["\080\097\114\116\121\077\101\109\098\101\114\070\114\097\109\101"..T]if O~=nil and O:IsVisible()then O:Hide()end end end function bs(T)local O local j=UnitClass("\112\108\097\121\101\114")local b=UnitStat("\112\108\097\121\101\114",1)local k=UnitStat("\112\108\097\121\101\114",2)local J=UnitStat("\112\108\097\121\101\114",3)local f=UnitStat("\112\108\097\121\101\114",4)local r=UnitStat("\112\108\097\121\101\114",5)local Z=GetSpellBonusHealing()local a=GetCombatRating(6)local o=GetCombatRating(9)local q=GetCombatRating(24)local V=GetCombatRating(2)local U=GetCombatRating(3)local R=GetCombatRating(4)local i=GetCombatRating(5)local Q=GetManaRegen()local n=GetCombatRating(25)local E,e=UnitAttackPower("\112\108\097\121\101\114")local p=GetCombatRating(18)local z=E+e local y local C=0 if j=="\208\150\209\128\208\181\209\134"or j=="\208\150\209\128\208\184\209\134\208\176"then local T,j,b,k,J=GetTalentInfo(3,27)if J>=1 then O=(((((f+r*.5)+Z*2)+a)+o*2)+Q*.5)+p C=a.."\047\050\056\057\047\052\052\054"else O=((((f+r*1.5)+Z*2)+o)+Q*1.5)+p C=a.."\047\048"end end if j=="\208\159\208\176\208\187\208\176\208\180\208\184\208\189"then local T,j,n,E,e=GetTalentInfo(1,26)local y,c,N,K,M=GetTalentInfo(2,26)local X,G,d,B,L=GetTalentInfo(3,26)if e>=1 then O=((((f*2+r)+Z*1.5)+o)+Q)+p*1.5 C=a.."\047\048"end if M>=1 then O=(((((((b+k)+J*2)+a)+q)+V*1.5)+U*1.5)+R*1.5)+i*1.5 C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q.."\047\049\056\053"))))end if L>=1 then O=(((((b*2+k)+a)+o)+z)+p)+q C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q.."\047\049\052\056"))))end end if j=="\208\146\208\190\208\184\208\189"then local T,j,f,r,Z=GetTalentInfo(3,7)if Z>=1 then O=(((((((b+k)+J*2)+a)+q)+V*1.5)+U*1.5)+R*1.5)+i*1.5 C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q.."\047\049\054\052"))))else O=((((((b*2+k)+a)+o*1.5)+q)+n*2)+z)+p C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q..("\047\050\051\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(n.."\047\049\052\048\048")))))))end end if j=="\208\148\209\128\209\131\208\184\208\180"then local j,R,i,E,e=GetTalentInfo(3,27)local y,c,N,K,M=GetTalentInfo(2,5)local X,G,d,B,L=GetTalentInfo(1,13)local P,I,t,F,s=GetTalentInfo(2,9)if e>=1 or T=="\209\133\208\184\208\187"then O=((((f+r*1.5)+Z*2)+p*1.5)+o)+Q*1.5 C=a.."\047\048"end if M>=1 or T=="\208\188\208\181\208\180\208\178\208\181\208\180\209\140"then O=((((((((b+k*2)+J*2)+a)+o)+p*1.5)+q)+V*1.5)+U*2)+n C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q..("\047\049\051\050\047\050\056\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(n.."\047\063\063")))))))end if L>=1 or T=="\209\129\208\190\208\178\208\176"then O=(((((f+r*.5)+Z*2)+a)+o*2)+Q*.5)+p C=a.."\047\050\054\051"end if s>=1 or T=="\208\186\208\190\209\130"then O=((((((b+k*2)+a)+o*1.5)+q)+n*2)+z)+p C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q..("\047\049\051\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(n.."\047\049\052\048\048")))))))end end if j=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\208\186"or j=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\209\134\208\176"then O=((((((b+k*2)+a)+o)+n*2)+q)+z)+p C=a..("\047"..("\050\054\051"..("\047"..("\055\050\050"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q..("\047\049\051\050"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(n.."\047\049\052\048\048")))))))))end if j=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\208\186"or j=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\209\134\208\176"then O=(((((f+r*1.5)+Z*2)+a)+o*1.5)+Q*.5)+p*1.5 C=a..("\047"..("\050\056\057\047\052\052\054 "..("\208\165\208\176\209\129\209\130\058 "..(p.." \049\049\048\048\047\049\052\048\048"))))end if j=="\208\168\208\176\208\188\208\176\208\189"or j=="\208\168\208\176\208\188\208\176\208\189\208\186\208\176"then local T,j,J,V,U=GetTalentInfo(1,3)local R,i,E,e,y=GetTalentInfo(2,9)local c,N,K,M,X=GetTalentInfo(3,1)if U>=3 and y>=1 then M,M,M,M,U=GetTalentInfo(1,7)M,M,M,M,y=GetTalentInfo(2,11)end if U>=1 then O=(((f+Z*2)+o)+a)+p*1.5 C=a.."\047\051\054\056"end if y>=1 then O=(((((((b+k*2)+a)+o*1.5)+n)+z)+p*1.5)+q)+Z*.5 C=a..("\047"..("\050\051\050"..("\047"..("\051\054\056"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q.."\047\049\052\048"))))))end if X>=1 then O=((((f+r)+Z*2)+o)+Q*2)+p*2 C=a..("\047"..("\048"..(" \099\046\047\208\186\208\176\208\191\058 "..(p.."\047\049\050\054\057\047\050\049\048\048"))))end end if j=="\208\158\209\133\208\190\209\130\208\189\208\184\208\186"or j=="\208\158\209\133\208\190\209\130\208\189\208\184\209\134\208\176"then O=((((k*2+a)+o)+n*2)+z)+p C=a..("\047"..("\050\054\051"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(n.."\047\049\052\048\048"))))end if j=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then local T,j,f,r,Z=GetTalentInfo(1,7)local R,i,Q,E,e=GetTalentInfo(2,3)local p,y,c,N,K=GetTalentInfo(3,3)if Z>=1 or e>=1 or K>=1 then O=(((((b+k)+J*2)+a)+q)+V*1.5)+U*1.5 C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q.."\047\049\055\048\047\052\048\057"))))else O=(((((b*2+k)+a)+o)+q)+n)+z C=a..("\047"..("\050\054\051"..(" \208\188\208\176\209\129\209\130\046\047\208\186\208\176\208\191\058 "..(q..("\047\049\055\048"..(" \209\128\208\191\208\177\047\208\186\208\176\208\191\058 "..(n.."\047\049\052\048\048")))))))end end if j=="\208\156\208\176\208\179"then O=((((f+r)+Z*2)+a)+o*1.5)+p*1.5 C=a..("\047"..("\051\055\054 \209\133\208\176\209\129\209\130\047\208\186\208\176\208\191\058 "..(p..("\047\049\049\051\048 \208\154\209\128\208\184\209\130\047\208\186\208\176\208\191\058 "..(o.."\047\049\049\053\048\063\040\052\053\037\041")))))end if O~=nil then return string.format("\037\100",O)..(" \209\133\208\184\209\130\047\208\186\208\176\208\191\058 "..C)else SendChatMessage("\208\159\208\190\209\135\208\181\208\188\209\131 \209\130\208\190 \208\191\209\131\209\129\209\130\208\190\208\181 \208\183\208\189\208\176\209\135\208\181\208\189\208\184\208\181\046 \208\175\058 "..j,"\079\070\070\073\067\069\082",nil,1)end end GameTooltip:HookScript("\079\110\083\104\111\119",function(T)local O=UnitClass("\112\108\097\121\101\114")local j=0 local b local k=0 local J=0 local f=0 local r=0 local Z=0 local a=0 local o=0 local q=0 local V=0 local U=0 local R=0 local i=0 local Q=0 local n=0 local E=0 local e=0 local p=0 local z=0 local y=0 local C=0 local c=0 local N=0 local K=0 local M=0 local X=0 local G=0 local d=0 local B=0 local L=0 local P local I=GetUnitName("\112\108\097\121\101\114")if testQ then if testQ[I]then if testQ[I].edaQuest~=nil and testQ[I].edaQuest~=2 then local T=_G.GameTooltipTextLeft1:GetText()if testQ.edaNum==nil then testQ.edaNome=T testQ.edaNum=proverkaNaKolvoPredmetov(T)if testQ.edaNomeRez==nil then testQ.edaNomeRez={}end else if testQ.edaNome~=T then testQ.edaNome=nil testQ.edaNum=nil else if testQ.edaNomeRez~=nil then local O=proverkaNaKolvoPredmetov(T)if testQ.edaNum>O then if testQ.edaNomeRez[T]==nil then local O=math.random(1,10)if O~=1 then print("\208\164\209\131\044 \208\189\208\181\208\178\208\186\209\131\209\129\208\189\208\190\033")testQ.edaNomeRez[T]=T else local T=math.random(1,10)if T==10 then testQ[I].edaQuest=2 SendChatMessage("\208\157\208\176\208\185\208\180\208\181\208\189 \208\184\208\180\208\181\208\176\208\187\209\140\208\189\209\139\208\185 \208\186\208\190\209\128\208\188 \208\180\208\187\209\143 \208\191\208\181\209\130\208\176\033","\079\070\070\073\067\069\082",nil,1)SendChatMessage("\208\157\208\176\208\185\208\180\208\181\208\189 \208\184\208\180\208\181\208\176\208\187\209\140\208\189\209\139\208\185 \208\186\208\190\209\128\208\188 \208\180\208\187\209\143 \208\191\208\181\209\130\208\176\033\033","\079\070\070\073\067\069\082",nil,1)SendChatMessage("\208\157\208\176\208\185\208\180\208\181\208\189 \208\184\208\180\208\181\208\176\208\187\209\140\208\189\209\139\208\185 \208\186\208\190\209\128\208\188 \208\180\208\187\209\143 \208\191\208\181\209\130\208\176\033\033\033","\079\070\070\073\067\069\082",nil,1)else print("\208\146\209\128\208\190\208\180\208\181 \208\178\208\186\209\131\209\129\208\189\208\190\044 \208\189\208\190 \209\141\209\130\208\190 \208\189\208\181 \209\130\208\190\209\135\208\189\208\190\046\046")testQ.edaNomeRez={}end end end end end end end end end end for T=1,T:NumLines(),1 do if _G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText()~=nil then if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,1)=="\043"or string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,1)=="\124"then b=mysplit(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText())if b[3]~=nil and string.utf8sub(b[3],1,3)=="\208\178\209\139\208\189"then if f==0 then f=tonumber(string.utf8sub(b[1],2))end if f==nil then f=tonumber(string.utf8sub(b[1],11))P=T end if f~=0 and P~=T then if tonumber(b[1]:sub(2))~=nil then else f=f+tonumber(b[1]:sub(11))end end end if b[3]~=nil and string.utf8sub(b[3],1,3)=="\208\187\208\190\208\178"then if J==0 then J=tonumber(string.utf8sub(b[1],2))end if J==nil then J=tonumber(string.utf8sub(b[1],11))P=T end if J~=0 and P~=T then if tonumber(b[1]:sub(2))~=nil then else J=J+tonumber(b[1]:sub(11))end end end if b[3]~=nil and string.utf8sub(b[3],1,3)=="\209\129\208\184\208\187"then if b[4]==nil then if k==0 then k=tonumber(string.utf8sub(b[1],2))end if k==nil then k=tonumber(string.utf8sub(b[1],11))P=T end if k~=0 and P~=T then if tonumber(b[1]:sub(2))~=nil then else k=k+tonumber(b[1]:sub(11))end end end end if b[3]~=nil and string.utf8sub(b[3],1,3)=="\208\184\208\189\209\130"then if r==0 then r=tonumber(string.utf8sub(b[1],2))end if r==nil then r=tonumber(string.utf8sub(b[1],11))P=T end if r~=0 and P~=T then if tonumber(b[1]:sub(2))~=nil then else r=r+tonumber(b[1]:sub(11))end end end if b[3]~=nil and string.utf8sub(b[3],1,3)=="\208\180\209\131\209\133"then if Z==0 then Z=tonumber(string.utf8sub(b[1],2))end if Z==nil then Z=tonumber(string.utf8sub(b[1],11))P=T end if Z~=0 and P~=T then if tonumber(b[1]:sub(2))~=nil then else Z=Z+tonumber(b[1]:sub(11))end end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\176\209\130\208\176"then e=tonumber(b[1]:sub(2))if e==nil then e=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\186\209\128\208\184"then q=tonumber(b[1]:sub(2))if q==nil then q=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\188\208\176\209\129"then V=tonumber(b[1]:sub(2))if V==nil then V=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\183\208\176\208\186"then a=tonumber(b[1]:sub(2))if a==nil then a=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\188\208\181\209\130"then o=tonumber(b[1]:sub(2))if o==nil then o=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\209\129\208\186\208\190"then o=tonumber(b[1]:sub(2))if o==nil then o=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\183\208\176\209\137"then U=tonumber(b[1]:sub(2))if U==nil then U=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\209\131\208\186\208\187"then R=tonumber(b[1]:sub(2))if R==nil then R=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\191\208\176\209\128"then i=tonumber(b[1]:sub(2))if i==nil then i=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\177\208\187\208\190"then Q=tonumber(b[1]:sub(2))if Q==nil then Q=tonumber(b[1]:sub(11))end end if b[4]~=nil and string.utf8sub(b[4],1,3)=="\208\191\209\128\208\190"then E=tonumber(b[1]:sub(2))if E==nil then E=tonumber(b[1]:sub(11))end end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\176\209\130\208\176\208\186\208\184")then B=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\186\209\128\208\184\209\130\208\184\209\135\208\181\209\129\208\186\208\190\208\179\208\190")then C=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\188\208\176\209\129\209\130\208\181\209\128\209\129\209\130\208\178\208\176")then c=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\183\208\176\208\186\208\187\208\184\208\189\208\176\208\189\208\184\208\185")then z=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\188\208\181\209\130\208\186\208\190\209\129\209\130\208\184")then y=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\209\129\208\186\208\190\209\128\208\190\209\129\209\130\208\184")then L=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\183\208\176\209\137\208\184\209\130\209\139")then N=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\209\131\208\186\208\187\208\190\208\189\208\181\208\189\208\184\209\143")then K=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\191\208\176\209\128\208\184\209\128\208\190\208\178\208\176\208\189\208\184\209\143")then M=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\177\208\187\208\190\208\186\208\184\209\128\208\190\208\178\208\176\208\189\208\184\209\143")then X=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\146\208\190\209\129\208\191\208\190\208\187\208\189\208\181\208\189\208\184\208\181")then G=mysplit(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText())G=tonumber(G[5])end end if string.utf8sub(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),1,4)=="\208\149\209\129\208\187\208\184"then if string.find(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\208\191\209\128\208\190\208\177\208\184\208\178\208\176\208\189\208\184\209\143")then d=tonumber(string.match(_G["\071\097\109\101\084\111\111\108\116\105\112\084\101\120\116\076\101\102\116"..T]:GetText(),"\037\083\043\036"))end end end end if e==nil then e=0 end if k==nil then k=0 end if J==nil then J=0 end if f==nil then f=0 end if r==nil then r=0 end if Z==nil then Z=0 end if a==nil then a=0 end if o==nil then o=0 end if q==nil then q=0 end if V==nil then V=0 end if U==nil then U=0 end if R==nil then R=0 end if i==nil then i=0 end if Q==nil then Q=0 end if n==nil then n=0 end if E==nil then E=0 end if B==nil then B=0 end if z==nil then z=0 end if y==nil then y=0 end if C==nil then C=0 end if c==nil then c=0 end if N==nil then N=0 end if K==nil then K=0 end if M==nil then M=0 end if X==nil then X=0 end if G==nil then G=0 end if d==nil then d=0 end if L==nil then L=0 end if p==nil then p=0 end if O=="\208\150\209\128\208\181\209\134"or O=="\208\150\209\128\208\184\209\134\208\176"then local T,O,b,k,J=GetTalentInfo(3,27)if J>=1 then j=((((((((((r+Z*.5)+a*2)+z*2)+o)+y)+q*2)+C*2)+n*.5)+G*.5)+p)+L else j=((((((((r+Z*1.5)+a*2)+q)+n*1.5)+p)+z*2)+C)+G*1.5)+L end end if O=="\208\159\208\176\208\187\208\176\208\180\208\184\208\189"then local T,O,b,E,d=GetTalentInfo(1,26)local P,I,t,F,s=GetTalentInfo(2,26)local W,u,l,S,x=GetTalentInfo(3,26)if d>=1 then j=((((((((r*2+Z)+a*1.5)+q)+n)+p*1.5)+z*1.5)+C)+G)+L*1.5 end if s>=1 then j=(((((((((((((k+J)+f*2)+o)+V)+U*1.5)+R*1.5)+i*1.5)+Q*1.5)+y)+c)+N*1.5)+K*1.5)+M*1.5)+X*1.5 end if x>=1 then j=((((((((((k*2+J)+o)+q)+e)+p)+V)+y)+C)+B)+L)+c end end if O=="\208\146\208\190\208\184\208\189"then local T,O,b,r,Z=GetTalentInfo(3,7)if Z>=1 then j=(((((((((((((k+J)+f*2)+o)+V)+U*1.5)+R*1.5)+i*1.5)+Q*1.5)+y)+c)+N*1.5)+K*1.5)+M*1.5)+X*1.5 else j=((((((((((((k*2+J)+o)+q*1.5)+V)+E*2)+e)+p)+y)+C*1.5)+c)+d*2)+B)+L end end if O=="\208\148\209\128\209\131\208\184\208\180"then local T,O,b,i,Q=GetTalentInfo(3,27)local M,X,P,I,t=GetTalentInfo(2,5)local F,s,W,u,l=GetTalentInfo(1,13)local S,x,A,g,v=GetTalentInfo(2,9)if Q>=1 then j=((((((((r+Z*1.5)+a*2)+p*1.5)+q)+n*1.5)+z*2)+L*1.5)+C)+G*1.5 end if t>=1 then j=(((((((((((((((k+J*2)+f*2)+o)+q)+p*1.5)+V)+U*1.5)+R*2)+E)+y)+C)+L*1.5)+c)+N*1.5)+K*2)+d end if l>=1 then j=((((((((((r+Z*.5)+a*2)+o)+q*2)+n*.5)+p)+z*2)+y)+C*2)+G*.5)+L end if v>=1 then j=((((((((((((k+J*2)+o)+q*1.5)+V)+E*2)+e)+p)+y)+C*1.5)+c)+d*2)+B)+L end end if O=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\208\186"or O=="\208\160\208\176\208\183\208\177\208\190\208\185\208\189\208\184\209\134\208\176"then j=((((((((((((k+J*2)+o)+q)+E*2)+V)+e)+p)+y)+C)+d*2)+c)+B)+L end if O=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\208\186"or O=="\208\167\208\181\209\128\208\189\208\190\208\186\208\189\208\184\208\182\208\189\208\184\209\134\208\176"then j=((((((((((r+Z*1.5)+a*2)+o)+q*1.5)+n*.5)+p*1.5)+z*2)+y)+C*1.5)+G*.5)+L*1.5 end if O=="\208\168\208\176\208\188\208\176\208\189"then local T,O,b,f,U=GetTalentInfo(1,3)local R,i,Q,N,K=GetTalentInfo(2,9)local M,X,P,I,t=GetTalentInfo(3,1)if U>=3 and K>=1 then I,I,I,I,U=GetTalentInfo(1,7)I,I,I,I,K=GetTalentInfo(2,11)end if U>=1 then j=(((((((r+a*2)+q)+o)+p*1.5)+z*2)+C)+y)+L*1.5 end if K>=1 then j=((((((((((((((k+J*2)+o)+q*1.5)+E)+e)+p*1.5)+V)+a)+y)+C*1.5)+d)+B)+L*1.5)+c)+z end if t>=1 then j=((((((((r+Z)+a*2)+q)+n*2)+p*2)+z*2)+C)+G*2)+L*2 end end if O=="\208\158\209\133\208\190\209\130\208\189\208\184\208\186"or O=="\208\158\209\133\208\190\209\130\208\189\208\184\209\134\208\176"then j=(((((((((J*2+o)+q)+E*2)+e)+p)+y)+C)+d*2)+B)+L end if O=="\208\160\209\139\209\134\208\176\209\128\209\140 \209\129\208\188\208\181\209\128\209\130\208\184"then local T,O,b,r,Z=GetTalentInfo(1,7)local a,i,Q,n,p=GetTalentInfo(2,3)local z,M,X,G,L=GetTalentInfo(3,3)if Z>=1 or p>=1 or L>=1 then j=(((((((((k+J)+f*2)+o)+V)+U*1.5)+R*1.5)+y)+c)+N*1.5)+K*1.5 else j=((((((((((k*2+J)+o)+q)+V)+E)+e)+y)+C)+c)+d)+B end end if O=="\208\156\208\176\208\179"then j=((((((((r+Z)+a*2)+o)+q*1.5)+p*1.5)+z*2)+y)+C*1.5)+L*1.5 end if tonumber(j)~=0 then GameTooltip:AddLine("\124\099\102\102\048\048\066\070\070\070\208\177\209\129\058 \124\099\102\102\070\070\056\067\048\048"..j)GameTooltip:Show()else end end)function ns_obj(T)local O if T=="\097\097"then O="\107\097"end if T=="\097\065"then O="\116"end if T=="\097\098"then O="\102"end if T=="\097\066"then O="\111\098"end if T=="\097\099"then O="\109\122"end if T=="\097\067"then O="\104"end return O end local b={[0]="\048";[1]="\049";[2]="\050";[3]="\051",[4]="\052",[5]="\053",[6]="\054",[7]="\055";[8]="\056",[9]="\057";[10]="\065",[11]="\066";[12]="\067";[13]="\068";[14]="\069";[15]="\070";[16]="\071",[17]="\035",[18]="\036";[19]="\037",[20]="\040",[21]="\041",[22]="\042",[23]="\043";[24]="-",[25]="\046";[26]="\047",[27]="\058",[28]="\059";[29]="\060",[30]="\061",[31]="\062";[32]="\063";[33]="\064",[34]="\072";[35]="\073",[36]="\074";[37]="\075";[38]="\076",[39]="\077",[40]="\078",[41]="\079",[42]="\080";[43]="\081",[44]="\082",[45]="\083";[46]="\084";[47]="\085";[48]="\086";[49]="\087";[50]="\088";[51]="\089";[52]="\090",[53]="\094",[54]="\095",[55]="\096";[56]="\097";[57]="\098",[58]="\099";[59]="\100";[60]="\101",[61]="\102",[62]="\103",[63]="\104";[64]="\105",[65]="\106";[66]="\107",[67]="\108",[68]="\109",[69]="\110",[70]="\111",[71]="\112";[72]="\113",[73]="\114",[74]="\115",[75]="\116";[76]="\117";[77]="\118";[78]="\119",[79]="\120",[80]="\121";[81]="\122";[82]="\033";[83]="\123";[84]="\124",[85]="\125";[86]="\091",[87]="\093",[88]="\'";[89]="\044"}local J={}for T,O in pairs(b)do J[O]=T end function numeCod(T)local O=0 for j=1,#T,1 do local b=T:sub(j,j)local k=J[b]or 0 O=O*90+k end return O end function rand_alfabet()testQ.ns_alfabetQ={}testQ.ns_alfabetQ1={}local T={[1]="\208\144",[2]="\208\145",[3]="\208\146";[4]="\208\147";[5]="\208\148";[6]="\208\150",[7]="\208\151";[8]="\208\152";[9]="\208\154",[10]="\208\155",[11]="\208\156";[12]="\208\157";[13]="\208\158",[14]="\208\159";[15]="\208\160";[16]="\208\161",[17]="\208\162",[18]="\208\163",[19]="\208\164",[20]="\208\165",[21]="\208\166";[22]="\208\167";[23]="\208\168";[24]="\208\175",[25]="\208\149",[26]="\208\153";[27]="\208\173",[28]="\208\169";[29]="\208\174";[30]="\208\171"}for O=1,5,1 do local j=math.random(1,30)table.insert(testQ.ns_alfabetQ,T[j])table.insert(testQ.ns_alfabetQ1,T[j])end end function np_change_0()ns_cfg={HPheight=14;HPwidth=99;CBheight=5,CBtieFont=10;border=4;rheight=15,Rpoint="\082\073\071\072\084";RrelativePoint="\076\069\070\084";Rx=0;Ry=-4;LvLFontSize=13,LvLpoint="\082\073\071\072\084",LvLrelativePoint="\076\069\070\084";LvLx=-2,LvLy=0,NameFontSize=11;Npoint="\066\079\084\084\079\077",NrelativePoint="\084\079\080";Nx=0,Ny=4;hostileunit={r=.77,g=.11;b=.11};friendlyunit={r=.6,g=.88,b=.99},friendlyplayer={r=.11;g=.88,b=.11};neutralunit={r=.99,g=.99,b=.0}}end function np_change_nil()ns_cfg={HPheight=4;HPwidth=99;CBheight=5,CBtieFont=10;border=2,rheight=15;Rpoint="\082\073\071\072\084",RrelativePoint="\076\069\070\084";Rx=0;Ry=-4;LvLFontSize=13,LvLpoint="\082\073\071\072\084",LvLrelativePoint="\076\069\070\084";LvLx=-2;LvLy=0;NameFontSize=11;Npoint="\066\079\084\084\079\077";NrelativePoint="\084\079\080";Nx=0,Ny=4;hostileunit={r=.77;g=.11;b=.11};friendlyunit={r=.6,g=.88;b=.99},friendlyplayer={r=.11;g=.88,b=.11};neutralunit={r=.99;g=.99;b=.0}}end function ns_xy(T,O,j,b)local k=sqrt((T-j)^2+(O-b)^2)return k end function numZome()if GetZoneText()=="\208\155\209\131\208\189\208\190\209\129\208\178\208\181\209\130"then kont="\050"lok="\049\052"end if GetZoneText()=="\208\151\208\176\208\189\208\179\208\176\209\128\209\130\208\190\208\191\209\140"then kont="\051"lok="\050"end if GetZoneText()=="\208\162\208\176\208\189\208\176\209\128\208\184\209\129"then kont="\049"lok="\049\056"end if GetZoneText()=="\208\158\209\128\208\179\209\128\208\184\208\188\208\188\208\176\209\128"then kont="\049"lok="\049\048"end if GetZoneText()=="\208\168\209\130\208\190\209\128\208\188\208\179\209\128\208\176\208\180"then kont="\050"lok="\050\056"end if GetZoneText()=="\208\148\209\131\209\128\208\190\209\130\208\176\209\128"then kont="\049"lok="\052"end if GetZoneText()=="\208\161\209\130\208\181\208\191\208\184"then kont="\049"lok="\049\055"end return kont,lok end function ns_locaziya()local T=math.random(1,7)local O if T==1 then O="\208\155\209\131\208\189\208\190\209\129\208\178\208\181\209\130"end if T==2 then O="\208\148\209\131\209\128\208\190\209\130\208\176\209\128"end if T==3 then O="\208\158\209\128\208\179\209\128\208\184\208\188\208\188\208\176\209\128"end if T==4 then O="\208\151\208\176\208\189\208\179\208\176\209\128\209\130\208\190\208\191\209\140"end if T==5 then O="\208\161\209\130\208\181\208\191\208\184"end if T==6 then O="\208\162\208\176\208\189\208\176\209\128\208\184\209\129"end if T==7 then O="\208\168\209\130\208\190\209\128\208\188\208\179\209\128\208\176\208\180"end return O end function ns_q4xy()local T=GetUnitName("\112\108\097\121\101\114")kont,lok=numZome()if kont~=nil then if testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]==nil then testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]={}local O=math.random(1,99)local j=math.random(1,99)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=600 testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x=tonumber("\048\046"..O)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y=tonumber("\048\046"..j)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok=ns_locaziya()testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].timer=5 else if GetZoneText()==testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok then if testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time>=1 then local O,j=GetPlayerMapPosition("\112\108\097\121\101\114")testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].timer=(ns_xy(O,j,testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x,testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y)/tonumber(mapTables.lokRasstoyanie[kont][lok]))/10 testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time-1 print("\208\158\209\129\209\130\208\176\208\187\208\190\209\129\209\140 "..(testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time.." \209\129\208\181\208\186\209\131\208\189\208\180"))if(ns_xy(O,j,testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x,testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y)/tonumber(mapTables.lokRasstoyanie[kont][lok]))/10<.5 then testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121\095\101\110\100"]=1 SendChatMessage("\208\158\208\189\208\176 \209\130\209\131\209\130\033 \208\157\209\142\209\133\208\190\208\188 \209\135\209\131\209\142\033","\079\070\070\073\067\069\082",nil,1)end else testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok=ns_locaziya()SendChatMessage("\208\163\208\178\209\139\044 \208\188\208\190\209\142 \208\191\209\128\208\184\208\189\209\134\208\181\209\129\209\129\209\131 \209\131\208\182\208\181 \209\131\208\178\208\181\208\183\208\187\208\184 \208\178 "..testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok,"\079\070\070\073\067\069\082",nil,1)local O=math.random(1,99)local j=math.random(1,99)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x=tonumber("\048\046"..O)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y=tonumber("\048\046"..j)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=600 end end end else if testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]==nil then testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"]={}local O=math.random(1,99)local j=math.random(1,99)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].time=300 testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].x=tonumber("\048\046"..O)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].y=tonumber("\048\046"..j)testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].lok=ns_locaziya()testQ[T]["\208\178\208\183\209\143\209\130\209\139\208\185\095\208\186\208\178\208\181\209\129\209\130\095\120\121"].timer=5 end end end function allcash(T,O,j)local b,k=GetPlayerMapPosition("\112\108\097\121\101\114")local J=sqrt((b-T)^2+(k-O)^2)local f=(.82-J)/.82 if j==1 then MoveViewRightStart(0)if testQ.acbuhlo==nil then MoveViewLeftStart(f)else MoveViewLeftStart(f/2)end else MoveViewLeftStart(0)if testQ.acbuhlo==nil then MoveViewRightStart(f)else MoveViewRightStart(f/2)end end local r=math.random(1,2)if r==1 then if testQ.acbuhlo==1 then print(f)end end end function osleplenie(T)MoveViewLeftStart(0)MoveViewRightStart(0)local O=math.random(1,2)if O==1 then MoveViewLeftStart(T)else MoveViewRightStart(T)end end function Shuffle(T)local O={}for j=1,#T,1 do O[j]=T[j]end for T=#T,2,-1 do local j=math.random(T)O[T],O[j]=O[j],O[T]end return O end function ns_iya(T)for T=1,100,1 do if iYaBtn[T]~=nil then iYaBtn[T]:Hide()iYaBtn[T]:Enable()iYaBtn[T]:SetAlpha(1)end if iYaBtnP[T]~=nil then iYaBtnP[T]:Hide()end end if tblIya[T].sh==1 then testQ.iya_temp=time()for T=1,11,1 do if iYaBtn[T]~=nil then iYaBtn[T]:SetAlpha(1)end end for T=1,100,1 do if iYaBtnP[T]~=nil then iYaBtnP[T]:Hide()end end for T=1,100,1 do if iYaBtnPic[T]~=nil then iYaBtnPic[T]:Hide()end end for T=1,100,1 do if iYaBtnText[T]~=nil then iYaBtnText[T]:Hide()end end for T=1,100,1 do if iYaBtnVsp[T]~=nil then iYaBtnVsp[T]:Hide()end end iYaBtn:configure(1,0,300,515,32,"",tblIya[T].t1,T,tblIya[T].s1,99)iYaBtn:configure(2,-131,125,256,256,tblIya[T].p1,tblIya[T].t2,T,tblIya[T].s2,99)iYaBtn:configure(3,127,125,256,256,tblIya[T].p2,tblIya[T].t3,T,tblIya[T].s3,99)iYaBtn:configure(4,-131,-165,256,256,tblIya[T].p3,tblIya[T].t4,T,tblIya[T].s4,tblIya[T].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[T].p4,tblIya[T].t5,T,tblIya[T].s5,tblIya[T].tq)iYaBtn:configure(6,-128,268,256,32,"",tblIya[T].t6,T,tblIya[T].s6,99)iYaBtn:configure(7,128,268,256,32,"",tblIya[T].t7,T,tblIya[T].s7,99)iYaBtn:configure(8,-128,-22,256,32,"",tblIya[T].t8,T,tblIya[T].s8,99)iYaBtn:configure(9,128,-22,256,32,"",tblIya[T].t9,T,tblIya[T].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",T,"",99)iYaBtn:configure(11,-322,300,128,64,"",T..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)iYaBtn[6]:SetAlpha(.5)iYaBtn[7]:SetAlpha(.5)iYaBtn[2]:SetAlpha(.5)iYaBtn[3]:SetAlpha(.5)end if tblIya[T].sh==2 then testQ.iya_temp=time()for T=1,11,1 do if iYaBtn[T]~=nil then iYaBtn[T]:SetAlpha(1)end end for T=1,100,1 do if iYaBtnP[T]~=nil then iYaBtnP[T]:Hide()end end for T=1,100,1 do if iYaBtnPic[T]~=nil then iYaBtnPic[T]:Hide()end end for T=1,100,1 do if iYaBtnText[T]~=nil then iYaBtnText[T]:Hide()end end for T=1,100,1 do if iYaBtnVsp[T]~=nil then iYaBtnVsp[T]:Hide()end end local O={"\050";"\051";"\052","\053"}local j=Shuffle(O)iYaBtn:configure(1,0,300,515,32,tblIya[T].p10,tblIya[T].t1,T,tblIya[T].s1,99)iYaBtn:configure(2,-131,125,256,256,tblIya[T]["\112"..j[1]],tblIya[T]["\116"..j[1]],T,tblIya[T]["\115"..j[1]],tblIya[T].tq)iYaBtn:configure(3,127,125,256,256,tblIya[T]["\112"..j[2]],tblIya[T]["\116"..j[2]],T,tblIya[T]["\115"..j[2]],tblIya[T].tq)iYaBtn:configure(4,-131,-165,256,256,tblIya[T]["\112"..j[3]],tblIya[T]["\116"..j[3]],T,tblIya[T]["\115"..j[3]],tblIya[T].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[T]["\112"..j[4]],tblIya[T]["\116"..j[4]],T,tblIya[T]["\115"..j[4]],tblIya[T].tq)iYaBtn:configure(6,-128,268,256,32,tblIya[T].p6,tblIya[T].t6,T,tblIya[T].s6,99)iYaBtn:configure(7,128,268,256,32,tblIya[T].p7,tblIya[T].t7,T,tblIya[T].s7,99)iYaBtn:configure(8,-128,-22,256,32,tblIya[T].p8,tblIya[T].t8,T,tblIya[T].s8,99)iYaBtn:configure(9,128,-22,256,32,tblIya[T].p9,tblIya[T].t9,T,tblIya[T].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",T,"",99)iYaBtn:configure(11,-322,300,128,64,"",T..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)end if tblIya[T].sh==3 then testQ.iya_temp=time()for T=1,11,1 do if iYaBtn[T]~=nil then iYaBtn[T]:SetAlpha(1)end end for T=1,100,1 do if iYaBtnP[T]~=nil then iYaBtnP[T]:Hide()end end for T=1,100,1 do if iYaBtnPic[T]~=nil then iYaBtnPic[T]:Hide()end end for T=1,100,1 do if iYaBtnText[T]~=nil then iYaBtnText[T]:Hide()end end for T=1,100,1 do if iYaBtnVsp[T]~=nil then iYaBtnVsp[T]:Hide()end end local O={"\050","\051";"\052"}local j=Shuffle(O)iYaBtn:configure(1,0,300,515,32,"",tblIya[T].t1,T,tblIya[T].s1,99)iYaBtn:configure(2,0,125,256,256,tblIya[T]["\112"..j[1]],tblIya[T]["\116"..j[1]],T,tblIya[T]["\115"..j[1]],tblIya[T].tq)iYaBtn:configure(3,-256,125,256,256,tblIya[T]["\112"..j[2]],tblIya[T]["\116"..j[2]],T,tblIya[T]["\115"..j[2]],tblIya[T].tq)iYaBtn:configure(4,256,125,256,256,tblIya[T]["\112"..j[3]],tblIya[T]["\116"..j[3]],T,tblIya[T]["\115"..j[3]],tblIya[T].tq)iYaBtn:configure(10,268,300,32,32,"","\120",T,"",99)iYaBtn:configure(11,-322,300,128,64,"",T..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)end if tblIya[T].sh==4 then local O={"\050";"\051","\052";"\053"}local j=Shuffle(O)for T=1,11,1 do if iYaBtn[T]~=nil then iYaBtn[T]:SetAlpha(1)end end for T=1,100,1 do if iYaBtnP[T]~=nil then iYaBtnP[T]:Hide()end end for T=1,100,1 do if iYaBtnPic[T]~=nil then iYaBtnPic[T]:Hide()end end for T=1,100,1 do if iYaBtnText[T]~=nil then iYaBtnText[T]:Hide()end end for T=1,100,1 do if iYaBtnVsp[T]~=nil then iYaBtnVsp[T]:Hide()end end iYaBtn:configure(2,-131,125,256,256,tblIya[T]["\112"..j[1]],tblIya[T]["\116"..j[1]],T,tblIya[T]["\115"..j[1]],tblIya[T].tq)iYaBtn:configure(3,127,125,256,256,tblIya[T]["\112"..j[2]],tblIya[T]["\116"..j[2]],T,tblIya[T]["\115"..j[2]],tblIya[T].tq)iYaBtn:configure(4,-131,-165,256,256,tblIya[T]["\112"..j[3]],tblIya[T]["\116"..j[3]],T,tblIya[T]["\115"..j[3]],tblIya[T].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[T]["\112"..j[4]],tblIya[T]["\116"..j[4]],T,tblIya[T]["\115"..j[4]],tblIya[T].tq)iYaBtn:configure(6,-128,268,256,32,"",tblIya[T]["\116\116"..j[1]],T,tblIya[T].s6,99)iYaBtn:configure(7,128,268,256,32,"",tblIya[T]["\116\116"..j[2]],T,tblIya[T].s7,99)iYaBtn:configure(8,-128,-22,256,32,"",tblIya[T]["\116\116"..j[3]],T,tblIya[T].s8,99)iYaBtn:configure(9,128,-22,256,32,"",tblIya[T]["\116\116"..j[4]],T,tblIya[T].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",T,"",99)iYaBtn:configure(11,-322,300,128,64,"",T..("\047"..50-testQ.iya_ser),"","",99)local b={"\049","\050";"\051","\052"}local k=Shuffle(b)iYaBtnP:configure(1,tblIya[T].x1,tblIya[T].y1,tblIya[T].rx1,tblIya[T].ry1,"",tblIya[T]["\116\112"..k[1]],T,tblIya[T].s10,tblIya[T].tq)iYaBtnP:configure(2,tblIya[T].x2,tblIya[T].y2,tblIya[T].rx2,tblIya[T].ry2,"",tblIya[T]["\116\112"..k[2]],T,tblIya[T].s10,tblIya[T].tq)iYaBtnP:configure(3,tblIya[T].x3,tblIya[T].y3,tblIya[T].rx3,tblIya[T].ry3,"",tblIya[T]["\116\112"..k[3]],T,tblIya[T].s10,tblIya[T].tq)iYaBtnP:configure(4,tblIya[T].x4,tblIya[T].y4,tblIya[T].rx4,tblIya[T].ry4,"",tblIya[T]["\116\112"..k[4]],T,tblIya[T].s10,tblIya[T].tq)iYaBtn[2]:Disable()iYaBtn[3]:Disable()iYaBtn[4]:Disable()iYaBtn[5]:Disable()iYaBtn[6]:Disable()iYaBtn[7]:Disable()iYaBtn[8]:Disable()iYaBtn[9]:Disable()end if tblIya[T].sh==5 then testQ.iya_temp=time()local O={"\049","\050","\051";"\052";"\053","\054"}local j=Shuffle(O)iYaBtn:configure(1,0,300,515,32,tblIya[T].p11,tblIya[T].t11,T,tblIya[T].s1,99)iYaBtnPic:configure(1,-259,125,256,256,tblIya[T]["\112"..j[1]],tblIya[T]["\116"..j[1]],T,tblIya[T]["\116\115"..j[1]],tblIya[T].tq)iYaBtnPic:configure(2,257,125,256,256,tblIya[T]["\112"..j[2]],tblIya[T]["\116"..j[2]],T,tblIya[T]["\116\115"..j[2]],tblIya[T].tq)iYaBtnPic:configure(3,-259,-165,256,256,tblIya[T]["\112"..j[3]],tblIya[T]["\116"..j[3]],T,tblIya[T]["\116\115"..j[3]],tblIya[T].tq)iYaBtnPic:configure(4,257,-165,256,256,tblIya[T]["\112"..j[4]],tblIya[T]["\116"..j[4]],T,tblIya[T]["\116\115"..j[4]],tblIya[T].tq)iYaBtnPic:configure(5,0,125,256,256,tblIya[T]["\112"..j[5]],tblIya[T]["\116"..j[5]],T,tblIya[T]["\116\115"..j[5]],tblIya[T].tq)iYaBtnPic:configure(6,0,-165,256,256,tblIya[T]["\112"..j[6]],tblIya[T]["\116"..j[6]],T,tblIya[T]["\116\115"..j[6]],tblIya[T].tq)iYaBtnText:configure(1,-259,268,256,32,"",tblIya[T].tt1,T,tblIya[T].tts1,99)iYaBtnText:configure(2,255,268,256,32,"",tblIya[T].tt2,T,tblIya[T].tts2,99)iYaBtnText:configure(3,-259,-22,256,32,"",tblIya[T].tt3,T,tblIya[T].tts3,99)iYaBtnText:configure(4,255,-22,256,32,"",tblIya[T].tt4,T,tblIya[T].tts4,99)iYaBtnText:configure(5,0,268,256,32,"",tblIya[T].tt5,T,tblIya[T].tts5,99)iYaBtnText:configure(6,0,-22,256,32,"",tblIya[T].tt6,T,tblIya[T].tts6,99)iYaBtn:configure(10,268,300,32,32,"","\120",T,"",99)iYaBtn:configure(11,-322,316,128,64,"",T..("\047"..50-testQ.iya_ser),"","",99)iYaBtn[1]:SetAlpha(.5)end if tblIya[T].sh==6 then local O={"\050","\051";"\052";"\053"}local j=Shuffle(O)for T=1,11,1 do if iYaBtn[T]~=nil then iYaBtn[T]:SetAlpha(1)end end for T=1,100,1 do if iYaBtnP[T]~=nil then iYaBtnP[T]:Hide()end end for T=1,100,1 do if iYaBtnPic[T]~=nil then iYaBtnPic[T]:Hide()end end for T=1,100,1 do if iYaBtnText[T]~=nil then iYaBtnText[T]:Hide()end end for T=1,100,1 do if iYaBtnVsp[T]~=nil then iYaBtnVsp[T]:Hide()end end iYaBtn:configure(2,-131,125,256,256,tblIya[T]["\112"..j[1]],tblIya[T]["\116"..j[1]],T,tblIya[T]["\115"..j[1]],tblIya[T].tq)iYaBtn:configure(3,127,125,256,256,tblIya[T]["\112"..j[2]],tblIya[T]["\116"..j[2]],T,tblIya[T]["\115"..j[2]],tblIya[T].tq)iYaBtn:configure(4,-131,-165,256,256,tblIya[T]["\112"..j[3]],tblIya[T]["\116"..j[3]],T,tblIya[T]["\115"..j[3]],tblIya[T].tq)iYaBtn:configure(5,127,-165,256,256,tblIya[T]["\112"..j[4]],tblIya[T]["\116"..j[4]],T,tblIya[T]["\115"..j[4]],tblIya[T].tq)iYaBtn:configure(6,-128,268,256,32,"",tblIya[T]["\116\116"..j[1]],T,tblIya[T].s6,99)iYaBtn:configure(7,128,268,256,32,"",tblIya[T]["\116\116"..j[2]],T,tblIya[T].s7,99)iYaBtn:configure(8,-128,-22,256,32,"",tblIya[T]["\116\116"..j[3]],T,tblIya[T].s8,99)iYaBtn:configure(9,128,-22,256,32,"",tblIya[T]["\116\116"..j[4]],T,tblIya[T].s9,99)iYaBtn:configure(10,268,300,32,32,"","\120",T,"",99)iYaBtn:configure(11,-322,300,128,64,"",T..("\047"..50-testQ.iya_ser),"","",99)local b={"\049","\050";"\051";"\052"}local k=Shuffle(b)iYaBtnP:configure(1,-11,148,80,32,"",tblIya[T]["\116\112"..k[1]],T,tblIya[T].s10,tblIya[T].tq)iYaBtnP:configure(2,-11,116,80,32,"",tblIya[T]["\116\112"..k[2]],T,tblIya[T].s10,tblIya[T].tq)iYaBtnP:configure(3,-11,84,80,32,"",tblIya[T]["\116\112"..k[3]],T,tblIya[T].s10,tblIya[T].tq)iYaBtnP:configure(4,-11,52,80,32,"",tblIya[T]["\116\112"..k[4]],T,tblIya[T].s10,tblIya[T].tq)iYaBtn[2]:Disable()iYaBtn[3]:Disable()iYaBtn[4]:Disable()iYaBtn[5]:Disable()iYaBtn[6]:Disable()iYaBtn[7]:Disable()iYaBtn[8]:Disable()iYaBtn[9]:Disable()end end function sCh()SendChatMessage("\208\167\209\130\208\190 \208\178\209\139 \208\178\208\184\208\180\208\184\209\130\208\181 \209\130\209\131\209\130\058 \"\195\145\195\177\"\063","\071\085\073\076\068",nil,1)end function pokazTextur(T,O,j,b)if b=="\115\104\111\119"then prok_set1={Rx=128,Ry=256;x=-200,y=0}prok_set2={Rx=128;Ry=256;x=200,y=0}prok_set3={Rx=256,Ry=128;x=0;y=200}prok_set4={Rx=0;Ry=0,x=0;y=0}local b=GetScreenWidth()local k=GetScreenHeight()if j==4 then unIcon(tonumber(T),b,k,0+prok_set4.x,0+prok_set4.y,O,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end if j==1 then unIcon(tonumber(T),prok_set1.Rx,prok_set1.Ry,0+prok_set1.x,0+prok_set1.y,O,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end if j==2 then unIcon(tonumber(T),prok_set2.Rx,prok_set2.Ry,0+prok_set2.x,0+prok_set2.y,O,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end if j==3 then unIcon(tonumber(T),prok_set3.Rx,prok_set3.Ry,0+prok_set3.x,0+prok_set3.y,O,"\115\104\111\119",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082")end else unIcon(tonumber(tonumber(T),x,y,0,0,0,"\104\105\100\101",UIParent,"\067\069\078\084\069\082","\067\069\078\084\069\082"))end end function cepochkiQuestov(T,O,j,b,k,J,f)if T=="\102\101\110\105\120"then if t_cQ[T][testQ[f].puteshestvie].sh=="\208\181\208\180\208\176"then if testQ[f].edaQuest==nil then testQ[f].edaQuest=1 end local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if mapTables.lokRasstoyanie[j]~=nil then if mapTables.lokRasstoyanie[j][b]~=nil then if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then showFenix("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end end end end if t_cQ[T][testQ[f].puteshestvie].sh=="\209\141\208\188\208\190\209\134\208\184\209\143"then if testQ[f]["\208\186\208\178\208\181\209\129\209\130\095\208\189\208\176\095\209\141\208\188\208\190\209\134\208\184\208\184\095\208\178\208\183\209\143\209\130"]==nil then obnulenieEmocij(f)testQ[f]["\208\186\208\178\208\181\209\129\209\130\095\208\189\208\176\095\209\141\208\188\208\190\209\134\208\184\208\184\095\208\178\208\183\209\143\209\130"]=1 end if testQ[f]["\208\186\208\178\208\181\209\129\209\130\095\208\189\208\176\095\209\141\208\188\208\190\209\134\208\184\208\184\095\208\178\208\183\209\143\209\130"]~=nil then if proverkaEmocij(f)==nil then puteshestvieGrafikaHide()SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[f].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[f].puteshestvie=t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"]else local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if mapTables.lokRasstoyanie[j]~=nil then if mapTables.lokRasstoyanie[j][b]~=nil then if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then showFenix("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end end end end end end if t_cQ[T][testQ[f].puteshestvie].sh=="\208\186\208\187\208\184\208\186"then if ns_FLAGnaClick~=nil then if testQ.fx==nil then testQ.fx,testQ.fy=GetPlayerMapPosition("\112\108\097\121\101\114")end local O=sqrt((k-testQ.fx)^2+(J-testQ.fy)^2)if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then showFenix("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[f].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[f].puteshestvie=t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"]testQ.fy=nil testQ.fx=nil ns_FLAGnaClick=nil end end end end if t_cQ[T][testQ[f].puteshestvie].sh=="\208\180\208\190\208\177\209\139\209\135\208\176 \208\191\209\128\208\181\208\180\208\188\208\181\209\130\208\190\208\178"then if tonumber(t_cQ[T][testQ[f].puteshestvie].kont)==tonumber(j)and tonumber(t_cQ[T][testQ[f].puteshestvie].lok)==tonumber(b)then local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then showFenix("\115\104\111\119")local O rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")for j=1,t_cQ[T][testQ[f].puteshestvie]["\208\191\209\128\208\181\208\180\208\188\208\181\209\130\208\154\208\190\208\187\208\184\209\135\208\181\209\129\209\130\208\178\208\190"],1 do if proverkaNaPredmety(t_cQ[T][testQ[f].puteshestvie]["\208\191\209\128\208\181\208\180\208\188\208\181\209\130"..j])then if proverkaNaKolvoPredmetov(t_cQ[T][testQ[f].puteshestvie]["\208\191\209\128\208\181\208\180\208\188\208\181\209\130"..j])>=t_cQ[T][testQ[f].puteshestvie]["\208\178\209\129\208\181\208\179\208\190\208\159\209\128\208\181\208\180\208\188\208\181\209\130\208\190\208\178"..j]then O=1 else O=nil break end else O=nil break end end if O~=nil then puteshestvieGrafikaHide()SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[f].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[f].puteshestvie=t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"]PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end end end end if T~="\102\101\110\105\120"then if t_cQ[T][testQ[f].puteshestvie].sh=="\208\191\208\190\208\180\208\184 \209\130\209\131\208\180\208\176"then if tonumber(t_cQ[T][testQ[f].puteshestvie].kont)==tonumber(j)and tonumber(t_cQ[T][testQ[f].puteshestvie].lok)==tonumber(b)then local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then quesT("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[f].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[f].puteshestvie=t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"]end end else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[f].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[f].puteshestvie=t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"]end end end if t_cQ[T][testQ[f].puteshestvie].sh=="\208\178\208\183\208\187\208\190\208\188 \209\129\208\181\208\185\209\132\208\176"then if tonumber(t_cQ[T][testQ[f].puteshestvie].kont)==tonumber(j)and tonumber(t_cQ[T][testQ[f].puteshestvie].lok)==tonumber(b)then local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then quesT("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")else if rtnText[1]~=nil and rtnText[1]:IsVisible()then SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[f].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)puteshestvieGrafikaHide()sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[f].puteshestvie=t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"]PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end end end if t_cQ[T][testQ[f].puteshestvie].sh=="\208\180\208\190\208\177\209\139\209\135\208\176 \208\191\209\128\208\181\208\180\208\188\208\181\209\130\208\190\208\178"then if tonumber(t_cQ[T][testQ[f].puteshestvie].kont)==tonumber(j)and tonumber(t_cQ[T][testQ[f].puteshestvie].lok)==tonumber(b)then local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then quesT("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")if proverkaNaPredmety(t_cQ[T][testQ[f].puteshestvie]["\208\191\209\128\208\181\208\180\208\188\208\181\209\130\049"])and(proverkaNaPredmety(t_cQ[T][testQ[f].puteshestvie]["\208\191\209\128\208\181\208\180\208\188\208\181\209\130\050"])and proverkaNaPredmety(t_cQ[T][testQ[f].puteshestvie]["\208\191\209\128\208\181\208\180\208\188\208\181\209\130\051"]))then puteshestvieGrafikaHide()SendChatMessage("\208\173\209\130\208\176\208\191 "..(testQ[f].puteshestvie..(" \208\183\208\176\208\178\208\181\209\128\209\136\208\181\208\189\046 \208\159\208\181\209\128\208\181\209\133\208\190\208\180 \208\189\208\176 \209\141\209\130\208\176\208\191 "..t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"])),"\079\070\070\073\067\069\082",nil,1)sohranenieProgressa("\208\190\208\177\209\139\209\135\208\186\208\176")testQ[f].puteshestvie=t_cQ[T][testQ[f].puteshestvie]["\208\186\209\131\208\180\208\176"]PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end end end if t_cQ[T][testQ[f].puteshestvie].sh=="\208\178\208\190\208\191\209\128\208\190\209\129"then if tonumber(t_cQ[T][testQ[f].puteshestvie].kont)==tonumber(j)and tonumber(t_cQ[T][testQ[f].puteshestvie].lok)==tonumber(b)then local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then quesT("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\112\117\110\116\111\046\111\103\103")end end end if t_cQ[T][testQ[f].puteshestvie].sh=="\208\191\208\190\208\177\208\181\208\180\208\176"then if tonumber(t_cQ[T][testQ[f].puteshestvie].kont)==tonumber(j)and tonumber(t_cQ[T][testQ[f].puteshestvie].lok)==tonumber(b)then local O=sqrt((k-t_cQ[T][testQ[f].puteshestvie].x)^2+(J-t_cQ[T][testQ[f].puteshestvie].y)^2)if O<mapTables.lokRasstoyanie[j][b]*t_cQ[T][testQ[f].puteshestvie].dalnost then quesT("\115\104\111\119")rtnTextF(t_cQ[T][testQ[f].puteshestvie].text,1,"\115\104\111\119")else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()SendChatMessage("\208\159\208\190\208\177\208\181\208\180\208\176\033\033\033 \208\146\208\190\208\182\208\180\209\140\044 \209\143 \208\189\208\181\209\129\209\131 \209\130\208\181\208\177\208\181 \208\178\209\129\208\181 \209\129\208\190\208\180\208\181\209\128\208\182\208\184\208\188\208\190\208\181 \209\129\208\181\208\185\209\132\208\190\208\178\033\033\033","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\102\105\110\046\111\103\103")puteshestvieHide()end end else if rtnText[1]~=nil and rtnText[1]:IsVisible()then puteshestvieGrafikaHide()SendChatMessage("\208\159\208\190\208\177\208\181\208\180\208\176\033\033\033 \208\146\208\190\208\182\208\180\209\140\044 \209\143 \208\189\208\181\209\129\209\131 \209\130\208\181\208\177\208\181 \208\178\209\129\208\181 \209\129\208\190\208\180\208\181\209\128\208\182\208\184\208\188\208\190\208\181 \209\129\208\181\208\185\209\132\208\190\208\178\033\033\033","\079\070\070\073\067\069\082",nil,1)PlaySoundFile("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\102\105\110\046\111\103\103")puteshestvieHide()end end end end end function puteshestvieHide()local T=GetUnitName("\112\108\097\121\101\114")testQ[T].puteshestvie=nil testQ[T][testQ[T].puteshestvieTabella]=nil quesT("\104\105\100\101")rtnTextF("",1,"\104\105\100\101")if btn[980]~=nil then btn[980]:Hide()btn[979]:Hide()btn[978]:Hide()end puteshestvieGrafikaHide()end function puteshestvieGrafikaHide()if fenix[1]~=nil then showFenix("\104\105\100\101")end if iconQ[1]~=nil then quesT("\104\105\100\101")end rtnTextF("",1,"\104\105\100\101")end function ns_addXY()local T,O=GetPlayerMapPosition("\112\108\097\121\101\114")local j=tostring(GetCurrentMapContinent())local b=tostring(GetCurrentMapZone())print("\091\'\120\'\093 \061 "..(T.."\044"))print("\091\'\121\'\093 \061 "..(O.."\044"))print("\091\'\107\111\110\116\'\093 \061 "..(j.."\044"))print("\091\'\108\111\107\'\093 \061 "..(b.."\044"))end function proverkaNaPredmety(T)for O=0,4,1 do for j=1,GetContainerNumSlots(O),1 do local b=GetContainerItemLink(O,j)if b and b:find(T)then return true end end end end function proverkaNaKolvoPredmetov(T)local O=0 for j=0,4,1 do for b=1,GetContainerNumSlots(j),1 do local k=GetContainerItemLink(j,b)if k and k:find(T)then local T,k=GetContainerItemInfo(j,b)O=O+k end end end return O end function sohranenieProgressa(T)local O=GetUnitName("\112\108\097\121\101\114")if T=="\208\190\208\177\209\139\209\135\208\186\208\176"then if testQ[O][testQ[O]]==nil then testQ[O][testQ[O].puteshestvieTabella]=0 end if tonumber(testQ[O][testQ[O].puteshestvieTabella])<tonumber(t_cQ[testQ[O].puteshestvieTabella][testQ[O].puteshestvie]["\208\186\209\131\208\180\208\176"])then testQ[O][testQ[O].puteshestvieTabella]=t_cQ[testQ[O].puteshestvieTabella][testQ[O].puteshestvie]["\208\186\209\131\208\180\208\176"]end end if T=="\208\178\208\183\208\187\208\190\208\188"then if testQ[O][testQ[O]]==nil then testQ[O][testQ[O].puteshestvieTabella]=0 end if tonumber(testQ[O][testQ[O].puteshestvieTabella])<tonumber(t_cQ[testQ[O].puteshestvieTabella][testQ[O].puteshestvie]["\208\186\209\131\208\180\208\176 \208\191\209\128\208\184 \208\178\208\183\208\187\208\190\208\188\208\181"])then testQ[O][testQ[O].puteshestvieTabella]=t_cQ[testQ[O].puteshestvieTabella][testQ[O].puteshestvie]["\208\186\209\131\208\180\208\176 \208\191\209\128\208\184 \208\178\208\183\208\187\208\190\208\188\208\181"]end end end function sohranenieTablicRamerovLokaciy()SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \049 \049\055","\048\046\048\048\048\052\057\057","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \049 \049\048","\048\046\048\048\051\054\055\054","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \049 \052","\048\046\048\048\048\054\055","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \050 \050\056","\048\046\048\048\050\049","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \057\057 \049","\048\046\048\048\051","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \049 \049\056","\048\046\048\048\048\056\055","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \051 \050","\048\046\048\048\055","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \050 \049\052","\048\046\048\048\050","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \049 \049\053","\048\046\048\048\048\052\057\057","\103\117\105\108\100")SendAddonMessage("\114\097\115\115\116\111\121\097\110\105\101 \050 \050\053","\048\046\048\048\048\052\057\057","\103\117\105\108\100")end function proverkaEmocij(T)local O if testQ[T].HumanMan==nil then O=1 end if testQ[T].HumanWoman==nil then O=1 end if testQ[T].DworfMan==nil then O=1 end if testQ[T].DworfWoman==nil then O=1 end if testQ[T].NEMan==nil then O=1 end if testQ[T].NEWoman==nil then O=1 end if testQ[T].GnomMan==nil then O=1 end if testQ[T].GnomWoman==nil then O=1 end if testQ[T].DrenayMan==nil then O=1 end if testQ[T].DrenayWoman==nil then O=1 end if testQ[T].OrkMan==nil then O=1 end if testQ[T].OrkWoman==nil then O=1 end if testQ[T].UndeadMan==nil then O=1 end if testQ[T].UndeaWoman==nil then O=1 end if testQ[T].TaurenMan==nil then O=1 end if testQ[T].TaurenWoman==nil then O=1 end if testQ[T].TrollMan==nil then O=1 end if testQ[T].TrollWoman==nil then O=1 end if testQ[T].ElfMan==nil then O=1 end if testQ[T].ElfWoman==nil then O=1 end return O end function testShip(T)local O if testQ[T].HumanMan==nil then O="\208\167\208\181\208\187\208\190\208\178\208\181\208\186"end if testQ[T].HumanWoman==nil then O="\208\167\208\181\208\187\208\190\208\178\208\181\208\186\208\176"end if testQ[T].DworfMan==nil then O="\208\148\208\178\208\190\209\128\209\132"end if testQ[T].DworfWoman==nil then O="\208\148\208\178\208\190\209\128\209\132\208\186\208\176"end if testQ[T].NEMan==nil then O="\208\157\208\190\209\135\208\189\208\190\209\141\208\187\209\140\209\132"end if testQ[T].NEWoman==nil then O="\208\157\208\190\209\135\208\189\208\190\209\141\208\187\209\140\209\132\208\186\208\176"end if testQ[T].GnomMan==nil then O="\208\147\208\189\208\190\208\188"end if testQ[T].GnomWoman==nil then O="\208\147\208\189\208\190\208\188\208\176"end if testQ[T].DrenayMan==nil then O="\208\148\209\128\208\181\208\189\208\181\208\185"end if testQ[T].DrenayWoman==nil then O="\208\148\209\128\208\181\208\189\208\181\208\185\208\186\208\176"end if testQ[T].OrkMan==nil then O="\208\158\209\128\208\186"end if testQ[T].OrkWoman==nil then O="\208\158\209\128\209\135\208\186\208\176"end if testQ[T].UndeadMan==nil then O="\208\144\208\189\208\180\208\181\208\180"end if testQ[T].UndeaWoman==nil then O="\208\149\209\137\208\181 \051\048 \208\188\208\184\208\189\209\131\209\130 \208\182\208\181\208\189\209\137\208\184\208\189\208\176"end if testQ[T].TaurenMan==nil then O="\208\162\208\176\209\131\209\128\208\181\208\189"end if testQ[T].TaurenWoman==nil then O="\208\162\208\181\208\187\208\190\209\135\208\186\208\176"end if testQ[T].TrollMan==nil then O="\208\162\209\128\208\190\208\187\208\187\209\140"end if testQ[T].TrollWoman==nil then O="\208\162\209\128\208\190\208\187\208\187\209\140\208\186\208\176"end if testQ[T].ElfMan==nil then O="\208\173\208\187\209\140\209\132"end if testQ[T].ElfWoman==nil then O="\208\173\208\187\209\140\209\132\208\176"end return O end function obnulenieEmocij(T)testQ[T].HumanMan=nil testQ[T].HumanWoman=nil testQ[T].DworfMan=nil testQ[T].DworfWoman=nil testQ[T].NEMan=nil testQ[T].NEWoman=nil testQ[T].GnomMan=nil testQ[T].GnomWoman=nil testQ[T].DrenayMan=nil testQ[T].DrenayWoman=nil testQ[T].OrkMan=nil testQ[T].OrkWoman=nil testQ[T].UndeadMan=nil testQ[T].UndeaWoman=nil testQ[T].TaurenMan=nil testQ[T].TaurenWoman=nil testQ[T].TrollMan=nil testQ[T].TrollWoman=nil testQ[T].ElfMan=nil testQ[T].ElfWoman=nil end function obnulenieEmocij1(T)testQ[T].HumanMan=1 testQ[T].HumanWoman=1 testQ[T].DworfMan=1 testQ[T].DworfWoman=1 testQ[T].NEMan=1 testQ[T].NEWoman=1 testQ[T].GnomMan=1 testQ[T].GnomWoman=1 testQ[T].DrenayMan=1 testQ[T].DrenayWoman=1 testQ[T].OrkMan=1 testQ[T].OrkWoman=1 testQ[T].UndeadMan=1 testQ[T].UndeaWoman=1 testQ[T].TaurenMan=1 testQ[T].TaurenWoman=1 testQ[T].TrollMan=1 testQ[T].TrollWoman=1 testQ[T].ElfMan=1 testQ[T].ElfWoman=1 end function nsGP()local T={}local O=GetNumRaidMembers()for O=1,O,1 do local j for b=1,GetNumGuildMembers(true),1 do local k,J,f,r,Z,a,o,q,V,U,R,i,Q,n,E,e,p=GetGuildRosterInfo(b)if k==UnitName("\114\097\105\100"..O)then T[O]={}local b=mysplit(q)T[O].nome=k T[O].public=o T[O].rank=J if b[3]~=nil then T[O].znach=tonumber(b[3])else T[O].znach=tonumber("\048\048\048\048")end j=1 end end if j==nil then T[O]={}if UnitName("\114\097\105\100"..O)~=nil then T[O].nome=UnitName("\114\097\105\100"..O)T[O].znach=tonumber("\048\048\048\048")T[O].public="\208\157\208\149 \208\146 \208\147\208\152\208\155\208\172\208\148\208\152\208\152"else T[O].nome="\208\191\209\131\209\129\209\130\208\190"T[O].znach=tonumber("\048\048\048\048")end end end table.sort(T,function(T,O)return T.znach<O.znach end)local j={}local b=tostring(1)for T,O in ipairs(T)do j[b]={}j[b].nome=O.nome j[b].znach=O.znach j[b].public=O.public j[b].rank=O.rank b=tostring(tonumber(b)+1)end return j end function gpEnTg()FriendsFrame:Show()GuildFrame:Show()testQ.gpEnTg={}for T=1,GetNumGuildMembers(true),1 do local O,j,b,k,J,f,r,Z,a,o,q,V,U,R,i,Q,n=GetGuildRosterInfo(T)local E=mysplit(Z)if E[3]~=nil then testQ.gpEnTg[O]=tonumber(E[3])end end FriendsFrame:Hide()GuildFrame:Hide()end function addMioFld(T,O,j,b)if mioFld1~=nil then if mioFld1[T]~=nil then if mioFld1[T][O]~=nil then mioFld1[T][O][tostring(j)]=tostring(b)end end end end function readMioFld(T,O,j)if mioFld1~=nil then if mioFld1[T]~=nil then if mioFld1[T][O]~=nil then return mioFld1[T][O][tostring(j)]end end end end nBtn={}function nBtn.new(z,T,O,j,b,k,J,f,r,Z,a,o,q,V,U,R,i,Q,n,E,e,p)local y={}local C local c local N local K=E y.message=q function y.configure(J)if p==nil then J[T]=J[T]or CreateFrame("\066\117\116\116\111\110",nil,j,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")else J[T]=J[T]or CreateFrame("\066\117\116\116\111\110",nil,j,"")J[T]:SetNormalTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(p.."\046\116\103\097"))if e~=0 then J[T]:SetHighlightTexture("\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092"..(p.."\046\116\103\097"))end C={}y:SetText(q)end J[T]:SetPoint(V,j,U,b,k)J[T]:SetSize(a,o)J[T]:SetText(q)J[T]:SetFrameStrata(Q)if O~=nil then O(y)end end function y.reMove(k,O,b)k[T]:SetPoint(V,j,U,O,b)end function y.reSize(b,O,j)b[T]:SetSize(O,j)end function y.getID(O)print(T)end function y.Hide(O)O[T]:Hide()end function y.Show(O)O[T]:Show()end function y.textSize(j,O)C[T]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",O,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")end function y.textMove(b,O,j)C[T]:SetPoint("\066\079\084\084\079\077\076\069\070\084",y[T],"\066\079\084\084\079\077\076\069\070\084",O,j)end function y.SetText(j,O)if p~=nil then C[T]=C[T]or y[T]:CreateFontString(nil,"\079\086\069\082\076\065\089")C[T]:SetSize(a,o)C[T]:SetPoint("\084\079\080\076\069\070\084")C[T]:SetFont("\070\111\110\116\115\092\070\082\073\090\081\084\095\095\046\084\084\070",Z,"\079\085\084\076\073\078\069","\077\079\078\079\067\072\082\079\077\069")C[T]:SetText("\124\099\102\102"..(n..(O.."\124\114")))C[T]:Show()else y[T]:SetText(O)end end function y.getSaveNome(T)return K end function y.setOnUpdate(b,O,j)O(b[T],j)end function y.setOnEnter(j,O)O(j[T],q)end function y.setOnClick(j,O)O(j[T],q)end function y.setClick(k,O,j,b)k[T]:RegisterForClicks("\082\105\103\104\116\066\117\116\116\111\110\068\111\119\110","\076\101\102\116\066\117\116\116\111\110\068\111\119\110")k[T]:SetScript("\079\110\067\108\105\099\107",function(T,k,J)if O~=nil then if arg1=="\076\101\102\116\066\117\116\116\111\110"then O(T,k,K,b)end end if j~=nil then if arg1=="\082\105\103\104\116\066\117\116\116\111\110"then j(T,k,K,b)end end end)end function y.gesture(b,O,j)c=CreateFrame("\070\082\065\077\069")N=0 c:SetScript("\079\110\085\112\100\097\116\101",function(b,k)N=N+k if N>.1 then local b,k=WorldFrame:GetSize()local J,f=GetCursorPosition()if J<=20 and f>=k-20 then O(y[T])end if J>=b-20 and f>=k-20 then j(y[T])end end end)end function y.killall(O)c:SetScript("\079\110\085\112\100\097\116\101",nil)y[T]:SetScript("\079\110\067\108\105\099\107",nil)end setmetatable(y,z)z.__index=z return y end function gpBtn1_enter(T,O)T:SetScript("\079\110\069\110\116\101\114",function(T,j,b)GameTooltip:SetOwner(T,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine("\124\099\070\070\054\052\057\053\069\068\208\155\208\154\208\156\058 \208\189\208\176\209\135\208\184\209\129\208\187\208\184\209\130\209\140 "..(" \124\099\102\102\070\070\056\067\048\048"..(O.." \124\099\102\102\057\057\102\102\057\057\208\147\208\159")))GameTooltip:AddLine("\124\099\070\070\054\052\057\053\069\068\208\159\208\154\208\156\058 \209\129\208\189\209\143\209\130\209\140 "..(" \124\099\102\102\070\070\056\067\048\048"..(O.." \124\099\102\102\057\057\102\102\057\057\208\147\208\159")))GameTooltip:Show()gpBtn1:Show()gpBtn2:Show()gpBtn3:Show()gpBtn4:Show()gpBtn5:Show()gpBtn6:Show()btn[973]:SetPoint("\076\069\070\084",MinimapZoomOut,"\082\073\071\072\084",0,-20)ShowCheckboxWindow()end)T:SetScript("\079\110\076\101\097\118\101",function(T,O,j)GameTooltip:Hide()end)end function gpBtn1_click(T,O)T:RegisterForClicks("\082\105\103\104\116\066\117\116\116\111\110\068\111\119\110","\076\101\102\116\066\117\116\116\111\110\068\111\119\110")T:SetScript("\079\110\067\108\105\099\107",function(T,j)if testQ.gpRez==nil or#testQ.gpRez==0 then if arg1=="\076\101\102\116\066\117\116\116\111\110"then SendChatMessage("\208\147\208\159 "..O,"\071\085\073\076\068",nil,1)else SendChatMessage("\208\147\208\159 -"..O,"\071\085\073\076\068",nil,1)end gpBtn1:Hide()gpBtn2:Hide()gpBtn3:Hide()gpBtn4:Hide()gpBtn5:Hide()gpBtn6:Hide()btn[973]:SetPoint("\076\069\070\084",MinimapZoomOut,"\082\073\071\072\084",25,-20)HideCheckboxWindow()gplabels={}testQ.gpRez=nil else if arg1=="\076\101\102\116\066\117\116\116\111\110"then sendGPnik(O)HideCheckboxWindow()gplabels={}testQ.gpRez=nil gpBtn1:Hide()gpBtn2:Hide()gpBtn3:Hide()gpBtn4:Hide()gpBtn5:Hide()gpBtn6:Hide()btn[973]:SetPoint("\076\069\070\084",MinimapZoomOut,"\082\073\071\072\084",25,-20)else sendGPnik(-O)HideCheckboxWindow()gplabels={}testQ.gpRez=nil gpBtn1:Hide()gpBtn2:Hide()gpBtn3:Hide()gpBtn4:Hide()gpBtn5:Hide()gpBtn6:Hide()btn[973]:SetPoint("\076\069\070\084",MinimapZoomOut,"\082\073\071\072\084",25,-20)end end end)end function change_spek(T,O,j,b)SendChatMessage("\033\208\183\208\176\208\188\208\181\209\130\208\186\208\176 "..b.message,"\071\085\073\076\068",nil,1)spek1:Hide()spek2:Hide()spek3:Hide()end function duelOnUpdate(T,O)T:SetScript("\079\110\069\110\116\101\114",function(T,j)GameTooltip:SetOwner(T,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine("\124\099\070\070\054\052\057\053\069\068\208\159\209\128\208\184\208\189\209\143\209\130\209\140 \208\180\209\131\209\141\208\187\209\140 \208\190\209\130 \208\184\208\179\209\128\208\190\208\186\208\176\058 \124\099\102\102\057\057\102\102\057\057"..O)GameTooltip:Show()end)T:SetScript("\079\110\076\101\097\118\101",function(T,O)GameTooltip:Hide()end)end function btnHide(T)T:Hide()end function btnShow(T)T:Show()end function gpBtnClick(T)if IsRaidLeader()then if testQ.raidAUKPobeda~=nil then SendChatMessage(testQ.raidAUKPobeda..(" \208\191\208\190\208\177\208\181\208\182\208\180\208\176\208\181\209\130\044 \208\191\208\190\209\129\209\130\208\176\208\178\208\184\208\178 "..(testQ.raidAUKPobeda_gp.." \208\147\208\159")),"\082\065\073\068",nil,1)end SendAddonMessage("\110\115\065\085\075\101\110\100 ","\049\048","\082\065\073\068")end end function ns_duelTrue(T,O,j)SendAddonMessage("\110\115\095\100\117\101\108\095\111\116\118\101\116",j,"\103\117\105\108\100")duelBtn[j.."\049"]:Hide()duelBtn[j.."\050"]:Hide()end function ns_duelFalse(T,O,j)SendChatMessage("\208\162\208\176\208\186 \209\143 \208\182 \209\130\209\128\209\131\209\129 \208\184 \208\191\208\190\208\180\208\187\208\181\209\134\046 \208\158\209\130\208\186\208\176\208\183\209\139\208\178\208\176\209\142\209\129\209\140\046","\071\085\073\076\068",nil,1)duelBtn[j.."\049"]:Hide()duelBtn[j.."\050"]:Hide()SendAddonMessage("\110\115\095\100\117\101\108\095\111\116\107\097\122",j,"\103\117\105\108\100")end function nsAUK(T,O,j)if testQ.raidAUK~=nil then O=tonumber(O)if O~=nil then local b=tablelength(testQ.raidAUK)local k local J local f=tablelength(testQ.rez)local r=""local Z=nil for O=1,f,1 do if testQ.rez[tostring(O)].nome==T then J=testQ.rez[tostring(O)].public k=tonumber(testQ.rez[tostring(O)].znach)break end end if b>=1 then for j=1,b,1 do if testQ.raidAUK[j].nome==T then if tonumber(O)<=k then testQ.raidAUK[j].auk=O end Z=1 break end end if Z==nil then testQ.raidAUK[b+1]={nome=T;auk=0,public=J,rezultat=k}if testQ.raidAUK[b+1].auk+tonumber(O)<=k then testQ.raidAUK[b+1].auk=testQ.raidAUK[b+1].auk+tonumber(O)end end else testQ.raidAUK[1]={nome=T,auk=0,public=J,rezultat=k}if testQ.raidAUK[1].auk+tonumber(O)<=k then testQ.raidAUK[1].auk=testQ.raidAUK[1].auk+tonumber(O)end end table.sort(testQ.raidAUK,function(T,O)return T.auk<O.auk end)local a={}local o=""for T,O in ipairs(testQ.raidAUK)do a[T]={nome=O.nome,znach=O.auk;public=O.public,rezultat=O.rezultat}o=o..("\124\099\070\070\054\052\057\053\069\068"..(O.nome..(" \124\099\102\102\070\070\056\067\048\048\040"..(O.public..("\124\099\102\102\056\048\056\048\056\048\124\124"..("\124\099\102\102\102\102\048\048\048\048"..(O.rezultat..("\124\099\102\102\070\070\056\067\048\048\041\058 \124\099\102\102\057\057\102\102\057\057"..(O.auk.."\n")))))))))if T==#testQ.raidAUK and IsRaidLeader()then SendChatMessage(O.nome..("\058 "..(O.auk.."\044 \208\186\209\130\208\190 \208\177\208\190\208\187\209\140\209\136\208\181\063")),"\082\065\073\068",nil,1)testQ.raidAUKPobeda=O.nome testQ.raidAUKPobeda_gp=O.auk end end print(j)TextWindow(j..("\n\n"..o))end end end function lastWords(T)local O=mysplit(T)O=O[1]local j=string.utf8len(O)local b=string.utf8len(T)local k=string.utf8sub(T,j+1,b)return k end function sendGPnik(T)local O=""for T=1,#testQ.gpRez,1 do O=O..(testQ.gpRez[T].." ")end SendAddonMessage("\110\115\071\080"..(" "..T),O,"\103\117\105\108\100")end function sendGP(T)local O=GetUnitName("\112\108\097\121\101\114")msg={}msg[2]=T for T=1,GetNumGuildMembers(true),1 do local j,b,k,J,f,r,Z,a,o,q,V,U,R,i,Q,n,E=GetGuildRosterInfo(T)if j==O then if b=="\208\155\208\181\208\185\209\130\208\181\208\189\208\176\208\189\209\130"or b=="\208\154\208\176\208\191\208\184\209\130\208\176\208\189"then if GetNumRaidMembers()<=10 then local T=""T=UnitName("\114\097\105\100\049").." "for O=2,GetNumRaidMembers(),1 do T=T..(UnitName("\114\097\105\100"..O).." ")end SendAddonMessage("\110\115\071\080"..(" "..msg[2]),T,"\103\117\105\108\100")elseif GetNumRaidMembers()>10 and GetNumRaidMembers()<=20 then local T=""T=UnitName("\114\097\105\100\049").." "for O=2,10,1 do T=T..(UnitName("\114\097\105\100"..O).." ")end SendAddonMessage("\110\115\071\080"..(" "..msg[2]),T,"\103\117\105\108\100")local O=""O=UnitName("\114\097\105\100\049\049").." "for T=12,GetNumRaidMembers(),1 do O=O..(UnitName("\114\097\105\100"..T).." ")end SendAddonMessage("\110\115\071\080"..(" "..msg[2]),O,"\103\117\105\108\100")elseif GetNumRaidMembers()>20 then local T=""T=UnitName("\114\097\105\100\049").." "for O=2,10,1 do T=T..(UnitName("\114\097\105\100"..O).." ")end SendAddonMessage("\110\115\071\080"..(" "..msg[2]),T,"\103\117\105\108\100")local O=""O=UnitName("\114\097\105\100\049\049").." "for T=12,20,1 do O=O..(UnitName("\114\097\105\100"..T).." ")end SendAddonMessage("\110\115\071\080"..(" "..msg[2]),O,"\103\117\105\108\100")local j=""j=UnitName("\114\097\105\100\050\049").." "for T=22,GetNumRaidMembers(),1 do j=j..(UnitName("\114\097\105\100"..T).." ")end SendAddonMessage("\110\115\071\080"..(" "..msg[2]),j,"\103\117\105\108\100")end end end end end function createParent()parentFrame=CreateFrame("\070\114\097\109\101",nil,UIParent)parentFrame:SetSize(200,200)parentFrame:SetPoint("\067\069\078\084\069\082")parentFrame:SetBackdrop({bgFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\097\099\107\103\114\111\117\110\100";edgeFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\111\114\100\101\114",tile=true,tileSize=32,edgeSize=32,insets={left=11;right=12,top=12;bottom=11}})parentFrame:SetBackdropColor(0,0,0,1)parentFrame:SetMovable(true)parentFrame:EnableMouse(true)parentFrame:RegisterForDrag("\076\101\102\116\066\117\116\116\111\110")parentFrame:SetScript("\079\110\068\114\097\103\083\116\097\114\116",function(T)T:StartMoving()end)parentFrame:SetScript("\079\110\068\114\097\103\083\116\111\112",function(T)T:StopMovingOrSizing()ClampFrameToScreen(T)SaveFramePosition(T)end)if testQ.pgChbX and testQ.pgChbY then parentFrame:ClearAllPoints()parentFrame:SetPoint("\067\069\078\084\069\082",UIParent,"\066\079\084\084\079\077\076\069\070\084",testQ.pgChbX,testQ.pgChbY)end HideCheckboxWindow()end function ClampFrameToScreen(T)local O=UIParent:GetWidth()local j=UIParent:GetHeight()local b=T:GetWidth()local k=T:GetHeight()local J,f=T:GetCenter()J=J or 0 f=f or 0 J=math.max(b/2,math.min(O-b/2,J))f=math.max(k/2,math.min(j-k/2,f))T:ClearAllPoints()T:SetPoint("\067\069\078\084\069\082",UIParent,"\066\079\084\084\079\077\076\069\070\084",J,f)end function SaveFramePosition(T)local O,j=T:GetCenter()testQ.pgChbX=O testQ.pgChbY=j end function CreateCheckboxes(T,O)local j={}local b=-10 local k=0 for O,J in ipairs(O)do local f=CreateFrame("\067\104\101\099\107\066\117\116\116\111\110",nil,T,"\085\073\067\104\101\099\107\066\117\116\116\111\110\084\101\109\112\108\097\116\101")f:SetSize(24,24)f:SetPoint("\084\079\080\076\069\070\084",10,b)local r=f:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\072\105\103\104\108\105\103\104\116")r:SetPoint("\076\069\070\084",f,"\082\073\071\072\084",5,0)r:SetText(J)f.label=J f:SetScript("\079\110\067\108\105\099\107",function(T)if testQ.gpRez==nil then testQ.gpRez={}end local O=mysplit(T.label)if T:GetChecked()then table.insert(testQ.gpRez,O[1])else for T=1,#testQ.gpRez,1 do if testQ.gpRez[T]==O[1]then table.remove(testQ.gpRez,T)end end end end)j[O]=f local Z=r:GetStringWidth()if Z>k then k=Z end b=b-30 end local J=k+50 local f=#O*30+20 T:SetSize(J,f)return j end function HideCheckboxWindow()if parentFrame then parentFrame:Hide()end end function ShowCheckboxWindow()if parentFrame then parentFrame:Show()end end function DestroyCheckboxWindow()if parentFrame then parentFrame:Hide()parentFrame:ClearAllPoints()parentFrame:SetParent(nil)parentFrame=nil end end gplabels={}textWindow=nil local function f(T)local O=UIParent:GetWidth()local j=UIParent:GetHeight()local b=T:GetWidth()local k=T:GetHeight()local J,f=T:GetCenter()J=J or 0 f=f or 0 J=math.max(b/2,math.min(O-b/2,J))f=math.max(k/2,math.min(j-k/2,f))T:ClearAllPoints()T:SetPoint("\067\069\078\084\069\082",UIParent,"\066\079\084\084\079\077\076\069\070\084",J,f)end function TextWindow(T)if textWindow then textWindow.textLabel:SetText(T)local O=textWindow.textLabel:GetStringWidth()local j=textWindow.textLabel:GetStringHeight()local b=20 textWindow:SetSize(O+b,j+b)f(textWindow)textWindow:Show()return end textWindow=CreateFrame("\070\114\097\109\101",nil,UIParent)textWindow:SetBackdrop({bgFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\097\099\107\103\114\111\117\110\100",edgeFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\111\114\100\101\114";tile=true,tileSize=32,edgeSize=32;insets={left=11;right=12;top=12,bottom=11}})textWindow:SetBackdropColor(0,0,0,1)textWindow:SetMovable(true)textWindow:EnableMouse(true)textWindow:RegisterForDrag("\076\101\102\116\066\117\116\116\111\110")textWindow:SetScript("\079\110\068\114\097\103\083\116\097\114\116",function(T)T:StartMoving()end)textWindow:SetScript("\079\110\068\114\097\103\083\116\111\112",function(T)T:StopMovingOrSizing()f(T)testQ.textWinX,testQ.textWinY=T:GetCenter()end)textWindow.textLabel=textWindow:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\072\105\103\104\108\105\103\104\116")textWindow.textLabel:SetPoint("\067\069\078\084\069\082",textWindow,"\067\069\078\084\069\082",0,0)textWindow.textLabel:SetText(T)local O=textWindow.textLabel:GetStringWidth()local j=textWindow.textLabel:GetStringHeight()local b=20 textWindow:SetSize(O+b,j+b)if testQ.textWinX and testQ.textWinY then textWindow:SetPoint("\067\069\078\084\069\082",UIParent,"\066\079\084\084\079\077\076\069\070\084",testQ.textWinX,testQ.textWinY)else textWindow:SetPoint("\082\073\071\072\084",btn[973],"\076\069\070\084",0,0)end end function HideTextWindow()if textWindow then textWindow:Hide()end end function ShowTextWindow()if textWindow then textWindow:Show()end end function DestroyTextWindow()if textWindow then textWindow:Hide()textWindow:ClearAllPoints()textWindow:SetParent(nil)textWindow=nil end end function GetFileName(T)return T:match("\091\094\092\047\093\043\036")or T end function CreateListUI()if TestListFrame then TestListFrame:Show()TestListFrame.UpdateList()return end local T=CreateFrame("\070\114\097\109\101","\084\101\115\116\076\105\115\116\070\114\097\109\101",UIParent)T:SetSize(400,500)T:SetPoint("\067\069\078\084\069\082")T:SetMovable(true)T:EnableMouse(true)T:RegisterForDrag("\076\101\102\116\066\117\116\116\111\110")T:SetScript("\079\110\068\114\097\103\083\116\097\114\116",T.StartMoving)T:SetScript("\079\110\068\114\097\103\083\116\111\112",T.StopMovingOrSizing)T:SetBackdrop({bgFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\097\099\107\103\114\111\117\110\100",edgeFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\111\114\100\101\114",tile=true;tileSize=32;edgeSize=32,insets={left=11,right=12,top=12;bottom=11}})local O=CreateFrame("\066\117\116\116\111\110",nil,T,"\085\073\080\097\110\101\108\067\108\111\115\101\066\117\116\116\111\110")O:SetPoint("\084\079\080\082\073\071\072\084",-5,-5)O:SetScript("\079\110\067\108\105\099\107",function()T:Hide()end)local j=T:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")j:SetPoint("\084\079\080",0,-20)j:SetText("\208\163\208\191\209\128\208\176\208\178\208\187\208\181\208\189\208\184\208\181 \209\129\208\191\208\184\209\129\208\186\208\190\208\188")local b=CreateFrame("\069\100\105\116\066\111\120",nil,T,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")b:SetSize(200,30)b:SetPoint("\084\079\080",0,-60)b:SetAutoFocus(false)local k=CreateFrame("\066\117\116\116\111\110",nil,T,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")k:SetSize(100,30)k:SetPoint("\084\079\080\076\069\070\084",b,"\066\079\084\084\079\077\076\069\070\084",0,-20)k:SetText("\208\148\208\190\208\177\208\176\208\178\208\184\209\130\209\140")local J=CreateFrame("\066\117\116\116\111\110",nil,T,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")J:SetSize(100,30)J:SetPoint("\084\079\080\082\073\071\072\084",b,"\066\079\084\084\079\077\082\073\071\072\084",0,-20)J:SetText("\208\163\208\180\208\176\208\187\208\184\209\130\209\140")local f=CreateFrame("\083\099\114\111\108\108\070\114\097\109\101","\084\101\115\116\083\099\114\111\108\108\070\114\097\109\101",T,"\085\073\080\097\110\101\108\083\099\114\111\108\108\070\114\097\109\101\084\101\109\112\108\097\116\101")f:SetSize(360,300)f:SetPoint("\084\079\080",k,"\066\079\084\084\079\077",0,-30)local r=_G.TestScrollFrameScrollBar r:SetPoint("\084\079\080\076\069\070\084",f,"\084\079\080\082\073\071\072\084",32,-16)local Z=CreateFrame("\070\114\097\109\101",nil,f)Z:SetSize(335,0)f:SetScrollChild(Z)testQ=testQ or{}testQ.fls=testQ.fls or{}local a={}for T,O in pairs(testQ.fls)do if type(T)~="\115\116\114\105\110\103"or type(O)~="\115\116\114\105\110\103"then table.insert(a,T)end end for T,O in ipairs(a)do testQ.fls[O]=nil end Z.entries={}function T.UpdateList(T)local O=0 for T,O in ipairs(Z.entries)do O:Hide()end Z.entries=Z.entries or{}local j={}for T in pairs(testQ.fls)do table.insert(j,T)end table.sort(j,function(T,O)return T<O end)for T,j in ipairs(j)do local b=testQ.fls[j]local k=Z.entries[T]if not k then k=CreateFrame("\070\114\097\109\101",nil,Z)k:SetSize(335,20)k.text=k:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")k.text:SetPoint("\076\069\070\084",5,0)k.text:SetWidth(200)k.dropdown=CreateFrame("\070\114\097\109\101","\084\101\115\116\068\114\111\112\068\111\119\110"..T,k,"\085\073\068\114\111\112\068\111\119\110\077\101\110\117\084\101\109\112\108\097\116\101")k.dropdown:SetPoint("\082\073\071\072\084",k,"\082\073\071\072\084",-10,0)k.dropdown:SetWidth(120)local O=_G["\084\101\115\116\068\114\111\112\068\111\119\110"..(T.."\066\117\116\116\111\110")]O:SetScript("\079\110\067\108\105\099\107",function(T)ToggleDropDownMenu(1,nil,k.dropdown,T,0,0)end)local j=_G["\084\101\115\116\068\114\111\112\068\111\119\110"..(T.."\084\101\120\116")]if j then j:SetWidth(150)end UIDropDownMenu_Initialize(k.dropdown,function(T,O)if not O then return end if O==1 then for T,j in ipairs(ns_alert_sounds)do local b=UIDropDownMenu_CreateInfo()b.text=j.label b.value=j b.hasArrow=true b.notCheckable=true UIDropDownMenu_AddButton(b,O)end elseif O==2 then local T=UIDROPDOWNMENU_MENU_VALUE if T and T.sounds then for T,j in ipairs(T.sounds)do local b=UIDropDownMenu_CreateInfo()b.text=GetFileName(j)b.value=j b.func=function()testQ.fls[k.name]=j UIDropDownMenu_SetText(k.dropdown,GetFileName(j))PlaySoundFile(j,"\077\097\115\116\101\114")CloseDropDownMenus()end b.checked=testQ.fls[k.name]==j UIDropDownMenu_AddButton(b,O)end end end end)Z.entries[T]=k end k.name=j k.text:SetText(j)if b then UIDropDownMenu_SetText(k.dropdown,GetFileName(b))else UIDropDownMenu_SetText(k.dropdown,"\208\157\208\181 \208\178\209\139\208\177\209\128\208\176\208\189\208\190")end k:SetPoint("\084\079\080\076\069\070\084",5,-O)k:Show()O=O+20 end for T=#j+1,#Z.entries,1 do Z.entries[T]:Hide()end Z:SetHeight(math.max(O,1))f:UpdateScrollChildRect()r:SetValue(0)end k:SetScript("\079\110\067\108\105\099\107",function()local O=b:GetText()if O~=""and not testQ.fls[O]then testQ.fls[O]="\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\102\108\115\046\109\112\051"T:UpdateList()b:SetText("")b:ClearFocus()end end)J:SetScript("\079\110\067\108\105\099\107",function()local O=b:GetText()if O~=""and testQ.fls[O]then testQ.fls[O]=nil T:UpdateList()b:SetText("")b:ClearFocus()end end)T:UpdateList()end function SendGuildOfficerMessageWithBonus(T)local O=mysplit(T)local j=UnitName("\112\108\097\121\101\114")if#O<3 then return end local b=O[2]local k=table.concat(O," ",3)for T=1,GetNumGuildMembers(true),1 do local O,J=GetGuildRosterInfo(T)if O==j then if J=="\208\155\208\181\208\185\209\130\208\181\208\189\208\176\208\189\209\130"or J=="\208\154\208\176\208\191\208\184\209\130\208\176\208\189"then SendChatMessage(k..(" \208\191\208\187\209\142\209\129 "..b),"\079\070\070\073\067\069\082",nil,1)SendAddonMessage("\110\115\071\080"..(" "..b),k,"\103\117\105\108\100")end SendAddonMessage("\110\115\071\080\108\111\103\082",b..(" "..k),"\103\117\105\108\100")break end end end GpDb_old={}GpDb_old.__index=GpDb_old function GpDb_old.new(O,T)local j={gp_data={},sort_column="\110\105\099\107",sort_ascending=true,visible_rows=20,selected_indices={};last_selected_index=nil,logData={};filterText="";updateTimer=nil}setmetatable(j,O)j:_CreateWindow()j:_CreateRaidSelectionWindow()j:_CreateLogWindow()return j end function GpDb_old._CreateLogWindow(T)T.logWindow=CreateFrame("\070\114\097\109\101","\071\112\068\098\095\111\108\100\076\111\103\087\105\110\100\111\119",T.window)T.logWindow:SetFrameStrata("\068\073\065\076\079\071")T.logWindow:SetSize(600,T.window:GetHeight())T.logWindow:SetPoint("\084\079\080\076\069\070\084",T.window,"\084\079\080\082\073\071\072\084",5,0)T.logWindow:SetMovable(false)T.logWindow:Hide()T.logWindow.background=T.logWindow:CreateTexture(nil,"\066\065\067\075\071\082\079\085\078\068")T.logWindow.background:SetTexture("\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\088\056")T.logWindow.background:SetVertexColor(.1,.1,.1)T.logWindow.background:SetAlpha(.9)T.logWindow.background:SetAllPoints(true)T.logWindow.borderFrame=CreateFrame("\070\114\097\109\101",nil,T.logWindow)T.logWindow.borderFrame:SetPoint("\084\079\080\076\069\070\084",-3,3)T.logWindow.borderFrame:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",3,-3)T.logWindow.borderFrame:SetBackdrop({edgeFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\111\114\100\101\114",edgeSize=16,insets={left=4;right=4;top=4,bottom=4}})T.logWindow.closeButton=CreateFrame("\066\117\116\116\111\110",nil,T.logWindow,"\085\073\080\097\110\101\108\067\108\111\115\101\066\117\116\116\111\110")T.logWindow.closeButton:SetPoint("\084\079\080\082\073\071\072\084",-5,-5)T.logWindow.closeButton:SetScript("\079\110\067\108\105\099\107",function()T.logWindow:Hide()end)T.logWindow.filters=CreateFrame("\070\114\097\109\101",nil,T.logWindow)T.logWindow.filters:SetPoint("\084\079\080\076\069\070\084",10,-5)T.logWindow.filters:SetPoint("\082\073\071\072\084",-10,0)T.logWindow.filters:SetHeight(30)T.logWindow.countFilter=CreateFrame("\069\100\105\116\066\111\120",nil,T.logWindow.filters,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.logWindow.countFilter:SetSize(60,20)T.logWindow.countFilter:SetPoint("\076\069\070\084",T.logWindow.filters,"\076\069\070\084")T.logWindow.countFilter:SetAutoFocus(false)T.logWindow.countFilter:SetText("\208\154\208\190\208\187-\208\178\208\190")T.logWindow.countFilter:SetScript("\079\110\069\115\099\097\112\101\080\114\101\115\115\101\100",function()T.logWindow.countFilter:ClearFocus()end)T.logWindow.countFilter:SetScript("\079\110\069\110\116\101\114\080\114\101\115\115\101\100",function()T.logWindow.countFilter:ClearFocus()T:UpdateLogDisplay()end)T.logWindow.timeFilter=CreateFrame("\069\100\105\116\066\111\120",nil,T.logWindow.filters,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.logWindow.timeFilter:SetSize(70,20)T.logWindow.timeFilter:SetPoint("\076\069\070\084",T.logWindow.countFilter,"\082\073\071\072\084",5,0)T.logWindow.timeFilter:SetAutoFocus(false)T.logWindow.timeFilter:SetText("\208\146\209\128\208\181\208\188\209\143")T.logWindow.timeFilter:SetScript("\079\110\069\115\099\097\112\101\080\114\101\115\115\101\100",function()T.logWindow.timeFilter:ClearFocus()end)T.logWindow.timeFilter:SetScript("\079\110\069\110\116\101\114\080\114\101\115\115\101\100",function()T.logWindow.timeFilter:ClearFocus()T:UpdateLogDisplay()end)T.logWindow.rlFilter=CreateFrame("\069\100\105\116\066\111\120",nil,T.logWindow.filters,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.logWindow.rlFilter:SetSize(70,20)T.logWindow.rlFilter:SetPoint("\076\069\070\084",T.logWindow.timeFilter,"\082\073\071\072\084",5,0)T.logWindow.rlFilter:SetAutoFocus(false)T.logWindow.rlFilter:SetText("\208\160\208\155")T.logWindow.rlFilter:SetScript("\079\110\069\115\099\097\112\101\080\114\101\115\115\101\100",function()T.logWindow.rlFilter:ClearFocus()end)T.logWindow.rlFilter:SetScript("\079\110\069\110\116\101\114\080\114\101\115\115\101\100",function()T.logWindow.rlFilter:ClearFocus()T:UpdateLogDisplay()end)T.logWindow.raidFilter=CreateFrame("\069\100\105\116\066\111\120",nil,T.logWindow.filters,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.logWindow.raidFilter:SetSize(100,20)T.logWindow.raidFilter:SetPoint("\076\069\070\084",T.logWindow.rlFilter,"\082\073\071\072\084",5,0)T.logWindow.raidFilter:SetAutoFocus(false)T.logWindow.raidFilter:SetText("\208\160\208\181\208\185\208\180")T.logWindow.raidFilter:SetScript("\079\110\069\115\099\097\112\101\080\114\101\115\115\101\100",function()T.logWindow.raidFilter:ClearFocus()end)T.logWindow.raidFilter:SetScript("\079\110\069\110\116\101\114\080\114\101\115\115\101\100",function()T.logWindow.raidFilter:ClearFocus()T:UpdateLogDisplay()end)T.logWindow.nameFilter=CreateFrame("\069\100\105\116\066\111\120",nil,T.logWindow.filters,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.logWindow.nameFilter:SetSize(100,20)T.logWindow.nameFilter:SetPoint("\076\069\070\084",T.logWindow.raidFilter,"\082\073\071\072\084",5,0)T.logWindow.nameFilter:SetAutoFocus(false)T.logWindow.nameFilter:SetText("\208\157\208\184\208\186")T.logWindow.nameFilter:SetScript("\079\110\069\115\099\097\112\101\080\114\101\115\115\101\100",function()T.logWindow.nameFilter:ClearFocus()end)T.logWindow.nameFilter:SetScript("\079\110\069\110\116\101\114\080\114\101\115\115\101\100",function()T.logWindow.nameFilter:ClearFocus()T:UpdateLogDisplay()end)T.logWindow.showButton=CreateFrame("\066\117\116\116\111\110",nil,T.logWindow.filters,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")T.logWindow.showButton:SetSize(80,22)T.logWindow.showButton:SetPoint("\076\069\070\084",T.logWindow.nameFilter,"\082\073\071\072\084",5,0)T.logWindow.showButton:SetText("\208\159\208\190\208\186\208\176\208\183\208\176\209\130\209\140")T.logWindow.showButton:SetScript("\079\110\067\108\105\099\107",function()local function O(T)if T:find("\037\115")then T=T:gsub("\037\115\043","\095")end return T end local j=O(T.logWindow.countFilter:GetText())local b=O(T.logWindow.timeFilter:GetText())local k=O(T.logWindow.rlFilter:GetText())local J=O(T.logWindow.raidFilter:GetText())local f=O(T.logWindow.nameFilter:GetText())gpDb_old:ClearLog()SendAddonMessage("\078\083\083\104\111\119\077\101\076\111\103\115",j..(" "..(b..(" "..(k..(" "..(J..(" "..f))))))),"\103\117\105\108\100")end)T.logWindow.scrollFrame=CreateFrame("\083\099\114\111\108\108\070\114\097\109\101","\071\112\068\098\095\111\108\100\076\111\103\083\099\114\111\108\108\070\114\097\109\101",T.logWindow,"\085\073\080\097\110\101\108\083\099\114\111\108\108\070\114\097\109\101\084\101\109\112\108\097\116\101")T.logWindow.scrollFrame:SetPoint("\084\079\080\076\069\070\084",0,-35)T.logWindow.scrollFrame:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",0,10)T.logWindow.scrollChild=CreateFrame("\070\114\097\109\101")T.logWindow.scrollChild:SetSize(580,1000)T.logWindow.scrollFrame:SetScrollChild(T.logWindow.scrollChild)T.logRows={}for O=1,50,1 do local j=CreateFrame("\070\114\097\109\101","\071\112\068\098\095\111\108\100\076\111\103\082\111\119"..O,T.logWindow.scrollChild)j:SetSize(580,40)j:SetPoint("\084\079\080\076\069\070\084",0,-((O-1)*40))j.text=j:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108\083\109\097\108\108")j.text:SetAllPoints(true)j.text:SetJustifyH("\076\069\070\084")j.text:SetJustifyV("\084\079\080")j.text:SetWordWrap(true)j.text:SetText("")T.logRows[O]=j end end function GpDb_old.ClearLog(T)T.logData={}T.logWindow.countFilter:SetText("\208\154\208\190\208\187-\208\178\208\190")T.logWindow.timeFilter:SetText("\208\146\209\128\208\181\208\188\209\143")T.logWindow.rlFilter:SetText("\208\160\208\155")T.logWindow.raidFilter:SetText("\208\160\208\181\208\185\208\180")T.logWindow.nameFilter:SetText("\208\157\208\184\208\186")T:UpdateLogDisplay()print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\155\208\190\208\179 \209\131\209\129\208\191\208\181\209\136\208\189\208\190 \208\190\209\135\208\184\209\137\208\181\208\189")end function GpDb_old._CreateWindow(T)T.window=CreateFrame("\070\114\097\109\101","\071\112\084\114\097\099\107\101\114\087\105\110\100\111\119",UIParent)T.window:SetFrameStrata("\068\073\065\076\079\071")T.window:SetSize(400,600)T.window:SetPoint("\076\069\070\084",5,100)T.window:SetMovable(true)T.window:EnableMouse(true)T.window:RegisterForDrag("\076\101\102\116\066\117\116\116\111\110")T.window:SetScript("\079\110\068\114\097\103\083\116\097\114\116",T.window.StartMoving)T.window:SetScript("\079\110\068\114\097\103\083\116\111\112",T.window.StopMovingOrSizing)T.window:Hide()T.window.background=T.window:CreateTexture(nil,"\066\065\067\075\071\082\079\085\078\068")T.window.background:SetTexture("\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\088\056")T.window.background:SetVertexColor(0,0,0)T.window.background:SetAlpha(1)T.window.background:SetAllPoints(true)T.window.borderFrame=CreateFrame("\070\114\097\109\101",nil,T.window)T.window.borderFrame:SetPoint("\084\079\080\076\069\070\084",-3,3)T.window.borderFrame:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",3,-3)T.window.borderFrame:SetBackdrop({edgeFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\111\114\100\101\114",edgeSize=16;insets={left=4,right=4;top=4,bottom=4}})T.window.title=T.window:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")T.window.title:SetPoint("\084\079\080",0,-15)T.window.title:SetText("")T.window.closeButton=CreateFrame("\066\117\116\116\111\110",nil,T.window,"\085\073\080\097\110\101\108\067\108\111\115\101\066\117\116\116\111\110")T.window.closeButton:SetPoint("\084\079\080\082\073\071\072\084",-5,-5)T.window.closeButton:SetScript("\079\110\067\108\105\099\107",function()T.window:Hide()end)T.window.logButton=CreateFrame("\066\117\116\116\111\110",nil,T.window,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")T.window.logButton:SetSize(24,24)T.window.logButton:SetPoint("\082\073\071\072\084",T.window.closeButton,"\076\069\070\084",-5,0)T.window.logButton:SetText("\076")T.window.logButton:SetScript("\079\110\067\108\105\099\107",function()T:ToggleLogWindow()end)T.window.raidOnlyCheckbox=CreateFrame("\067\104\101\099\107\066\117\116\116\111\110",nil,T.window,"\085\073\067\104\101\099\107\066\117\116\116\111\110\084\101\109\112\108\097\116\101")T.window.raidOnlyCheckbox:SetPoint("\084\079\080\076\069\070\084",10,-15)T.window.raidOnlyCheckbox:SetSize(24,24)T.window.raidOnlyCheckbox.text=T.window.raidOnlyCheckbox:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")T.window.raidOnlyCheckbox.text:SetPoint("\076\069\070\084",T.window.raidOnlyCheckbox,"\082\073\071\072\084",5,0)T.window.raidOnlyCheckbox.text:SetText("\208\162\208\190\208\187\209\140\208\186\208\190 \209\128\208\181\208\185\208\180")T.window.raidOnlyCheckbox:SetScript("\079\110\067\108\105\099\107",function()T:_UpdateFromGuild()T:UpdateWindow()end)T.window.filterLabel=T.window:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")T.window.filterLabel:SetPoint("\084\079\080\076\069\070\084",T.window.raidOnlyCheckbox,"\066\079\084\084\079\077\076\069\070\084",0,-10)T.window.filterLabel:SetText("\208\164\208\184\208\187\209\140\209\130\209\128\058")T.window.filterEditBox=CreateFrame("\069\100\105\116\066\111\120",nil,T.window,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.window.filterEditBox:SetPoint("\084\079\080\076\069\070\084",T.window.filterLabel,"\066\079\084\084\079\077\076\069\070\084",0,-5)T.window.filterEditBox:SetPoint("\082\073\071\072\084",T.window.closeButton,"\076\069\070\084",-40,0)T.window.filterEditBox:SetHeight(20)T.window.filterEditBox:SetAutoFocus(false)T.window.filterEditBox:SetText("")T.window.filterEditBox:SetScript("\079\110\084\101\120\116\067\104\097\110\103\101\100",function(O)T.filterText=(O:GetText()):lower()T:_UpdateFromGuild()end)T.window.filterEditBox:SetScript("\079\110\069\115\099\097\112\101\080\114\101\115\115\101\100",function()T.window.filterEditBox:SetText("")T.window.filterEditBox:ClearFocus()end)T.window.filterEditBox:SetScript("\079\110\069\110\116\101\114\080\114\101\115\115\101\100",function()T.window.filterEditBox:ClearFocus()end)T.window.filterClearButton=CreateFrame("\066\117\116\116\111\110",nil,T.window,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")T.window.filterClearButton:SetSize(80,22)T.window.filterClearButton:SetPoint("\084\079\080\082\073\071\072\084",T.window.filterEditBox,"\066\079\084\084\079\077\082\073\071\072\084",60,20)T.window.filterClearButton:SetText("\208\158\209\135\208\184\209\129\209\130\208\184\209\130\209\140")T.window.filterClearButton:SetScript("\079\110\067\108\105\099\107",function()T.window.filterEditBox:SetText("")T.filterText=""T:_UpdateFromGuild()end)T.window.scrollFrame=CreateFrame("\083\099\114\111\108\108\070\114\097\109\101","\083\099\114\111\108\108\070\114\097\109\101",T.window,"\085\073\080\097\110\101\108\083\099\114\111\108\108\070\114\097\109\101\084\101\109\112\108\097\116\101")T.window.scrollFrame:SetPoint("\084\079\080\076\069\070\084",0,-85)T.window.scrollFrame:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",0,60)T.window.scrollChild=CreateFrame("\070\114\097\109\101")T.window.scrollChild:SetSize(380,500)T.window.scrollFrame:SetScrollChild(T.window.scrollChild)T.window.scrollBar=_G[T.window.scrollFrame:GetName().."\083\099\114\111\108\108\066\097\114"]T.window.scrollBar:SetPoint("\084\079\080\076\069\070\084",T.window.scrollFrame,"\084\079\080\082\073\071\072\084",-20,-16)T.window.scrollBar:SetPoint("\066\079\084\084\079\077\076\069\070\084",T.window.scrollFrame,"\066\079\084\084\079\077\082\073\071\072\084",-20,16)T.window.countText=T.window:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")T.window.countText:SetPoint("\066\079\084\084\079\077\076\069\070\084",10,40)T.window.countText:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",-10,40)T.window.countText:SetJustifyH("\076\069\070\084")T.window.countText:SetText("")T.window.totalText=T.window:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")T.window.totalText:SetPoint("\066\079\084\084\079\077\076\069\070\084",10,20)T.window.totalText:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",-10,20)T.window.totalText:SetJustifyH("\076\069\070\084")T.window.totalText:SetText("")T:_SetupTable()end function GpDb_old._SetupTable(O)local j={{text="\208\157\208\184\208\186",column="\110\105\099\107"};{text="\208\147\208\159";column="\103\112"}}for T,j in ipairs(j)do local b=CreateFrame("\066\117\116\116\111\110",nil,O.window.scrollChild)b:SetSize(T==1 and 290 or 50,20)b:SetPoint("\084\079\080\076\069\070\084",(T-1)*290+(T==2 and 10 or 0),-5)b:SetNormalFontObject("\071\097\109\101\070\111\110\116\078\111\114\109\097\108")b:SetHighlightFontObject("\071\097\109\101\070\111\110\116\072\105\103\104\108\105\103\104\116")local k=b:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")k:SetAllPoints(true)k:SetText(j.text)b:SetScript("\079\110\067\108\105\099\107",function()O:SortData(j.column)O:UpdateWindow()end)end O.rows={}for j=1,999,1 do local b=CreateFrame("\066\117\116\116\111\110","\071\112\068\098\095\111\108\100\082\111\119"..j,O.window.scrollChild)b:SetSize(350,20)b:SetPoint("\084\079\080\076\069\070\084",0,-25-(j-1)*25)b:EnableMouse(true)b:RegisterForClicks("\076\101\102\116\066\117\116\116\111\110\085\112","\082\105\103\104\116\066\117\116\116\111\110\085\112")b:SetHighlightTexture("\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\088\056");(b:GetHighlightTexture()):SetVertexColor(.4,.4,.8,.4)b.selection=b:CreateTexture(nil,"\066\065\067\075\071\082\079\085\078\068")b.selection:SetAllPoints(true)b.selection:SetTexture("\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\088\056")b.selection:SetVertexColor(.3,.3,.7,.7)b.selection:Hide()b.nick=b:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")b.nick:SetPoint("\076\069\070\084",10,0)b.nick:SetWidth(290)b.nick:SetJustifyH("\076\069\070\084")b.gp=b:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")b.gp:SetPoint("\082\073\071\072\084",5,0)b.gp:SetWidth(50)b.gp:SetJustifyH("\082\073\071\072\084")b.lastClickTime=0 b:SetScript("\079\110\067\108\105\099\107",function(k,J,f)local r=FauxScrollFrame_GetOffset(O.window.scrollFrame)local Z=j+r if not O.gp_data or not O.gp_data[Z]then return end local a=GetTime()if J=="\076\101\102\116\066\117\116\116\111\110"and(T()and a-b.lastClickTime<.5)then O:ClearSelection()for T=1,#O.gp_data,1 do O.selected_indices[T]=true end O.last_selected_index=Z O:_UpdateSelectionCount()O:RefreshRowHighlights()O:UpdateRaidWindowVisibility()if O.raidWindow and O.raidWindow:IsShown()then O:_UpdateSelectedPlayersText()end b.lastClickTime=0 return end b.lastClickTime=a if J=="\076\101\102\116\066\117\116\116\111\110"then local T=O.selected_indices[Z]if IsShiftKeyDown()then if not O.last_selected_index then O:ClearSelection()O.selected_indices[Z]=true O.last_selected_index=Z else local T=math.min(O.last_selected_index,Z)local j=math.max(O.last_selected_index,Z)if not IsControlKeyDown()then O:ClearSelection()end for T=T,j,1 do if O.gp_data[T]then O.selected_indices[T]=true end end end elseif IsControlKeyDown()then O.selected_indices[Z]=not T for T in pairs(O.selected_indices)do if not O.gp_data[T]then O.selected_indices[T]=nil end end if O.selected_indices[Z]then O.last_selected_index=Z else O.last_selected_index=nil for T in pairs(O.selected_indices)do if O.selected_indices[T]then O.last_selected_index=T break end end end else if T then O:ClearSelection()else O:ClearSelection()O.selected_indices[Z]=true O.last_selected_index=Z end end O:_UpdateSelectionCount()O:RefreshRowHighlights()O:UpdateRaidWindowVisibility()if O.raidWindow and O.raidWindow:IsShown()then O:_UpdateSelectedPlayersText()end end end)O.rows[j]=b end O.window:SetScript("\079\110\072\105\100\101",function()O:ClearSelection()if O.raidWindow and O.raidWindow:IsShown()then O.raidWindow:Hide()end if O.logWindow and O.logWindow:IsShown()then O.logWindow:Hide()end end)end function GpDb_old.ToggleLogWindow(T)if not T.logWindow then T:_CreateLogWindow()end if T.logWindow:IsShown()then T.logWindow:Hide()else T.logWindow:Show()T:UpdateLogDisplay()if T.raidWindow and T.raidWindow:IsShown()then T.logWindow:SetHeight(T.window:GetHeight()/2)else T.logWindow:SetHeight(T.window:GetHeight())end end end function GpDb_old.UpdateLogDisplay(T)if not T.logWindow or not T.logWindow:IsShown()then return end local O=0 local j={}for b,k in ipairs(T.logData)do local J=T.logWindow.scrollChild:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108\083\109\097\108\108")J:SetWidth(580)J:SetText(k.text)J:SetWordWrap(true)local f=J:GetStringHeight()+5 j[b]=f O=O+f J:Hide()end local b=0 for O=1,#T.logRows,1 do local k=O if k<=#T.logData then local J=T.logData[k]local f=j[k]T.logRows[O]:SetHeight(f)T.logRows[O]:SetPoint("\084\079\080\076\069\070\084",0,-b)T.logRows[O].text:SetText(J.text)T.logRows[O]:Show()b=b+f else T.logRows[O]:Hide()end end T.logWindow.scrollChild:SetHeight(O)T.logWindow.scrollFrame:UpdateScrollChildRect()end function GpDb_old._UpdateSelectionCount(T)local O=0 for j,b in pairs(T.selected_indices)do if b and T.gp_data[j]then O=O+1 else T.selected_indices[j]=nil end end T.window.countText:SetText(string.format("\208\146\209\139\208\180\208\181\208\187\208\181\208\189\208\190\058 \037\100",O))if O==0 then T.last_selected_index=nil end return O end function GpDb_old.IsValidIndex(O,T)return T and(type(T)=="\110\117\109\098\101\114"and(O.gp_data and O.gp_data[T]))end function GpDb_old.RefreshRowHighlights(T)local O=FauxScrollFrame_GetOffset(T.window.scrollFrame)for j,b in ipairs(T.rows)do local k=j+O if k<=#T.gp_data then if T.selected_indices[k]then b.selection:Show();(b:GetHighlightTexture()):SetAlpha(.2)else b.selection:Hide();(b:GetHighlightTexture()):SetAlpha(.4)end end end local j=0 for T in pairs(T.selected_indices)do j=j+1 end T.window.countText:SetText(string.format("\208\146\209\139\208\180\208\181\208\187\208\181\208\189\208\190\058 \037\100",j))end function GpDb_old.ClearSelection(T)T.selected_indices={}T.last_selected_index=nil T:_UpdateSelectionCount()T:RefreshRowHighlights()T:UpdateRaidWindowVisibility()end function GpDb_old.GetSelectedEntries(T)local O={}for j,b in pairs(T.selected_indices)do if j<=#T.gp_data then table.insert(O,T.gp_data[j])end end return O end function GpDb_old.AddLogEntry(J,T,O,j,b,k)if not J.logWindow then J:_CreateLogWindow()end local function f(T)if not T or type(T)~="\115\116\114\105\110\103"or T==""then return"\124\099\070\070\070\070\070\070\070\070"end for O=1,GetNumGuildMembers(),1 do local j,b,k,J,f,r,Z,a,o,q,V=GetGuildRosterInfo(O)if j and j==T then local T=RAID_CLASS_COLORS[V]if T then return string.format("\124\099\070\070\037\048\050\120\037\048\050\120\037\048\050\120",T.r*255,T.g*255,T.b*255)end break end end return"\124\099\070\070\070\070\070\070\070\070"end local r=tonumber(O)or 0 local Z="\124\099\070\070\065\048\065\048\065\048"..((T or"\063\063\058\063\063").."\124\114")local a=f(j)..((j or"\208\157\208\181\208\184\208\183\208\178\208\181\209\129\209\130\208\189\208\190").."\124\114")local o=r>=0 and"\124\099\070\070\048\048\070\070\048\048"or"\124\099\070\070\070\070\048\048\048\048"local q=o..(tostring(r).."\124\114")local V="\124\099\070\070\070\070\070\070\048\048"..((b or"\208\157\208\181\208\184\208\183\208\178\208\181\209\129\209\130\208\189\208\190").."\124\114")local function U(T)if not T or type(T)~="\115\116\114\105\110\103"then return T end for O=1,GetNumGuildMembers(),1 do local j,b,k,J,f,r,Z,a=GetGuildRosterInfo(O)if j and a then local O={}for T in a:gmatch("\037\083\043")do table.insert(O,T)end if#O>=2 and O[2]==T then return j end end end return T end local R={}if type(k)=="\115\116\114\105\110\103"then for T in k:gmatch("\037\083\043")do local O=U(T)table.insert(R,f(O)..(O.."\124\114"))end end local i=table.concat(R," ")local Q=string.format("\037\115 \124 \037\115 \124 \037\115 \124 \037\115 \124 \037\115",Z,a,q,V,i)table.insert(J.logData,{text=Q;raw={time=T;rl=j,gp=r;raid=b,targets=k}})if#J.logData>200 then table.remove(J.logData,1)end if J.logWindow and J.logWindow:IsShown()then J:UpdateLogDisplay()J.logWindow.scrollFrame:SetVerticalScroll(J.logWindow.scrollFrame:GetVerticalScrollRange())end end function GpDb_old.UpdateRaidWindowVisibility(O)if not O.raidWindow then return end local j=O:_CheckOfficerRank()if not j then if O.raidWindow:IsShown()then O.raidWindow:Hide()if O.logWindow and O.logWindow:IsShown()then O.logWindow:SetHeight(O.window:GetHeight())end end return end local b=next(O.selected_indices)~=nil if not b then if O.raidWindow:IsShown()then O.raidWindow:Hide()if O.logWindow and O.logWindow:IsShown()then O.logWindow:SetHeight(O.window:GetHeight())end end return end local k=T()local J=O.window.raidOnlyCheckbox:GetChecked()local f=not k or J if f and k then local T={}for O=1,GetNumGroupMembers(),1 do local j=GetRaidRosterInfo(O)if j then T[j]=true end end for j in pairs(O.selected_indices)do local b=O.gp_data[j]if b and not T[b.original_nick]then f=false print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\157\208\181\208\186\208\190\209\130\208\190\209\128\209\139\208\181 \208\178\209\139\208\180\208\181\208\187\208\181\208\189\208\189\209\139\208\181 \208\184\208\179\209\128\208\190\208\186\208\184 \208\189\208\181 \208\178 \209\128\208\181\208\185\208\180\208\181")break end end end if f then if not O.raidWindow:IsShown()then O.raidWindow:Show()O:RestoreRaidWindowState()O:_UpdateSelectedPlayersText()if O.logWindow and O.logWindow:IsShown()then O.logWindow:SetHeight(O.window:GetHeight()/2)end end else if O.raidWindow:IsShown()then O.raidWindow:Hide()end if O.logWindow and O.logWindow:IsShown()then O.logWindow:SetHeight(O.window:GetHeight())end end end function GpDb_old.UpdateWindow(T)if not T.window or not T.rows then return end local O=FauxScrollFrame_GetOffset(T.window.scrollFrame)local j=math.floor((T.window.scrollFrame:GetHeight()-30)/25)T.visible_rows=j for j=1,T.visible_rows,1 do local b=T.rows[j]local k=j+O if k<=#T.gp_data then local O=T.gp_data[k]b.nick:SetText(O.nick)b.gp:SetText(tostring(O.gp))if O.classColor then b.nick:SetTextColor(O.classColor.r,O.classColor.g,O.classColor.b)else b.nick:SetTextColor(1,1,1)end b:Show()else b:Hide()end end T:RefreshRowHighlights()FauxScrollFrame_Update(T.window.scrollFrame,#T.gp_data,T.visible_rows,25)T:UpdateRaidWindowVisibility()end function GpDb_old.GetNumSelected(T)local O=0 for j in pairs(T.selected_indices)do if T.gp_data[j]then O=O+1 else T.selected_indices[j]=nil end end print(string.format("\071\101\116\078\117\109\083\101\108\101\099\116\101\100\058 \208\189\208\176\208\185\208\180\208\181\208\189\208\190 \037\100 \209\141\208\187\208\181\208\188\208\181\208\189\209\130\208\190\208\178",O))return O end function GpDb_old.Show(O)O.window:Show()O.window.raidOnlyCheckbox:SetChecked(T())O:_UpdateFromGuild()O:UpdateWindow()end function GpDb_old.Hide(T)T.window:Hide()end function GpDb_old._UpdateFromGuild(O)O.gp_data={}local j=0 local b=GetNumGuildMembers()local k=T()O.window.raidOnlyCheckbox:SetChecked(k)local J=k and O.window.raidOnlyCheckbox:GetChecked()if not IsInGuild()then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\146\209\139 \208\189\208\181 \209\129\208\190\209\129\209\130\208\190\208\184\209\130\208\181 \208\178 \208\179\208\184\208\187\209\140\208\180\208\184\208\184")O:UpdateWindow()return end GuildRoster()local f=O local r=CreateFrame("\070\114\097\109\101")r:SetScript("\079\110\085\112\100\097\116\101",function(T,O)T.elapsed=(T.elapsed or 0)+O if T.elapsed>=.01 then T:SetScript("\079\110\085\112\100\097\116\101",nil)local O={}for T=1,GetNumGuildMembers(),1 do local j,b,k,J,f,r,Z,a,o,q,V=GetGuildRosterInfo(T)if j then local T=j:match("\094\040\046-\041-")or j local b=nil if a then local T={}for O in a:gmatch("\037\083\043")do table.insert(T,O)end if#T>=2 then b=T[2]end end O[T]={publicNote=Z;officerNote=a,classFileName=V;playerID=b}end end if J then local T=GetNumGroupMembers()local k=true local J={}for T=1,T,1 do local j,b,f,r,Z,a=GetRaidRosterInfo(T)if j then local T=j:match("\094\040\046-\041-")or j if not O[T]then k=false table.insert(J,j)end end end if not k then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\146 \209\128\208\181\208\185\208\180\208\181 \208\181\209\129\209\130\209\140 \208\189\208\181 \209\135\208\187\208\181\208\189\209\139 \208\179\208\184\208\187\209\140\208\180\208\184\208\184\058 "..table.concat(J,"\044 "))f.window.countText:SetText("\208\158\209\130\208\190\208\177\209\128\208\176\208\182\208\176\208\181\209\130\209\129\209\143 \208\184\208\179\209\128\208\190\208\186\208\190\208\178\058 \048 \040\208\178 \209\128\208\181\208\185\208\180\208\181 \208\181\209\129\209\130\209\140 \208\189\208\181 \209\135\208\187\208\181\208\189\209\139 \208\179\208\184\208\187\209\140\208\180\208\184\208\184\041")f.window.totalText:SetText(string.format("\208\146\209\129\208\181\208\179\208\190 \208\184\208\179\209\128\208\190\208\186\208\190\208\178 \209\129 \208\147\208\159\058 \037\100 \040\208\184\208\183 \037\100 \208\178 \208\179\208\184\208\187\209\140\208\180\208\184\208\184\041",j,b))f:UpdateWindow()return end for T=1,T,1 do local b,k,J,r,Z,a=GetRaidRosterInfo(T)if b then local T=b:match("\094\040\046-\041-")or b local k=O[T]if k then local O=0 local J=k.publicNote or""if k.officerNote then local T={}for O in k.officerNote:gmatch("\037\083\043")do table.insert(T,O)end if#T>=3 then O=tonumber(T[3])or 0 end end if O>0 then j=j+1 end local r=b if J and J~=""then r=b..(" \124\099\070\070\070\070\070\070\048\048\040"..(J.."\041\124\114"))end table.insert(f.gp_data,{nick=r;original_nick=T;gp=O;classColor=RAID_CLASS_COLORS[a]or{r=1,g=1,b=1};classFileName=a,playerID=k.playerID})end end end else for T=1,GetNumGuildMembers(),1 do local O,b,k,J,r,Z,a,o,q,V,U=GetGuildRosterInfo(T)if O and(o and o~="")then local T=O:match("\094\040\046-\041-")or O local b={}for T in o:gmatch("\037\083\043")do table.insert(b,T)end if#b>=3 then local k=tonumber(b[3])or 0 local J=b[2]if k~=0 then j=j+1 local b=O if a and a~=""then b=O..(" \124\099\070\070\070\070\070\070\048\048\040"..(a.."\041\124\114"))end table.insert(f.gp_data,{nick=b;original_nick=T;gp=k;classColor=RAID_CLASS_COLORS[U]or{r=1;g=1;b=1};classFileName=U;playerID=J})end end end end end if f.filterText and f.filterText~=""then local T={}for O,j in ipairs(f.gp_data)do local b=string.find(j.original_nick:lower(),f.filterText,1,true)local k=string.find(j.nick:lower(),f.filterText,1,true)if b or k then table.insert(T,j)end end f.gp_data=T end f.window.countText:SetText(string.format("\208\158\209\130\208\190\208\177\209\128\208\176\208\182\208\176\208\181\209\130\209\129\209\143 \208\184\208\179\209\128\208\190\208\186\208\190\208\178\058 \037\100",#f.gp_data))f.window.totalText:SetText(string.format("\208\146\209\129\208\181\208\179\208\190 \208\184\208\179\209\128\208\190\208\186\208\190\208\178 \209\129 \208\147\208\159\058 \037\100 \040\208\184\208\183 \037\100 \208\178 \208\179\208\184\208\187\209\140\208\180\208\184\208\184\041",j,GetNumGuildMembers()))f:ClearSelection()f:SortData()f:UpdateWindow()end end)end function GpDb_old.Show(O)O.window:Show()if T()then O.window.raidOnlyCheckbox:SetChecked(true)else O.window.raidOnlyCheckbox:SetChecked(false)end GuildRoster()C_Timer(.01,function()O:_UpdateFromGuild()O:UpdateWindow()end)end function GpDb_old.AddGpEntry(b,T,O,j)table.insert(b.gp_data,{nick=T;original_nick=T;gp=tonumber(O)or 0;playerID=j})b:SortData()b:UpdateWindow()end function GpDb_old.UpdateGpEntry(j,T,O)for j,b in ipairs(j.gp_data)do if b.original_nick==T then b.gp=tonumber(O)or 0 break end end j:SortData()j:UpdateWindow()end function GpDb_old.RemoveGpEntry(O,T)for j,b in ipairs(O.gp_data)do if b.original_nick==T then table.remove(O.gp_data,j)break end end O:UpdateWindow()end function GpDb_old.FindGpEntry(O,T)for O,j in ipairs(O.gp_data)do if j.original_nick==T then return j.gp end end return nil end function GpDb_old.ClearAll(T)T.gp_data={}T:UpdateWindow()end function GpDb_old.SortData(O,T)if T then if O.sort_column==T then O.sort_ascending=not O.sort_ascending else O.sort_column=T O.sort_ascending=true end end table.sort(O.gp_data,function(T,j)local b,k if O.sort_column=="\110\105\099\107"then b=string.lower(T.original_nick or"")k=string.lower(j.original_nick or"")else b=T.gp or 0 k=j.gp or 0 end if O.sort_ascending then return b<k else return b>k end end)O:ClearSelection()O:UpdateWindow()end function GpDb_old.UpdateWindow(T)if not T.window or not T.rows then return end for O,j in ipairs(T.rows)do local b=T.gp_data[O]if b then j.nick:SetText(b.nick)if b.classColor then local T=b.nick:match("\094\091\094\124\093\043")or b.nick j.nick:SetText(T)j.nick:SetTextColor(b.classColor.r,b.classColor.g,b.classColor.b)local O=b.nick:match("\124\099\046\043\036")if O then local T=j.nick:GetText()..(" "..O)j.nick:SetText(T)end else j.nick:SetTextColor(1,1,1)end j.gp:SetText(tostring(b.gp))j.gp:SetTextColor(1,1,1)j:Show()else j:Hide()end end T.window.scrollChild:SetHeight(#T.gp_data*25)T.window.scrollFrame:UpdateScrollChildRect()end function GpDb_old.SaveToNsDb(T)for O,j in ipairs(T.gp_data)do T.ns_db:addStaticStr("\071\080\095\068\065\084\065",j.original_nick,nil,tostring(j.gp))end end function GpDb_old.LoadFromNsDb(T)T.gp_data={}local O=T.ns_db.input_table.GP_DATA if O then for O,j in pairs(O)do table.insert(T.gp_data,{nick=O;original_nick=O,gp=tonumber(j)or 0})end end T:SortData()T:UpdateWindow()end function GpDb_old._CreateRaidSelectionWindow(T)T.raidWindow=CreateFrame("\070\114\097\109\101","\071\112\068\098\095\111\108\100\082\097\105\100\087\105\110\100\111\119",T.window)T.raidWindow:SetFrameStrata("\068\073\065\076\079\071")T.raidWindow:SetSize(250,T.window:GetHeight()*.5)T.raidWindow:SetPoint("\066\079\084\084\079\077\076\069\070\084",T.window,"\066\079\084\084\079\077\082\073\071\072\084",5,0)T.raidWindow:SetMovable(false)T.raidWindow.background=T.raidWindow:CreateTexture(nil,"\066\065\067\075\071\082\079\085\078\068")T.raidWindow.background:SetTexture("\073\110\116\101\114\102\097\099\101\092\066\117\116\116\111\110\115\092\087\072\073\084\069\056\088\056")T.raidWindow.background:SetVertexColor(0,0,0)T.raidWindow.background:SetAlpha(1)T.raidWindow.background:SetAllPoints(true)T.raidWindow.borderFrame=CreateFrame("\070\114\097\109\101",nil,T.raidWindow)T.raidWindow.borderFrame:SetPoint("\084\079\080\076\069\070\084",-3,3)T.raidWindow.borderFrame:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",3,-3)T.raidWindow.borderFrame:SetBackdrop({edgeFile="\073\110\116\101\114\102\097\099\101\092\068\105\097\108\111\103\070\114\097\109\101\092\085\073-\068\105\097\108\111\103\066\111\120-\066\111\114\100\101\114";edgeSize=16,insets={left=4,right=4;top=4;bottom=4}})T.raidWindow.closeButton=CreateFrame("\066\117\116\116\111\110",nil,T.raidWindow,"\085\073\080\097\110\101\108\067\108\111\115\101\066\117\116\116\111\110")T.raidWindow.closeButton:SetPoint("\084\079\080\082\073\071\072\084",-5,-5)T.raidWindow.closeButton:SetScript("\079\110\067\108\105\099\107",function()T.raidWindow:Hide()end)T.raidWindow.dropdown=CreateFrame("\070\114\097\109\101","\071\112\068\098\095\111\108\100\082\097\105\100\068\114\111\112\100\111\119\110",T.raidWindow,"\085\073\068\114\111\112\068\111\119\110\077\101\110\117\084\101\109\112\108\097\116\101")T.raidWindow.dropdown:SetPoint("\084\079\080\076\069\070\084",10,-10)T.raidWindow.dropdown:SetPoint("\082\073\071\072\084",T.raidWindow.closeButton,"\076\069\070\084",-10,0)T.raidWindow.dropdown:SetHeight(32)local function O()if T.raidWindow.selectedRaidId then for O=1,GetNumSavedInstances(),1 do local j,b=GetSavedInstanceInfo(O)if b==T.raidWindow.selectedRaidId then UIDropDownMenu_SetText(T.raidWindow.dropdown,string.format("\037\100\058 \037\115",b,j))return end end else UIDropDownMenu_SetText(T.raidWindow.dropdown,"\208\146\209\139\208\177\208\181\209\128\208\184\209\130\208\181 \209\128\208\181\208\185\208\180")end end local function j(j,b,k)local J=UIDropDownMenu_CreateInfo()for j=1,GetNumSavedInstances(),1 do local b,k,f,r,Z,a,o,q,V=GetSavedInstanceInfo(j)if b and k then J.text=string.format("\037\100\058 \037\115 \040\037\100\041",k,b,V)J.arg1={id=k;name=b;players=V}J.func=function(j,b)T.raidWindow.selectedRaidId=b.id T.raidWindow.selectedRaidName=b.name T.raidWindow.selectedRaidPlayers=b.players if T.saveSelectionEnabled then T.lastSelectionType="\114\097\105\100"T.lastRaidId=b.id T.lastRaidName=b.name T.lastRaidPlayers=b.players end O()T.raidWindow.editBox:SetText("")end J.checked=T.raidWindow.selectedRaidId==k UIDropDownMenu_AddButton(J)end end J.text="\208\158\209\135\208\184\209\129\209\130\208\184\209\130\209\140 \208\178\209\139\208\177\208\190\209\128"J.func=function()T.raidWindow.selectedRaidId=nil T.raidWindow.selectedRaidName=nil if T.saveSelectionEnabled then T.lastSelectionType=nil T.lastRaidId=nil T.lastRaidName=nil T.lastRaidPlayers=0 end O()end J.notCheckable=true UIDropDownMenu_AddButton(J)end UIDropDownMenu_Initialize(T.raidWindow.dropdown,j)UIDropDownMenu_SetWidth(T.raidWindow.dropdown,200)UIDropDownMenu_SetButtonWidth(T.raidWindow.dropdown,224)UIDropDownMenu_JustifyText(T.raidWindow.dropdown,"\076\069\070\084")O()T.raidWindow.otherText=T.raidWindow:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")T.raidWindow.otherText:SetPoint("\084\079\080\076\069\070\084",T.raidWindow.dropdown,"\066\079\084\084\079\077\076\069\070\084",0,-10)T.raidWindow.otherText:SetText("\208\148\209\128\209\131\208\179\208\190\208\181\058")T.raidWindow.editBox=CreateFrame("\069\100\105\116\066\111\120",nil,T.raidWindow,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.raidWindow.editBox:SetPoint("\084\079\080\076\069\070\084",T.raidWindow.otherText,"\066\079\084\084\079\077\076\069\070\084",0,-5)T.raidWindow.editBox:SetPoint("\082\073\071\072\084",-10,0)T.raidWindow.editBox:SetHeight(20)T.raidWindow.editBox:SetAutoFocus(false)T.raidWindow.editBox:SetScript("\079\110\084\101\120\116\067\104\097\110\103\101\100",function(j)if j:GetText()~=""then if T.saveSelectionEnabled then T.lastSelectionType="\111\116\104\101\114"T.lastOtherText=j:GetText()end T.raidWindow.selectedRaidId=nil T.raidWindow.selectedRaidName=nil O()end end)T.raidWindow.saveCheckbox=CreateFrame("\067\104\101\099\107\066\117\116\116\111\110",nil,T.raidWindow,"\085\073\067\104\101\099\107\066\117\116\116\111\110\084\101\109\112\108\097\116\101")T.raidWindow.saveCheckbox:SetPoint("\084\079\080\076\069\070\084",T.raidWindow.editBox,"\066\079\084\084\079\077\076\069\070\084",0,-10)T.raidWindow.saveCheckbox:SetSize(24,24)T.raidWindow.saveCheckbox.text=T.raidWindow.saveCheckbox:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")T.raidWindow.saveCheckbox.text:SetPoint("\076\069\070\084",T.raidWindow.saveCheckbox,"\082\073\071\072\084",5,0)T.raidWindow.saveCheckbox.text:SetText("\208\161\208\190\209\133\209\128\208\176\208\189\208\184\209\130\209\140 \208\178\209\139\208\177\208\190\209\128")T.raidWindow.saveCheckbox:SetChecked(true)T.saveSelectionEnabled=true T.raidWindow.saveCheckbox:SetScript("\079\110\067\108\105\099\107",function()T.saveSelectionEnabled=T.raidWindow.saveCheckbox:GetChecked()end)T.raidWindow.selectedPlayersText=T.raidWindow:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108\083\109\097\108\108")T.raidWindow.selectedPlayersText:SetPoint("\084\079\080\076\069\070\084",T.raidWindow.saveCheckbox,"\066\079\084\084\079\077\076\069\070\084",0,-5)T.raidWindow.selectedPlayersText:SetPoint("\082\073\071\072\084",-10,0)T.raidWindow.selectedPlayersText:SetHeight(70)T.raidWindow.selectedPlayersText:SetJustifyH("\076\069\070\084")T.raidWindow.selectedPlayersText:SetJustifyV("\084\079\080")T.raidWindow.selectedPlayersText:SetWordWrap(true)local b={5;10;20,25,50;100}local k for O,j in ipairs(b)do local b=CreateFrame("\066\117\116\116\111\110",nil,T.raidWindow,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")b:SetSize(27,20)b:SetText(tostring(j))if O==1 then b:SetPoint("\066\079\084\084\079\077\076\069\070\084",T.raidWindow.selectedPlayersText,"\066\079\084\084\079\077\076\069\070\084",0,-20)else b:SetPoint("\076\069\070\084",k,"\082\073\071\072\084",5,0)end b:SetScript("\079\110\067\108\105\099\107",function()local O=tonumber(T.raidWindow.gpEditBox:GetText())or 0 T.raidWindow.gpEditBox:SetText(tostring(j))T.raidWindow.gpEditBox:HighlightText()end)k=b end local J=CreateFrame("\066\117\116\116\111\110",nil,T.raidWindow,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")J:SetSize(40,22)J:SetText("-\047\043")J:SetPoint("\076\069\070\084",k,"\082\073\071\072\084",5,0)J:SetScript("\079\110\067\108\105\099\107",function()local O=tonumber(T.raidWindow.gpEditBox:GetText())or 0 T.raidWindow.gpEditBox:SetText(tostring(-O))T.raidWindow.gpEditBox:HighlightText()end)T.raidWindow.gpEditBox=CreateFrame("\069\100\105\116\066\111\120",nil,T.raidWindow,"\073\110\112\117\116\066\111\120\084\101\109\112\108\097\116\101")T.raidWindow.gpEditBox:SetPoint("\066\079\084\084\079\077\076\069\070\084",10,5)T.raidWindow.gpEditBox:SetSize(100,20)T.raidWindow.gpEditBox:SetAutoFocus(false)T.raidWindow.gpEditBox:SetScript("\079\110\069\115\099\097\112\101\080\114\101\115\115\101\100",function()T.raidWindow.gpEditBox:ClearFocus()end)T.raidWindow.gpEditBox:SetScript("\079\110\069\110\116\101\114\080\114\101\115\115\101\100",function()T.raidWindow.gpEditBox:ClearFocus()end)T.raidWindow.awardButton=CreateFrame("\066\117\116\116\111\110",nil,T.raidWindow,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")T.raidWindow.awardButton:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",-10,5)T.raidWindow.awardButton:SetSize(100,22)T.raidWindow.awardButton:SetText("\208\157\208\176\209\135\208\184\209\129\208\187\208\184\209\130\209\140")T.raidWindow.awardButton:SetScript("\079\110\067\108\105\099\107",function()if not T:_CheckOfficerRank()then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\162\208\190\208\187\209\140\208\186\208\190 \208\190\209\132\208\184\209\134\208\181\209\128\209\139 \208\188\208\190\208\179\209\131\209\130 \208\189\208\176\209\135\208\184\209\129\208\187\209\143\209\130\209\140 \208\147\208\159")T.raidWindow:Hide()return end if next(T.selected_indices)==nil then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\157\208\181\209\130 \208\178\209\139\208\180\208\181\208\187\208\181\208\189\208\189\209\139\209\133 \208\184\208\179\209\128\208\190\208\186\208\190\208\178")T.raidWindow:Hide()return end local O=tonumber(T.raidWindow.gpEditBox:GetText())if not O then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\163\208\186\208\176\208\182\208\184\209\130\208\181 \208\183\208\189\208\176\209\135\208\181\208\189\208\184\208\181 \208\147\208\159")return end if not T.raidWindow.selectedRaidId and not(T.lastOtherText or""):match("\037\083")then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\157\209\131\208\182\208\189\208\190 \208\178\209\139\208\177\209\128\208\176\209\130\209\140 \209\128\208\181\208\185\208\180 \208\184\208\187\208\184 \209\131\208\186\208\176\208\183\208\176\209\130\209\140 \208\191\209\128\208\184\209\135\208\184\208\189\209\131")return end if not T.saveSelectionEnabled then T.lastSelectionType=nil T.lastRaidId=nil T.lastRaidName=nil T.lastRaidPlayers=0 T.lastOtherText=nil T.lastGPValue=0 else T.lastGPValue=O end local j if T.raidWindow.selectedRaidId then local b=(T.raidWindow.selectedRaidName or""):gsub("\037\115\043","\095")j=string.format("\037\048\052\100\095\037\115\095\037\100 \037\100",T.raidWindow.selectedRaidId,b,T.raidWindow.selectedRaidPlayers or 0,O)else local b=(T.lastOtherText or""):gsub("\037\115\043","\095")j=string.format("\037\115 \037\100",b,O)end for b in pairs(T.selected_indices)do if T.gp_data[b]then local k=T.gp_data[b].original_nick local J=T.gp_data[b].playerID or"\085\078\075\078\079\087\078"SendAddonMessage("\110\115\071\080"..(" "..O),k,"\103\117\105\108\100")j=j..(" "..J)T:AddLogEntry(O,date("\037\072\058\037\077"),UnitName("\112\108\097\121\101\114"),T.raidWindow.selectedRaidName or T.raidWindow.editBox:GetText(),k)end end SendAddonMessage("\110\115\071\080\108\111\103",j,"\103\117\105\108\100")for T,j in ipairs(T:GetSelectedEntries())do j.gp=(j.gp or 0)+O end T:UpdateWindow()T.raidWindow:Hide()end)T.raidWindow:SetScript("\079\110\072\105\100\101",function()if T.logWindow and T.logWindow:IsShown()then T.logWindow:SetHeight(T.window:GetHeight())end end)T.raidWindow:Hide()end function GpDb_old._UpdateSelectedPlayersText(T)if not T.raidWindow then return end local O=T:GetSelectedEntries()local j={}for T,O in ipairs(O)do table.insert(j,O.original_nick)end local b=table.concat(j,"\044 ")if not T.raidWindow.selectedPlayersText then T.raidWindow.selectedPlayersText=T.raidWindow:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108\083\109\097\108\108")T.raidWindow.selectedPlayersText:SetPoint("\084\079\080\076\069\070\084",T.raidWindow.saveCheckbox,"\066\079\084\084\079\077\076\069\070\084",0,-5)T.raidWindow.selectedPlayersText:SetPoint("\082\073\071\072\084",-10,0)T.raidWindow.selectedPlayersText:SetHeight(80)T.raidWindow.selectedPlayersText:SetJustifyH("\076\069\070\084")T.raidWindow.selectedPlayersText:SetJustifyV("\084\079\080")T.raidWindow.selectedPlayersText:SetWordWrap(true)T.raidWindow.selectedPlayersTextContainer=CreateFrame("\070\114\097\109\101",nil,T.raidWindow)T.raidWindow.selectedPlayersTextContainer:SetAllPoints(T.raidWindow.selectedPlayersText)T.raidWindow.selectedPlayersTextContainer:SetScript("\079\110\069\110\116\101\114",function()if T.raidWindow.selectedPlayersText.tooltip then GameTooltip:SetOwner(T.raidWindow.selectedPlayersTextContainer,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:SetText("\208\146\209\139\208\177\209\128\208\176\208\189\208\189\209\139\208\181 \208\184\208\179\209\128\208\190\208\186\208\184\058")GameTooltip:AddLine(T.raidWindow.selectedPlayersText.tooltip,1,1,1,true)GameTooltip:Show()end end)T.raidWindow.selectedPlayersTextContainer:SetScript("\079\110\076\101\097\118\101",function()GameTooltip:Hide()end)end if#b>60 then local O=string.sub(b,1,600).."\046\046\046"T.raidWindow.selectedPlayersText:SetText(O)T.raidWindow.selectedPlayersText.tooltip=b else T.raidWindow.selectedPlayersText:SetText(b)T.raidWindow.selectedPlayersText.tooltip=nil end end function GpDb_old.RestoreRaidWindowState(T)if not T.raidWindow then return end if T.lastSelectionType=="\114\097\105\100"and T.lastRaidId then UIDropDownMenu_SetText(T.raidWindow.dropdown,string.format("\037\100\058 \037\115",T.lastRaidId,T.lastRaidName))T.raidWindow.editBox:SetText("")T.raidWindow.selectedRaidId=T.lastRaidId T.raidWindow.selectedRaidName=T.lastRaidName T.raidWindow.selectedRaidPlayers=T.lastRaidPlayers elseif T.lastSelectionType=="\111\116\104\101\114"and T.lastOtherText then UIDropDownMenu_SetText(T.raidWindow.dropdown,"\208\146\209\139\208\177\208\181\209\128\208\184\209\130\208\181 \209\128\208\181\208\185\208\180")T.raidWindow.editBox:SetText(T.lastOtherText)T.raidWindow.selectedRaidId=nil T.raidWindow.selectedRaidName=nil else UIDropDownMenu_SetText(T.raidWindow.dropdown,"\208\146\209\139\208\177\208\181\209\128\208\184\209\130\208\181 \209\128\208\181\208\185\208\180")T.raidWindow.editBox:SetText("")T.raidWindow.selectedRaidId=nil T.raidWindow.selectedRaidName=nil end if not T.lastGPValue then T.lastGPValue=0 end T.raidWindow.gpEditBox:SetText(tostring(T.lastGPValue))T.raidWindow.saveCheckbox:SetChecked(T.saveSelectionEnabled)T:_UpdateSelectedPlayersText()end function GpDb_old._CheckOfficerRank(T)if not IsInGuild()then return false end local O=UnitName("\112\108\097\121\101\114")for T=1,GetNumGuildMembers(),1 do local j,b,k=GetGuildRosterInfo(T)if j and j==O then local T=GuildControlGetRankName(k+1)if T=="\208\154\208\176\208\191\208\184\209\130\208\176\208\189"or T=="\208\155\208\181\208\185\209\130\208\181\208\189\208\176\208\189\209\130"then return true end break end end return false end function GpDb_old.ToggleRaidWindow(O)if not O:_CheckOfficerRank()then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\162\208\190\208\187\209\140\208\186\208\190 \208\190\209\132\208\184\209\134\208\181\209\128\209\139 \208\188\208\190\208\179\209\131\209\130 \208\189\208\176\209\135\208\184\209\129\208\187\209\143\209\130\209\140 \208\147\208\159")if O.raidWindow and O.raidWindow:IsShown()then O.raidWindow:Hide()end return end if not O.raidWindow then O:_CreateRaidSelectionWindow()end local j=T()local b=O.window.raidOnlyCheckbox:GetChecked()local k=next(O.selected_indices)~=nil if not k and not O.raidWindow:IsShown()then O.raidWindow:Show()UIDropDownMenu_Initialize(O.raidWindow.dropdown,nil)return end if k then if j and not b then print("\124\099\070\070\070\070\048\048\048\048\208\147\208\159\058\124\114 \208\148\208\187\209\143 \208\189\208\176\209\135\208\184\209\129\208\187\208\181\208\189\208\184\209\143 \208\147\208\159 \208\178 \209\128\208\181\208\185\208\180\208\181 \208\178\208\186\208\187\209\142\209\135\208\184\209\130\208\181 \'\208\162\208\190\208\187\209\140\208\186\208\190 \209\128\208\181\208\185\208\180\'")O.raidWindow:Hide()return end if O.raidWindow:IsShown()then O.raidWindow:Hide()else O.raidWindow:Show()UIDropDownMenu_Initialize(O.raidWindow.dropdown,nil)end end end if type(C_Timer)~="\116\097\098\108\101"then C_Timer={}end function C_Timer.After(T,O)local j=CreateFrame("\070\114\097\109\101")j.elapsed=0 j:SetScript("\079\110\085\112\100\097\116\101",function(j,b)j.elapsed=j.elapsed+b if j.elapsed>=T then O()j:SetScript("\079\110\085\112\100\097\116\101",nil)end end)return j end function C_Timer.NewTicker(T,O,j)local b={_remaining=j or math.huge;Cancel=function(T)T._remaining=0 end}local function k()if b._remaining<=0 then return end O()b._remaining=b._remaining-1 if b._remaining>0 then C_Timer.After(T,k)end end C_Timer.After(T,k)return b end setmetatable(C_Timer,{__call=function(T,O,j,b)if b then return C_Timer.NewTicker(O,j,nil)else return C_Timer.After(O,j)end end})function GetNumGroupMembers()if GetNumRaidMembers()>0 then return GetNumRaidMembers()else return GetNumPartyMembers()+1 end end local Z={}local function a(T,O)if type(T)=="\116\097\098\108\101"and type(O)=="\110\117\109\098\101\114"then UIDropDownMenu_AddButton(T,O)end end local function o(T)return T:match("\091\094\092\047\093\043\036")or T end local function q(T)local O=CreateFrame("\070\114\097\109\101","\080\108\097\121\101\114\083\111\117\110\100\077\101\110\117\095"..T,nil,"\085\073\068\114\111\112\068\111\119\110\077\101\110\117\084\101\109\112\108\097\116\101")O.initialize=function(O,j)if not j then return end if j==1 then a({text="\208\148\208\190\208\177\208\176\208\178\208\184\209\130\209\140 \208\178 \209\129\208\191\208\184\209\129\208\190\208\186",notCheckable=1;func=function()testQ=testQ or{}testQ.fls=testQ.fls or{}if not testQ.fls[T]then testQ.fls[T]="\073\110\116\101\114\102\097\099\101\092\065\100\100\079\110\115\092\078\083\081\067\092\108\105\098\115\092\102\108\115\046\109\112\051"print("\208\148\208\190\208\177\208\176\208\178\208\187\208\181\208\189\058",T,"\208\151\208\178\209\131\208\186\058",testQ.fls[T])end CloseDropDownMenus()end},1)a({text="";disabled=1;notCheckable=1},1)if ns_alert_sounds and type(ns_alert_sounds)=="\116\097\098\108\101"then for O,j in ipairs(ns_alert_sounds)do if j.label and(j.sounds and type(j.sounds)=="\116\097\098\108\101")then a({text=j.label,notCheckable=1;hasArrow=1;value=j.label..("\095"..T)},1)end end end elseif j==2 then local O=UIDROPDOWNMENU_MENU_VALUE if O and(ns_alert_sounds and type(ns_alert_sounds)=="\116\097\098\108\101")then local j=O:match("\094\040\046\043\041\095"..(T.."\036"))if j then for O,b in ipairs(ns_alert_sounds)do if b.label==j and(b.sounds and type(b.sounds)=="\116\097\098\108\101")then for O,j in ipairs(b.sounds)do a({text=o(j),notCheckable=1;func=function()testQ.fls[T]=j PlaySoundFile(j,"\077\097\115\116\101\114")print("\208\148\208\190\208\177\208\176\208\178\208\187\208\181\208\189\058",T,"\208\151\208\178\209\131\208\186\058",j)CloseDropDownMenus()end},2)end break end end end end end end return O end local function V(T)local O=""local j=""local b=false for k=1,GetNumGuildMembers(),1 do local J,f,r,Z,a,o,q,V=GetGuildRosterInfo(k)if J and strsplit("-",J)==T then j=q or""O=V or""b=true break end end if b then SendChatMessage("\208\152\208\189\209\132\208\190\209\128\208\188\208\176\209\134\208\184\209\143 \208\190\208\177 \208\184\208\179\209\128\208\190\208\186\208\181\058 "..T,"\079\070\070\073\067\069\082")SendChatMessage("  \208\158\209\132\208\184\209\134\208\181\209\128\209\129\208\186\208\176\209\143 \208\183\208\176\208\188\208\181\209\130\208\186\208\176\058 "..(O~=""and O or"\040\208\189\208\181\209\130\041"),"\079\070\070\073\067\069\082")SendChatMessage("  \208\159\209\131\208\177\208\187\208\184\209\135\208\189\208\176\209\143 \208\183\208\176\208\188\208\181\209\130\208\186\208\176\058 "..(j~=""and j or"\040\208\189\208\181\209\130\041"),"\079\070\070\073\067\069\082")SendChatMessage("\"\209\128\208\181\208\191\209\131\209\130\208\176\209\134\208\184\209\143 "..(T.." \048"),"\071\085\073\076\068")else SendChatMessage("\208\152\208\179\209\128\208\190\208\186 "..(T.." \208\189\208\181 \208\189\208\176\208\185\208\180\208\181\208\189 \208\178 \208\179\208\184\208\187\209\140\208\180\208\184\208\184\046"),"\079\070\070\073\067\069\082")end end local function U()hooksecurefunc("\070\114\105\101\110\100\115\070\114\097\109\101\095\083\104\111\119\068\114\111\112\100\111\119\110",function(T)if T and T~=UNKNOWNOBJECT then a({text="\208\157\208\176\209\129\209\130\209\128\208\190\208\184\209\130\209\140 \208\183\208\178\209\131\208\186 \208\180\208\187\209\143 "..T;notCheckable=1;func=function()Z[T]=Z[T]or q(T)ToggleDropDownMenu(1,nil,Z[T],"\099\117\114\115\111\114",0,0)end},1)a({text="\208\159\208\190\209\129\208\188\208\190\209\130\209\128\208\181\209\130\209\140 \208\184\208\189\209\132\208\190\209\128\208\188\208\176\209\134\208\184\209\142",notCheckable=1;func=function()V(T)end},1)end end)hooksecurefunc("\085\110\105\116\080\111\112\117\112\095\079\110\067\108\105\099\107",function()local T=UIDROPDOWNMENU_OPEN_MENU if T and(T.which=="\067\072\065\084\095\082\079\083\084\069\082"or T.which=="\070\082\073\069\078\068")then local O=T.name if O and O~=UNKNOWNOBJECT then a({text="\208\157\208\176\209\129\209\130\209\128\208\190\208\184\209\130\209\140 \208\183\208\178\209\131\208\186 \208\180\208\187\209\143 "..O,notCheckable=1,func=function()Z[O]=Z[O]or q(O)ToggleDropDownMenu(1,nil,Z[O],"\099\117\114\115\111\114",0,0)end},1)a({text="\208\159\208\190\209\129\208\188\208\190\209\130\209\128\208\181\209\130\209\140 \208\184\208\189\209\132\208\190\209\128\208\188\208\176\209\134\208\184\209\142",notCheckable=1,func=function()V(O)end},1)end end end)end local R=CreateFrame("\070\114\097\109\101")R:RegisterEvent("\080\076\065\089\069\082\095\076\079\071\073\078")R:SetScript("\079\110\069\118\101\110\116",function()U()_G.testQ=_G.testQ or{}_G.testQ.fls=_G.testQ.fls or{}end)NSQCMenu_old={}NSQCMenu_old.__index=NSQCMenu_old function NSQCMenu_old.new(j,T,O)local b=setmetatable({},j)b.addonName=T b.subMenus={}b.elements={}b.mainFrame=CreateFrame("\070\114\097\109\101",T.."\077\097\105\110\070\114\097\109\101",InterfaceOptionsFramePanelContainer)b.mainFrame.name=T b.mainFrame:Hide()b.currentY=-50 local k=b.mainFrame:CreateFontString(nil,"\065\082\084\087\079\082\075","\071\097\109\101\070\111\110\116\078\111\114\109\097\108\076\097\114\103\101")k:SetPoint("\084\079\080\076\069\070\084",16,-16)k:SetText(T)InterfaceOptions_AddCategory(b.mainFrame)return b end function NSQCMenu_old.addInfoSection(j,T,O)local b=j.mainFrame local k=j.currentY local J=b:CreateFontString(nil,"\065\082\084\087\079\082\075","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")J:SetPoint("\084\079\080\076\069\070\084",20,k-10)J:SetText(T)J:SetTextColor(1,.82,0)local f=b:CreateFontString(nil,"\065\082\084\087\079\082\075","\071\097\109\101\070\111\110\116\087\104\105\116\101")f:SetPoint("\084\079\080\076\069\070\084",30,k-30)f:SetWidth(550)f:SetJustifyH("\076\069\070\084")f:SetJustifyV("\084\079\080")f:SetText(j:wrapText(O,540,"\071\097\109\101\070\111\110\116\087\104\105\116\101"))local r=f:GetStringHeight()j.currentY=(k-40)-r table.insert(j.elements,{J,f})end function NSQCMenu_old.wrapText(b,T,O,j)local k=""local J=""for T in T:gmatch("\037\083\043")do local f=J..(" "..T)local r=b:getStringWidth(b.mainFrame,f,j)if r>O then k=k..(J.."\n")J=T else J=f end end return k..J end function NSQCMenu_old.getStringWidth(b,T,O,j)if not T then print("\069\114\114\111\114\058 \070\114\097\109\101 \105\115 \110\105\108 \105\110 \103\101\116\083\116\114\105\110\103\087\105\100\116\104")return 0 end local k=T:CreateFontString(nil,"\065\082\084\087\079\082\075",j)k:SetText(O)local J=k:GetStringWidth()k:Hide()return J end function NSQCMenu_old.addSubMenu(j,T,O)O=O or j local b=j.addonName..(T.."\083\117\098\070\114\097\109\101")local k=CreateFrame("\070\114\097\109\101",b,InterfaceOptionsFramePanelContainer)k.name=T k.parent=O.addonName or O.name k:Hide()local J=CreateFrame("\083\099\114\111\108\108\070\114\097\109\101",b.."\083\099\114\111\108\108\070\114\097\109\101",k,"\085\073\080\097\110\101\108\083\099\114\111\108\108\070\114\097\109\101\084\101\109\112\108\097\116\101")J:SetPoint("\084\079\080\076\069\070\084",16,-50)J:SetPoint("\066\079\084\084\079\077\082\073\071\072\084",-32,16)local f=CreateFrame("\070\114\097\109\101",b.."\083\099\114\111\108\108\067\111\110\116\101\110\116",J)f:SetWidth(J:GetWidth()-20)f:SetHeight(1)J:SetScrollChild(f)local r=_G[b.."\083\099\114\111\108\108\070\114\097\109\101\083\099\114\111\108\108\066\097\114"]r:ClearAllPoints()r:SetPoint("\084\079\080\076\069\070\084",J,"\084\079\080\082\073\071\072\084",12,-16)r:SetPoint("\066\079\084\084\079\077\076\069\070\084",J,"\066\079\084\084\079\077\082\073\071\072\084",12,16)local Z=k:CreateFontString(nil,"\065\082\084\087\079\082\075","\071\097\109\101\070\111\110\116\078\111\114\109\097\108\076\097\114\103\101")Z:SetPoint("\084\079\080\076\069\070\084",16,-16)Z:SetText(T)InterfaceOptions_AddCategory(k)local a={frame=k;scrollFrame=J;scrollContent=f;elements={};lastY=0,totalHeight=0,maxHeight=J:GetHeight(),parent=O,name=T}table.insert(j.subMenus,a)return a end function NSQCMenu_old.showSubMenu(O,T)if T.parent then T.parent.frame:Hide()end T.frame:Show()end function NSQCMenu_old.addSlider(j,T,O)local b=CreateFrame("\083\108\105\100\101\114",T.frame:GetName()..O.name,T.scrollContent,"\079\112\116\105\111\110\115\083\108\105\100\101\114\084\101\109\112\108\097\116\101")b:SetPoint("\084\079\080\076\069\070\084",16,-T.lastY)b:SetWidth(590)b:SetHeight(20)b:SetMinMaxValues(O.min,O.max)b:SetValueStep(O.step or 1)b:SetValue(O.default)b.tooltipText=O.tooltip _G[b:GetName().."\084\101\120\116"]:SetText(O.label)_G[b:GetName().."\076\111\119"]:SetText(O.min)_G[b:GetName().."\072\105\103\104"]:SetText(O.max)b:SetScript("\079\110\069\110\116\101\114",function(T)if T.tooltipText then GameTooltip:SetOwner(T,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine(T.tooltipText,1,1,1,true)GameTooltip:AddLine("\208\162\208\181\208\186\209\131\209\137\208\181\208\181 \208\183\208\189\208\176\209\135\208\181\208\189\208\184\208\181\058 \124\099\102\102\102\102\102\102\102\102"..(T:GetValue().."\124\114"),1,1,1,true)GameTooltip:Show()end end)b:SetScript("\079\110\076\101\097\118\101",function(T)GameTooltip:Hide()end)b:SetScript("\079\110\086\097\108\117\101\067\104\097\110\103\101\100",function(T,j)if O.onChange then O.onChange(j)end if GameTooltip:IsOwned(T)then GameTooltip:ClearLines()GameTooltip:SetOwner(T,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine(T.tooltipText,1,1,1,true)GameTooltip:AddLine("\208\162\208\181\208\186\209\131\209\137\208\181\208\181 \208\183\208\189\208\176\209\135\208\181\208\189\208\184\208\181\058 \124\099\102\102\102\102\102\102\102\102"..(j.."\124\114"),1,1,1,true)GameTooltip:Show()end end)T.lastY=T.lastY+40 T.totalHeight=T.totalHeight+40 T.scrollContent:SetHeight(T.totalHeight)table.insert(T.elements,b)j:updateScrollRange(T)return b end function NSQCMenu_old.addCheckbox(j,T,O)local b=CreateFrame("\067\104\101\099\107\066\117\116\116\111\110",T.frame:GetName()..O.name,T.scrollContent,"\067\104\097\116\067\111\110\102\105\103\067\104\101\099\107\066\117\116\116\111\110\084\101\109\112\108\097\116\101")b:SetPoint("\084\079\080\076\069\070\084",16,-T.lastY)b:SetChecked(O.default or false)b.tooltipText=O.tooltip local k=T.scrollContent:CreateFontString(nil,"\079\086\069\082\076\065\089","\071\097\109\101\070\111\110\116\078\111\114\109\097\108")k:SetPoint("\076\069\070\084",b,"\082\073\071\072\084",5,0)k:SetText(O.label)b:SetScript("\079\110\069\110\116\101\114",function(T)if T.tooltipText then GameTooltip:SetOwner(T,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine(T.tooltipText,1,1,1,true)local O=T:GetChecked()and"\124\099\102\102\048\048\102\102\048\048\208\146\208\186\208\187\209\142\209\135\208\181\208\189\208\190\124\114"or"\124\099\102\102\102\102\048\048\048\048\208\146\209\139\208\186\208\187\209\142\209\135\208\181\208\189\208\190\124\114"GameTooltip:AddLine("\208\162\208\181\208\186\209\131\209\137\208\181\208\181 \208\183\208\189\208\176\209\135\208\181\208\189\208\184\208\181\058 "..O,1,1,1,true)GameTooltip:Show()end end)b:SetScript("\079\110\076\101\097\118\101",function(T)GameTooltip:Hide()end)b:SetScript("\079\110\067\108\105\099\107",function(T)if O.onClick then O.onClick(T:GetChecked())end if GameTooltip:IsOwned(T)then GameTooltip:ClearLines()GameTooltip:SetOwner(T,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine(T.tooltipText,1,1,1,true)local O=T:GetChecked()and"\124\099\102\102\048\048\102\102\048\048\208\146\208\186\208\187\209\142\209\135\208\181\208\189\208\190\124\114"or"\124\099\102\102\102\102\048\048\048\048\208\146\209\139\208\186\208\187\209\142\209\135\208\181\208\189\208\190\124\114"GameTooltip:AddLine("\208\162\208\181\208\186\209\131\209\137\208\181\208\181 \208\183\208\189\208\176\209\135\208\181\208\189\208\184\208\181\058 "..O,1,1,1,true)GameTooltip:Show()end end)T.lastY=T.lastY+30 T.totalHeight=T.totalHeight+30 T.scrollContent:SetHeight(T.totalHeight)table.insert(T.elements,b)j:updateScrollRange(T)return b end function NSQCMenu_old.updateScrollRange(O,T)local j=T.scrollFrame local b=_G[j:GetName().."\083\099\114\111\108\108\066\097\114"]if not b then error("\083\099\114\111\108\108\098\097\114 \110\111\116 \102\111\117\110\100 \102\111\114 \115\099\114\111\108\108\070\114\097\109\101\058 "..j:GetName())end local k=T.totalHeight-T.maxHeight if k<0 then k=0 end b:SetMinMaxValues(0,k)b:SetValue(0)j:UpdateScrollChildRect()end function NSQCMenu_old.addButton(j,T,O)local b=CreateFrame("\066\117\116\116\111\110",T.frame:GetName()..O.name,T.scrollContent,"\085\073\080\097\110\101\108\066\117\116\116\111\110\084\101\109\112\108\097\116\101")b:SetPoint("\084\079\080\076\069\070\084",16,-T.lastY)b:SetSize(O.width or 120,O.height or 24)b:SetText(O.label or"\208\154\208\189\208\190\208\191\208\186\208\176")b:SetScript("\079\110\067\108\105\099\107",function(T)if O.onClick then O.onClick()end end)if O.tooltip then b.tooltipText=O.tooltip b:SetScript("\079\110\069\110\116\101\114",function(T)if T.tooltipText then GameTooltip:SetOwner(T,"\065\078\067\072\079\082\095\082\073\071\072\084")GameTooltip:AddLine(T.tooltipText,1,1,1,true)GameTooltip:Show()end end)b:SetScript("\079\110\076\101\097\118\101",function(T)GameTooltip:Hide()end)end T.lastY=(T.lastY+(O.height or 24))+10 T.totalHeight=(T.totalHeight+(O.height or 24))+10 T.scrollContent:SetHeight(T.totalHeight)table.insert(T.elements,b)j:updateScrollRange(T)return b end function C_Timer(T,O,j)local b=CreateFrame("\070\114\097\109\101")b.duration=T b.elapsed=0 b.isLooping=j or false b:SetScript("\079\110\085\112\100\097\116\101",function(T,j)T.elapsed=T.elapsed+j if T.elapsed>=T.duration then if type(O)=="\102\117\110\099\116\105\111\110"then O()end if T.isLooping then T.elapsed=0 else T:SetScript("\079\110\085\112\100\097\116\101",nil)T=nil end end end)end C_Timer(10,function()if not menu then NS3Menu_old()if testQ["\209\129\208\186\209\128\209\139\209\130\209\140 \208\177\208\190\209\129\209\129\208\190\208\178"]then HideBossFrames()end end end)function NS3Menu_old()local T=NSQCMenu_old:new("\078\083\081\067")local O=T:addSubMenu("\208\157\208\176\209\129\209\130\209\128\208\190\208\185\208\186\208\184")T:addCheckbox(O,{name="\208\161\208\186\209\128\209\139\209\130\209\140 \209\132\209\128\208\181\208\185\208\188\209\139 \208\177\208\190\209\129\209\129\208\190\208\178 \208\191\208\190\208\180 \208\188\208\184\208\189\208\184\208\186\208\176\209\128\209\130\208\190\208\185 \208\178 \208\191\208\191\208\179 \208\184 \209\128\208\181\208\185\208\180\208\176\209\133",label="\208\161\208\186\209\128\209\139\209\130\209\140 \209\132\209\128\208\181\208\185\208\188\209\139 \208\177\208\190\209\129\209\129\208\190\208\178 \208\191\208\190\208\180 \208\188\208\184\208\189\208\184\208\186\208\176\209\128\209\130\208\190\208\185 \208\178 \208\191\208\191\208\179 \208\184 \209\128\208\181\208\185\208\180\208\176\209\133";default=testQ["\209\129\208\186\209\128\209\139\209\130\209\140 \208\177\208\190\209\129\209\129\208\190\208\178"]or false;tooltip="\208\161\208\186\209\128\209\139\209\130\209\140 \209\132\209\128\208\181\208\185\208\188\209\139 \208\177\208\190\209\129\209\129\208\190\208\178 \208\191\208\190\208\180 \208\188\208\184\208\189\208\184\208\186\208\176\209\128\209\130\208\190\208\185 \208\178 \208\191\208\191\208\179 \208\184 \209\128\208\181\208\185\208\180\208\176\209\133",onClick=function(T)if testQ then if T then testQ["\209\129\208\186\209\128\209\139\209\130\209\140 \208\177\208\190\209\129\209\129\208\190\208\178"]=1 HideBossFrames()else testQ["\209\129\208\186\209\128\209\139\209\130\209\140 \208\177\208\190\209\129\209\129\208\190\208\178"]=nil end end end})T:addCheckbox(O,{name="\208\146\208\186\208\187\209\142\209\135\208\184\209\130\209\140 \208\176\208\178\209\130\208\190\209\129\208\188\208\181\208\189\209\131 \208\191\208\190\208\184\209\129\208\186\208\176 \208\189\208\176 \208\188\208\184\208\189\208\184\208\186\208\176\209\128\209\130\208\181 \208\180\208\187\209\143 \209\133\208\176\208\189\209\130\208\176",label="\208\146\208\186\208\187\209\142\209\135\208\184\209\130\209\140 \208\176\208\178\209\130\208\190\209\129\208\188\208\181\208\189\209\131 \208\191\208\190\208\184\209\129\208\186\208\176 \208\189\208\176 \208\188\208\184\208\189\208\184\208\186\208\176\209\128\209\130\208\181 \208\180\208\187\209\143 \209\133\208\176\208\189\209\130\208\176";default=testQ["\208\188\208\181\209\130\208\186\208\176 \208\190\209\133\208\190\209\130\208\189\208\184\208\186\208\176"]or false;tooltip="\208\146\208\186\208\187\209\142\209\135\208\184\209\130\209\140 \208\176\208\178\209\130\208\190\209\129\208\188\208\181\208\189\209\131 \208\191\208\190\208\184\209\129\208\186\208\176 \208\189\208\176 \208\188\208\184\208\189\208\184\208\186\208\176\209\128\209\130\208\181 \208\180\208\187\209\143 \209\133\208\176\208\189\209\130\208\176";onClick=function(T)if testQ then if T then testQ["\208\188\208\181\209\130\208\186\208\176 \208\190\209\133\208\190\209\130\208\189\208\184\208\186\208\176"]=1 HideBossFrames()else testQ["\208\188\208\181\209\130\208\186\208\176 \208\190\209\133\208\190\209\130\208\189\208\184\208\186\208\176"]=nil end end end})end function HideBossFrames()for T=1,4,1 do local O=_G["\066\111\115\115"..(T.."\084\097\114\103\101\116\070\114\097\109\101")]if O then O:UnregisterAllEvents()O:Hide()O.Show=function() end end end end
+function mysplit (inputstr, sep)
+	if sep == nil then
+		sep = "%s"
+	end
+	local t={}
+	for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+		table.insert(t, str)
+	end
+	return t
+end
+local function IsInRaid()
+    return GetNumRaidMembers() > 0
+end
+function round(number)
+  if (number - (number % 0.1)) - (number - (number % 1)) < 0.5 then
+    number = number - (number % 1)
+  else
+    number = (number - (number % 1)) + 1
+  end
+ return number
+end
+function nsplit(str)
+	lines = {}
+	for s in str:gmatch("[^\r\n]+") do
+		table.insert(lines, s)
+	end
+	return lines
+end
+function all_trim(s)
+	return s:match( "^%s*(.-)%s*$" )
+end
+
+function kirTest(b,n1)
+test1=b:sub(n1,n1)
+testN=b:byte(7)
+testN=tonumber(testN)
+if testN == 208 then
+	r=b:sub(n1*2-1,n1*2)
+else
+	r=test1
+end
+return r
+end
+
+function alfabet (bookv)
+shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'()"
+	myB=string.find(shablon,bookv,1,true)
+	return myB
+end
+function alfabetC (bookv,c)
+	shablon="абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'()"
+	local myB
+	if c == 0 then
+		myB=string.find(shablon,bookv,1,true)
+	end
+	if c == 1 then
+		if bookv < 133 then
+			myB = string.utf8sub(shablon,bookv/2+0.5,bookv/2+0.5)
+		else
+			myB = string.sub(shablon,bookv,bookv)
+		end
+	end
+	return myB
+end
+function hashStr (nome)
+	local i = time()
+	i = i % 10000
+	i=tostring(i)
+	i=string.utf8sub(i,2,3)
+	i=string.format("%03d", i)
+	nomeLen=string.utf8len(nome)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(nome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	iN=tostring(i)
+	r1=string.utf8sub(iN, 1, 1)
+	r2=string.utf8sub(hNome, 1, 1)
+	r3=string.utf8sub(iN, 2, 2)
+	r4=string.utf8sub(hNome, 2, 2)
+	r5=string.utf8sub(iN, 3, 3)
+	r6=string.utf8sub(hNome, 3, 3)
+	r=r1 .. r2 .. r3 .. r4 .. r5 .. r6
+	return r
+end
+
+function tablelength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+end
+
+function getPOS(x,y)
+	local YYY=((1-y)*668)
+	local XXX=x*1002
+	return XXX,YYY
+end
+
+function hshStrNuovo(hshRar,mioNome)
+	nomeLen=string.utf8len(mioNome)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(mioNome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	local hshRarMsh1=string.sub(hshRar,2,2)
+	local hshRarMsh2=string.sub(hshRar,4,4)
+	local hshRarMsh3=string.sub(hshRar,6,6)
+	local hshNuovo1 = math.random(0, 9)
+    local hshNuovo2 = math.random(0, 9)
+	local hshNuovo3 = math.random(0, 9)
+	local hshRarMshRezult=hshRarMsh1 .. hshRarMsh2 .. hshRarMsh3
+	local hshMioNome=hashStr(mioNome)
+	local hshMioNome1=string.utf8sub(nome11,2,2)
+	local hshMioNome2=string.utf8sub(nome11,4,4)
+	local hshMioNome3=string.utf8sub(nome11,6,6)
+	local hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
+	local hshNuovoRezult=hshNuovo1 .. hshMioNome2 .. hshNuovo2 .. hshMioNome1 .. hshNuovo3 .. hshMioNome3
+	return hshRarMshRezult, hshMioNomeRezult, hshNuovoRezult
+end
+
+function hshStrNuovo(hshRar,mioNome)
+	local nomeLen
+	local tmNome
+	local nome11
+	local hNome
+	local hshMioNome1
+	local hshMioNome2
+	local hshMioNome3
+	local qioC
+	local hshRar1
+	local hshRar2
+	local hshRar3
+	local hshRarMshRezult
+	local hshMioNomeRezult
+	nomeLen=string.utf8len(mioNome)
+	local nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(mioNome, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNome=string.format("%03d",nome11)
+	hshMioNome1=string.sub(hNome,1,1)
+	hshMioNome2=string.sub(hNome,2,2)
+	hshMioNome3=string.sub(hNome,3,3)
+	qioC=string.sub(hshRar,2,2)
+	qioC=tonumber(qioC)
+	if qioC==0 then
+		hshRar1=string.sub(hshRar, 3,3)
+		hshRar2=string.sub(hshRar, 4,4)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qioC==1 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 3,3)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qioC==2 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qioC==3 then
+		hshRar1=string.sub(hshRar, 3,3)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 4,4)
+	elseif qioC==4 then
+		hshRar1=string.sub(hshRar, 1,1)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 4,4)
+	elseif qioC==5 then
+		hshRar1=string.sub(hshRar, 1,1)
+		hshRar2=string.sub(hshRar, 6,6)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qioC==6 then
+		hshRar1=string.sub(hshRar, 6,6)
+		hshRar2=string.sub(hshRar, 1,1)
+		hshRar3=string.sub(hshRar, 3,3)
+	elseif qioC==7 then
+		hshRar1=string.sub(hshRar, 6,6)
+		hshRar2=string.sub(hshRar, 3,3)
+		hshRar3=string.sub(hshRar, 1,1)
+	elseif qioC==8 then
+		hshRar1=string.sub(hshRar, 4,4)
+		hshRar2=string.sub(hshRar, 5,5)
+		hshRar3=string.sub(hshRar, 6,6)
+	elseif qioC==9 then
+		hshRar1=string.sub(hshRar, 5,5)
+		hshRar2=string.sub(hshRar, 1,1)
+		hshRar3=string.sub(hshRar, 3,3)
+	end
+	hshRarMshRezult=hshRar1 .. hshRar2 .. hshRar3
+	hshMioNomeRezult=hshMioNome1 .. hshMioNome2 .. hshMioNome3
+	return hshRarMshRezult, hshMioNomeRezult
+end
+
+
+function hshSenderNomeC(senderNomeC)
+	local nomeLen
+	local nome1
+	local nome11
+	local hNomeC
+	local hsSenderNomeC1
+	local hsSenderNomeC2
+	local hsSenderNomeC3
+	local hshSenderRC1
+	local hshSenderRC2
+	local hshSenderRC3
+	local hsSenderNomeCRezult
+	nomeLen=string.utf8len(senderNomeC)
+	nome1={}
+	for startLen=1,nomeLen do
+		nome1[startLen]=string.utf8sub(senderNomeC, startLen, startLen)
+		tmNome=nome1[startLen]
+		nome1[startLen]=alfabet(tmNome)
+	end
+	nome11=0
+	for startLen=1,nomeLen do
+		nome11=nome11+nome1[startLen]
+	end
+	nome11=nome11 % 1000
+	hNomeC=string.format("%03d",nome11)
+	hsSenderNomeC1=string.sub(hNomeC,1,1)
+	hsSenderNomeC2=string.sub(hNomeC,2,2)
+	hsSenderNomeC3=string.sub(hNomeC,3,3)
+	hshSenderRC1 = math.random(0, 9)
+	hshSenderRC2 = math.random(0, 9)
+	hshSenderRC3 = math.random(0, 9)
+
+	if hshSenderRC2==0 then
+	hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC1 .. hsSenderNomeC2 .. hshSenderRC3 .. hsSenderNomeC3
+	elseif hshSenderRC2==1 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC2 .. hsSenderNomeC1 .. hshSenderRC3 .. hsSenderNomeC3
+	elseif hshSenderRC2==2 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hsSenderNomeC1 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==3 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hsSenderNomeC1 .. hsSenderNomeC3 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==4 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hshSenderRC1 .. hsSenderNomeC3 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==5 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hshSenderRC3 .. hsSenderNomeC2
+	elseif hshSenderRC2==6 then
+		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hshSenderRC3 .. hsSenderNomeC1
+	elseif hshSenderRC2==7 then
+		hsSenderNomeCRezult=hsSenderNomeC3 .. hshSenderRC2 .. hsSenderNomeC2 .. hshSenderRC3 .. hshSenderRC1 .. hsSenderNomeC1
+	elseif hshSenderRC2==8 then
+		hsSenderNomeCRezult=hshSenderRC1 .. hshSenderRC2 .. hshSenderRC3 .. hsSenderNomeC1 .. hsSenderNomeC2 .. hsSenderNomeC3
+	elseif hshSenderRC2==8 then
+		hsSenderNomeCRezult=hsSenderNomeC1 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC2 .. hshSenderRC3
+	elseif hshSenderRC2==9 then
+		hsSenderNomeCRezult=hsSenderNomeC2 .. hshSenderRC2 .. hsSenderNomeC3 .. hshSenderRC1 .. hsSenderNomeC1 .. hshSenderRC3
+	end
+	if testQ ~= nil then
+		if testQ[senderNomeC] ~= nil then
+			if testQ[senderNomeC]["rarHSH1"]==nil then
+				testQ[senderNomeC]["rarHSH1"]={}
+			end
+			if testQ[senderNomeC]["rarHSH"]==nil then
+				testQ[senderNomeC]["rarHSH"]={}
+			end
+
+
+			testDate=date("%d")
+			testDate=tonumber(testDate)
+			if (testDate % 2 == 0) then
+				tableHSH="rarHSH"
+				testQ[senderNomeC]["rarHSH1"]=nil
+			else
+				tableHSH="rarHSH1"
+				testQ[senderNomeC]["rarHSH"]=nil
+			end
+
+
+			if hsSenderNomeCRezult==testQ[senderNomeC][tableHSH] then
+				hsSenderNomeCRezult=hshSenderNomeC(senderNomeC)
+			end
+
+
+			table.insert(testQ[senderNomeC][tableHSH], hsSenderNomeCRezult)
+			return hsSenderNomeCRezult
+		end
+	end
+end
+
+function gmTest (gmTestNome)
+	local gmTestRez
+	for i=1,#gmList do
+		if gmTestNome==gmList[i] then
+			gmTestRez = "гм"
+			break
+		end
+		i=i+1
+	end
+	return gmTestRez
+end
+
+function proverkaVypolneniyaKvestySachivkoj(mNome,qlvl)
+	local vypolnenaLiAch=testQ[mNome]["взятый_квест"]
+	if qlvl == "2" then
+		qlvl = "квест_лвл2"
+	elseif qlvl == "3" then
+		qlvl = "квест_лвл3"
+	end
+	local chisloPunktop=testQ[mNome][qlvl][vypolnenaLiAch]
+	chisloPunktop=tonumber(chisloPunktop)
+	local count = GetAchievementNumCriteria (vypolnenaLiAch)
+	j=0
+	k=0
+	for i=1, count do
+		local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(vypolnenaLiAch, i);
+		prov=completed
+		if prov == true then
+			j=j+1
+		else
+			k=k+1
+		end
+		i=i+1
+		end
+		local pokazatRezult=chisloPunktop-j
+		if pokazatRezult < 0 then
+			pokazatRezult = 0
+		end
+		SendChatMessage("Осталось выполнить " .. pokazatRezult .. " пунктов ачивки " .. vypolnenaLiAch .. " " .. GetAchievementLink(vypolnenaLiAch) .. " из " .. chisloPunktop, "GUILD", nil, 1)
+end
+
+
+function npcXY(k,l,x,y,u)
+	local testNpcScanDal = nil
+	local npcSK = k
+	local npcSL = l
+	npcSK=tostring(npcSK)
+	npcSL=tostring(npcSL)
+	if npcScan[npcSK] == nil then
+		npcScan[npcSK] = {}
+	end
+	if npcScan[npcSK][npcSL] == nil then
+		npcScan[npcSK][npcSL] = {}
+	end
+	local unitNome = u
+	if unitNome ~= nil then
+		local npcPX = x
+		local npcPY = y
+		npcPX=tostring(npcPX)
+		npcPY=tostring(npcPY)
+		if npcScan[npcSK][npcSL][unitNome] == nil then
+				npcCount=1
+				npcCount=tostring(npcCount)
+				npcScan[npcSK][npcSL][unitNome] = {}
+				npcScan[npcSK][npcSL][unitNome][npcCount] = {}
+				npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
+				npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
+
+		else
+			local nomeRar={}
+			local npcTestToch={}
+			npcCount = (tablelength(npcScan[npcSK][npcSL][unitNome])) + 1
+			npcCount=tostring(npcCount)
+			npcPX=tostring(npcPX)
+			npcPY=tostring(npcPY)
+			npcScan[npcSK][npcSL][unitNome][npcCount] = {}
+			npcScan[npcSK][npcSL][unitNome][npcCount]["x"] = npcPX
+			npcScan[npcSK][npcSL][unitNome][npcCount]["y"] = npcPY
+			end
+		else
+			print ("Выбери цель")
+		end
+
+end
+
+function testNpc ( NpcID )
+	local r
+	CreateFrame( "GameTooltip", "MyScanningTooltip", nil, "GameTooltipTemplate" );
+	MyScanningTooltip:SetOwner( WorldFrame, "ANCHOR_NONE" );
+	MyScanningTooltip:AddFontStrings(
+    MyScanningTooltip:CreateFontString( "$parentTextLeft1", nil, "GameTooltipText" ),
+    MyScanningTooltip:CreateFontString( "$parentTextRight1", nil, "GameTooltipText" ) );
+    MyScanningTooltip:SetHyperlink("unit:" .. NpcID)
+    --GameTooltip:Show()
+
+    r=EnumerateTooltipLines(MyScanningTooltip)
+    return r
+end
+
+
+
+local function EnumerateTooltipLines_helper(...)
+	local rrr
+    for i = 1, select("#", ...) do
+        local region = select(i, ...)
+        if region and region:GetObjectType() == "FontString" then
+            local text = region:GetText() -- string or nil
+            if text ~= nil then
+            print (text)
+                if string.find (text, "Уровень") then
+					testLvlNpc=mysplit(text)
+				end
+				if string.find (text, "уровня") then
+					testLvlNpc=mysplit(text)
+					if string.find(testLvlNpc[3], "%?%?") then
+						--SendAddonMessage("NSGadd", "#npcOff", "guild")
+					else
+						rrr="1"
+					end
+					if string.find(testLvlNpc[2], "%?%?") then
+						SendAddonMessage("NSGadd", "#npcOff", "guild")
+					end
+
+					if string.find(testLvlNpc[1], "Труп") then
+						SendAddonMessage("NSGadd", "#npcDie", "guild")
+					end
+				end
+            end
+        end
+    end
+    return rrr
+end
+
+function EnumerateTooltipLines(tooltip) -- good for script handlers that pass the tooltip as the first argument.
+	local r
+    r=EnumerateTooltipLines_helper(tooltip:GetRegions())
+    return r
+end
+
+function pLid ()
+	if UnitIsPartyLeader("party1") then
+		pL = 1
+	elseif UnitIsPartyLeader("party2") then
+		pL = 2
+	elseif UnitIsPartyLeader("party3") then
+		pL = 3
+	elseif UnitIsPartyLeader("party4") then
+		pL = 4
+	else
+		pL = 0
+	end
+	return pL
+end
+function pM(nik)
+		if nik == UnitName("party1") then
+			r = 1
+		elseif nik == UnitName("party2") then
+			r = 1
+		elseif nik == UnitName("party3") then
+			r = 1
+		elseif nik == UnitName("party4") then
+			r = 1
+		else
+			r = 0
+		end
+		return r
+	end
+function testN()
+	testNpc(UnitGUID("target"))
+end
+function tblAllFail(mm,nik)
+	if mmList[mm] ~= nil then
+		for i=1, mmList[mm]["количество_боссов"] do
+			if nik == mmList[mm][i] then
+				r = i
+				break
+			else
+				r = 0
+			end
+		end
+	end
+	return r
+end
+
+function testMarsh(tabella,diam)
+	trovMarsh(tabella,diam)
+		local rez = 0
+		for k, v in pairs(mapTables[tabella]) do
+			if type(k)=="string" then
+				tKont = k
+			end
+			for k, v in pairs(mapTables[tabella][k]) do
+				if type(k)=="string" then
+					tLok = k
+				end
+			end
+		end
+		if testQ["schet1"] ~= nil then
+			for i = testQ["schet1"]-10, testQ["schet1"]+10 do
+				if testQ["schet"][i] ~= nil then
+					marshrut(i,tablelength(mapTables[tabella][tKont][tLok]))
+					rez = rez + testQ["schet"][i]
+					if rez > 0 then
+						break
+					end
+				end
+			end
+		end
+	return rez
+end
+
+function trovMarsh(tabella,diam)
+	if testKontLok(tabella) ~= nil then
+		local x,y = GetPlayerMapPosition("player")
+		local testKont = GetCurrentMapContinent()
+		testKont = tostring(testKont)
+		local lok = GetCurrentMapZone()
+		lok = tostring(lok)
+		local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
+		local tablen = tablelength(mapTables[tabella][testKont][lok])
+		testQ["schet"] = {}
+		testQ["numPunti"] = {}
+		if testQ["num"] == nil then
+			if testKontLok(tabella) < diam then
+				testQ["num"] = 1
+				testQ["schet1"] = 1
+			end
+		end
+		for i = testQ["num"]-10, testQ["num"]+10 do
+			testQ["schet1"] = i
+			j = tostring(i)
+			if testQ["старт"] ~= nil then
+				if mapTables[tabella][testKont][lok][j] ~= nil then
+					mioCel=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+					if mioCel < diam then
+						testQ["schet"][i] = 1
+						j = testQ["num"]
+						j = tostring(j)
+						mioCel1=sqrt((x-mapTables[tabella][testKont][lok][j]["x"])^2+(y-mapTables[tabella][testKont][lok][j]["y"])^2)
+						if mioCel1 > mioCel then
+							testQ["num"] = i
+							testQ["marshF"][i] = i
+							if testQ["marshF"][i] == math.modf(tablen/4) then
+								SendChatMessage("Я прошел четверть маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/2) then
+								SendChatMessage("Я прошел половину маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if testQ["marshF"][i] == math.modf(tablen/4*3) then
+								SendChatMessage("Я прошел три четверти маршрута", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+							if tonumber(tablen) == tonumber(i) then
+								SendChatMessage("Маршрут завершен", "OFFICER", nil, 1)
+								PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+								if marshruT ~= nil then
+								for i=1,9999 do
+									if marshruT[i] ~= nil then
+										marshruT[i]:Hide()
+									end
+								end
+								end
+								marshruT = nil
+								testQ["старт"] = nil
+								testQ["num"] = nil
+								testQ["marshF"] = nil
+
+									if tabella == "evO0102" then
+										testQ["evO0102"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0203" then
+										testQ["evO0203"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0304" then
+										testQ["evO0304"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0405" then
+										testQ["evO0405"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0506" then
+										testQ["evO0506"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0607" then
+										testQ["evO0607"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0708" then
+										testQ["evO0708"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0809" then
+										testQ["evO0809"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO0910" then
+										testQ["evO0910"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO1011" then
+										testQ["evO1011"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO11" then
+										testQ["evO11"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO12" then
+										testQ["evO12"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO13" then
+										testQ["evO13"] = true
+										testQ["startChern"] = nil
+									end
+									if tabella == "evO14" then
+										testQ["evO14"] = true
+										testQ["startChern"] = nil
+									end
+								testQ["start"] = nil
+
+							end
+						end
+					else
+						testQ["schet"][i] = 0
+					end
+				end
+			end
+		end
+
+	end
+end
+
+function testKontLok(tabella)
+	local testKont = GetCurrentMapContinent()
+	testKont = tostring(testKont)
+	local lok = GetCurrentMapZone()
+	lok = tostring(lok)
+	local mioCel
+	local x,y = GetPlayerMapPosition("player")
+	local tKont,tLok
+	local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
+	if mapTables ~= nil then
+		if mapTables[tabella] ~= nil then
+			for k, v in pairs(mapTables[tabella]) do
+				if type(k)=="string" then
+					tKont = k
+				end
+				for k, v in pairs(mapTables[tabella][k]) do
+					if type(k)=="string" then
+						tLok = k
+					end
+				end
+			end
+			if tostring(lok) == tostring(tLok) then
+				if tabella ~= nil then
+					if mapTables[tabella] ~= nil then
+						if tKont == testKont then
+							if mapTables[tabella][testKont][lok] ~= nil then
+								if tLok == lok then
+									mioCel=sqrt((x-mapTables[tabella][testKont][lok]["1"]["x"])^2+(y-mapTables[tabella][testKont][lok]["1"]["y"])^2)
+									return mioCel
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+function startFchern(tabella,n1,n2)
+	n1 = tostring(n1)
+	n2 = tostring(n2)
+	if krt[n1] == true and krt[n2] == true then
+		testQ["start"] = tabella
+		testQ["старт"] = 0
+		testQ[tabella] = "старт"
+		marshruT = {}
+	end
+end
+
+function testFchern(tabella,n1,n2)
+	n1 = tostring(n1)
+	n2 = tostring(n2)
+	local tKont,tLok
+	if testQ[tabella] == nil then
+		for k, v in pairs(mapTables[tabella]) do
+			if type(k)=="string" then
+				tKont = k
+			end
+			for k, v in pairs(mapTables[tabella][tKont]) do
+				if type(k)=="string" then
+					tLok = k
+				end
+			end
+		end
+			if mapTables["lokRasstoyanie"][tostring(tKont)] ~= nil then
+				if mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)] ~= nil then
+					if testKontLok(tabella) ~= nil then
+						if tonumber(testKontLok(tabella)) <= tonumber(mapTables["lokRasstoyanie"][tostring(tKont)][tostring(tLok)])*3 then
+							startFchern(tabella,n1,n2)
+							testQ["startChern"] = tabella
+						end
+					end
+				end
+			end
+	end
+end
+
+function printPar(tabella)
+	local spisok = {}
+	local spisokRez
+	for k, v in pairs(tabella) do
+		if k ~= nil then
+			table.insert(spisok,k)
+		end
+	end
+	spisokRez = table.concat(spisok, " ")
+	return spisokRez
+end
+
+function otladka(num,mess1,mess2,mess3,mess4,mess5,mess6)
+	local x
+	numF=tonumber(num)
+	if numF == 1 then
+		if mess1 == "testQ" then
+			x = testQ
+		end
+	end
+	if numF == 2 then
+		if mess1 == "testQ" then
+			x = testQ[mess2]
+		end
+	end
+	if numF == 3 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3]
+		end
+	end
+	if numF == 4 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4]
+		end
+	end
+	if numF == 5 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4][mess5]
+		end
+	end
+	if numF == 6 then
+		if mess1 == "testQ" then
+			x = testQ[mess2][mess3][mess4][mess5][mess6]
+		end
+	end
+	x=type(x)
+	y=x
+	return x,y
+end
+function tabellaFind(table, item)
+       local index = 1;
+       while table[index] do
+       print (item)
+       print(table[index])
+               if ( item == table[index] ) then
+                       return 1;
+               end
+               index = index + 1;
+       end
+       return nil;
+end
+function krtChernGetXY(nomer)
+	nomer = tostring(nomer)
+	for k, v in pairs(krt["chernila"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont][lok]) do
+		if k == "x" then
+			x = v
+		end
+		if k == "y" then
+			y = v
+		end
+		if k == "msg" then
+			m = v
+		end
+	end
+	return kont, lok, x, y, m
+end
+function mapQuest(nomer)
+	nomer = tostring(nomer)
+	for k, v in pairs(testQ["mapQuest"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]) do
+		if k == "x" then
+			x = v
+		end
+		if k == "y" then
+			y = v
+		end
+		if k == "msg" then
+			m = v
+		end
+		if k == "cel" then
+			c = v
+		end
+	end
+	return kont, lok, x, y, m, c
+end
+function mapQuestP(nomer)
+	nomer = tostring(nomer)
+	testQ["mapQuest"]["podskazkiRez"] = {}
+	for k, v in pairs(testQ["mapQuest"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]) do
+		if k == "podskazki" then
+			for k, v in pairs(testQ["mapQuest"][nomer][kont][lok]["podskazki"]) do
+				testQ["mapQuest"]["podskazkiRez"][k] = v
+			end
+		end
+	end
+end
+function chern1P(nomer)
+	nomer = tostring(nomer)
+	krt["chernila"]["podskazkiRez"] = {}
+	for k, v in pairs(krt["chernila"][nomer]) do
+		kont = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont]) do
+		lok = k
+	end
+	for k, v in pairs(krt["chernila"][nomer][kont][lok]) do
+		if k == "podskazki" then
+			for k, v in pairs(krt["chernila"][nomer][kont][lok]["podskazki"]) do
+				krt["chernila"]["podskazkiRez"][k] = v
+			end
+		end
+	end
+end
+function tabellaEnStr(nq,n)
+	local lenVlozh, rez, l, k, x, x1
+	nq=tostring(nq)
+	n=tostring(n)
+	if testQ["chD"] == nil then
+		testQ["chD"] = {}
+	end
+	if testQ["chD"][tostring(nq)] == nil then
+		l = "0"
+		for z, v in pairs(krt["chernila"][nq]) do
+			x=z
+		end
+		for z, v in pairs(krt["chernila"][nq][x]) do
+			x1=z
+		end
+		lenVlozh = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
+		for i=1,lenVlozh do
+			k=tostring(i)
+			if rez == nil then
+				rez = k .. " " .. txtXor(krt["chernila"][nq][x][x1]["podskazki"][k]) .. "\n"
+			else
+				rez = rez .. k .. " " .. txtXor(krt["chernila"][nq][x][x1]["podskazki"][k]) .. "\n"
+			end
+			l = tonumber(l)
+			l = l+1
+			l = tostring(l)
+			if l==n then
+				break
+			end
+		end
+	else
+		for z, v in pairs(krt["chernila"][nq]) do
+			x=z
+		end
+		for z, v in pairs(krt["chernila"][nq][x]) do
+			x1=z
+		end
+		rez = nq .." выполнено\n"
+		l = tablelength(krt["chernila"][nq][x][x1]["podskazki"])
+	end
+	return rez,l
+end
+
+function txtXor(str)
+	local g = str:utf8sub(1,3)
+	local num
+	local strRez
+	if g ~= "###" then
+		num = string.utf8len(str)
+		strRez = "###"
+		for i=1,num do
+			strRez = strRez .. string.format("%03d",alfabet(string.utf8sub(str,i,i)))
+		end
+	end
+	if g == "###" then
+		strRez = alfabetC(tonumber(string.sub(str,4,6)),1)
+		for i=7,#str,3 do
+			strRez = strRez .. alfabetC(tonumber(string.sub(str,i,i+2)),1)
+		end
+	end
+	return strRez
+end
+bcsQuickFrame = {}
+function createQuickHtmlFrame(text,num,id)
+	local tm = GetTime()
+	bcsQuickFrame[id]  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	bcsQuickFrame[id]:SetSize(222, 222)
+	bcsQuickFrame[id]:SetFrameStrata("HIGH")
+	bcsQuickFrame[id]:SetPoint("CENTER", UIParent, "CENTER", 33, num)
+	bcsQuickFrame[id]:SetBackdropColor(0, 103, 51, 1)
+	bcsQuickFrame[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+	bcsQuickFrame[id]:SetText("<html><body><p>|cff90ee90" .. text .. "</p></body></html>");
+end
+dmG = {}
+function dmgText(text,obj,id,raz,cvet)
+	if dmG[id] == nil then
+		dmG[id] = CreateFrame("SimpleHTML", "dmG", obj)
+	else
+		dmG[id]:Show()
+	end
+	dmG[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+	dmG[id]:ClearAllPoints()
+	dmG[id]:SetBackdropColor(0, 103, 51, 1)
+	dmG[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	if text ~= "" then
+		if tonumber(text) <= 9999 then
+			dmG[id]:SetSize(48, 48)
+		end
+		if tonumber(text) > 9999 then
+			dmG[id]:SetSize(54, 48)
+		end
+		if tonumber(text) <= 9999 then
+			dmG[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+		end
+		if tonumber(text) > 9999 then
+			dmG[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+		end
+	end
+	dmG[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+end
+dmG1 = {}
+function dmgText1(text,obj,id,raz,cvet)
+	if dmG1[id] == nil then
+		dmG1[id] = CreateFrame("SimpleHTML", "dmG", obj)
+		dmG1[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+		dmG1[id]:ClearAllPoints()
+		dmG1[id]:SetBackdropColor(0, 103, 51, 1)
+		dmG1[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	end
+		if text ~= "" then
+			if tonumber(text) <= 9999 then
+				dmG1[id]:SetSize(48, 48)
+			end
+			if tonumber(text) > 9999 then
+				dmG1[id]:SetSize(54, 48)
+			end
+			if tonumber(text) <= 9999 then
+				dmG1[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+			end
+			if tonumber(text) > 9999 then
+				dmG1[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+			end
+		end
+		dmG1[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+end
+dmG2 = {}
+function dmgText2(text,obj,id,raz,cvet)
+	if dmG2[id] == nil then
+		dmG2[id] = CreateFrame("SimpleHTML", "dmG", obj)
+		dmG2[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+		dmG2[id]:ClearAllPoints()
+		dmG2[id]:SetBackdropColor(0, 103, 51, 1)
+		dmG2[id]:SetFont('Fonts\\FRIZQT__.TTF', 13,"OUTLINE", "MONOCHROME");
+	end
+	if text ~= nil and text ~= "" then
+		if tonumber(text) <= 9999 then
+			dmG2[id]:SetSize(48, 48)
+		end
+		if tonumber(text) > 9999 then
+			dmG2[id]:SetSize(54, 48)
+		end
+		if tonumber(text) <= 9999 then
+			dmG2[id]:SetPoint("CENTER", obj, "CENTER", 5, -10)
+		end
+		if tonumber(text) > 9999 then
+			dmG2[id]:SetPoint("CENTER", obj, "CENTER", 1, -10)
+		end
+	end
+	if text ~= nil then
+		dmG2[id]:SetText("<html><body><p style='background-color: #12345a'> |cff" .. cvet .. text .. "</p></body></html>");
+	end
+end
+rtnText = {}
+function rtnTextF(text,id,show)
+	if show == "show" then
+		if rtnText[id] == nil then
+			rtnText[id]  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+			rtnText[id]:SetSize(415, 396)
+			rtnText[id]:SetFrameStrata("TOOLTIP")
+			rtnText[id]:SetPoint("CENTER", UIParent, "CENTER", 5, -55)
+			rtnText[id]:SetBackdropColor(0, 0, 0, 0)
+			if tonumber(string.utf8len(text)) < 200 then
+				rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 33)
+			elseif tonumber(string.utf8len(text)) > 200 and tonumber(string.utf8len(text)) < 300 then
+				rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 27)
+			elseif tonumber(string.utf8len(text)) >= 400 then
+				rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', 16)
+			end
+
+		end
+		rtnText[id]:SetText("<html><body><p>|cff000000" .. text .. "</p></body></html>");
+		rtnText[id]: Show()
+	else
+		if rtnText[id] ~= nil then
+			rtnText[id]: Hide()
+		end
+	end
+end
+function versFail(num)
+	if VerF == nil then
+		VerF  = CreateFrame("SimpleHTML", "BCSQuickFrame", UIParent)
+	end
+	VerF:SetSize(1111, 888)
+	VerF:SetFrameStrata("HIGH")
+	if testQ["VerF"] == nil then
+		testQ["VerF"] = 600
+	end
+	VerF:SetPoint("CENTER", UIParent, "CENTER", testQ["VerF"], -355)
+	VerF:SetBackdropColor(0, 103, 51, 1)
+	VerF:SetFont('Fonts\\FRIZQT__.TTF', num+10);
+	VerF:SetText("<html><body><p>|cffff0000ОБНОВИ АДДОН</p></body></html>");
+end
+
+function marshrut(id,num1)
+	local j = id-1
+	local jj = id+1
+	local jjj = id+2
+	local jjjj = id-2
+	local jjjjj = id+3
+	local jjjjjj = id-3
+	if testQ["start"] ~= "evO3" then
+		if marshruT ~= nil then
+			if marshruT[id] == nil then
+				marshruT[id]  = CreateFrame("SimpleHTML", "marshrut", UIParent)
+				marshruT[id]:SetSize(222, 222)
+				marshruT[id]:SetFrameStrata("HIGH")
+				marshruT[id]:SetPoint("CENTER", UIParent, "CENTER", 333, 111)
+				marshruT[id]:SetBackdropColor(0, 103, 51, 1)
+				marshruT[id]:SetFont('Fonts\\FRIZQT__.TTF', 32);
+				marshruT[id]:SetText("<html><body><p>|cff90ee90" .. id .. " из " .. tostring(num1) .. "</p></body></html>");
+			end
+			if marshruT[j] ~= nil then
+				marshruT[j]:Hide()
+				marshruT[j] = nil
+			end
+			if marshruT[jj] ~= nil then
+				marshruT[jj]:Hide()
+				marshruT[jj] = nil
+			end
+			if marshruT[jjj] ~= nil then
+				marshruT[jjj]:Hide()
+				marshruT[jjj] = nil
+			end
+			if marshruT[jjjj] ~= nil then
+				marshruT[jjjj]:Hide()
+				marshruT[jjjj] = nil
+			end
+			if marshruT[jjjjj] ~= nil then
+				marshruT[jjjjj]:Hide()
+				marshruT[jjjjj] = nil
+			end
+			if marshruT[jjjjjj] ~= nil then
+				marshruT[jjjjjj]:Hide()
+				marshruT[jjjjjj] = nil
+			end
+		end
+	end
+end
+
+
+function showRB(nome)
+	if debuffChkB == nil then
+		debuffChkB = {}
+	end
+	if pokazat==1 and btn[1] ~= nil then
+		for ii=1,15 do
+			if btn[ii] ~= nil then
+				btn[ii]:Hide();
+			end
+		end
+		btn[991]:Show()
+		if tonumber(testQ["mioFldLvl"]) ~= 0.5 and tonumber(testQ["mioFldLvl"]) ~= 0.9 and tonumber(testQ["mioFldLvl"]) ~= nil then
+			btn[14]:Show()
+		end
+		myCheckButton1:Show()
+		myCheckButton2:Show()
+		myCheckButton3:Show()
+		myCheckButton4:Show()
+		myCheckButton5:Show()
+		myCheckButton6:Show()
+		myCheckButton7:Show()
+		btn[998]:Show()
+		btn[997]:Show()
+
+		for i=1,20 do
+			local name,__,__,__,__,__,__,__ = UnitDebuff("player",i)
+			if name ~= nil then
+				debuffChkB[name] = createCheckbutton(UIParent, 150, (-20*i)+230, name)
+				debuffChkB[name].tooltip = "Скрывать иконку " .. name
+				debuffChkB[name]:SetScript("OnClick",	function()
+
+					if testQ[nome]["настройки"]["debuffChkB"] == nil then
+						testQ[nome]["настройки"]["debuffChkB"] = {}
+					end
+
+					if testQ[nome]["настройки"]["debuffChkB"][name] == "Disable" or testQ[nome]["настройки"]["debuffChkB"][name] == nil then
+						testQ[nome]["настройки"]["debuffChkB"][name] = "Enable"
+						debuffChkB[name]:SetChecked(true)
+					elseif testQ[nome]["настройки"]["debuffChkB"][name] == "Enable" then
+						testQ[nome]["настройки"]["debuffChkB"][name] = "Disable"
+						debuffChkB[name]:SetChecked(false)
+					end
+				end)
+			end
+		end
+
+		pokazat=0
+		pokazatChk=1
+	elseif pokazat == 0 then
+		btn[991]:Hide()
+		if tonumber(testQ["mioFldLvl"]) ~= 0.5 and tonumber(testQ["mioFldLvl"]) ~= 0.9 and tonumber(testQ["mioFldLvl"]) ~= nil then
+			for ii=1,15 do
+				if btn[ii] ~= nil then
+					btn[ii]:Show();
+				end
+			end
+			if btn[ii] ~= nil then
+				if testQ[nome]["взятый_квест"] == "9999" then
+					btn[1]:Show()
+					btn[2]:Hide()
+				end
+				if testQ[nome]["взятый_квест"] ~= "9999" then
+					btn[1]:Hide()
+					btn[2]:Show()
+				end
+			end
+		end
+		testQ["lvlProv"] = nil
+		myCheckButton1:Hide()
+		myCheckButton2:Hide()
+		myCheckButton3:Hide()
+		myCheckButton4:Hide()
+		myCheckButton5:Hide()
+		myCheckButton6:Hide()
+		myCheckButton7:Show()
+		for k, v in pairs(debuffChkB) do
+			if debuffChkB[k] ~= nil then
+				debuffChkB[k]:Hide()
+			end
+		end
+		btn[998]:Hide()
+		btn[997]:Hide()
+		pokazat=1
+		pokazatChk=0
+	end
+end
+
+function marSh()
+	local testKont = GetCurrentMapContinent()
+	local lok = GetCurrentMapZone()
+	local x,y = GetPlayerMapPosition("player")
+	local n
+	testKont = tostring(testKont)
+	lok = tostring(lok)
+	local zoneName = GetMapInfo()
+		if zoneName == "Ragefire" then
+			testKont = "99"
+			lok = "1"
+		end
+	if marsh == nil then
+		marsh = {}
+	end
+	if marsh[testKont] == nil then
+		marsh[testKont] = {}
+	end
+	if marsh[testKont][lok] == nil then
+		marsh[testKont][lok] = {}
+	end
+	local n = tablelength(marsh[testKont][lok])
+	n = tostring(n+1)
+	marsh[testKont][lok][n] = {}
+	testQ["marshK"] = testKont
+	testQ["marshL"] = lok
+	testQ["marshN"] = n
+	marsh[testKont][lok][n]["x"] =  string.format("%.3f",x)
+	marsh[testKont][lok][n]["y"] =  string.format("%.3f",y)
+	print (n)
+end
+
+function resObj1(id,myNome,nome)
+	if krt == nil then
+		krt = {}
+	end
+	if krt["podskazki"] == nil then
+		krt["podskazki"] = 1
+	end
+	if testQ["трудовые_ресурсы"] == nil then
+		testQ["трудовые_ресурсы"] = {}
+		testQ["трудовые_ресурсы"] = 0
+	end
+	if myNome == nome then
+		if mioFld ~= nil then
+			if mioFld[myNome] ~= nil then
+				if mioFld[myNome]["целостность"] ~= nil then
+					if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" and mioFld[myNome]["объекты"][tostring(id)] ~= "mf" and mioFld[myNome]["объекты"][tostring(id)] ~= "m0" and mioFld[myNome]["объекты"][tostring(id)] ~= "lx" and mioFld[myNome]["объекты"][tostring(id)] ~= "lp" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								if mioFld[myNome]["объекты"][tostring(id)] == "f" then
+									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
+								end
+								mioFld[myNome]["целостность"][tostring(id)] = 999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "m0" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "tz" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "lx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "zc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "as" or mioFld[myNome]["объекты"][tostring(id)] == "bc" or mioFld[myNome]["объекты"][tostring(id)] == "bs" or mioFld[myNome]["объекты"][tostring(id)] == "bx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 14999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 14999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "tc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 4999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 4999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "sx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+50
+								testQ["трудовые_ресурсы"] = testQ["трудовые_ресурсы"]+0.02
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+					else
+						if 	mioFld[myNome]["объекты"][tostring(id)] ~= "hs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zx" and mioFld[myNome]["объекты"][tostring(id)] ~= "sx" and mioFld[myNome]["объекты"][tostring(id)] ~= "tc" and mioFld[myNome]["объекты"][tostring(id)] ~= "as" and mioFld[myNome]["объекты"][tostring(id)] ~= "bx" and mioFld[myNome]["объекты"][tostring(id)] ~= "bc" and mioFld[myNome]["объекты"][tostring(id)] ~= "bs" and mioFld[myNome]["объекты"][tostring(id)] ~= "zc" and mioFld[myNome]["объекты"][tostring(id)] ~= "zp" and mioFld[myNome]["объекты"][tostring(id)] ~= "tz" and mioFld[myNome]["объекты"][tostring(id)] ~= "tv" and mioFld[myNome]["объекты"][tostring(id)] ~= "mf" and mioFld[myNome]["объекты"][tostring(id)] ~= "m0" and mioFld[myNome]["объекты"][tostring(id)] ~= "lx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								if mioFld[myNome]["объекты"][tostring(id)] == "f" then
+									SendAddonMessage("tree " .. tostring(id), myNome, "guild")
+								end
+								mioFld[myNome]["целостность"][tostring(id)] = 999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "hs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "lx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "tz" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "m0" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 9999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 9999
+							end
+						end
+						if mioFld[myNome]["объекты"][tostring(id)] == "as" or mioFld[myNome]["объекты"][tostring(id)] == "bc" or mioFld[myNome]["объекты"][tostring(id)] == "bs" or mioFld[myNome]["объекты"][tostring(id)] == "bx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 14999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 14999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zs" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "tc" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 4999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 4999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "zx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 19999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 19999
+							end
+						end
+						if 	mioFld[myNome]["объекты"][tostring(id)] == "sx" then
+							if tonumber(mioFld[myNome]["целостность"][tostring(id)]) < 29999 then
+								mioFld[myNome]["целостность"][tostring(id)] = mioFld[myNome]["целостность"][tostring(id)]+5
+							else
+								mioFld[myNome]["целостность"][tostring(id)] = 29999
+							end
+						end
+					end
+					SendAddonMessage("resObj " .. id .. " " .. mioFld[myNome]["целостность"][tostring(id)],nome , "guild")
+				end
+			end
+		end
+	else
+		if mioFld ~= nil then
+			if mioFld[nome] ~= nil then
+				if mioFld[nome]["целостность"] ~= nil then
+						if tonumber(testQ["трудовые_ресурсы"]) <= tonumber(krt["podskazki"]) then
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" and mioFld[nome]["объекты"][tostring(id)] ~= "m0" and mioFld[nome]["объекты"][tostring(id)] ~= "mf" and mioFld[nome]["объекты"][tostring(id)] ~= "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "hs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tz" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "m0" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zc" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if mioFld[nome]["объекты"][tostring(id)] == "as" or mioFld[nome]["объекты"][tostring(id)] == "bc" or mioFld[nome]["объекты"][tostring(id)] == "bs" or mioFld[nome]["объекты"][tostring(id)] == "bx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 14999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 14999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tc" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 4999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 4999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "sx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((5*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+						else
+							if 	mioFld[nome]["объекты"][tostring(id)] ~= "hs" and mioFld[nome]["объекты"][tostring(id)] ~= "zs" and mioFld[nome]["объекты"][tostring(id)] ~= "zx" and mioFld[nome]["объекты"][tostring(id)] ~= "sx" and mioFld[nome]["объекты"][tostring(id)] ~= "tc" and mioFld[nome]["объекты"][tostring(id)] ~= "as" and mioFld[nome]["объекты"][tostring(id)] ~= "bc" and mioFld[nome]["объекты"][tostring(id)] ~= "bs" and mioFld[nome]["объекты"][tostring(id)] ~= "bx" and mioFld[nome]["объекты"][tostring(id)] ~= "zc" and mioFld[nome]["объекты"][tostring(id)] ~= "zp" and mioFld[nome]["объекты"][tostring(id)] ~= "tz" and mioFld[nome]["объекты"][tostring(id)] ~= "tv" and mioFld[nome]["объекты"][tostring(id)] ~= "m0" and mioFld[nome]["объекты"][tostring(id)] ~= "mf" and mioFld[nome]["объекты"][tostring(id)] ~= "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "hs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 9999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 9999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "lx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tz" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "m0" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "tc" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 4999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 4999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "as" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 14999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 14999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zs" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "zx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 19999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 19999
+								end
+							end
+							if 	mioFld[nome]["объекты"][tostring(id)] == "sx" then
+								if tonumber(mioFld[nome]["целостность"][tostring(id)]) < 29999 then
+									if (1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]) < 1 then
+										local x = math.random((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"])*10,9)
+										if x == 9 then
+											mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+										end
+									else
+										mioFld[nome]["целостность"][tostring(id)] = tonumber(mioFld[nome]["целостность"][tostring(id)])+round((1*tonumber(testQ["mioFldLvl"]))/tonumber(testQ["fldLvl"]))
+									end
+								else
+									mioFld[nome]["целостность"][tostring(id)] = 29999
+								end
+							end
+						end
+					SendAddonMessage("resObj " .. id .. " " .. mioFld[nome]["целостность"][tostring(id)],nome , "guild")
+				end
+			end
+		end
+	end
+end
+function gKam(myNome,x)
+	local testK = nil
+	if tonumber(x) == 500 then
+		for i = 1,100 do
+			if mioFld1[myNome]["объекты"][tostring(i)] == "sk" then
+				if testK == nil then
+					testK = 1
+				else
+					testK = testK + 1
+				end
+			end
+		end
+		if testK == nil then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","0", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 1 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","1", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 2 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","2", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 3 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","3", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 4 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","4", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		elseif testK == 5 then
+			testQ["kamen"] = testQ["kamen"]+1
+			testQ["nikQK"] = antc(testQ["kamen"])
+			SendAddonMessage("ns_kP","5", "guild")
+			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\k.ogg")
+		end
+	end
+end
+
+function bdf(myNome)
+	if testQ == nil then
+		testQ = {}
+	end
+	if testQ["myNome"] == nil then
+		testQ["myNome"] = {}
+	end
+	if testQ[myNome]["настройки"] == nil then
+		testQ[myNome]["настройки"] = {}
+	end
+	if  testQ[myNome]["настройки"]["debuffChkB"] == nil then
+		testQ[myNome]["настройки"]["debuffChkB"] = {}
+	end
+	if DebuffButton1 ~= nil then
+		if tonumber(testQ["buffX"]) ~= nil and tonumber(testQ["buffX"]) ~= 0 then
+			local __,__,__,tempPoint = DebuffButton1:GetPoint()
+			local __,__,__,tempPointB = btn[991]:GetPoint()
+			if tempPoint ~= tempPointB then
+				local x,y = DebuffButton1:GetSize()
+				local getSize = UIParent:GetSize()/2
+				j = 1
+				for i=1, DEBUFF_MAX_DISPLAY do
+					if AuraButton_Update("DebuffButton", i, "HARMFUL") then
+						local name,__,__,__,__,__,__,__ = UnitDebuff("player",i)
+						local buff = _G["DebuffButton"..i]
+						if buff ~= nil and (testQ[myNome]["настройки"]["debuffChkB"][name] == nil or testQ[myNome]["настройки"]["debuffChkB"][name] == "Disable") then
+							buff:ClearAllPoints()
+							if tonumber(testQ["buffX"]) < getSize then
+								buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])+x*j, testQ["buffY"])
+								j = j+1
+							else
+								buff:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", tonumber(testQ["buffX"])-x*j, testQ["buffY"])
+								j = j+1
+							end
+						else
+							if buff ~= nil and buff:IsVisible() then
+								buff:Hide()
+							end
+						end
+						--buff:SetAllPoints(btn[991])
+					end
+				end
+			end
+			if testQ["buffX"] == 0 then
+				testQ["buffX"]=nil
+			end
+		end
+	end
+end
+function gtest()
+	gTest = nil
+	gTest = {}
+	for i = 1, 50 do
+		local t1,t2,g,r,t3,t4,t= GetWhoInfo(i)
+		if t2 == "" then
+			if r ~= "Дреней" and r ~= "Ночная эльфийка" and r ~= "Человек" and r ~= "Ночной эльф" and r ~= "Гном" and r ~= "Дворф" then
+				table.insert(gTest,t1)
+			end
+		end
+	end
+end
+function ns_q5()
+	ns_q5Test = nil
+	ns_q5Test = {}
+	for i = 1, 50 do
+		local t1,t2,g,r,t3,t4,t= GetWhoInfo(i)
+		if t2 == "" then
+			table.insert(ns_q5Test,t1)
+		end
+	end
+end
+function closeFld()
+	for i = 1, 100 do
+		fBtn[i]:Hide()
+	end
+	for i = 1, 100 do
+		if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+			if resursy[i] ~= nil then
+				if i == 5 then
+					if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+					end
+				else
+					resursy[i]:Hide()
+				end
+			end
+		end
+	end
+	btn[989]:Hide()
+	btn[989]:ClearAllPoints()
+	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+end
+function hX()
+	quesT("hide")
+	okNo:configure(1,"hide")
+	rtnTextF("fdsa",1,"hide")
+	for i=1,100 do
+		fBtn[i]:Hide()
+		--fBtn[i]:SetHighlightTexture("")
+	end
+	if resursy[1] ~= nil then
+		resursy[1]:Hide()
+		resursy[2]:Hide()
+		resursy[3]:Hide()
+	end
+	if okNo ~= nil then
+		okNo[1]:Hide()
+		okNo[2]:Hide()
+	end
+	btn[989]:Hide()
+	btn[989]:ClearAllPoints()
+	btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+end
+
+function showFld(sign,myNome)
+	local nome
+	local proverkaLvla
+	local proverkaLvla1
+	local testB
+	if mBtn[1] ~= nil then
+		if mBtn[1]:IsVisible() then
+			testB = 1
+		end
+	end
+	if dBtn[1] ~= nil then
+		if dBtn[1]:IsVisible() then
+			testB = 1
+		end
+	end
+	if not fBtn[1]:IsVisible() and testB ~= 1 then
+		if not GuildFrameLFGButton:GetChecked() or sign == "1" then
+			if sign == "0" then
+				nome = GuildFrame["selectedName"]
+			else
+				nome = myNome
+			end
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMRIGHT", fBtn[10],"TOPRIGHT",1, 1)
+			for Zc=1,GetNumGuildMembers(true) do
+				local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+				if nome ~= myNome then
+					if name == nome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						proverkaLvla1 = string.sub(officerNote,2,2)
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
+							testQ["fldLvl"] = tonumber(proverkaLvla)
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "1" then
+							testQ["fldLvl"] = 0.9
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "0" then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						elseif proverkaLvla == "" then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+						if proverkaLvla1 == nil then
+							testQ["fldLvl"] = 0.5
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+					end
+					if name == myNome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
+							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+						elseif proverkaLvla == "1" then
+							testQ["mioFldLvl"] = 0.9
+						elseif proverkaLvla == "0" then
+							testQ["mioFldLvl"] = 0.5
+						elseif proverkaLvla == "" then
+							testQ["mioFldLvl"] = 0.5
+						end
+					end
+				else
+					if name == myNome then
+						proverkaLvla = string.sub(officerNote,1,1)
+						proverkaLvla1 = string.sub(officerNote,2,2)
+						if officerNote ~= "" and proverkaLvla ~= "1" and proverkaLvla ~= "0" then
+							testQ["mioFldLvl"] = string.sub(officerNote,1,1)
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "1" then
+							testQ["mioFldLvl"] = 0.9
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = string.sub(officerNote,8,8)
+							testQ["qDay"] = string.sub(officerNote,6,7)
+						elseif proverkaLvla == "0" then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						elseif proverkaLvla == "" then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+						if proverkaLvla1 == nil then
+							testQ["mioFldLvl"] = 0.5
+							testQ["fldLvl"] = testQ["mioFldLvl"]
+							testQ["qNum"] = 0
+							testQ["qDay"] = 0
+						end
+					end
+				end
+				if tonumber(testQ["mioFldLvl"]) == 0 then
+					testQ["mioFldLvl"] = 0.5
+				end
+				if tonumber(testQ["fldLvl"]) == 0 then
+					testQ["fldLvl"] = 0.5
+				end
+			end
+			testQ["fRand1"] = math.random(1,1000000)
+			testQ['sign'] = sign
+			SendAddonMessage("shMFld " .. testQ["fRand1"], nome .. " " .. myNome, "guild")
+			FriendsFrame:Hide()
+		else
+			local numPet = tablelength(risPet)
+			for i = 1, 100 do
+				if risPet[i] ~= nil then
+					risPetShow(i,"hide","")
+				end
+			end
+			for i=1,100 do
+				fBtn[i]:Hide()
+				--fBtn[i]:SetHighlightTexture("")
+			end
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			if resursy[1] ~= nil then
+				resursy[1]:Hide()
+				resursy[2]:Hide()
+				resursy[3]:Hide()
+			end
+			for i = 1,100 do
+				if dmG[i] ~= nil and dmG[i]:IsVisible()then
+					dmG[i]:Hide()
+				end
+			end
+			for i = 1,3 do
+				if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+					if resursy[i] ~= nil then
+						if i == 5 then
+							if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+							end
+						else
+							resursy[i]:Hide()
+						end
+					end
+				end
+			end
+			for i=101,103 do
+				if dmG[i]~= nil then
+					dmG[i]:Hide()
+				end
+			end
+			if tonumber(testQ['sign']) == 0 then
+				FriendsFrame:Show()
+			end
+			testQ['sign'] = nil
+			testQ["fRandD1nome"] = nil
+		end
+	else
+		local numPet = tablelength(risPet)
+			for i = 1, 100 do
+				if risPet[i] ~= nil then
+					risPetShow(i,"hide","")
+				end
+			end
+		for i=1,100 do
+			fBtn[i]:Hide()
+			btn[989]:ClearAllPoints()
+			btn[989]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",96, -3)
+			--fBtn[i]:SetHighlightTexture("")
+		end
+		if resursy[1] ~= nil then
+			resursy[1]:Hide()
+			resursy[2]:Hide()
+			resursy[3]:Hide()
+		end
+		for i = 1,100 do
+			if dmG[i] ~= nil and dmG[i]:IsVisible()then
+				dmG[i]:Hide()
+			end
+		end
+		for i = 1,100 do
+			if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
+				if resursy[i] ~= nil then
+					if i == 5 then
+						if mgznIcon[1] ~= nil and mgznIcon[1]:IsVisible() then
+						end
+					else
+						resursy[i]:Hide()
+					end
+				end
+			end
+		end
+		for i=101,103 do
+			if dmG[i] ~= nil then
+				dmG[i]:Hide()
+			end
+		end
+		if tonumber(testQ['sign']) == 0 then
+			FriendsFrame:Show()
+		end
+		if tostring(testQ['sign']) == "1" then
+			btn[989]:Hide()
+		end
+		testQ['sign'] = nil
+	end
+end
+function qLvl33c1()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc1 = npcListC1[idNpc]["имя"]
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc2 = npcListC1[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC1)["айди"]
+			nomeNpc2 = npcListC1[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC1)["айди"]
+	nomeNpc3 = npcListC1[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC1)["айди"]
+			nomeNpc3 = npcListC1[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function qLvl33c2()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc1 = npcListC2[idNpc]["имя"]
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc2 = npcListC2[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC2)["айди"]
+			nomeNpc2 = npcListC2[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC2)["айди"]
+	nomeNpc3 = npcListC2[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC2)["айди"]
+			nomeNpc3 = npcListC2[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function qLvl33c3()
+	local idNpc
+	local nomeNpc1
+	local nomeNpc2
+	local nomeNpc3
+	local emotQ
+	local emotQ1
+	local emotQ2
+	emotQ = rndTblc(eMotC)["квест"]
+	print(emotQ)
+	emotQ1 = eMotC[emotQ]["поиск"]
+	emotQ2 = eMotC[emotQ]["ответ"]
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc1 = npcListC3[idNpc]["имя"]
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc2 = npcListC3[idNpc]["имя"]
+	while true do
+		if nomeNpc1 == nomeNpc2 then
+			idNpc = rndTblc(npcListC3)["айди"]
+			nomeNpc2 = npcListC3[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	idNpc = rndTblc(npcListC3)["айди"]
+	nomeNpc3 = npcListC3[idNpc]["имя"]
+	while true do
+		if nomeNpc3 == nomeNpc2 or nomeNpc3 == nomeNpc1 then
+			idNpc = rndTblc(npcListC3)["айди"]
+			nomeNpc3 = npcListC3[idNpc]["имя"]
+		else
+			break
+		end
+	end
+	return emotQ,nomeNpc1,nomeNpc2,nomeNpc3,emotQ1,emotQ2
+end
+function rndTblc(tb)
+    local keys = {}
+    for k in pairs(tb) do table.insert(keys, k) end
+    return tb[keys[math.random(#keys)]]
+end
+function htimer(myNome)
+	local testTO = 0
+	for i = 1, 100 do
+		if mioFld1[myNome]["объекты"][tostring(i)] == "to" then
+			testTO = "to"
+		end
+	end
+	if testQ[myNome]["dTimer"][30] == nil then
+		testQ[myNome]["dTimer"][30] = 26000
+	end
+	if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil then
+		testQ[myNome]["dTimer"][tonumber(date("%d"))-1] = 26000
+	end
+	if tonumber(testQ["mioFldLvl"]) == 0.5 or tonumber(testQ["mioFldLvl"]) == 0.9 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 50400
+				else
+					testQ[myNome]["hTimer"] = 26000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][tonumber(date("%d"))-1]
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",tonumber(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/1.5))
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = testQ[myNome]["dTimer"][30]
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",tonumber(testQ[myNome]["dTimer"][30])/1.5))
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 2 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 25200
+				else
+					testQ[myNome]["hTimer"] = 16000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/2)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 3 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 14500
+				else
+					testQ[myNome]["hTimer"] = 10000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/3)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 4 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 11000
+				else
+					testQ[myNome]["hTimer"] = 8000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/4)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 5 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 10500
+				else
+					testQ[myNome]["hTimer"] = 7000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/5)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 6 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 10800
+				else
+					testQ[myNome]["hTimer"] = 7000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/6)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	elseif tonumber(testQ["mioFldLvl"]) == 7 then
+		if testQ[myNome]["hTimer"] == nil then
+			if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] == nil and testQ[myNome]["dTimer"][30] == nil then
+				if testTO ~= "to" then
+					testQ[myNome]["hTimer"] = 10800
+				else
+					testQ[myNome]["hTimer"] = 7000
+				end
+			else
+				if tonumber(date("%d")) ~= 1 then
+					if testQ[myNome]["dTimer"][tonumber(date("%d"))-1] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				else
+					if testQ[myNome]["dTimer"][30] ~= nil and testQ[myNome]["dTimer"][30] > 10800 then
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7))
+							if testQ[myNome]["hTimer"] < 10800 then
+								testQ[myNome]["hTimer"] = 10800
+							end
+						else
+							testQ[myNome]["hTimer"] = tonumber(string.format("%u",(tonumber(string.format("%u",(testQ[myNome]["dTimer"][tonumber(date("%d"))-1])/7)))/1.5))
+							if testQ[myNome]["hTimer"] < 7000 then
+								testQ[myNome]["hTimer"] = 7000
+							end
+						end
+					else
+						if testTO ~= "to" then
+							testQ[myNome]["hTimer"] = 10800
+						else
+							testQ[myNome]["hTimer"] = 7000
+						end
+					end
+				end
+			end
+		end
+	end
+	SendAddonMessage("#mioTimer " .. myNome, testQ[myNome]["hTimer"] .. " " .. tonumber(testQ["mioFldLvl"]), "guild")
+	SendAddonMessage("#mioTimer " .. myNome, testQ[myNome]["hTimer"] .. " " .. tonumber(testQ["mioFldLvl"]), "guild")
+	SendAddonMessage("#mioTimer " .. myNome, testQ[myNome]["hTimer"] .. " " .. tonumber(testQ["mioFldLvl"]), "guild")
+end
+
+function ml()
+	if BrowseBuyoutButton ~= nil then
+		if aucBtn == nil then
+			aucBtn = CreateFrame("Button", nil, UIParent, "");
+			aucBtn:SetFrameStrata("TOOLTIP")
+			aucBtn:SetSize(222, 32)
+			aucBtn:SetPoint("CENTER", BrowseBidButton,"CENTER",22, 0)
+			aucBtn:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\auk.tga")
+			aucBtn:Hide()
+		end
+		name, texture, count, quality, canUse, level, levelColHeader, minBid, minIncrement, buyoutPrice, bidAmount, highBidder, owner, saleStatus, itemId, hasAllInfo = GetAuctionItemInfo("list",tonumber(GetSelectedAuctionItem("list")))
+		if name == "Обычное письмо" then
+			aucBtn:Show()
+			if highBidder == "Хефе" then
+				aucBtn:Hide()
+			end
+		else
+			if aucBtn ~= nil then
+				aucBtn:Hide()
+			end
+		end
+	end
+	if Atr_Buy1_Button ~= nil and Atr_Buy1_Button:IsVisible() then
+		if aucBtn == nil then
+			aucBtn = CreateFrame("Button", nil, UIParent, "");
+			aucBtn:SetFrameStrata("TOOLTIP")
+			aucBtn:SetSize(222, 32)
+			aucBtn:SetPoint("CENTER", BrowseBidButton,"CENTER",22, 0)
+			aucBtn:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\auk.tga")
+			aucBtn:Hide()
+		end
+		if Atr_Search_Box:IsVisible() and Atr_Search_Box:GetText() == "Обычное письмо" then
+			aucBtn:Show()
+			aucBtn:SetSize(422, 32)
+		else
+			if aucBtn ~= nil then
+				aucBtn:Hide()
+			end
+		end
+	end
+end
+function diffT(t,t1)
+	for i = 1, 100 do
+		if t[i] ~= t1[i] then
+			return false
+		end
+	end
+	return true
+end
+function antc(kol)
+	shablon="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ !?,.-0123456789'()"
+	myB=string.find(shablon,tostring(kol):sub(1,1),1,true)
+	if tonumber(#tostring(kol)) >= 2 then
+		for i = 2, #tostring(kol) do
+			myB = myB .. string.find(shablon,tostring(kol):sub(i,i),1,true)
+		end
+	end
+	return myB
+end
+function ochered(spell,pos,debuf,buf,prok,srav,seiv,runyk,runyl,runyn)
+	if spell ~= "Мор" then
+		local classUnit = UnitClass("player")
+		local kya = 0
+		local x,dtime,ltime,xxccvv
+		for i = 1, 24 do
+			if debuf == 1 then
+				x,__,__,__,__,dtime,ltime,xxccvv = UnitDebuff("target",i)
+				if xxccvv == "player" then
+					if x == "Озноб" then
+						if ltime ~= nil and tonumber(ltime) - tonumber(GetTime()) <= 5 then
+							testQ['o'] = 1
+						else
+							testQ['o'] = nil
+						end
+					end
+					if x == "Кровавая чума" then
+						if ltime ~= nil and tonumber(ltime) - tonumber(GetTime()) <= 5 then
+							testQ['c'] = 1
+						else
+							testQ['c'] = nil
+						end
+					end
+				end
+			end
+			if buf == 1 then
+				x = UnitBuff("player",i)
+			end
+			if x ~= nil then
+				if x == spell then
+					kya = 1
+				end
+			end
+		end
+		local classUnit = UnitClass("player")
+		if classUnit == "Рыцарь смерти" then
+			if testQ['o'] == 1 and testQ['c'] == 1 then
+				local m
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == "Мор" then
+							m = 1
+						end
+					end
+				end
+				if m ~= 1 then
+					table.insert(testQ["skills"],pos, "Мор")
+				end
+			end
+		end
+		for k, v in pairs(testQ["skills"]) do
+			if testQ["skills"][k] == spell then
+				kya = 1
+			end
+		end
+		local numr = 0
+		if runyk ~= nil then
+			numr = numr + 1
+		end
+		if runyl ~= nil then
+			numr = numr + 1
+		end
+		if runyn ~= nil then
+			numr = numr + 1
+		end
+		--if classUnit == "Рыцарь смерти" then
+			--local rune = nil
+			--for i = 1, 6 do
+				--if GetRuneCooldown(i) == 0 and (GetRuneType(i) == tonumber(runy) or GetRuneType(i) == 4) then
+					--if rune == nil then
+						--rune = 1
+					--else
+						--rune = rune + 1
+					--end
+					--if rune == tonumber(numr) then
+						--break
+					--end
+				--end
+			--end
+			--if rune == numr then
+				--kya = 0
+			--else
+				--kya = 1
+			--end
+		--end
+		local __,__,__,mana = GetSpellInfo(spell)
+		if mana == nil then
+			mana = 0
+		end
+		if classUnit == "Друид" then
+			mana = 30
+		end
+		if srav == "m" then
+			if UnitPower("player") < mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
+				if kya ~= 1 then
+					if pos == 0 then
+						table.insert(testQ["skills"],pos, spell)
+					end
+					if pos == 1 then
+						table.insert(testQ["skills"], spell)
+					end
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == spell then
+							testQ["skills"][k] = nil
+						end
+					end
+				end
+			end
+		end
+		local __,__,__,mana = GetSpellInfo(spell)
+		if mana == nil then
+			mana = 0
+		end
+		if srav == "b" then
+			if UnitPower("player") >= mana and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 then
+				if kya ~= 1 then
+					if pos == 0 then
+						table.insert(testQ["skills"],1, spell)
+					end
+					if pos == 1 then
+						table.insert(testQ["skills"], spell)
+					end
+				else
+					--local classUnit = UnitClass("player")
+					--if classUnit == "Рыцарь смерти" then
+						--for k, v in pairs(testQ["skills"]) do
+							--if testQ["skills"][k] ~= nil then
+								--if testQ["skills"][k] == spell then
+									--testQ["skills"][k] = nil
+								--end
+							--end
+						--end
+					--end
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == spell then
+							testQ["skills"][k] = nil
+						end
+					end
+				end
+			end
+		end
+		if prok ~= nil and IsUsableSpell(spell) and GetSpellCooldown(spell) == 0 and seiv == nil then
+			if classUnit == "Паладин" then
+				if spell == "Праведное неистовство" then
+					if kya ~= 1 then
+						PlaySoundFile(prok)
+					end
+				end
+			else
+				if spell ~= "Власть льда" then
+					PlaySoundFile(prok)
+				end
+			end
+			if classUnit == "Рыцарь смерти" then
+				if spell == "Власть льда" then
+					if kya ~= 1 then
+						--PlaySoundFile(prok)
+					end
+				end
+			else
+				if spell ~= "Праведное неистовство" then
+					PlaySoundFile(prok)
+				end
+			end
+		end
+		if spell == "Мясорубка" then
+			if tonumber(GetComboPoints("player", target)) == 1 and kya ~= 1 then
+				--PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+			end
+		end
+		if seiv == 1 then
+			if UnitHealth("player") <= (tonumber(UnitHealthMax("player"))/2) and GetSpellCooldown(spell) == 0 then
+				table.insert(testQ["skills"],pos, spell)
+				if prok ~= nil then
+					--PlaySoundFile(prok)
+				end
+			else
+				for k, v in pairs(testQ["skills"]) do
+					if testQ["skills"][k] ~= nil then
+						if testQ["skills"][k] == spell then
+							testQ["skills"][k] = nil
+						end
+					end
+				end
+			end
+		end
+	end
+end
+function partyFrameHide()
+	for i = 1, 25 do
+		local prtyF = _G["PartyMemberFrame"..i]
+		if prtyF ~= nil and prtyF:IsVisible() then
+			prtyF:Hide()
+		end
+	end
+end
+function bs(msg)
+	local bs
+	local classUnit = UnitClass("player")
+	local sil = UnitStat("player", 1)
+	local lov = UnitStat("player", 2)
+	local vyn = UnitStat("player", 3)
+	local int = UnitStat("player", 4)
+	local duh = UnitStat("player", 5)
+	local cast = GetSpellBonusHealing()
+	local hit = GetCombatRating(6)
+	local crit = GetCombatRating(9)
+	local mast = GetCombatRating(24)
+	local def = GetCombatRating(2)
+	local ukl = GetCombatRating(3)
+	local par = GetCombatRating(4)
+	local block = GetCombatRating(5)
+	local mana = GetManaRegen()
+	local rpb = GetCombatRating(25)
+	local x,y = UnitAttackPower("player")
+	local sco = GetCombatRating(18)
+	local attak = x+y
+	local str
+	local khit = 0
+	if classUnit == "Жрец" or classUnit == "Жрица" then
+		local __,__,__,__,tma = GetTalentInfo(3, 27)
+		if tma >= 1 then
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
+			khit = hit .. "/" .. "289/446"
+		else
+			bs = int+(duh*1.5)+(cast*2)+crit+(mana*1.5)+sco
+			khit = hit .. "/" .. "0"
+		end
+	end
+	if classUnit == "Паладин" then
+		local __,__,__,__,xpal = GetTalentInfo(1, 26)
+		local __,__,__,__,ppal = GetTalentInfo(2, 26)
+		local __,__,__,__,rpal = GetTalentInfo(3, 26)
+		if xpal >= 1 then
+			bs = (int*2)+duh+(cast*1.5)+crit+mana+(sco*1.5)
+			khit = hit .. "/" .. "0"
+		end
+		if ppal >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/185"
+		end
+		if rpal >= 1 then
+			bs = (sil*2)+lov+hit+crit+attak+sco+mast
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/148"
+		end
+	end
+	if classUnit == "Воин" then
+		local __,__,__,__,pwar = GetTalentInfo(3, 7)
+		if pwar >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)
+			khit = hit .. "/" .. "263" .. " маст./кап: " .. mast .. "/164"
+		else
+			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/232" .. " рпб/кап: " .. rpb .. "/1400"
+		end
+	end
+	if classUnit == "Друид" then
+		local __,__,__,__,rdru = GetTalentInfo(3, 27)
+		local __,__,__,__,pdru = GetTalentInfo(2, 5)
+		local __,__,__,__,sova = GetTalentInfo(1, 13)
+		local __,__,__,__,kot = GetTalentInfo(2, 9)
+		if rdru >= 1 or msg == "хил" then
+			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)
+			khit = hit .. "/" .. "0"
+		end
+		if pdru >= 1 or msg == "медведь" then
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+rpb
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132/282" .. " рпб/кап: " .. rpb .. "/??"
+		end
+		if sova >= 1 or msg == "сова" then
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco
+			khit = hit .. "/" .. "263"
+		end
+		if kot >= 1 or msg == "кот" then
+			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/1400"
+		end
+	end
+	if classUnit == "Разбойник" or classUnit == "Разбойница" then
+		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco
+		khit = hit .. "/" .. "263" .. "/" .. "722" .. " маст./кап: " .. mast .. "/132" .. " рпб/кап: " .. rpb .. "/1400"
+	end
+	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
+		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)
+		khit = hit .. "/" .. "289/446 " .. "Хаст: " .. sco .. " 1100/1400"
+	end
+	if classUnit == "Шаман" or classUnit == "Шаманка" then
+		local __,__,__,__,elem = GetTalentInfo(1, 3)
+		local __,__,__,__,enh = GetTalentInfo(2, 9)
+		local __,__,__,__,rsham = GetTalentInfo(3, 1)
+		if elem >= 3 and enh >= 1 then
+			__,__,__,__,elem = GetTalentInfo(1, 7)
+			__,__,__,__,enh = GetTalentInfo(2, 11)
+		end
+		if elem >= 1 then
+			bs = int+(cast*2)+crit+hit+(sco*1.5)
+			khit = hit .. "/" .. "368"
+		end
+		if enh >= 1 then
+			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+(cast*0.5)
+			khit = hit .. "/" .. "232" .. "/" .. "368"  .. " маст./кап: " .. mast .. "/140"
+		end
+		if rsham >= 1 then
+			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)
+			khit = hit .. "/" .. "0" .. " c./кап: "	.. sco .. "/1269/2100"
+		end
+	end
+	if classUnit == "Охотник" or classUnit == "Охотница" then
+		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco
+		khit = hit .. "/" .. "263" .. " рпб/кап: " .. rpb .. "/1400"
+	end
+	if classUnit == "Рыцарь смерти" then
+		local __,__,__,__,pwar = GetTalentInfo(1, 7)
+		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
+		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
+		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170/409"
+		else
+			bs = (sil*2)+lov+hit+crit+mast+rpb+attak
+			khit = hit .. "/" .. "263"  .. " маст./кап: " .. mast .. "/170" .. " рпб/кап: " .. rpb .. "/1400"
+		end
+	end
+	if classUnit == "Маг" then
+		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)
+		khit = hit .. "/" .. "376 хаст/кап: " .. sco .. "/1130 Крит/кап: " .. crit .. "/1150?(45%)"
+	end
+	if bs ~= nil then
+		return string.format("%d",bs) .. " хит/кап: " .. khit
+	else
+		SendChatMessage("Почему то пустое значение. Я: " .. classUnit, "OFFICER", nil, 1)
+	end
+end
+
+
+GameTooltip:HookScript("OnShow", function(self)
+	local classUnit = UnitClass("player")
+	local bs = 0
+	local bstemp
+	local sil = 0
+	local lov = 0
+	local vyn = 0
+	local int = 0
+	local duh = 0
+	local cast = 0
+	local hit = 0
+	local crit = 0
+	local mast = 0
+	local def = 0
+	local ukl = 0
+	local par = 0
+	local block = 0
+	local mana = 0
+	local rpb = 0
+	local attak = 0
+	local sco = 0
+	local cast1 = 0
+	local hit1 = 0
+	local crit1 = 0
+	local mast1 = 0
+	local def1 = 0
+	local ukl1 = 0
+	local par1 = 0
+	local block1 = 0
+	local mana1 = 0
+	local rpb1 = 0
+	local attak1 = 0
+	local sco1 = 0
+	local ii
+	--print("|cff00ff00------")
+	local myNome = GetUnitName("player")
+	if testQ then
+		if testQ[myNome] then
+			if testQ[myNome]['edaQuest'] ~= nil and testQ[myNome]['edaQuest'] ~= 2 then
+				local tooltipText = _G["GameTooltipTextLeft1"]:GetText()
+				
+				-- Инициализация данных для отслеживания предметов
+				if testQ['edaNum'] == nil then
+					testQ['edaNome'] = tooltipText
+					testQ['edaNum'] = proverkaNaKolvoPredmetov(tooltipText)
+					
+					if testQ['edaNomeRez'] == nil then
+						testQ['edaNomeRez'] = {}
+					end
+				else
+					-- Если предмет изменился, сбросить отслеживание
+					if testQ['edaNome'] ~= tooltipText then
+						testQ['edaNome'] = nil
+						testQ['edaNum'] = nil
+					else
+						-- Проверка результатов использования предмета
+						if testQ['edaNomeRez'] ~= nil then
+							local currentCount = proverkaNaKolvoPredmetov(tooltipText)
+							
+							-- Если количество предметов уменьшилось (предмет был использован)
+							if testQ['edaNum'] > currentCount then
+								-- Если этот предмет еще не проверялся
+								if testQ['edaNomeRez'][tooltipText] == nil then
+									local randomChance = math.random(1, 10)  -- 10% шанс вкусности
+									
+									if randomChance ~= 1 then
+										-- 90% chance: предмет невкусный
+										print("Фу, невкусно!")
+										testQ['edaNomeRez'][tooltipText] = tooltipText
+									else
+										-- 10% chance: предмет потенциально подходит
+										local perfectChance = math.random(1, 10)  -- Улучшено: было 1/20, стало 1/10
+										
+										if perfectChance == 10 then  -- 10% шанс идеального корма
+											-- Найден идеальный корм
+											testQ[myNome]['edaQuest'] = 2
+											SendChatMessage("Найден идеальный корм для пета!", "OFFICER", nil, 1)
+											SendChatMessage("Найден идеальный корм для пета!!", "OFFICER", nil, 1)
+											SendChatMessage("Найден идеальный корм для пета!!!", "OFFICER", nil, 1)
+										else
+											-- Вкусно, но не идеально
+											print("Вроде вкусно, но это не точно..")
+											testQ['edaNomeRez'] = {}  -- Сброс списка проверенных предметов
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	for i=1, self:NumLines() do
+		if _G["GameTooltipTextLeft"..i]:GetText() ~= nil then
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "+" or string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,1) == "|"  then
+				bstemp = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "вын" then
+					if vyn == 0 then
+						vyn = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if vyn == nil then
+						vyn = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if vyn ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							vyn = vyn + tonumber(bstemp[1]:sub(11))
+						end
+					end
+
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "лов" then
+					if lov == 0 then
+						lov = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if lov == nil then
+						lov = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if lov ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							lov = lov + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "сил" then
+					if bstemp[4] == nil then
+						if sil == 0 then
+							sil = tonumber(string.utf8sub(bstemp[1],2))
+						end
+						if sil == nil then
+							sil = tonumber(string.utf8sub(bstemp[1],11))
+							ii = i
+						end
+						if sil ~= 0 and ii ~= i then
+							if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+							else
+								sil = sil + tonumber(bstemp[1]:sub(11))
+							end
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "инт" then
+					if int == 0 then
+						int = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if int == nil then
+						int = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if int ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							int = int + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[3] ~= nil and string.utf8sub(bstemp[3],1,3) == "дух" then
+					if duh == 0 then
+						duh = tonumber(string.utf8sub(bstemp[1],2))
+					end
+					if duh == nil then
+						duh = tonumber(string.utf8sub(bstemp[1],11))
+						ii = i
+					end
+					if duh ~= 0 and ii ~= i then
+						if tonumber(bstemp[1]:sub(2)) ~= nil then
+
+						else
+							duh = duh + tonumber(bstemp[1]:sub(11))
+						end
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ата" then
+					attak = tonumber(bstemp[1]:sub(2))
+					if attak == nil then
+						attak = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "кри" then
+					crit = tonumber(bstemp[1]:sub(2))
+					if crit == nil then
+						crit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мас" then
+					mast = tonumber(bstemp[1]:sub(2))
+					if mast == nil then
+						mast = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "зак" then
+					cast = tonumber(bstemp[1]:sub(2))
+					if cast == nil then
+						cast = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "мет" then
+					hit = tonumber(bstemp[1]:sub(2))
+					if hit == nil then
+						hit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "ско" then
+					hit = tonumber(bstemp[1]:sub(2))
+					if hit == nil then
+						hit = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "защ" then
+					def = tonumber(bstemp[1]:sub(2))
+					if def == nil then
+						def = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "укл" then
+					ukl = tonumber(bstemp[1]:sub(2))
+					if ukl == nil then
+						ukl = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "пар" then
+					par = tonumber(bstemp[1]:sub(2))
+					if par == nil then
+						par = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "бло" then
+					block = tonumber(bstemp[1]:sub(2))
+					if block == nil then
+						block = tonumber(bstemp[1]:sub(11))
+					end
+				end
+				if bstemp[4] ~= nil and string.utf8sub(bstemp[4],1,3) == "про" then
+					rpb = tonumber(bstemp[1]:sub(2))
+					if rpb == nil then
+						rpb = tonumber(bstemp[1]:sub(11))
+					end
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"атаки") then
+					attak1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"критического") then
+					crit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"мастерства") then
+					mast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"заклинаний") then
+					cast1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"меткости") then
+					hit1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"скорости") then
+					sco1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"защиты") then
+					def1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"уклонения") then
+					ukl1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"парирования") then
+					par1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"блокирования") then
+					block1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"Восполнение") then
+					mana1 = mysplit(_G["GameTooltipTextLeft"..i]:GetText())
+					mana1 = tonumber(mana1[5])
+				end
+			end
+			if string.utf8sub(_G["GameTooltipTextLeft"..i]:GetText(),1,4) == "Если" then
+				if string.find(_G["GameTooltipTextLeft"..i]:GetText(),"пробивания") then
+					rpb1 = tonumber(string.match(_G["GameTooltipTextLeft"..i]:GetText(), '%S+$'))
+				end
+			end
+		end
+		--print(_G["GameTooltipTextLeft"..i]:GetText())
+	end
+	if attak == nil then
+		attak = 0
+	end
+	if sil == nil then
+		sil = 0
+	end
+	if lov == nil then
+		lov = 0
+	end
+	if vyn == nil then
+		vyn = 0
+	end
+	if int == nil then
+		int = 0
+	end
+	if duh == nil then
+		duh = 0
+	end
+	if cast == nil then
+		cast = 0
+	end
+	if hit == nil then
+		hit = 0
+	end
+	if crit == nil then
+		crit = 0
+	end
+	if mast == nil then
+		mast = 0
+	end
+	if def == nil then
+		def = 0
+	end
+	if ukl == nil then
+		ukl = 0
+	end
+	if par == nil then
+		par = 0
+	end
+	if block == nil then
+		block = 0
+	end
+	if mana == nil then
+		mana = 0
+	end
+	if rpb == nil then
+		rpb = 0
+	end
+	if attak1 == nil then
+		attak1 = 0
+	end
+	if cast1 == nil then
+		cast1 = 0
+	end
+	if hit1 == nil then
+		hit1 = 0
+	end
+	if crit1 == nil then
+		crit1 = 0
+	end
+	if mast1 == nil then
+		mast1 = 0
+	end
+	if def1 == nil then
+		def1 = 0
+	end
+	if ukl1 == nil then
+		ukl1 = 0
+	end
+	if par1 == nil then
+		par1 = 0
+	end
+	if block1 == nil then
+		block1 = 0
+	end
+	if mana1 == nil then
+		mana1 = 0
+	end
+	if rpb1 == nil then
+		rpb1 = 0
+	end
+	if sco1 == nil then
+		sco1 = 0
+	end
+	if sco == nil then
+		sco = 0
+	end
+	if classUnit == "Жрец" or classUnit == "Жрица" then
+		local __,__,__,__,tma = GetTalentInfo(3, 27)
+		if tma >= 1 then
+			bs = int+(duh*0.5)+(cast*2)+(cast1*2)+hit+hit1+(crit*2)+(crit1*2)+(mana*0.5)+(mana1*0.5)+sco+sco1
+		else
+			bs = int+(duh*1.5)+(cast*2)+crit+(mana*1.5)+sco+(cast1*2)+crit1+(mana1*1.5)+sco1
+		end
+	end
+	if classUnit == "Паладин" then
+		local __,__,__,__,xpal = GetTalentInfo(1, 26)
+		local __,__,__,__,ppal = GetTalentInfo(2, 26)
+		local __,__,__,__,rpal = GetTalentInfo(3, 26)
+		if xpal >= 1 then
+			bs = (int*2)+duh+(cast*1.5)+crit+mana+(sco*1.5)+(cast1*1.5)+crit1+mana1+(sco1*1.5)
+		end
+		if ppal >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)+(par1*1.5)+(block1*1.5)
+		end
+		if rpal >= 1 then
+			bs = (sil*2)+lov+hit+crit+attak+sco+mast+hit1+crit1+attak1+sco1+mast1
+		end
+	end
+	if classUnit == "Воин" then
+		local __,__,__,__,pwar = GetTalentInfo(3, 7)
+		if pwar >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+(par*1.5)+(block*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)+(par1*1.5)+(block1*1.5)
+		else
+			bs = (sil*2)+lov+hit+(crit*1.5)+mast+(rpb*2)+attak+sco+hit1+(crit1*1.5)+mast1+(rpb1*2)+attak1+sco1
+		end
+	end
+	if classUnit == "Друид" then
+		local __,__,__,__,rdru = GetTalentInfo(3, 27)
+		local __,__,__,__,pdru = GetTalentInfo(2, 5)
+		local __,__,__,__,sova = GetTalentInfo(1, 13)
+		local __,__,__,__,kot = GetTalentInfo(2, 9)
+		if rdru >= 1 then
+			bs = int+(duh*1.5)+(cast*2)+(sco*1.5)+crit+(mana*1.5)+(cast1*2)+(sco1*1.5)+crit1+(mana1*1.5)
+		end
+		if pdru >= 1 then
+			bs = sil+(lov*2)+(vyn*2)+hit+crit+(sco*1.5)+mast+(def*1.5)+(ukl*2)+rpb+hit1+crit1+(sco1*1.5)+mast1+(def1*1.5)+(ukl1*2)+rpb1
+		end
+		if sova >= 1 then
+			bs = int+(duh*0.5)+(cast*2)+hit+(crit*2)+(mana*0.5)+sco+(cast1*2)+hit1+(crit1*2)+(mana1*0.5)+sco1
+		end
+		if kot >= 1 then
+			bs = sil+(lov*2)+hit+(crit*1.5)+mast+(rpb*2)+attak+sco+hit1+(crit1*1.5)+mast1+(rpb1*2)+attak1+sco1
+		end
+	end
+	if classUnit == "Разбойник" or classUnit == "Разбойница" then
+		bs = sil+(lov*2)+hit+crit+(rpb*2)+mast+attak+sco+hit1+crit1+(rpb1*2)+mast1+attak1+sco1
+	end
+	if classUnit == "Чернокнижник" or classUnit == "Чернокнижница" then
+		bs = int+(duh*1.5)+(cast*2)+hit+(crit*1.5)+(mana*0.5)+(sco*1.5)+(cast1*2)+hit1+(crit1*1.5)+(mana1*0.5)+(sco1*1.5)
+	end
+	if classUnit == "Шаман" then
+		local __,__,__,__,elem = GetTalentInfo(1, 3)
+		local __,__,__,__,enh = GetTalentInfo(2, 9)
+		local __,__,__,__,rsham = GetTalentInfo(3, 1)
+		if elem >= 3 and enh >= 1 then
+			__,__,__,__,elem = GetTalentInfo(1, 7)
+			__,__,__,__,enh = GetTalentInfo(2, 11)
+		end
+		if elem >= 1 then
+			bs = int+(cast*2)+crit+hit+(sco*1.5)+(cast1*2)+crit1+hit1+(sco1*1.5)
+		end
+		if enh >= 1 then
+			bs = sil+(lov*2)+hit+(crit*1.5)+rpb+attak+(sco*1.5)+mast+cast+hit1+(crit1*1.5)+rpb1+attak1+(sco1*1.5)+mast1+cast1
+		end
+		if rsham >= 1 then
+			bs = int+duh+(cast*2)+crit+(mana*2)+(sco*2)+(cast1*2)+crit1+(mana1*2)+(sco1*2)
+		end
+	end
+	if classUnit == "Охотник" or classUnit == "Охотница" then
+		bs = (lov*2)+hit+crit+(rpb*2)+attak+sco+hit1+crit1+(rpb1*2)+attak1+sco1
+	end
+	if classUnit == "Рыцарь смерти" then
+		local __,__,__,__,pwar = GetTalentInfo(1, 7)
+		local __,__,__,__,pwar1 = GetTalentInfo(2, 3)
+		local __,__,__,__,pwar2 = GetTalentInfo(3, 3)
+		if pwar >= 1 or pwar1 >= 1 or pwar2 >= 1 then
+			bs = sil+lov+(vyn*2)+hit+mast+(def*1.5)+(ukl*1.5)+hit1+mast1+(def1*1.5)+(ukl1*1.5)
+		else
+			bs = (sil*2)+lov+hit+crit+mast+rpb+attak+hit1+crit1+mast1+rpb1+attak1
+		end
+	end
+	if classUnit == "Маг" then
+		bs = int+duh+(cast*2)+hit+(crit*1.5)+(sco*1.5)+(cast1*2)+hit1+(crit1*1.5)+(sco1*1.5)
+	end
+	if tonumber(bs) ~= 0 then
+		GameTooltip:AddLine("|cff00BFFFбс: |cffFF8C00" .. bs)
+		GameTooltip:Show()
+	else
+
+	end
+end)
+-- function numeCod(str)
+-- 	local m = nil
+-- 	if string.utf8sub(str,1,1) == "-" then
+-- 		str = string.utf8sub(str,2,string.utf8len(str))
+-- 		m = 1
+-- 	end
+-- 	local rez
+-- 	local r
+-- 	local hexstr = "0123456789ABCDEFG#$%()*+-./:;<=>?@HIJKLMNOPQRSTUVWXYZ^_`abcdefghijklmnopqrstuvwxyz!{|}[]'"
+-- 	local len = string.utf8len(str)
+-- 	local lenH = string.utf8len(hexstr)
+-- 	for j = 1, len do
+-- 		for i = 1, lenH do
+-- 			local r1 = string.utf8sub(hexstr,i,i)
+-- 			if r1 == string.utf8sub(str,j,j) then
+-- 				if j == 1 and j ~= len then
+-- 					r = i * 92
+-- 				elseif j ~= 1 and j ~= len then
+-- 					r = (tonumber(r) + i) * 89
+-- 				elseif j == 1 and j == len then
+-- 					r = i
+-- 				elseif j ~= 1 and j == len then
+-- 					r = tonumber(r) + i
+-- 				end
+-- 				break
+-- 			end
+-- 		end
+-- 	end
+-- 	if m ~= nil then
+-- 		r = r*-1
+-- 	end
+-- 	return r
+-- end
+function ns_obj(str)
+	local r
+	if str == "aa" then
+		r = "ka"
+	end
+	if str == "aA" then
+		r = "t"
+	end
+	if str == "ab" then
+		r = "f"
+	end
+	if str == "aB" then
+		r = "ob"
+	end
+	if str == "ac" then
+		r = "mz"
+	end
+	if str == "aC" then
+		r = "h"
+	end
+	return r
+end
+-- Функция для декодирования строки в число
+local _convertTable = {
+    [0] = "0", [1] = "1", [2] = "2", [3] = "3", [4] = "4",
+    [5] = "5", [6] = "6", [7] = "7", [8] = "8", [9] = "9",
+    [10] = "A", [11] = "B", [12] = "C", [13] = "D", [14] = "E",
+    [15] = "F", [16] = "G", [17] = "#", [18] = "$", [19] = "%",
+    [20] = "(", [21] = ")", [22] = "*", [23] = "+", [24] = "-",
+    [25] = ".", [26] = "/", [27] = ":", [28] = ";", [29] = "<",
+    [30] = "=", [31] = ">", [32] = "?", [33] = "@", [34] = "H",
+    [35] = "I", [36] = "J", [37] = "K", [38] = "L", [39] = "M",
+    [40] = "N", [41] = "O", [42] = "P", [43] = "Q", [44] = "R",
+    [45] = "S", [46] = "T", [47] = "U", [48] = "V", [49] = "W",
+    [50] = "X", [51] = "Y", [52] = "Z", [53] = "^", [54] = "_",
+    [55] = "`", [56] = "a", [57] = "b", [58] = "c", [59] = "d",
+    [60] = "e", [61] = "f", [62] = "g", [63] = "h", [64] = "i",
+    [65] = "j", [66] = "k", [67] = "l", [68] = "m", [69] = "n",
+    [70] = "o", [71] = "p", [72] = "q", [73] = "r", [74] = "s",
+    [75] = "t", [76] = "u", [77] = "v", [78] = "w", [79] = "x",
+    [80] = "y", [81] = "z", [82] = "!", [83] = "{", [84] = "|",
+    [85] = "}", [86] = "[", [87] = "]", [88] = "'", [89] = ",",
+}
+
+-- Создание обратной таблицы
+local _reverseConvertTable = {}
+for k, v in pairs(_convertTable) do
+    _reverseConvertTable[v] = k
+end
+
+function numeCod(encoded)
+    --local isNegative = encoded:sub(1, 1) == "-"
+    -- if isNegative then
+    --     encoded = encoded:sub(2)  -- Убираем знак минуса
+    -- end
+
+    local number = 0
+    for i = 1, #encoded do
+        local char = encoded:sub(i, i)
+        local value = _reverseConvertTable[char] or 0
+        number = number * 90 + value
+    end
+
+    --return isNegative and -number or number
+    return number
+end
+
+function rand_alfabet()
+	testQ['ns_alfabetQ'] = {}
+	testQ['ns_alfabetQ1'] = {}
+	local KV = {
+        [1] = "А",
+        [2] = "Б",
+        [3] = "В",
+        [4] = "Г",
+        [5] = "Д",
+        [6] = "Ж",
+        [7] = "З",
+        [8] = "И",
+        [9] = "К",
+        [10] = "Л",
+        [11] = "М",
+        [12] = "Н",
+        [13] = "О",
+        [14] = "П",
+        [15] = "Р",
+        [16] = "С",
+        [17] = "Т",
+        [18] = "У",
+        [19] = "Ф",
+        [20] = "Х",
+        [21] = "Ц",
+        [22] = "Ч",
+        [23] = "Ш",
+        [24] = "Я",
+        [25] = "Е",
+        [26] = "Й",
+        [27] = "Э",
+        [28] = "Щ",
+        [29] = "Ю",
+        [30] = "Ы",
+    }
+    for i = 1, 5 do
+		local x = math.random(1,30)
+		table.insert(testQ['ns_alfabetQ'],KV[x])
+		table.insert(testQ['ns_alfabetQ1'],KV[x])
+	end
+end
+function np_change_0()
+		ns_cfg = {
+
+		--//Полосы здоровья и касты]]--
+		HPheight = 14 ,--высота
+		HPwidth = 99 ,--ширина
+
+
+		CBheight = 5 , --Высота каст бара
+		CBtieFont = 10 , --Размер шрифта каст бар
+		border = 4 , --размер бортика
+
+		--//рейдовая иконка]]--
+		rheight = 15 ,-- размер (например 15 означает , что размер иконки будет высотой 15 и шириной 15 пикселей)
+		Rpoint          = "RIGHT" , --чем цепляем
+		RrelativePoint = "LEFT" , --куда цепляем
+		Rx             = 0 , --координата Х (по ширине)
+		Ry             = -4 , --координата У (по высоте)
+
+		--//Уровень]]--
+		LvLFontSize = 13 , --размер букв
+		LvLpoint          = "RIGHT" , --чем цепляем
+		LvLrelativePoint = "LEFT"  ,--куда цепляем
+		LvLx             = -2 , --координата Х (по ширине)
+		LvLy             = 0 , --координата У (по высоте)
+
+		--//Имя]]--
+		NameFontSize = 11 , --размер букв имени
+		Npoint          = "BOTTOM" , --чем цепляем
+		NrelativePoint = "TOP"  ,--куда цепляем
+		Nx             = 0 , --координата Х (по ширине)
+		Ny             = 4 , --координата У (по высоте))
+
+		--//Цвета]]
+		hostileunit    = {r=0.77, g=0.11, b=0.11},  --цвет враждебного инита
+		friendlyunit   = {r=0.6, g=0.88, b=0.99},  --цвет дружественного юнита
+		friendlyplayer = {r=0.11, g=0.88, b=0.11},  --цвет дружественного игрока
+		neutralunit    = {r=0.99, g=0.99, b=0.0},  --цвет нейтрального юнита
+	}
+end
+function np_change_nil()
+	ns_cfg = {
+
+		--//Полосы здоровья и касты]]--
+		HPheight = 4 ,--высота
+		HPwidth = 99 ,--ширина
+
+
+		CBheight = 5 , --Высота каст бара
+		CBtieFont = 10 , --Размер шрифта каст бар
+		border = 2 , --размер бортика
+
+		--//рейдовая иконка]]--
+		rheight = 15 ,-- размер (например 15 означает , что размер иконки будет высотой 15 и шириной 15 пикселей)
+		Rpoint          = "RIGHT" , --чем цепляем
+		RrelativePoint = "LEFT" , --куда цепляем
+		Rx             = 0 , --координата Х (по ширине)
+		Ry             = -4 , --координата У (по высоте)
+
+		--//Уровень]]--
+		LvLFontSize = 13 , --размер букв
+		LvLpoint          = "RIGHT" , --чем цепляем
+		LvLrelativePoint = "LEFT"  ,--куда цепляем
+		LvLx             = -2 , --координата Х (по ширине)
+		LvLy             = 0 , --координата У (по высоте)
+
+		--//Имя]]--
+		NameFontSize = 11 , --размер букв имени
+		Npoint          = "BOTTOM" , --чем цепляем
+		NrelativePoint = "TOP"  ,--куда цепляем
+		Nx             = 0 , --координата Х (по ширине)
+		Ny             = 4 , --координата У (по высоте))
+
+		--//Цвета]]
+		hostileunit    = {r=0.77, g=0.11, b=0.11},  --цвет враждебного инита
+		friendlyunit   = {r=0.6, g=0.88, b=0.99},  --цвет дружественного юнита
+		friendlyplayer = {r=0.11, g=0.88, b=0.11},  --цвет дружественного игрока
+		neutralunit    = {r=0.99, g=0.99, b=0.0},  --цвет нейтрального юнита
+	}
+end
+function ns_xy(x,y,x1,y1)
+	local mioCel = sqrt((x-x1)^2+(y-y1)^2)
+	return mioCel
+end
+function numZome()
+	if GetZoneText() == "Луносвет" then
+		kont = "2"
+		lok = "14"
+	end
+	if GetZoneText() == "Зангартопь" then
+		kont = "3"
+		lok = "2"
+	end
+	if GetZoneText() == "Танарис" then
+		kont = "1"
+		lok = "18"
+	end
+	if GetZoneText() == "Оргриммар" then
+		kont = "1"
+		lok = "10"
+	end
+	if GetZoneText() == "Штормград" then
+		kont = "2"
+		lok = "28"
+	end
+	if GetZoneText() == "Дуротар" then
+		kont = "1"
+		lok = "4"
+	end
+	if GetZoneText() == "Степи" then
+		kont = "1"
+		lok = "17"
+	end
+	return kont,lok
+end
+function ns_locaziya()
+	local x = math.random(1,7)
+	local rez
+	if x == 1 then
+		rez = "Луносвет"
+	end
+	if x == 2 then
+		rez = "Дуротар"
+	end
+	if x == 3 then
+		rez = "Оргриммар"
+	end
+	if x == 4 then
+		rez = "Зангартопь"
+	end
+	if x == 5 then
+		rez = "Степи"
+	end
+	if x == 6 then
+		rez = "Танарис"
+	end
+	if x == 7 then
+		rez = "Штормград"
+	end
+	return rez
+end
+function ns_q4xy()
+	local myNome = GetUnitName("player")
+	kont,lok = numZome()
+	if kont ~= nil then
+		if testQ[myNome]["взятый_квест_xy"] == nil then
+			testQ[myNome]["взятый_квест_xy"] = {}
+			local x = math.random(1,99)
+			local y = math.random(1,99)
+			testQ[myNome]["взятый_квест_xy"]['time'] = 600
+			testQ[myNome]["взятый_квест_xy"]['x'] = tonumber("0."..x)
+			testQ[myNome]["взятый_квест_xy"]['y'] = tonumber("0."..y)
+			testQ[myNome]["взятый_квест_xy"]['lok'] = ns_locaziya()
+			testQ[myNome]["взятый_квест_xy"]['timer'] = 5
+		else
+			if GetZoneText() == testQ[myNome]["взятый_квест_xy"]['lok'] then
+				if testQ[myNome]["взятый_квест_xy"]['time'] >= 1 then
+					local x,y = GetPlayerMapPosition("player")
+					testQ[myNome]["взятый_квест_xy"]['timer'] = (ns_xy(x,y,testQ[myNome]["взятый_квест_xy"]['x'],testQ[myNome]["взятый_квест_xy"]['y'])/tonumber(mapTables["lokRasstoyanie"][kont][lok]))/10
+					testQ[myNome]["взятый_квест_xy"]['time'] = testQ[myNome]["взятый_квест_xy"]['time'] - 1
+					print("Осталось " .. testQ[myNome]["взятый_квест_xy"]['time'] .. " секунд")
+					if (ns_xy(x,y,testQ[myNome]["взятый_квест_xy"]['x'],testQ[myNome]["взятый_квест_xy"]['y']) / tonumber(mapTables["lokRasstoyanie"][kont][lok]))/10 < 0.5 then
+						testQ[myNome]["взятый_квест_xy_end"] = 1
+						SendChatMessage("Она тут! Нюхом чую!", "OFFICER", nil, 1)
+					end
+				else
+					testQ[myNome]["взятый_квест_xy"]['lok'] = ns_locaziya()
+					SendChatMessage("Увы, мою принцессу уже увезли в " .. testQ[myNome]["взятый_квест_xy"]['lok'], "OFFICER", nil, 1)
+					local x = math.random(1,99)
+					local y = math.random(1,99)
+					testQ[myNome]["взятый_квест_xy"]['x'] = tonumber("0."..x)
+					testQ[myNome]["взятый_квест_xy"]['y'] = tonumber("0."..y)
+					testQ[myNome]["взятый_квест_xy"]['time'] = 600
+				end
+			end
+		end
+	else
+		if testQ[myNome]["взятый_квест_xy"] == nil then
+			testQ[myNome]["взятый_квест_xy"] = {}
+			local x = math.random(1,99)
+			local y = math.random(1,99)
+			testQ[myNome]["взятый_квест_xy"]['time'] = 300
+			testQ[myNome]["взятый_квест_xy"]['x'] = tonumber("0."..x)
+			testQ[myNome]["взятый_квест_xy"]['y'] = tonumber("0."..y)
+			testQ[myNome]["взятый_квест_xy"]['lok'] = ns_locaziya()
+			testQ[myNome]["взятый_квест_xy"]['timer'] = 5
+		end
+	end
+end
+
+function allcash(xC,yC,cod)
+	local x,y = GetPlayerMapPosition("player")
+	local mioCel=sqrt((x-xC)^2+(y-yC)^2)
+	local ac = (0.82 - mioCel)/0.82
+	if cod == 1 then
+		MoveViewRightStart(0)
+		if testQ['acbuhlo'] == nil then
+			MoveViewLeftStart(ac)
+		else
+			MoveViewLeftStart(ac/2)
+		end
+	else
+		MoveViewLeftStart(0)
+		if testQ['acbuhlo'] == nil then
+			MoveViewRightStart(ac)
+		else
+			MoveViewRightStart(ac/2)
+		end
+	end
+	local rnd = math.random(1,2)
+	if rnd == 1 then
+		if testQ['acbuhlo'] == 1 then
+			print(ac)
+		end
+	end
+end
+
+function osleplenie(sila)
+	MoveViewLeftStart(0)
+	MoveViewRightStart(0)
+	local x = math.random(1,2)
+	if x == 1 then
+		MoveViewLeftStart(sila)
+	else
+		MoveViewRightStart(sila)
+	end
+end
+function Shuffle(t)
+	local s = {}
+	for i = 1, #t do s[i] = t[i] end
+	for i = #t, 2, -1 do
+		local j = math.random(i)
+		s[i], s[j] = s[j], s[i]
+	end
+	return s
+end
+
+function ns_iya(num)
+	for i = 1, 100 do
+		if iYaBtn[i] ~= nil then
+			iYaBtn[i]:Hide()
+			iYaBtn[i]:Enable()
+			iYaBtn[i]:SetAlpha(1)
+		end
+		if iYaBtnP[i] ~= nil then
+			iYaBtnP[i]:Hide()
+		end
+	end
+	if tblIya[num]['sh'] == 1 then
+		testQ['iya_temp']=time()
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		iYaBtn:configure(1,0,300,515,32,"",tblIya[num]['t1'],num,tblIya[num]['s1'],99)
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p1'],tblIya[num]['t2'],num,tblIya[num]['s2'],99)
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p2'],tblIya[num]['t3'],num,tblIya[num]['s3'],99)
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p3'],tblIya[num]['t4'],num,tblIya[num]['s4'],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p4'],tblIya[num]['t5'],num,tblIya[num]['s5'],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,"",tblIya[num]['t6'],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,"",tblIya[num]['t7'],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,"",tblIya[num]['t8'],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,"",tblIya[num]['t9'],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+		iYaBtn[6]:SetAlpha(0.5)
+		iYaBtn[7]:SetAlpha(0.5)
+		iYaBtn[2]:SetAlpha(0.5)
+		iYaBtn[3]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 2 then
+		testQ['iya_temp']=time()
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		local number = {"2","3","4","5"}
+		local numbers = Shuffle(number)
+		iYaBtn:configure(1,0,300,515,32,tblIya[num]['p10'],tblIya[num]['t1'],num,tblIya[num]['s1'],99)
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['s'..numbers[4]],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,tblIya[num]['p6'],tblIya[num]['t6'],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,tblIya[num]['p7'],tblIya[num]['t7'],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,tblIya[num]['p8'],tblIya[num]['t8'],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,tblIya[num]['p9'],tblIya[num]['t9'],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 3 then
+		testQ['iya_temp']=time()
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		local number = {"2","3","4"}
+		local numbers = Shuffle(number)
+		iYaBtn:configure(1,0,300,515,32,"",tblIya[num]['t1'],num,tblIya[num]['s1'],99)
+		iYaBtn:configure(2,0,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,-256,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,256,125,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 4 then
+		local number = {"2","3","4","5"}
+		local numbers = Shuffle(number)
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['s'..numbers[4]],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,"",tblIya[num]['tt'..numbers[1]],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,"",tblIya[num]['tt'..numbers[2]],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,"",tblIya[num]['tt'..numbers[3]],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,"",tblIya[num]['tt'..numbers[4]],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		local numberP = {"1","2","3","4"}
+		local numbersP = Shuffle(numberP)
+		iYaBtnP:configure(1,tblIya[num]['x1'],tblIya[num]['y1'],tblIya[num]['rx1'],tblIya[num]['ry1'],"",tblIya[num]['tp'..numbersP[1]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(2,tblIya[num]['x2'],tblIya[num]['y2'],tblIya[num]['rx2'],tblIya[num]['ry2'],"",tblIya[num]['tp'..numbersP[2]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(3,tblIya[num]['x3'],tblIya[num]['y3'],tblIya[num]['rx3'],tblIya[num]['ry3'],"",tblIya[num]['tp'..numbersP[3]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(4,tblIya[num]['x4'],tblIya[num]['y4'],tblIya[num]['rx4'],tblIya[num]['ry4'],"",tblIya[num]['tp'..numbersP[4]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtn[2]:Disable()
+		iYaBtn[3]:Disable()
+		iYaBtn[4]:Disable()
+		iYaBtn[5]:Disable()
+		iYaBtn[6]:Disable()
+		iYaBtn[7]:Disable()
+		iYaBtn[8]:Disable()
+		iYaBtn[9]:Disable()
+	end
+	if tblIya[num]['sh'] == 5 then
+		testQ['iya_temp']=time()
+		local number = {"1","2","3","4","5","6"}
+		local numbers = Shuffle(number)
+		iYaBtn:configure(1,0,300,515,32,tblIya[num]['p11'],tblIya[num]['t11'],num,tblIya[num]['s1'],99)
+		iYaBtnPic:configure(1,-259,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['ts'..numbers[1]],tblIya[num]['tq'])
+		iYaBtnPic:configure(2,257,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['ts'..numbers[2]],tblIya[num]['tq'])
+		iYaBtnPic:configure(3,-259,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['ts'..numbers[3]],tblIya[num]['tq'])
+		iYaBtnPic:configure(4,257,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['ts'..numbers[4]],tblIya[num]['tq'])
+		iYaBtnPic:configure(5,0,125,256,256,tblIya[num]['p'..numbers[5]],tblIya[num]['t'..numbers[5]],num,tblIya[num]['ts'..numbers[5]],tblIya[num]['tq'])
+		iYaBtnPic:configure(6,0,-165,256,256,tblIya[num]['p'..numbers[6]],tblIya[num]['t'..numbers[6]],num,tblIya[num]['ts'..numbers[6]],tblIya[num]['tq'])
+
+		iYaBtnText:configure(1,-259,268,256,32,"",tblIya[num]['tt1'],num,tblIya[num]['tts1'],99)
+		iYaBtnText:configure(2,255,268,256,32,"",tblIya[num]['tt2'],num,tblIya[num]['tts2'],99)
+		iYaBtnText:configure(3,-259,-22,256,32,"",tblIya[num]['tt3'],num,tblIya[num]['tts3'],99)
+		iYaBtnText:configure(4,255,-22,256,32,"",tblIya[num]['tt4'],num,tblIya[num]['tts4'],99)
+		iYaBtnText:configure(5,0,268,256,32,"",tblIya[num]['tt5'],num,tblIya[num]['tts5'],99)
+		iYaBtnText:configure(6,0,-22,256,32,"",tblIya[num]['tt6'],num,tblIya[num]['tts6'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,316,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		iYaBtn[1]:SetAlpha(0.5)
+	end
+	if tblIya[num]['sh'] == 6 then
+		local number = {"2","3","4","5"}
+		local numbers = Shuffle(number)
+		for i = 1, 11 do
+			if iYaBtn[i] ~= nil then
+				iYaBtn[i]:SetAlpha(1)
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnP[i] ~= nil then
+				iYaBtnP[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnPic[i] ~= nil then
+				iYaBtnPic[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnText[i] ~= nil then
+				iYaBtnText[i]:Hide()
+			end
+		end
+		for i = 1, 100 do
+			if iYaBtnVsp[i] ~= nil then
+				iYaBtnVsp[i]:Hide()
+			end
+		end
+		iYaBtn:configure(2,-131,125,256,256,tblIya[num]['p'..numbers[1]],tblIya[num]['t'..numbers[1]],num,tblIya[num]['s'..numbers[1]],tblIya[num]['tq'])
+		iYaBtn:configure(3,127,125,256,256,tblIya[num]['p'..numbers[2]],tblIya[num]['t'..numbers[2]],num,tblIya[num]['s'..numbers[2]],tblIya[num]['tq'])
+		iYaBtn:configure(4,-131,-165,256,256,tblIya[num]['p'..numbers[3]],tblIya[num]['t'..numbers[3]],num,tblIya[num]['s'..numbers[3]],tblIya[num]['tq'])
+		iYaBtn:configure(5,127,-165,256,256,tblIya[num]['p'..numbers[4]],tblIya[num]['t'..numbers[4]],num,tblIya[num]['s'..numbers[4]],tblIya[num]['tq'])
+		iYaBtn:configure(6,-128,268,256,32,"",tblIya[num]['tt'..numbers[1]],num,tblIya[num]['s6'],99)
+		iYaBtn:configure(7,128,268,256,32,"",tblIya[num]['tt'..numbers[2]],num,tblIya[num]['s7'],99)
+		iYaBtn:configure(8,-128,-22,256,32,"",tblIya[num]['tt'..numbers[3]],num,tblIya[num]['s8'],99)
+		iYaBtn:configure(9,128,-22,256,32,"",tblIya[num]['tt'..numbers[4]],num,tblIya[num]['s9'],99)
+		iYaBtn:configure(10,268,300,32,32,"","x",num,"",99)
+		iYaBtn:configure(11,-322,300,128,64,"",num .. "/" ..50-testQ['iya_ser'],"","",99)
+		--iYaBtn[11]:Disable()
+		local numberP = {"1","2","3","4"}
+		local numbersP = Shuffle(numberP)
+		iYaBtnP:configure(1,-11,148,80,32,"",tblIya[num]['tp'..numbersP[1]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(2,-11,116,80,32,"",tblIya[num]['tp'..numbersP[2]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(3,-11,84,80,32,"",tblIya[num]['tp'..numbersP[3]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtnP:configure(4,-11,52,80,32,"",tblIya[num]['tp'..numbersP[4]],num,tblIya[num]['s10'],tblIya[num]['tq'])
+		iYaBtn[2]:Disable()
+		iYaBtn[3]:Disable()
+		iYaBtn[4]:Disable()
+		iYaBtn[5]:Disable()
+		iYaBtn[6]:Disable()
+		iYaBtn[7]:Disable()
+		iYaBtn[8]:Disable()
+		iYaBtn[9]:Disable()
+	end
+end
+
+function sCh()
+	SendChatMessage('Что вы видите тут: "Ññ"?', "GUILD", nil, 1)
+end
+
+function pokazTextur(id,textur,profil,sign)
+    if sign == "show" then
+        prok_set1 = {
+            ["Rx"] = 128,
+            ["Ry"] = 256,
+            ["x"] = -200,
+            ["y"] = 0,
+        }
+        prok_set2 = {
+            ["Rx"] = 128,
+            ["Ry"] = 256,
+            ["x"] = 200,
+            ["y"] = 0,
+        }
+        prok_set3 = {
+            ["Rx"] = 256,
+            ["Ry"] = 128,
+            ["x"] = 0,
+            ["y"] = 200,
+        }
+        prok_set4 = {
+            ["Rx"] = 0,
+            ["Ry"] = 0,
+            ["x"] = 0,
+            ["y"] = 0,
+        }
+        local x = GetScreenWidth()
+        local y = GetScreenHeight()
+        if profil == 4 then
+        unIcon(tonumber(id),x,y,0+prok_set4["x"],0+prok_set4["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+        if profil == 1 then
+        unIcon(tonumber(id),prok_set1["Rx"],prok_set1["Ry"],0+prok_set1["x"],0+prok_set1["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+        if profil == 2 then
+        unIcon(tonumber(id),prok_set2["Rx"],prok_set2["Ry"],0+prok_set2["x"],0+prok_set2["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+        if profil == 3 then
+        unIcon(tonumber(id),prok_set3["Rx"],prok_set3["Ry"],0+prok_set3["x"],0+prok_set3["y"],textur,"show",UIParent,"CENTER","CENTER")
+        end
+    else
+        unIcon(tonumber(tonumber(id),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER"))
+    end
+end
+
+function cepochkiQuestov(tabella,shablon,kont,lok,x,y,myNome)
+	if tabella == "fenix" then
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "еда" then
+			if testQ[myNome]['edaQuest'] == nil then
+				testQ[myNome]['edaQuest'] = 1
+			end
+			local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+				if mapTables["lokRasstoyanie"][kont] ~= nil then
+					if mapTables["lokRasstoyanie"][kont][lok] ~= nil then
+						if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+							showFenix("show")
+							rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+						else
+							if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+								puteshestvieGrafikaHide()
+								PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+							end
+						end
+					end
+				end
+		end
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "эмоция" then
+				if testQ[myNome]['квест_на_эмоции_взят'] == nil then
+					obnulenieEmocij(myNome)
+					testQ[myNome]['квест_на_эмоции_взят'] = 1
+				end
+				if testQ[myNome]['квест_на_эмоции_взят'] ~= nil then
+
+					if proverkaEmocij(myNome) == nil then
+						puteshestvieGrafikaHide()
+						SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+						sohranenieProgressa("обычка")
+						testQ[myNome]['puteshestvie'] = t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда']
+					else
+						local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+						if mapTables["lokRasstoyanie"][kont] ~= nil then
+							if mapTables["lokRasstoyanie"][kont][lok] ~= nil then
+								if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+									showFenix("show")
+									rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+								else
+									if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+										puteshestvieGrafikaHide()
+										PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+									end
+								end
+							end
+						end
+					end
+				end
+		end
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "клик" then
+			if ns_FLAGnaClick ~= nil then
+				if testQ['fx'] == nil then
+					testQ['fx'], testQ['fy'] = GetPlayerMapPosition("player")
+				end
+				local mioCel = sqrt((x - testQ['fx'])^2+(y-testQ['fy'])^2)
+				if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+					showFenix("show")
+					rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+				else
+					if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+						puteshestvieGrafikaHide()
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+						SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+						sohranenieProgressa("обычка")
+						testQ[myNome]['puteshestvie'] = t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда']
+						testQ['fy'] = nil
+						testQ['fx'] = nil
+						ns_FLAGnaClick = nil
+					end
+				end
+			end
+		end
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "добыча предметов" then
+			if tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['kont']) == tonumber(kont) and tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['lok']) == tonumber(lok) then
+				local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+				if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+					showFenix("show")
+					local numS
+					rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+					for i = 1, t_cQ[tabella][testQ[myNome]['puteshestvie']]['предметКоличество'] do
+							if proverkaNaPredmety(t_cQ[tabella][testQ[myNome]['puteshestvie']]['предмет'..i]) then
+								if proverkaNaKolvoPredmetov(t_cQ[tabella][testQ[myNome]['puteshestvie']]['предмет'..i]) >= t_cQ[tabella][testQ[myNome]['puteshestvie']]['всегоПредметов'..i] then
+									numS = 1
+								else
+									numS = nil
+									break
+								end
+							else
+								numS = nil
+								break
+							end
+					end
+					if numS ~= nil then
+						puteshestvieGrafikaHide()
+						SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+						sohranenieProgressa("обычка")
+						testQ[myNome]['puteshestvie'] = t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда']
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					end
+				else
+					if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+						puteshestvieGrafikaHide()
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					end
+				end
+			end
+		end
+	end
+	if tabella ~= "fenix" then
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "поди туда" then
+			if tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['kont']) == tonumber(kont) and tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['lok']) == tonumber(lok) then
+				local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+				if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+					quesT("show")
+					rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+				else
+					if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+						puteshestvieGrafikaHide()
+						SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+						sohranenieProgressa("обычка")
+						testQ[myNome]['puteshestvie'] = t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда']
+					end
+				end
+			else
+				if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+					puteshestvieGrafikaHide()
+					SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					sohranenieProgressa("обычка")
+					testQ[myNome]['puteshestvie'] = t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда']
+				end
+			end
+		end
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "взлом сейфа" then
+			if tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['kont']) == tonumber(kont) and tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['lok']) == tonumber(lok) then
+				local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+				if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+					quesT("show")
+					rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+				else
+					if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+						SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+						puteshestvieGrafikaHide()
+						sohranenieProgressa("обычка")
+						testQ[myNome]['puteshestvie'] = t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда']
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					end
+				end
+			end
+		end
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "добыча предметов" then
+			if tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['kont']) == tonumber(kont) and tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['lok']) == tonumber(lok) then
+				local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+				if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+					quesT("show")
+					rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+					if proverkaNaPredmety(t_cQ[tabella][testQ[myNome]['puteshestvie']]['предмет1']) and proverkaNaPredmety(t_cQ[tabella][testQ[myNome]['puteshestvie']]['предмет2']) and proverkaNaPredmety(t_cQ[tabella][testQ[myNome]['puteshestvie']]['предмет3']) then
+						puteshestvieGrafikaHide()
+						SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда'], "OFFICER", nil, 1)
+						sohranenieProgressa("обычка")
+						testQ[myNome]['puteshestvie'] = t_cQ[tabella][testQ[myNome]['puteshestvie']]['куда']
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					end
+				else
+					if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+						puteshestvieGrafikaHide()
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					end
+				end
+			end
+		end
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "вопрос" then
+			if tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['kont']) == tonumber(kont) and tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['lok']) == tonumber(lok) then
+				local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+				if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+					quesT("show")
+					rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+				else
+					if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+						puteshestvieGrafikaHide()
+						PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+					end
+				end
+			else
+				if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+					puteshestvieGrafikaHide()
+					PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+				end
+			end
+		end
+		if t_cQ[tabella][testQ[myNome]['puteshestvie']]['sh'] == "победа" then
+			if tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['kont']) == tonumber(kont) and tonumber(t_cQ[tabella][testQ[myNome]['puteshestvie']]['lok']) == tonumber(lok) then
+				local mioCel = sqrt((x - t_cQ[tabella][testQ[myNome]['puteshestvie']]['x'])^2+(y-t_cQ[tabella][testQ[myNome]['puteshestvie']]['y'])^2)
+				if mioCel < mapTables["lokRasstoyanie"][kont][lok]*t_cQ[tabella][testQ[myNome]['puteshestvie']]['dalnost'] then
+					quesT("show")
+					rtnTextF(t_cQ[tabella][testQ[myNome]['puteshestvie']]['text'],1,"show")
+				else
+					if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+					puteshestvieGrafikaHide()
+					SendChatMessage("Победа!!! Вождь, я несу тебе все содержимое сейфов!!!", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+					puteshestvieHide()
+					end
+				end
+			else
+				if rtnText[1] ~= nil and rtnText[1]:IsVisible() then
+					puteshestvieGrafikaHide()
+					SendChatMessage("Победа!!! Вождь, я несу тебе все содержимое сейфов!!!", "OFFICER", nil, 1)
+					PlaySoundFile("Interface\\AddOns\\NSQC\\fin.ogg")
+					puteshestvieHide()
+				end
+			end
+		end
+	end
+end
+
+function puteshestvieHide()
+	local myNome = GetUnitName("player")
+	testQ[myNome]['puteshestvie'] = nil
+	testQ[myNome][testQ[myNome]['puteshestvieTabella']] = nil
+	quesT("hide")
+	rtnTextF("",1,"hide")
+	if btn[980] ~= nil then
+		btn[980]:Hide()
+		btn[979]:Hide()
+		btn[978]:Hide()
+	end
+	puteshestvieGrafikaHide()
+end
+
+function puteshestvieGrafikaHide()
+	if fenix[1] ~= nil then
+		showFenix("hide")
+	end
+	if iconQ[1] ~= nil then
+		quesT("hide")
+	end
+	rtnTextF("",1,"hide")
+end
+
+function ns_addXY()
+	local x,y = GetPlayerMapPosition("player")
+	local kont = tostring(GetCurrentMapContinent())
+	local lok = tostring(GetCurrentMapZone())
+	print('\[\'x\'\] = ' .. x .. ",")
+	print('\[\'y\'\] = ' .. y .. ",")
+	print('\[\'kont\'\] = ' .. kont .. ",")
+	print('\[\'lok\'\] = ' .. lok .. ",")
+	--SendChatMessage('\[\'x\'\] = ' .. x .. ",", "OFFICER", nil, 1)
+	--SendChatMessage('\[\'y\'\] = ' .. y .. ",", "OFFICER", nil, 1)
+	--SendChatMessage('\[\'kont\'\] = ' .. kont .. ",", "OFFICER", nil, 1)
+	--SendChatMessage('\[\'lok\'\] = ' .. lok .. ",", "OFFICER", nil, 1)
+end
+
+function proverkaNaPredmety(search)
+  for bag = 0,4 do
+    for slot = 1,GetContainerNumSlots(bag) do
+      local item = GetContainerItemLink(bag,slot)
+      if item and item:find(search) then
+        return true
+      end
+    end
+  end
+end
+function proverkaNaKolvoPredmetov(search)
+  local x = 0
+  for bag = 0,4 do
+    for slot = 1,GetContainerNumSlots(bag) do
+    	local item = GetContainerItemLink(bag,slot)
+    	if item and item:find(search) then
+	      local __,num = GetContainerItemInfo(bag,slot)
+	      x = x + num
+	    end
+    end
+  end
+  return x
+end
+
+function sohranenieProgressa(sign)
+	local myNome = GetUnitName("player")
+	if sign == "обычка" then
+		if testQ[myNome][testQ[myNome]] == nil then
+			testQ[myNome][testQ[myNome]['puteshestvieTabella']] = 0
+		end
+		if tonumber(testQ[myNome][testQ[myNome]['puteshestvieTabella']]) < tonumber(t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда']) then
+			testQ[myNome][testQ[myNome]['puteshestvieTabella']] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда']
+		end
+	end
+	if sign == "взлом" then
+		if testQ[myNome][testQ[myNome]] == nil then
+			testQ[myNome][testQ[myNome]['puteshestvieTabella']] = 0
+		end
+		if tonumber(testQ[myNome][testQ[myNome]['puteshestvieTabella']]) < tonumber(t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе']) then
+			testQ[myNome][testQ[myNome]['puteshestvieTabella']] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе']
+		end
+	end
+end
+
+function sohranenieTablicRamerovLokaciy()
+	SendAddonMessage("rasstoyanie 1 17", "0.000499", "guild")
+	SendAddonMessage("rasstoyanie 1 10", "0.003676", "guild")
+	SendAddonMessage("rasstoyanie 1 4", "0.00067", "guild")
+	SendAddonMessage("rasstoyanie 2 28", "0.0021", "guild")
+	SendAddonMessage("rasstoyanie 99 1", "0.003", "guild")
+	SendAddonMessage("rasstoyanie 1 18", "0.00087", "guild")
+	SendAddonMessage("rasstoyanie 3 2", "0.007", "guild")
+	SendAddonMessage("rasstoyanie 2 14", "0.002", "guild")
+	SendAddonMessage("rasstoyanie 1 15", "0.000499", "guild")
+	SendAddonMessage("rasstoyanie 2 25", "0.000499", "guild")
+end
+
+function proverkaEmocij(myNome)
+	local x
+	if testQ[myNome]['HumanMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['HumanWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['DworfMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['DworfWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['NEMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['NEWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['GnomMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['GnomWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['DrenayMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['DrenayWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['OrkMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['OrkWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['UndeadMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['UndeaWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['TaurenMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['TaurenWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['TrollMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['TrollWoman'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['ElfMan'] == nil then
+		x = 1
+	end
+	if testQ[myNome]['ElfWoman'] == nil then
+		x = 1
+	end
+	return x
+end
+
+function testShip(myNome)
+	local x
+	if testQ[myNome]['HumanMan'] == nil then
+		x = "Человек"
+	end
+	if testQ[myNome]['HumanWoman'] == nil then
+		x = "Человека"
+	end
+	if testQ[myNome]['DworfMan'] == nil then
+		x = "Дворф"
+	end
+	if testQ[myNome]['DworfWoman'] == nil then
+		x = "Дворфка"
+	end
+	if testQ[myNome]['NEMan'] == nil then
+		x = "Ночноэльф"
+	end
+	if testQ[myNome]['NEWoman'] == nil then
+		x = "Ночноэльфка"
+	end
+	if testQ[myNome]['GnomMan'] == nil then
+		x = "Гном"
+	end
+	if testQ[myNome]['GnomWoman'] == nil then
+		x = "Гнома"
+	end
+	if testQ[myNome]['DrenayMan'] == nil then
+		x = "Дреней"
+	end
+	if testQ[myNome]['DrenayWoman'] == nil then
+		x = "Дренейка"
+	end
+	if testQ[myNome]['OrkMan'] == nil then
+		x = "Орк"
+	end
+	if testQ[myNome]['OrkWoman'] == nil then
+		x = "Орчка"
+	end
+	if testQ[myNome]['UndeadMan'] == nil then
+		x = "Андед"
+	end
+	if testQ[myNome]['UndeaWoman'] == nil then
+		x = "Еще 30 минут женщина"
+	end
+	if testQ[myNome]['TaurenMan'] == nil then
+		x = "Таурен"
+	end
+	if testQ[myNome]['TaurenWoman'] == nil then
+		x = "Телочка"
+	end
+	if testQ[myNome]['TrollMan'] == nil then
+		x = "Тролль"
+	end
+	if testQ[myNome]['TrollWoman'] == nil then
+		x = "Троллька"
+	end
+	if testQ[myNome]['ElfMan'] == nil then
+		x = "Эльф"
+	end
+	if testQ[myNome]['ElfWoman'] == nil then
+		x = "Эльфа"
+	end
+	return x
+end
+
+function obnulenieEmocij(myNome)
+	testQ[myNome]['HumanMan'] = nil
+	testQ[myNome]['HumanWoman'] = nil
+	testQ[myNome]['DworfMan'] = nil
+	testQ[myNome]['DworfWoman'] = nil
+	testQ[myNome]['NEMan'] = nil
+	testQ[myNome]['NEWoman'] = nil
+	testQ[myNome]['GnomMan'] = nil
+	testQ[myNome]['GnomWoman'] = nil
+	testQ[myNome]['DrenayMan'] = nil
+	testQ[myNome]['DrenayWoman'] = nil
+	testQ[myNome]['OrkMan'] = nil
+	testQ[myNome]['OrkWoman'] = nil
+	testQ[myNome]['UndeadMan'] = nil
+	testQ[myNome]['UndeaWoman'] = nil
+	testQ[myNome]['TaurenMan'] = nil
+	testQ[myNome]['TaurenWoman'] = nil
+	testQ[myNome]['TrollMan'] = nil
+	testQ[myNome]['TrollWoman'] = nil
+	testQ[myNome]['ElfMan'] = nil
+	testQ[myNome]['ElfWoman'] = nil
+end
+function obnulenieEmocij1(myNome)
+	testQ[myNome]['HumanMan'] = 1
+	testQ[myNome]['HumanWoman'] = 1
+	testQ[myNome]['DworfMan'] = 1
+	testQ[myNome]['DworfWoman'] = 1
+	testQ[myNome]['NEMan'] = 1
+	testQ[myNome]['NEWoman'] = 1
+	testQ[myNome]['GnomMan'] = 1
+	testQ[myNome]['GnomWoman'] = 1
+	testQ[myNome]['DrenayMan'] = 1
+	testQ[myNome]['DrenayWoman'] = 1
+	testQ[myNome]['OrkMan'] = 1
+	testQ[myNome]['OrkWoman'] = 1
+	testQ[myNome]['UndeadMan'] = 1
+	testQ[myNome]['UndeaWoman'] = 1
+	testQ[myNome]['TaurenMan'] = 1
+	testQ[myNome]['TaurenWoman'] = 1
+	testQ[myNome]['TrollMan'] = 1
+	testQ[myNome]['TrollWoman'] = 1
+	testQ[myNome]['ElfMan'] = 1
+	testQ[myNome]['ElfWoman'] = 1
+end
+
+function nsGP()
+	local t_sp = {}
+	local num = GetNumRaidMembers()
+	for i = 1, num do
+		local test
+		for Zc=1,GetNumGuildMembers(true) do
+	    local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+	    	if name == UnitName("raid"..i) then
+	    		t_sp[i]={}
+	    		local znach = mysplit(officerNote)
+	    		t_sp[i]['nome'] = name
+	    		t_sp[i]['public'] = publicNote
+	    		t_sp[i]['rank'] = rankName
+	    		if znach[3] ~= nil then
+	    			t_sp[i]['znach'] = tonumber(znach[3])
+	    		else
+	    			t_sp[i]['znach'] = tonumber("0000")
+	    		end
+	    		test = 1	    		
+	    	end
+	    end
+	    if test == nil then
+	    	t_sp[i] = {}
+	    	if UnitName("raid"..i) ~= nil then
+		    	t_sp[i]['nome'] = UnitName("raid"..i)
+		    	t_sp[i]['znach'] = tonumber("0000")
+		    	t_sp[i]['public'] = "НЕ В ГИЛЬДИИ"
+		    else
+		    	t_sp[i]['nome'] = "пусто"
+		    	t_sp[i]['znach'] = tonumber("0000")
+		    end
+	    end
+	end
+	table.sort(t_sp, function(a,b) return a.znach < b.znach end)
+	local rez = {}
+	local j = tostring(1)
+	for i, widget in ipairs(t_sp) do
+		rez[j] = {}
+		rez[j]['nome'] = widget['nome'] 
+		rez[j]['znach'] = widget['znach']
+		rez[j]['public'] = widget['public']
+		rez[j]['rank'] = widget['rank']
+		j = tostring(tonumber(j)+1)
+	end
+	return rez
+end
+
+function gpEnTg()
+	FriendsFrame:Show()
+	GuildFrame:Show()
+	testQ['gpEnTg'] = {}
+	for Zc=1,GetNumGuildMembers(true) do
+	    local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+	    local gp = mysplit(officerNote)
+	    if gp[3] ~= nil then
+		    --if tonumber(gp[3]) > 0 then
+		    	testQ['gpEnTg'][name] = tonumber(gp[3])
+		    --end
+		  end
+	end
+	FriendsFrame:Hide()
+	GuildFrame:Hide()
+end
+
+function addMioFld(nome,tabella,id,rez)
+	if mioFld1 ~= nil then
+		if mioFld1[nome] ~= nil then
+			if mioFld1[nome][tabella] ~= nil then
+				mioFld1[nome][tabella][tostring(id)] = tostring(rez)
+			end
+		end
+	end
+end
+
+function readMioFld(nome,tabella,id)
+	if mioFld1 ~= nil then
+		if mioFld1[nome] ~= nil then
+			if mioFld1[nome][tabella] ~= nil then
+				return mioFld1[nome][tabella][tostring(id)]
+			end
+		end
+	end
+end
+
+nBtn = {}
+
+function nBtn:new(id,f,object,posex,posey,textx,texty,textpos,textsize,sizex,sizey,message,point1,point2,textpoint1,textpoint2,strata,textColor,nome,htexture,texture)
+
+    local obj= {}
+    local rtnText
+    local frameTime
+    local timeElapsed
+    local saveNome = nome
+    obj.message = message
+
+    function obj:configure()
+    	if texture == nil then
+	    	self[id] = self[id] or CreateFrame("Button", nil, object, "UIPanelButtonTemplate");
+	    else
+	    	self[id] = self[id] or CreateFrame("Button", nil, object, "");
+	    	self[id]:SetNormalTexture("Interface\\AddOns\\NSQC\\libs\\" .. texture .. ".tga")
+	    	if htexture ~= 0 then
+	    		self[id]:SetHighlightTexture("Interface\\AddOns\\NSQC\\libs\\" .. texture .. ".tga")
+	    	end
+	    	rtnText = {}
+	    	obj:SetText(message)
+	    end
+	    self[id]:SetPoint(point1, object,point2,posex, posey)
+	    self[id]:SetSize(sizex, sizey)
+			self[id]:SetText(message)
+			self[id]:SetFrameStrata(strata)
+			if f ~= nil then
+				f(obj)
+			end
+		end
+
+    function obj:reMove(x,y)
+    	self[id]:SetPoint(point1, object,point2,x, y) 
+    end
+
+    function obj:reSize(sizex,sizey)
+    	self[id]:SetSize(sizex, sizey)
+    end
+
+    function obj:getID()
+    	print(id)
+    end
+
+    function obj:Hide()
+    	self[id]:Hide()
+    end
+
+    function obj:Show()
+    	self[id]:Show()
+    end
+
+    function obj:textSize(size)
+    	rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', size,"OUTLINE", "MONOCHROME");
+    end
+
+    function obj:textMove(x,y)
+    	rtnText[id]:SetPoint("BOTTOMLEFT", obj[id], "BOTTOMLEFT", x, y)
+    end
+
+    function obj:SetText(message)
+	    if texture ~= nil then
+					rtnText[id] = rtnText[id] or obj[id]:CreateFontString(nil, "OVERLAY")
+          rtnText[id]:SetSize(sizex, sizey)
+          --rtnText[id]:SetFrameStrata(strata)
+          rtnText[id]:SetPoint("TOPLEFT")
+          rtnText[id]:SetFont('Fonts\\FRIZQT__.TTF', textsize, "OUTLINE", "MONOCHROME")
+          rtnText[id]:SetText("|cff" .. textColor .. message .. "|r")
+          rtnText[id]:Show()
+			else
+				obj[id]:SetText(message)
+			end
+		end
+		function obj:getSaveNome()
+			return saveNome
+		end
+		function obj:setOnUpdate(f,text)
+			f(self[id],text)
+    end
+		function obj:setOnEnter(f)
+			f(self[id],message)
+    end
+    function obj:setOnClick(f)
+			f(self[id],message)
+    end
+    function obj:setClick(fl,fr,objekt)
+    	self[id]:RegisterForClicks("RightButtonDown","LeftButtonDown")
+    	self[id]:SetScript("OnClick",function(self, button,object)
+    		if fl ~= nil then
+	    		if arg1 == "LeftButton" then
+						fl(self, button,saveNome,objekt)
+					end
+				end
+				if fr ~= nil then
+					if arg1 == "RightButton" then
+						fr(self, button,saveNome,objekt)
+					end
+				end
+			end)
+    end
+    function obj:gesture(TopLeft,TopRight)
+    	frameTime = CreateFrame("FRAME")
+			timeElapsed = 0
+			frameTime:SetScript("OnUpdate", function(self, elapsed)
+				timeElapsed = timeElapsed + elapsed
+				if timeElapsed > 0.1 then
+					local x,y = WorldFrame:GetSize()
+					local x1,y1 = GetCursorPosition()
+					if x1 <= 20 and y1 >= y - 20 then
+						TopLeft(obj[id])
+					end
+					if x1 >= x - 20 and y1 >= y - 20 then
+						TopRight(obj[id])
+					end
+				end
+			end)
+    end
+    function obj:killall()
+	    frameTime:SetScript("OnUpdate", nil)
+	    obj[id]:SetScript("OnClick", nil)
+    end
+
+    setmetatable(obj, self)
+    self.__index = self; return obj
+end
+function gpBtn1_enter(arg1,arg2)
+	arg1:SetScript("OnEnter",function(self, button,arg1)
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		GameTooltip:AddLine("|cFF6495EDЛКМ: начислить " .. " |cffFF8C00" .. arg2 .. " |cff99ff99ГП")
+		GameTooltip:AddLine("|cFF6495EDПКМ: снять " .. " |cffFF8C00" .. arg2 .. " |cff99ff99ГП")
+		GameTooltip:Show()
+		gpBtn1:Show()
+		gpBtn2:Show()
+		gpBtn3:Show()
+		gpBtn4:Show()
+		gpBtn5:Show()
+		gpBtn6:Show()
+		btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",0, -20)
+		ShowCheckboxWindow()
+ 	end)
+ 	arg1:SetScript("OnLeave",function(self, button,arg1)
+ 		
+		GameTooltip:Hide()
+ 	end)
+end
+function gpBtn1_click(obj,text)
+	obj:RegisterForClicks("RightButtonDown","LeftButtonDown")
+	obj:SetScript("OnClick",function(self, button)
+		if testQ['gpRez'] == nil or #testQ['gpRez'] == 0 then
+			if arg1 == "LeftButton" then
+				SendChatMessage("ГП " .. text, "GUILD", nil, 1)
+			else
+				SendChatMessage("ГП -" .. text, "GUILD", nil, 1)
+			end
+			gpBtn1:Hide()
+			gpBtn2:Hide()
+			gpBtn3:Hide()
+			gpBtn4:Hide()
+			gpBtn5:Hide()
+			gpBtn6:Hide()
+			btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",25, -20)
+			HideCheckboxWindow()
+			gplabels = {}
+			testQ['gpRez'] = nil
+		else
+			if arg1 == "LeftButton" then
+				sendGPnik(text)
+				HideCheckboxWindow()
+				gplabels = {}
+				testQ['gpRez'] = nil
+				gpBtn1:Hide()
+				gpBtn2:Hide()
+				gpBtn3:Hide()
+				gpBtn4:Hide()
+				gpBtn5:Hide()
+				gpBtn6:Hide()
+				btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",25, -20)
+			else
+				sendGPnik(-text)
+				HideCheckboxWindow()
+				gplabels = {}
+				testQ['gpRez'] = nil
+				gpBtn1:Hide()
+				gpBtn2:Hide()
+				gpBtn3:Hide()
+				gpBtn4:Hide()
+				gpBtn5:Hide()
+				gpBtn6:Hide()
+				btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",25, -20)
+			end
+		end
+ 	end)
+ end
+function change_spek(arg1,arg2,arg3,arg4)
+	SendChatMessage("!заметка " .. arg4.message, "GUILD", nil, 1)
+	spek1:Hide()
+	spek2:Hide()
+	spek3:Hide()
+end
+function duelOnUpdate(arg1,arg2)
+	arg1:SetScript("OnEnter",function(self, button)
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		GameTooltip:AddLine("|cFF6495EDПринять дуэль от игрока: |cff99ff99" .. arg2)
+		GameTooltip:Show()
+	end)
+	arg1:SetScript("OnLeave",function(self, button)
+		GameTooltip:Hide()
+	end)
+end
+function btnHide(frame)
+	frame:Hide()
+end
+function btnShow(frame)
+	frame:Show()
+end
+function gpBtnClick(frame)
+	if IsRaidLeader() then 
+		if testQ["raidAUKPobeda"] ~= nil then
+			SendChatMessage(testQ["raidAUKPobeda"] .. " побеждает, поставив " .. testQ["raidAUKPobeda_gp"] .. " ГП", "RAID", nil, 1)
+		end
+		SendAddonMessage("nsAUKend " , "10", "RAID")
+	end
+end
+function ns_duelTrue(arg1,arg2,arg3)
+	SendAddonMessage("ns_duel_otvet",arg3, "guild")
+	duelBtn[arg3..'1']:Hide()
+	duelBtn[arg3..'2']:Hide()
+end
+function ns_duelFalse(arg1,arg2,arg3)
+	SendChatMessage("Так я ж трус и подлец. Отказываюсь.", "GUILD", nil, 1)
+	duelBtn[arg3..'1']:Hide()
+	duelBtn[arg3..'2']:Hide()
+	SendAddonMessage("ns_duel_otkaz",arg3, "guild")
+end
+function nsAUK(sender, msg, predmet)
+    if testQ["raidAUK"] ~= nil then
+        msg = tonumber(msg)
+        if msg ~= nil then
+            local num = tablelength(testQ["raidAUK"])
+            local rezultat
+            local public
+            local numRez = tablelength(testQ['rez'])
+            local textBtn = ""
+            local netu = nil
+
+            -- Поиск результата и публичного статуса отправителя
+            for i = 1, numRez do
+                if testQ['rez'][tostring(i)]['nome'] == sender then
+                    public = testQ['rez'][tostring(i)]['public']
+                    rezultat = tonumber(testQ['rez'][tostring(i)]['znach'])
+                    break -- Мы нашли нужные данные, можно выйти из цикла
+                end
+            end
+
+            -- Обработка ставок
+            if num >= 1 then
+                for i = 1, num do
+                    if testQ["raidAUK"][i]["nome"] == sender then
+                        if tonumber(msg) <= rezultat then
+                            testQ["raidAUK"][i]["auk"] = msg
+                        end
+                        netu = 1
+                        break -- Мы обновили ставку, можно выйти из цикла
+                    end
+                end
+
+                -- Если не нашли отправителя в аукционе, добавляем нового
+                if netu == nil then
+                    testQ["raidAUK"][num + 1] = {
+                        nome = sender,
+                        auk = 0,
+                        public = public,
+                        rezultat = rezultat
+                    }
+                    if testQ["raidAUK"][num + 1]["auk"] + tonumber(msg) <= rezultat then
+                        testQ["raidAUK"][num + 1]["auk"] = testQ["raidAUK"][num + 1]["auk"] + tonumber(msg)
+                    end
+                end
+            else
+                -- Если нет ставок, добавляем первую
+                testQ["raidAUK"][1] = {
+                    nome = sender,
+                    auk = 0,
+                    public = public,
+                    rezultat = rezultat
+                }
+                if testQ["raidAUK"][1]["auk"] + tonumber(msg) <= rezultat then
+                    testQ["raidAUK"][1]["auk"] = testQ["raidAUK"][1]["auk"] + tonumber(msg)
+                end
+            end
+
+            -- Сортировка ставок
+            table.sort(testQ["raidAUK"], function(a, b) return a.auk < b.auk end)
+
+            -- Формирование результата и обновление интерфейса
+            local rez = {}
+            local rezultatText = ""
+            for i, widget in ipairs(testQ["raidAUK"]) do
+                rez[i] = {
+                    nome = widget['nome'],
+                    znach = widget['auk'],
+                    public = widget['public'],
+                    rezultat = widget['rezultat']
+                }
+                rezultatText = rezultatText .. "|cFF6495ED" .. widget['nome'] .. " |cffFF8C00(" .. widget['public'] .. "|cff808080||" .. "|cffff0000" .. widget['rezultat'] .. "|cffFF8C00): |cff99ff99" .. widget['auk'] .. '\n'
+                if i == #testQ["raidAUK"] and IsRaidLeader() then
+                    SendChatMessage(widget['nome'] .. ": " .. widget['auk'] .. ", кто больше?", "RAID", nil, 1)
+                    testQ["raidAUKPobeda"] = widget['nome']
+                    testQ["raidAUKPobeda_gp"] = widget['auk']
+                end
+            end
+
+            print(predmet)
+            TextWindow(predmet .. "\n\n" .. rezultatText)
+        end
+    end
+end
+
+function lastWords(msg)
+	local first = mysplit(msg)
+	first = first[1]
+	local num = string.utf8len(first)
+	local num1 = string.utf8len(msg)
+	local last = string.utf8sub(msg,num+1,num1)
+	return last
+end
+function sendGPnik(num)
+	local str = ''
+	for i = 1, #testQ['gpRez'] do
+		str = str .. testQ['gpRez'][i] .. " "
+	end
+	SendAddonMessage("nsGP" .. " " .. num, str, "guild")
+end
+function sendGP(num)
+	local myNome = GetUnitName("player")
+	msg = {}
+	msg[2] = num
+	for Zc=1,GetNumGuildMembers(true) do
+    local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+    if name == myNome then
+    	if rankName == "Лейтенант" or rankName == "Капитан" then
+    		if GetNumRaidMembers() <= 10 then
+				local rez = ""
+				rez = UnitName("raid1") .. " "
+			 	for i = 2, GetNumRaidMembers() do
+					rez = rez .. UnitName("raid"..i) .. " "
+			 	end
+			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			elseif GetNumRaidMembers() > 10 and GetNumRaidMembers() <= 20 then
+				local rez = ""
+				rez = UnitName("raid1") .. " "
+			 	for i = 2, 10 do
+					rez = rez .. UnitName("raid"..i) .. " "
+			 	end
+			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	local rez = ""
+				rez = UnitName("raid11") .. " "
+			 	for i = 12, GetNumRaidMembers() do
+					rez = rez .. UnitName("raid"..i) .. " "
+			 	end
+			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			elseif GetNumRaidMembers() > 20 then
+				local rez = ""
+				rez = UnitName("raid1") .. " "
+			 	for i = 2, 10 do
+					rez = rez .. UnitName("raid"..i) .. " "
+			 	end
+			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	local rez = ""
+				rez = UnitName("raid11") .. " "
+			 	for i = 12, 20 do
+					rez = rez .. UnitName("raid"..i) .. " "
+			 	end
+			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	local rez = ""
+				rez = UnitName("raid21") .. " "
+			 	for i = 22, GetNumRaidMembers() do
+					rez = rez .. UnitName("raid"..i) .. " "
+			 	end
+			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			end
+		end
+	end
+ end
+end
+
+function createParent()
+    parentFrame = CreateFrame("Frame", nil, UIParent)
+    parentFrame:SetSize(200, 200)  -- Начальный размер фрейма (будет изменен)
+    parentFrame:SetPoint("CENTER")  -- Позиция фрейма
+    parentFrame:SetBackdrop({
+        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        tile = true, tileSize = 32, edgeSize = 32,
+        insets = { left = 11, right = 12, top = 12, bottom = 11 }
+    })
+    parentFrame:SetBackdropColor(0, 0, 0, 1)  -- Цвет фона
+
+    -- Делаем фрейм перемещаемым левой кнопкой мыши
+    parentFrame:SetMovable(true)
+    parentFrame:EnableMouse(true)
+    parentFrame:RegisterForDrag("LeftButton")
+
+    -- Обработчики для перемещения фрейма
+    parentFrame:SetScript("OnDragStart", function(self)
+        self:StartMoving()
+    end)
+    parentFrame:SetScript("OnDragStop", function(self)
+        self:StopMovingOrSizing()
+        ClampFrameToScreen(self)  -- Ограничиваем фрейм границами экрана
+        SaveFramePosition(self)   -- Сохраняем координаты фрейма
+    end)
+
+    -- Восстанавливаем позицию фрейма, если координаты сохранены
+    if testQ['pgChbX'] and testQ['pgChbY'] then
+        parentFrame:ClearAllPoints()
+        parentFrame:SetPoint("CENTER", UIParent, "BOTTOMLEFT", testQ['pgChbX'], testQ['pgChbY'])
+    end
+
+    HideCheckboxWindow()
+end
+-- Функция для ограничения фрейма в пределах экрана
+function ClampFrameToScreen(frame)
+    local screenWidth = UIParent:GetWidth()
+    local screenHeight = UIParent:GetHeight()
+    local frameWidth = frame:GetWidth()
+    local frameHeight = frame:GetHeight()
+
+    local x, y = frame:GetCenter()  -- Получаем центр фрейма
+    x = x or 0
+    y = y or 0
+
+    -- Ограничиваем позицию фрейма
+    x = math.max(frameWidth / 2, math.min(screenWidth - frameWidth / 2, x))
+    y = math.max(frameHeight / 2, math.min(screenHeight - frameHeight / 2, y))
+
+    -- Устанавливаем новую позицию фрейма
+    frame:ClearAllPoints()
+    frame:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x, y)
+end
+
+function SaveFramePosition(frame)
+    local x, y = frame:GetCenter()
+    testQ['pgChbX'] = x  -- Сохраняем координату X
+    testQ['pgChbY'] = y  -- Сохраняем координату Y
+end
+
+-- Функция для создания чекбоксов
+function CreateCheckboxes(parentFrame, gplabels)
+    local checkboxes = {}  -- Таблица для хранения чекбоксов
+    local offsetY = -10  -- Начальное смещение по Y
+    local maxWidth = 0  -- Максимальная ширина текста чекбокса
+
+    -- Перебираем все метки и создаем чекбоксы
+    for i, label in ipairs(gplabels) do
+        -- Создаем чекбокс
+        local checkbox = CreateFrame("CheckButton", nil, parentFrame, "UICheckButtonTemplate")
+        checkbox:SetSize(24, 24)  -- Размер чекбокса
+        checkbox:SetPoint("TOPLEFT", 10, offsetY)  -- Позиция чекбокса
+
+        -- Добавляем текст рядом с чекбоксом
+        local checkboxText = checkbox:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        checkboxText:SetPoint("LEFT", checkbox, "RIGHT", 5, 0)
+        checkboxText:SetText(label)
+
+        -- Сохраняем текст в чекбоксе для дальнейшего использования
+        checkbox.label = label
+
+        -- Обработчик события OnClick
+        checkbox:SetScript("OnClick", function(self)
+            if testQ['gpRez'] == nil then
+            	testQ['gpRez'] = {}
+            end
+            local nik = mysplit(self.label)
+            if self:GetChecked() then
+            		table.insert(testQ['gpRez'], nik[1])
+            else
+                for i = 1, #testQ['gpRez'] do
+                	if testQ['gpRez'][i] == nik[1] then
+                		table.remove(testQ['gpRez'], i)
+                	end
+                end
+            end
+        end)
+
+        -- Сохраняем чекбокс в таблицу
+        checkboxes[i] = checkbox
+
+        -- Обновляем максимальную ширину текста
+        local textWidth = checkboxText:GetStringWidth()
+        if textWidth > maxWidth then
+            maxWidth = textWidth
+        end
+
+        -- Увеличиваем смещение для следующего чекбокса
+        offsetY = offsetY - 30
+    end
+
+    -- Динамически изменяем размер фрейма
+    local frameWidth = maxWidth + 50  -- Ширина фрейма (ширина текста + отступы)
+    local frameHeight = #gplabels * 30 + 20  -- Высота фрейма (количество чекбоксов * высота каждого + отступы)
+    parentFrame:SetSize(frameWidth, frameHeight)
+
+    return checkboxes
+end
+
+-- Функция для скрытия окна с чекбоксами
+function HideCheckboxWindow()
+    if parentFrame then
+        parentFrame:Hide()  -- Скрываем фрейм
+    end
+end
+
+function ShowCheckboxWindow()
+    if parentFrame then
+        parentFrame:Show()  -- Скрываем фрейм
+    end
+end
+
+-- Функция для уничтожения окна с чекбоксами
+function DestroyCheckboxWindow()
+    if parentFrame then
+        parentFrame:Hide()          -- Скрываем фрейм
+        parentFrame:ClearAllPoints() -- Убираем все точки привязки
+        parentFrame:SetParent(nil)  -- Убираем родительский фрейм
+        parentFrame = nil           -- Удаляем ссылку
+    end
+end
+
+
+
+-- Пример использования
+gplabels = {
+}
+
+
+-- Глобальная переменная для хранения фрейма
+textWindow = nil
+
+-- Функция для ограничения фрейма в пределах экрана
+local function ClampFrameToScreen(frame)
+    local screenWidth = UIParent:GetWidth()
+    local screenHeight = UIParent:GetHeight()
+    local frameWidth = frame:GetWidth()
+    local frameHeight = frame:GetHeight()
+
+    local x, y = frame:GetCenter()  -- Получаем центр фрейма
+    x = x or 0
+    y = y or 0
+
+    -- Ограничиваем позицию фрейма
+    x = math.max(frameWidth / 2, math.min(screenWidth - frameWidth / 2, x))
+    y = math.max(frameHeight / 2, math.min(screenHeight - frameHeight / 2, y))
+
+    -- Устанавливаем новую позицию фрейма
+    frame:ClearAllPoints()
+    frame:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x, y)
+end
+
+
+-- Функция для создания или обновления окна с текстом
+function TextWindow(text)
+    -- Если фрейм уже существует, обновляем текст
+    if textWindow then
+        textWindow.textLabel:SetText(text)  -- Обновляем текст
+        -- Пересчитываем размер фрейма
+        local textWidth = textWindow.textLabel:GetStringWidth()
+        local textHeight = textWindow.textLabel:GetStringHeight()
+        local padding = 20  -- Отступы вокруг текста
+        textWindow:SetSize(textWidth + padding, textHeight + padding)
+        ClampFrameToScreen(textWindow)  -- Ограничиваем фрейм в пределах экрана
+        textWindow:Show()  -- Показываем фрейм (если он был скрыт)
+        return
+    end
+
+    -- Создаем новый фрейм для текста
+    textWindow = CreateFrame("Frame", nil, UIParent)
+    textWindow:SetBackdrop({
+        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        tile = true, tileSize = 32, edgeSize = 32,
+        insets = { left = 11, right = 12, top = 12, bottom = 11 }
+    })
+    textWindow:SetBackdropColor(0, 0, 0, 1)  -- Цвет фона
+
+    -- Делаем фрейм перемещаемым левой кнопкой мыши
+    textWindow:SetMovable(true)
+    textWindow:EnableMouse(true)
+    textWindow:RegisterForDrag("LeftButton")
+    textWindow:SetScript("OnDragStart", function(self)
+        self:StartMoving()
+    end)
+    textWindow:SetScript("OnDragStop", function(self)
+        self:StopMovingOrSizing()
+        ClampFrameToScreen(self)  -- Ограничиваем фрейм в пределах экрана
+        -- Сохраняем координаты
+        testQ['textWinX'], testQ['textWinY'] = self:GetCenter()
+    end)
+
+    -- Добавляем текст в фрейм
+    textWindow.textLabel = textWindow:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+    textWindow.textLabel:SetPoint("CENTER", textWindow, "CENTER", 0, 0)
+    textWindow.textLabel:SetText(text)  -- Устанавливаем текст
+
+    -- Измеряем ширину текста
+    local textWidth = textWindow.textLabel:GetStringWidth()
+    local textHeight = textWindow.textLabel:GetStringHeight()
+
+    -- Устанавливаем размер фрейма на основе текста
+    local padding = 20  -- Отступы вокруг текста
+    textWindow:SetSize(textWidth + padding, textHeight + padding)
+
+    -- Устанавливаем позицию фрейма
+    if testQ['textWinX'] and testQ['textWinY'] then
+        -- Если координаты сохранены, восстанавливаем позицию
+        textWindow:SetPoint("CENTER", UIParent, "BOTTOMLEFT", testQ['textWinX'], testQ['textWinY'])
+    else
+        -- Иначе устанавливаем позицию по умолчанию
+        textWindow:SetPoint("RIGHT", btn[973], "LEFT", 0, 0)
+    end
+end
+
+-- Функция для скрытия окна
+function HideTextWindow()
+    if textWindow then
+        textWindow:Hide()  -- Скрываем фрейм
+    end
+end
+
+-- Функция для показа окна
+function ShowTextWindow()
+    if textWindow then
+        textWindow:Show()  -- Показываем фрейм
+    end
+end
+
+-- Функция для уничтожения окна
+function DestroyTextWindow()
+    if textWindow then
+        textWindow:Hide()          -- Скрываем фрейм
+        textWindow:ClearAllPoints() -- Убираем все точки привязки
+        textWindow:SetParent(nil)  -- Убираем родительский фрейм
+        textWindow = nil           -- Удаляем ссылку
+    end
+end
+
+
+
+
+
+
+
+-- Функция для извлечения имени файла из пути (сделана глобальной)
+function GetFileName(path)
+    return path:match("[^\\/]+$") or path
+end
+
+function CreateListUI()
+    if TestListFrame then
+        TestListFrame:Show()
+        TestListFrame.UpdateList()
+        return
+    end
+
+    local frame = CreateFrame("Frame", "TestListFrame", UIParent)
+    frame:SetSize(400, 500)
+    frame:SetPoint("CENTER")
+    frame:SetMovable(true)
+    frame:EnableMouse(true)
+    frame:RegisterForDrag("LeftButton")
+    frame:SetScript("OnDragStart", frame.StartMoving)
+    frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
+    frame:SetBackdrop({
+        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        tile = true, tileSize = 32, edgeSize = 32,
+        insets = { left = 11, right = 12, top = 12, bottom = 11 }
+    })
+
+    local closeButton = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
+    closeButton:SetPoint("TOPRIGHT", -5, -5)
+    closeButton:SetScript("OnClick", function() frame:Hide() end)
+
+    local title = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    title:SetPoint("TOP", 0, -20)
+    title:SetText("Управление списком")
+
+    local editBox = CreateFrame("EditBox", nil, frame, "InputBoxTemplate")
+    editBox:SetSize(200, 30)
+    editBox:SetPoint("TOP", 0, -60)
+    editBox:SetAutoFocus(false)
+
+    local addButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
+    addButton:SetSize(100, 30)
+    addButton:SetPoint("TOPLEFT", editBox, "BOTTOMLEFT", 0, -20)
+    addButton:SetText("Добавить")
+    
+    local delButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
+    delButton:SetSize(100, 30)
+    delButton:SetPoint("TOPRIGHT", editBox, "BOTTOMRIGHT", 0, -20)
+    delButton:SetText("Удалить")
+
+    local scrollFrame = CreateFrame("ScrollFrame", "TestScrollFrame", frame, "UIPanelScrollFrameTemplate")
+    scrollFrame:SetSize(360, 300)
+    scrollFrame:SetPoint("TOP", addButton, "BOTTOM", 0, -30)
+    
+    local scrollBar = _G["TestScrollFrameScrollBar"]
+    scrollBar:SetPoint("TOPLEFT", scrollFrame, "TOPRIGHT", 32, -16)
+    
+    local content = CreateFrame("Frame", nil, scrollFrame)
+    content:SetSize(335, 0)
+    scrollFrame:SetScrollChild(content)
+    
+    testQ = testQ or {}
+    testQ.fls = testQ.fls or {}
+    
+    local toRemove = {}
+    for key, value in pairs(testQ.fls) do
+        if type(key) ~= "string" or type(value) ~= "string" then
+            table.insert(toRemove, key)
+        end
+    end
+    
+    for _, key in ipairs(toRemove) do
+        testQ.fls[key] = nil
+    end
+    
+    content.entries = {}
+
+    function frame:UpdateList()
+        local totalHeight = 0
+        
+        for _, entry in ipairs(content.entries) do
+            entry:Hide()
+        end
+        
+        content.entries = content.entries or {}
+        
+        local names = {}
+        for name in pairs(testQ.fls) do
+            table.insert(names, name)
+        end
+        table.sort(names, function(a, b) return a < b end)
+        
+        for i, name in ipairs(names) do
+            local sound = testQ.fls[name]
+            local entry = content.entries[i]
+            
+            if not entry then
+                entry = CreateFrame("Frame", nil, content)
+                entry:SetSize(335, 20)
+                
+                entry.text = entry:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+                entry.text:SetPoint("LEFT", 5, 0)
+                entry.text:SetWidth(200)
+                
+                entry.dropdown = CreateFrame("Frame", "TestDropDown"..i, entry, "UIDropDownMenuTemplate")
+                entry.dropdown:SetPoint("RIGHT", entry, "RIGHT", -10, 0)
+                entry.dropdown:SetWidth(120)
+                
+                local button = _G["TestDropDown"..i.."Button"]
+                button:SetScript("OnClick", function(self)
+                    ToggleDropDownMenu(1, nil, entry.dropdown, self, 0, 0)
+                end)
+                
+                local dropDownText = _G["TestDropDown"..i.."Text"]
+                if dropDownText then
+                    dropDownText:SetWidth(150)
+                end
+                
+                UIDropDownMenu_Initialize(entry.dropdown, function(self, level)
+                    if not level then return end
+                    
+                    if level == 1 then
+                        for _, category in ipairs(ns_alert_sounds) do
+                            local info = UIDropDownMenu_CreateInfo()
+                            info.text = category.label
+                            info.value = category
+                            info.hasArrow = true
+                            info.notCheckable = true
+                            UIDropDownMenu_AddButton(info, level)
+                        end
+                    elseif level == 2 then
+                        local category = UIDROPDOWNMENU_MENU_VALUE
+                        if category and category.sounds then
+                            for _, soundPath in ipairs(category.sounds) do
+                                local info = UIDropDownMenu_CreateInfo()
+                                info.text = GetFileName(soundPath)
+                                info.value = soundPath
+                                info.func = function()
+                                    -- Исправленный блок: используем entry.name
+                                    testQ.fls[entry.name] = soundPath
+                                    UIDropDownMenu_SetText(entry.dropdown, GetFileName(soundPath))
+                                    PlaySoundFile(soundPath, "Master")
+                                    CloseDropDownMenus()
+                                end
+                                info.checked = (testQ.fls[entry.name] == soundPath)
+                                UIDropDownMenu_AddButton(info, level)
+                            end
+                        end
+                    end
+                end)
+                
+                content.entries[i] = entry
+            end
+            
+            entry.name = name  -- Ключевое исправление: сохраняем имя в объекте
+            entry.text:SetText(name)
+            
+            if sound then
+                UIDropDownMenu_SetText(entry.dropdown, GetFileName(sound))
+            else
+                UIDropDownMenu_SetText(entry.dropdown, "Не выбрано")
+            end
+            
+            entry:SetPoint("TOPLEFT", 5, -totalHeight)
+            entry:Show()
+            
+            totalHeight = totalHeight + 20
+        end
+        
+        for i = #names + 1, #content.entries do
+            content.entries[i]:Hide()
+        end
+        
+        content:SetHeight(math.max(totalHeight, 1))
+        scrollFrame:UpdateScrollChildRect()
+        scrollBar:SetValue(0)
+    end
+
+    addButton:SetScript("OnClick", function()
+        local text = editBox:GetText()
+        if text ~= "" and not testQ.fls[text] then
+            testQ.fls[text] = "Interface\\AddOns\\NSQC\\libs\\fls.mp3"
+            frame:UpdateList()
+            editBox:SetText("")
+            editBox:ClearFocus()
+        end
+    end)
+
+    delButton:SetScript("OnClick", function()
+        local text = editBox:GetText()
+        if text ~= "" and testQ.fls[text] then
+            testQ.fls[text] = nil
+            frame:UpdateList()
+            editBox:SetText("")
+            editBox:ClearFocus()
+        end
+    end)
+
+    frame:UpdateList()
+end
+
+
+
+
+
+
+function SendGuildOfficerMessageWithBonus(message)
+    local msg = mysplit(message)
+    local myName = UnitName("player") -- Получаем имя текущего игрока
+    
+    -- Проверяем, что сообщение имеет минимум 3 слова
+    if #msg < 3 then
+        return -- Выходим, если слов недостаточно
+    end
+    
+    local bonusMessage = msg[2] -- Второе слово (бонус)
+    -- Собираем оставшуюся часть сообщения начиная с 3-го слова
+    local mainMessage = table.concat(msg, " ", 3)
+    for i = 1, GetNumGuildMembers(true) do
+        local name, rankName = GetGuildRosterInfo(i)
+        if name == myName then
+            if rankName == "Лейтенант" or rankName == "Капитан" then
+                -- Отправляем сообщение в офицерский чат
+                SendChatMessage(mainMessage .. " плюс " .. bonusMessage, "OFFICER", nil, 1)
+                -- Отправляем аддон-сообщение
+                SendAddonMessage("nsGP" .. " " .. bonusMessage, mainMessage, "guild")
+            end
+            SendAddonMessage("nsGPlogR", bonusMessage.. " " ..mainMessage, "guild")
+            break -- Прерываем цикл после нахождения своего игрока
+        end
+    end
+end
+
+GpDb_old = {}
+GpDb_old.__index = GpDb_old
+
+function GpDb_old:new(input_table)
+    local new_object = {
+        gp_data = {},
+        sort_column = "nick",
+        sort_ascending = true,
+        visible_rows = 20,
+        selected_indices = {},
+        last_selected_index = nil,
+        logData = {},
+        filterText = "",
+        updateTimer = nil  -- Добавляем поле для управления таймером
+    }
+    setmetatable(new_object, self)
+    
+    new_object:_CreateWindow()
+    new_object:_CreateRaidSelectionWindow()
+    new_object:_CreateLogWindow()
+    
+    return new_object
+end
+
+function GpDb_old:_CreateLogWindow()
+    -- Основное окно логов
+    self.logWindow = CreateFrame("Frame", "GpDb_oldLogWindow", self.window)
+    self.logWindow:SetFrameStrata("DIALOG")
+    self.logWindow:SetSize(600, self.window:GetHeight())
+    self.logWindow:SetPoint("TOPLEFT", self.window, "TOPRIGHT", 5, 0)
+    self.logWindow:SetMovable(false)
+    self.logWindow:Hide()
+
+    -- Фон окна
+    self.logWindow.background = self.logWindow:CreateTexture(nil, "BACKGROUND")
+    self.logWindow.background:SetTexture("Interface\\Buttons\\WHITE8X8")
+    self.logWindow.background:SetVertexColor(0.1, 0.1, 0.1)
+    self.logWindow.background:SetAlpha(0.9)
+    self.logWindow.background:SetAllPoints(true)
+
+    -- Граница окна
+    self.logWindow.borderFrame = CreateFrame("Frame", nil, self.logWindow)
+    self.logWindow.borderFrame:SetPoint("TOPLEFT", -3, 3)
+    self.logWindow.borderFrame:SetPoint("BOTTOMRIGHT", 3, -3)
+    self.logWindow.borderFrame:SetBackdrop({
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        edgeSize = 16,
+        insets = {left = 4, right = 4, top = 4, bottom = 4}
+    })
+
+    -- Кнопка закрытия
+    self.logWindow.closeButton = CreateFrame("Button", nil, self.logWindow, "UIPanelCloseButton")
+    self.logWindow.closeButton:SetPoint("TOPRIGHT", -5, -5)
+    self.logWindow.closeButton:SetScript("OnClick", function() 
+        self.logWindow:Hide() 
+    end)
+
+    -- Фильтры
+    self.logWindow.filters = CreateFrame("Frame", nil, self.logWindow)
+    self.logWindow.filters:SetPoint("TOPLEFT", 10, -5)
+    self.logWindow.filters:SetPoint("RIGHT", -10, 0)
+    self.logWindow.filters:SetHeight(30)
+
+    -- Поле "Количество"
+    self.logWindow.countFilter = CreateFrame("EditBox", nil, self.logWindow.filters, "InputBoxTemplate")
+    self.logWindow.countFilter:SetSize(60, 20)
+    self.logWindow.countFilter:SetPoint("LEFT", self.logWindow.filters, "LEFT")
+    self.logWindow.countFilter:SetAutoFocus(false)
+    self.logWindow.countFilter:SetText("Кол-во")
+    self.logWindow.countFilter:SetScript("OnEscapePressed", function() self.logWindow.countFilter:ClearFocus() end)
+    self.logWindow.countFilter:SetScript("OnEnterPressed", function() 
+        self.logWindow.countFilter:ClearFocus() 
+        self:UpdateLogDisplay()
+    end)
+
+    -- Поле "Время"
+    self.logWindow.timeFilter = CreateFrame("EditBox", nil, self.logWindow.filters, "InputBoxTemplate")
+    self.logWindow.timeFilter:SetSize(70, 20)
+    self.logWindow.timeFilter:SetPoint("LEFT", self.logWindow.countFilter, "RIGHT", 5, 0)
+    self.logWindow.timeFilter:SetAutoFocus(false)
+    self.logWindow.timeFilter:SetText("Время")
+    self.logWindow.timeFilter:SetScript("OnEscapePressed", function() self.logWindow.timeFilter:ClearFocus() end)
+    self.logWindow.timeFilter:SetScript("OnEnterPressed", function() 
+        self.logWindow.timeFilter:ClearFocus() 
+        self:UpdateLogDisplay()
+    end)
+
+    -- Поле "РЛ"
+    self.logWindow.rlFilter = CreateFrame("EditBox", nil, self.logWindow.filters, "InputBoxTemplate")
+    self.logWindow.rlFilter:SetSize(70, 20)
+    self.logWindow.rlFilter:SetPoint("LEFT", self.logWindow.timeFilter, "RIGHT", 5, 0)
+    self.logWindow.rlFilter:SetAutoFocus(false)
+    self.logWindow.rlFilter:SetText("РЛ")
+    self.logWindow.rlFilter:SetScript("OnEscapePressed", function() self.logWindow.rlFilter:ClearFocus() end)
+    self.logWindow.rlFilter:SetScript("OnEnterPressed", function() 
+        self.logWindow.rlFilter:ClearFocus() 
+        self:UpdateLogDisplay()
+    end)
+
+    -- Поле "Рейд"
+    self.logWindow.raidFilter = CreateFrame("EditBox", nil, self.logWindow.filters, "InputBoxTemplate")
+    self.logWindow.raidFilter:SetSize(100, 20)
+    self.logWindow.raidFilter:SetPoint("LEFT", self.logWindow.rlFilter, "RIGHT", 5, 0)
+    self.logWindow.raidFilter:SetAutoFocus(false)
+    self.logWindow.raidFilter:SetText("Рейд")
+    self.logWindow.raidFilter:SetScript("OnEscapePressed", function() self.logWindow.raidFilter:ClearFocus() end)
+    self.logWindow.raidFilter:SetScript("OnEnterPressed", function() 
+        self.logWindow.raidFilter:ClearFocus() 
+        self:UpdateLogDisplay()
+    end)
+
+    -- Поле "Ник"
+    self.logWindow.nameFilter = CreateFrame("EditBox", nil, self.logWindow.filters, "InputBoxTemplate")
+    self.logWindow.nameFilter:SetSize(100, 20)
+    self.logWindow.nameFilter:SetPoint("LEFT", self.logWindow.raidFilter, "RIGHT", 5, 0)
+    self.logWindow.nameFilter:SetAutoFocus(false)
+    self.logWindow.nameFilter:SetText("Ник")
+    self.logWindow.nameFilter:SetScript("OnEscapePressed", function() self.logWindow.nameFilter:ClearFocus() end)
+    self.logWindow.nameFilter:SetScript("OnEnterPressed", function() 
+        self.logWindow.nameFilter:ClearFocus() 
+        self:UpdateLogDisplay()
+    end)
+
+    -- Кнопка "Показать"
+    self.logWindow.showButton = CreateFrame("Button", nil, self.logWindow.filters, "UIPanelButtonTemplate")
+    self.logWindow.showButton:SetSize(80, 22)
+    self.logWindow.showButton:SetPoint("LEFT", self.logWindow.nameFilter, "RIGHT", 5, 0)
+    self.logWindow.showButton:SetText("Показать")
+    self.logWindow.showButton:SetScript("OnClick", function()
+        
+        local function processFilterText(text)
+            -- Проверяем, содержит ли текст пробелы (несколько слов)
+            if text:find("%s") then
+                -- Заменяем все последовательности пробелов на один символ '_'
+                text = text:gsub("%s+", "_")
+            end
+            return text
+        end
+
+        local count = processFilterText(self.logWindow.countFilter:GetText())
+        local time = processFilterText(self.logWindow.timeFilter:GetText())
+        local rl = processFilterText(self.logWindow.rlFilter:GetText())
+        local raid = processFilterText(self.logWindow.raidFilter:GetText())
+        local name = processFilterText(self.logWindow.nameFilter:GetText())
+
+        gpDb_old:ClearLog()
+        
+        SendAddonMessage("NSShowMeLogs", count.. " " ..time.. " " ..rl.. " " ..raid.. " " ..name, "guild")
+    end)
+
+    -- Область с прокруткой для логов
+    self.logWindow.scrollFrame = CreateFrame("ScrollFrame", "GpDb_oldLogScrollFrame", self.logWindow, "UIPanelScrollFrameTemplate")
+    self.logWindow.scrollFrame:SetPoint("TOPLEFT", 0, -35)
+    self.logWindow.scrollFrame:SetPoint("BOTTOMRIGHT", 0, 10)
+
+    self.logWindow.scrollChild = CreateFrame("Frame")
+    self.logWindow.scrollChild:SetSize(580, 1000)
+    self.logWindow.scrollFrame:SetScrollChild(self.logWindow.scrollChild)
+
+    -- Создаем строки для отображения логов
+    self.logRows = {}
+    for i = 1, 50 do
+        local row = CreateFrame("Frame", "GpDb_oldLogRow"..i, self.logWindow.scrollChild)
+        row:SetSize(580, 40) -- Увеличиваем высоту для переноса строк
+        row:SetPoint("TOPLEFT", 0, -((i-1)*40))
+
+        row.text = row:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        row.text:SetAllPoints(true)
+        row.text:SetJustifyH("LEFT")
+        row.text:SetJustifyV("TOP")
+        row.text:SetWordWrap(true) -- Включаем перенос слов
+        row.text:SetText("")
+
+        self.logRows[i] = row
+    end
+end
+
+function GpDb_old:ClearLog()
+    -- Очищаем данные лога
+    self.logData = {}
+    
+    -- Очищаем фильтры
+    self.logWindow.countFilter:SetText("Кол-во")
+    self.logWindow.timeFilter:SetText("Время")
+    self.logWindow.rlFilter:SetText("РЛ")
+    self.logWindow.raidFilter:SetText("Рейд")
+    self.logWindow.nameFilter:SetText("Ник")
+    
+    -- Обновляем отображение
+    self:UpdateLogDisplay()
+    
+    print("|cFFFF0000ГП:|r Лог успешно очищен")
+end
+
+function GpDb_old:_CreateWindow()
+    -- Создаем основной фрейм окна
+    self.window = CreateFrame("Frame", "GpTrackerWindow", UIParent)
+    self.window:SetFrameStrata("DIALOG")
+    self.window:SetSize(400, 600) -- Увеличена высота для размещения фильтра
+    self.window:SetPoint("LEFT", 5, 100)
+    self.window:SetMovable(true)
+    self.window:EnableMouse(true)
+    self.window:RegisterForDrag("LeftButton")
+    self.window:SetScript("OnDragStart", self.window.StartMoving)
+    self.window:SetScript("OnDragStop", self.window.StopMovingOrSizing)
+    self.window:Hide()
+
+    -- 1. Непрозрачный чёрный фон
+    self.window.background = self.window:CreateTexture(nil, "BACKGROUND")
+    self.window.background:SetTexture("Interface\\Buttons\\WHITE8X8")
+    self.window.background:SetVertexColor(0, 0, 0)
+    self.window.background:SetAlpha(1)
+    self.window.background:SetAllPoints(true)
+
+    -- 2. Граница окна
+    self.window.borderFrame = CreateFrame("Frame", nil, self.window)
+    self.window.borderFrame:SetPoint("TOPLEFT", -3, 3)
+    self.window.borderFrame:SetPoint("BOTTOMRIGHT", 3, -3)
+    self.window.borderFrame:SetBackdrop({
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        edgeSize = 16,
+        insets = {left = 4, right = 4, top = 4, bottom = 4}
+    })
+
+    -- 3. Заголовок окна
+    self.window.title = self.window:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    self.window.title:SetPoint("TOP", 0, -15)
+    self.window.title:SetText("")
+
+    -- 4. Кнопка закрытия
+    self.window.closeButton = CreateFrame("Button", nil, self.window, "UIPanelCloseButton")
+    self.window.closeButton:SetPoint("TOPRIGHT", -5, -5)
+    self.window.closeButton:SetScript("OnClick", function() self.window:Hide() end)
+
+    -- 4.1 Кнопка логов (справа от кнопки закрытия)
+    self.window.logButton = CreateFrame("Button", nil, self.window, "UIPanelButtonTemplate")
+    self.window.logButton:SetSize(24, 24)
+    self.window.logButton:SetPoint("RIGHT", self.window.closeButton, "LEFT", -5, 0)
+    self.window.logButton:SetText("L")
+    self.window.logButton:SetScript("OnClick", function() 
+        self:ToggleLogWindow() 
+    end)
+
+    -- 5. Чекбокс "Только рейд"
+    self.window.raidOnlyCheckbox = CreateFrame("CheckButton", nil, self.window, "UICheckButtonTemplate")
+    self.window.raidOnlyCheckbox:SetPoint("TOPLEFT", 10, -15)
+    self.window.raidOnlyCheckbox:SetSize(24, 24)
+    self.window.raidOnlyCheckbox.text = self.window.raidOnlyCheckbox:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    self.window.raidOnlyCheckbox.text:SetPoint("LEFT", self.window.raidOnlyCheckbox, "RIGHT", 5, 0)
+    self.window.raidOnlyCheckbox.text:SetText("Только рейд")
+    self.window.raidOnlyCheckbox:SetScript("OnClick", function()
+        self:_UpdateFromGuild()
+        self:UpdateWindow()
+    end)
+
+    -- 5.1 Поле фильтрации по нику
+    self.window.filterLabel = self.window:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    self.window.filterLabel:SetPoint("TOPLEFT", self.window.raidOnlyCheckbox, "BOTTOMLEFT", 0, -10)
+    self.window.filterLabel:SetText("Фильтр:")
+
+    self.window.filterEditBox = CreateFrame("EditBox", nil, self.window, "InputBoxTemplate")
+    self.window.filterEditBox:SetPoint("TOPLEFT", self.window.filterLabel, "BOTTOMLEFT", 0, -5)
+    self.window.filterEditBox:SetPoint("RIGHT", self.window.closeButton, "LEFT", -40, 0)
+    self.window.filterEditBox:SetHeight(20)
+    self.window.filterEditBox:SetAutoFocus(false)
+    self.window.filterEditBox:SetText("")
+    self.window.filterEditBox:SetScript("OnTextChanged", function(editBox)
+        self.filterText = editBox:GetText():lower()
+        self:_UpdateFromGuild()
+    end)
+    self.window.filterEditBox:SetScript("OnEscapePressed", function() 
+        self.window.filterEditBox:SetText("")
+        self.window.filterEditBox:ClearFocus() 
+    end)
+    self.window.filterEditBox:SetScript("OnEnterPressed", function() 
+        self.window.filterEditBox:ClearFocus() 
+    end)
+
+    -- 5.2 Кнопка очистки фильтра
+    self.window.filterClearButton = CreateFrame("Button", nil, self.window, "UIPanelButtonTemplate")
+    self.window.filterClearButton:SetSize(80, 22)
+    self.window.filterClearButton:SetPoint("TOPRIGHT", self.window.filterEditBox, "BOTTOMRIGHT", 60, 20)
+    self.window.filterClearButton:SetText("Очистить")
+    self.window.filterClearButton:SetScript("OnClick", function()
+        self.window.filterEditBox:SetText("")
+        self.filterText = ""
+        self:_UpdateFromGuild()
+    end)
+
+    -- 6. Область с прокруткой
+    self.window.scrollFrame = CreateFrame("ScrollFrame", "ScrollFrame", self.window, "UIPanelScrollFrameTemplate")
+    self.window.scrollFrame:SetPoint("TOPLEFT", 0, -85)  -- Больший отступ сверху
+    self.window.scrollFrame:SetPoint("BOTTOMRIGHT", 0, 60)  -- Больший отступ снизу
+
+    self.window.scrollChild = CreateFrame("Frame")
+    self.window.scrollChild:SetSize(380, 500)
+    self.window.scrollFrame:SetScrollChild(self.window.scrollChild)
+
+    -- 7. Ползунок прокрутки
+    self.window.scrollBar = _G[self.window.scrollFrame:GetName().."ScrollBar"]
+    self.window.scrollBar:SetPoint("TOPLEFT", self.window.scrollFrame, "TOPRIGHT", -20, -16)
+    self.window.scrollBar:SetPoint("BOTTOMLEFT", self.window.scrollFrame, "BOTTOMRIGHT", -20, 16)
+
+    -- 8. Строка с количеством отображаемых игроков
+    self.window.countText = self.window:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    self.window.countText:SetPoint("BOTTOMLEFT", 10, 40)
+    self.window.countText:SetPoint("BOTTOMRIGHT", -10, 40)
+    self.window.countText:SetJustifyH("LEFT")
+    self.window.countText:SetText("")
+
+    -- 9. Строка с общим количеством игроков с ГП
+    self.window.totalText = self.window:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    self.window.totalText:SetPoint("BOTTOMLEFT", 10, 20)
+    self.window.totalText:SetPoint("BOTTOMRIGHT", -10, 20)
+    self.window.totalText:SetJustifyH("LEFT")
+    self.window.totalText:SetText("")
+
+    -- 10. Настройка таблицы
+    self:_SetupTable()
+end
+
+function GpDb_old:_SetupTable()
+    -- Исправляем заголовки для правильной сортировки
+    local headers = {
+        {text = "Ник", column = "nick"},
+        {text = "ГП", column = "gp"}
+    }
+    
+    for i, header in ipairs(headers) do
+        local btn = CreateFrame("Button", nil, self.window.scrollChild)
+        btn:SetSize(i == 1 and 290 or 50, 20)
+        btn:SetPoint("TOPLEFT", (i-1)*290 + (i == 2 and 10 or 0), -5) -- Добавляем отступ сверху
+        btn:SetNormalFontObject("GameFontNormal")
+        btn:SetHighlightFontObject("GameFontHighlight")
+        local text = btn:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+        text:SetAllPoints(true)
+        text:SetText(header.text)
+        btn:SetScript("OnClick", function()
+            self:SortData(header.column)
+            self:UpdateWindow()
+        end)
+    end
+
+    -- Создаем строки таблицы с системой выделения
+    self.rows = {}
+    for i = 1, 999 do
+        local row = CreateFrame("Button", "GpDb_oldRow"..i, self.window.scrollChild)
+        row:SetSize(350, 20)
+        row:SetPoint("TOPLEFT", 0, -25 - (i-1)*25)
+        
+        -- Настройки для кликов
+        row:EnableMouse(true)
+        row:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+        
+        -- Текстура для выделения
+        row:SetHighlightTexture("Interface\\Buttons\\WHITE8X8")
+        row:GetHighlightTexture():SetVertexColor(0.4, 0.4, 0.8, 0.4)
+        
+        -- Текстура для выбранного состояния
+        row.selection = row:CreateTexture(nil, "BACKGROUND")
+        row.selection:SetAllPoints(true)
+        row.selection:SetTexture("Interface\\Buttons\\WHITE8X8")
+        row.selection:SetVertexColor(0.3, 0.3, 0.7, 0.7)
+        row.selection:Hide()
+        
+        -- Поля текста
+        row.nick = row:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+        row.nick:SetPoint("LEFT", 10, 0)
+        row.nick:SetWidth(290)
+        row.nick:SetJustifyH("LEFT")
+
+        row.gp = row:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+        row.gp:SetPoint("RIGHT", 5, 0)
+        row.gp:SetWidth(50)
+        row.gp:SetJustifyH("RIGHT")
+
+        -- Переменная для отслеживания времени последнего клика
+        row.lastClickTime = 0
+        
+        -- Обработчик кликов
+        row:SetScript("OnClick", function(_, button, down)
+            local offset = FauxScrollFrame_GetOffset(self.window.scrollFrame)
+            local dataIndex = i + offset
+            
+            -- Проверяем валидность данных
+            if not self.gp_data or not self.gp_data[dataIndex] then return end
+            
+            -- Получаем текущее время
+            local currentTime = GetTime()
+            
+            -- Проверяем двойной клик (только ЛКМ и только если в рейде)
+            if button == "LeftButton" and IsInRaid() and (currentTime - row.lastClickTime) < 0.5 then
+                -- Двойной клик - выделяем все элементы
+                self:ClearSelection()
+                for idx = 1, #self.gp_data do
+                    self.selected_indices[idx] = true
+                end
+                self.last_selected_index = dataIndex
+                
+                -- Обновляем интерфейс
+                self:_UpdateSelectionCount()
+                self:RefreshRowHighlights()
+                self:UpdateRaidWindowVisibility()
+                
+                -- Обновляем список выбранных игроков
+                if self.raidWindow and self.raidWindow:IsShown() then
+                    self:_UpdateSelectedPlayersText()
+                end
+                
+                -- Сбрасываем время клика
+                row.lastClickTime = 0
+                return
+            end
+            
+            -- Запоминаем время клика для проверки двойного клика
+            row.lastClickTime = currentTime
+            
+            if button == "LeftButton" then
+                local wasSelected = self.selected_indices[dataIndex]
+                
+                -- SHIFT+ЛКМ - выделение диапазона
+                if IsShiftKeyDown() then
+                    if not self.last_selected_index then
+                        self:ClearSelection()
+                        self.selected_indices[dataIndex] = true
+                        self.last_selected_index = dataIndex
+                    else
+                        local startIdx = math.min(self.last_selected_index, dataIndex)
+                        local endIdx = math.max(self.last_selected_index, dataIndex)
+                        
+                        if not IsControlKeyDown() then
+                            self:ClearSelection()
+                        end
+                        
+                        for idx = startIdx, endIdx do
+                            if self.gp_data[idx] then
+                                self.selected_indices[idx] = true
+                            end
+                        end
+                    end
+                    
+                -- CTRL+ЛКМ - добавление/удаление из выделения
+                elseif IsControlKeyDown() then
+                    -- Изменяем состояние выделения
+                    self.selected_indices[dataIndex] = not wasSelected
+                    
+                    -- Очищаем несуществующие выделения
+                    for idx in pairs(self.selected_indices) do
+                        if not self.gp_data[idx] then
+                            self.selected_indices[idx] = nil
+                        end
+                    end
+                    
+                    -- Обновляем last_selected_index
+                    if self.selected_indices[dataIndex] then
+                        self.last_selected_index = dataIndex
+                    else
+                        self.last_selected_index = nil
+                        for idx in pairs(self.selected_indices) do
+                            if self.selected_indices[idx] then
+                                self.last_selected_index = idx
+                                break
+                            end
+                        end
+                    end
+                    
+                -- Обычный клик
+                else
+                    if wasSelected then
+                        self:ClearSelection()
+                    else
+                        self:ClearSelection()
+                        self.selected_indices[dataIndex] = true
+                        self.last_selected_index = dataIndex
+                    end
+                end
+                
+                -- Принудительное обновление интерфейса
+                self:_UpdateSelectionCount()
+                self:RefreshRowHighlights()
+                self:UpdateRaidWindowVisibility()
+                
+                -- Обновляем список выбранных игроков
+                if self.raidWindow and self.raidWindow:IsShown() then
+                    self:_UpdateSelectedPlayersText()
+                end
+            end
+        end)
+
+        self.rows[i] = row
+    end
+
+    -- Модифицируем обработчик скрытия окна
+    self.window:SetScript("OnHide", function()
+        -- Сбрасываем выделение
+        self:ClearSelection()
+        -- Скрываем окно рейда, если оно было открыто
+        if self.raidWindow and self.raidWindow:IsShown() then
+            self.raidWindow:Hide()
+        end
+        -- Скрываем окно логов, если оно было открыто
+        if self.logWindow and self.logWindow:IsShown() then
+            self.logWindow:Hide()
+        end
+    end)
+end
+
+function GpDb_old:ToggleLogWindow()
+    if not self.logWindow then
+        self:_CreateLogWindow()
+    end
+
+    if self.logWindow:IsShown() then
+        self.logWindow:Hide()
+    else
+        self.logWindow:Show()
+        self:UpdateLogDisplay()
+        
+        -- Если открыто окно рейда - корректируем размер
+        if self.raidWindow and self.raidWindow:IsShown() then
+            self.logWindow:SetHeight(self.window:GetHeight() / 2)
+        else
+            self.logWindow:SetHeight(self.window:GetHeight())
+        end
+    end
+end
+
+function GpDb_old:UpdateLogDisplay()
+    if not self.logWindow or not self.logWindow:IsShown() then return end
+    
+    -- Вычисляем общую высоту
+    local totalHeight = 0
+    local rowHeights = {}
+    
+    -- Сначала вычисляем высоту всех строк
+    for i, entry in ipairs(self.logData) do
+        local tempText = self.logWindow.scrollChild:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        tempText:SetWidth(580)
+        tempText:SetText(entry.text)
+        tempText:SetWordWrap(true)
+        local textHeight = tempText:GetStringHeight() + 5
+        rowHeights[i] = textHeight
+        totalHeight = totalHeight + textHeight
+        tempText:Hide()
+    end
+
+    -- Позиционируем строки (старые сверху, новые снизу)
+    local currentY = 0
+    for i = 1, #self.logRows do
+        local dataIndex = i -- Отображаем записи по порядку (1=самая старая)
+        if dataIndex <= #self.logData then
+            local entry = self.logData[dataIndex]
+            local textHeight = rowHeights[dataIndex]
+            
+            self.logRows[i]:SetHeight(textHeight)
+            self.logRows[i]:SetPoint("TOPLEFT", 0, -currentY)
+            self.logRows[i].text:SetText(entry.text)
+            self.logRows[i]:Show()
+            
+            currentY = currentY + textHeight
+        else
+            self.logRows[i]:Hide()
+        end
+    end
+
+    -- Обновляем высоту контента
+    self.logWindow.scrollChild:SetHeight(totalHeight)
+    self.logWindow.scrollFrame:UpdateScrollChildRect()
+end
+
+function GpDb_old:_UpdateSelectionCount()
+    local count = 0
+    -- Считаем ТОЛЬКО действительно выделенные и существующие элементы
+    for idx, selected in pairs(self.selected_indices) do
+        if selected and self.gp_data[idx] then
+            count = count + 1
+        else
+            self.selected_indices[idx] = nil -- Очищаем невалидные
+        end
+    end
+    
+    -- Обновляем текст
+    self.window.countText:SetText(string.format("Выделено: %d", count))
+    
+    -- Если нет выделений - сбрасываем last_selected_index
+    if count == 0 then
+        self.last_selected_index = nil
+    end
+    
+    return count
+end
+
+function GpDb_old:IsValidIndex(index)
+    return index and type(index) == "number" and self.gp_data and self.gp_data[index]
+end
+
+function GpDb_old:RefreshRowHighlights()
+    local offset = FauxScrollFrame_GetOffset(self.window.scrollFrame)
+    
+    for i, row in ipairs(self.rows) do
+        local dataIndex = i + offset
+        if dataIndex <= #self.gp_data then
+            if self.selected_indices[dataIndex] then
+                row.selection:Show()
+                row:GetHighlightTexture():SetAlpha(0.2) -- Снижаем прозрачность ховера при выделении
+            else
+                row.selection:Hide()
+                row:GetHighlightTexture():SetAlpha(0.4) -- Возвращаем стандартную прозрачность
+            end
+        end
+    end
+    
+    -- Обновляем счетчик выделенных
+    local selectedCount = 0
+    for _ in pairs(self.selected_indices) do selectedCount = selectedCount + 1 end
+    self.window.countText:SetText(string.format("Выделено: %d", selectedCount))
+end
+
+function GpDb_old:ClearSelection()
+    self.selected_indices = {}
+    self.last_selected_index = nil
+    self:_UpdateSelectionCount()
+    self:RefreshRowHighlights()
+    self:UpdateRaidWindowVisibility()
+end
+
+function GpDb_old:GetSelectedEntries()
+    local selected = {}
+    for index, _ in pairs(self.selected_indices) do
+        if index <= #self.gp_data then
+            table.insert(selected, self.gp_data[index])
+        end
+    end
+    return selected
+end
+
+function GpDb_old:AddLogEntry(timeStr, gpValue, rl, raid, targets)
+    -- Проверяем наличие окна логов
+    if not self.logWindow then
+        self:_CreateLogWindow()
+    end
+
+    -- Функция для получения цвета класса игрока
+    local function GetClassColor(name)
+        if not name or type(name) ~= "string" or name == "" then 
+            return "|cFFFFFFFF" 
+        end
+        
+        for i = 1, GetNumGuildMembers() do
+            local guildName, _, _, _, _, _, _, _, _, _, classFileName = GetGuildRosterInfo(i)
+            if guildName and guildName == name then
+                local color = RAID_CLASS_COLORS[classFileName]
+                if color then
+                    return string.format("|cFF%02x%02x%02x", color.r*255, color.g*255, color.b*255)
+                end
+                break
+            end
+        end
+        
+        return "|cFFFFFFFF"
+    end
+    
+    -- Получаем числовое значение ГП
+    local gpNumValue = tonumber(gpValue) or 0
+    
+    -- Форматируем компоненты
+    local formattedTime = "|cFFA0A0A0" .. (timeStr or "??:??") .. "|r"
+    local formattedRl = GetClassColor(rl) .. (rl or "Неизвестно") .. "|r"
+    local gpColor = gpNumValue >= 0 and "|cFF00FF00" or "|cFFFF0000"
+    local formattedGp = gpColor .. tostring(gpNumValue) .. "|r"
+    local formattedRaid = "|cFFFFFF00" .. (raid or "Неизвестно") .. "|r"
+    
+    -- Функция для поиска имени игрока по коду
+    local function GetPlayerNameByCode(code)
+        if not code or type(code) ~= "string" then return code end
+        
+        for i = 1, GetNumGuildMembers() do
+            local name, _, _, _, _, _, _, officerNote = GetGuildRosterInfo(i)
+            if name and officerNote then
+                local words = {}
+                for word in officerNote:gmatch("%S+") do
+                    table.insert(words, word)
+                end
+                if #words >= 2 and words[2] == code then
+                    return name
+                end
+            end
+        end
+        return code -- Возвращаем код, если не нашли игрока
+    end
+    
+    -- Форматируем цели (заменяем коды на имена)
+    local formattedTargets = {}
+    if type(targets) == "string" then
+        for code in targets:gmatch("%S+") do
+            local playerName = GetPlayerNameByCode(code)
+            table.insert(formattedTargets, GetClassColor(playerName) .. playerName .. "|r")
+        end
+    end
+    local formattedTargetsText = table.concat(formattedTargets, " ")
+
+    -- Собираем строку лога (время | РЛ | ГП | подземелье | игроки)
+    local logText = string.format("%s | %s | %s | %s | %s", 
+        formattedTime, 
+        formattedRl,
+        formattedGp,
+        formattedRaid, 
+        formattedTargetsText)
+    
+    -- Добавляем новую запись
+    table.insert(self.logData, {
+        text = logText,
+        raw = {
+            time = timeStr,
+            rl = rl,
+            gp = gpNumValue,
+            raid = raid,
+            targets = targets
+        }
+    })
+    
+    -- Ограничиваем количество записей
+    if #self.logData > 200 then
+        table.remove(self.logData, 1)
+    end
+    
+    -- Обновляем отображение
+    if self.logWindow and self.logWindow:IsShown() then
+        self:UpdateLogDisplay()
+        self.logWindow.scrollFrame:SetVerticalScroll(self.logWindow.scrollFrame:GetVerticalScrollRange())
+    end
+end
+
+function GpDb_old:UpdateRaidWindowVisibility()
+    if not self.raidWindow then return end
+    
+    -- Проверяем звание игрока
+    local hasOfficerRank = self:_CheckOfficerRank()
+    if not hasOfficerRank then
+        if self.raidWindow:IsShown() then
+            self.raidWindow:Hide()
+            -- Восстанавливаем полный размер окна логов
+            if self.logWindow and self.logWindow:IsShown() then
+                self.logWindow:SetHeight(self.window:GetHeight())
+            end
+        end
+        return
+    end
+    
+    local hasSelection = next(self.selected_indices) ~= nil
+    
+    if not hasSelection then
+        if self.raidWindow:IsShown() then
+            self.raidWindow:Hide()
+            -- Восстанавливаем полный размер окна логов
+            if self.logWindow and self.logWindow:IsShown() then
+                self.logWindow:SetHeight(self.window:GetHeight())
+            end
+        end
+        return
+    end
+    
+    local inRaid = IsInRaid()
+    local raidOnlyChecked = self.window.raidOnlyCheckbox:GetChecked()
+    local shouldShow = not inRaid or raidOnlyChecked
+    
+    if shouldShow and inRaid then
+        local raidMembers = {}
+        for i = 1, GetNumGroupMembers() do
+            local name = GetRaidRosterInfo(i)
+            if name then
+                raidMembers[name] = true
+            end
+        end
+        
+        for index in pairs(self.selected_indices) do
+            local entry = self.gp_data[index]
+            if entry and not raidMembers[entry.original_nick] then
+                shouldShow = false
+                print("|cFFFF0000ГП:|r Некоторые выделенные игроки не в рейде")
+                break
+            end
+        end
+    end
+    
+    if shouldShow then
+        if not self.raidWindow:IsShown() then
+            self.raidWindow:Show()
+            self:RestoreRaidWindowState() -- Восстанавливаем состояния при показе
+            self:_UpdateSelectedPlayersText() -- Обновляем список игроков
+            
+            -- Корректируем размер окна логов
+            if self.logWindow and self.logWindow:IsShown() then
+                self.logWindow:SetHeight(self.window:GetHeight() / 2)
+            end
+        end
+    else
+        if self.raidWindow:IsShown() then
+            self.raidWindow:Hide()
+        end
+        
+        -- Корректируем размер окна логов
+        if self.logWindow and self.logWindow:IsShown() then
+            self.logWindow:SetHeight(self.window:GetHeight())
+        end
+    end
+end
+
+function GpDb_old:UpdateWindow()
+    if not self.window or not self.rows then return end
+
+    local offset = FauxScrollFrame_GetOffset(self.window.scrollFrame)
+    
+    -- Уменьшаем количество отображаемых строк
+    local visibleRows = math.floor((self.window.scrollFrame:GetHeight() - 30) / 25)
+    self.visible_rows = visibleRows
+    
+    for i = 1, self.visible_rows do
+        local row = self.rows[i]
+        local dataIndex = i + offset
+        
+        if dataIndex <= #self.gp_data then
+            local entry = self.gp_data[dataIndex]
+            
+            -- Обновляем текст
+            row.nick:SetText(entry.nick)
+            row.gp:SetText(tostring(entry.gp))
+            
+            -- Цвета текста
+            if entry.classColor then
+                row.nick:SetTextColor(entry.classColor.r, entry.classColor.g, entry.classColor.b)
+            else
+                row.nick:SetTextColor(1, 1, 1)
+            end
+            
+            row:Show()
+        else
+            row:Hide()
+        end
+    end
+
+    -- Обновляем выделения
+    self:RefreshRowHighlights()
+    
+    -- Обновление скролла
+    FauxScrollFrame_Update(self.window.scrollFrame, #self.gp_data, self.visible_rows, 25)
+    self:UpdateRaidWindowVisibility()
+end
+
+function GpDb_old:GetNumSelected()
+    local count = 0
+    for idx in pairs(self.selected_indices) do
+        if self.gp_data[idx] then  -- Проверяем что элемент существует
+            count = count + 1
+        else
+            self.selected_indices[idx] = nil  -- Очищаем несуществующие
+        end
+    end
+    print(string.format("GetNumSelected: найдено %d элементов", count))
+    return count
+end
+
+function GpDb_old:Show()
+    self.window:Show()
+    
+    -- Автоматически устанавливаем галочку "Только рейд" если мы в рейде
+    self.window.raidOnlyCheckbox:SetChecked(IsInRaid())
+    
+    self:_UpdateFromGuild()
+    self:UpdateWindow()
+end
+
+function GpDb_old:Hide()
+    self.window:Hide()
+end
+
+function GpDb_old:_UpdateFromGuild()
+    -- Всегда начинаем с чистого списка
+    self.gp_data = {}
+    local totalWithGP = 0
+    local totalMembers = GetNumGuildMembers()
+    
+    -- Синхронизируем галочку с текущим состоянием рейда
+    local inRaid = IsInRaid()
+    self.window.raidOnlyCheckbox:SetChecked(inRaid)
+    local raidOnlyMode = inRaid and self.window.raidOnlyCheckbox:GetChecked()
+
+    if not IsInGuild() then
+        print("|cFFFF0000ГП:|r Вы не состоите в гильдии")
+        self:UpdateWindow()
+        return
+    end
+
+    -- Обновляем данные гильдии
+    GuildRoster()
+
+    -- Сохраняем self в локальную переменную для замыкания
+    local db = self
+
+    -- Для 3.3.5 используем простой таймер без возможности отмены
+    local timerFrame = CreateFrame("Frame")
+    timerFrame:SetScript("OnUpdate", function(selfFrame, elapsed)
+        selfFrame.elapsed = (selfFrame.elapsed or 0) + elapsed
+        if selfFrame.elapsed >= 0.01 then
+            selfFrame:SetScript("OnUpdate", nil)
+            
+            -- Собираем полный список членов гильдии для быстрой проверки
+            local guildRosterInfo = {}
+            for j = 1, GetNumGuildMembers() do
+                local name, _, _, _, _, _, publicNote, officerNote, _, _, classFileName = GetGuildRosterInfo(j)
+                if name then
+                    -- Удаляем серверную часть имени для уникальности
+                    local plainName = name:match("^(.-)-") or name
+                    
+                    -- Парсим офицерскую заметку для получения ID
+                    local playerID = nil
+                    if officerNote then
+                        local words = {}
+                        for word in officerNote:gmatch("%S+") do
+                            table.insert(words, word)
+                        end
+                        if #words >= 2 then
+                            playerID = words[2] -- Берем ID из второго слова
+                        end
+                    end
+                    
+                    guildRosterInfo[plainName] = {
+                        publicNote = publicNote,
+                        officerNote = officerNote,
+                        classFileName = classFileName,
+                        playerID = playerID
+                    }
+                end
+            end
+
+            -- Режим "Только рейд" и мы в рейде
+            if raidOnlyMode then
+                local numRaidMembers = GetNumGroupMembers()
+                local raidCheckPassed = true
+                local invalidPlayers = {}
+
+                -- Проверяем всех игроков рейда на принадлежность к гильдии
+                for i = 1, numRaidMembers do
+                    local raidName, _, _, _, _, classFileName = GetRaidRosterInfo(i)
+                    if raidName then
+                        -- Удаляем серверную часть имени для сравнения
+                        local plainName = raidName:match("^(.-)-") or raidName
+                        if not guildRosterInfo[plainName] then
+                            raidCheckPassed = false
+                            table.insert(invalidPlayers, raidName)
+                        end
+                    end
+                end
+                
+                -- Если есть чужие игроки - сообщаем и выходим
+                if not raidCheckPassed then
+                    print("|cFFFF0000ГП:|r В рейде есть не члены гильдии: "..table.concat(invalidPlayers, ", "))
+                    db.window.countText:SetText("Отображается игроков: 0 (в рейде есть не члены гильдии)")
+                    db.window.totalText:SetText(string.format("Всего игроков с ГП: %d (из %d в гильдии)", totalWithGP, totalMembers))
+                    db:UpdateWindow()
+                    return
+                end
+
+                -- Заполняем данные ВСЕХ игроков рейда
+                for i = 1, numRaidMembers do
+                    local raidName, _, _, _, _, classFileName = GetRaidRosterInfo(i)
+                    if raidName then
+                        local plainName = raidName:match("^(.-)-") or raidName
+                        local guildInfo = guildRosterInfo[plainName]
+                        if guildInfo then
+                            local gp = 0
+                            local publicNote = guildInfo.publicNote or ""
+                            
+                            -- Парсим ГП из officerNote
+                            if guildInfo.officerNote then
+                                local words = {}
+                                for word in guildInfo.officerNote:gmatch("%S+") do
+                                    table.insert(words, word)
+                                end
+                                if #words >= 3 then
+                                    gp = tonumber(words[3]) or 0
+                                end
+                            end
+
+                            if gp > 0 then
+                                totalWithGP = totalWithGP + 1
+                            end
+
+                            local displayName = raidName
+                            if publicNote and publicNote ~= "" then
+                                displayName = raidName .. " |cFFFFFF00(" .. publicNote .. ")|r"
+                            end
+
+                            table.insert(db.gp_data, {
+                                nick = displayName,
+                                original_nick = plainName,
+                                gp = gp,
+                                classColor = RAID_CLASS_COLORS[classFileName] or {r=1, g=1, b=1},
+                                classFileName = classFileName,
+                                playerID = guildInfo.playerID
+                            })
+                        end
+                    end
+                end
+            else
+                -- Обычный режим - показываем только игроков с ГП
+                for i = 1, GetNumGuildMembers() do
+                    local name, _, _, _, _, _, publicNote, officerNote, _, _, classFileName = GetGuildRosterInfo(i)
+                    
+                    if name and officerNote and officerNote ~= "" then
+                        -- Удаляем серверную часть имени
+                        local plainName = name:match("^(.-)-") or name
+                        
+                        local words = {}
+                        for word in officerNote:gmatch("%S+") do
+                            table.insert(words, word)
+                        end
+                        
+                        if #words >= 3 then
+                            local gp = tonumber(words[3]) or 0
+                            local playerID = words[2]
+                            
+                            if gp ~= 0 then
+                                totalWithGP = totalWithGP + 1
+                                local displayName = name
+                                if publicNote and publicNote ~= "" then
+                                    displayName = name .. " |cFFFFFF00(" .. publicNote .. ")|r"
+                                end
+                                
+                                table.insert(db.gp_data, {
+                                    nick = displayName,
+                                    original_nick = plainName,
+                                    gp = gp,
+                                    classColor = RAID_CLASS_COLORS[classFileName] or {r=1, g=1, b=1},
+                                    classFileName = classFileName,
+                                    playerID = playerID
+                                })
+                            end
+                        end
+                    end
+                end
+            end
+            
+            -- Применяем фильтр
+            if db.filterText and db.filterText ~= "" then
+                local filteredData = {}
+                for _, entry in ipairs(db.gp_data) do
+                    local nickMatch = string.find(entry.original_nick:lower(), db.filterText, 1, true)
+                    local displayMatch = string.find(entry.nick:lower(), db.filterText, 1, true)
+                    
+                    if nickMatch or displayMatch then
+                        table.insert(filteredData, entry)
+                    end
+                end
+                db.gp_data = filteredData
+            end
+
+            -- Обновляем UI
+            db.window.countText:SetText(string.format("Отображается игроков: %d", #db.gp_data))
+            db.window.totalText:SetText(string.format("Всего игроков с ГП: %d (из %d в гильдии)", totalWithGP, GetNumGuildMembers()))
+            
+            db:ClearSelection()
+            db:SortData()
+            db:UpdateWindow()
+        end
+    end)
+end
+
+function GpDb_old:Show()
+    self.window:Show()
+    
+    -- Автоматически включаем режим "Только рейд" если мы в рейде
+    if IsInRaid() then
+        self.window.raidOnlyCheckbox:SetChecked(true)
+    else
+        self.window.raidOnlyCheckbox:SetChecked(false)
+    end
+    
+    -- Принудительно обновляем данные гильдии перед показом
+    GuildRoster()
+    C_Timer(0.01, function()
+        self:_UpdateFromGuild()
+        self:UpdateWindow()
+    end)
+end
+
+function GpDb_old:AddGpEntry(nick, gp, playerID)
+    table.insert(self.gp_data, {
+        nick = nick,
+        original_nick = nick,
+        gp = tonumber(gp) or 0,
+        playerID = playerID -- Добавляем ID игрока
+    })
+    self:SortData()
+    self:UpdateWindow()
+end
+
+function GpDb_old:UpdateGpEntry(nick, new_gp)
+    for _, entry in ipairs(self.gp_data) do
+        if entry.original_nick == nick then
+            entry.gp = tonumber(new_gp) or 0
+            break
+        end
+    end
+    self:SortData()
+    self:UpdateWindow()
+end
+
+function GpDb_old:RemoveGpEntry(nick)
+    for i, entry in ipairs(self.gp_data) do
+        if entry.original_nick == nick then
+            table.remove(self.gp_data, i)
+            break
+        end
+    end
+    self:UpdateWindow()
+end
+
+function GpDb_old:FindGpEntry(nick)
+    for _, entry in ipairs(self.gp_data) do
+        if entry.original_nick == nick then
+            return entry.gp
+        end
+    end
+    return nil
+end
+
+function GpDb_old:ClearAll()
+    self.gp_data = {}
+    self:UpdateWindow()
+end
+
+function GpDb_old:SortData(column)
+    if column then
+        if self.sort_column == column then
+            self.sort_ascending = not self.sort_ascending
+        else
+            self.sort_column = column
+            self.sort_ascending = true
+        end
+    end
+
+    table.sort(self.gp_data, function(a, b)
+        local valA, valB
+        
+        if self.sort_column == "nick" then
+            -- Используем оригинальное имя для сортировки
+            valA = string.lower(a.original_nick or "")
+            valB = string.lower(b.original_nick or "")
+        else
+            valA = a.gp or 0
+            valB = b.gp or 0
+        end
+
+        if self.sort_ascending then
+            return valA < valB
+        else
+            return valA > valB
+        end
+    end)
+    self:ClearSelection()
+    self:UpdateWindow()
+end
+
+function GpDb_old:UpdateWindow()
+    if not self.window or not self.rows then return end
+    
+    for i, row in ipairs(self.rows) do
+        local entry = self.gp_data[i]
+        if entry then
+            row.nick:SetText(entry.nick)
+            if entry.classColor then
+                -- Применяем цвет класса только к имени (до скобок)
+                local plainName = entry.nick:match("^[^|]+") or entry.nick
+                row.nick:SetText(plainName)
+                row.nick:SetTextColor(entry.classColor.r, entry.classColor.g, entry.classColor.b)
+                
+                -- Добавляем публичную заметку с желтым цветом
+                local notePart = entry.nick:match("|c.+$")
+                if notePart then
+                    local fullText = row.nick:GetText() .. " " .. notePart
+                    row.nick:SetText(fullText)
+                end
+            else
+                row.nick:SetTextColor(1, 1, 1)
+            end
+            
+            row.gp:SetText(tostring(entry.gp))
+            row.gp:SetTextColor(1, 1, 1)
+            
+            row:Show()
+        else
+            row:Hide()
+        end
+    end
+    
+    self.window.scrollChild:SetHeight(#self.gp_data * 25)
+    self.window.scrollFrame:UpdateScrollChildRect()
+end
+
+function GpDb_old:SaveToNsDb()
+    for _, entry in ipairs(self.gp_data) do
+        self.ns_db:addStaticStr("GP_DATA", entry.original_nick, nil, tostring(entry.gp))
+    end
+end
+
+function GpDb_old:LoadFromNsDb()
+    self.gp_data = {}
+    local data = self.ns_db.input_table["GP_DATA"]
+    if data then
+        for nick, gp in pairs(data) do
+            table.insert(self.gp_data, {
+                nick = nick,
+                original_nick = nick,
+                gp = tonumber(gp) or 0
+            })
+        end
+    end
+    self:SortData()
+    self:UpdateWindow()
+end
+
+function GpDb_old:_CreateRaidSelectionWindow()
+    -- Создаем основное окно
+    self.raidWindow = CreateFrame("Frame", "GpDb_oldRaidWindow", self.window)
+    self.raidWindow:SetFrameStrata("DIALOG")
+    self.raidWindow:SetSize(250, self.window:GetHeight() * 0.5)
+    self.raidWindow:SetPoint("BOTTOMLEFT", self.window, "BOTTOMRIGHT", 5, 0)
+    self.raidWindow:SetMovable(false)
+    
+    -- Фон окна
+    self.raidWindow.background = self.raidWindow:CreateTexture(nil, "BACKGROUND")
+    self.raidWindow.background:SetTexture("Interface\\Buttons\\WHITE8X8")
+    self.raidWindow.background:SetVertexColor(0, 0, 0)
+    self.raidWindow.background:SetAlpha(1)
+    self.raidWindow.background:SetAllPoints(true)
+
+    -- Граница окна
+    self.raidWindow.borderFrame = CreateFrame("Frame", nil, self.raidWindow)
+    self.raidWindow.borderFrame:SetPoint("TOPLEFT", -3, 3)
+    self.raidWindow.borderFrame:SetPoint("BOTTOMRIGHT", 3, -3)
+    self.raidWindow.borderFrame:SetBackdrop({
+        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        edgeSize = 16,
+        insets = {left = 4, right = 4, top = 4, bottom = 4}
+    })
+
+    -- Кнопка закрытия
+    self.raidWindow.closeButton = CreateFrame("Button", nil, self.raidWindow, "UIPanelCloseButton")
+    self.raidWindow.closeButton:SetPoint("TOPRIGHT", -5, -5)
+    self.raidWindow.closeButton:SetScript("OnClick", function() 
+        self.raidWindow:Hide() 
+    end)
+
+    -- Выпадающий список рейдов
+    self.raidWindow.dropdown = CreateFrame("Frame", "GpDb_oldRaidDropdown", self.raidWindow, "UIDropDownMenuTemplate")
+    self.raidWindow.dropdown:SetPoint("TOPLEFT", 10, -10)
+    self.raidWindow.dropdown:SetPoint("RIGHT", self.raidWindow.closeButton, "LEFT", -10, 0)
+    self.raidWindow.dropdown:SetHeight(32)
+    
+    -- Функция обновления текста в выпадающем списке
+    local function UpdateDropdownText()
+        if self.raidWindow.selectedRaidId then
+            for i = 1, GetNumSavedInstances() do
+                local name, id = GetSavedInstanceInfo(i)
+                if id == self.raidWindow.selectedRaidId then
+                    UIDropDownMenu_SetText(self.raidWindow.dropdown, string.format("%d: %s", id, name))
+                    return
+                end
+            end
+        else
+            UIDropDownMenu_SetText(self.raidWindow.dropdown, "Выберите рейд")
+        end
+    end
+
+    -- Функция инициализации выпадающего списка
+    local function InitializeDropdown(frame, level, menuList)
+        local info = UIDropDownMenu_CreateInfo()
+        
+        -- Получаем список сохраненных рейдов
+        for i = 1, GetNumSavedInstances() do
+            local name, id, _, _, _, _, _, _, players = GetSavedInstanceInfo(i)
+            if name and id then
+                info.text = string.format("%d: %s (%d)", id, name, players)
+                info.arg1 = {id = id, name = name, players = players}
+                info.func = function(_, arg1)
+                    self.raidWindow.selectedRaidId = arg1.id
+                    self.raidWindow.selectedRaidName = arg1.name
+                    self.raidWindow.selectedRaidPlayers = arg1.players
+                    
+                    if self.saveSelectionEnabled then
+                        self.lastSelectionType = "raid"
+                        self.lastRaidId = arg1.id
+                        self.lastRaidName = arg1.name
+                        self.lastRaidPlayers = arg1.players
+                    end
+                    
+                    UpdateDropdownText()
+                    self.raidWindow.editBox:SetText("")
+                end
+                info.checked = (self.raidWindow.selectedRaidId == id)
+                UIDropDownMenu_AddButton(info)
+            end
+        end
+        
+        -- Кнопка очистки выбора
+        info.text = "Очистить выбор"
+        info.func = function()
+            self.raidWindow.selectedRaidId = nil
+            self.raidWindow.selectedRaidName = nil
+            
+            if self.saveSelectionEnabled then
+                self.lastSelectionType = nil
+                self.lastRaidId = nil
+                self.lastRaidName = nil
+                self.lastRaidPlayers = 0
+            end
+            
+            UpdateDropdownText()
+        end
+        info.notCheckable = true
+        UIDropDownMenu_AddButton(info)
+    end
+
+    -- Настраиваем выпадающий список
+    UIDropDownMenu_Initialize(self.raidWindow.dropdown, InitializeDropdown)
+    UIDropDownMenu_SetWidth(self.raidWindow.dropdown, 200)
+    UIDropDownMenu_SetButtonWidth(self.raidWindow.dropdown, 224)
+    UIDropDownMenu_JustifyText(self.raidWindow.dropdown, "LEFT")
+    UpdateDropdownText()
+
+    -- Текст "Другое"
+    self.raidWindow.otherText = self.raidWindow:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    self.raidWindow.otherText:SetPoint("TOPLEFT", self.raidWindow.dropdown, "BOTTOMLEFT", 0, -10)
+    self.raidWindow.otherText:SetText("Другое:")
+    
+    -- Поле ввода "Другое"
+    self.raidWindow.editBox = CreateFrame("EditBox", nil, self.raidWindow, "InputBoxTemplate")
+    self.raidWindow.editBox:SetPoint("TOPLEFT", self.raidWindow.otherText, "BOTTOMLEFT", 0, -5)
+    self.raidWindow.editBox:SetPoint("RIGHT", -10, 0)
+    self.raidWindow.editBox:SetHeight(20)
+    self.raidWindow.editBox:SetAutoFocus(false)
+    self.raidWindow.editBox:SetScript("OnTextChanged", function(editBox)
+        if editBox:GetText() ~= "" then
+            if self.saveSelectionEnabled then
+                self.lastSelectionType = "other"
+                self.lastOtherText = editBox:GetText()
+            end
+            self.raidWindow.selectedRaidId = nil
+            self.raidWindow.selectedRaidName = nil
+            UpdateDropdownText()
+        end
+    end)
+
+    -- Галочка "Сохранить выбор"
+    self.raidWindow.saveCheckbox = CreateFrame("CheckButton", nil, self.raidWindow, "UICheckButtonTemplate")
+    self.raidWindow.saveCheckbox:SetPoint("TOPLEFT", self.raidWindow.editBox, "BOTTOMLEFT", 0, -10)
+    self.raidWindow.saveCheckbox:SetSize(24, 24)
+    self.raidWindow.saveCheckbox.text = self.raidWindow.saveCheckbox:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    self.raidWindow.saveCheckbox.text:SetPoint("LEFT", self.raidWindow.saveCheckbox, "RIGHT", 5, 0)
+    self.raidWindow.saveCheckbox.text:SetText("Сохранить выбор")
+    self.raidWindow.saveCheckbox:SetChecked(true)
+    self.saveSelectionEnabled = true
+    self.raidWindow.saveCheckbox:SetScript("OnClick", function()
+        self.saveSelectionEnabled = self.raidWindow.saveCheckbox:GetChecked()
+    end)
+
+    -- Текст с выбранными игроками
+    self.raidWindow.selectedPlayersText = self.raidWindow:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    self.raidWindow.selectedPlayersText:SetPoint("TOPLEFT", self.raidWindow.saveCheckbox, "BOTTOMLEFT", 0, -5)
+    self.raidWindow.selectedPlayersText:SetPoint("RIGHT", -10, 0)
+    self.raidWindow.selectedPlayersText:SetHeight(70)
+    self.raidWindow.selectedPlayersText:SetJustifyH("LEFT")
+    self.raidWindow.selectedPlayersText:SetJustifyV("TOP")
+    self.raidWindow.selectedPlayersText:SetWordWrap(true)
+
+    -- Кнопки быстрого ввода ГП
+    local quickGPValues = {5, 10, 20, 25, 50, 100}
+    local lastQuickButton
+    
+    for i, value in ipairs(quickGPValues) do
+        local btn = CreateFrame("Button", nil, self.raidWindow, "UIPanelButtonTemplate")
+        btn:SetSize(27, 20)
+        btn:SetText(tostring(value))
+        
+        if i == 1 then
+            btn:SetPoint("BOTTOMLEFT", self.raidWindow.selectedPlayersText, "BOTTOMLEFT", 0, -20)
+        else
+            btn:SetPoint("LEFT", lastQuickButton, "RIGHT", 5, 0)
+        end
+        
+        btn:SetScript("OnClick", function()
+            local currentValue = tonumber(self.raidWindow.gpEditBox:GetText()) or 0
+            self.raidWindow.gpEditBox:SetText(tostring(value))
+            self.raidWindow.gpEditBox:HighlightText()
+        end)
+        
+        lastQuickButton = btn
+    end
+    
+    -- Кнопка минуса
+    local minusBtn = CreateFrame("Button", nil, self.raidWindow, "UIPanelButtonTemplate")
+    minusBtn:SetSize(40, 22)
+    minusBtn:SetText("-/+")
+    minusBtn:SetPoint("LEFT", lastQuickButton, "RIGHT", 5, 0)
+    minusBtn:SetScript("OnClick", function()
+        local currentValue = tonumber(self.raidWindow.gpEditBox:GetText()) or 0
+        self.raidWindow.gpEditBox:SetText(tostring(-currentValue))
+        self.raidWindow.gpEditBox:HighlightText()
+    end)
+
+    -- Поле ввода ГП
+    self.raidWindow.gpEditBox = CreateFrame("EditBox", nil, self.raidWindow, "InputBoxTemplate")
+    self.raidWindow.gpEditBox:SetPoint("BOTTOMLEFT", 10, 5)
+    self.raidWindow.gpEditBox:SetSize(100, 20)
+    self.raidWindow.gpEditBox:SetAutoFocus(false)
+    self.raidWindow.gpEditBox:SetScript("OnEscapePressed", function() self.raidWindow.gpEditBox:ClearFocus() end)
+    self.raidWindow.gpEditBox:SetScript("OnEnterPressed", function() self.raidWindow.gpEditBox:ClearFocus() end)
+
+    -- Кнопка "Начислить"
+    self.raidWindow.awardButton = CreateFrame("Button", nil, self.raidWindow, "UIPanelButtonTemplate")
+    self.raidWindow.awardButton:SetPoint("BOTTOMRIGHT", -10, 5)
+    self.raidWindow.awardButton:SetSize(100, 22)
+    self.raidWindow.awardButton:SetText("Начислить")
+    self.raidWindow.awardButton:SetScript("OnClick", function()
+        -- Проверка прав офицера
+        if not self:_CheckOfficerRank() then
+            print("|cFFFF0000ГП:|r Только офицеры могут начислять ГП")
+            self.raidWindow:Hide()
+            return
+        end
+        
+        -- Проверка выделенных игроков
+        if next(self.selected_indices) == nil then
+            print("|cFFFF0000ГП:|r Нет выделенных игроков")
+            self.raidWindow:Hide()
+            return
+        end
+        
+        -- Получаем значения
+        local gpValue = tonumber(self.raidWindow.gpEditBox:GetText())
+        if not gpValue then
+            print("|cFFFF0000ГП:|r Укажите значение ГП")
+            return
+        end
+        
+        -- Проверяем наличие причины
+        if not self.raidWindow.selectedRaidId and not (self.lastOtherText or ""):match("%S") then
+            print("|cFFFF0000ГП:|r Нужно выбрать рейд или указать причину")
+            return
+        end
+        
+        -- Если сохранение отключено - сбрасываем сохраненные значения
+        if not self.saveSelectionEnabled then
+            self.lastSelectionType = nil
+            self.lastRaidId = nil
+            self.lastRaidName = nil
+            self.lastRaidPlayers = 0
+            self.lastOtherText = nil
+            self.lastGPValue = 0
+        else
+            -- Сохраняем значение ГП
+            self.lastGPValue = gpValue
+        end
+        
+        -- Формируем сообщение для отправки
+        local logStr
+        if self.raidWindow.selectedRaidId then
+            local cleanRaidName = (self.raidWindow.selectedRaidName or ""):gsub("%s+", "_")
+            logStr = string.format("%04d_%s_%d %d", 
+                self.raidWindow.selectedRaidId, 
+                cleanRaidName, 
+                self.raidWindow.selectedRaidPlayers or 0,
+                gpValue)
+        else
+            local cleanOtherText = (self.lastOtherText or ""):gsub("%s+", "_")
+            logStr = string.format("%s %d", cleanOtherText, gpValue)
+        end
+
+        -- Добавляем игроков в сообщение (используем сохраненный playerID)
+        for index in pairs(self.selected_indices) do
+            if self.gp_data[index] then
+                local nick = self.gp_data[index].original_nick
+                local playerID = self.gp_data[index].playerID or "UNKNOWN" -- Используем сохраненный ID
+                SendAddonMessage("nsGP" .. " " .. gpValue, nick, "guild")
+                logStr = logStr .. " " .. playerID
+                
+                -- Добавляем запись в лог
+                self:AddLogEntry(gpValue, date("%H:%M"), UnitName("player"), 
+                    self.raidWindow.selectedRaidName or self.raidWindow.editBox:GetText(), nick)
+            end
+        end
+
+        -- Отправляем логи
+        SendAddonMessage("nsGPlog", logStr, "guild")
+        
+        -- Обновляем значения ГП у выделенных игроков
+        for _, entry in ipairs(self:GetSelectedEntries()) do
+            entry.gp = (entry.gp or 0) + gpValue
+        end
+        self:UpdateWindow()
+        self.raidWindow:Hide()
+    end)
+
+    -- Добавляем обработчик скрытия окна для корректировки размера логов
+    self.raidWindow:SetScript("OnHide", function()
+        -- Восстанавливаем полный размер окна логов при скрытии окна рейда
+        if self.logWindow and self.logWindow:IsShown() then
+            self.logWindow:SetHeight(self.window:GetHeight())
+        end
+    end)
+
+    -- Инициализация при первом открытии
+    self.raidWindow:Hide()
+end
+
+function GpDb_old:_UpdateSelectedPlayersText()
+    if not self.raidWindow then return end
+    
+    local selected = self:GetSelectedEntries()
+    local names = {}
+    
+    for _, entry in ipairs(selected) do
+        table.insert(names, entry.original_nick)
+    end
+    
+    local text = table.concat(names, ", ")
+    
+    -- Создаем или обновляем текстовый элемент
+    if not self.raidWindow.selectedPlayersText then
+        self.raidWindow.selectedPlayersText = self.raidWindow:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        self.raidWindow.selectedPlayersText:SetPoint("TOPLEFT", self.raidWindow.saveCheckbox, "BOTTOMLEFT", 0, -5)
+        self.raidWindow.selectedPlayersText:SetPoint("RIGHT", -10, 0)
+        self.raidWindow.selectedPlayersText:SetHeight(80)
+        self.raidWindow.selectedPlayersText:SetJustifyH("LEFT")
+        self.raidWindow.selectedPlayersText:SetJustifyV("TOP")
+        self.raidWindow.selectedPlayersText:SetWordWrap(true)
+        
+        -- Создаем фрейм-контейнер для обработки событий мыши
+        self.raidWindow.selectedPlayersTextContainer = CreateFrame("Frame", nil, self.raidWindow)
+        self.raidWindow.selectedPlayersTextContainer:SetAllPoints(self.raidWindow.selectedPlayersText)
+        self.raidWindow.selectedPlayersTextContainer:SetScript("OnEnter", function()
+            if self.raidWindow.selectedPlayersText.tooltip then
+                GameTooltip:SetOwner(self.raidWindow.selectedPlayersTextContainer, "ANCHOR_RIGHT")
+                GameTooltip:SetText("Выбранные игроки:")
+                GameTooltip:AddLine(self.raidWindow.selectedPlayersText.tooltip, 1, 1, 1, true)
+                GameTooltip:Show()
+            end
+        end)
+        self.raidWindow.selectedPlayersTextContainer:SetScript("OnLeave", function()
+            GameTooltip:Hide()
+        end)
+    end
+    
+    -- Устанавливаем текст с обрезкой если нужно
+    if #text > 60 then
+        local shortText = string.sub(text, 1, 600) .. "..."
+        self.raidWindow.selectedPlayersText:SetText(shortText)
+        self.raidWindow.selectedPlayersText.tooltip = text
+    else
+        self.raidWindow.selectedPlayersText:SetText(text)
+        self.raidWindow.selectedPlayersText.tooltip = nil
+    end
+end
+
+function GpDb_old:RestoreRaidWindowState()
+    if not self.raidWindow then return end
+    
+    -- Восстанавливаем значения из сохраненных состояний
+    if self.lastSelectionType == "raid" and self.lastRaidId then
+        UIDropDownMenu_SetText(self.raidWindow.dropdown, string.format("%d: %s", self.lastRaidId, self.lastRaidName))
+        self.raidWindow.editBox:SetText("")
+        self.raidWindow.selectedRaidId = self.lastRaidId
+        self.raidWindow.selectedRaidName = self.lastRaidName
+        self.raidWindow.selectedRaidPlayers = self.lastRaidPlayers
+    elseif self.lastSelectionType == "other" and self.lastOtherText then
+        UIDropDownMenu_SetText(self.raidWindow.dropdown, "Выберите рейд")
+        self.raidWindow.editBox:SetText(self.lastOtherText)
+        self.raidWindow.selectedRaidId = nil
+        self.raidWindow.selectedRaidName = nil
+    else
+        UIDropDownMenu_SetText(self.raidWindow.dropdown, "Выберите рейд")
+        self.raidWindow.editBox:SetText("")
+        self.raidWindow.selectedRaidId = nil
+        self.raidWindow.selectedRaidName = nil
+    end
+    
+    -- Всегда отображаем lastGPValue, даже если 0
+    if not self.lastGPValue then
+        self.lastGPValue = 0
+    end
+    self.raidWindow.gpEditBox:SetText(tostring(self.lastGPValue))
+    self.raidWindow.saveCheckbox:SetChecked(self.saveSelectionEnabled)
+    
+    -- Обновляем список выбранных игроков
+    self:_UpdateSelectedPlayersText()
+end
+
+function GpDb_old:_CheckOfficerRank()
+    if not IsInGuild() then return false end
+    
+    local playerName = UnitName("player")
+    for i = 1, GetNumGuildMembers() do
+        local name, _, rankIndex = GetGuildRosterInfo(i)
+        if name and name == playerName then
+            -- Получаем информацию о звании
+            local rankName = GuildControlGetRankName(rankIndex + 1) -- rankIndex начинается с 0
+            -- Проверяем, является ли звание офицерским (Капитан или Лейтенант)
+            if rankName == "Капитан" or rankName == "Лейтенант" then
+                return true
+            end
+            break
+        end
+    end
+    return false
+end
+
+-- Добавляем метод для показа/скрытия окна
+function GpDb_old:ToggleRaidWindow()
+    -- Проверяем звание игрока
+    if not self:_CheckOfficerRank() then
+        print("|cFFFF0000ГП:|r Только офицеры могут начислять ГП")
+        if self.raidWindow and self.raidWindow:IsShown() then
+            self.raidWindow:Hide()
+        end
+        return
+    end
+    
+    if not self.raidWindow then
+        self:_CreateRaidSelectionWindow()
+    end
+    
+    local inRaid = IsInRaid()
+    local raidOnlyChecked = self.window.raidOnlyCheckbox:GetChecked()
+    local hasSelection = next(self.selected_indices) ~= nil
+    
+    if not hasSelection and not self.raidWindow:IsShown() then
+        self.raidWindow:Show()
+        UIDropDownMenu_Initialize(self.raidWindow.dropdown, nil)
+        return
+    end
+    
+    if hasSelection then
+        if inRaid and not raidOnlyChecked then
+            print("|cFFFF0000ГП:|r Для начисления ГП в рейде включите 'Только рейд'")
+            self.raidWindow:Hide()
+            return
+        end
+        
+        if self.raidWindow:IsShown() then
+            self.raidWindow:Hide()
+        else
+            self.raidWindow:Show()
+            UIDropDownMenu_Initialize(self.raidWindow.dropdown, nil)
+        end
+    end
+end
+
+-- Создаем таблицу C_Timer только если её нет (для совместимости с будущими версиями)
+if type(C_Timer) ~= "table" then
+    C_Timer = {}
+end
+
+-- Реализация C_Timer.After
+function C_Timer.After(duration, callback)
+    local timerFrame = CreateFrame("Frame")
+    timerFrame.elapsed = 0
+    timerFrame:SetScript("OnUpdate", function(self, elapsed)
+        self.elapsed = self.elapsed + elapsed
+        if self.elapsed >= duration then
+            callback()
+            self:SetScript("OnUpdate", nil)
+        end
+    end)
+    return timerFrame
+end
+
+-- Реализация C_Timer.NewTicker
+function C_Timer.NewTicker(duration, callback, iterations)
+    local ticker = {
+        _remaining = iterations or math.huge,
+        Cancel = function(self) self._remaining = 0 end
+    }
+    
+    local function tick()
+        if ticker._remaining <= 0 then return end
+        callback()
+        ticker._remaining = ticker._remaining - 1
+        if ticker._remaining > 0 then
+            C_Timer.After(duration, tick)
+        end
+    end
+    
+    C_Timer.After(duration, tick)
+    return ticker
+end
+
+-- Реализация старого интерфейса C_Timer(duration, callback, isLooping)
+setmetatable(C_Timer, {
+    __call = function(_, duration, callback, isLooping)
+        if isLooping then
+            return C_Timer.NewTicker(duration, callback, nil)
+        else
+            return C_Timer.After(duration, callback)
+        end
+    end
+})
+
+function GetNumGroupMembers()
+    if GetNumRaidMembers() > 0 then
+        return GetNumRaidMembers()
+    else
+        return GetNumPartyMembers() + 1  -- +1 для учёта самого игрока
+    end
+end
+
+
+
+-- Глобальная таблица для хранения данных
+local soundMenus = {}
+
+-- Функция безопасного добавления пунктов меню
+local function SafeAddButton(info, level)
+    if type(info) == "table" and type(level) == "number" then
+        UIDropDownMenu_AddButton(info, level)
+    end
+end
+
+-- Функция для извлечения имени файла из пути
+local function GetFileName(path)
+    return path:match("[^\\/]+$") or path
+end
+
+-- Создание пользовательского меню для игрока
+local function CreatePlayerSoundMenu(playerName)
+    local menu = CreateFrame("Frame", "PlayerSoundMenu_" .. playerName, nil, "UIDropDownMenuTemplate")
+
+    menu.initialize = function(self, level)
+        if not level then
+            return
+        end
+
+        -- Уровень 1: Основное меню
+        if level == 1 then
+            -- Добавление в список
+            SafeAddButton({
+                text = "Добавить в список",
+                notCheckable = 1,
+                func = function()
+                    testQ = testQ or {}
+                    testQ.fls = testQ.fls or {}
+                    if not testQ.fls[playerName] then
+                        testQ.fls[playerName] = "Interface\\AddOns\\NSQC\\libs\\fls.mp3"
+                        print("Добавлен:", playerName, "Звук:", testQ.fls[playerName])
+                    end
+                    CloseDropDownMenus() -- Закрываем меню после выбора
+                end
+            }, 1)
+
+            -- Разделитель
+            SafeAddButton({
+                text = "",
+                disabled = 1,
+                notCheckable = 1
+            }, 1)
+
+            -- Категории звуков
+            if ns_alert_sounds and type(ns_alert_sounds) == "table" then
+                for _, category in ipairs(ns_alert_sounds) do
+                    if category.label and category.sounds and type(category.sounds) == "table" then
+                        SafeAddButton({
+                            text = category.label,
+                            notCheckable = 1,
+                            hasArrow = 1,
+                            value = category.label .. "_" .. playerName
+                        }, 1)
+                    end
+                end
+            end
+
+        -- Уровень 2: Подменю звуков
+        elseif level == 2 then
+            local menuValue = UIDROPDOWNMENU_MENU_VALUE
+            if menuValue and ns_alert_sounds and type(ns_alert_sounds) == "table" then
+                local categoryName = menuValue:match("^(.+)_" .. playerName .. "$")
+
+                if categoryName then
+                    for _, category in ipairs(ns_alert_sounds) do
+                        if category.label == categoryName and category.sounds and type(category.sounds) == "table" then
+                            for _, soundPath in ipairs(category.sounds) do
+                                SafeAddButton({
+                                    text = GetFileName(soundPath),
+                                    notCheckable = 1,
+                                    func = function()
+                                        testQ.fls[playerName] = soundPath
+                                        PlaySoundFile(soundPath, "Master")
+                                        print("Добавлен:", playerName, "Звук:", soundPath)
+                                        CloseDropDownMenus() -- Закрываем меню после выбора
+                                    end
+                                }, 2)
+                            end
+                            break
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return menu
+end
+
+-- Хук для контекстного меню
+-- Функция для получения и вывода информации об игроке
+local function ShowPlayerInfo(playerName)
+    local officerNote = ""
+    local publicNote = ""
+    local found = false
+
+    -- Ищем игрока в гильдии по имени
+    for i = 1, GetNumGuildMembers() do
+        local name, _, _, _, _, _, pubNote, offNote = GetGuildRosterInfo(i)
+        if name and strsplit("-", name) == playerName then
+            publicNote = pubNote or ""
+            officerNote = offNote or ""
+            found = true
+            break
+        end
+    end
+
+    if found then
+        SendChatMessage("Информация об игроке: " .. playerName, "OFFICER")
+        SendChatMessage("  Офицерская заметка: " .. (officerNote ~= "" and officerNote or "(нет)"), "OFFICER")
+        SendChatMessage("  Публичная заметка: " .. (publicNote ~= "" and publicNote or "(нет)"), "OFFICER")
+        SendChatMessage("\"репутация " .. playerName .. " 0", "GUILD")
+    else
+        SendChatMessage("Игрок " .. playerName .. " не найден в гильдии.", "OFFICER")
+    end
+end
+local function HookContextMenu()
+    -- Основной хук для FriendsFrame
+    hooksecurefunc("FriendsFrame_ShowDropdown", function(name)
+        if name and name ~= UNKNOWNOBJECT then
+            -- Добавляем статичный пункт "Настроить звук"
+            SafeAddButton({
+                text = "Настроить звук для " .. name,
+                notCheckable = 1,
+                func = function()
+                    -- Создаем пользовательское меню
+                    soundMenus[name] = soundMenus[name] or CreatePlayerSoundMenu(name)
+                    -- Открываем пользовательское меню
+                    ToggleDropDownMenu(1, nil, soundMenus[name], "cursor", 0, 0)
+                end
+            }, 1)
+            -- Добавляем пункт "Посмотреть информацию"
+            SafeAddButton({
+                text = "Посмотреть информацию",
+                notCheckable = 1,
+                func = function()
+                    ShowPlayerInfo(name)
+                end
+            }, 1)
+        end
+    end)
+
+    -- Хук для чат-меню
+    hooksecurefunc("UnitPopup_OnClick", function()
+        local menu = UIDROPDOWNMENU_OPEN_MENU
+        if menu and (menu.which == "CHAT_ROSTER" or menu.which == "FRIEND") then
+            local name = menu.name
+            if name and name ~= UNKNOWNOBJECT then
+                -- Добавляем статичный пункт "Настроить звук"
+                SafeAddButton({
+                    text = "Настроить звук для " .. name,
+                    notCheckable = 1,
+                    func = function()
+                        -- Создаем пользовательское меню
+                        soundMenus[name] = soundMenus[name] or CreatePlayerSoundMenu(name)
+                        -- Открываем пользовательское меню
+                        ToggleDropDownMenu(1, nil, soundMenus[name], "cursor", 0, 0)
+                    end
+                }, 1)
+                -- Добавляем пункт "Посмотреть информацию"
+                SafeAddButton({
+                    text = "Посмотреть информацию",
+                    notCheckable = 1,
+                    func = function()
+                        ShowPlayerInfo(name)
+                    end
+                }, 1)
+            end
+        end
+    end)
+end
+
+-- Инициализация после загрузки
+local initFrame = CreateFrame("Frame")
+initFrame:RegisterEvent("PLAYER_LOGIN")
+initFrame:SetScript("OnEvent", function()
+    HookContextMenu()
+
+    -- Гарантируем инициализацию testQ
+    _G.testQ = _G.testQ or {}
+    _G.testQ.fls = _G.testQ.fls or {}
+end)
+
+NSQCMenu_old = {}
+NSQCMenu_old.__index = NSQCMenu_old
+
+-- Конструктор класса
+function NSQCMenu_old:new(addonName, options)
+    local instance = setmetatable({}, self)
+    instance.addonName = addonName
+    instance.subMenus = {}
+    instance.elements = {}
+    -- Создаем основной фрейм
+    instance.mainFrame = CreateFrame("Frame", addonName.."MainFrame", InterfaceOptionsFramePanelContainer)
+    instance.mainFrame.name = addonName
+    instance.mainFrame:Hide()
+    -- Инициализация позиции элементов
+    instance.currentY = -50 -- Начальная позиция Y после заголовка
+    -- Заголовок аддона
+    local title = instance.mainFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+    title:SetPoint("TOPLEFT", 16, -16)
+    title:SetText(addonName)
+    InterfaceOptions_AddCategory(instance.mainFrame)
+    return instance
+end
+
+-- Метод для добавления информационной секции
+function NSQCMenu_old:addInfoSection(titleText, contentText)
+    local parentFrame = self.mainFrame
+    local sectionY = self.currentY
+    -- Добавляем подзаголовок
+    local subtitle = parentFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    subtitle:SetPoint("TOPLEFT", 20, sectionY - 10)
+    subtitle:SetText(titleText)
+    subtitle:SetTextColor(1, 0.82, 0) -- Золотой цвет
+    -- Добавляем текст
+    local content = parentFrame:CreateFontString(nil, "ARTWORK", "GameFontWhite")
+    content:SetPoint("TOPLEFT", 30, sectionY - 30)
+    content:SetWidth(550) -- Фиксированная ширина
+    content:SetJustifyH("LEFT")
+    content:SetJustifyV("TOP")
+    content:SetText(self:wrapText(contentText, 540, "GameFontWhite")) -- Перенос текста
+    -- Обновляем позицию для следующих элементов
+    local textHeight = content:GetStringHeight()
+    self.currentY = sectionY - 40 - textHeight
+    table.insert(self.elements, {subtitle, content})
+end
+
+-- Метод для переноса текста
+function NSQCMenu_old:wrapText(text, maxWidth, font)
+    local wrappedText = ""
+    local line = ""
+    for word in text:gmatch("%S+") do
+        local temp = line .. " " .. word
+        local tempWidth = self:getStringWidth(self.mainFrame, temp, font)
+        if tempWidth > maxWidth then
+            wrappedText = wrappedText .. line .. "\n"
+            line = word
+        else
+            line = temp
+        end
+    end
+    return wrappedText .. line
+end
+
+-- Вспомогательный метод для получения ширины текста
+function NSQCMenu_old:getStringWidth(frame, text, font)
+    if not frame then
+        print("Error: Frame is nil in getStringWidth")
+        return 0
+    end
+    local temp = frame:CreateFontString(nil, "ARTWORK", font)
+    temp:SetText(text)
+    local width = temp:GetStringWidth()
+    temp:Hide()
+    return width
+end
+
+-- Метод для создания подменю
+function NSQCMenu_old:addSubMenu(menuName, parentMenu)
+    -- Определяем родительское меню (по умолчанию - self)
+    parentMenu = parentMenu or self
+    
+    -- Создаем уникальное имя для фрейма
+    local frameName = self.addonName..menuName.."SubFrame"
+    
+    -- Создаем основной фрейм подменю
+    local subFrame = CreateFrame("Frame", frameName, InterfaceOptionsFramePanelContainer)
+    subFrame.name = menuName
+    subFrame.parent = parentMenu.addonName or parentMenu.name
+    subFrame:Hide()
+    
+    -- Создаем ScrollFrame
+    local scrollFrame = CreateFrame("ScrollFrame", frameName.."ScrollFrame", subFrame, "UIPanelScrollFrameTemplate")
+    scrollFrame:SetPoint("TOPLEFT", 16, -50)
+    scrollFrame:SetPoint("BOTTOMRIGHT", -32, 16)
+    
+    -- Создаем контент для скролла
+    local scrollContent = CreateFrame("Frame", frameName.."ScrollContent", scrollFrame)
+    scrollContent:SetWidth(scrollFrame:GetWidth() - 20)
+    scrollContent:SetHeight(1) -- Начальная высота
+    scrollFrame:SetScrollChild(scrollContent)
+    
+    -- Настраиваем скроллбар
+    local scrollBar = _G[frameName.."ScrollFrameScrollBar"]
+    scrollBar:ClearAllPoints()
+    scrollBar:SetPoint("TOPLEFT", scrollFrame, "TOPRIGHT", 12, -16)
+    scrollBar:SetPoint("BOTTOMLEFT", scrollFrame, "BOTTOMRIGHT", 12, 16)
+    
+    -- Заголовок подменю
+    local title = subFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+    title:SetPoint("TOPLEFT", 16, -16)
+    title:SetText(menuName)
+    
+    -- Регистрируем подменю в интерфейсе WoW
+    InterfaceOptions_AddCategory(subFrame)
+    
+    -- Создаем объект подменю
+    local subMenu = {
+        frame = subFrame,
+        scrollFrame = scrollFrame,
+        scrollContent = scrollContent,
+        elements = {},
+        lastY = 0,
+        totalHeight = 0,
+        maxHeight = scrollFrame:GetHeight(),
+        parent = parentMenu,
+        name = menuName
+    }
+    
+    -- Добавляем подменю в список
+    table.insert(self.subMenus, subMenu)
+    
+    return subMenu
+end
+
+function NSQCMenu_old:showSubMenu(subMenu)
+    if subMenu.parent then
+        subMenu.parent.frame:Hide()
+    end
+    subMenu.frame:Show()
+end
+-- Методы для добавления элементов в подменю
+function NSQCMenu_old:addSlider(parentMenu, options)
+    local slider = CreateFrame("Slider", parentMenu.frame:GetName()..options.name, parentMenu.scrollContent, "OptionsSliderTemplate")
+    slider:SetPoint("TOPLEFT", 16, -parentMenu.lastY)
+    slider:SetWidth(590)
+    slider:SetHeight(20)
+    slider:SetMinMaxValues(options.min, options.max)
+    slider:SetValueStep(options.step or 1)
+    slider:SetValue(options.default)
+    -- Добавляем текст тултипа
+    slider.tooltipText = options.tooltip
+    -- Текст слайдера
+    _G[slider:GetName().."Text"]:SetText(options.label)
+    _G[slider:GetName().."Low"]:SetText(options.min)
+    _G[slider:GetName().."High"]:SetText(options.max)
+    -- Обработчики тултипа
+    slider:SetScript("OnEnter", function(self)
+        if self.tooltipText then
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:AddLine(self.tooltipText, 1, 1, 1, true)
+            GameTooltip:AddLine("Текущее значение: |cffffffff"..self:GetValue().."|r", 1, 1, 1, true)
+            GameTooltip:Show()
+        end
+    end)
+    slider:SetScript("OnLeave", function(self)
+        GameTooltip:Hide()
+    end)
+    slider:SetScript("OnValueChanged", function(self, value)
+        if options.onChange then options.onChange(value) end
+        -- Обновляем тултип если открыт
+        if GameTooltip:IsOwned(self) then
+            GameTooltip:ClearLines()
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:AddLine(self.tooltipText, 1, 1, 1, true)
+            GameTooltip:AddLine("Текущее значение: |cffffffff"..value.."|r", 1, 1, 1, true)
+            GameTooltip:Show()
+        end
+    end)
+    -- Обновляем высоту контента
+    parentMenu.lastY = parentMenu.lastY + 40
+    parentMenu.totalHeight = parentMenu.totalHeight + 40
+    parentMenu.scrollContent:SetHeight(parentMenu.totalHeight)
+    table.insert(parentMenu.elements, slider)
+    self:updateScrollRange(parentMenu)
+    return slider
+end
+
+function NSQCMenu_old:addCheckbox(parentMenu, options)
+    local checkbox = CreateFrame("CheckButton", parentMenu.frame:GetName()..options.name, parentMenu.scrollContent, "ChatConfigCheckButtonTemplate")
+    checkbox:SetPoint("TOPLEFT", 16, -parentMenu.lastY)
+    checkbox:SetChecked(options.default or false)
+    -- Добавляем текст тултипа
+    checkbox.tooltipText = options.tooltip
+    -- Текст чекбокса
+    local label = parentMenu.scrollContent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    label:SetPoint("LEFT", checkbox, "RIGHT", 5, 0)
+    label:SetText(options.label)
+    -- Обработчики тултипа
+    checkbox:SetScript("OnEnter", function(self)
+        if self.tooltipText then
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:AddLine(self.tooltipText, 1, 1, 1, true)
+            local state = self:GetChecked() and "|cff00ff00Включено|r" or "|cffff0000Выключено|r"
+            GameTooltip:AddLine("Текущее значение: "..state, 1, 1, 1, true)
+            GameTooltip:Show()
+        end
+    end)
+    checkbox:SetScript("OnLeave", function(self)
+        GameTooltip:Hide()
+    end)
+    checkbox:SetScript("OnClick", function(self)
+        if options.onClick then options.onClick(self:GetChecked()) end
+        -- Обновляем тултип если открыт
+        if GameTooltip:IsOwned(self) then
+            GameTooltip:ClearLines()
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            GameTooltip:AddLine(self.tooltipText, 1, 1, 1, true)
+            local state = self:GetChecked() and "|cff00ff00Включено|r" or "|cffff0000Выключено|r"
+            GameTooltip:AddLine("Текущее значение: "..state, 1, 1, 1, true)
+            GameTooltip:Show()
+        end
+    end)
+    -- Обновляем высоту контента
+    parentMenu.lastY = parentMenu.lastY + 30
+    parentMenu.totalHeight = parentMenu.totalHeight + 30
+    parentMenu.scrollContent:SetHeight(parentMenu.totalHeight)
+    table.insert(parentMenu.elements, checkbox)
+    self:updateScrollRange(parentMenu)
+    return checkbox
+end
+
+function NSQCMenu_old:updateScrollRange(parentMenu)
+    local scrollFrame = parentMenu.scrollFrame
+    local scrollBar = _G[scrollFrame:GetName().."ScrollBar"]
+    if not scrollBar then
+        error("Scrollbar not found for scrollFrame: " .. scrollFrame:GetName())
+    end
+    local maxRange = parentMenu.totalHeight - parentMenu.maxHeight
+    if maxRange < 0 then maxRange = 0 end
+    scrollBar:SetMinMaxValues(0, maxRange)
+    scrollBar:SetValue(0)
+    scrollFrame:UpdateScrollChildRect()
+end
+
+-- Метод для добавления кнопки
+function NSQCMenu_old:addButton(parentMenu, options)
+    -- Создаем кнопку
+    local button = CreateFrame("Button", parentMenu.frame:GetName()..options.name, parentMenu.scrollContent, "UIPanelButtonTemplate")
+    button:SetPoint("TOPLEFT", 16, -parentMenu.lastY)
+    button:SetSize(options.width or 120, options.height or 24) -- Размеры кнопки (по умолчанию 120x24)
+    button:SetText(options.label or "Кнопка") -- Текст на кнопке
+
+    -- Обработчик нажатия
+    button:SetScript("OnClick", function(self)
+        if options.onClick then
+            options.onClick() -- Вызываем пользовательскую функцию
+        end
+    end)
+
+    -- Добавляем тултип, если указан
+    if options.tooltip then
+        button.tooltipText = options.tooltip
+        button:SetScript("OnEnter", function(self)
+            if self.tooltipText then
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                GameTooltip:AddLine(self.tooltipText, 1, 1, 1, true)
+                GameTooltip:Show()
+            end
+        end)
+        button:SetScript("OnLeave", function(self)
+            GameTooltip:Hide()
+        end)
+    end
+
+    -- Обновляем высоту контента
+    parentMenu.lastY = parentMenu.lastY + (options.height or 24) + 10 -- Добавляем отступ
+    parentMenu.totalHeight = parentMenu.totalHeight + (options.height or 24) + 10
+    parentMenu.scrollContent:SetHeight(parentMenu.totalHeight)
+
+    -- Добавляем кнопку в список элементов
+    table.insert(parentMenu.elements, button)
+
+    -- Обновляем диапазон прокрутки
+    self:updateScrollRange(parentMenu)
+
+    return button
+end
+
+function C_Timer(duration, callback, isLooping)
+    -- Создаем фрейм для таймера
+    local timerFrame = CreateFrame("Frame")
+    
+    -- Устанавливаем продолжительность таймера
+    timerFrame.duration = duration
+    timerFrame.elapsed = 0
+    timerFrame.isLooping = isLooping or false  -- По умолчанию таймер не циклический
+    
+    -- Обработчик OnUpdate для отслеживания времени
+    timerFrame:SetScript("OnUpdate", function(self, elapsed)
+        self.elapsed = self.elapsed + elapsed
+        
+        -- Проверяем, прошло ли нужное время
+        if self.elapsed >= self.duration then
+            -- Выполняем переданную функцию (callback)
+            if type(callback) == "function" then
+                callback()
+            end
+            
+            -- Если таймер циклический, сбрасываем время
+            if self.isLooping then
+                self.elapsed = 0
+            else
+                -- Уничтожаем фрейм после выполнения, если таймер не циклический
+                self:SetScript("OnUpdate", nil)
+                self = nil
+            end
+        end
+    end)
+end
+
+C_Timer(10, function()
+    if not menu then
+    	NS3Menu_old()
+    	if testQ['скрыть боссов'] then
+    		HideBossFrames()
+    	end
+    end
+end)
+
+function NS3Menu_old()
+    local menu = NSQCMenu_old:new("NSQC")
+
+    local generalSub = menu:addSubMenu("Настройки")
+
+    menu:addCheckbox(generalSub, {
+        name = "Скрыть фреймы боссов под миникартой в ппг и рейдах",
+        label = "Скрыть фреймы боссов под миникартой в ппг и рейдах",
+        default = testQ['скрыть боссов'] or false,
+        tooltip = "Скрыть фреймы боссов под миникартой в ппг и рейдах",
+        onClick = function(checked)
+        	if testQ then
+        		if checked then
+            		testQ['скрыть боссов'] = 1
+            		HideBossFrames()
+            	else
+            		testQ['скрыть боссов'] = nil
+            	end
+            end
+        end
+    })
+
+    menu:addCheckbox(generalSub, {
+        name = "Включить автосмену поиска на миникарте для ханта",
+        label = "Включить автосмену поиска на миникарте для ханта",
+        default = testQ["метка охотника"] or false,
+        tooltip = "Включить автосмену поиска на миникарте для ханта",
+        onClick = function(checked)
+        	if testQ then
+        		if checked then
+            		testQ["метка охотника"] = 1
+            		HideBossFrames()
+            	else
+            		testQ["метка охотника"] = nil
+            	end
+            end
+        end
+    })
+
+end
+
+function HideBossFrames()
+    for i = 1, 4 do
+        local bossFrame = _G["Boss"..i.."TargetFrame"]
+        if bossFrame then
+            bossFrame:UnregisterAllEvents()  -- Отключаем все события
+            bossFrame:Hide()                 -- Скрываем фрейм
+            bossFrame.Show = function() end  -- Блокируем возможность появления
+        end
+    end
+end
+
+function move(saveTable)
+    local frame = GetMouseFocus()
+    if not frame or not frame.GetName then return end
+    
+    local frameName = frame:GetName()
+    saveTable = saveTable or {}
+
+    if not frame.moveToggle then
+        -- Включение перемещения
+        frame:SetMovable(true)
+        frame:EnableMouse(true)
+        frame:RegisterForDrag("LeftButton")
+        
+        frame:SetScript("OnDragStart", frame.StartMoving)
+        frame:SetScript("OnDragStop", function(self)
+            self:StopMovingOrSizing()
+            local point, _, relPoint, x, y = self:GetPoint()
+            saveTable[frameName] = {point, relPoint, x, y}
+            print(string.format("Позиция сохранена: %s (%.1f, %.1f)", frameName, x, y))
+        end)
+        
+        frame.moveToggle = true
+    else
+        -- Выключение перемещения
+        frame:SetMovable(false)
+        frame:EnableMouse(false)
+        frame:SetScript("OnDragStart", nil)
+        frame:SetScript("OnDragStop", nil)
+        frame.moveToggle = nil
+    end
+    
+    return saveTable
+end
+
+function RestoreFramePositions(saveTable)
+    if not saveTable then return end
+    
+    for frameName, posData in pairs(saveTable) do
+        local frame = _G[frameName]
+        if frame and frame.ClearAllPoints then
+            frame:ClearAllPoints()
+            frame:SetPoint(posData[1], UIParent, posData[2], posData[3], posData[4])
+        end
+    end
+end
+
+function remove()
+    move(nsDbc['frames'])
+end
+
+function resetF()
+    nsDbc['frames'] = nil
+end

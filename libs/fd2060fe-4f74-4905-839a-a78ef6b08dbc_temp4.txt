@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #36393f;
+            color: #ffffff;
+            height: 100vh;
+            overflow: hidden;
+            min-width: 280px;
+        }
+        .app {
+            display: flex;
+            height: 100vh;
+            min-width: 0;
+        }
+        .sidebar {
+            width: 240px;
+            min-width: 200px;
+            background: #2f3136;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .sidebar-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid #202225;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 0;
+        }
+        .sidebar-title {
+            font-weight: bold;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .settings-btn {
+            background: none;
+            border: none;
+            color: #b9bbbe;
+            cursor: pointer;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .settings-btn:hover {
+            color: #ffffff;
+        }
+        .rooms-list {
+            flex: 1;
+            padding: 8px;
+            overflow-y: auto;
+            min-width: 0;
+        }
+        .room-item {
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            color: #b9bbbe;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .room-item:hover {
+            background: #34373c;
+            color: #ffffff;
+        }
+        .room-item.active {
+            background: #5865f2;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        .mic-control {
+            padding: 16px;
+            border-top: 1px solid #202225;
+            min-width: 0;
+        }
+        .mic-button {
+            width: 100%;
+            padding: 10px;
+            background: #5865f2;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            min-width: 0;
+            font-size: 14px;
+        }
+        .mic-button:hover {
+            background: #4752c4;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+        }
+        .mic-button:active {
+            transform: translateY(0);
+        }
+        .mic-button.active {
+            background: #ed4245;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            max-width: 100%;
+        }
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #36393f;
+            min-width: 0;
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #40444b;
+            border-bottom: 1px solid #202225;
+            min-width: 0;
+        }
+        .chat-header-title {
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 10px;
+        }
+        .chat-header-controls {
+            display: flex;
+            align-items: center;
+        }
+        .toggle-sidebar-btn, .toggle-members-btn, .mobile-mic-btn {
+            background: none;
+            border: none;
+            color: #b9bbbe;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 6px;
+            margin: 0 2px;
+        }
+        .toggle-sidebar-btn:hover, .toggle-members-btn:hover, .mobile-mic-btn:hover {
+            color: #ffffff;
+        }
+        .messages {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .message {
+            display: flex;
+            margin-bottom: 12px;
+            animation: fadeIn 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            min-width: 0;
+        }
+        .message.appeared {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            background: #5865f2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .message-content {
+            flex: 1;
+            background: #2f3136;
+            border-radius: 8px;
+            padding: 10px 14px;
+            max-width: 85%;
+            min-width: 0;
+        }
+        .message-header {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 4px;
+            min-width: 0;
+        }
+        .message-username {
+            font-weight: 500;
+            margin-right: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .message-time {
+            font-size: 12px;
+            color: #a3a6aa;
+            flex-shrink: 0;
+        }
+        .message-text {
+            color: #dcddde;
+            font-size: 14px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        .input-area {
+            padding: 12px;
+            background: #40444b;
+            margin: 0 12px 12px 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-width: 0;
+        }
+        .input-box {
+            width: 100%;
+            background: #36393f;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+            min-width: 0;
+        }
+        .input-box:focus {
+            outline: 1px solid #00b0f4;
+            box-shadow: 0 0 0 2px rgba(0, 176, 244, 0.2);
+        }
+        .input-box::placeholder {
+            color: #72767d;
+        }
+        .members-panel {
+            width: 220px;
+            min-width: 180px;
+            background: #2f3136;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .members-header {
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #8e9297;
+            text-transform: uppercase;
+            border-bottom: 1px solid #202225;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 0;
+        }
+        .members-list {
+            flex: 1;
+            padding: 8px;
+            overflow-y: auto;
+            min-width: 0;
+        }
+        .member-item {
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 14px;
+            border-radius: 4px;
+            margin-bottom: 2px;
+            transition: all 0.2s ease;
+            min-width: 0;
+        }
+        .member-item:hover {
+            background: #34373c;
+        }
+        .member-avatar {
+            width: 32px;
+            height: 32px;
+            background: #5865f2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .member-name {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .member-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #3ba55d;
+            margin-left: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 6px rgba(59, 165, 93, 0.5);
+            flex-shrink: 0;
+        }
+        .member-status.muted {
+            background: #72767d;
+            box-shadow: none;
+        }
+        .member-status.active {
+            background: #3ba55d;
+        }
+        .status-bar {
+            padding: 8px 12px;
+            background: #202225;
+            font-size: 12px;
+            color: #b9bbbe;
+            border-top: 1px solid #2f3136;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            align-items: center;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #3ba55d;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .status-indicator.connecting {
+            background: #faa61a;
+            animation: pulse 1.5s infinite;
+        }
+        .status-indicator.disconnected {
+            background: #ed4245;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        /* === ДОБАВЛЕНО: Стили для модального окна настроек === */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #2f3136;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #40444b;
+            padding-bottom: 10px;
+        }
+        .modal-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #ffffff;
+        }
+        .setting-item {
+            margin-bottom: 15px;
+        }
+        .setting-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #b9bbbe;
+        }
+        .setting-input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #40444b;
+            background: #36393f;
+            color: #ffffff;
+        }
+        .setting-checkbox {
+            margin-right: 8px;
+        }
+        .apply-settings-btn {
+            width: 100%;
+            padding: 10px;
+            background: #5865f2;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 10px;
+        }
+        .apply-settings-btn:hover {
+            background: #4752c4;
+        }
+        /* === КОНЕЦ ДОБАВЛЕНИЯ === */
+        @media (max-width: 900px) {
+            .sidebar, .members-panel {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                z-index: 100;
+                transform: translateX(-100%);
+            }
+            .sidebar {
+                width: 260px;
+            }
+            .sidebar.visible {
+                transform: translateX(0);
+            }
+            .members-panel {
+                right: 0;
+                transform: translateX(100%);
+                width: 260px;
+            }
+            .members-panel.visible {
+                transform: translateX(0);
+            }
+            .chat-header {
+                display: flex;
+            }
+            .mic-control {
+                display: none;
+            }
+        }
+        @media (min-width: 901px) {
+            .toggle-sidebar-btn, .toggle-members-btn, .mobile-mic-btn {
+                display: none;
+            }
+            .chat-header {
+                display: none;
+            }
+            .sidebar, .members-panel {
+                position: relative;
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">🎙 Voice Chat</div>
+                <button class="settings-btn" id="openSettingsBtn">⚙</button>
+            </div>
+            <div class="rooms-list">
+                <div class="room-item active" data-room="general">🔊 Общий голосовой канал</div>
+                <div class="room-item" data-room="music">🎵 Музыкальная комната</div>
+                <div class="room-item" data-room="conference">💼 Конференция</div>
+            </div>
+            <div class="mic-control">
+                <!-- Кнопка микрофона (подключение — автоматическое) -->
+                <button id="micButton" class="mic-button" disabled>
+                    <span>🎤</span>
+                    <span id="micButtonText">Ожидание подключения...</span>
+                </button>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="chat-header">
+                <div class="chat-header-controls">
+                    <button class="toggle-sidebar-btn" id="toggleSidebarBtn">☰</button>
+                </div>
+                <div class="chat-header-title" id="currentRoomTitle">Общий голосовой канал</div>
+                <div class="chat-header-controls">
+                    <button class="mobile-mic-btn" id="mobileMicBtn">🎤</button>
+                    <button class="toggle-members-btn" id="toggleMembersBtn">👥</button>
+                </div>
+            </div>
+            <div class="chat-area">
+                <div class="messages" id="messagesContainer">
+                    <div class="message appeared">
+                        <div class="message-avatar">S</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-username">System</div>
+                                <div class="message-time" id="systemTime"></div>
+                            </div>
+                            <div class="message-text">Подключение к серверу...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-area">
+                    <input type="text" class="input-box" placeholder="Написать сообщение..." id="messageInput" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="members-panel" id="membersPanel">
+            <div class="members-header">
+                Участники — <span id="membersCount">0</span>
+                <button class="settings-btn" id="closeMembersPanelBtn">✕</button>
+            </div>
+            <div class="members-list" id="membersList">
+                <div class="member-item">
+                    <div class="member-avatar">Вы</div>
+                    <div class="member-name">Вы</div>
+                    <div class="member-status muted" id="selfStatus"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="status-bar">
+        <span class="status-indicator" id="statusIndicator"></span>
+        <span class="status-text" id="statusText">Готов к работе - ожидание подключения</span>
+    </div>
+    
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Настройки голоса</div>
+                <span class="close" id="closeSettingsModal">&times;</span>
+            </div>
+            <div class="setting-item">
+                <label class="setting-label" for="bitrateSlider">Битрейт (кбит/с): <span id="bitrateValue">32</span></label>
+                <input type="range" min="16" max="64" value="32" class="setting-input" id="bitrateSlider">
+            </div>
+            <div class="setting-item">
+                <label class="setting-label">
+                    <input type="checkbox" class="setting-checkbox" id="dtxCheckbox"> Использовать DTX (экономия трафика)
+                </label>
+            </div>
+            <div class="setting-item">
+                <label class="setting-label">
+                    <input type="checkbox" class="setting-checkbox" id="fecCheckbox" checked> Использовать FEC (устойчивость к потерям)
+                </label>
+            </div>
+            <button class="apply-settings-btn" id="applySettingsBtn">Применить настройки</button>
+        </div>
+    </div>
+
+    <!-- Загружаем mediasoup-client через Nginx -->
+    <script src="/mediasoup-client.min.js"></script>
+    <script>
+        class VoiceChatClient {
+            constructor() {
+                this.SERVER_URL = 'https://ns.fiber-gate.ru';
+                this.device = null;
+                this.clientID = this.generateClientID();
+                this.sendTransport = null;
+                this.recvTransport = null;
+                this.audioProducer = null;
+                this.consumers = new Map();
+                this.stream = null;
+                this.isMicActive = false;
+                this.isConnected = false;
+                this.currentRoom = 'general';
+                this.keepAliveInterval = null;
+                this.updateInterval = null;
+
+                this.bitrate = 32000; // По умолчанию 32 кбит/с
+                this.dtxEnabled = true; // По умолчанию DTX выключен
+                this.fecEnabled = true;  // По умолчанию FEC включен
+
+                window.voiceChatClient = this;
+
+                this.micButton = document.getElementById('micButton');
+                this.micButtonText = document.getElementById('micButtonText');
+                this.statusText = document.getElementById('statusText');
+                this.statusIndicator = document.getElementById('statusIndicator');
+                this.membersList = document.getElementById('membersList');
+                this.membersCount = document.getElementById('membersCount');
+                this.messagesContainer = document.getElementById('messagesContainer');
+                this.messageInput = document.getElementById('messageInput');
+                this.systemTime = document.getElementById('systemTime');
+                this.selfStatus = document.getElementById('selfStatus');
+                this.roomItems = document.querySelectorAll('.room-item');
+                this.currentRoomTitle = document.getElementById('currentRoomTitle');
+                this.mobileMicBtn = document.getElementById('mobileMicBtn');
+
+                this.settingsModal = document.getElementById('settingsModal');
+                this.openSettingsBtn = document.getElementById('openSettingsBtn');
+                this.closeSettingsModal = document.getElementById('closeSettingsModal');
+                this.bitrateSlider = document.getElementById('bitrateSlider');
+                this.bitrateValue = document.getElementById('bitrateValue');
+                this.dtxCheckbox = document.getElementById('dtxCheckbox');
+                this.fecCheckbox = document.getElementById('fecCheckbox');
+                this.applySettingsBtn = document.getElementById('applySettingsBtn');
+
+                this.updateSystemTime();
+                setInterval(() => this.updateSystemTime(), 60000);
+
+                this.messageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.sendMessage();
+                    }
+                });
+
+                this.roomItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        this.roomItems.forEach(r => r.classList.remove('active'));
+                        item.classList.add('active');
+                        this.currentRoom = item.dataset.room;
+                        const roomName = this.getRoomName(this.currentRoom);
+                        this.currentRoomTitle.textContent = roomName;
+                        this.addMessage('System', `Вы вошли в комнату: ${roomName}`);
+                    });
+                });
+
+                // Обработчик для мобильной кнопки микрофона
+                if (this.mobileMicBtn) {
+                    this.mobileMicBtn.addEventListener('click', () => {
+                        if (this.isConnected) {
+                            this.toggleMicrophone();
+                        } else if (!this.micButton.disabled) {
+                            // Если еще не подключены, но кнопка не заблокирована, попробуем подключиться
+                            this.autoConnect();
+                        }
+                    });
+                }
+
+                // === ДОБАВЛЕНО: Обработчики событий для модального окна настроек ===
+                this.openSettingsBtn.addEventListener('click', () => this.openSettings());
+                this.closeSettingsModal.addEventListener('click', () => this.settingsModal.style.display = 'none');
+                this.bitrateSlider.addEventListener('input', () => {
+                    this.bitrateValue.textContent = this.bitrateSlider.value;
+                });
+                this.applySettingsBtn.addEventListener('click', () => this.applySettings());
+                // Закрытие модального окна при клике вне его
+                window.addEventListener('click', (event) => {
+                    if (event.target === this.settingsModal) {
+                        this.settingsModal.style.display = 'none';
+                    }
+                });
+                // === КОНЕЦ ДОБАВЛЕНИЯ ===
+
+                // Автоподключение при загрузке
+                this.autoConnect();
+            }
+
+            getRoomName(roomId) {
+                const rooms = {
+                    'general': 'Общий голосовой канал',
+                    'music': 'Музыкальная комната',
+                    'conference': 'Конференция'
+                };
+                return rooms[roomId] || roomId;
+            }
+
+            generateClientID() {
+                return 'user_' + Math.random().toString(36).substr(2, 9);
+            }
+
+            updateStatus(message, type = 'normal') {
+                this.statusText.textContent = message;
+                this.statusIndicator.className = 'status-indicator';
+                if (type === 'connecting') {
+                    this.statusIndicator.classList.add('connecting');
+                } else if (type === 'disconnected') {
+                    this.statusIndicator.classList.add('disconnected');
+                }
+                console.log('[STATUS]', message);
+            }
+
+            updateSystemTime() {
+                const now = new Date();
+                this.systemTime.textContent = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+            }
+
+            addMessage(username, text, time = null) {
+                const now = new Date();
+                const timeString = time || `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message new-message';
+                const avatarText = username === 'Вы' ? 'Вы' : username.charAt(0).toUpperCase();
+                messageElement.innerHTML = `
+                    <div class="message-avatar">${avatarText}</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-username">${username}</div>
+                            <div class="message-time">${timeString}</div>
+                        </div>
+                        <div class="message-text">${text}</div>
+                    </div>
+                `;
+                this.messagesContainer.appendChild(messageElement);
+                setTimeout(() => {
+                    messageElement.classList.add('appeared');
+                }, 10);
+                this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+            }
+
+            sendMessage() {
+                const message = this.messageInput.value.trim();
+                if (message) {
+                    this.addMessage('Вы', message);
+                    this.messageInput.value = '';
+                    this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+                }
+            }
+
+            async autoConnect() {
+                this.updateStatus('Автоподключение...', 'connecting');
+                this.micButtonText.textContent = 'Подключение...';
+                try {
+                    console.log('Запрашиваем доступ к микрофону...');
+                    this.stream = await navigator.mediaDevices.getUserMedia({
+                        audio: {
+                            echoCancellation: true,
+                            noiseSuppression: true,
+                            autoGainControl: true,
+                            echoCancellationType: 'system'
+                        },
+                        video: false
+                    });
+                    console.log('Микрофон получен', this.stream);
+                    console.log('Регистрируем клиента...');
+                    await this.registerClient();
+                    this.startKeepAlive();
+                    console.log('Получаем RTP capabilities...');
+                    const rtpCapabilities = await this.getRtpCapabilities();
+                    console.log('RTP capabilities:', rtpCapabilities);
+                    this.device = new mediasoupClient.Device();
+                    await this.device.load({ routerRtpCapabilities: rtpCapabilities });
+                    console.log('Device загружен');
+                    await this.createTransports();
+                    console.log('Транспорты созданы');
+                    this.isConnected = true;
+                    this.updateStatus('Подключено', 'normal');
+                    this.micButtonText.textContent = 'Включить микрофон';
+                    this.micButton.disabled = false;
+                    this.micButton.onclick = () => this.toggleMicrophone();
+                    // Обновляем состояние мобильной кнопки
+                    if (this.mobileMicBtn) {
+                        this.mobileMicBtn.onclick = () => this.toggleMicrophone();
+                    }
+                    this.messageInput.disabled = false;
+                    this.startParticipantUpdates();
+                    this.addMessage('System', 'Успешно подключено! Нажмите кнопку, чтобы включить микрофон.');
+                } catch (error) {
+                    this.updateStatus('Ошибка: ' + error.message, 'disconnected');
+                    this.micButtonText.textContent = 'Ошибка подключения';
+                    this.micButton.disabled = false;
+                    console.error('[AUTO CONNECT ERROR]', error);
+                }
+            }
+
+            async registerClient() {
+                const response = await fetch(`${this.SERVER_URL}/api/client/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ clientID: this.clientID })
+                });
+                return response.json();
+            }
+
+            startKeepAlive() {
+                this.keepAliveInterval = setInterval(async () => {
+                    try {
+                        await this.registerClient();
+                    } catch (error) {
+                        console.log('[KEEP-ALIVE ERROR]', error);
+                    }
+                }, 5000);
+            }
+
+            async getRtpCapabilities() {
+                const response = await fetch(`${this.SERVER_URL}/api/rtp-capabilities`);
+                return response.json();
+            }
+
+            async createTransports() {
+                const sendTransportData = await this.createTransport('send');
+                this.sendTransport = this.device.createSendTransport({
+                    id: sendTransportData.transportId,
+                    iceParameters: sendTransportData.iceParameters,
+                    iceCandidates: sendTransportData.iceCandidates,
+                    dtlsParameters: sendTransportData.dtlsParameters
+                });
+                this.setupSendTransport();
+                const recvTransportData = await this.createTransport('recv');
+                this.recvTransport = this.device.createRecvTransport({
+                    id: recvTransportData.transportId,
+                    iceParameters: recvTransportData.iceParameters,
+                    iceCandidates: recvTransportData.iceCandidates,
+                    dtlsParameters: recvTransportData.dtlsParameters
+                });
+                this.setupRecvTransport();
+            }
+
+            async createTransport(direction) {
+                const response = await fetch(`${this.SERVER_URL}/api/transport/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Client-ID': this.clientID
+                    },
+                    body: JSON.stringify({
+                        clientID: this.clientID,
+                        direction: direction
+                    })
+                });
+                return response.json();
+            }
+
+            setupSendTransport() {
+                this.sendTransport.on('connect', async ({ dtlsParameters }, callback, errback) => {
+                    try {
+                        await fetch(`${this.SERVER_URL}/api/transport/connect`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Client-ID': this.clientID
+                            },
+                            body: JSON.stringify({
+                                transportId: this.sendTransport.id,
+                                dtlsParameters
+                            })
+                        });
+                        callback();
+                    } catch (error) {
+                        errback(error);
+                    }
+                });
+                this.sendTransport.on('produce', async ({ kind, rtpParameters }, callback, errback) => {
+                    try {
+                        const response = await fetch(`${this.SERVER_URL}/api/produce`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Client-ID': this.clientID
+                            },
+                            body: JSON.stringify({
+                                transportId: this.sendTransport.id,
+                                kind,
+                                rtpParameters
+                            })
+                        });
+                        const data = await response.json();
+                        callback({ id: data.producerId });
+                    } catch (error) {
+                        errback(error);
+                    }
+                });
+            }
+
+            setupRecvTransport() {
+                this.recvTransport.on('connect', async ({ dtlsParameters }, callback, errback) => {
+                    try {
+                        await fetch(`${this.SERVER_URL}/api/transport/connect`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Client-ID': this.clientID
+                            },
+                            body: JSON.stringify({
+                                transportId: this.recvTransport.id,
+                                dtlsParameters
+                            })
+                        });
+                        callback();
+                    } catch (error) {
+                        errback(error);
+                    }
+                });
+            }
+
+            async toggleMicrophone() {
+                if (this.isMicActive) {
+                    await this.stopMicrophone();
+                } else {
+                    await this.startMicrophone();
+                }
+            }
+
+            async startMicrophone() {
+                try {
+                    // Если поток не существует или трек завершен, получаем новый
+                    if (!this.stream || this.stream.getAudioTracks().length === 0 || this.stream.getAudioTracks()[0].readyState === 'ended') {
+                        this.updateStatus('Получение доступа к микрофону...', 'connecting');
+                        this.stream = await navigator.mediaDevices.getUserMedia({
+                            audio: {
+                                echoCancellation: true,
+                                noiseSuppression: true,
+                                autoGainControl: true,
+                                echoCancellationType: 'system'
+                            },
+                            video: false
+                        });
+                    }
+                    const audioTrack = this.stream.getAudioTracks()[0];
+
+                    // === ИЗМЕНЕНО: Передаем параметры кодирования в produce ===
+                    const encodings = [
+                        {
+                            maxBitrate: this.bitrate, // Используем значение из настроек
+                            dtx: this.dtxEnabled,     // Используем значение из настроек
+                            fec: this.fecEnabled      // Используем значение из настроек
+                        }
+                    ];
+
+                    this.audioProducer = await this.sendTransport.produce({
+                        track: audioTrack,
+                        encodings: encodings // <-- Передаем параметры
+                    });
+                    // === КОНЕЦ ИЗМЕНЕНИЯ ===
+
+                    this.isMicActive = true;
+                    this.micButton.classList.add('active');
+                    this.micButtonText.textContent = 'Выключить микрофон';
+                    this.selfStatus.className = 'member-status active';
+                    this.updateStatus('Микрофон включен - вас слышат!', 'normal');
+                    this.addMessage('System', `Микрофон включен - вас слышат! (Битрейт: ${this.bitrate/1000} кбит/с, DTX: ${this.dtxEnabled ? 'вкл' : 'выкл'}, FEC: ${this.fecEnabled ? 'вкл' : 'выкл'})`);
+                    // Обновляем состояние мобильной кнопки
+                    if (this.mobileMicBtn) {
+                        this.mobileMicBtn.textContent = '🎤';
+                        this.mobileMicBtn.style.color = '#ed4245'; // Красный цвет для активного микрофона
+                    }
+                } catch (error) {
+                    this.updateStatus('Ошибка включения микрофона: ' + error.message, 'disconnected');
+                    console.error('[MIC ERROR]', error);
+                }
+            }
+
+            async stopMicrophone() {
+                if (this.audioProducer) {
+                    try {
+                        await fetch(`${this.SERVER_URL}/api/producer/close`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Client-ID': this.clientID
+                            },
+                            body: JSON.stringify({ producerId: this.audioProducer.id })
+                        });
+                        this.audioProducer.close();
+                        this.audioProducer = null;
+                    } catch (error) {
+                        console.error('[MIC CLOSE ERROR]', error);
+                    }
+                }
+                this.isMicActive = false;
+                this.micButton.classList.remove('active');
+                this.micButtonText.textContent = 'Включить микрофон';
+                this.selfStatus.className = 'member-status muted';
+                this.updateStatus('Микрофон выключен - вы только слушаете', 'normal');
+                this.addMessage('System', 'Микрофон выключен - вы только слушаете');
+                // Обновляем состояние мобильной кнопки
+                if (this.mobileMicBtn) {
+                    this.mobileMicBtn.textContent = '🎤';
+                    this.mobileMicBtn.style.color = '#b9bbbe'; // Серый цвет для неактивного микрофона
+                }
+            }
+
+            async updateParticipants() {
+                try {
+                    const response = await fetch(`${this.SERVER_URL}/api/clients?clientID=${this.clientID}`);
+                    const data = await response.json();
+                    this.updateMembersList(data.clients);
+                    const otherClients = data.clients.filter(clientId => clientId !== this.clientID);
+                    for (const clientId of otherClients) {
+                        await this.consumeClientProducers(clientId);
+                    }
+                } catch (error) {
+                    console.error('[PARTICIPANTS ERROR]', error);
+                }
+            }
+
+            updateMembersList(clients) {
+                const otherClients = clients.filter(clientId => clientId !== this.clientID);
+                this.membersCount.textContent = otherClients.length + 1;
+                let membersHTML = `
+                    <div class="member-item">
+                        <div class="member-avatar">Вы</div>
+                        <div class="member-name">Вы</div>
+                        <div class="member-status ${this.isMicActive ? 'active' : 'muted'}" id="selfStatus"></div>
+                    </div>
+                `;
+                otherClients.forEach(clientId => {
+                    const shortId = clientId.substring(0, 6);
+                    const firstChar = shortId.charAt(0).toUpperCase();
+                    membersHTML += `
+                        <div class="member-item">
+                            <div class="member-avatar">${firstChar}</div>
+                            <div class="member-name">${shortId}</div>
+                            <div class="member-status"></div>
+                        </div>
+                    `;
+                });
+                this.membersList.innerHTML = membersHTML;
+                this.selfStatus = document.getElementById('selfStatus');
+            }
+
+            async consumeClientProducers(clientId) {
+                if (clientId === this.clientID) return;
+                try {
+                    const response = await fetch(`${this.SERVER_URL}/api/client/${clientId}/producers`);
+                    const data = await response.json();
+                    for (const producerId of data.producers) {
+                        if (!this.consumers.has(producerId)) {
+                            await this.consumeProducer(producerId, clientId);
+                        }
+                    }
+                } catch (error) {
+                    console.error('[CONSUME CLIENT ERROR]', error);
+                }
+            }
+
+            async consumeProducer(producerId, clientId) {
+                if (clientId === this.clientID) return;
+                try {
+                    const response = await fetch(`${this.SERVER_URL}/api/consume`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Client-ID': this.clientID
+                        },
+                        body: JSON.stringify({
+                            producerId: producerId,
+                            rtpCapabilities: this.device.rtpCapabilities,
+                            transportId: this.recvTransport.id
+                        })
+                    });
+                    const data = await response.json();
+                    if (data.error) {
+                        console.error('[CONSUME ERROR]', data.error);
+                        return;
+                    }
+                    const consumer = await this.recvTransport.consume({
+                        id: data.consumerId,
+                        producerId: data.producerId,
+                        kind: data.kind,
+                        rtpParameters: data.rtpParameters
+                    });
+                    this.consumers.set(producerId, consumer);
+                    this.playAudio(consumer.track, clientId, producerId);
+                } catch (error) {
+                    console.error('[CONSUME PRODUCER ERROR]', error);
+                }
+            }
+
+            playAudio(track, clientId, producerId) {
+                try {
+                    const mediaStream = new MediaStream([track.clone()]);
+                    const audioElement = document.createElement('audio');
+                    audioElement.srcObject = mediaStream;
+                    audioElement.volume = 0.8;
+                    audioElement.style.display = 'none';
+                    document.body.appendChild(audioElement);
+                    setTimeout(() => {
+                        const playPromise = audioElement.play();
+                        if (playPromise !== undefined) {
+                            playPromise
+                                .then(() => console.log('[AUDIO] Playback started for:', clientId))
+                                .catch(err => console.log('[AUDIO] Playback failed for:', clientId, err));
+                        }
+                    }, 100);
+                    if (!window.audioElements) window.audioElements = new Map();
+                    window.audioElements.set(producerId, audioElement);
+                } catch (error) {
+                    console.error('[AUDIO ERROR]', error);
+                }
+            }
+
+            async startParticipantUpdates() {
+                await this.updateParticipants();
+                this.updateInterval = setInterval(async () => {
+                    await this.updateParticipants();
+                }, 3000);
+            }
+
+            // === ДОБАВЛЕНО: Методы для работы с настройками ===
+            openSettings() {
+                // Заполняем поля модального окна текущими значениями
+                this.bitrateSlider.value = this.bitrate / 1000; // Переводим в кбит/с для слайдера
+                this.bitrateValue.textContent = this.bitrateSlider.value;
+                this.dtxCheckbox.checked = this.dtxEnabled;
+                this.fecCheckbox.checked = this.fecEnabled;
+                this.settingsModal.style.display = 'block';
+            }
+
+            async applySettings() {
+                const newBitrate = parseInt(this.bitrateSlider.value) * 1000; // Переводим обратно в бит/с
+                const newDtx = this.dtxCheckbox.checked;
+                const newFec = this.fecCheckbox.checked;
+
+                const bitrateChanged = newBitrate !== this.bitrate;
+                const dtxChanged = newDtx !== this.dtxEnabled;
+                const fecChanged = newFec !== this.fecEnabled;
+
+                if (bitrateChanged || dtxChanged || fecChanged) {
+                    this.bitrate = newBitrate;
+                    this.dtxEnabled = newDtx;
+                    this.fecEnabled = newFec;
+
+                    this.addMessage('System', `Настройки обновлены: Битрейт ${this.bitrate/1000} кбит/с, DTX ${this.dtxEnabled ? 'вкл' : 'выкл'}, FEC ${this.fecEnabled ? 'вкл' : 'выкл'}`);
+
+                    // Если микрофон активен, перезапускаем его с новыми настройками
+                    if (this.isMicActive) {
+                         await this.updateProducerSettings();
+                    }
+                }
+
+                this.settingsModal.style.display = 'none';
+            }
+
+            async updateProducerSettings() {
+                // Останавливаем текущий микрофон
+                await this.stopMicrophone();
+                // Запускаем микрофон заново с новыми настройками
+                await this.startMicrophone();
+                this.addMessage('System', 'Настройки применены. Микрофон перезапущен.');
+            }
+            // === КОНЕЦ ДОБАВЛЕНИЯ ===
+
+            destroy() {
+                if (this.keepAliveInterval) clearInterval(this.keepAliveInterval);
+                if (this.updateInterval) clearInterval(this.updateInterval);
+                if (this.audioProducer) this.audioProducer.close();
+                this.consumers.forEach(consumer => consumer.close());
+                if (this.sendTransport) this.sendTransport.close();
+                if (this.recvTransport) this.recvTransport.close();
+                if (this.stream) this.stream.getTracks().forEach(track => track.stop());
+                if (window.audioElements) {
+                    window.audioElements.forEach(element => {
+                        if (element.parentNode) element.parentNode.removeChild(element);
+                    });
+                }
+            }
+        }
+        // === КОНЕЦ ИЗМЕНЕНИЯ ===
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof mediasoupClient === 'undefined') {
+                document.getElementById('statusText').textContent = 'Ошибка: mediasoup-client не загружен';
+                document.getElementById('statusIndicator').className = 'status-indicator disconnected';
+                return;
+            }
+            new VoiceChatClient();
+        });
+
+        window.addEventListener('beforeunload', () => {
+            if (window.voiceChatClient) {
+                window.voiceChatClient.destroy();
+            }
+        });
+    </script>
+</body>
+</html>
+в компактном режиме не отображается кнопка настроек. И окно настроек видимо  тоже. Нужно починить, не нарушив остальную функциональность.
+Исправь и дай полный код исправленного файла без сокращений
