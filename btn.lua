@@ -1,4 +1,4 @@
-versAdd=387; versAddDop=5
+versAdd=387; versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -573,18 +573,32 @@ function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetSize(sizex, sizey)
 	self[id]:SetText(message)
 	self[id]:SetScript("OnClick",function(self, button)
-		if UnitName("target") == "Магистр Весара" then
+		if UnitName("target") == "Каменный страж Мукар" then
 			if id == 1 then
-				BuyMerchantItem(6,1)
+				BuyMerchantItem(20,1)
 			end
 			if id == 2 then
-				BuyMerchantItem(6,5)
+				BuyMerchantItem(20,5)
 			end
 			if id == 3 then
-				BuyMerchantItem(6,10)
+				BuyMerchantItem(20,10)
 			end
 			if id == 4 then
-				BuyMerchantItem(6,50)
+				BuyMerchantItem(20,50)
+			end
+		end
+		if UnitName("target") == "Магистр Весара" then
+			if id == 1 then
+				BuyMerchantItem(16,1)
+			end
+			if id == 2 then
+				BuyMerchantItem(16,5)
+			end
+			if id == 3 then
+				BuyMerchantItem(16,10)
+			end
+			if id == 4 then
+				BuyMerchantItem(16,50)
 			end
 		end
 		if UnitName("target") == "Магистр Сариен" then
@@ -11697,7 +11711,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
-		if UnitName("target") == "Магистр Весара" or UnitName("target") == "Магистр Сариен" or UnitName("target") == "Магистр Бразайл" then
+		if UnitName("target") == "Каменный страж Мукар" or UnitName("target") == "Магистр Весара" or UnitName("target") == "Магистр Сариен" or UnitName("target") == "Магистр Бразайл" then
 			if UnitName("target") ~= "Усури Златоблям" then
 				if MerchantFrame:IsVisible() then
 					if eBtn[1] == nil then
