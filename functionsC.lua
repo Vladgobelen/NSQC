@@ -5066,7 +5066,7 @@ function sendGPnik(num)
 	for i = 1, #testQ['gpRez'] do
 		str = str .. testQ['gpRez'][i] .. " "
 	end
-	SendAddonMessage("nsGP" .. " " .. num, str, "guild")
+	SendAddonMessage("nsGP1" .. " " .. num, str, "guild")
 end
 function sendGP(num)
 	local myNome = GetUnitName("player")
@@ -5082,39 +5082,39 @@ function sendGP(num)
 			 	for i = 2, GetNumRaidMembers() do
 					rez = rez .. UnitName("raid"..i) .. " "
 			 	end
-			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	SendAddonMessage("nsGP1" .. " " .. msg[2],rez, "guild")
 			elseif GetNumRaidMembers() > 10 and GetNumRaidMembers() <= 20 then
 				local rez = ""
 				rez = UnitName("raid1") .. " "
 			 	for i = 2, 10 do
 					rez = rez .. UnitName("raid"..i) .. " "
 			 	end
-			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	SendAddonMessage("nsGP1" .. " " .. msg[2],rez, "guild")
 			 	local rez = ""
 				rez = UnitName("raid11") .. " "
 			 	for i = 12, GetNumRaidMembers() do
 					rez = rez .. UnitName("raid"..i) .. " "
 			 	end
-			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	SendAddonMessage("nsGP1" .. " " .. msg[2],rez, "guild")
 			elseif GetNumRaidMembers() > 20 then
 				local rez = ""
 				rez = UnitName("raid1") .. " "
 			 	for i = 2, 10 do
 					rez = rez .. UnitName("raid"..i) .. " "
 			 	end
-			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	SendAddonMessage("nsGP1" .. " " .. msg[2],rez, "guild")
 			 	local rez = ""
 				rez = UnitName("raid11") .. " "
 			 	for i = 12, 20 do
 					rez = rez .. UnitName("raid"..i) .. " "
 			 	end
-			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	SendAddonMessage("nsGP1" .. " " .. msg[2],rez, "guild")
 			 	local rez = ""
 				rez = UnitName("raid21") .. " "
 			 	for i = 22, GetNumRaidMembers() do
 					rez = rez .. UnitName("raid"..i) .. " "
 			 	end
-			 	SendAddonMessage("nsGP" .. " " .. msg[2],rez, "guild")
+			 	SendAddonMessage("nsGP1" .. " " .. msg[2],rez, "guild")
 			end
 		end
 	end
@@ -5612,7 +5612,7 @@ function SendGuildOfficerMessageWithBonus(message)
                 -- Отправляем сообщение в офицерский чат
                 SendChatMessage(mainMessage .. " плюс " .. bonusMessage, "OFFICER", nil, 1)
                 -- Отправляем аддон-сообщение
-                SendAddonMessage("nsGP" .. " " .. bonusMessage, mainMessage, "guild")
+                SendAddonMessage("nsGP1" .. " " .. bonusMessage, mainMessage, "guild")
             end
             SendAddonMessage("nsGPlogR", bonusMessage.. " " ..mainMessage, "guild")
             break -- Прерываем цикл после нахождения своего игрока
@@ -7104,7 +7104,7 @@ function GpDb_old:_CreateRaidSelectionWindow()
             if self.gp_data[index] then
                 local nick = self.gp_data[index].original_nick
                 local playerID = self.gp_data[index].playerID or "UNKNOWN" -- Используем сохраненный ID
-                SendAddonMessage("nsGP" .. " " .. gpValue, nick, "guild")
+                SendAddonMessage("nsGP1" .. " " .. gpValue, nick, "guild")
                 logStr = logStr .. " " .. playerID
                 
                 -- Добавляем запись в лог
