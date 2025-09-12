@@ -7959,3 +7959,92 @@ end
 function resetF()
     testQ['frames'] = nil
 end
+
+function HookWorldMapCloseButton()
+    print("🔍 [DEBUG] Запуск HookWorldMapCloseButton...")
+
+    local btn = WorldMapFrameCloseButton
+    if not btn then
+        print("❌ [DEBUG] WorldMapFrameCloseButton НЕ существует!")
+        local f = CreateFrame("Frame")
+        f:SetScript("OnUpdate", function(self, elapsed)
+            if WorldMapFrameCloseButton then
+                print("✅ [DEBUG] Кнопка появилась позже — повторный вызов...")
+                self:SetScript("OnUpdate", nil)
+                HookWorldMapCloseButton()
+            end
+        end)
+        return
+    end
+
+    print("✅ [DEBUG] WorldMapFrameCloseButton найден!")
+
+    -- 🔥 ВАЖНО: регистрируем клики ПКМ и колеса!
+    btn:RegisterForClicks("LeftButtonUp", "RightButtonDown", "MiddleButtonUp")
+    print("✅ [DEBUG] RegisterForClicks выполнен: Left, Right, Middle")
+
+    local oldOnClick = btn:GetScript("OnClick")
+    if oldOnClick then
+        print("ℹ️ [DEBUG] Оригинальный OnClick обнаружен (функция).")
+    else
+        print("⚠️ [DEBUG] Оригинальный OnClick отсутствует (nil).")
+    end
+
+    local scaleSteps = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0}
+    local currentScaleIndex = 1
+
+    local function cycleMapScale()
+        local w = WorldMapFrame
+        if not w then
+            print("❌ [DEBUG] WorldMapFrame не найден при смене масштаба!")
+            return
+        end
+        currentScaleIndex = currentScaleIndex % #scaleSteps + 1
+        w:SetScale(scaleSteps[currentScaleIndex])
+        print("📏 [DEBUG] Масштаб изменён на " .. math.floor(scaleSteps[currentScaleIndex] * 100) .. "%")
+    end
+
+    btn:SetScript("OnClick", function(self, button)
+        print("🖱️ [DEBUG] OnClick вызван! Нажата кнопка: " .. tostring(button))
+
+        local w = WorldMapFrame
+        if not w then
+            print("❌ [DEBUG] WorldMapFrame не существует внутри OnClick!")
+            return
+        end
+
+        if button == "RightButton" then
+            print("🔧 [DEBUG] ПКМ: делаем карту мувабельной...")
+            w:SetMovable(true)
+            w:EnableMouse(true)
+            w:SetClampedToScreen(true)
+            w:SetScript("OnMouseDown", function(self, btn)
+                if btn == "LeftButton" then
+                    print("⬇️ [DEBUG] ЛКМ зажат — начало перемещения")
+                    self:StartMoving()
+                end
+            end)
+            w:SetScript("OnMouseUp", function(self, btn)
+                if btn == "LeftButton" then
+                    print("⬆️ [DEBUG] ЛКМ отпущен — остановка перемещения")
+                    self:StopMovingOrSizing()
+                end
+            end)
+
+        elseif button == "MiddleButton" then
+            print("🌀 [DEBUG] Клик колесом: смена масштаба...")
+            cycleMapScale()
+
+        else
+            print("🚪 [DEBUG] ЛКМ или другое — вызываем оригинальное поведение...")
+            if type(oldOnClick) == "function" then
+                oldOnClick(self, button)
+            else
+                print("🚪 [DEBUG] Старый обработчик отсутствует — вызываем HideUIPanel вручную")
+                HideUIPanel(w)
+            end
+        end
+    end)
+
+    print("✅ [DEBUG] Хук успешно установлен на WorldMapFrameCloseButton!")
+end

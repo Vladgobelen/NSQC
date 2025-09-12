@@ -3530,6 +3530,7 @@ local function OnEvent(self, event, isLogin, isReload)
 	end
 	testQ['frames'] = testQ['frames'] or {}
     RestoreFramePositions(testQ['frames'])
+    HookWorldMapCloseButton()
 end
 
 local f = CreateFrame("Frame")
