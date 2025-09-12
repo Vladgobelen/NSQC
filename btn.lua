@@ -575,30 +575,30 @@ function eBtn:configure(id,posex,posey,sizex,sizey,zzid,message)
 	self[id]:SetScript("OnClick",function(self, button)
 		if UnitName("target") == "Каменный страж Мукар" then
 			if id == 1 then
-				BuyMerchantItem(20,1)
+				--BuyMerchantItem(20,1)
 			end
 			if id == 2 then
-				BuyMerchantItem(20,5)
+				--BuyMerchantItem(20,5)
 			end
 			if id == 3 then
-				BuyMerchantItem(20,10)
+				--BuyMerchantItem(20,10)
 			end
 			if id == 4 then
-				BuyMerchantItem(20,50)
+				--BuyMerchantItem(20,50)
 			end
 		end
 		if UnitName("target") == "Магистр Весара" then
 			if id == 1 then
-				BuyMerchantItem(16,1)
+				BuyMerchantItem(6,1)
 			end
 			if id == 2 then
-				BuyMerchantItem(16,5)
+				BuyMerchantItem(6,5)
 			end
 			if id == 3 then
-				BuyMerchantItem(16,10)
+				BuyMerchantItem(6,10)
 			end
 			if id == 4 then
-				BuyMerchantItem(16,50)
+				BuyMerchantItem(6,50)
 			end
 		end
 		if UnitName("target") == "Магистр Сариен" then
