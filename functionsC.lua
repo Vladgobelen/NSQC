@@ -7278,55 +7278,100 @@ function GpDb_old:ToggleRaidWindow()
     end
 end
 
--- Создаем таблицу C_Timer только если её нет (для совместимости с будущими версиями)
-if type(C_Timer) ~= "table" then
-    C_Timer = {}
-end
+-- ============================================================================
+-- C_Timer Emulation — FULLY BACKWARDS COMPATIBLE with your "second version"
+-- Supports:
+--   C_Timer.After(duration, callback)
+--   C_Timer.NewTicker(duration, callback, iterations)
+--   C_Timer(duration, callback, isLooping)  → via __call
+-- Fixes:
+--   "attempt to index global 'C_Timer' (a function value)"
+--   "attempt to call global 'C_Timer' (a table value)"
+-- Place this at the VERY TOP of your addon (main.lua)
+-- ============================================================================
 
--- Реализация C_Timer.After
-function C_Timer.After(duration, callback)
-    local timerFrame = CreateFrame("Frame")
-    timerFrame.elapsed = 0
-    timerFrame:SetScript("OnUpdate", function(self, elapsed)
-        self.elapsed = self.elapsed + elapsed
-        if self.elapsed >= duration then
-            callback()
-            self:SetScript("OnUpdate", nil)
-        end
-    end)
-    return timerFrame
-end
+do
+    local existing_C_Timer = _G.C_Timer
 
--- Реализация C_Timer.NewTicker
-function C_Timer.NewTicker(duration, callback, iterations)
-    local ticker = {
-        _remaining = iterations or math.huge,
-        Cancel = function(self) self._remaining = 0 end
+    -- Создаём базовую таблицу C_Timer
+    local C_Timer = {
+        _activeTimers = {}  -- для отслеживания активных таймеров (опционально)
     }
-    
-    local function tick()
-        if ticker._remaining <= 0 then return end
-        callback()
-        ticker._remaining = ticker._remaining - 1
-        if ticker._remaining > 0 then
-            C_Timer.After(duration, tick)
-        end
-    end
-    
-    C_Timer.After(duration, tick)
-    return ticker
-end
 
--- Реализация старого интерфейса C_Timer(duration, callback, isLooping)
-setmetatable(C_Timer, {
-    __call = function(_, duration, callback, isLooping)
-        if isLooping then
-            return C_Timer.NewTicker(duration, callback, nil)
-        else
-            return C_Timer.After(duration, callback)
+    -- Реализация C_Timer.After — создаёт фрейм, который вызывает callback через duration
+    function C_Timer.After(duration, callback)
+        if type(callback) ~= "function" then return end
+        if type(duration) ~= "number" or duration < 0 then duration = 0 end
+
+        local timerFrame = CreateFrame("Frame")
+        timerFrame.elapsed = 0
+        timerFrame:SetScript("OnUpdate", function(self, elapsed)
+            self.elapsed = self.elapsed + elapsed
+            if self.elapsed >= duration then
+                callback()
+                self:SetScript("OnUpdate", nil)  -- отключаем
+                -- Опционально: удалить из активных (если отслеживаете)
+                -- table.remove(C_Timer._activeTimers, table.indexof(C_Timer._activeTimers, self))
+            end
+        end)
+
+        -- Опционально: сохраняем для отладки
+        table.insert(C_Timer._activeTimers, timerFrame)
+
+        return timerFrame
+    end
+
+    -- Реализация C_Timer.NewTicker — использует рекурсию через After (как во втором варианте)
+    function C_Timer.NewTicker(duration, callback, iterations)
+        if type(callback) ~= "function" then return end
+        if type(duration) ~= "number" or duration < 0 then duration = 0 end
+
+        local ticker = {
+            _remaining = iterations or math.huge,
+            Cancel = function(self)
+                self._remaining = 0
+            end
+        }
+
+        local function tick()
+            if ticker._remaining <= 0 then return end
+            callback()
+            ticker._remaining = ticker._remaining - 1
+            if ticker._remaining > 0 then
+                C_Timer.After(duration, tick)
+            end
+        end
+
+        C_Timer.After(duration, tick)
+        return ticker
+    end
+
+    -- Совместимость: C_Timer.NewTimer (если используется)
+    function C_Timer.NewTimer(duration, callback)
+        return C_Timer.After(duration, callback)
+    end
+
+    -- Метаметод __call — чтобы можно было вызывать C_Timer как функцию
+    setmetatable(C_Timer, {
+        __call = function(_, duration, callback, isLooping)
+            if isLooping then
+                return C_Timer.NewTicker(duration, callback)
+            else
+                return C_Timer.After(duration, callback)
+            end
+        end
+    })
+
+    -- Восстанавливаем/устанавливаем глобальный C_Timer
+    _G.C_Timer = C_Timer
+
+    -- Эмуляция GetServerTime, если отсутствует
+    if not _G.GetServerTime then
+        _G.GetServerTime = function()
+            return time()
         end
     end
-})
+end
 
 function GetNumGroupMembers()
     if GetNumRaidMembers() > 0 then
@@ -8048,3 +8093,5 @@ function HookWorldMapCloseButton()
 
     print("✅ [DEBUG] Хук успешно установлен на WorldMapFrameCloseButton!")
 end
+
+-----------------------
