@@ -7279,11 +7279,12 @@ function GpDb_old:ToggleRaidWindow()
 end
 
 -- ============================================================================
--- C_Timer Emulation — FULLY BACKWARDS COMPATIBLE with your "second version"
+-- C_Timer Emulation — FULLY BACKWARDS COMPATIBLE for WoW 3.3.5
 -- Supports:
 --   C_Timer.After(duration, callback)
 --   C_Timer.NewTicker(duration, callback, iterations)
---   C_Timer(duration, callback, isLooping)  → via __call
+--   C_Timer(duration, callback, isLooping) → via __call
+--   timer:Cancel() on all returned timer objects
 -- Fixes:
 --   "attempt to index global 'C_Timer' (a function value)"
 --   "attempt to call global 'C_Timer' (a table value)"
@@ -7295,33 +7296,53 @@ do
 
     -- Создаём базовую таблицу C_Timer
     local C_Timer = {
-        _activeTimers = {}  -- для отслеживания активных таймеров (опционально)
+        _activeTimers = {}  -- для отладки (опционально)
     }
 
-    -- Реализация C_Timer.After — создаёт фрейм, который вызывает callback через duration
+    -- Вспомогательная функция для безопасной отмены таймера
+    local function cancelTimer(timerFrame)
+        if not timerFrame or timerFrame.isCancelled then return end
+        timerFrame.isCancelled = true
+        timerFrame:SetScript("OnUpdate", nil)
+        -- Удаляем из активных (если отслеживаем)
+        for i, t in ipairs(C_Timer._activeTimers) do
+            if t == timerFrame then
+                table.remove(C_Timer._activeTimers, i)
+                break
+            end
+        end
+    end
+
+    -- Реализация C_Timer.After — однократный вызов через duration
     function C_Timer.After(duration, callback)
         if type(callback) ~= "function" then return end
         if type(duration) ~= "number" or duration < 0 then duration = 0 end
 
         local timerFrame = CreateFrame("Frame")
         timerFrame.elapsed = 0
+        timerFrame.isCancelled = false
+
+        -- Метод отмены
+        function timerFrame:Cancel()
+            cancelTimer(self)
+        end
+
         timerFrame:SetScript("OnUpdate", function(self, elapsed)
+            if self.isCancelled then return end
             self.elapsed = self.elapsed + elapsed
             if self.elapsed >= duration then
-                callback()
-                self:SetScript("OnUpdate", nil)  -- отключаем
-                -- Опционально: удалить из активных (если отслеживаете)
-                -- table.remove(C_Timer._activeTimers, table.indexof(C_Timer._activeTimers, self))
+                if not self.isCancelled and type(callback) == "function" then
+                    callback()
+                end
+                cancelTimer(self)
             end
         end)
 
-        -- Опционально: сохраняем для отладки
         table.insert(C_Timer._activeTimers, timerFrame)
-
         return timerFrame
     end
 
-    -- Реализация C_Timer.NewTicker — использует рекурсию через After (как во втором варианте)
+    -- Реализация C_Timer.NewTicker — повторяющийся таймер
     function C_Timer.NewTicker(duration, callback, iterations)
         if type(callback) ~= "function" then return end
         if type(duration) ~= "number" or duration < 0 then duration = 0 end
@@ -7335,7 +7356,9 @@ do
 
         local function tick()
             if ticker._remaining <= 0 then return end
-            callback()
+            if type(callback) == "function" then
+                callback()
+            end
             ticker._remaining = ticker._remaining - 1
             if ticker._remaining > 0 then
                 C_Timer.After(duration, tick)
@@ -7365,7 +7388,7 @@ do
     -- Восстанавливаем/устанавливаем глобальный C_Timer
     _G.C_Timer = C_Timer
 
-    -- Эмуляция GetServerTime, если отсутствует
+    -- Эмуляция GetServerTime, если отсутствует (для полной совместимости)
     if not _G.GetServerTime then
         _G.GetServerTime = function()
             return time()
