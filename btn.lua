@@ -1,4 +1,4 @@
-versAdd=390; versAddDop=4
+versAdd=390; versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -1414,17 +1414,31 @@ function vybor:configure(id)
 		-- 	end
 		-- end
 		if id == 8 then
-			vybor[8]:Show()
+			if vybor[8] then
+				vybor[8]:Show()
+			end
 		end
 		if id == 2 then
-			vybor[3]:Show()
-			vybor[4]:Show()
-			vybor[2]:Show()
+			if vybor[3] then
+				vybor[3]:Show()
+			end
+			if vybor[4] then
+				vybor[4]:Show()
+			end
+			if vybor[2] then
+				vybor[2]:Show()
+			end
 		end
 		if id == 3 then
-			vybor[3]:Show()
-			vybor[4]:Show()
-			vybor[2]:Show()
+			if vybor[3] then
+				vybor[3]:Show()
+			end
+			if vybor[4] then
+				vybor[4]:Show()
+			end
+			if vybor[2] then
+				vybor[2]:Show()
+			end
 		end
 		if id == 29 then
 			vybor[29]:Show()
