@@ -8,7 +8,7 @@ function mysplit (inputstr, sep)
 	end
 	return t
 end
-local function IsInRaid()
+function IsInRaid()
     return GetNumRaidMembers() > 0
 end
 function round(number)
