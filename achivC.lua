@@ -3525,9 +3525,6 @@ local function OnEvent(self, event, isLogin, isReload)
 	testQ['spisok'] = ""
 	testQ["skills"] = nil
 	SendAddonMessage("daiMneMojKod ", "", "guild")
-	if not GpDb then
-		gpDb_old = gpDb_old or GpDb_old:new({})
-	end
 	testQ['frames'] = testQ['frames'] or {}
     RestoreFramePositions(testQ['frames'])
     HookWorldMapCloseButton()
