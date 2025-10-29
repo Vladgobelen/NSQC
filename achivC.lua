@@ -3843,76 +3843,76 @@ local myNome = GetUnitName("player")
 			testQ['save6time'],testQ['save6timeF'] = GetSpellCooldown("Захват рун")
 		end
 	end
-		-- local x = GetScreenWidth()
-		-- local y = GetScreenHeight()
-		-- local buf
+		local x = GetScreenWidth()
+		local y = GetScreenHeight()
+		local buf
 
-		-- if prokIcons ~= nil then
-		-- 	for k, v in pairs(prokIcons) do
-		-- 		for j, l in pairs(prokIcons[k]) do
+		if prokIcons ~= nil then
+			for k, v in pairs(prokIcons) do
+				for j, l in pairs(prokIcons[k]) do
 
 
-		-- 		if arg2 == "SPELL_AURA_APPLIED" or arg2 == "SPELL_CAST_SUCCESS" then
-		-- 				if arg4 == myNome then
-		-- 					if arg10 == prokIcons[k]["name"] or arg10 == prokIcons[k]["skill"] then
-		-- 						local tempStack
-		-- 						for i = 1, 24 do
-		-- 							local bNome,__,__,numStack = UnitBuff(myNome,i)
-		-- 							if arg2 == "SPELL_CAST_SUCCESS" then
-		-- 								if prokIcons[k]["name"] == bNome then
-		-- 									if tonumber(numStack) ==  tonumber(prokIcons[k]["stack"])-1 then
-		-- 										tempStack = 1
-		-- 									end
-		-- 								end
-		-- 							end
-		-- 							if arg2 == "SPELL_AURA_APPLIED" then
-		-- 								if prokIcons[k]["name"] == bNome then
-		-- 									if tonumber(prokIcons[k]["stack"]) == 0 then
-		-- 										tempStack = 1
-		-- 									end
-		-- 									if tonumber(numStack) == 0 then
-		-- 										numStack = 1
-		-- 									end
-		-- 									if tonumber(numStack) ==  tonumber(prokIcons[k]["stack"]) then
-		-- 										tempStack = 1
-		-- 									end
-		-- 								end
-		-- 							end
-		-- 						end
-		-- 						if tempStack == 1 then
-		-- 							if prokIcons[k]["profil"] == 4 then
-		-- 								unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0+prok_set4["x"],0+prok_set4["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-		-- 							end
-		-- 							if prokIcons[k]["profil"] == 1 then
-		-- 								unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set1["Rx"],prok_set1["Ry"],0+prok_set1["x"],0+prok_set1["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-		-- 							end
-		-- 							if prokIcons[k]["profil"] == 2 then
-		-- 								unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set2["Rx"],prok_set2["Ry"],0+prok_set2["x"],0+prok_set2["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-		-- 							end
-		-- 							if prokIcons[k]["profil"] == 3 then
-		-- 								unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set3["Rx"],prok_set3["Ry"],0+prok_set3["x"],0+prok_set3["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-		-- 							end
-		-- 						end
-		-- 					end
-		-- 				end
-		-- 			end
-		-- 			if arg2 == "UNIT_DIED" and arg7 == myNome then
-		-- 				if arg7 == myNome then
-		-- 					if arg10 == prokIcons[k]["name"] then
-		-- 						unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER")
-		-- 					end
-		-- 				end
-		-- 			end
-		-- 			if arg2 == "SPELL_AURA_REMOVED" then
-		-- 				if arg7 == myNome then
-		-- 					if arg10 == prokIcons[k]["name"] then
-		-- 						unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER")
-		-- 					end
-		-- 				end
-		-- 			end
-		-- 		end
-		-- 	end
-		-- end
+				if arg2 == "SPELL_AURA_APPLIED" or arg2 == "SPELL_CAST_SUCCESS" then
+						if arg4 == myNome then
+							if arg10 == prokIcons[k]["name"] or arg10 == prokIcons[k]["skill"] then
+								local tempStack
+								for i = 1, 24 do
+									local bNome,__,__,numStack = UnitBuff(myNome,i)
+									if arg2 == "SPELL_CAST_SUCCESS" then
+										if prokIcons[k]["name"] == bNome then
+											if tonumber(numStack) ==  tonumber(prokIcons[k]["stack"])-1 then
+												tempStack = 1
+											end
+										end
+									end
+									if arg2 == "SPELL_AURA_APPLIED" then
+										if prokIcons[k]["name"] == bNome then
+											if tonumber(prokIcons[k]["stack"]) == 0 then
+												tempStack = 1
+											end
+											if tonumber(numStack) == 0 then
+												numStack = 1
+											end
+											if tonumber(numStack) ==  tonumber(prokIcons[k]["stack"]) then
+												tempStack = 1
+											end
+										end
+									end
+								end
+								if tempStack == 1 then
+									if prokIcons[k]["profil"] == 4 then
+										unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0+prok_set4["x"],0+prok_set4["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
+									end
+									if prokIcons[k]["profil"] == 1 then
+										unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set1["Rx"],prok_set1["Ry"],0+prok_set1["x"],0+prok_set1["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
+									end
+									if prokIcons[k]["profil"] == 2 then
+										unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set2["Rx"],prok_set2["Ry"],0+prok_set2["x"],0+prok_set2["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
+									end
+									if prokIcons[k]["profil"] == 3 then
+										unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set3["Rx"],prok_set3["Ry"],0+prok_set3["x"],0+prok_set3["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
+									end
+								end
+							end
+						end
+					end
+					if arg2 == "UNIT_DIED" and arg7 == myNome then
+						if arg7 == myNome then
+							if arg10 == prokIcons[k]["name"] then
+								unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER")
+							end
+						end
+					end
+					if arg2 == "SPELL_AURA_REMOVED" then
+						if arg7 == myNome then
+							if arg10 == prokIcons[k]["name"] then
+								unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER")
+							end
+						end
+					end
+				end
+			end
+		end
 		if testQ['q3dict'] ~= nil then
 			if arg2 == 'PARTY_KILL' then
 				if arg4 == myNome then
