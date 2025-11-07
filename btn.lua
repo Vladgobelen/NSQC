@@ -1,4 +1,4 @@
-versAdd=391; versAddDop=0
+versAdd=391; versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -11534,77 +11534,7 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 				end
 			end
 		end
-		if WhoFrame:IsVisible() then
-			if btn[982] == nil then
-				btn:configure(982,0,-32,32,32,"",">")
-				btn:configure(981,0,-64,32,32,"","+")
-			else
-				btn[982]:Show()
-				btn[981]:Show()
-			end
-			btn[982]:SetScript("OnEnter",function(self)
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				GameTooltip:AddLine("|cFF6495EDПринимать в гильдию игроков выше выбранного уровня. Второй клик - остановить.")
-				GameTooltip:AddLine(" ")
-				GameTooltip:AddLine("|cff99ff99Уровень игроков указывается в строке поиска ниже")
-				GameTooltip:AddLine("|cff99ff99Если уровень не выбран, приглашаются игроки 1-79 уровня")
-				if testQ["gtg"] == nil then
-					GameTooltip:AddLine("|cff99ff99Сейчас не принимаются игроки")
-				else
-					GameTooltip:AddLine("|cff99ff99Принимаются игроки " .. testQ["gtg"] .. " уровня")
-				end
-				GameTooltip:Show()
-			end)
-			btn[982]:SetScript("OnLeave", function(self)
-				GameTooltip:Hide();
-			end)
-			btn[981]:SetScript("OnEnter",function(self)
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				if WhoFrame["selectedName"] ~= nil then
-					GameTooltip:AddLine("|cFF6495EDПринять в гильдию игрока " .. WhoFrame["selectedName"])
-				else
-					GameTooltip:AddLine("|cFF6495EDНужно выбрать игрока в списке слева")
-				end
-				GameTooltip:Show()
-			end)
-			btn[981]:SetScript("OnLeave", function(self)
-				GameTooltip:Hide();
-			end)
-			btn[982]:SetScript("OnClick",function(self, button)
-				if testQ ~= nil then
-					if WhoFrameEditBox:GetText() ~= "" then
-						if testQ["gtg"] == nil then
-							testQ["gtg"] = tonumber(WhoFrameEditBox:GetText())
-							print("Начинают приглашаться игроки от " .. WhoFrameEditBox:GetText() .. " уровня и выше")
-							btn[982]:SetText("||")
-						else
-							testQ["gtg"] = nil
-							btn[982]:SetText(">")
-						end
-					else
-						if testQ["gtg"] == nil then
-							testQ["gtg"] = 1
-							print("Начинают приглашаться игроки от 1 уровня и выше")
-							btn[982]:SetText("||")
-						else
-							testQ["gtg"] = nil
-							btn[982]:SetText(">")
-						end
-					end
-				end
-			end)
-			btn[981]:SetScript("OnClick",function(self, button)
-				if WhoFrame["selectedName"] ~= nil then
-					GuildInvite(WhoFrame["selectedName"])
-					print("приглашается игрок " .. WhoFrame["selectedName"])
-				end
-			end)
-		else
-			if btn[982] ~= nil then
-				btn[982]:Hide()
-				btn[981]:Hide()
-			end
-		end
+
 		if testQ['nsq5_end'] == nil then
 			if testQ['nsq5_1'] ~= nil then
 				if UnitName("target") == testQ['nsq5_1'] then
