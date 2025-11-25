@@ -6106,46 +6106,14 @@ function NSQCMenu_old:addButton(parentMenu, options)
     return button
 end
 
-function C_Timer(duration, callback, isLooping)
-    -- Создаем фрейм для таймера
-    local timerFrame = CreateFrame("Frame")
-    
-    -- Устанавливаем продолжительность таймера
-    timerFrame.duration = duration
-    timerFrame.elapsed = 0
-    timerFrame.isLooping = isLooping or false  -- По умолчанию таймер не циклический
-    
-    -- Обработчик OnUpdate для отслеживания времени
-    timerFrame:SetScript("OnUpdate", function(self, elapsed)
-        self.elapsed = self.elapsed + elapsed
-        
-        -- Проверяем, прошло ли нужное время
-        if self.elapsed >= self.duration then
-            -- Выполняем переданную функцию (callback)
-            if type(callback) == "function" then
-                callback()
-            end
-            
-            -- Если таймер циклический, сбрасываем время
-            if self.isLooping then
-                self.elapsed = 0
-            else
-                -- Уничтожаем фрейм после выполнения, если таймер не циклический
-                self:SetScript("OnUpdate", nil)
-                self = nil
-            end
-        end
-    end)
-end
-
-C_Timer(10, function()
-    if not menu then
-    	NS3Menu_old()
-    	if testQ['скрыть боссов'] then
-    		HideBossFrames()
-    	end
-    end
-end)
+-- C_Timer(10, function()
+--     if not menu then
+--     	NS3Menu_old()
+--     	if testQ['скрыть боссов'] then
+--     		HideBossFrames()
+--     	end
+--     end
+-- end)
 
 function NS3Menu_old()
     local menu = NSQCMenu_old:new("NSQC")
