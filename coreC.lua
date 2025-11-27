@@ -89,7 +89,7 @@ if msg[1] == "\"чс" and (sender == "Высшая" or sender == "Дханван
 		SendChatMessage(msg[2] .. " уже есть в черном списке" , "OFFICER", nil, 1)
 	end
 end
-if msg[1] == "!устав" then
+if msg[1] == "-устав" then
 	if sender == myNome or msg[3] == myNome then
 		print(msg[3])
 		if msg[2] == nil or msg[2] == "1" then
