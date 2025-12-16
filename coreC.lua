@@ -72,7 +72,7 @@ end
 if msg[1] == "\"гс" and GS_Data[GetRealmName()].Players[msg[2]] ~= nil then
 	SendChatMessage(msg[2] .. ": " .. GS_Data[GetRealmName()].Players[msg[2]].GearScore .. " гс. Обновлено: " .. string.sub(GS_Data[GetRealmName()].Players[msg[2]].Date,7,8) .. "/" .. string.sub(GS_Data[GetRealmName()].Players[msg[2]].Date,5,6) .. "/" .. string.sub(GS_Data[GetRealmName()].Players[msg[2]].Date,1,4) , "OFFICER", nil, 1)
 end
-if msg[1] == "\"чс" and (sender == "Высшая" or sender == "Дханвантари" or sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес" or sender == "Аффа" or sender == "Шеф" or sender == "Нугган" or sender == "Showmeblood" or sender == "Годвар" or sender == "Совамилаха") then
+if msg[1] == "\"чс" and (sender == "Высшая" or sender == "Ваймс" or sender == "Хефе" or sender == "Дервин" or sender == "Люцзе" or sender == "Посети" or sender == "Витинари" or sender == "Злойкакаш" or sender == "Разбредовина" or sender == "Qoshadows" or sender == "Хилялко" or sender == "Сантанигга" or sender == "Кусяо" or sender == "Колон" or sender == "Кербес" or sender == "Аффа" or sender == "Шеф" or sender == "Нугган" or sender == "Showmeblood" or sender == "Годвар" or sender == "Совамилаха") then
 	if testQ["chs"] == nil then
 		testQ["chs"] = {}
 	end

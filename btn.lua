@@ -10830,12 +10830,12 @@ minibtn:SetScript("OnClick", function(self, arg1)
         lastClickButton = arg1
         
         -- Устанавливаем таймер для обработки одинарного клика
-        clickTimer = C_Timer(0.3, function()
-            if clickPending then
-                HandleSingleClick(lastClickButton)
-                clickPending = false
-            end
-        end)
+		clickTimer = C_Timer.After(0.3, function()
+		    if clickPending then
+		        HandleSingleClick(lastClickButton)
+		        clickPending = false
+		    end
+		end)
     end
 end)
 

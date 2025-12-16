@@ -1932,125 +1932,114 @@ if kod == "#M1QP" and message == myNome then
 	end
 end
 if kod == "gKick" and sender == myNome then
-    local kickList = {}
-    local kickCount = 0
-    testQ["gKick"] = {}
-    
-    -- Define rank and level thresholds with their corresponding offline days requirements
-    local rankThresholds = {
-        ["Мл. Констебль"] = true,
-        ["И.О. Констебля"] = true
-    }
-    
-    local levelThresholds = {
-        [29] = 3,  -- level ≤ 29: 3 days offline
-        [39] = 4,  -- level ≤ 39: 4 days offline
-        [49] = 5,  -- level ≤ 49: 5 days offline
-        [59] = 6,  -- level ≤ 59: 6 days offline
-        [69] = 7,  -- level ≤ 69: 7 days offline
-        [79] = 8,  -- level ≤ 79: 8 days offline
-        [80] = 14 -- level = 80: 14 days offline
-    }
-    
-    for i = 1, GetNumGuildMembers(true) do
-        if kickCount >= 10 then break end
-        
-        local name, rankName, _, level, _, _, publicNote, officerNote, _, _, _, _, _, _, _, _, _ = GetGuildRosterInfo(i)
-        testQ["gKick"][i] = officerNote
+    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000[gKick]|r ZAPUSK KIKA...")
 
-        -- Check if member meets the criteria for kicking
-        if rankThresholds[rankName] then
-            level = tonumber(level)
-            local ofInfo = mysplit(officerNote)
-            
-            -- Check officer note and public note conditions
-            if (officerNote == "" and publicNote == "") or (tonumber(ofInfo[1]) == 0 and tonumber(ofInfo[3]) == 0 and publicNote == "") then
-                local requiredDays = nil
-                
-                -- Find the required offline days for this level
-                for maxLevel, days in pairs(levelThresholds) do
-                    if level <= maxLevel then
-                        requiredDays = days
-                        break
-                    end
-                end
-                
-                if requiredDays then
-                    local yearsOffline, monthsOffline, daysOffline, hoursOffline = GetGuildRosterLastOnline(i)
-                    daysOffline = tonumber(daysOffline) or 0
-                    
-                    if daysOffline >= requiredDays and yearsOffline ~= nil then
-                        -- Check if player hasn't been processed already
-                        if not string.find(testQ['spisok'] or '', name) then
-                            GuildUninvite(name)
-                            local message = string.format("%s %s %d лвл %d лет %d месяцев %d дней %d часов", 
-                                rankName, name, level, yearsOffline, monthsOffline, daysOffline, hoursOffline)
-                            SendChatMessage(message, "OFFICER", nil, 1)
-                            testQ['spisok'] = (testQ['spisok'] or '') .. name
-                            
-                            -- Add to kick list
-                            if not kickList[name] then
-                                kickList[name] = true
-                                kickCount = kickCount + 1
-                            end
+    testQ = testQ or {}
+    testQ.spisok = testQ.spisok or ""
+
+    local candidates = {}
+
+    -- Собираем всех подходящих кандидатов
+    for i = 1, GetNumGuildMembers() do
+        local name, rankName, _, level, _, _, publicNote, officerNote = GetGuildRosterInfo(i)
+        if name and rankName and level then
+            local levelNum = tonumber(level)
+            if levelNum and levelNum <= 29 and (rankName == "и.о. констебля" or rankName == "Мл. констебль") then
+                local y, m, d = GetGuildRosterLastOnline(i)
+                d = tonumber(d) or 0
+                if y and d >= 3 and publicNote == "" then
+                    local officerOk = (officerNote == "")
+                    if not officerOk then
+                        local of1, of3 = string.match(officerNote, "^%s*(%S+)%s+%S+%s+(%S+)%s*$")
+                        if of1 and of3 and tonumber(of1) == 0 and tonumber(of3) == 0 then
+                            officerOk = true
                         end
+                    end
+
+                    if officerOk and not string.find(testQ.spisok, name, 1, true) then
+                        table.insert(candidates, {name = name, rank = rankName, level = levelNum, days = d})
                     end
                 end
             end
         end
     end
-    
-    FriendsFrame:Hide()
+
+    local kickIndex = 1
+    local totalKicks = #candidates
+
+    if totalKicks == 0 then
+        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000[gKick]|r Net podkhodyashchikh dlya kika.")
+        FriendsFrame:Hide()
+        return
+    end
+
+    local function kickNext()
+        if kickIndex > totalKicks then
+            DEFAULT_CHAT_FRAME:AddMessage("|cffff0000[gKick]|r Zaversheno. Kicknuto: " .. totalKicks)
+            FriendsFrame:Hide()
+            return
+        end
+
+        local cand = candidates[kickIndex]
+        GuildUninvite(cand.name)
+        SendChatMessage(cand.rank .. " " .. cand.name .. " (" .. cand.level .. " urov) kiknut za " .. cand.days .. " dney", "OFFICER")
+        testQ.spisok = testQ.spisok .. cand.name .. ";"
+        kickIndex = kickIndex + 1
+
+        C_Timer.After(0.01, kickNext)
+    end
+
+    kickNext()
 end
 
 if kod == "gUp" and sender == myNome then
-	local testMacro
-	for i=1,36 do
-		testMacro = GetMacroInfo(i)
-		if testMacro ~= nil then
-			testMacro = mysplit(testMacro)
-			if testMacro[1] == "NSQC" then
-				EditMacro(i, "NSQC", 134414, "пусто")
-			end
-		end
-	end
-	local kickList
-	testQ["gUp"] = {}
-	for Zc=1,GetNumGuildMembers(true) do
-		local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-		testQ["gUp"][Zc] = officerNote
-		level = tonumber(level)
-		if string.find(testQ['spisok'],name) == nil then
-			if rankName == "И.О. Констебля" then
-			print(rankName,name)
-			testQ['spisok'] = testQ['spisok'] .. name
-				if officerNote == "" and publicNote == "" then
-					--SendChatMessage(name .. " " .. level .. " лвл " .. rankName, "OFFICER", nil, 1)
-					--print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-					GuildPromote(name)
-					if kickList == nil then
-						kickList = "/gpromote " .. name .. "\n"
-					else
-						kickList = kickList .. "/gpromote " .. name .. "\n"
-					end
-				end
-				if message ~= "" then
+    local testMacro
+    for i=1,36 do
+        testMacro = GetMacroInfo(i)
+        if testMacro ~= nil then
+            testMacro = mysplit(testMacro)
+            if testMacro[1] == "NSQC" then
+                EditMacro(i, "NSQC", 134414, "пусто")
+            end
+        end
+    end
+    local kickList
+    testQ["gUp"] = {}
+    for Zc=1,GetNumGuildMembers(true) do
+        local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+        testQ["gUp"][Zc] = officerNote
+        level = tonumber(level)
+        if string.find(testQ['spisok'],name) == nil then
+            if string.lower(rankName) == string.lower("И.О. Констебля") then
+                print(rankName,name)
+                testQ['spisok'] = testQ['spisok'] .. name
+                if officerNote == "" and publicNote == "" then
+                    --SendChatMessage(name .. " " .. level .. " лвл " .. rankName, "OFFICER", nil, 1)
+                    --print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
                     GuildPromote(name)
-				end
-			end
-		end
-	end
-	local testMacro
-	for i=1,36 do
-		testMacro = GetMacroInfo(i)
-		if testMacro ~= nil then
-			testMacro = mysplit(testMacro)
-			if testMacro[1] == "NSQC" then
-				EditMacro(i, "NSQC", 134414, kickList)
-			end
-		end
-	end
-	FriendsFrame:Hide()
+                    if kickList == nil then
+                        kickList = "/gpromote " .. name .. "\n"
+                    else
+                        kickList = kickList .. "/gpromote " .. name .. "\n"
+                    end
+                end
+                if message ~= "" then
+                    GuildPromote(name)
+                end
+            end
+        end
+    end
+    local testMacro
+    for i=1,36 do
+        testMacro = GetMacroInfo(i)
+        if testMacro ~= nil then
+            testMacro = mysplit(testMacro)
+            if testMacro[1] == "NSQC" then
+                EditMacro(i, "NSQC", 134414, kickList)
+            end
+        end
+    end
+    FriendsFrame:Hide()
 end
 
 if kod=="#prEnGD" and msg[1] == myNome and gmTest~=nil then
@@ -3848,71 +3837,74 @@ local myNome = GetUnitName("player")
 		local buf
 
 		if prokIcons ~= nil then
-			for k, v in pairs(prokIcons) do
-				for j, l in pairs(prokIcons[k]) do
+	for k, v in pairs(prokIcons) do
+		if arg2 == "SPELL_AURA_APPLIED" or arg2 == "SPELL_CAST_SUCCESS" then
+			if arg4 == myNome then
+				if arg10 == prokIcons[k]["name"] or arg10 == prokIcons[k]["skill"] then
+					local tempStack = nil
+					local targetStack = tonumber(prokIcons[k]["stack"])
+					local buffFound = false
 
+					for i = 1, 24 do
+						local bNome, _, _, numStack = UnitBuff(myNome, i)
+						if not bNome then break end -- выходим, если баффов больше нет
 
-				if arg2 == "SPELL_AURA_APPLIED" or arg2 == "SPELL_CAST_SUCCESS" then
-						if arg4 == myNome then
-							if arg10 == prokIcons[k]["name"] or arg10 == prokIcons[k]["skill"] then
-								local tempStack
-								for i = 1, 24 do
-									local bNome,__,__,numStack = UnitBuff(myNome,i)
-									if arg2 == "SPELL_CAST_SUCCESS" then
-										if prokIcons[k]["name"] == bNome then
-											if tonumber(numStack) ==  tonumber(prokIcons[k]["stack"])-1 then
-												tempStack = 1
-											end
-										end
-									end
-									if arg2 == "SPELL_AURA_APPLIED" then
-										if prokIcons[k]["name"] == bNome then
-											if tonumber(prokIcons[k]["stack"]) == 0 then
-												tempStack = 1
-											end
-											if tonumber(numStack) == 0 then
-												numStack = 1
-											end
-											if tonumber(numStack) ==  tonumber(prokIcons[k]["stack"]) then
-												tempStack = 1
-											end
-										end
-									end
+						if prokIcons[k]["name"] == bNome then
+							buffFound = true
+							if targetStack == 0 then
+								tempStack = 1
+								break
+							elseif arg2 == "SPELL_CAST_SUCCESS" then
+								if tonumber(numStack) == targetStack - 1 then
+									tempStack = 1
+									break
 								end
-								if tempStack == 1 then
-									if prokIcons[k]["profil"] == 4 then
-										unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0+prok_set4["x"],0+prok_set4["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-									end
-									if prokIcons[k]["profil"] == 1 then
-										unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set1["Rx"],prok_set1["Ry"],0+prok_set1["x"],0+prok_set1["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-									end
-									if prokIcons[k]["profil"] == 2 then
-										unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set2["Rx"],prok_set2["Ry"],0+prok_set2["x"],0+prok_set2["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-									end
-									if prokIcons[k]["profil"] == 3 then
-										unIcon(tonumber(prokIcons[k]["spellNum"]),prok_set3["Rx"],prok_set3["Ry"],0+prok_set3["x"],0+prok_set3["y"],prokIcons[k]["icon"],"show",UIParent,"CENTER","CENTER")
-									end
+							elseif arg2 == "SPELL_AURA_APPLIED" then
+								numStack = tonumber(numStack) or 1
+								if numStack == targetStack then
+									tempStack = 1
+									break
 								end
 							end
 						end
 					end
-					if arg2 == "UNIT_DIED" and arg7 == myNome then
-						if arg7 == myNome then
-							if arg10 == prokIcons[k]["name"] then
-								unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER")
-							end
-						end
+
+					if not buffFound and targetStack == 0 then
+						-- Эта ветка не должна сработать, так как мы уже проверили наличие баффа по arg10,
+						-- но остаётся для надёжности — можно опустить.
 					end
-					if arg2 == "SPELL_AURA_REMOVED" then
-						if arg7 == myNome then
-							if arg10 == prokIcons[k]["name"] then
-								unIcon(tonumber(prokIcons[k]["spellNum"]),x,y,0,00,0,"hide",UIParent,"CENTER","CENTER")
-							end
+
+					if tempStack == 1 then
+						local profil = prokIcons[k]["profil"]
+						if profil == 4 then
+							unIcon(tonumber(prokIcons[k]["spellNum"]), x, y, 0 + prok_set4["x"], 0 + prok_set4["y"], prokIcons[k]["icon"], "show", UIParent, "CENTER", "CENTER")
+						elseif profil == 1 then
+							unIcon(tonumber(prokIcons[k]["spellNum"]), prok_set1["Rx"], prok_set1["Ry"], 0 + prok_set1["x"], 0 + prok_set1["y"], prokIcons[k]["icon"], "show", UIParent, "CENTER", "CENTER")
+						elseif profil == 2 then
+							unIcon(tonumber(prokIcons[k]["spellNum"]), prok_set2["Rx"], prok_set2["Ry"], 0 + prok_set2["x"], 0 + prok_set2["y"], prokIcons[k]["icon"], "show", UIParent, "CENTER", "CENTER")
+						elseif profil == 3 then
+							unIcon(tonumber(prokIcons[k]["spellNum"]), prok_set3["Rx"], prok_set3["Ry"], 0 + prok_set3["x"], 0 + prok_set3["y"], prokIcons[k]["icon"], "show", UIParent, "CENTER", "CENTER")
 						end
 					end
 				end
 			end
 		end
+
+		if arg2 == "UNIT_DIED" and arg7 == myNome then
+			if arg10 == prokIcons[k]["name"] then
+				unIcon(tonumber(prokIcons[k]["spellNum"]), x, y, 0, 0, 0, "hide", UIParent, "CENTER", "CENTER")
+			end
+		end
+
+		if arg2 == "SPELL_AURA_REMOVED" then
+			if arg7 == myNome then
+				if arg10 == prokIcons[k]["name"] then
+					unIcon(tonumber(prokIcons[k]["spellNum"]), x, y, 0, 0, 0, "hide", UIParent, "CENTER", "CENTER")
+				end
+			end
+		end
+	end
+end
 		if testQ['q3dict'] ~= nil then
 			if arg2 == 'PARTY_KILL' then
 				if arg4 == myNome then
