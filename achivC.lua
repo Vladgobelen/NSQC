@@ -1932,64 +1932,145 @@ if kod == "#M1QP" and message == myNome then
 	end
 end
 if kod == "gKick" and sender == myNome then
-    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000[gKick]|r ZAPUSK KIKA...")
+    if not IsInGuild() then
+        return
+    end
+
+    local total = GetNumGuildMembers()
+    if total == 0 then
+        GuildRoster()
+        local frame = CreateFrame("Frame")
+        frame:RegisterEvent("GUILD_ROSTER_UPDATE")
+        frame:SetScript("OnEvent", function(self, event, isFullUpdate)
+            if isFullUpdate then
+                self:UnregisterEvent("GUILD_ROSTER_UPDATE")
+                processRoster()
+            end
+        end)
+        return
+    end
 
     testQ = testQ or {}
-    testQ.spisok = testQ.spisok or ""
-
+    testQ.spisok = testQ.spisok or {}
     local candidates = {}
 
-    -- Собираем всех подходящих кандидатов
-    for i = 1, GetNumGuildMembers() do
-        local name, rankName, _, level, _, _, publicNote, officerNote = GetGuildRosterInfo(i)
-        if name and rankName and level then
-            local levelNum = tonumber(level)
-            if levelNum and levelNum <= 29 and (rankName == "и.о. констебля" or rankName == "Мл. констебль") then
-                local y, m, d = GetGuildRosterLastOnline(i)
-                d = tonumber(d) or 0
-                if y and d >= 3 and publicNote == "" then
-                    local officerOk = (officerNote == "")
-                    if not officerOk then
-                        local of1, of3 = string.match(officerNote, "^%s*(%S+)%s+%S+%s+(%S+)%s*$")
-                        if of1 and of3 and tonumber(of1) == 0 and tonumber(of3) == 0 then
-                            officerOk = true
-                        end
-                    end
+    local function shouldKick(name, rankName, level, publicNote, officerNote, lastOnlineDays)
+        if not (rankName == "И.О. Констебля" or rankName == "Мл. Констебль") then
+            return false
+        end
+        
+        if publicNote ~= "" then
+            return false
+        end
 
-                    if officerOk and not string.find(testQ.spisok, name, 1, true) then
-                        table.insert(candidates, {name = name, rank = rankName, level = levelNum, days = d})
-                    end
+        local officerOk = false
+        if officerNote == "" then
+            officerOk = true
+        else
+            local of1, of3 = string.match(officerNote, "^%s*(%S+)%s+%S+%s+(%S+)%s*$")
+            if of1 and of3 and tonumber(of1) == 0 and tonumber(of3) == 0 then
+                officerOk = true
+            end
+        end
+        
+        if not officerOk then
+            return false
+        end
+
+        local levelNum = tonumber(level)
+        if not levelNum then
+            return false
+        end
+
+        local requiredDays
+        if levelNum <= 29 then requiredDays = 3
+        elseif levelNum <= 39 then requiredDays = 3
+        elseif levelNum <= 49 then requiredDays = 4
+        elseif levelNum <= 59 then requiredDays = 5
+        elseif levelNum <= 69 then requiredDays = 6
+        elseif levelNum <= 79 then requiredDays = 7
+        else requiredDays = 14 end
+
+        if lastOnlineDays < requiredDays then
+            return false
+        end
+        
+        if string.find(testQ.spisok, name, 1, true) then
+            return false
+        end
+        
+        return true
+    end
+
+    local function collectCandidates()
+        wipe(candidates)
+        local totalNow = GetNumGuildMembers()
+        
+        for i = 1, totalNow do
+            local name, rankName, _, level, _, _, publicNote, officerNote = GetGuildRosterInfo(i)
+            if name and rankName and level then
+                local y, m, d = GetGuildRosterLastOnline(i)
+                local lastOnlineDays = tonumber(d) or 0
+                
+                if shouldKick(name, rankName, level, publicNote, officerNote, lastOnlineDays) then
+                    table.insert(candidates, {
+                        name = name, 
+                        rank = rankName, 
+                        level = level, 
+                        days = lastOnlineDays,
+                        publicNote = publicNote or "",
+                        officerNote = officerNote or ""
+                    })
                 end
             end
         end
     end
 
     local kickIndex = 1
-    local totalKicks = #candidates
+    local kickFrame
+    local processedCount = 0
 
-    if totalKicks == 0 then
-        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000[gKick]|r Net podkhodyashchikh dlya kika.")
-        FriendsFrame:Hide()
-        return
-    end
-
-    local function kickNext()
-        if kickIndex > totalKicks then
-            DEFAULT_CHAT_FRAME:AddMessage("|cffff0000[gKick]|r Zaversheno. Kicknuto: " .. totalKicks)
-            FriendsFrame:Hide()
+    local function startKickSequence()
+        if #candidates == 0 then
             return
         end
 
-        local cand = candidates[kickIndex]
-        GuildUninvite(cand.name)
-        SendChatMessage(cand.rank .. " " .. cand.name .. " (" .. cand.level .. " urov) kiknut za " .. cand.days .. " dney", "OFFICER")
-        testQ.spisok = testQ.spisok .. cand.name .. ";"
-        kickIndex = kickIndex + 1
+        kickIndex = 1
+        processedCount = 0
+        kickFrame = CreateFrame("Frame")
+        kickFrame.elapsed = 0
+        kickFrame:SetScript("OnUpdate", function(self, elapsed)
+            self.elapsed = self.elapsed + elapsed
+            
+            if self.elapsed < 0.1 then return end
+            self.elapsed = 0
+            
+            if kickIndex > #candidates then
+                self:SetScript("OnUpdate", nil)
+                return
+            end
 
-        C_Timer.After(0.01, kickNext)
+            local cand = candidates[kickIndex]
+            
+            GuildUninvite(cand.name)
+            SendChatMessage(string.format("[gKick] %s (%s, ур.%s, %s дн) Пуб:'%s' Оф:'%s' - КИКНУТ", 
+                cand.name, cand.rank, cand.level, cand.days, cand.publicNote, cand.officerNote), "OFFICER")
+            
+            testQ.spisok = testQ.spisok .. cand.name .. ";"
+            processedCount = processedCount + 1
+            
+            kickIndex = kickIndex + 1
+        end)
     end
 
-    kickNext()
+    local function processRoster()
+        collectCandidates()
+        if #candidates > 0 then 
+            startKickSequence()
+        end
+    end
+
+    processRoster()
 end
 
 if kod == "gUp" and sender == myNome then

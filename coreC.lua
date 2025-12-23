@@ -14,9 +14,7 @@ local hshStran3
 testGM=gmTest(sender)
 hshStran3=hshSenderNomeC(myNome)
 msg3=mysplit(message)
-if message == "!кик" and sender == myNome then
-	SendAddonMessage("gKick", "", "guild")
-end
+
 if msg[1] == "тест" and msg[2] == "щип" and msg[3] == myNome and testGM~=nil then
 	SendChatMessage(testShip(myNome), "OFFICER", nil, 1)
 end
