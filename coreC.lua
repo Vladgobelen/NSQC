@@ -521,106 +521,69 @@ if string.find (message, "покажи предмет") and string.find(message,
 	end
 end
 
-if string.find (message, "!ачивка") and nachalo~="*" then
-	lenShow=mysplit(message)
-	if lenShow[1]==myNome then
-		tblLensShow=tablelength(lenShow)
-		achShow=table.concat(lenShow, " ", 3,tblLensShow)
+if string.find(message, "!ачивка") and nachalo ~= "*" then
+	lenShow = mysplit(message)
+	if lenShow[1] == myNome then
+		tblLensShow = tablelength(lenShow)
+		achShow = table.concat(lenShow, " ", 3, tblLensShow)
 		achShow = string.lower(achShow)
-		for i=1,100000 do
-			IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText, isGuildAch = GetAchievementInfo(i)
+
+		-- Проверка на пустоту и минимальную длину
+		if achShow == nil or achShow == "" then
+			SendChatMessage("Ошибка: название ачивки не указано.", "OFFICER", nil, 1)
+			return
+		end
+		if string.len(achShow) < 5 then
+			SendChatMessage("Ошибка: название ачивки должно содержать минимум 5 символов.", "OFFICER", nil, 1)
+			return
+		end
+
+		for i = 1, 100000 do
+			local IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText, isGuildAch = GetAchievementInfo(i)
 			if Name ~= nil then
-				Name1 = string.lower(Name)
-				if string.find(Name1,achShow) then --Name1==achShow then
-				print ("номер ачивки: ",i)
-				prov1=Completed
-				j=0
-				k=0
-				countShow = GetAchievementNumCriteria(i)
-				testShow=1
-				for shoCount=1,countShow do
-					local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount);
-					if completed~=true then
-						testShow="000"
-					end
-					provShow=completed
-					quantityShow=quantity
-					reqQuantityShow=reqQuantity
-					quantityShow=tonumber(quantityShow)
-					reqQuantityShow=tonumber(reqQuantityShow)
-				if provShow == true then
-					j=j+1
-				else
-					k=k+1
-				end
-				end
+				local Name1 = string.lower(Name)
+				if string.find(Name1, achShow) then
+					print("номер ачивки: ", i)
+					local prov1 = Completed
+					local j = 0
+					local k = 0
+					local countShow = GetAchievementNumCriteria(i)
+					local testShow = 1
 
-				if provShow~=true and countShow~=1 and countShow~=0 then
-					cmpltd1=j
-					cmpltd2=" пунктов ачивки выполненно: "
-					cmpltd22=" из "
-					if string.find(Name1,"золот") then
-						countShow = tonumber(countShow)/10000
+					for shoCount = 1, countShow do
+						local criteriaString, criteriaType, completed, quantity, reqQuantity, charName, flags, assetID, quantityString, criteriaID = GetAchievementCriteriaInfo(i, shoCount)
+						if completed ~= true then
+							testShow = "000"
+						end
+						local provShow = completed
+						local quantityShow = tonumber(quantity) or 0
+						local reqQuantityShow = tonumber(reqQuantity) or 0
+
+						if provShow then
+							j = j + 1
+						else
+							k = k + 1
+						end
+					end
+
+					local cmpltd
+					if prov1 == true and testShow ~= "000" then
+						cmpltd = " выполнена"
+					elseif testShow == "000" then
+						if quantityShow ~= 0 and reqQuantityShow ~= 0 then
+							cmpltd = " выполнено пунктов ачивки " .. j .. " из " .. countShow
+						elseif quantityShow ~= 0 and reqQuantityShow == 0 then
+							cmpltd = " выполнено пунктов ачивки " .. quantityShow
+						else
+							cmpltd = ""
+						end
 					else
-
+						cmpltd = " " .. (GetStatistic(i) or "")
 					end
-					cmpltd=cmpltd2 .. cmpltd1 .. cmpltd22 .. countShow
-				elseif provShow==true or prov1==true and testShow~="000" then
-					cmpltd=" выполнена"
-				elseif provShow~=true then
-					cmpltd1=" "
-					cmpltd=cmpltd1 .. GetStatistic(i)
-				end
 
-				if quantityShow~=0 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
-					cmpltd1=" выполненно пунктов ачивки "
-					cmpltd2=j
-					cmpltd3=" из "
-					if string.find(Name1,"золот") then
-						countShow = tonumber(countShow)/10000
-					else
-
-					end
-					cmpltd4=countShow
-					cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
-				end
-				if quantityShow~=0 and quantityShow~=1 and reqQuantityShow~=0 and reqQuantityShow~=nil and testShow=="000" then
-					cmpltd1=" выполненно пунктов ачивки "
-					if string.find(Name1,"золот") then
-						countShow = tonumber(quantityShow)/10000
-					else
-
-					end
-					cmpltd2=quantityShow
-					cmpltd3=" из "
-					cmpltd4=reqQuantityShow
-					cmpltd= cmpltd1 .. cmpltd2 .. cmpltd3 .. cmpltd4
-				end
-				if quantityShow~=0 and reqQuantityShow==0 and quantityShow~=nil then
-					print(i)
-					cmpltd1=" выполненно пунктов ачивки "
-					if string.find(Name1,"золот") then
-						quantityShow = tonumber(quantityShow)/10000
-					else
-
-					end
-					cmpltd2=quantityShow
-					cmpltd=cmpltd1 .. cmpltd2
-				end
-
-					SendChatMessage(GetAchievementLink(i)..cmpltd, "OFFICER", nil, 1)
-					quantityShow=nil
-					reqQuantityShow=nil
-					quantityShow=nil
-					cmpltd=nil
-					provShow=nil
-					prov1=nil
-					Completed=nil
-					completed=nil
-					--break
+					SendChatMessage(GetAchievementLink(i) .. cmpltd, "OFFICER", nil, 1)
 				end
 			end
-
 		end
 	end
 end
