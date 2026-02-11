@@ -1,4 +1,4 @@
-versAdd=398; versAddDop=3
+versAdd=398; versAddDop=5
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8420,614 +8420,945 @@ end
 
 
 function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
-	self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
-	self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
-	if id == 987 then
-		self[id]:SetScript("OnEnter",function(self, button)
-			moveBtn = moveBtn or btnRemove:new(fBtn)
-			moveBtn1 = moveBtn1 or btnRemove:new(dBtn)
-		end)
-	end
-	if id == 973 then
-
-		btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",posex, posey)
-		btn[id]:RegisterForClicks("LeftButtonUp", "RightButtonDown","MiddleButtonDown")
-		self[id]:SetScript("OnEnter",function(self, button)
-			-- gpBtn1 = gpBtn1 or nBtn:new(1,nil,btn[973],0,0,0,0,0,13,32,32,5,"RIGHT","LEFT","TOPLEFT","TOPLEFT","DIALOG","FF8C00")
-			-- gpBtn1:configure()
-			-- gpBtn2 = gpBtn2 or nBtn:new(2,nil,btn[973],0,-32,0,0,0,13,32,32,10,"RIGHT","LEFT","TOPLEFT","TOPLEFT","DIALOG","FF8C00")
-			-- gpBtn2:configure()
-			-- gpBtn3 = gpBtn3 or nBtn:new(3,nil,btn[973],0,-64,0,0,0,13,32,32,20,"RIGHT","LEFT","TOPLEFT","TOPLEFT","DIALOG","FF8C00")
-			-- gpBtn3:configure()
-			-- gpBtn4 = gpBtn4 or nBtn:new(4,nil,btn[973],0,-96,0,0,0,13,32,32,25,"RIGHT","LEFT","TOPLEFT","TOPLEFT","DIALOG","FF8C00")
-			-- gpBtn4:configure()
-			-- gpBtn5 = gpBtn5 or nBtn:new(5,nil,btn[973],0,-128,0,0,0,13,32,32,50,"RIGHT","LEFT","TOPLEFT","TOPLEFT","DIALOG","FF8C00")
-			-- gpBtn5:configure()
-			-- gpBtn6 = gpBtn6 or nBtn:new(6,nil,btn[973],0,-160,0,0,0,13,32,32,100,"RIGHT","LEFT","TOPLEFT","TOPLEFT","DIALOG","FF8C00")
-			-- gpBtn6:configure()
-			-- gpBtn1:Show()
-			-- gpBtn2:Show()
-			-- gpBtn3:Show()
-			-- gpBtn4:Show()
-			-- gpBtn5:Show()
-			-- gpBtn6:Show()
-			-- gpBtn1:setOnEnter(gpBtn1_enter)
-			-- gpBtn2:setOnEnter(gpBtn1_enter)
-			-- gpBtn3:setOnEnter(gpBtn1_enter)
-			-- gpBtn4:setOnEnter(gpBtn1_enter)
-			-- gpBtn5:setOnEnter(gpBtn1_enter)
-			-- gpBtn6:setOnEnter(gpBtn1_enter)
-			-- gpBtn1:setOnEnter(gpBtn1_click)
-			-- gpBtn2:setOnEnter(gpBtn1_click)
-			-- gpBtn3:setOnEnter(gpBtn1_click)
-			-- gpBtn4:setOnEnter(gpBtn1_click)
-			-- gpBtn5:setOnEnter(gpBtn1_click)
-			-- gpBtn6:setOnEnter(gpBtn1_click)
-			btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",0, posey)
-			FriendsFrame:Show()
-			GuildFrame:Show()
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			local rez = nsGP()
-			local num = tablelength(rez)
-			local rank
-			local rezultat
-			local pbl
-			for Zc=1,GetNumGuildMembers(true) do
-		    	local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-	    		if name == myNome then
-	    			pbl = publicNote
-	    			rezultat = mysplit(officerNote)
-	    			rezultat = rezultat[3]
-	    		end
-	    	end
-	    	-- DestroyCheckboxWindow()
-			if GetNumRaidMembers() ~= 0 then
-				for i = 1,num do
-					if rez[tostring(i)]['nome'] ~= myNome then
-						GameTooltip:AddLine("|cFF6495ED" .. rez[tostring(i)]['nome'] .. " |cffFF8C00(" .. rez[tostring(i)]['public'] .. "): |cff99ff99" .. rez[tostring(i)]['znach'])
-						table.insert(gplabels, rez[tostring(i)]['nome'] .. " |cffFF8C00(" .. rez[tostring(i)]['public'] .. "): |cff99ff99" .. rez[tostring(i)]['znach'] )
-					else
-						GameTooltip:AddLine("|cffFF0000" .. rez[tostring(i)]['nome'] .. " |cffFF8C00(" .. rez[tostring(i)]['public'] .. "): |cff99ff99" .. rez[tostring(i)]['znach'])
-						table.insert(gplabels, rez[tostring(i)]['nome'] .. " |cffFF8C00(" .. rez[tostring(i)]['public'] .. "): |cff99ff99" .. rez[tostring(i)]['znach'])
-					end
-				end
-				
-				
-				createParent()
-				-- checkboxes = CreateCheckboxes(parentFrame, gplabels)
-				-- ShowCheckboxWindow()
-			else
-				GameTooltip:AddLine("|cFF6495ED" .. myNome .. " |cffFF8C00(" .. pbl .. "): |cff99ff99" .. rezultat)
-			end
-			FriendsFrame:Hide()
-			GuildFrame:Hide()
-			GameTooltip:Show()
-		end)
-		self[id]:SetScript("OnLeave",function(self, button)
-			btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",25, posey)
-			-- gpBtn1:Hide()
-			-- gpBtn2:Hide()
-			-- gpBtn3:Hide()
-			-- gpBtn4:Hide()
-			-- gpBtn5:Hide()
-			-- gpBtn6:Hide()
-			GameTooltip:Hide()
-			-- HideCheckboxWindow()
-
-			gplabels = {}
-			testQ['gpRez'] = nil
-		end)
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			if arg1 == "MiddleButton" then
-				RandomRoll(1, 100)
-			end
-			if arg1 == "LeftButton" then
-				local rez = nsGP()
-				local num = tablelength(rez)
-				local rank
-				local rezultat
-				local pbl
-				for Zc=1,GetNumGuildMembers(true) do
-		    	local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-		    		if name == myNome then
-		    			pbl = publicNote
-		    			rezultat = mysplit(officerNote)
-		    			rezultat = rezultat[3]
-		    			rank = rankName
-		    		end
-		    	end
-		    	if num ~= 0 then
-					if rank == "Капитан" or rank == "Статик" or rank == "Лейтенант" then
-						for i = 1,num do
-							SendChatMessage(rez[tostring(i)]['nome'] .. "(" .. rez[tostring(i)]['public'] .. "): " .. rez[tostring(i)]['znach'], "OFFICER", nil, 1)
-						end
-					else
-						SendChatMessage(myNome .. "(" .. pbl ..  "): " .. rezultat, "OFFICER", nil, 1)
-					end
-				else
-					SendChatMessage(myNome .. "(" .. pbl ..  "): " .. rezultat, "OFFICER", nil, 1)
-				end
-			end
-			if arg1 == "RightButton" then
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-				GameTooltip:AddLine("Цлк10об:")
-				GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff995 гп")
-				GameTooltip:AddLine("|cFF6495ED За квартального: " .. "|cff99ff9910 гп")
-				GameTooltip:AddLine("|cFF6495ED Лич: " .. "|cff99ff9920 гп")
-				GameTooltip:AddLine("|cFF6495ED Без вайпов фул инст:  " .. "|cff99ff9925 гп")
-				GameTooltip:AddLine("|cff00BFFFСнятие: |cFF6495EDтолько за трини и пухи с Лича минимально |cff99ff995 гп |cFF6495EDшаг ставки |cff99ff995")
-				GameTooltip:AddLine("Цлк25об:")
-				GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
-				GameTooltip:AddLine("|cFF6495ED За квартального: " .. "|cff99ff9920 гп")
-				GameTooltip:AddLine("|cFF6495ED Лич: " .. "|cff99ff9950 гп")
-				GameTooltip:AddLine("|cFF6495ED Без вайпов фул инст:  " .. "|cff99ff9950 гп")
-				GameTooltip:AddLine("|cff00BFFFСнятие:")
-				GameTooltip:AddLine("|cFF6495ED Вещь: начальная ставка " .. "|cff99ff9910 гп |cFF6495EDшаг |cff99ff9910")
-				GameTooltip:AddLine("|cFF6495ED Трини: " .. "|cff99ff9920 гп")
-				GameTooltip:AddLine("|cFF6495ED Пухи: " .. "|cff99ff9930 гп")
-				GameTooltip:AddLine("|cffFF0000Штрафы:")
-				GameTooltip:AddLine("|cFF6495ED Не критичный косяк: " .. "|cff99ff99-5 гп")
-				GameTooltip:AddLine("|cFF6495ED Вайп рейда: " .. "|cff99ff99-30 гп")
-				GameTooltip:AddLine("РС10: |cFF6495EDза фул инст |cff99ff9925 гп")
-				GameTooltip:AddLine("РС25: |cFF6495EDза фул инст |cff99ff99100 гп")
-				GameTooltip:AddLine("|cff00BFFFСнятие:")
-				GameTooltip:AddLine("|cFF6495ED Вещи: " .. "|cff99ff9920 гп |cFF6495EDшаг |cff99ff9910")
-				GameTooltip:AddLine("|cFF6495ED Трини: " .. "|cff99ff9950 гп |cFF6495EDшаг |cff99ff9910")
-				GameTooltip:AddLine("|cffFF0000Штрафы:")
-				GameTooltip:AddLine("|cFF6495ED Не критичный косяк: " .. "|cff99ff99-5 гп")
-				GameTooltip:AddLine("|cFF6495ED Вайп рейда: " .. "|cff99ff99-30 гп")
-				GameTooltip:AddLine("ИК25: |cFF6495EDза фул инст |cff99ff9920 гп")
-				GameTooltip:AddLine("|cff00BFFFСнятие: |cFF6495EDтолько за трини минимально |cff99ff9910 гп |cFF6495EDшаг ставки |cff99ff995")
-				GameTooltip:AddLine("ОС25 +3:")
-				GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
-				GameTooltip:AddLine("Малигос25: |cff99ff9910гп")
-				GameTooltip:AddLine("Оня25:")
-				GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9915 гп")
-				GameTooltip:AddLine("Накс25:")
-				GameTooltip:AddLine("|cFF6495ED За квартал: " .. "|cff99ff9920 гп")
-				GameTooltip:AddLine("|cFF6495ED За бессмертного: " .. "|cff99ff99200 гп")
-				GameTooltip:AddLine("Ульдуар25:")
-				GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
-				GameTooltip:AddLine("|cFF6495ED Алгалон: " .. "|cff99ff9950 гп")
-				GameTooltip:AddLine("|cFF6495ED За фул инст: " .. "|cff99ff9950 гп")
-				GameTooltip:AddLine("|cFF6495ED Защитник ульдуара: " .. "|cff99ff99100 гп")
-				GameTooltip:AddLine("|cFF6495ED Слава рейдеру ульдуара: " .. "|cff99ff99100 гп")
-				GameTooltip:AddLine("ИВК25:")
-				GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
-				GameTooltip:AddLine("|cFF6495ED Без вайпов: " .. "|cff99ff99100 гп")
-				GameTooltip:Show()
-			end
-		end)
-	end
-	if id == 974 then
-		btn[id]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
-		btn[974]:SetPoint("LEFT", SendMailFrame,"BOTTOMRIGHT",posex, posey)
-		self[id]:SetScript("OnEnter",function(self, button)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|cFF6495EDПКМ: Включить покупку самогона")
-			GameTooltip:Show()
-			if samogon ~= nil then
-				ahtunGSH("show")
-				SendMailNameEditBox:SetText("Хефе")
-				SendMailSubjectEditBox:SetText("Самогон")
-				SendMailMoneyGold:SetText("100")
-			end
-		end)
-		self[id]:SetScript("OnLeave",function(self, button)
-			GameTooltip:Hide()
-			if samogon ~= nil then
-				ahtunGSH("show")
-				SendMailNameEditBox:SetText("")
-				SendMailSubjectEditBox:SetText("")
-				SendMailMoneyGold:SetText("")
-				ahtunGSH("hide")
-			end
-		end)
-		self[id]:SetScript("OnClick",function(self, button)
-			if arg1 == "LeftButton" then
-				if samogon ~= nil then
-					local signBtn
-					SendMailMailButton:Click()
-					StaticPopup1Button1:Click()
-					SendMailNameEditBox:SetText("")
-					SendMailSubjectEditBox:SetText("")
-					SendMailMoneyGold:SetText("")
-					if signBtn == nil then
-						if tonumber(GetMoney()) >= 1000000 then
-							SendAddonMessage("#974M", myNome .. " " .. myNome .. " " .. 1, "guild")
-						else
-							SendAddonMessage("#974Mn", myNome .. " " .. myNome .. " " .. 1, "guild")
-						end
-					end
-					signBtn = 1
-					btn[974]:Hide()
-				end
-			else
-				if samogon == nil then
-					samogon = 1
-				else
-					samogon = nil
-					SendMailNameEditBox:SetText("")
-					SendMailSubjectEditBox:SetText("")
-					SendMailMoneyGold:SetText("")
-					ahtunGSH("hide")
-				end
-			end
-		end)
-	end
-	if id == 975 then
-		btn[975]:SetPoint("TOPLEFT", iconQ[1],"TOPLEFT",posex, posey)
-		self[id]:SetScript("OnClick",function(self, button)
-			if t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1']-1 == NS_vzlomSeifa[1] then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			else
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			end
-			if NS_vzlomSeifa[1] < 10 then
-				NS_vzlomSeifa[1] = NS_vzlomSeifa[1]+1
-			end
-			if NS_vzlomSeifa[1] > 9 then
-				NS_vzlomSeifa[1] = 0
-			end
-			if NS_vzlomSeifa[1] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1'] and NS_vzlomSeifa[2] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2'] and NS_vzlomSeifa[3] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3'] then
-				SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе'], "OFFICER", nil, 1)
-				puteshestvieGrafikaHide()
-				sohranenieProgressa("взлом")
-				testQ[myNome]['puteshestvie'] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда']
-				PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-			end
-			btn[975]:SetText(NS_vzlomSeifa[1])
-		end)
-	end
-	if id == 976 then
-		btn[976]:SetPoint("TOPLEFT", iconQ[1],"TOPLEFT",posex, posey)
-		self[id]:SetScript("OnClick",function(self, button)
-			
-			if t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2']-1 == NS_vzlomSeifa[2] then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			else
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			end
-			if NS_vzlomSeifa[2] < 10 then
-				NS_vzlomSeifa[2] = NS_vzlomSeifa[2]+1
-			end
-			if NS_vzlomSeifa[2] > 9 then
-				NS_vzlomSeifa[2] = 0
-			end
-			if NS_vzlomSeifa[1] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1'] and NS_vzlomSeifa[2] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2'] and NS_vzlomSeifa[3] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3'] then
-				SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе'], "OFFICER", nil, 1)
-				puteshestvieGrafikaHide()
-				sohranenieProgressa("взлом")
-				testQ[myNome]['puteshestvie'] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе']
-				PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-			end
-			btn[976]:SetText(NS_vzlomSeifa[2])
-		end)
-	end
-	if id == 977 then
-		btn[977]:SetPoint("TOPLEFT", iconQ[1],"TOPLEFT",posex, posey)
-		self[id]:SetScript("OnClick",function(self, button)
-			
-			if t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3']-1 == NS_vzlomSeifa[3] then
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			else
-				PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			end
-			if NS_vzlomSeifa[3] < 10 then
-				NS_vzlomSeifa[3] = NS_vzlomSeifa[3]+1
-			end
-			if NS_vzlomSeifa[3] > 9 then
-				NS_vzlomSeifa[3] = 0
-			end
-			if NS_vzlomSeifa[1] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1'] and NS_vzlomSeifa[2] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2'] and NS_vzlomSeifa[3] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3'] then
-				SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе'], "OFFICER", nil, 1)
-				puteshestvieGrafikaHide()
-				sohranenieProgressa("взлом")
-				testQ[myNome]['puteshestvie'] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе']
-				PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
-			end
-			btn[977]:SetText(NS_vzlomSeifa[3])
-		end)
-	end
-	if id == 978 then
-		btn[978]:SetPoint("TOPLEFT", PlayerFrame,"BOTTOMLEFT",posex, posey)
-		btn[978]:SetScript("OnEnter",function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|cFF6495EDТочка маршрута")
-			GameTooltip:Show()
-		end)
-		btn[978]:SetScript("OnLeave",function(self)
-			GameTooltip:Hide()
-		end)
-	end
-	if id == 979 then
-		self[id]:SetPoint("TOPLEFT", PlayerFrame,"BOTTOMLEFT",posex, posey)
-		btn[979]:SetScript("OnEnter",function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|cFF6495EDВернуться на точку назад")
-			GameTooltip:Show()
-		end)
-		btn[979]:SetScript("OnLeave",function(self)
-			GameTooltip:Hide()
-		end)
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			if tonumber(testQ[myNome]['puteshestvie']) >= 1 then
-				testQ[myNome]['puteshestvie'] = tostring(tonumber(testQ[myNome]['puteshestvie'])-1)
-			end
-		end)
-	end
-	if id == 980 then
-		self[id]:SetPoint("TOPLEFT", PlayerFrame,"BOTTOMLEFT",posex, posey)
-		btn[980]:SetScript("OnEnter",function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-			GameTooltip:AddLine("|cFF6495EDПерейти на точку вперед")
-			GameTooltip:Show()
-		end)
-		btn[980]:SetScript("OnLeave",function(self)
-			GameTooltip:Hide()
-		end)
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			if tonumber(testQ[myNome]['puteshestvie']) < tonumber(testQ[myNome][testQ[myNome]['puteshestvieTabella']]) then
-				testQ[myNome]['puteshestvie'] = tostring(tonumber(testQ[myNome]['puteshestvie'])+1)
-				puteshestvieGrafikaHide()
-			end
-		end)
-	end
-
-	if id == 982 or id == 981 then
-		self[id]:SetPoint("TOPRIGHT", WhoFrame,"TOPRIGHT",posex, posey)
-	end
-	if id == 996 then
-		self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",posex, posey)
-	elseif id == 994 or id == 993 or id == 992 or id == 989 then
-		self[id]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",posex, posey)
-	elseif id == 995 then
-		self[id]:SetPoint("BOTTOMLEFT", SendMailMailButton,"TOPLEFT",posex, posey)
-	elseif id == 991 then
-		self[id]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
-	elseif id == 988 then
-		self[id]:SetPoint("TOPRIGHT", MailFrame,"TOPRIGHT",posex, posey)
-	else
-		self[id]:SetPoint("CENTER",posex, posey)
-	end
-	self[id]:SetSize(sizex, sizey)
-	self[id]:SetText(message)
-	if id ~= 973 then
-		self[id]:Hide();
-	end
-
-	if id==9 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			RandomRoll(1, 100)
-		end)
-	end
-
-	if id == 10 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			RandomRoll(1, 333)
-		end)
-	end
-
-	if id==11 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			RandomRoll(1, 111)
-		end)
-	end
-	if id == 988 then
-		self[id]:SetScript("OnClick",function(self, button)
-			if testQ["mail"] == nil then
-				testQ["mail"] = 1
-			else
-				testQ["mail"] = nil
-			end
-		end)
-	end
-	if id==7 or id==1 or id==2 then
-	self[id]:SetScript("OnClick",function(self, button)
-	PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-		if id==2 then
-			btn[2]:Disable()
-			testQ["timerID2"] = 60
-			if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" and testQ[myNome]["взятый_квест"] ~= "itemQ" then
-				if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
-					SendAddonMessage("NSGadd", zzid, "guild")
-				elseif testQ[myNome]["лвл_квестов"]=="2" then
-					SendAddonMessage("NSGadd", "#aam", "guild")
-				elseif testQ[myNome]["лвл_квестов"]=="3" then
-					SendAddonMessage("NSGadd", "#aat", "guild")
-				end
-			end
-			if testQ[myNome]["взятый_квест"] == "q33" then
-				SendAddonMessage("NSGadd", "#q33x", "guild")
-			end
-			if testQ[myNome]["взятый_квест"] == "q3Stat" then
-				SendAddonMessage("NSGadd", testQ[myNome]["q3StatNum"], "guild")
-				local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
-				SendAddonMessage("#zlnDa", arg4, "guild")
-				--SendAddonMessage("NSGadd", "q3StX", "guild")
-			end
-			if testQ[myNome]["взятый_квест"] == "itemQ" then
-				SendAddonMessage("itemQuestSend", myNome .. " " .. testQ[myNome]["itemName"] .. " " .. testQ[myNome]["itemNum"], "guild")
-			end
-			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
-
-			for ii=1,15 do
-				btn[ii]:Hide();
-			end
-			minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-			minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-			minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
-			pokazat = 0
-		elseif id == 1 then
-			SendAddonMessage("NSGadd", zzid .. " " .. versAdd, "guild")
-			SendChatMessage("ВOЖДЬ", "guild", nil, 1)
-			SendAddonMessage("NSGadd", "#questTimerID2", "guild")
-		else
-			SendAddonMessage("NSGadd", zzid, "guild")
-		end
-
-	end)
-
-	elseif id==5 or id==6 or id==999 or id==12 or id==13 then
-	self[id]:SetScript("OnClick",function(self, button)
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-		   SendAddonMessage("NSGadd", zzid, "guild") end)
-	end
-	if id==8 then
-			self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-				if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~="q3Stat" and testQ[myNome]["взятый_квест"] ~="itemQ" then
-					if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
-						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
-					end
-					if testQ[myNome]["лвл_квестов"]=="2" then
-						proverkaVypolneniyaKvestySachivkoj(myNome,"2")
-					end
-					if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
-						SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
-					end
-					if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
-						proverkaVypolneniyaKvestySachivkoj(myNome,"3")
-					end
-				end
-				if testQ[myNome]["взятый_квест"] == "q33" then
-					local nik = {}
-					for i=1,#testQ[myNome]["q33nik"] do
-						if testQ[myNome]["q33nik"][i] == 1 then
-							nik[i] = "выполнено"
-						else
-							nik[i] = testQ[myNome]["q33nik"][i]
-						end
-					end
-					SendChatMessage(testQ[myNome]["q33q"] .. nik[1] .. ", " .. nik[2] .. ", " .. nik[3], "OFFICER", nil, 1)
-				end
-				if testQ[myNome]["взятый_квест"] == "q3Stat" then
-					local x = tonumber(testQ[myNome]["q3StatNum"])+5
-					SendChatMessage("Должно стать " .. x .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["q3Stat"])), "OFFICER", nil, 1)
-				end
-				if testQ[myNome]["взятый_квест"] == "itemQ" then
-					SendChatMessage("Нужно достать " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"] .. " и прислать по почте персонажу Хефе", "OFFICER", nil, 1)
-				end
-		end)
-	end
-	if id == 14 then
-		self[id]:SetScript("OnClick",function(self, button)
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-		end)
-	end
-	if id == 15 then
-		self[id]:SetScript("OnClick",function(self, button)
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-		end)
-	end
-	if id == 998 then
-		self[id]:SetScript("OnClick",function(self, button)
-		PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			SendAddonMessage("NSGadd", "#ahtng", "guild")
-		end)
-	end
-	if id == 997 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			SendAddonMessage("NSGadd", "#zzp", "guild")
-		end)
-	end
-	if id == 996 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			SendAddonMessage("NSGadd", "#2t", "guild")
-		end)
-	end
-	if id == 4 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			SendAddonMessage("NSGadd", "#zzguild " .. testQ[myNome]["zzlf"], "guild")
-		end)
-	end
-	if id == 3 then
-		self[id]:SetScript("OnClick",function(self, button)
-			if WhoFrame:IsVisible() then
-				if WhoFrame["selectedName"] ~= nil then
-					local wNome = WhoFrame["selectedName"]
-					PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-					if ChatFrame1:IsVisible() then
-						ChatFrame1EditBox:Show()
-						ChatFrame1EditBox:SetFocus()
-						ChatFrame1EditBox:SetText("/ginvite " .. wNome)
-					end
-					if ChatFrame2:IsVisible() then
-						ChatFrame1EditBox:Show()
-						ChatFrame2EditBox:SetFocus()
-						ChatFrame2EditBox:SetText("/ginvite " .. wNome)
-					end
-					if ChatFrame3:IsVisible() then
-						ChatFrame1EditBox:Show()
-						ChatFrame3EditBox:SetFocus()
-						ChatFrame3EditBox:SetText("/ginvite " .. wNome)
-					end
-					if ChatFrame4:IsVisible() then
-						ChatFrame1EditBox:Show()
-						ChatFrame4EditBox:SetFocus()
-						ChatFrame4EditBox:SetText("/ginvite " .. wNome)
-					end
-				end
-			end
-		end)
-	end
-	if id == 777 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			if testQ["marshS"] == nil then
-				testQ["marshS"] = 1
-			elseif testQ["marshS"] == 1 then
-				marsh = nil
-				testQ["marshS"] = nil
-				testQ["marshK"] = nil
-				testQ["marshL"] = nil
-				testQ["marshN"] = nil
-			end
-		end)
-	end
-	if id == 999999 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			if testQ ~= nil then
-				if testQ[myNome] ~= nil then
-					if testQ[myNome]["sdvig"] == nil then
-						testQ[myNome]["sdvig"] = 1
-						local x,y = GetPlayerMapPosition("player")
-						testQ[myNome]["sdvigx"] = x
-						testQ[myNome]["sdvigy"] = y
-						print ("1")
-					else
-						testQ[myNome]["sdvig"] = nil
-						testQ[myNome]["sdvigx"] = nil
-						testQ[myNome]["sdvigy"] = nil
-						print("nil")
-					end
-				end
-			end
-		end)
-	end
-	if id == 995 then
-		self[id]:SetScript("OnClick",function(self, button)
-			PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
-			SendMail("Хефе", "Квест на сбор предметов", "")
-			btn[995]:Hide()
-			testQ[myNome]["itemQend"] = 1
-			tempRez1 = nil
-			MailFrame:Hide()
-		end)
-	end
+    if not UIParent then return end
+    self[id] = CreateFrame("Button", nil, UIParent, "UIPanelButtonTemplate");
+    if not self[id] then return end
+    self[id]:SetFrameStrata("FULLSCREEN_DIALOG")
+    if id == 987 then
+        self[id]:SetScript("OnEnter",function(self, button)
+            if fBtn ~= nil then
+                moveBtn = moveBtn or btnRemove:new(fBtn)
+            end
+            if dBtn ~= nil then
+                moveBtn1 = moveBtn1 or btnRemove:new(dBtn)
+            end
+        end)
+    end
+    if id == 973 then
+        if MinimapZoomOut ~= nil and btn ~= nil and btn[973] ~= nil then
+            btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",posex, posey)
+        end
+        if btn ~= nil and btn[id] ~= nil then
+            btn[id]:RegisterForClicks("LeftButtonUp", "RightButtonDown","MiddleButtonDown")
+        end
+        self[id]:SetScript("OnEnter",function(self, button)
+            if MinimapZoomOut ~= nil and btn ~= nil and btn[973] ~= nil then
+                btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",0, posey)
+            end
+            
+            if FriendsFrame ~= nil then FriendsFrame:Show() end
+            if GuildFrame ~= nil then GuildFrame:Show() end
+            
+            if GameTooltip ~= nil then
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                local rez = nsGP ~= nil and nsGP() or {}
+                local num = tablelength ~= nil and tablelength(rez) or 0
+                local rank
+                local rezultat
+                local pbl
+                
+                if GetNumGuildMembers ~= nil then
+                    for Zc=1,GetNumGuildMembers(true) do
+                        if GetGuildRosterInfo ~= nil then
+                            local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+                            if name == myNome then
+                                pbl = publicNote
+                                if officerNote ~= nil and mysplit ~= nil then
+                                    rezultat = mysplit(officerNote)
+                                    if rezultat ~= nil and #rezultat >= 3 then
+                                        rezultat = rezultat[3]
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+                
+                if GetNumRaidMembers ~= nil and GetNumRaidMembers() ~= 0 and num ~= 0 then
+                    for i = 1,num do
+                        local key = tostring(i)
+                        if rez[key] ~= nil and rez[key]['nome'] ~= nil then
+                            local displayName = rez[key]['nome'] ~= myNome and "|cFF6495ED" or "|cffFF0000"
+                            local publicNote = rez[key]['public'] or ""
+                            local znach = rez[key]['znach'] or ""
+                            
+                            GameTooltip:AddLine(displayName .. rez[key]['nome'] .. " |cffFF8C00(" .. publicNote .. "): |cff99ff99" .. znach)
+                            if gplabels ~= nil then
+                                table.insert(gplabels, rez[key]['nome'] .. " |cffFF8C00(" .. publicNote .. "): |cff99ff99" .. znach)
+                            end
+                        end
+                    end
+                    
+                    if createParent ~= nil then
+                        createParent()
+                    end
+                else
+                    if myNome ~= nil and pbl ~= nil and rezultat ~= nil then
+                        GameTooltip:AddLine("|cFF6495ED" .. myNome .. " |cffFF8C00(" .. pbl .. "): |cff99ff99" .. rezultat)
+                    end
+                end
+                
+                if FriendsFrame ~= nil then FriendsFrame:Hide() end
+                if GuildFrame ~= nil then GuildFrame:Hide() end
+                GameTooltip:Show()
+            end
+        end)
+        self[id]:SetScript("OnLeave",function(self, button)
+            if MinimapZoomOut ~= nil and btn ~= nil and btn[973] ~= nil then
+                btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",25, posey)
+            end
+            
+            if GameTooltip ~= nil then
+                GameTooltip:Hide()
+            end
+            
+            if gplabels ~= nil then
+                gplabels = {}
+            end
+            if testQ ~= nil then
+                testQ['gpRez'] = nil
+            end
+        end)
+        self[id]:SetScript("OnClick",function(self, button)
+            local arg1 = button
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            
+            if arg1 == "MiddleButton" then
+                if RandomRoll ~= nil then
+                    RandomRoll(1, 100)
+                end
+            end
+            
+            if arg1 == "LeftButton" then
+                local rez = nsGP ~= nil and nsGP() or {}
+                local num = tablelength ~= nil and tablelength(rez) or 0
+                local rank
+                local rezultat
+                local pbl
+                
+                if GetNumGuildMembers ~= nil then
+                    for Zc=1,GetNumGuildMembers(true) do
+                        if GetGuildRosterInfo ~= nil then
+                            local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+                            if name == myNome then
+                                pbl = publicNote
+                                if officerNote ~= nil and mysplit ~= nil then
+                                    rezultat = mysplit(officerNote)
+                                    if rezultat ~= nil and #rezultat >= 3 then
+                                        rezultat = rezultat[3]
+                                    end
+                                end
+                                rank = rankName
+                            end
+                        end
+                    end
+                end
+                
+                if SendChatMessage ~= nil then
+                    if num ~= 0 then
+                        if rank == "Капитан" or rank == "Статик" or rank == "Лейтенант" then
+                            for i = 1,num do
+                                local key = tostring(i)
+                                if rez[key] ~= nil and rez[key]['nome'] ~= nil and rez[key]['public'] ~= nil and rez[key]['znach'] ~= nil then
+                                    SendChatMessage(rez[key]['nome'] .. "(" .. rez[key]['public'] .. "): " .. rez[key]['znach'], "OFFICER", nil, 1)
+                                end
+                            end
+                        else
+                            if myNome ~= nil and pbl ~= nil and rezultat ~= nil then
+                                SendChatMessage(myNome .. "(" .. pbl ..  "): " .. rezultat, "OFFICER", nil, 1)
+                            end
+                        end
+                    else
+                        if myNome ~= nil and pbl ~= nil and rezultat ~= nil then
+                            SendChatMessage(myNome .. "(" .. pbl ..  "): " .. rezultat, "OFFICER", nil, 1)
+                        end
+                    end
+                end
+            end
+            
+            if arg1 == "RightButton" then
+                if GameTooltip ~= nil then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                    GameTooltip:AddLine("Цлк10об:")
+                    GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff995 гп")
+                    GameTooltip:AddLine("|cFF6495ED За квартального: " .. "|cff99ff9910 гп")
+                    GameTooltip:AddLine("|cFF6495ED Лич: " .. "|cff99ff9920 гп")
+                    GameTooltip:AddLine("|cFF6495ED Без вайпов фул инст:  " .. "|cff99ff9925 гп")
+                    GameTooltip:AddLine("|cff00BFFFСнятие: |cFF6495EDтолько за трини и пухи с Лича минимально |cff99ff995 гп |cFF6495EDшаг ставки |cff99ff995")
+                    GameTooltip:AddLine("Цлк25об:")
+                    GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
+                    GameTooltip:AddLine("|cFF6495ED За квартального: " .. "|cff99ff9920 гп")
+                    GameTooltip:AddLine("|cFF6495ED Лич: " .. "|cff99ff9950 гп")
+                    GameTooltip:AddLine("|cFF6495ED Без вайпов фул инст:  " .. "|cff99ff9950 гп")
+                    GameTooltip:AddLine("|cff00BFFFСнятие:")
+                    GameTooltip:AddLine("|cFF6495ED Вещь: начальная ставка " .. "|cff99ff9910 гп |cFF6495EDшаг |cff99ff9910")
+                    GameTooltip:AddLine("|cFF6495ED Трини: " .. "|cff99ff9920 гп")
+                    GameTooltip:AddLine("|cFF6495ED Пухи: " .. "|cff99ff9930 гп")
+                    GameTooltip:AddLine("|cffFF0000Штрафы:")
+                    GameTooltip:AddLine("|cFF6495ED Не критичный косяк: " .. "|cff99ff99-5 гп")
+                    GameTooltip:AddLine("|cFF6495ED Вайп рейда: " .. "|cff99ff99-30 гп")
+                    GameTooltip:AddLine("РС10: |cFF6495EDза фул инст |cff99ff9925 гп")
+                    GameTooltip:AddLine("РС25: |cFF6495EDза фул инст |cff99ff99100 гп")
+                    GameTooltip:AddLine("|cff00BFFFСнятие:")
+                    GameTooltip:AddLine("|cFF6495ED Вещи: " .. "|cff99ff9920 гп |cFF6495EDшаг |cff99ff9910")
+                    GameTooltip:AddLine("|cFF6495ED Трини: " .. "|cff99ff9950 гп |cFF6495EDшаг |cff99ff9910")
+                    GameTooltip:AddLine("|cffFF0000Штрафы:")
+                    GameTooltip:AddLine("|cFF6495ED Не критичный косяк: " .. "|cff99ff99-5 гп")
+                    GameTooltip:AddLine("|cFF6495ED Вайп рейда: " .. "|cff99ff99-30 гп")
+                    GameTooltip:AddLine("ИК25: |cFF6495EDза фул инст |cff99ff9920 гп")
+                    GameTooltip:AddLine("|cff00BFFFСнятие: |cFF6495EDтолько за трини минимально |cff99ff9910 гп |cFF6495EDшаг ставки |cff99ff995")
+                    GameTooltip:AddLine("ОС25 +3:")
+                    GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
+                    GameTooltip:AddLine("Малигос25: |cff99ff9910гп")
+                    GameTooltip:AddLine("Оня25:")
+                    GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9915 гп")
+                    GameTooltip:AddLine("Накс25:")
+                    GameTooltip:AddLine("|cFF6495ED За квартал: " .. "|cff99ff9920 гп")
+                    GameTooltip:AddLine("|cFF6495ED За бессмертного: " .. "|cff99ff99200 гп")
+                    GameTooltip:AddLine("Ульдуар25:")
+                    GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
+                    GameTooltip:AddLine("|cFF6495ED Алгалон: " .. "|cff99ff9950 гп")
+                    GameTooltip:AddLine("|cFF6495ED За фул инст: " .. "|cff99ff9950 гп")
+                    GameTooltip:AddLine("|cFF6495ED Защитник ульдуара: " .. "|cff99ff99100 гп")
+                    GameTooltip:AddLine("|cFF6495ED Слава рейдеру ульдуара: " .. "|cff99ff99100 гп")
+                    GameTooltip:AddLine("ИВК25:")
+                    GameTooltip:AddLine("|cFF6495ED За босса: " .. "|cff99ff9910 гп")
+                    GameTooltip:AddLine("|cFF6495ED Без вайпов: " .. "|cff99ff99100 гп")
+                    GameTooltip:Show()
+                end
+            end
+        end)
+    end
+    if id == 974 then
+        if btn ~= nil and btn[id] ~= nil then
+            btn[id]:RegisterForClicks("LeftButtonUp", "RightButtonDown")
+        end
+        if SendMailFrame ~= nil and btn ~= nil and btn[974] ~= nil then
+            btn[974]:SetPoint("LEFT", SendMailFrame,"BOTTOMRIGHT",posex, posey)
+        end
+        self[id]:SetScript("OnEnter",function(self, button)
+            if GameTooltip ~= nil then
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                GameTooltip:AddLine("|cFF6495EDПКМ: Включить покупку самогона")
+                GameTooltip:Show()
+            end
+            if samogon ~= nil then
+                if ahtunGSH ~= nil then
+                    ahtunGSH("show")
+                end
+                if SendMailNameEditBox ~= nil then
+                    SendMailNameEditBox:SetText("Хефе")
+                end
+                if SendMailSubjectEditBox ~= nil then
+                    SendMailSubjectEditBox:SetText("Самогон")
+                end
+                if SendMailMoneyGold ~= nil then
+                    SendMailMoneyGold:SetText("100")
+                end
+            end
+        end)
+        self[id]:SetScript("OnLeave",function(self, button)
+            if GameTooltip ~= nil then
+                GameTooltip:Hide()
+            end
+            if samogon ~= nil then
+                if ahtunGSH ~= nil then
+                    ahtunGSH("show")
+                end
+                if SendMailNameEditBox ~= nil then
+                    SendMailNameEditBox:SetText("")
+                end
+                if SendMailSubjectEditBox ~= nil then
+                    SendMailSubjectEditBox:SetText("")
+                end
+                if SendMailMoneyGold ~= nil then
+                    SendMailMoneyGold:SetText("")
+                end
+                if ahtunGSH ~= nil then
+                    ahtunGSH("hide")
+                end
+            end
+        end)
+        self[id]:SetScript("OnClick",function(self, button)
+            local arg1 = button
+            if arg1 == "LeftButton" then
+                if samogon ~= nil then
+                    local signBtn
+                    if SendMailMailButton ~= nil then
+                        SendMailMailButton:Click()
+                    end
+                    if StaticPopup1Button1 ~= nil then
+                        StaticPopup1Button1:Click()
+                    end
+                    if SendMailNameEditBox ~= nil then
+                        SendMailNameEditBox:SetText("")
+                    end
+                    if SendMailSubjectEditBox ~= nil then
+                        SendMailSubjectEditBox:SetText("")
+                    end
+                    if SendMailMoneyGold ~= nil then
+                        SendMailMoneyGold:SetText("")
+                    end
+                    if GetMoney ~= nil and SendAddonMessage ~= nil then
+                        if tonumber(GetMoney()) >= 1000000 then
+                            SendAddonMessage("#974M", myNome .. " " .. myNome .. " " .. 1, "guild")
+                        else
+                            SendAddonMessage("#974Mn", myNome .. " " .. myNome .. " " .. 1, "guild")
+                        end
+                    end
+                    signBtn = 1
+                    if btn ~= nil and btn[974] ~= nil then
+                        btn[974]:Hide()
+                    end
+                end
+            else
+                if samogon == nil then
+                    samogon = 1
+                else
+                    samogon = nil
+                    if SendMailNameEditBox ~= nil then
+                        SendMailNameEditBox:SetText("")
+                    end
+                    if SendMailSubjectEditBox ~= nil then
+                        SendMailSubjectEditBox:SetText("")
+                    end
+                    if SendMailMoneyGold ~= nil then
+                        SendMailMoneyGold:SetText("")
+                    end
+                    if ahtunGSH ~= nil then
+                        ahtunGSH("hide")
+                    end
+                end
+            end
+        end)
+    end
+    if id == 975 then
+        if iconQ ~= nil and iconQ[1] ~= nil and btn ~= nil and btn[975] ~= nil then
+            btn[975]:SetPoint("TOPLEFT", iconQ[1],"TOPLEFT",posex, posey)
+        end
+        self[id]:SetScript("OnClick",function(self, button)
+            if t_cQ ~= nil and testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvieTabella'] ~= nil and testQ[myNome]['puteshestvie'] ~= nil then
+                if t_cQ[testQ[myNome]['puteshestvieTabella']] ~= nil and t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']] ~= nil then
+                    if t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1']-1 == NS_vzlomSeifa[1] then
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                        end
+                    else
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                        end
+                    end
+                end
+            end
+            
+            if NS_vzlomSeifa[1] < 10 then
+                NS_vzlomSeifa[1] = NS_vzlomSeifa[1]+1
+            end
+            if NS_vzlomSeifa[1] > 9 then
+                NS_vzlomSeifa[1] = 0
+            end
+            
+            if t_cQ ~= nil and testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvieTabella'] ~= nil and testQ[myNome]['puteshestvie'] ~= nil then
+                if t_cQ[testQ[myNome]['puteshestvieTabella']] ~= nil and t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']] ~= nil then
+                    if NS_vzlomSeifa[1] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1'] and 
+                       NS_vzlomSeifa[2] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2'] and 
+                       NS_vzlomSeifa[3] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3'] then
+                        if SendChatMessage ~= nil then
+                            SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе'], "OFFICER", nil, 1)
+                        end
+                        if puteshestvieGrafikaHide ~= nil then
+                            puteshestvieGrafikaHide()
+                        end
+                        if sohranenieProgressa ~= nil then
+                            sohranenieProgressa("взлом")
+                        end
+                        testQ[myNome]['puteshestvie'] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда']
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+                        end
+                    end
+                end
+            end
+            
+            if btn ~= nil and btn[975] ~= nil then
+                btn[975]:SetText(NS_vzlomSeifa[1])
+            end
+        end)
+    end
+    if id == 976 then
+        if iconQ ~= nil and iconQ[1] ~= nil and btn ~= nil and btn[976] ~= nil then
+            btn[976]:SetPoint("TOPLEFT", iconQ[1],"TOPLEFT",posex, posey)
+        end
+        self[id]:SetScript("OnClick",function(self, button)
+            if t_cQ ~= nil and testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvieTabella'] ~= nil and testQ[myNome]['puteshestvie'] ~= nil then
+                if t_cQ[testQ[myNome]['puteshestvieTabella']] ~= nil and t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']] ~= nil then
+                    if t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2']-1 == NS_vzlomSeifa[2] then
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                        end
+                    else
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                        end
+                    end
+                end
+            end
+            
+            if NS_vzlomSeifa[2] < 10 then
+                NS_vzlomSeifa[2] = NS_vzlomSeifa[2]+1
+            end
+            if NS_vzlomSeifa[2] > 9 then
+                NS_vzlomSeifa[2] = 0
+            end
+            
+            if t_cQ ~= nil and testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvieTabella'] ~= nil and testQ[myNome]['puteshestvie'] ~= nil then
+                if t_cQ[testQ[myNome]['puteshestvieTabella']] ~= nil and t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']] ~= nil then
+                    if NS_vzlomSeifa[1] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1'] and 
+                       NS_vzlomSeifa[2] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2'] and 
+                       NS_vzlomSeifa[3] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3'] then
+                        if SendChatMessage ~= nil then
+                            SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе'], "OFFICER", nil, 1)
+                        end
+                        if puteshestvieGrafikaHide ~= nil then
+                            puteshestvieGrafikaHide()
+                        end
+                        if sohranenieProgressa ~= nil then
+                            sohranenieProgressa("взлом")
+                        end
+                        testQ[myNome]['puteshestvie'] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе']
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+                        end
+                    end
+                end
+            end
+            
+            if btn ~= nil and btn[976] ~= nil then
+                btn[976]:SetText(NS_vzlomSeifa[2])
+            end
+        end)
+    end
+    if id == 977 then
+        if iconQ ~= nil and iconQ[1] ~= nil and btn ~= nil and btn[977] ~= nil then
+            btn[977]:SetPoint("TOPLEFT", iconQ[1],"TOPLEFT",posex, posey)
+        end
+        self[id]:SetScript("OnClick",function(self, button)
+            if t_cQ ~= nil and testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvieTabella'] ~= nil and testQ[myNome]['puteshestvie'] ~= nil then
+                if t_cQ[testQ[myNome]['puteshestvieTabella']] ~= nil and t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']] ~= nil then
+                    if t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3']-1 == NS_vzlomSeifa[3] then
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                        end
+                    else
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                        end
+                    end
+                end
+            end
+            
+            if NS_vzlomSeifa[3] < 10 then
+                NS_vzlomSeifa[3] = NS_vzlomSeifa[3]+1
+            end
+            if NS_vzlomSeifa[3] > 9 then
+                NS_vzlomSeifa[3] = 0
+            end
+            
+            if t_cQ ~= nil and testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvieTabella'] ~= nil and testQ[myNome]['puteshestvie'] ~= nil then
+                if t_cQ[testQ[myNome]['puteshestvieTabella']] ~= nil and t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']] ~= nil then
+                    if NS_vzlomSeifa[1] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s1'] and 
+                       NS_vzlomSeifa[2] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s2'] and 
+                       NS_vzlomSeifa[3] == t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['s3'] then
+                        if SendChatMessage ~= nil then
+                            SendChatMessage("Этап " ..  testQ[myNome]['puteshestvie'] .. " завершен. Переход на этап " .. t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе'], "OFFICER", nil, 1)
+                        end
+                        if puteshestvieGrafikaHide ~= nil then
+                            puteshestvieGrafikaHide()
+                        end
+                        if sohranenieProgressa ~= nil then
+                            sohranenieProgressa("взлом")
+                        end
+                        testQ[myNome]['puteshestvie'] = t_cQ[testQ[myNome]['puteshestvieTabella']][testQ[myNome]['puteshestvie']]['куда при взломе']
+                        if PlaySoundFile ~= nil then
+                            PlaySoundFile("Interface\\AddOns\\NSQC\\punto.ogg")
+                        end
+                    end
+                end
+            end
+            
+            if btn ~= nil and btn[977] ~= nil then
+                btn[977]:SetText(NS_vzlomSeifa[3])
+            end
+        end)
+    end
+    if id == 978 then
+        if PlayerFrame ~= nil and btn ~= nil and btn[978] ~= nil then
+            btn[978]:SetPoint("TOPLEFT", PlayerFrame,"BOTTOMLEFT",posex, posey)
+        end
+        if btn ~= nil and btn[978] ~= nil then
+            btn[978]:SetScript("OnEnter",function(self)
+                if GameTooltip ~= nil then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                    GameTooltip:AddLine("|cFF6495EDТочка маршрута")
+                    GameTooltip:Show()
+                end
+            end)
+            btn[978]:SetScript("OnLeave",function(self)
+                if GameTooltip ~= nil then
+                    GameTooltip:Hide()
+                end
+            end)
+        end
+    end
+    if id == 979 then
+        if PlayerFrame ~= nil then
+            self[id]:SetPoint("TOPLEFT", PlayerFrame,"BOTTOMLEFT",posex, posey)
+        end
+        if btn ~= nil and btn[979] ~= nil then
+            btn[979]:SetScript("OnEnter",function(self)
+                if GameTooltip ~= nil then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                    GameTooltip:AddLine("|cFF6495EDВернуться на точку назад")
+                    GameTooltip:Show()
+                end
+            end)
+            btn[979]:SetScript("OnLeave",function(self)
+                if GameTooltip ~= nil then
+                    GameTooltip:Hide()
+                end
+            end)
+        end
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvie'] ~= nil then
+                if tonumber(testQ[myNome]['puteshestvie']) >= 1 then
+                    testQ[myNome]['puteshestvie'] = tostring(tonumber(testQ[myNome]['puteshestvie'])-1)
+                end
+            end
+        end)
+    end
+    if id == 980 then
+        if PlayerFrame ~= nil then
+            self[id]:SetPoint("TOPLEFT", PlayerFrame,"BOTTOMLEFT",posex, posey)
+        end
+        if btn ~= nil and btn[980] ~= nil then
+            btn[980]:SetScript("OnEnter",function(self)
+                if GameTooltip ~= nil then
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                    GameTooltip:AddLine("|cFF6495EDПерейти на точку вперед")
+                    GameTooltip:Show()
+                end
+            end)
+            btn[980]:SetScript("OnLeave",function(self)
+                if GameTooltip ~= nil then
+                    GameTooltip:Hide()
+                end
+            end)
+        end
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]['puteshestvie'] ~= nil and testQ[myNome]['puteshestvieTabella'] ~= nil then
+                if tonumber(testQ[myNome]['puteshestvie']) < tonumber(testQ[myNome][testQ[myNome]['puteshestvieTabella']]) then
+                    testQ[myNome]['puteshestvie'] = tostring(tonumber(testQ[myNome]['puteshestvie'])+1)
+                    if puteshestvieGrafikaHide ~= nil then
+                        puteshestvieGrafikaHide()
+                    end
+                end
+            end
+        end)
+    end
+    if id == 982 or id == 981 then
+        if WhoFrame ~= nil then
+            self[id]:SetPoint("TOPRIGHT", WhoFrame,"TOPRIGHT",posex, posey)
+        end
+    end
+    if id == 996 then
+        if WorldMapDetailFrame ~= nil then
+            self[id]:SetPoint("BOTTOMLEFT", WorldMapDetailFrame,"TOPLEFT",posex, posey)
+        end
+    elseif id == 994 or id == 993 or id == 992 or id == 989 then
+        if GuildMemberDetailFrame ~= nil then
+            self[id]:SetPoint("BOTTOMLEFT", GuildMemberDetailFrame,"TOPLEFT",posex, posey)
+        end
+    elseif id == 995 then
+        if SendMailMailButton ~= nil then
+            self[id]:SetPoint("BOTTOMLEFT", SendMailMailButton,"TOPLEFT",posex, posey)
+        end
+    elseif id == 991 then
+        if BuffFrame ~= nil then
+            self[id]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
+        end
+    elseif id == 988 then
+        if MailFrame ~= nil then
+            self[id]:SetPoint("TOPRIGHT", MailFrame,"TOPRIGHT",posex, posey)
+        end
+    else
+        self[id]:SetPoint("CENTER",posex, posey)
+    end
+    self[id]:SetSize(sizex, sizey)
+    self[id]:SetText(message)
+    if id ~= 973 then
+        self[id]:Hide();
+    end
+    if id==9 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if RandomRoll ~= nil then
+                RandomRoll(1, 100)
+            end
+        end)
+    end
+    if id == 10 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if RandomRoll ~= nil then
+                RandomRoll(1, 333)
+            end
+        end)
+    end
+    if id==11 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if RandomRoll ~= nil then
+                RandomRoll(1, 111)
+            end
+        end)
+    end
+    if id == 988 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if testQ ~= nil then
+                if testQ["mail"] == nil then
+                    testQ["mail"] = 1
+                else
+                    testQ["mail"] = nil
+                end
+            end
+        end)
+    end
+    if id==7 or id==1 or id==2 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if id==2 then
+                if btn ~= nil and btn[2] ~= nil then
+                    btn[2]:Disable()
+                end
+                if testQ ~= nil then
+                    testQ["timerID2"] = 60
+                end
+                if testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil then
+                    if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~= "q3Stat" and testQ[myNome]["взятый_квест"] ~= "itemQ" then
+                        if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
+                            if SendAddonMessage ~= nil then
+                                SendAddonMessage("NSGadd", zzid, "guild")
+                            end
+                        elseif testQ[myNome]["лвл_квестов"]=="2" then
+                            if SendAddonMessage ~= nil then
+                                SendAddonMessage("NSGadd", "#aam", "guild")
+                            end
+                        elseif testQ[myNome]["лвл_квестов"]=="3" then
+                            if SendAddonMessage ~= nil then
+                                SendAddonMessage("NSGadd", "#aat", "guild")
+                            end
+                        end
+                    end
+                    if testQ[myNome]["взятый_квест"] == "q33" then
+                        if SendAddonMessage ~= nil then
+                            SendAddonMessage("NSGadd", "#q33x", "guild")
+                        end
+                    end
+                    if testQ[myNome]["взятый_квест"] == "q3Stat" then
+                        if SendAddonMessage ~= nil then
+                            SendAddonMessage("NSGadd", testQ[myNome]["q3StatNum"], "guild")
+                        end
+                        if GetAchievementCriteriaInfo ~= nil then
+                            local arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10 = GetAchievementCriteriaInfo(tonumber(testQ[myNome]["q3Stat"]), 1)
+                            if SendAddonMessage ~= nil then
+                                SendAddonMessage("#zlnDa", arg4, "guild")
+                            end
+                        end
+                    end
+                    if testQ[myNome]["взятый_квест"] == "itemQ" then
+                        if SendAddonMessage ~= nil then
+                            SendAddonMessage("itemQuestSend", myNome .. " " .. testQ[myNome]["itemName"] .. " " .. testQ[myNome]["itemNum"], "guild")
+                        end
+                    end
+                    if SendAddonMessage ~= nil then
+                        SendAddonMessage("NSGadd", "#questTimerID2", "guild")
+                    end
+                end
+                
+                if btn ~= nil then
+                    for ii=1,15 do
+                        if btn[ii] ~= nil then
+                            btn[ii]:Hide();
+                        end
+                    end
+                end
+                if minibtn ~= nil then
+                    minibtn:SetNormalTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+                    minibtn:SetPushedTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+                    minibtn:SetHighlightTexture("Interface\\AddOns\\NSQC\\emblem.tga")
+                end
+                pokazat = 0
+            elseif id == 1 then
+                if SendAddonMessage ~= nil then
+                    SendAddonMessage("NSGadd", zzid .. " " .. versAdd, "guild")
+                end
+                if SendChatMessage ~= nil then
+                    SendChatMessage("ВOЖДЬ", "guild", nil, 1)
+                end
+                if SendAddonMessage ~= nil then
+                    SendAddonMessage("NSGadd", "#questTimerID2", "guild")
+                end
+            else
+                if SendAddonMessage ~= nil then
+                    SendAddonMessage("NSGadd", zzid, "guild")
+                end
+            end
+        end)
+    elseif id==5 or id==6 or id==999 or id==12 or id==13 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if SendAddonMessage ~= nil then
+                SendAddonMessage("NSGadd", zzid, "guild")
+            end
+        end)
+    end
+    if id==8 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil then
+                if testQ[myNome]["взятый_квест"] ~= "q33" and testQ[myNome]["взятый_квест"] ~="q3Stat" and testQ[myNome]["взятый_квест"] ~="itemQ" then
+                    if testQ[myNome]["лвл_квестов"]~="2" and testQ[myNome]["лвл_квестов"]~="3" then
+                        if GetAchievementLink ~= nil and SendChatMessage ~= nil then
+                            SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
+                        end
+                    end
+                    if testQ[myNome]["лвл_квестов"]=="2" then
+                        if proverkaVypolneniyaKvestySachivkoj ~= nil then
+                            proverkaVypolneniyaKvestySachivkoj(myNome,"2")
+                        end
+                    end
+                    if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_1"] == "vzyat" then
+                        if GetAchievementLink ~= nil and SendChatMessage ~= nil then
+                            SendChatMessage(GetAchievementLink(testQ[myNome]["взятый_квест"]), "GUILD", nil, 1)
+                        end
+                    end
+                    if testQ[myNome]["лвл_квестов"]=="3" and testQ[myNome]["взятый_квест3_2"] == "vzyat" then
+                        if proverkaVypolneniyaKvestySachivkoj ~= nil then
+                            proverkaVypolneniyaKvestySachivkoj(myNome,"3")
+                        end
+                    end
+                end
+                if testQ[myNome]["взятый_квест"] == "q33" then
+                    local nik = {}
+                    for i=1,#testQ[myNome]["q33nik"] do
+                        if testQ[myNome]["q33nik"][i] == 1 then
+                            nik[i] = "выполнено"
+                        else
+                            nik[i] = testQ[myNome]["q33nik"][i]
+                        end
+                    end
+                    if SendChatMessage ~= nil then
+                        SendChatMessage(testQ[myNome]["q33q"] .. nik[1] .. ", " .. nik[2] .. ", " .. nik[3], "OFFICER", nil, 1)
+                    end
+                end
+                if testQ[myNome]["взятый_квест"] == "q3Stat" then
+                    local x = tonumber(testQ[myNome]["q3StatNum"])+5
+                    if SendChatMessage ~= nil then
+                        SendChatMessage("Должно стать " .. x .. " пунктов ачивки " .. GetAchievementLink(tonumber(testQ[myNome]["q3Stat"])), "OFFICER", nil, 1)
+                    end
+                end
+                if testQ[myNome]["взятый_квест"] == "itemQ" then
+                    if SendChatMessage ~= nil then
+                        SendChatMessage("Нужно достать " .. testQ[myNome]["itemNum"] .. " стаков " .. testQ[myNome]["itemName"] .. " и прислать по почте персонажу Хефе", "OFFICER", nil, 1)
+                    end
+                end
+            end
+        end)
+    end
+    if id == 14 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+        end)
+    end
+    if id == 15 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+        end)
+    end
+    if id == 998 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if SendAddonMessage ~= nil then
+                SendAddonMessage("NSGadd", "#ahtng", "guild")
+            end
+        end)
+    end
+    if id == 997 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if SendAddonMessage ~= nil then
+                SendAddonMessage("NSGadd", "#zzp", "guild")
+            end
+        end)
+    end
+    if id == 996 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if SendAddonMessage ~= nil then
+                SendAddonMessage("NSGadd", "#2t", "guild")
+            end
+        end)
+    end
+    if id == 4 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if testQ ~= nil and myNome ~= nil and testQ[myNome] ~= nil and testQ[myNome]["zzlf"] ~= nil and SendAddonMessage ~= nil then
+                SendAddonMessage("NSGadd", "#zzguild " .. testQ[myNome]["zzlf"], "guild")
+            end
+        end)
+    end
+    if id == 3 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if WhoFrame ~= nil and WhoFrame:IsVisible() then
+                if WhoFrame["selectedName"] ~= nil then
+                    local wNome = WhoFrame["selectedName"]
+                    if PlaySoundFile ~= nil then
+                        PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+                    end
+                    local chatFrameVisible = false
+                    if ChatFrame1 ~= nil and ChatFrame1:IsVisible() then
+                        ChatFrame1EditBox:Show()
+                        ChatFrame1EditBox:SetFocus()
+                        ChatFrame1EditBox:SetText("/ginvite " .. wNome)
+                        chatFrameVisible = true
+                    end
+                    if ChatFrame2 ~= nil and ChatFrame2:IsVisible() then
+                        ChatFrame2EditBox:Show()
+                        ChatFrame2EditBox:SetFocus()
+                        ChatFrame2EditBox:SetText("/ginvite " .. wNome)
+                        chatFrameVisible = true
+                    end
+                    if ChatFrame3 ~= nil and ChatFrame3:IsVisible() then
+                        ChatFrame3EditBox:Show()
+                        ChatFrame3EditBox:SetFocus()
+                        ChatFrame3EditBox:SetText("/ginvite " .. wNome)
+                        chatFrameVisible = true
+                    end
+                    if ChatFrame4 ~= nil and ChatFrame4:IsVisible() then
+                        ChatFrame4EditBox:Show()
+                        ChatFrame4EditBox:SetFocus()
+                        ChatFrame4EditBox:SetText("/ginvite " .. wNome)
+                        chatFrameVisible = true
+                    end
+                    if not chatFrameVisible and ChatFrame1EditBox ~= nil then
+                        ChatFrame1EditBox:Show()
+                        ChatFrame1EditBox:SetFocus()
+                        ChatFrame1EditBox:SetText("/ginvite " .. wNome)
+                    end
+                end
+            end
+        end)
+    end
+    if id == 777 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if testQ ~= nil then
+                if testQ["marshS"] == nil then
+                    testQ["marshS"] = 1
+                elseif testQ["marshS"] == 1 then
+                    marsh = nil
+                    testQ["marshS"] = nil
+                    testQ["marshK"] = nil
+                    testQ["marshL"] = nil
+                    testQ["marshN"] = nil
+                end
+            end
+        end)
+    end
+    if id == 999999 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if testQ ~= nil then
+                if testQ[myNome] ~= nil then
+                    if testQ[myNome]["sdvig"] == nil then
+                        testQ[myNome]["sdvig"] = 1
+                        if GetPlayerMapPosition ~= nil then
+                            local x,y = GetPlayerMapPosition("player")
+                            testQ[myNome]["sdvigx"] = x
+                            testQ[myNome]["sdvigy"] = y
+                        end
+                        print ("1")
+                    else
+                        testQ[myNome]["sdvig"] = nil
+                        testQ[myNome]["sdvigx"] = nil
+                        testQ[myNome]["sdvigy"] = nil
+                        print("nil")
+                    end
+                end
+            end
+        end)
+    end
+    if id == 995 then
+        self[id]:SetScript("OnClick",function(self, button)
+            if PlaySoundFile ~= nil then
+                PlaySoundFile("Interface\\AddOns\\NSQC\\libs\\clc.ogg")
+            end
+            if SendMail ~= nil then
+                SendMail("Хефе", "Квест на сбор предметов", "")
+            end
+            if btn ~= nil and btn[995] ~= nil then
+                btn[995]:Hide()
+            end
+            if testQ ~= nil and myNome ~= nil then
+                if testQ[myNome] ~= nil then
+                    testQ[myNome]["itemQend"] = 1
+                end
+            end
+            tempRez1 = nil
+            if MailFrame ~= nil then
+                MailFrame:Hide()
+            end
+        end)
+    end
 end
 
 -- вместо цикла явная индексация, так как у тебя один фиг ifы
@@ -10830,12 +11161,27 @@ minibtn:SetScript("OnClick", function(self, arg1)
         lastClickButton = arg1
         
         -- Устанавливаем таймер для обработки одинарного клика
-		clickTimer = C_Timer.After(0.3, function()
-		    if clickPending then
-		        HandleSingleClick(lastClickButton)
-		        clickPending = false
-		    end
-		end)
+		-- Создаём фрейм один раз при загрузке аддона
+		local clickTimerFrame = CreateFrame("Frame")
+		clickTimerFrame:SetScript("OnUpdate", nil)
+
+		-- Функция запуска таймера
+		local function StartClickTimer(button)
+		    clickPending = true
+		    lastClickButton = button
+		    clickTimerFrame.elapsed = 0
+		    clickTimerFrame:SetScript("OnUpdate", function(self, elapsed)
+		        self.elapsed = self.elapsed + elapsed
+		        if self.elapsed >= 0.3 then
+		            self:SetScript("OnUpdate", nil)
+		            if clickPending then
+		                HandleSingleClick(lastClickButton)
+		                clickPending = false
+		            end
+		        end
+		    end)
+		end
+
     end
 end)
 

@@ -6303,3 +6303,19 @@ end
 -----------------------
 
 
+-- Sindragosa Alert - простой хук чата
+local original_AddMessage = ChatFrame1.AddMessage
+
+ChatFrame1.AddMessage = function(frame, text, ...)
+    -- Ищем сообщения Синдрагосы в сыром тексте
+    if text:lower():find("<синдрагоса>") and (text:lower():find("ледяная метка") or text:lower():find("освобожденная магия")) then
+        -- Очищаем от цветовых кодов
+        local cleanText = text:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
+        print("|cFF0000FF[SINDRAGOSA]|r |cFFFF0000" .. cleanText .. "|r")
+    end
+    
+    -- Вызываем оригинальную функцию
+    return original_AddMessage(frame, text, ...)
+end
+
+print("|cFFFF0000[SindragosaHook]|r |cFF00FF00Активирован! Ловим сообщения напрямую из чата|r")
