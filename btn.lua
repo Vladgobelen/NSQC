@@ -1,4 +1,4 @@
-versAdd=398; versAddDop=5
+versAdd=398; versAddDop=6
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -11013,7 +11013,6 @@ end
 local lastClickTime = 0
 local lastClickButton = nil
 local clickPending = false
-local clickTimer = nil
 
 -- Функция обработки одинарного клика
 local function HandleSingleClick(arg1)
@@ -11112,7 +11111,6 @@ end
 
 -- Функция обработки двойного клика
 local function HandleDoubleClick(arg1)
-    -- Добавьте здесь свои действия для двойного клика
     if arg1 == "LeftButton" then
     	if tostring(versAdd) == tostring(testQ["vers"]["2"]) then
 	    	if gpDb_old then
@@ -11130,12 +11128,27 @@ local function HandleDoubleClick(arg1)
 	    end
     elseif arg1 == "RightButton" then
         print("Двойной правый клик")
-        -- Ваши действия для двойного правого клика
     elseif arg1 == "MiddleButton" then
         print("Двойной средний клик")
-        -- Ваши действия для двойного среднего клика
     end
 end
+
+-- Создаем фрейм таймера один раз при загрузке (для WoW 3.3.5)
+-- Теперь он видит локальные функции выше
+local ClickTimerFrame = CreateFrame("Frame")
+ClickTimerFrame:Hide()
+ClickTimerFrame.elapsed = 0
+ClickTimerFrame:SetScript("OnUpdate", function(self, elapsed)
+    if clickPending then
+        self.elapsed = self.elapsed + elapsed
+        if self.elapsed >= 0.3 then
+            self.elapsed = 0
+            self:Hide()
+            clickPending = false
+            HandleSingleClick(lastClickButton)
+        end
+    end
+end)
 
 -- Основной обработчик кликов
 minibtn:SetScript("OnClick", function(self, arg1)
@@ -11144,44 +11157,17 @@ minibtn:SetScript("OnClick", function(self, arg1)
     -- Проверяем, был ли предыдущий клик недавно той же кнопкой
     if clickPending and (currentTime - lastClickTime < 0.3) and (arg1 == lastClickButton) then
         -- Это двойной клик
-        if clickTimer then
-            clickTimer:Cancel()
-            clickTimer = nil
-        end
         clickPending = false
+        ClickTimerFrame.elapsed = 0
+        ClickTimerFrame:Hide()
         HandleDoubleClick(arg1)
     else
         -- Первый клик или прошло слишком много времени
-        if clickTimer then
-            clickTimer:Cancel()
-        end
-        
         clickPending = true
         lastClickTime = currentTime
         lastClickButton = arg1
-        
-        -- Устанавливаем таймер для обработки одинарного клика
-		-- Создаём фрейм один раз при загрузке аддона
-		local clickTimerFrame = CreateFrame("Frame")
-		clickTimerFrame:SetScript("OnUpdate", nil)
-
-		-- Функция запуска таймера
-		local function StartClickTimer(button)
-		    clickPending = true
-		    lastClickButton = button
-		    clickTimerFrame.elapsed = 0
-		    clickTimerFrame:SetScript("OnUpdate", function(self, elapsed)
-		        self.elapsed = self.elapsed + elapsed
-		        if self.elapsed >= 0.3 then
-		            self:SetScript("OnUpdate", nil)
-		            if clickPending then
-		                HandleSingleClick(lastClickButton)
-		                clickPending = false
-		            end
-		        end
-		    end)
-		end
-
+        ClickTimerFrame.elapsed = 0
+        ClickTimerFrame:Show()
     end
 end)
 
