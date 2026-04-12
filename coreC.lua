@@ -1176,72 +1176,72 @@ GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
 	end
 end)
 
-local GC_Sniffer = CreateFrame("Frame")
-GC_Sniffer:RegisterEvent("CHAT_MSG_RAID_LEADER")
-GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
-	local msg = mysplit(message)
-	local myNome = GetUnitName("player")
-	if testQ["raidAUK"] ~= nil then
-		local test = mysplit(message)
-		if test[2] == nil and type(tonumber(message)) == "number" then
-			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
-				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
-					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
-				end
-			else
-				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
-			end
-		end
-	end
-end)
+-- local GC_Sniffer = CreateFrame("Frame")
+-- GC_Sniffer:RegisterEvent("CHAT_MSG_RAID_LEADER")
+-- GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+-- 	local msg = mysplit(message)
+-- 	local myNome = GetUnitName("player")
+-- 	if testQ["raidAUK"] ~= nil then
+-- 		local test = mysplit(message)
+-- 		if test[2] == nil and type(tonumber(message)) == "number" then
+-- 			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
+-- 				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
+-- 					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+-- 				end
+-- 			else
+-- 				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+-- 			end
+-- 		end
+-- 	end
+-- end)
 
-local GC_Sniffer = CreateFrame("Frame")
-GC_Sniffer:RegisterEvent("CHAT_MSG_RAID")
-GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
-	local msg = mysplit(message)
-	local myNome = GetUnitName("player")
-	if testQ["raidAUK"] ~= nil then
-		local test = mysplit(message)
-		if test[2] == nil and type(tonumber(message)) == "number" then
-			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
-				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
-					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
-				end
-			else
-				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
-			end
-		end
-	end
-end)
+-- local GC_Sniffer = CreateFrame("Frame")
+-- GC_Sniffer:RegisterEvent("CHAT_MSG_RAID")
+-- GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+-- 	local msg = mysplit(message)
+-- 	local myNome = GetUnitName("player")
+-- 	if testQ["raidAUK"] ~= nil then
+-- 		local test = mysplit(message)
+-- 		if test[2] == nil and type(tonumber(message)) == "number" then
+-- 			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
+-- 				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
+-- 					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+-- 				end
+-- 			else
+-- 				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+-- 			end
+-- 		end
+-- 	end
+-- end)
 
-local GC_Sniffer = CreateFrame("Frame")
-GC_Sniffer:RegisterEvent("CHAT_MSG_RAID_WARNING")
-GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
-	local msg = mysplit(message)
-	local myNome = GetUnitName("player")
-	if msg[1] == "АУК" then
-		testQ['rez'] = nsGP()
-    	if sender == myNome then
-			SendAddonMessage("nsAUK", lastWords(message), "RAID")
-			if testQ["raidAUK"] ~= nil then
-				testQ["raidAUK"] = nil
-			end
-		end
-		testQ[myNome]['nsAUKpredmet'] = lastWords(message)
-	end
-	if testQ["raidAUK"] ~= nil then
-		local test = mysplit(message)
-		if test[2] == nil and type(tonumber(message)) == "number" then
-			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
-				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
-					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
-				end
-			else
-				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
-			end
-		end
-	end
-end)
+-- local GC_Sniffer = CreateFrame("Frame")
+-- GC_Sniffer:RegisterEvent("CHAT_MSG_RAID_WARNING")
+-- GC_Sniffer:SetScript("OnEvent", function (self, event, message, sender)
+-- 	local msg = mysplit(message)
+-- 	local myNome = GetUnitName("player")
+-- 	if msg[1] == "АУК" then
+-- 		testQ['rez'] = nsGP()
+--     	if sender == myNome then
+-- 			SendAddonMessage("nsAUK", lastWords(message), "RAID")
+-- 			if testQ["raidAUK"] ~= nil then
+-- 				testQ["raidAUK"] = nil
+-- 			end
+-- 		end
+-- 		testQ[myNome]['nsAUKpredmet'] = lastWords(message)
+-- 	end
+-- 	if testQ["raidAUK"] ~= nil then
+-- 		local test = mysplit(message)
+-- 		if test[2] == nil and type(tonumber(message)) == "number" then
+-- 			if testQ["raidAUKPobeda_gp"] ~= nil and testQ["raidAUKPobeda_gp"] ~= "" then
+-- 				if tonumber(message) > tonumber(testQ["raidAUKPobeda_gp"]) then
+-- 					nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+-- 				end
+-- 			else
+-- 				nsAUK(sender,msg[1],testQ[myNome]['nsAUKpredmet'])
+-- 			end
+-- 		end
+-- 	end
+-- end)
 
 
 

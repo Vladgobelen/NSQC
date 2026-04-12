@@ -20,17 +20,17 @@ if testQ[myNome]==nil then
 	testQ[myNome]={}
 end
 
-if kodMsg[1] == "nsAUKend" then
-	if gpBtn ~= nil then
-		gpBtn:Hide()
-		gpBtn:killall()
-	end
-	gpBtn = nil
-	testQ["raidAUK"] = nil
-	testQ["raidAUKPobeda"] = nil
-	testQ["raidAUKPobeda_gp"] = nil
-	testQ[myNome]['nsAUKpredmet'] = nil
-end
+-- if kodMsg[1] == "nsAUKend" then
+-- 	if gpBtn ~= nil then
+-- 		gpBtn:Hide()
+-- 		gpBtn:killall()
+-- 	end
+-- 	gpBtn = nil
+-- 	testQ["raidAUK"] = nil
+-- 	testQ["raidAUKPobeda"] = nil
+-- 	testQ["raidAUKPobeda_gp"] = nil
+-- 	testQ[myNome]['nsAUKpredmet'] = nil
+-- end
 if kodMsg[1] == "nsYourLog" and kodMsg[2] == myNome and not gpDb then
     -- Парсим строку вида "1743534269 Шеф 9134_Рубиновое_святилище_10 5 18sP"
     local timestamp, rl, raid_id, gp, targets = message:match("^(%d+)%s+(%S+)%s+(%S+)%s+([-+]?%d+)%s+(.+)$")
@@ -76,23 +76,23 @@ end
 if kodMsg[1] == "ns_duel_otkaz" and message == myNome then
 	nsMyDuel = nil
 end
-if 	kodMsg[1] == "nsAUK" then
-	if not textWindow or not textWindow:IsVisible() then
-		TextWindow(message)
+-- if 	kodMsg[1] == "nsAUK" then
+-- 	if not textWindow or not textWindow:IsVisible() then
+-- 		TextWindow(message)
 		
-		testQ["raidAUK"] = {}
-		testQ["raidAUKPobeda"] = nil
-		testQ["raidAUKPobeda_gp"] = nil
-	else
-		DestroyTextWindow()
-		if testQ["raidAUKPobeda_gp"] ~= nil then
-			SendChatMessage(testQ["raidAUKPobeda"] .. " побеждает, поставив " .. testQ["raidAUKPobeda_gp"] .. " ГП", "RAID_WARNING", nil, 1)
-		end
-		testQ["raidAUK"] = nil
-		testQ["raidAUKPobeda"] = nil
-		testQ["raidAUKPobeda_gp"] = nil
-	end
-end
+-- 		testQ["raidAUK"] = {}
+-- 		testQ["raidAUKPobeda"] = nil
+-- 		testQ["raidAUKPobeda_gp"] = nil
+-- 	else
+-- 		DestroyTextWindow()
+-- 		if testQ["raidAUKPobeda_gp"] ~= nil then
+-- 			SendChatMessage(testQ["raidAUKPobeda"] .. " побеждает, поставив " .. testQ["raidAUKPobeda_gp"] .. " ГП", "RAID_WARNING", nil, 1)
+-- 		end
+-- 		testQ["raidAUK"] = nil
+-- 		testQ["raidAUKPobeda"] = nil
+-- 		testQ["raidAUKPobeda_gp"] = nil
+-- 	end
+-- end
 
 if kodMsg[1] == "tipaTvoyKod" then
 	if testQ[myNome]['коды'] == nil then
