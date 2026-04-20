@@ -31,6 +31,7 @@ end
 -- 	testQ["raidAUKPobeda_gp"] = nil
 -- 	testQ[myNome]['nsAUKpredmet'] = nil
 -- end
+
 if kodMsg[1] == "nsYourLog" and kodMsg[2] == myNome and not gpDb then
     -- Парсим строку вида "1743534269 Шеф 9134_Рубиновое_святилище_10 5 18sP"
     local timestamp, rl, raid_id, gp, targets = message:match("^(%d+)%s+(%S+)%s+(%S+)%s+([-+]?%d+)%s+(.+)$")
