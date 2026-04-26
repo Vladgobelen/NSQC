@@ -11054,7 +11054,7 @@ local function HandleSingleClick(arg1)
     else
         if testQ["update"] == nil then
             testQ["update"] = 30
-            SendChatMessage("Мне нужно обновить аддон: запустить файл NSQCu в папке с игрой", "OFFICER", nil, 1)
+            SendChatMessage("Похоже, я использую VPN. С ним открыть аддон не получится из за действующих ограничений. (обнови аддон)", "OFFICER", nil, 1)
         else
             print("Мне нужно обновить аддон: запустить файл NSQCu в папке с игрой")
         end
