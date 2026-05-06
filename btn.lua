@@ -10836,7 +10836,7 @@ local function RequestAverageItemLevel(unit)
 	printf("Requesting item level of %s (unitID %s)...", UnitName(unit), unit)
 end
 
-minibtn = CreateFrame("Button", nil, Minimap)
+minibtn = CreateFrame("Button", "minibtn", Minimap)
 minibtn:RegisterForClicks("LeftButtonUp", "RightButtonDown", "MiddleButtonUp")
 minibtn:SetScript("OnEnter",function(self)
 	MainMenuMicroButton["hover"]=1
