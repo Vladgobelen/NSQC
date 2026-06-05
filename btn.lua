@@ -1,4 +1,4 @@
-versAdd=402; versAddDop=0
+versAdd=402; versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8579,7 +8579,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
             end
             
 if arg1 == "RightButton" then
-    NSForumClient.OpenTopicById(31)
+    NSForumClient.OpenTopicById(1)
 end
         end)
     end
