@@ -92,7 +92,7 @@ if msg[1] == "!кик" and sender == myNome then
     local candidates = {}
 
     local function shouldKick(name, rankName, level, publicNote, officerNote, lastOnlineDays)
-        if not (rankName == "И.О. Констебля" or rankName == "Мл. Констебль") then
+        if not (rankName:lower() == "и.о. констебля" or rankName:lower() == "мл. констебль") then
             return false
         end
         
