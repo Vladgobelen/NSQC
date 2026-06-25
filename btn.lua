@@ -1,4 +1,4 @@
-versAdd=403; versAddDop=0
+versAdd=403; versAddDop=1
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8442,67 +8442,78 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
             btn[id]:RegisterForClicks("LeftButtonUp", "RightButtonDown","MiddleButtonDown")
         end
         self[id]:SetScript("OnEnter",function(self, button)
-            if MinimapZoomOut ~= nil and btn ~= nil and btn[973] ~= nil then
-                btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",0, posey)
-            end
-            
-            if FriendsFrame ~= nil then FriendsFrame:Show() end
-            if GuildFrame ~= nil then GuildFrame:Show() end
-            
-            if GameTooltip ~= nil then
-                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                local rez = nsGP ~= nil and nsGP() or {}
-                local num = tablelength ~= nil and tablelength(rez) or 0
-                local rank
-                local rezultat
-                local pbl
-                
-                if GetNumGuildMembers ~= nil then
-                    for Zc=1,GetNumGuildMembers(true) do
-                        if GetGuildRosterInfo ~= nil then
-                            local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-                            if name == myNome then
-                                pbl = publicNote
-                                if officerNote ~= nil and mysplit ~= nil then
-                                    rezultat = mysplit(officerNote)
-                                    if rezultat ~= nil and #rezultat >= 3 then
-                                        rezultat = rezultat[3]
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-                
-                if GetNumRaidMembers ~= nil and GetNumRaidMembers() ~= 0 and num ~= 0 then
-                    for i = 1,num do
-                        local key = tostring(i)
-                        if rez[key] ~= nil and rez[key]['nome'] ~= nil then
-                            local displayName = rez[key]['nome'] ~= myNome and "|cFF6495ED" or "|cffFF0000"
-                            local publicNote = rez[key]['public'] or ""
-                            local znach = rez[key]['znach'] or ""
-                            
-                            GameTooltip:AddLine(displayName .. rez[key]['nome'] .. " |cffFF8C00(" .. publicNote .. "): |cff99ff99" .. znach)
-                            if gplabels ~= nil then
-                                table.insert(gplabels, rez[key]['nome'] .. " |cffFF8C00(" .. publicNote .. "): |cff99ff99" .. znach)
-                            end
-                        end
-                    end
-                    
-                    if createParent ~= nil then
-                        createParent()
-                    end
-                else
-                    if myNome ~= nil and pbl ~= nil and rezultat ~= nil then
-                        GameTooltip:AddLine("|cFF6495ED" .. myNome .. " |cffFF8C00(" .. pbl .. "): |cff99ff99" .. rezultat)
-                    end
-                end
-                
-                if FriendsFrame ~= nil then FriendsFrame:Hide() end
-                if GuildFrame ~= nil then GuildFrame:Hide() end
-                GameTooltip:Show()
-            end
-        end)
+		    if MinimapZoomOut ~= nil and btn ~= nil and btn[973] ~= nil then
+		        btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",0, posey)
+		    end
+		    
+		    if FriendsFrame ~= nil then FriendsFrame:Show() end
+		    if GuildFrame ~= nil then GuildFrame:Show() end
+		    
+		    if GameTooltip ~= nil then
+		        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		        local rez = nsGP ~= nil and nsGP() or {}
+		        local num = tablelength ~= nil and tablelength(rez) or 0
+		        local rank
+		        local rezultat
+		        local pbl
+		        
+		        if GetNumGuildMembers ~= nil then
+		            for Zc=1,GetNumGuildMembers(true) do
+		                if GetGuildRosterInfo ~= nil then
+		                    local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
+		                    if name == myNome then
+		                        pbl = publicNote
+		                        if officerNote ~= nil and mysplit ~= nil then
+		                            rezultat = mysplit(officerNote)
+		                            if rezultat ~= nil and #rezultat >= 3 then
+		                                rezultat = rezultat[3]
+		                            end
+		                        end
+		                    end
+		                end
+		            end
+		        end
+		        
+		        if GetNumRaidMembers ~= nil and GetNumRaidMembers() ~= 0 and num ~= 0 then
+		            for i = 1,num do
+		                local key = tostring(i)
+		                if rez[key] ~= nil and rez[key]['nome'] ~= nil then
+		                    local playerName = rez[key]['nome']
+		                    local displayName = playerName ~= myNome and "|cFF6495ED" or "|cffFF0000"
+		                    local publicNote = rez[key]['public'] or ""
+		                    local znach = rez[key]['znach'] or ""
+		                    
+		                    -- === ПРОВЕРКА КЭША ВНЕШНИХ ГП ===
+		                    if gpDb ~= nil and gpDb.GetExternalGp ~= nil then
+		                        local cachedGp = gpDb:GetExternalGp(playerName)
+		                        if cachedGp ~= nil then
+		                            -- Используем значение из кэша
+		                            znach = tostring(cachedGp)
+		                        end
+		                    end
+		                    -- =================================
+		                    
+		                    GameTooltip:AddLine(displayName .. playerName .. " |cffFF8C00(" .. publicNote .. "): |cff99ff99" .. znach)
+		                    if gplabels ~= nil then
+		                        table.insert(gplabels, playerName .. " |cffFF8C00(" .. publicNote .. "): |cff99ff99" .. znach)
+		                    end
+		                end
+		            end
+		            
+		            if createParent ~= nil then
+		                createParent()
+		            end
+		        else
+		            if myNome ~= nil and pbl ~= nil and rezultat ~= nil then
+		                GameTooltip:AddLine("|cFF6495ED" .. myNome .. " |cffFF8C00(" .. pbl .. "): |cff99ff99" .. rezultat)
+		            end
+		        end
+		        
+		        if FriendsFrame ~= nil then FriendsFrame:Hide() end
+		        if GuildFrame ~= nil then GuildFrame:Hide() end
+		        GameTooltip:Show()
+		    end
+		end)
         self[id]:SetScript("OnLeave",function(self, button)
             if MinimapZoomOut ~= nil and btn ~= nil and btn[973] ~= nil then
                 btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",25, posey)
