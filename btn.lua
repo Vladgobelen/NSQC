@@ -1,4 +1,4 @@
-versAdd=403; versAddDop=1
+versAdd=403; versAddDop=2
 bonusQuestF = 30
 local myNome = GetUnitName("player")
 btn = {};
@@ -8441,9 +8441,9 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
         if btn ~= nil and btn[id] ~= nil then
             btn[id]:RegisterForClicks("LeftButtonUp", "RightButtonDown","MiddleButtonDown")
         end
-        self[id]:SetScript("OnEnter",function(self, button)
+		self[id]:SetScript("OnEnter", function(self, button)
 		    if MinimapZoomOut ~= nil and btn ~= nil and btn[973] ~= nil then
-		        btn[973]:SetPoint("LEFT", MinimapZoomOut,"RIGHT",0, posey)
+		        btn[973]:SetPoint("LEFT", MinimapZoomOut, "RIGHT", 0, posey)
 		    end
 		    
 		    if FriendsFrame ~= nil then FriendsFrame:Show() end
@@ -8458,7 +8458,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		        local pbl
 		        
 		        if GetNumGuildMembers ~= nil then
-		            for Zc=1,GetNumGuildMembers(true) do
+		            for Zc = 1, GetNumGuildMembers(true) do
 		                if GetGuildRosterInfo ~= nil then
 		                    local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
 		                    if name == myNome then
@@ -8475,7 +8475,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		        end
 		        
 		        if GetNumRaidMembers ~= nil and GetNumRaidMembers() ~= 0 and num ~= 0 then
-		            for i = 1,num do
+		            for i = 1, num do
 		                local key = tostring(i)
 		                if rez[key] ~= nil and rez[key]['nome'] ~= nil then
 		                    local playerName = rez[key]['nome']
@@ -8486,8 +8486,7 @@ function btn:configure(id,posex,posey,sizex,sizey,zzid,message)
 		                    -- === ПРОВЕРКА КЭША ВНЕШНИХ ГП ===
 		                    if gpDb ~= nil and gpDb.GetExternalGp ~= nil then
 		                        local cachedGp = gpDb:GetExternalGp(playerName)
-		                        if cachedGp ~= nil then
-		                            -- Используем значение из кэша
+		                        if cachedGp ~= nil and cachedGp ~= 0 then
 		                            znach = tostring(cachedGp)
 		                        end
 		                    end
