@@ -5725,28 +5725,21 @@ local function CreatePlayerSoundMenu(playerName)
     return menu
 end
 
--- Хук для контекстного меню
 -- Функция для получения и вывода информации об игроке
 local function ShowPlayerInfo(playerName)
-    local officerNote = ""
-    local publicNote = ""
-    local found = false
+    local officerNote, publicNote, rank, level, zone, className, found = "", "", "", "", "", "", false
 
-    -- Ищем игрока в гильдии по имени
     for i = 1, GetNumGuildMembers() do
-        local name, _, _, _, _, _, pubNote, offNote = GetGuildRosterInfo(i)
+        local name, rankName, _, levelVal, class, zoneName, pubNote, offNote = GetGuildRosterInfo(i)
         if name and strsplit("-", name) == playerName then
-            publicNote = pubNote or ""
-            officerNote = offNote or ""
-            found = true
+            publicNote, officerNote, rank, level, zone, className, found = pubNote or "", offNote or "", rankName or "", levelVal or "", zoneName or "", class or "", true
             break
         end
     end
 
     if found then
-        SendChatMessage("Информация об игроке: " .. playerName, "OFFICER")
-        SendChatMessage("  Офицерская заметка: " .. (officerNote ~= "" and officerNote or "(нет)"), "OFFICER")
-        SendChatMessage("  Публичная заметка: " .. (publicNote ~= "" and publicNote or "(нет)"), "OFFICER")
+        SendChatMessage("Информация: " .. playerName .. " || Звание: " .. (rank ~= "" and rank or "-") .. " || Уровень: " .. (level ~= "" and level or "-") .. " || Класс: " .. (className ~= "" and className or "-") .. " || Зона: " .. (zone ~= "" and zone or "-"), "OFFICER")
+        SendChatMessage("Заметки: офиц. - " .. (officerNote ~= "" and officerNote or "-") .. " || публ. - " .. (publicNote ~= "" and publicNote or "-"), "OFFICER")
         SendChatMessage("\"репутация " .. playerName .. " 0", "GUILD")
     else
         SendChatMessage("Игрок " .. playerName .. " не найден в гильдии.", "OFFICER")
