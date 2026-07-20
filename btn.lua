@@ -8960,9 +8960,9 @@ end
             self[id]:SetPoint("TOPRIGHT", BuffFrame,"TOPRIGHT",posex, posey)
         end
     elseif id == 988 then
-        if MailFrame ~= nil then
-            self[id]:SetPoint("TOPRIGHT", MailFrame,"TOPRIGHT",posex, posey)
-        end
+        -- if MailFrame ~= nil then
+        --     self[id]:SetPoint("TOPRIGHT", MailFrame,"TOPRIGHT",posex, posey)
+        -- end
     else
         self[id]:SetPoint("CENTER",posex, posey)
     end
@@ -9001,17 +9001,17 @@ end
             end
         end)
     end
-    if id == 988 then
-        self[id]:SetScript("OnClick",function(self, button)
-            if testQ ~= nil then
-                if testQ["mail"] == nil then
-                    testQ["mail"] = 1
-                else
-                    testQ["mail"] = nil
-                end
-            end
-        end)
-    end
+    -- if id == 988 then
+    --     self[id]:SetScript("OnClick",function(self, button)
+    --         if testQ ~= nil then
+    --             if testQ["mail"] == nil then
+    --                 testQ["mail"] = 1
+    --             else
+    --                 testQ["mail"] = nil
+    --             end
+    --         end
+    --     end)
+    -- end
     if id==7 or id==1 or id==2 then
         self[id]:SetScript("OnClick",function(self, button)
             if PlaySoundFile ~= nil then
@@ -9353,7 +9353,7 @@ btn:configure(992,64,-3,32,32,"","О");
 btn:configure(991,0,0,32,32,"","");
 btn:configure(990,0,0,32,32,"","?");
 btn:configure(989,96,-3,32,32,"","Б");
-btn:configure(988,-55,-13,128,23,"","ЗАБРАТЬ ВСЕ");
+--btn:configure(988,-55,-13,128,23,"","ЗАБРАТЬ ВСЕ");
 btn:configure(987,0,0,32,32,"","");
 btn:configure(983,-100,118,32,32,"","П")
 btn:configure(978,50,0,32,32,"","")
@@ -12267,33 +12267,33 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 end)
 
 
-local frameTime = CreateFrame("FRAME")
-local timeElapsed = 0
-frameTime:HookScript("OnUpdate", function(self, elapsed)
-	if MailFrame:IsVisible() then
-		timeElapsed = timeElapsed + elapsed
-		if timeElapsed > 0.01 then
-			timeElapsed = 0
+-- local frameTime = CreateFrame("FRAME")
+-- local timeElapsed = 0
+-- frameTime:HookScript("OnUpdate", function(self, elapsed)
+-- 	if MailFrame:IsVisible() then
+-- 		timeElapsed = timeElapsed + elapsed
+-- 		if timeElapsed > 0.01 then
+-- 			timeElapsed = 0
 
-			if testQ["mail"] ~= nil then
-				local x = GetInboxNumItems()
-				if x >= 1 then
-					local l1,l2,l3,l4,l5,l6=GetInboxHeaderInfo(1)
-					if tonumber(l6) == 0 then
-						if testQ["mail"] then
-							AutoLootMailItem(1)
-							MailItem1Button:Click()
-							OpenMailDeleteButton:Click()
-							StaticPopup1Button2:Click()
-						end
-					end
-				else
-					testQ["mail"] = nil
-				end
-			end
-		end
-	end
-end)
+-- 			if testQ["mail"] ~= nil then
+-- 				local x = GetInboxNumItems()
+-- 				if x >= 1 then
+-- 					local l1,l2,l3,l4,l5,l6=GetInboxHeaderInfo(1)
+-- 					if tonumber(l6) == 0 then
+-- 						if testQ["mail"] then
+-- 							AutoLootMailItem(1)
+-- 							MailItem1Button:Click()
+-- 							OpenMailDeleteButton:Click()
+-- 							StaticPopup1Button2:Click()
+-- 						end
+-- 					end
+-- 				else
+-- 					testQ["mail"] = nil
+-- 				end
+-- 			end
+-- 		end
+-- 	end
+-- end)
 
 local frameTime = CreateFrame("FRAME")
 local timeElapsed = 0
@@ -12391,15 +12391,15 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 -- 				end
 -- 			end
 -- 		end
-		if InboxPrevPageButton:IsEnabled() ~= 0 then
-			if btn[988]:IsEnabled() then
-				btn[988]:Disable()
-			end
-		else
-			if btn[988]:IsEnabled() == 0 then
-				btn[988]:Enable()
-			end
-		end
+		-- if InboxPrevPageButton:IsEnabled() ~= 0 then
+		-- 	if btn[988]:IsEnabled() then
+		-- 		btn[988]:Disable()
+		-- 	end
+		-- else
+		-- 	if btn[988]:IsEnabled() == 0 then
+		-- 		btn[988]:Enable()
+		-- 	end
+		-- end
 		--[[if WorldMapFrame:IsVisible() then
 			if myMap == nil then
 				myMap = CreateFrame("Button")
@@ -12998,25 +12998,25 @@ frameTime:HookScript("OnUpdate", function(self, elapsed)
 		if mgznIcon[1] == nil or not mgznIcon[1]:IsVisible() then
 			testQ["magSign"] = nil
 		end
-		if MailFrame:IsVisible() and not SendMailFrame:IsVisible() then
-			if not btn[988]:IsVisible() then
-				btn[988]:Show()
-			end
-		else
-			if btn[988]:IsVisible() then
-				btn[988]:Hide()
-			end
-			testQ["mail"] = nil
-		end
-		if testQ["mail"] == 1 then
-			if btn[988]:IsVisible() then
-				btn[988]:SetText("..сбор..")
-			end
-		else
-			if btn[988]:IsVisible() then
-				btn[988]:SetText("ЗАБРАТЬ ВСЕ")
-			end
-		end
+		-- if MailFrame:IsVisible() and not SendMailFrame:IsVisible() then
+		-- 	if not btn[988]:IsVisible() then
+		-- 		btn[988]:Show()
+		-- 	end
+		-- else
+		-- 	if btn[988]:IsVisible() then
+		-- 		btn[988]:Hide()
+		-- 	end
+		-- 	testQ["mail"] = nil
+		-- end
+		-- if testQ["mail"] == 1 then
+		-- 	if btn[988]:IsVisible() then
+		-- 		btn[988]:SetText("..сбор..")
+		-- 	end
+		-- else
+		-- 	if btn[988]:IsVisible() then
+		-- 		btn[988]:SetText("ЗАБРАТЬ ВСЕ")
+		-- 	end
+		-- end
 		
 
 		if AuctionFrame ~= nil and AuctionFrame:IsVisible() then
