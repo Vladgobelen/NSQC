@@ -11,6 +11,10 @@ else
 	nome = myNome
 end
 
+if kod == "nsGP1R" then
+	print(555555555555)
+end
+
 local msg = mysplit(message)
 local kodMsg = mysplit(kod)
 if testQ==nil then
