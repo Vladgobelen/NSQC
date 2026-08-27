@@ -4858,6 +4858,7 @@ function nBtn:new(id,f,object,posex,posey,textx,texty,textpos,textsize,sizex,siz
     setmetatable(obj, self)
     self.__index = self; return obj
 end
+
 function gpBtn1_enter(arg1,arg2)
 	arg1:SetScript("OnEnter",function(self, button,arg1)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
