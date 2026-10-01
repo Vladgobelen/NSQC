@@ -1940,56 +1940,6 @@ if kod == "gKick" and sender == myNome then
 
 end
 
-if kod == "gUp" and sender == myNome then
-    local testMacro
-    for i=1,36 do
-        testMacro = GetMacroInfo(i)
-        if testMacro ~= nil then
-            testMacro = mysplit(testMacro)
-            if testMacro[1] == "NSQC" then
-                EditMacro(i, "NSQC", 134414, "пусто")
-            end
-        end
-    end
-    local kickList
-    testQ["gUp"] = {}
-    for Zc=1,GetNumGuildMembers(true) do
-        local name, rankName, rankIndex, level, classDisplayName, zone, publicNote, officerNote, isOnline, status, class, achievementPoints, achievementRank, isMobile, canSoR, repStanding, guid = GetGuildRosterInfo(Zc)
-        testQ["gUp"][Zc] = officerNote
-        level = tonumber(level)
-        if string.find(testQ['spisok'],name) == nil then
-            if string.lower(rankName) == string.lower("И.О. Констебля") then
-                print(rankName,name)
-                testQ['spisok'] = testQ['spisok'] .. name
-                if officerNote == "" and publicNote == "" then
-                    --SendChatMessage(name .. " " .. level .. " лвл " .. rankName, "OFFICER", nil, 1)
-                    --print(name .. " " .. level .. " лвл " .. yearsOffline .. " лет " .. monthsOffline .. " месяцев " .. daysOffline .. " дней " .. hoursOffline .. " часов")
-                    GuildPromote(name)
-                    if kickList == nil then
-                        kickList = "/gpromote " .. name .. "\n"
-                    else
-                        kickList = kickList .. "/gpromote " .. name .. "\n"
-                    end
-                end
-                if message ~= "" then
-                    GuildPromote(name)
-                end
-            end
-        end
-    end
-    local testMacro
-    for i=1,36 do
-        testMacro = GetMacroInfo(i)
-        if testMacro ~= nil then
-            testMacro = mysplit(testMacro)
-            if testMacro[1] == "NSQC" then
-                EditMacro(i, "NSQC", 134414, kickList)
-            end
-        end
-    end
-    FriendsFrame:Hide()
-end
-
 if kod=="#prEnGD" and msg[1] == myNome and gmTest~=nil then
 	if testQ ~= nil then
 		if testQ[myNome] ~= nil then
