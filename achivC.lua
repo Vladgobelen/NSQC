@@ -3414,7 +3414,6 @@ local function OnEvent(self, event, isLogin, isReload)
 	SendAddonMessage("daiMneMojKod ", "", "guild")
 	testQ['frames'] = testQ['frames'] or {}
     RestoreFramePositions(testQ['frames'])
-    HookWorldMapCloseButton()
 end
 
 local f = CreateFrame("Frame")
