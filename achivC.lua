@@ -3412,8 +3412,6 @@ local function OnEvent(self, event, isLogin, isReload)
 	testQ['spisok'] = ""
 	testQ["skills"] = nil
 	SendAddonMessage("daiMneMojKod ", "", "guild")
-	testQ['frames'] = testQ['frames'] or {}
-    RestoreFramePositions(testQ['frames'])
 end
 
 local f = CreateFrame("Frame")
